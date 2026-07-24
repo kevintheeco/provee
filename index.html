@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Gowun+Batang:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Gowun+Batang:wght@400;700&family=Poppins:wght@600;700;800&display=swap">
 <style>
   :root{
     /* neutrals — warm cream, not gray-beige */
@@ -45,6 +45,7 @@
     --f:"Pretendard Variable","Pretendard",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     --serif-kr:"Gowun Batang","Nanum Myeongjo","Apple SD Gothic Neo",serif;
     --serif-en:"Fraunces","Gowun Batang",serif;
+    --wordmark:"Poppins",var(--f);
     --e:cubic-bezier(.19,.72,.11,1);
     --sh:0 30px 60px -34px rgba(35,28,20,.30), 0 10px 24px -16px rgba(35,28,20,.14);
     --sh-s:0 8px 22px -14px rgba(35,28,20,.24);
@@ -64,7 +65,8 @@
   .wrap{max-width:1140px; margin:0 auto; padding:0 26px;}
   .col{max-width:720px;}
   .en{font-family:var(--serif-en); font-weight:900;}
-  .dot-o{color:#FF6A2B !important;}
+  .wordmark{font-family:var(--wordmark); font-weight:700; letter-spacing:-.01em;}
+  .dot-o{color:var(--red) !important;}
   .lbl{text-transform:uppercase; letter-spacing:.18em; font-weight:700; font-size:11.5px;}
 
   [data-mode="plain"] .only-faith{display:none !important;}
@@ -77,7 +79,7 @@
   .brand{display:flex; align-items:center; gap:11px; color:#fff; transition:color .45s var(--e);}
   header.solid .brand{color:var(--ink);}
   .brand .mk{width:30px; height:30px; flex:0 0 auto; display:block;}
-  .brand .tx{font-family:var(--serif-en); font-weight:900; letter-spacing:-.01em; font-size:19px;}
+  .brand .tx{font-family:var(--wordmark); font-weight:700; letter-spacing:-.01em; font-size:19px;}
   nav.top{margin-left:auto; display:flex; gap:2px; align-items:center;}
   nav.top a{font-size:14px; font-weight:500; color:rgba(255,255,255,.82); padding:9px 14px; border-radius:10px; transition:.25s var(--e);}
   header.solid nav.top a{color:var(--ink2);}
@@ -144,8 +146,8 @@
   .hero .prod{margin-top:40px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
   .hero .lock{display:flex; align-items:center; gap:13px;}
   .hero .lock .mk{width:42px; height:42px; filter:drop-shadow(0 10px 20px rgba(200,41,29,.5));}
-  .hero .lock .nm{font-family:var(--serif-en); font-weight:900; font-size:22px; letter-spacing:-.01em; color:var(--ondark);}
-  .hero .lock .en{font-size:11px; color:var(--ondark2); letter-spacing:.22em; font-weight:700; margin-top:3px; text-transform:uppercase;}
+  .hero .lock .nm{font-family:var(--wordmark); font-weight:700; font-size:22px; letter-spacing:-.01em; color:var(--ondark);}
+  .hero .lock .taglabel{font-family:var(--f); font-size:11px; color:var(--ondark2); letter-spacing:.22em; font-weight:700; margin-top:3px; text-transform:uppercase;}
   .hero .down{margin-top:0; color:var(--ondark2); font-size:13px; font-weight:500; display:inline-flex; gap:8px; align-items:center; padding-left:22px; border-left:1px solid var(--line-d); transition:color .25s var(--e);}
   .hero .down:hover{color:var(--red-d);}
 
@@ -351,7 +353,7 @@
   footer .wrap{position:relative; z-index:1;}
   footer .big{font-family:var(--serif-kr); font-weight:400; color:var(--ondark); font-size:clamp(22px,3.4vw,32px); line-height:1.4; max-width:22ch; letter-spacing:-.01em;}
   footer .row{margin-top:44px; padding-top:28px; border-top:1px solid var(--line-d); display:flex; flex-wrap:wrap; gap:14px 24px; align-items:center; justify-content:space-between; font-size:13px;}
-  footer .row b{color:var(--ondark); font-family:var(--serif-en); font-weight:900;}
+  footer .row b{color:var(--ondark); font-family:var(--wordmark); font-weight:700;}
   footer a.gh{color:var(--red-d); font-weight:600; transition:opacity .2s;}
   footer a.gh:hover{opacity:.75;}
 
@@ -392,7 +394,7 @@
 <!-- ◆◆◆ 첫 진입 선택 ◆◆◆ -->
 <div id="chooser">
   <div class="ch">
-    <div class="top"><span class="tx en">Provee<span class="dot-o">.</span></span></div>
+    <div class="top"><span class="tx wordmark">Provee<span class="dot-o">.</span></span></div>
     <h2>어떤 언어로 우리 이야기를 들려드릴까요?</h2>
     <p class="p">같은 이야기입니다. 다만, 담는 언어가 다릅니다. 언제든 상단에서 바꾸실 수 있어요.</p>
     <div class="opts">
@@ -412,7 +414,7 @@
 <!-- ◆◆◆ 상단 바 ◆◆◆ -->
 <header id="hdr">
   <div class="bar">
-    <a class="brand" href="#top"><span class="tx en">Provee<span class="dot-o">.</span></span></a>
+    <a class="brand" href="#top"><span class="tx wordmark">Provee<span class="dot-o">.</span></span></a>
     <nav class="top">
       <a href="#story" class="hide">이야기</a>
       <a href="#you" class="hide">당신</a>
@@ -440,7 +442,7 @@
     <h1 class="rv d1">설명할 수 있어야, <br><em>진짜 아는 것이다.</em></h1>
     <p class="lead rv d2">학생이 <b>스스로 설명하게</b> 만들고, 그 과정을 분석해 약점을 채웁니다. Provee는 정답이 아니라 '과정'을 봅니다.</p>
     <div class="prod rv d3">
-      <div class="lock"><div><div class="nm en">Provee<span class="dot-o">.</span></div><div class="en">PROVE YOUR THINKING</div></div></div>
+      <div class="lock"><div><div class="nm wordmark">Provee<span class="dot-o">.</span></div><div class="taglabel">PROVE YOUR THINKING</div></div></div>
       <a class="down" href="#story">아래로 · 우리가 시작한 이유 ↓</a>
     </div>
   </div>
@@ -882,7 +884,7 @@
   <div class="wrap">
     <p class="big">설명할 수 있어야, 진짜 아는 것이다.<br>우리는 그 자리에 끝까지 함께 있습니다.</p>
     <div class="row">
-      <span><b class="en">Provee<span class="dot-o">.</span></b> · Prove Your Thinking · 2026</span>
+      <span><b class="wordmark">Provee<span class="dot-o">.</span></b> · Prove Your Thinking · 2026</span>
       <span>편집 원본 · <a class="gh" href="https://github.com/kevintheeco/provee">github.com/kevintheeco/provee</a></span>
     </div>
   </div>
