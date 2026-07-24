@@ -84,7 +84,15 @@
   nav.top a{font-size:14px; font-weight:500; color:rgba(255,255,255,.82); padding:9px 14px; border-radius:10px; transition:.25s var(--e);}
   header.solid nav.top a{color:var(--ink2);}
   nav.top a:hover{color:var(--red-d); background:color-mix(in srgb,var(--red) 12%,transparent);}
-  @media(max-width:860px){ nav.top a.hide{display:none;} }
+  .navtoggle{display:none; background:none; border:none; cursor:pointer; padding:8px; color:#fff; border-radius:9px;}
+  header.solid .navtoggle{color:var(--ink);}
+  @media(max-width:860px){
+    .navlinks{display:flex; flex-direction:column; gap:2px; position:fixed; top:70px; left:16px; right:16px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:8px; box-shadow:var(--sh); opacity:0; pointer-events:none; transform:translateY(-8px); transition:.25s var(--e); z-index:70;}
+    .navlinks.open{opacity:1; pointer-events:auto; transform:none;}
+    .navlinks a{display:block !important; color:var(--ink) !important; padding:13px 14px; border-radius:10px; font-weight:600;}
+    .navlinks a:hover{background:var(--red-soft); color:var(--red-deep) !important;}
+    .navtoggle{display:grid; place-items:center;}
+  }
   .seg{display:flex; align-items:center; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.2); border-radius:11px; padding:3px; margin-left:10px;}
   header.solid .seg{background:var(--card); border-color:var(--line);}
   .seg button{font-family:inherit; font-size:12.5px; font-weight:600; cursor:pointer; border:none; background:none; color:rgba(255,255,255,.72); padding:7px 13px; border-radius:8px; transition:.25s var(--e);}
@@ -416,12 +424,17 @@
   <div class="bar">
     <a class="brand" href="#top"><span class="tx wordmark">Provee<span class="dot-o">.</span></span></a>
     <nav class="top">
-      <a href="#story" class="hide">이야기</a>
-      <a href="#you" class="hide">당신</a>
-      <a href="#make" class="hide">무엇을</a>
-      <a href="#edge">차별성</a>
-      <a href="#markets" class="hide">시장</a>
-      <a href="#team" class="hide">팀</a>
+      <button class="navtoggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navLinks">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="navlinks" id="navLinks">
+        <a href="#story">이야기</a>
+        <a href="#you">당신</a>
+        <a href="#make">무엇을</a>
+        <a href="#edge">차별성</a>
+        <a href="#markets">시장</a>
+        <a href="#team">팀</a>
+      </div>
       <div class="seg" role="group" aria-label="읽기 버전">
         <button data-mode-btn="plain" class="on">일반</button>
         <button data-mode-btn="faith">신앙</button>
@@ -901,6 +914,15 @@
   if(saved){ setMode(saved,false); chooser.classList.add('hide'); setTimeout(function(){chooser.style.display='none';},600); }
   document.querySelectorAll('[data-choose]').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-choose'),true); chooser.classList.add('hide'); setTimeout(function(){chooser.style.display='none';},600); }); });
   document.querySelectorAll('[data-mode-btn]').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-mode-btn'),true); }); });
+
+  var navToggle=document.getElementById('navToggle'), navLinks=document.getElementById('navLinks');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', function(){
+      var open=navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); }); });
+  }
 
   var hdr=document.getElementById('hdr');
   function onScroll(){ hdr.classList.toggle('solid', window.scrollY>50); }
