@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="상호작용">
+  <path d="M10 14 h38 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 H30 L18 52 V42 H10 a4 4 0 0 1 -4 -4 V18 a4 4 0 0 1 4 -4 Z" fill="none" stroke="#C8291D" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M18 30 L27 38 L44 20" fill="none" stroke="#C8291D" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

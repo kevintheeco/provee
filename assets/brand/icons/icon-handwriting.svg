@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="손글씨">
+  <rect x="10" y="8" width="34" height="46" rx="3" fill="none" stroke="#C8291D" stroke-width="2.4"/>
+  <line x1="17" y1="20" x2="37" y2="20" stroke="#C8291D" stroke-width="2.2" stroke-linecap="round" opacity=".55"/>
+  <line x1="17" y1="29" x2="33" y2="29" stroke="#C8291D" stroke-width="2.2" stroke-linecap="round" opacity=".55"/>
+  <line x1="17" y1="38" x2="35" y2="38" stroke="#C8291D" stroke-width="2.2" stroke-linecap="round" opacity=".55"/>
+  <g transform="rotate(45 46 30)">
+    <rect x="42" y="10" width="8" height="34" rx="2" fill="#C8291D"/>
+    <path d="M42 10 L46 2 L50 10 Z" fill="#C8291D"/>
+  </g>
+</svg>

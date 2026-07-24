@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="성장 그래프">
+  <line x1="10" y1="50" x2="54" y2="50" stroke="#231C14" stroke-width="2" opacity=".4"/>
+  <rect x="14" y="38" width="8" height="12" fill="#DDA43A" opacity=".85"/>
+  <rect x="27" y="28" width="8" height="22" fill="#DDA43A" opacity=".9"/>
+  <rect x="40" y="14" width="8" height="36" fill="#C8291D"/>
+</svg>

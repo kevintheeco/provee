@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="진단">
+  <path d="M8 16 Q16 8 26 12 Q34 15 30 22 Q26 28 34 30" fill="none" stroke="#2B6560" stroke-width="2.6" stroke-linecap="round" opacity=".5"/>
+  <circle cx="27" cy="27" r="15" fill="none" stroke="#231C14" stroke-width="2.8"/>
+  <line x1="38" y1="38" x2="52" y2="52" stroke="#231C14" stroke-width="3.4" stroke-linecap="round"/>
+  <circle cx="27" cy="27" r="6.5" fill="none" stroke="#C8291D" stroke-width="2.4"/>
+</svg>
