@@ -132,11 +132,12 @@
 
   /* ---------- hero ---------- */
   .hero{position:relative; min-height:100dvh; display:flex; align-items:center; overflow-x:clip; overflow-y:hidden; padding:150px 0 100px;}
-  .hero .photo{position:absolute; inset:0; overflow:hidden;}
+  .hero .photo{position:absolute; inset:0; overflow:hidden; z-index:0;}
   .hero .photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:72% 42%; opacity:.2;}
   .hero .photo::after{content:""; position:absolute; inset:0; background:linear-gradient(100deg, var(--dark) 0%, var(--dark) 50%, rgba(30,23,18,.78) 68%, rgba(30,23,18,.38) 100%);}
-  .hero .aura{position:absolute; width:900px; height:900px; border-radius:50%; top:-320px; right:-260px; pointer-events:none;
+  .hero .aura{position:absolute; z-index:0; width:900px; height:900px; border-radius:50%; top:-320px; right:-260px; pointer-events:none;
     background:radial-gradient(circle, rgba(200,41,29,.30), rgba(221,164,58,.10) 46%, transparent 66%);}
+  .hero .wrap{position:relative; z-index:1;}
   .hero .tagrow{display:flex; align-items:center; gap:14px; color:var(--ondark2); font-size:13px; font-weight:500;}
   .hero .tagrow .l{width:34px; height:1px; background:var(--line-d);}
   .hero h1{font-size:clamp(42px,8vw,92px); font-weight:800; letter-spacing:-.055em; margin:28px 0 0; line-height:1.02;}
@@ -154,8 +155,7 @@
   /* ---------- who (dark, continues) ---------- */
   .who .stmt{font-family:var(--serif-kr); font-weight:400; font-size:clamp(25px,4.6vw,48px); line-height:1.4; letter-spacing:-.02em; max-width:24ch; text-wrap:balance;}
   .who .stmt em{font-style:normal; color:var(--mustard-d); font-weight:700;}
-  .who .tick{display:flex; gap:7px; margin-bottom:22px;}
-  .who .tick span{width:16px; height:1px; background:var(--red-d); display:block; transform:skewX(-18deg);}
+  .who .tick{width:140px; height:1px; background:var(--line-d); margin-bottom:26px;}
 
   /* ---------- story ---------- */
   .story-head{display:grid; gap:30px; align-items:end; margin-bottom:70px;}
@@ -451,7 +451,7 @@
 <!-- ◆◆◆ 우리는 누구인가 ◆◆◆ -->
 <section class="zone-dark pad who">
   <div class="wrap">
-    <div class="tick rv"><span></span><span></span><span></span></div>
+    <div class="tick rv"></div>
     <div class="ey rv">우리는 누구인가</div>
     <p class="stmt rv d1" style="margin-top:26px;">학생이 스스로 설명하게 만들고, 그 과정을 분석해 <em>약점을 채우는</em> 자기주도 학습 플랫폼입니다.</p>
   </div>
