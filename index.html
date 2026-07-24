@@ -907,8 +907,24 @@
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); if(e.target.id==='venn'){ e.target.classList.add('go'); } io.unobserve(e.target); } }); },{threshold:.16, rootMargin:'0px 0px -6% 0px'});
-  document.querySelectorAll('.rv').forEach(function(e){io.observe(e);});
-  var venn=document.getElementById('venn'); if(venn){ io.observe(venn); }
+  var revealEls=Array.prototype.slice.call(document.querySelectorAll('.rv'));
+  var venn=document.getElementById('venn'); if(venn){ revealEls.push(venn); }
+  revealEls.forEach(function(e){
+    // 이미 화면에 보이는 요소는 옵저버 콜백을 기다리지 않고 즉시 표시
+    // (백그라운드 탭 등에서 IntersectionObserver 콜백이 지연되면
+    //  히어로 문구가 투명한 채로 멈춰버리는 문제 방지)
+    var r=e.getBoundingClientRect();
+    if(r.top < window.innerHeight && r.bottom > 0){
+      e.classList.add('in'); if(e.id==='venn'){ e.classList.add('go'); }
+    }else{
+      io.observe(e);
+    }
+  });
+  // 안전장치: 무슨 이유로든 3초 뒤에도 안 나타난 요소는 강제로 표시
+  setTimeout(function(){
+    document.querySelectorAll('.rv:not(.in)').forEach(function(e){ e.classList.add('in'); });
+    if(venn && !venn.classList.contains('go')){ venn.classList.add('go'); }
+  }, 3000);
 
   // 페르소나 영상: 화면에 보일 때만 재생, 모션 최소화 설정이면 포스터 정지화면 유지
   var pvids=document.querySelectorAll('.portrait video');
