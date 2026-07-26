@@ -511,6 +511,43 @@
     box-shadow:var(--sh-s); transition:transform .25s var(--e);}
   .skip:focus{transform:translate(-50%,0); outline:2px solid #fff; outline-offset:-4px;}
   a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--red-d); outline-offset:2px; border-radius:6px;}
+
+  /* ---------- 움직임 ---------- */
+  /* 큰 문장은 줄 단위로 아래에서 밀려 올라옴 */
+  .lnmask{display:block; overflow:hidden; padding-bottom:.09em; margin-bottom:-.09em;}
+  .lnmask>i{display:block; font-style:normal; transform:translateY(115%); transition:transform 1.05s var(--e);}
+  .rv.in .lnmask>i{transform:none;}
+  .rv.in .lnmask:nth-child(2)>i{transition-delay:.10s;}
+  .rv.in .lnmask:nth-child(3)>i{transition-delay:.20s;}
+  .rv.hasmask,.rv.selfoff{opacity:1; transform:none;}
+
+  /* 목록·격자는 한 칸씩 차례로 */
+  .stg>*{opacity:0; transform:translateY(20px); transition:opacity .8s var(--e), transform .8s var(--e); transition-delay:calc(var(--i,0)*95ms);}
+  .rv.in.stg>*,.rv.in .stg>*{opacity:1; transform:none;}
+
+  /* 인물 초상은 아주 천천히 제자리를 찾음 */
+  .persona .portrait>video,.persona .portrait>img:not(.orn){transform:scale(1.09); transition:transform 1.6s var(--e);}
+  .persona.in .portrait>video,.persona.in .portrait>img:not(.orn){transform:none;}
+
+  /* 손끝 반응 */
+  .vbtn:active,.totop:active,.layers-btn:active,.seg button:active,.opt:active,.cc-x:active{transform:scale(.97);}
+  .vcard{transition:transform .35s var(--e), box-shadow .35s var(--e), border-color .35s var(--e);}
+  .vcard:hover{transform:translateY(-3px); box-shadow:var(--sh); border-color:var(--red-soft);}
+  .mem .av{transition:transform .3s var(--e), border-width .3s var(--e);}
+  .mem:hover .av{transform:scale(1.07);}
+  .fstep{transition:border-color .3s var(--e);}
+  .fstep:hover{border-top-color:var(--red);}
+
+  /* 히어로·푸터 배경이 스크롤보다 느리게 따라옴 */
+  @media(min-width:760px){ .hero .photo img,footer .photo img{will-change:transform;} }
+
+  @media(prefers-reduced-motion:reduce){
+    .lnmask>i{transform:none !important; transition:none;}
+    .stg>*{opacity:1 !important; transform:none !important; transition:none;}
+    .persona .portrait>video,.persona .portrait>img:not(.orn){transform:none !important; transition:none;}
+    .vcard:hover{transform:none;}
+    .vbtn:active,.totop:active,.layers-btn:active,.seg button:active,.opt:active,.cc-x:active{transform:none;}
+  }
 </style>
 </head>
 <body>
@@ -1338,21 +1375,80 @@
     });
   })();
 
-  // ---------- 읽기 진행바 · 현재 섹션 표시 · 맨 위로 ----------
+  // ---------- 큰 문장은 줄 단위로, 목록은 한 칸씩 ----------
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ return; }
+
+    // 줄 마스크
+    ['.hero h1','.make-line'].forEach(function(sel){
+      var el=document.querySelector(sel); if(!el){ return; }
+      var parts=el.innerHTML.split(/<br\s*\/?>/i);
+      if(parts.length<2){ return; }
+      var wasIn=el.classList.contains('in');
+      el.innerHTML=parts.map(function(p){ return '<span class="lnmask"><i>'+p+'</i></span>'; }).join('');
+      el.classList.add('hasmask');
+      if(wasIn){ el.classList.remove('in'); void el.offsetWidth; el.classList.add('in'); }  // 이미 보이는 상태면 다시 재생
+    });
+
+    // 격자·목록 순차 등장 (부모가 곧 등장 단위)
+    ['.fstep','.mem','.mrow'].forEach(function(sel){
+      var seen=[];
+      Array.prototype.forEach.call(document.querySelectorAll(sel), function(el){
+        var p=el.parentNode;
+        if(seen.indexOf(p)<0){
+          seen.push(p); p.classList.add('stg');
+          if(p.classList.contains('rv')){ p.classList.add('selfoff'); }
+        }
+        var i=0, n=p.firstElementChild;
+        while(n && n!==el){ i++; n=n.nextElementSibling; }
+        el.style.setProperty('--i', i);
+      });
+    });
+  })();
+
+  // ---------- 읽기 진행바 · 현재 섹션 표시 · 맨 위로 · 배경 시차 ----------
   (function(){
     var bar=document.getElementById('progBar'), toTop=document.getElementById('toTop');
     var links=Array.prototype.slice.call(document.querySelectorAll('.navlinks a[href^="#"]'));
     var targets=links.map(function(a){ try{ return document.querySelector(a.getAttribute('href')); }catch(e){ return null; } });
+    var heroImg=document.querySelector('.hero .photo img'), heroWrap=document.querySelector('.hero .wrap');
+    var foot=document.querySelector('footer'), footImg=document.querySelector('footer .photo img');
+    var still=window.matchMedia('(prefers-reduced-motion: reduce)');
     var ticking=false;
     function update(){
       ticking=false;
-      var h=document.documentElement, y=h.scrollTop||document.body.scrollTop;
-      var max=h.scrollHeight-h.clientHeight;
+      var h=document.documentElement, y=h.scrollTop||document.body.scrollTop, vh=h.clientHeight;
+      var max=h.scrollHeight-vh;
       if(bar){ bar.style.transform='scaleX('+(max>0 ? Math.min(1,y/max) : 0)+')'; }
       if(toTop){ toTop.classList.toggle('on', y>600); }
-      var cur=-1, mark=y+h.clientHeight*0.34;
+      var cur=-1, mark=y+vh*0.34;
       targets.forEach(function(t,i){ if(t && t.offsetTop<=mark){ cur=i; } });
       links.forEach(function(a,i){ a.classList.toggle('cur', i===cur); });
+
+      // 배경 사진이 스크롤보다 느리게 따라와 깊이를 만든다 (좁은 화면·모션 최소화에서는 끔)
+      if(still.matches || window.innerWidth<760){
+        if(heroImg && heroImg.style.transform){          // 창을 줄였을 때 확대가 남지 않도록 되돌림
+          heroImg.style.transform='';
+          if(heroWrap){ heroWrap.style.transform=''; heroWrap.style.opacity=''; }
+        }
+        if(footImg && footImg.style.transform){ footImg.style.transform=''; }
+        return;
+      }
+      if(heroImg && y<vh*1.15){
+        heroImg.style.transform='translate3d(0,'+(y*0.10).toFixed(1)+'px,0) scale(1.25)';
+        if(heroWrap){
+          heroWrap.style.transform='translate3d(0,'+(y*0.05).toFixed(1)+'px,0)';
+          heroWrap.style.opacity=String(Math.max(0, 1-y/(vh*0.78)));
+        }
+      }
+      if(foot && footImg){
+        var r=foot.getBoundingClientRect();
+        if(r.top<vh && r.bottom>0){
+          // 사진 자체 높이를 기준으로 움직여야 확대분(scale)을 넘어 빈틈이 생기지 않는다
+          var pr=Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height)));
+          footImg.style.transform='translate3d(0,'+((pr-0.5)*r.height*0.12).toFixed(1)+'px,0) scale(1.2)';
+        }
+      }
     }
     window.addEventListener('scroll', function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }, {passive:true});
     window.addEventListener('resize', function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }, {passive:true});
