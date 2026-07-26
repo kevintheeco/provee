@@ -20,6 +20,32 @@
 <meta property="og:title" content="Provee — Prove Your Thinking">
 <meta property="og:description" content="설명할 수 있어야, 진짜 아는 것이다.">
 <meta property="og:type" content="website">
+<!-- 카카오톡·슬랙 등에 링크를 붙였을 때 뜨는 미리보기 카드 -->
+<link rel="canonical" href="https://provee.kr/">
+<meta property="og:url" content="https://provee.kr/">
+<meta property="og:site_name" content="Provee">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://provee.kr/assets/brand/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Provee — 설명할 수 있어야, 진짜 아는 것이다">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Provee — Prove Your Thinking">
+<meta name="twitter:description" content="설명할 수 있어야, 진짜 아는 것이다.">
+<meta name="twitter:image" content="https://provee.kr/assets/brand/og-cover.jpg">
+<meta name="theme-color" content="#1E1712">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Provee",
+  "url":"https://provee.kr/",
+  "logo":"https://provee.kr/assets/brand/favicon.svg",
+  "description":"학생이 스스로 설명하게 만들고, 손글씨 풀이 과정을 읽어 약점을 채우는 AI 수학 학습 플랫폼.",
+  "founder":{"@type":"Person","name":"김수민"},
+  "sameAs":["https://github.com/kevintheeco/provee"]
+}
+</script>
 <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -395,9 +421,102 @@
   .prob-out{text-align:center; padding:104px 0 8px;}
   .prob-out .big{font-family:var(--serif-kr); font-weight:400; font-size:clamp(26px,4.6vw,46px); line-height:1.34; color:var(--ondark); text-wrap:balance; max-width:22ch; margin:0 auto;}
   .prob-out .big em{font-style:normal; color:var(--red-d); font-weight:700;}
+
+  /* ---------- 후기 (voices) ---------- */
+  .vh{max-width:46ch; margin-bottom:42px;}
+  .vh h2{font-size:clamp(27px,4.2vw,42px); font-weight:800; line-height:1.16; margin-top:18px;}
+  .vh h2 em{font-style:normal; color:var(--red);}
+  .vh .sub{margin-top:16px; color:var(--ink2); font-size:16px; max-width:44ch;}
+
+  .vwrap{position:relative;}
+  .vtrack{display:flex; gap:20px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory;
+    padding:6px 2px 8px; margin:0 -2px; scrollbar-width:none; -ms-overflow-style:none;}
+  .vtrack::-webkit-scrollbar{display:none;}
+  .vtrack:focus{outline:none;}
+  .vtrack:focus-visible{outline:2px solid var(--red); outline-offset:6px; border-radius:22px;}
+  .vcard{flex:0 0 min(392px,84vw); scroll-snap-align:start; display:flex; flex-direction:column;
+    background:var(--card); border:1px solid var(--line); border-radius:22px; padding:30px 28px 24px; box-shadow:var(--sh-s);}
+  .vcard .vq{font-family:var(--serif-kr); font-weight:400; font-size:19px; line-height:1.72; letter-spacing:-.01em;
+    color:var(--ink); text-wrap:pretty;}
+  .vcard .vq::before{content:"\201C"; color:var(--red); margin-right:1px;}
+  .vcard .vq::after{content:"\201D"; color:var(--red); margin-left:1px;}
+  .vcard .vfoot{margin-top:auto; padding-top:22px; display:flex; align-items:center; gap:13px;}
+  .vcard .vav{width:42px; height:42px; flex:0 0 auto; border-radius:50%; border:1.5px solid var(--red); background:var(--card);
+    display:grid; place-items:center; font-family:var(--serif-en); font-weight:900; font-size:15px; color:var(--ink);}
+  .vcard .vnm{font-weight:800; font-size:15px; letter-spacing:-.02em;}
+  .vcard .vro{display:block; font-size:13px; color:var(--muted); margin-top:2px; font-weight:400;}
+  .vcard .vstar{margin-left:auto; display:inline-flex; gap:2px; flex:0 0 auto;}
+  .vcard .vstar svg{width:15px; height:15px; display:block; color:var(--mustard);}
+  .vcard .vstar:empty{display:none;}
+
+  /* 좌우 버튼 */
+  .vnav{display:flex; gap:10px; margin-top:26px;}
+  .vbtn{width:46px; height:46px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink2);
+    cursor:pointer; display:grid; place-items:center; transition:.25s var(--e);}
+  .vbtn:hover{border-color:var(--red); color:var(--red); background:#fff;}
+  .vbtn:focus-visible{outline:2px solid var(--red); outline-offset:3px;}
+  .vbtn svg{width:19px; height:19px;}
+
+  /* 빈 상태 — 후기가 아직 없을 때 */
+  .vempty{display:grid; gap:20px;}
+  @media(min-width:760px){ .vempty{grid-template-columns:repeat(3,1fr);} }
+  .vskel{border:1.5px dashed var(--line); border-radius:22px; padding:30px 28px 24px; background:color-mix(in srgb,var(--card) 55%,transparent);}
+  @media(max-width:759px){ .vskel:nth-child(3){display:none;} }
+  .vskel .sl{display:block; height:11px; border-radius:6px; background:var(--line); opacity:.6; animation:vbreathe 3.4s var(--e) infinite;}
+  .vskel .sl+.sl{margin-top:13px;}
+  .vskel .sl.w1{width:92%;} .vskel .sl.w2{width:78%;} .vskel .sl.w3{width:56%;}
+  .vskel:nth-child(2) .sl{animation-delay:.35s;} .vskel:nth-child(3) .sl{animation-delay:.7s;}
+  .vskel .sf{margin-top:30px; display:flex; align-items:center; gap:13px;}
+  .vskel .sa{width:42px; height:42px; border-radius:50%; border:1.5px dashed var(--line); flex:0 0 auto;}
+  .vskel .sn{display:block; height:11px; width:96px; border-radius:6px; background:var(--line); opacity:.6;}
+  @keyframes vbreathe{0%,100%{opacity:.34;} 50%{opacity:.68;}}
+  @media(prefers-reduced-motion:reduce){ .vskel .sl{animation:none; opacity:.5;} }
+  .vemsg{margin-top:34px; text-align:center; color:var(--muted); font-size:15px; line-height:1.7;}
+  .vemsg b{display:block; font-family:var(--serif-kr); font-weight:400; font-size:clamp(19px,2.6vw,23px); color:var(--ink);
+    letter-spacing:-.015em; margin-bottom:8px;}
+  @media(min-width:760px){ .vemsg{grid-column:1/-1;} }
+
+  /* 개수별 분기 — 대표님은 카드만 붙여넣으면 됨 */
+  #voices[data-count="0"] .vtrack,
+  #voices[data-count="0"] .vnav{display:none;}
+  #voices:not([data-count="0"]) .vempty{display:none;}
+  #voices[data-count="1"] .vnav,
+  #voices[data-count="2"] .vnav{display:none;}
+  #voices[data-count="1"] .vtrack,
+  #voices[data-count="2"] .vtrack{overflow:visible; flex-wrap:wrap; scroll-snap-type:none;}
+
+  /* ---------- 읽기 진행바 ---------- */
+  .prog{position:fixed; top:0; left:0; right:0; height:2.5px; z-index:61; pointer-events:none; background:transparent;}
+  .prog i{display:block; height:100%; width:100%; background:var(--red); transform:scaleX(0); transform-origin:0 50%;
+    transition:transform .12s linear;}
+
+  /* ---------- 현재 섹션 표시 ---------- */
+  nav.top a.cur{color:#fff; background:color-mix(in srgb,#fff 14%,transparent);}
+  header.solid nav.top a.cur{color:var(--red-deep); background:var(--red-soft);}
+  @media(max-width:860px){ .navlinks a.cur{background:var(--red-soft); color:var(--red-deep) !important;} }
+
+  /* ---------- 맨 위로 ---------- */
+  .totop{position:fixed; right:20px; bottom:20px; z-index:55; width:48px; height:48px; border-radius:50%;
+    border:1px solid var(--line); background:var(--card); color:var(--ink2); cursor:pointer; display:grid; place-items:center;
+    box-shadow:var(--sh-s); opacity:0; transform:translateY(12px); pointer-events:none; transition:.35s var(--e);}
+  .totop.on{opacity:1; transform:none; pointer-events:auto;}
+  .totop:hover{color:var(--red); border-color:var(--red);}
+  .totop:focus-visible{outline:2px solid var(--red); outline-offset:3px;}
+  .totop svg{width:19px; height:19px;}
+  @media(prefers-reduced-motion:reduce){ .totop{transition:opacity .2s;} }
+
+  /* ---------- 건너뛰기 링크 + 포커스 통일 ---------- */
+  .skip{position:fixed; top:10px; left:50%; transform:translate(-50%,-160%); z-index:300;
+    background:var(--red); color:#fff; font-weight:700; font-size:14px; padding:12px 20px; border-radius:999px;
+    box-shadow:var(--sh-s); transition:transform .25s var(--e);}
+  .skip:focus{transform:translate(-50%,0); outline:2px solid #fff; outline-offset:-4px;}
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--red-d); outline-offset:2px; border-radius:6px;}
 </style>
 </head>
 <body>
+
+<a class="skip" href="#top">본문 바로가기</a>
+<div class="prog" aria-hidden="true"><i id="progBar"></i></div>
 
 <!-- ◆◆◆ 첫 진입 선택 ◆◆◆ -->
 <div id="chooser">
@@ -433,6 +552,7 @@
         <a href="#make">무엇을</a>
         <a href="#edge">차별성</a>
         <a href="#markets">시장</a>
+        <a href="#voices">후기</a>
         <a href="#team">팀</a>
       </div>
       <div class="seg" role="group" aria-label="읽기 버전">
@@ -446,7 +566,7 @@
 <main>
 
 <!-- ◆◆◆ 히어로 ◆◆◆ -->
-<a id="top"></a>
+<a id="top" tabindex="-1"></a>
 <section class="hero zone-dark">
   <div class="photo"><img src="assets/brand/hero-bg.webp" alt="" onerror="this.onerror=null;this.src='assets/brand/hero-bg.jpg';"></div>
   <span class="aura"></span>
@@ -872,6 +992,62 @@
   </div>
 </section>
 
+<!-- ◆◆◆ 후기 ◆◆◆
+     ┌─ 대표님, 후기는 여기에 채우시면 됩니다 ────────────────────────────
+     │  아래 <div class="vtrack"> 안에, 이 모양 한 덩어리를 붙여넣으세요.
+     │  붙여넣은 개수에 따라 화면이 알아서 바뀝니다.
+     │    0장 → "첫 후기를 기다립니다" 화면 (지금 상태)
+     │    1~2장 → 카드가 가만히 서 있음
+     │    3장 이상 → 카드가 천천히 흐르고 좌우 화살표가 생김
+     │
+     │  <article class="vcard">
+     │    <p class="vq">여기에 후기 한 문장</p>
+     │    <div class="vfoot">
+     │      <span class="vav">서</span>
+     │      <div><span class="vnm">서연</span><span class="vro">고3 · 베타 테스터</span></div>
+     │      <span class="vstar" data-star="5"></span>
+     │    </div>
+     │  </article>
+     │
+     │  · vav  = 동그라미 안 글자 (이름 첫 글자 한 자)
+     │  · vnm  = 이름       · vro = 소개 (학년, 지역 등)
+     │  · data-star = 별 개수 (1~5). 별을 안 쓰려면 data-star="0"
+     │  · 실명·학교는 본인 동의를 받은 것만. 없으면 "고3 학부모"처럼 익명으로.
+     └───────────────────────────────────────────────────────────── -->
+<section class="zone-edge pad" id="voices" data-count="0">
+  <div class="wrap">
+    <div class="vh rv">
+      <div class="ey">직접 들은 말</div>
+      <h2>쓰는 사람의 말이, <em>우리를 고칩니다.</em></h2>
+      <p class="sub">잘 됐다는 칭찬보다, 어디가 막혔는지 알려주는 한 문장이 우리를 더 멀리 데려갑니다.</p>
+    </div>
+
+    <div class="vwrap rv d1">
+      <div class="vtrack" id="vtrack" role="region" aria-label="사용자 후기" tabindex="0">
+        <!-- ▼ 여기에 후기 카드를 붙여넣으세요 ▼ -->
+
+        <!-- ▲ 여기까지 ▲ -->
+      </div>
+
+      <div class="vnav">
+        <button class="vbtn" id="vprev" type="button" aria-label="이전 후기 보기" aria-controls="vtrack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="vbtn" id="vnext" type="button" aria-label="다음 후기 보기" aria-controls="vtrack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="vempty">
+        <div class="vskel" aria-hidden="true"><span class="sl w1"></span><span class="sl w2"></span><span class="sl w3"></span><div class="sf"><span class="sa"></span><span class="sn"></span></div></div>
+        <div class="vskel" aria-hidden="true"><span class="sl w1"></span><span class="sl w2"></span><span class="sl w3"></span><div class="sf"><span class="sa"></span><span class="sn"></span></div></div>
+        <div class="vskel" aria-hidden="true"><span class="sl w1"></span><span class="sl w2"></span><span class="sl w3"></span><div class="sf"><span class="sa"></span><span class="sn"></span></div></div>
+        <p class="vemsg"><b>첫 후기가 도착하면, 이 자리에 놓입니다.</b>지금은 베타를 함께 만들어 갈 분들을 만나는 중입니다. 없는 말을 지어 채우지 않기로 했습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ◆◆◆ 팀 ◆◆◆ -->
 <section class="zone-light pad" id="team">
   <div class="wrap">
@@ -902,6 +1078,10 @@
     </div>
   </div>
 </footer>
+
+<button class="totop" id="toTop" type="button" aria-label="맨 위로 이동">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <script>
   var root=document.documentElement, chooser=document.getElementById('chooser');
@@ -1052,6 +1232,136 @@
       }
     });
   }
+
+  // ---------- 후기: 카드 개수에 따라 알아서 ----------
+  (function(){
+    var sec=document.getElementById('voices'), track=document.getElementById('vtrack');
+    if(!sec || !track) return;
+    var cards=Array.prototype.slice.call(track.querySelectorAll('.vcard'));
+    var n=cards.length;
+    sec.setAttribute('data-count', n>=3 ? '3' : String(n));
+
+    // 별점: data-star 개수만큼 별을 그림
+    var STAR='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>';
+    cards.forEach(function(c){
+      var s=c.querySelector('.vstar'); if(!s) return;
+      var v=parseInt(s.getAttribute('data-star')||'0',10);
+      if(!(v>0)){ s.parentNode.removeChild(s); return; }
+      if(v>5){ v=5; }
+      s.innerHTML=new Array(v+1).join(STAR);
+      s.setAttribute('role','img');
+      s.setAttribute('aria-label','5점 만점에 '+v+'점');
+    });
+
+    if(n<3) return;  // 3장 미만이면 흐르지 않고 그대로 서 있음
+
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+    function room(){ return Math.max(0, track.scrollWidth-track.clientWidth); }
+    // 카드 한 장 한 장의 정지 위치
+    function stops(){
+      var base=cards[0].offsetLeft;
+      return cards.map(function(c){ return c.offsetLeft-base; });
+    }
+    // 브라우저의 smooth 스크롤은 스냅과 충돌해 멈춰버리는 경우가 있어 직접 굴린다
+    var anim=null;
+    function slide(to){
+      if(anim){ cancelAnimationFrame(anim); anim=null; }
+      var from=track.scrollLeft, d=to-from;
+      if(Math.abs(d)<1){ return; }
+      if(reduce.matches){ track.scrollLeft=to; return; }
+      var t0=null, dur=520, keep=track.style.scrollSnapType, done=false;
+      function land(){ if(done){ return; } done=true;
+        if(anim){ cancelAnimationFrame(anim); anim=null; }
+        track.scrollLeft=to; track.style.scrollSnapType=keep; }
+      track.style.scrollSnapType='none';
+      anim=requestAnimationFrame(function frame(ts){
+        if(t0===null){ t0=ts; }
+        var p=Math.min(1,(ts-t0)/dur);
+        track.scrollLeft=from+d*(1-Math.pow(1-p,3));
+        if(p<1){ anim=requestAnimationFrame(frame); }
+        else{ land(); }
+      });
+      // 탭이 가려져 프레임이 오지 않아도 최종 위치는 보장
+      setTimeout(land, dur+240);
+    }
+    function go(dir){
+      var max=room(); if(max<=4){ return; }
+      var at=track.scrollLeft, list=stops(), to=null, i;
+      if(dir>0){
+        if(at>=max-4){ to=0; }                                     // 끝에 닿았으면 처음으로
+        else{ for(i=0;i<list.length;i++){ if(list[i]>at+6){ to=Math.min(list[i],max); break; } }
+              if(to===null){ to=max; } }
+      }else{
+        if(at<=4){ to=max; }                                       // 처음에서 뒤로 가면 끝으로
+        else{ for(i=list.length-1;i>=0;i--){ if(list[i]<at-6){ to=list[i]; break; } }
+              if(to===null){ to=0; } }
+      }
+      slide(to);
+    }
+    document.getElementById('vprev').addEventListener('click', function(){ go(-1); });
+    document.getElementById('vnext').addEventListener('click', function(){ go(1); });
+    track.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'){ e.preventDefault(); go(1); }
+      else if(e.key==='ArrowLeft'){ e.preventDefault(); go(-1); }
+    });
+
+    // 자동 흐름 — 마우스를 올리거나 포커스가 들어오면 멈춤
+    var timer=null, paused=false, seen=false;
+    function start(){ if(timer || reduce.matches) return; timer=setInterval(function(){
+      if(!paused && !document.hidden && seen && room()>8){ go(1); }
+    }, 3600); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    ['mouseenter','focusin'].forEach(function(ev){ sec.addEventListener(ev, function(){ paused=true; }); });
+    ['mouseleave','focusout'].forEach(function(ev){ sec.addEventListener(ev, function(){ paused=false; }); });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ es.forEach(function(e){ seen=e.isIntersecting; }); },{threshold:.25}).observe(sec);
+    }else{ seen=true; }
+    reduce.addEventListener ? reduce.addEventListener('change', function(){ reduce.matches ? stop() : start(); }) : null;
+    start();
+
+    // 마우스로 끌어서 넘기기 (터치는 브라우저 기본 스와이프)
+    var sx=0, sl=0, dragging=false, moved=false;
+    track.addEventListener('pointerdown', function(e){
+      if(e.pointerType!=='mouse') return;
+      dragging=true; moved=false; sx=e.clientX; sl=track.scrollLeft; paused=true;
+    });
+    window.addEventListener('pointermove', function(e){
+      if(!dragging) return;
+      var dx=e.clientX-sx;
+      if(!moved && Math.abs(dx)<6) return;
+      moved=true; track.style.cursor='grabbing'; track.style.scrollSnapType='none';
+      track.scrollLeft=sl-dx;
+    });
+    window.addEventListener('pointerup', function(){
+      if(!dragging) return;
+      dragging=false; paused=false; track.style.cursor=''; track.style.scrollSnapType='';
+    });
+  })();
+
+  // ---------- 읽기 진행바 · 현재 섹션 표시 · 맨 위로 ----------
+  (function(){
+    var bar=document.getElementById('progBar'), toTop=document.getElementById('toTop');
+    var links=Array.prototype.slice.call(document.querySelectorAll('.navlinks a[href^="#"]'));
+    var targets=links.map(function(a){ try{ return document.querySelector(a.getAttribute('href')); }catch(e){ return null; } });
+    var ticking=false;
+    function update(){
+      ticking=false;
+      var h=document.documentElement, y=h.scrollTop||document.body.scrollTop;
+      var max=h.scrollHeight-h.clientHeight;
+      if(bar){ bar.style.transform='scaleX('+(max>0 ? Math.min(1,y/max) : 0)+')'; }
+      if(toTop){ toTop.classList.toggle('on', y>600); }
+      var cur=-1, mark=y+h.clientHeight*0.34;
+      targets.forEach(function(t,i){ if(t && t.offsetTop<=mark){ cur=i; } });
+      links.forEach(function(a,i){ a.classList.toggle('cur', i===cur); });
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }, {passive:true});
+    window.addEventListener('resize', function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }, {passive:true});
+    update();
+    if(toTop){ toTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+      var t=document.getElementById('top'); if(t){ t.focus({preventScroll:true}); }
+    }); }
+  })();
 </script>
 </body>
 </html>
