@@ -135,7 +135,13 @@
     color:var(--ink2); opacity:0; transform:translateY(20px);
     transition:opacity .6s var(--e), transform .6s var(--e), background .3s var(--e), color .3s var(--e);}
   .nav.open ~ .sheet a{opacity:1; transform:none;}
-  .toc a em{font-style:normal; font-family:var(--en); font-size:11px; font-weight:700; letter-spacing:.14em; color:var(--muted); min-width:22px;}
+  .toc a em{font-style:normal; font-family:var(--en); font-size:11px; font-weight:700; letter-spacing:.14em; color:var(--muted); min-width:20px;}
+  .toc a .ko{flex:0 0 auto;}
+  .toc a .en{margin-left:auto; font-family:var(--en); font-size:13.5px; font-weight:600; letter-spacing:.01em;
+    color:var(--wine); opacity:.82; white-space:nowrap; padding-left:18px;}
+  .toc a:hover .en,.toc a.cur .en{opacity:1;}
+  @media(max-width:600px){ .toc a{flex-wrap:wrap;} .toc a .en{margin-left:0; padding-left:34px; flex-basis:100%; font-size:12.5px;} }
+  .toc .gt i{font-style:normal; font-family:var(--en); font-size:14px; font-weight:600; color:var(--wine); opacity:.8; margin-left:4px;}
   .toc a:hover{background:var(--wine-tint); color:var(--wine-deep);}
   .toc a.cur{color:var(--wine-deep); font-weight:800; background:var(--wine-tint);}
   .toc a.cur em{color:var(--wine);}
@@ -929,7 +935,10 @@
     <div class="layer us"><span class="lv">Layer 3</span><span class="tx"><b>과정 진단</b> — 손으로 그린 도형과 그래프까지, 쓰는 도중의 흐름을 읽고 끊긴 지점을 짚습니다.</span><span class="who">Provee</span></div>
   </div>
   <div class="up" style="margin-top:76px; padding-top:56px; border-top:1px solid var(--line);">
-    <span class="kicker"><b></b>경쟁사 분석 · 시장 지도</span>
+    <div class="no" style="display:flex; align-items:baseline; gap:16px; margin-bottom:24px;">
+      <b style="font-family:var(--en); font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--wine);">COMPETITIVE ANALYSIS — 경쟁사 분석</b>
+      <span style="flex:1; height:1px; background:var(--line);"></span>
+    </div>
     <h3 style="margin-top:20px;">21개사를 세 축 위에 놓으면, <em>세 개의 섬</em>이 나옵니다.</h3>
     <p class="sub">교육 AI가 "잘한다"고 말하는 것을 세 가지로 나눠 봤습니다. 각 원은 그 축을 갖춘 회사들의 영역입니다.</p>
     <div class="vlegend">
@@ -1027,16 +1036,6 @@
   </div>
   <h3>이 문제를 <em>직접 겪은 사람들</em>이 만듭니다.</h3>
   <p class="sub">첫 번째 사용자가 창립자 자신이었습니다. 무너져 본 자리를 알기에, 어디에 발판을 놓아야 하는지 압니다.</p>
-
-  <div class="team">
-    <div class="mem"><span class="av">SM</span><div><div class="nm">김수민</div><div class="ro">CEO · 창립자</div></div></div>
-    <div class="mem"><span class="av">JM</span><div><div class="nm">최지민</div><div class="ro">CTO · 기술 총괄</div></div></div>
-    <div class="mem"><span class="av">EW</span><div><div class="nm">김은우</div><div class="ro">해외 총괄</div></div></div>
-    <div class="mem"><span class="av">SB</span><div><div class="nm">윤세빈</div><div class="ro">CBO · 브랜드</div></div></div>
-    <div class="mem"><span class="av">JS</span><div><div class="nm">임준서</div><div class="ro">재무 · 전략</div></div></div>
-    <div class="mem"><span class="av">JB</span><div><div class="nm">손정범</div><div class="ro">Head of Backend &amp; Data</div></div></div>
-  </div>
-
   <div class="sbox">
     <div class="stop2">
       <div>
@@ -1104,6 +1103,23 @@
         <p class="sclose">지식과 의지가 부족하여 낙담한 이들에게 다가가, 그들을 일으키고 싶습니다. <em>설명할 수 있을 때까지, 끈질기게.</em></p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="wrap sec up" id="s-team">
+  <div class="no" style="display:flex; align-items:baseline; gap:16px; margin-bottom:22px;">
+    <b style="font-family:var(--en); font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--wine);">06 — OUR TEAM</b>
+    <span style="flex:1; height:1px; background:var(--line);"></span>
+  </div>
+  <h3>깨어진 자리에서 <em>시작한 사람들.</em></h3>
+  <p class="sub">여섯 명이 각자의 자리에서 이 문제를 붙들고 있습니다.</p>
+  <div class="team">
+    <div class="mem"><span class="av">SM</span><div><div class="nm">김수민</div><div class="ro">CEO · 창립자</div></div></div>
+    <div class="mem"><span class="av">JM</span><div><div class="nm">최지민</div><div class="ro">CTO · 기술 총괄</div></div></div>
+    <div class="mem"><span class="av">EW</span><div><div class="nm">김은우</div><div class="ro">해외 총괄</div></div></div>
+    <div class="mem"><span class="av">SB</span><div><div class="nm">윤세빈</div><div class="ro">CBO · 브랜드</div></div></div>
+    <div class="mem"><span class="av">JS</span><div><div class="nm">임준서</div><div class="ro">재무 · 전략</div></div></div>
+    <div class="mem"><span class="av">JB</span><div><div class="nm">손정범</div><div class="ro">Head of Backend &amp; Data</div></div></div>
   </div>
 </section>
 
@@ -1186,10 +1202,11 @@
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-creed',  ko:'우리의 선언',        en:'Our Manifesto'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-market', ko:'① 시장',       en:'1. Our Market'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-model',  ko:'② 수익 구조',  en:'2. Our Business Model'},
-    {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-edge',   ko:'③ 우리의 강점',en:'3. Our Edge'},
+    {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-edge',   ko:'③ 우리의 강점',en:'3. Our Edge · Competitive Analysis'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-next',   ko:'④ 다음 행보',  en:'4. Our Next Move'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-why',    ko:'⑤ 왜 우리인가',en:'5. Why Us'},
-    {g:'Closing', gko:'닫는 말', gn:'03', id:'s-close', ko:'쓰는 사람의 말', en:'Closing'}
+    {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-team',   ko:'⑥ 우리 팀',    en:'6. Our Team'},
+    {g:'Closing', gko:'닫는 말', gn:'03', id:'s-close', ko:'쓰는 사람의 말', en:'Voices'}
   ];
 
   /* 목차 그리기 */
@@ -1197,10 +1214,12 @@
   MAP.forEach(function(m,i){
     if(m.g!==prev){
       if(prev!==null){ html+='</div>'; }
-      html+='<div class="grp"><div class="gt"><b>'+m.gn+'</b><span>'+m.gko+'</span></div>';
+      html+='<div class="grp"><div class="gt"><b>'+m.gn+'</b><span>'+m.gko+'</span><i>'+m.g+'</i></div>';
       prev=m.g;
     }
-    html+='<a href="#'+m.id+'" data-i="'+i+'"><em>'+(m.en.match(/^\d/)?m.en.charAt(0):'·')+'</em>'+m.ko+'</a>';
+    var num=m.en.match(/^(\d)\./), eng=m.en.replace(/^\d\.\s*/,'');
+    html+='<a href="#'+m.id+'" data-i="'+i+'"><em>'+(num?num[1]:'·')+'</em>'
+        + '<span class="ko">'+m.ko+'</span><span class="en">'+eng+'</span></a>';
   });
   html+='</div>';
   toc.innerHTML=html;
