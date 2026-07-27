@@ -476,6 +476,54 @@
   .why p{margin-top:12px; font-size:15.5px; line-height:1.88; color:var(--ink2);}
   .why .fl{margin-top:14px; font-weight:700; color:var(--wine); font-size:16px;}
 
+
+  /* ── 구간 안 사람들 ── */
+  .faces{margin-top:48px;}
+  .faces-h{display:flex; align-items:center; gap:14px; margin-bottom:24px;}
+  .faces-h b{font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);}
+  .faces-h span{flex:1; height:1px; background:var(--line);}
+  .fgrid{display:grid; gap:20px;}
+  @media(min-width:820px){ .fgrid{grid-template-columns:repeat(2,1fr);} }
+  .face{border-radius:20px; overflow:hidden; background:var(--card); box-shadow:var(--soft);}
+  .face .fv{position:relative; aspect-ratio:16/10; background:var(--paper2); overflow:hidden;}
+  .face .fv video{width:100%; height:100%; object-fit:cover; object-position:center 34%; display:block;}
+  .face .ft{padding:22px 24px 24px;}
+  .face .tag{display:inline-flex; font-size:10px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--wine); background:var(--wine-tint); padding:5px 12px; border-radius:999px;}
+  .face .nm{margin-top:14px; font-size:12.5px; font-weight:700; color:var(--muted); letter-spacing:.03em;}
+  .face .q{margin-top:9px; font-family:var(--kr); font-weight:400; font-size:clamp(18px,2.2vw,22px);
+    line-height:1.5; letter-spacing:-.025em;}
+  .face .q::before{content:"\201C"; color:var(--wine);} .face .q::after{content:"\201D"; color:var(--wine);}
+  .face .s{margin-top:12px; font-size:14px; line-height:1.8; color:var(--ink2);}
+
+  /* ── 그러나 우리는 (해법) ── */
+  .fix{margin-top:48px; padding:34px 32px 32px; border-radius:24px; background:var(--wine-tint);
+    box-shadow:inset 0 0 0 1px var(--wine-line);}
+  .fix-h{display:flex; align-items:baseline; gap:14px; padding-bottom:20px; border-bottom:1px solid var(--wine-line);}
+  .fix-h b{font-family:var(--kr); font-weight:400; font-size:clamp(20px,2.8vw,28px); letter-spacing:-.03em; color:var(--wine-deep);}
+  .fix-h em{font-style:normal; font-size:10.5px; font-weight:800; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--wine); margin-left:auto; white-space:nowrap;}
+  @media(max-width:640px){ .fix-h em{display:none;} }
+  .fix ol{margin-top:22px; display:grid; gap:16px;}
+  @media(min-width:900px){ .fix ol{grid-template-columns:repeat(3,1fr); gap:14px;} }
+  .fix li{background:#FFFCFB; border-radius:16px; padding:22px 20px;}
+  .fix li .fn{font-family:var(--en); font-size:11px; font-weight:700; letter-spacing:.16em; color:var(--wine);}
+  .fix li h5{margin-top:10px; font-size:16px; font-weight:800; line-height:1.4; color:var(--wine-deep);}
+  .fix li p{margin-top:9px; font-size:14px; line-height:1.78; color:#5A3A38;}
+
+  /* ── 벤다이어그램 라벨 ── */
+  .vlegend{margin-top:26px; display:grid; gap:12px;}
+  @media(min-width:640px){ .vlegend{grid-template-columns:repeat(3,1fr);} }
+  .vlegend div{padding:16px 18px; border-radius:14px; background:var(--card); box-shadow:var(--soft);}
+  .vlegend .k{display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:800;}
+  .vlegend .k i{width:11px; height:11px; border-radius:50%; flex:0 0 auto;}
+  .vlegend p{margin-top:7px; font-size:13px; line-height:1.7; color:var(--ink2);}
+  .vhint{margin-top:20px; display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--muted);}
+  .vhint b{display:grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--wine);
+    color:#fff; font-size:12px; font-weight:800; flex:0 0 auto;}
+  .vcore-note{margin-top:16px; padding:16px 18px; border-radius:14px; background:var(--wine); color:#FFF1EE;
+    font-size:14px; font-weight:700; line-height:1.6;}
+
   /* ── 건너뛰기 · 맨 위로 ── */
   .skip{position:fixed; top:10px; left:50%; transform:translate(-50%,-180%); z-index:300;
     background:var(--wine); color:#fff; font-weight:700; font-size:14px; padding:12px 20px; border-radius:999px;
@@ -522,6 +570,8 @@
   @media(prefers-reduced-motion:reduce){
     *{transition:none !important; animation:none !important;}
     .up{opacity:1 !important; transform:none !important;}
+    .venn .circ,.venn .lab,.venn .names,.venn .core,.venn .pulse{opacity:1 !important; transform:none !important;}
+    .venn .pulse{opacity:0 !important;}
   }
 </style>
 </head>
@@ -605,11 +655,38 @@
           <span class="lb">빼앗긴 것</span>
           <p>사진을 다시 찍고, 잘못 읽은 걸 바로잡고, 처음부터 다시 설명합니다. <b>문제를 푸는 시간보다 도구를 설득하는 시간이 깁니다.</b></p>
         </div>
-        <div class="card sol">
-          <span class="lb">돌려드리는 것</span>
-          <p>Provee는 찍어 올린 그림이 아니라 <b>당신이 그은 획</b>을 읽습니다. 손으로 그린 그래프와 도형까지 그대로.</p>
+      </div>
+    </div>
+    <div class="faces up">
+      <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
+      <div class="fgrid">
+        <div class="face">
+          <div class="fv"><video src="assets/personas/p1.mp4" poster="assets/personas/p1_poster.jpg" muted loop playsinline preload="metadata" aria-label="지훈 · 대학교 2학년의 이야기"></video></div>
+          <div class="ft">
+            <span class="tag">대학생 · 일방향 강의</span>
+            <div class="nm">지훈 · 대학교 2학년</div>
+            <p class="q">강의는 끝났는데, 집에 오면 처음부터 혼자 다시 시작이에요.</p>
+            <p class="s">대형 강의에서 질문하며 따라가는 사람은 드뭅니다. 매번 AI에게 처음부터 설명해달라 하기도 지칩니다.</p>
+          </div>
+        </div>
+        <div class="face">
+          <div class="fv"><video src="assets/personas/p2.mp4" poster="assets/personas/p2_poster.jpg" muted loop playsinline preload="metadata" aria-label="서연 · 고등학교 3학년의 이야기"></video></div>
+          <div class="ft">
+            <span class="tag">고3 이과 · 손풀이</span>
+            <div class="nm">서연 · 고등학교 3학년</div>
+            <p class="q">내가 그린 그래프는, AI도 못 알아봐요.</p>
+            <p class="s">풀 때마다 사진을 찍어 올리는 것도 번거로운데, 손으로 그린 기하와 그래프는 인식조차 되지 않습니다.</p>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="fix up">
+      <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>How we give it back</em></div>
+      <ol>
+        <li><div class="fn">01</div><h5>쓰던 노트 그대로</h5><p>다시 찍거나 옮겨 적을 필요 없이, 학생이 그은 획을 그대로 읽습니다. 인식이 안 돼 되돌아가는 시간이 사라집니다.</p></li>
+        <li><div class="fn">02</div><h5>손으로 그린 도형까지</h5><p>그래프와 기하 모델을 이미지가 아니라 풀이의 일부로 읽습니다. 설명을 다시 붙이지 않아도 됩니다.</p></li>
+        <li><div class="fn">03</div><h5>어제를 기억합니다</h5><p>매번 처음부터 소개하지 않아도 됩니다. 지난 풀이와 습관 위에서 오늘을 이어서 시작합니다.</p></li>
+      </ol>
     </div>
   </div>
 
@@ -627,11 +704,38 @@
           <span class="lb">빼앗긴 것</span>
           <p>오래 고민하는 시간, 틀린 이유를 되짚는 과정, 자기 언어로 다시 설명해 보는 노력. AI는 이 모든 것을 <b>'불필요한 불편'으로 만들어 치워버렸습니다.</b></p>
         </div>
-        <div class="card sol">
-          <span class="lb">돌려드리는 것</span>
-          <p>UCLA의 비요크 부부는 이것을 <b>'바람직한 어려움'</b>이라 부릅니다. Provee는 그 어려움을 걷어내지 않고, <b>끝까지 통과하도록 곁에 섭니다.</b></p>
+      </div>
+    </div>
+    <div class="faces up">
+      <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
+      <div class="fgrid">
+        <div class="face">
+          <div class="fv"><video src="assets/personas/p3.mp4" poster="assets/personas/p3_poster.jpg" muted loop playsinline preload="metadata" aria-label="다은 · 고등학교 2학년의 이야기"></video></div>
+          <div class="ft">
+            <span class="tag">예체능 → 수학</span>
+            <div class="nm">다은 · 고등학교 2학년</div>
+            <p class="q">중2 이후 놓았던 수학을, 고2에 다시 펴자니 막막해요.</p>
+            <p class="s">어디서부터 비어 있는지 저도 모르겠어요. 저를 아는 선생님도, 지난 기록도 없으니까요.</p>
+          </div>
+        </div>
+        <div class="face">
+          <div class="fv"><video src="assets/personas/p4.mp4" poster="assets/personas/p4_poster.jpg" muted loop playsinline preload="metadata" aria-label="준 · 국제학교 11학년의 이야기"></video></div>
+          <div class="ft">
+            <span class="tag">유학 준비 · SAT/AP</span>
+            <div class="nm">준 · 국제학교 11학년</div>
+            <p class="q">시급 8만 원 과외를, 매일 붙일 순 없잖아요.</p>
+            <p class="s">과외와 과외 사이, 혼자 붙들고 씨름하는 시간을 채워줄 것이 필요해요. 그런데 시중엔 마땅한 게 없어요.</p>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="fix up">
+      <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>Desirable difficulty</em></div>
+      <ol>
+        <li><div class="fn">01</div><h5>답을 먼저 주지 않습니다</h5><p>막힌 지점을 찾아 되묻습니다. 정답은 학생이 스스로 도달한 뒤에야 확인합니다.</p></li>
+        <li><div class="fn">02</div><h5>끝까지 쓰게 합니다</h5><p>중간에 포기하려는 순간에는 발판을 놓고, 너무 쉽게 답을 얻으려는 순간에는 다시 질문합니다.</p></li>
+        <li><div class="fn">03</div><h5>설명해야 넘어갑니다</h5><p>자기 언어로 말할 수 있을 때 다음으로 갑니다. 고개만 끄덕인 개념은 넘기지 않습니다.</p></li>
+      </ol>
     </div>
   </div>
 
@@ -648,76 +752,33 @@
           <span class="lb">빼앗긴 것</span>
           <p>답을 받아 적는 동안, 스스로 풀어냈을 때의 그 순간은 사라졌습니다. <b>맞았는데도 왜 맞았는지 말할 수 없습니다.</b></p>
         </div>
-        <div class="card sol">
-          <span class="lb">돌려드리는 것</span>
-          <p>Provee는 답을 먼저 주지 않습니다. <b>당신이 설명할 수 있을 때까지 기다립니다.</b> 설명해낸 순간의 기쁨은 온전히 당신의 것입니다.</p>
+      </div>
+    </div>
+    <div class="faces up">
+      <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
+      <div class="fgrid">
+        <div class="face">
+          <div class="fv"><video src="assets/personas/p5.mp4" poster="assets/personas/p5_poster.jpg" muted loop playsinline preload="metadata" aria-label="민서 · 중학교 3학년 · 지방 소도시의 이야기"></video></div>
+          <div class="ft">
+            <span class="tag">교육 격차 · 우리의 비전</span>
+            <div class="nm">민서 · 중학교 3학년 · 지방 소도시</div>
+            <p class="q">나를 아는 선생님이 없으면, 잘 가고 있는지조차 알 수 없어요.</p>
+            <p class="s">고액 과외는 멀고, AI마저 매달 큰 비용을 요구해요. 우리가 가장 먼저 닿고 싶은 자리입니다.</p>
+          </div>
         </div>
       </div>
     </div>
+    <div class="fix up">
+      <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>The joy of getting there</em></div>
+      <ol>
+        <li><div class="fn">01</div><h5>마지막 한 걸음은 학생이</h5><p>대신 밟아주지 않습니다. 풀어낸 사람이 학생이어야 그 순간이 학생의 것이 됩니다.</p></li>
+        <li><div class="fn">02</div><h5>잘 가고 있는지 보여줍니다</h5><p>개념지도로 어디까지 왔고 무엇이 비어 있는지 보여줍니다. 혼자여도 방향을 잃지 않습니다.</p></li>
+        <li><div class="fn">03</div><h5>넘어선 자리를 남깁니다</h5><p>못 풀던 문제를 스스로 풀어낸 순간이 기록으로 쌓입니다. 그게 다음을 버티게 합니다.</p></li>
+      </ol>
+    </div>
   </div>
 </section>
 
-
-<!-- ◆◆◆ 이건 누군가의 이야기입니다 ◆◆◆ -->
-<section class="wrap sec" id="s-people">
-  <div class="no up" style="display:flex; align-items:baseline; gap:16px; margin-bottom:22px;">
-    <b style="font-family:var(--en); font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--wine);">04 — WHO LOST THEM</b>
-    <span style="flex:1; height:1px; background:var(--line);"></span>
-  </div>
-  <div class="who-intro up">
-    <span class="kicker"><b></b>이건, 누군가의 이야기입니다</span>
-    <h3>스크롤을 내리면, 아마 당신이 아는 얼굴이 있습니다.</h3>
-    <p>우리가 시장에서 직접 만난 사람들. 이름은 달라도, 막막함은 닮아 있었습니다.</p>
-  </div>
-  <div class="prs up">
-    <figure class="pv"><video src="assets/personas/p1.mp4" poster="assets/personas/p1_poster.jpg" muted loop playsinline preload="metadata" aria-label="지훈 · 대학교 2학년의 이야기"></video></figure>
-    <div class="pb">
-      <span class="tag">대학생 · 일방향 강의</span>
-      <div class="nm">지훈 · 대학교 2학년</div>
-      <p class="q">강의는 끝났는데, 집에 오면 처음부터 혼자 다시 시작이에요.</p>
-      <p class="s">대형 강의에서 질문하며 따라가는 사람은 드뭅니다. 전공책은 어렵고, 매번 AI에게 처음부터 설명해달라 하기도 지칩니다.</p>
-    </div>
-  </div>
-  <div class="prs up flip">
-    <figure class="pv"><video src="assets/personas/p2.mp4" poster="assets/personas/p2_poster.jpg" muted loop playsinline preload="metadata" aria-label="서연 · 고등학교 3학년의 이야기"></video></figure>
-    <div class="pb">
-      <span class="tag">고3 이과 · 손풀이</span>
-      <div class="nm">서연 · 고등학교 3학년</div>
-      <p class="q">내가 그린 그래프는, AI도 못 알아봐요.</p>
-      <p class="s">풀 때마다 사진을 찍어 올리는 것도 번거로운데, 대화가 길어지면 저를 처음부터 다시 가르쳐야 해요. 손으로 그린 기하와 그래프는 인식조차 되지 않고요.</p>
-    </div>
-  </div>
-  <div class="prs up">
-    <figure class="pv"><video src="assets/personas/p3.mp4" poster="assets/personas/p3_poster.jpg" muted loop playsinline preload="metadata" aria-label="다은 · 고등학교 2학년의 이야기"></video></figure>
-    <div class="pb">
-      <span class="tag">예체능 → 수학</span>
-      <div class="nm">다은 · 고등학교 2학년</div>
-      <p class="q">중2 이후 놓았던 수학을, 고2에 다시 펴자니 막막해요.</p>
-      <p class="s">어디서부터 비어 있는지 저도 모르겠어요. 저를 아는 선생님도, 지난 기록도 없으니까요.</p>
-    </div>
-  </div>
-  <div class="prs up flip">
-    <figure class="pv"><video src="assets/personas/p4.mp4" poster="assets/personas/p4_poster.jpg" muted loop playsinline preload="metadata" aria-label="준 · 국제학교 11학년의 이야기"></video></figure>
-    <div class="pb">
-      <span class="tag">유학 준비 · SAT/AP</span>
-      <div class="nm">준 · 국제학교 11학년</div>
-      <p class="q">시급 8만 원 과외를, 매일 붙일 순 없잖아요.</p>
-      <p class="s">과외와 과외 사이, 혼자 푸는 시간을 채워줄 것이 필요해요. 그런데 시중엔 마땅한 게 없어요.</p>
-    </div>
-  </div>
-  <div class="prs up">
-    <figure class="pv"><video src="assets/personas/p5.mp4" poster="assets/personas/p5_poster.jpg" muted loop playsinline preload="metadata" aria-label="민서 · 중학교 3학년 · 지방 소도시의 이야기"></video></figure>
-    <div class="pb">
-      <span class="tag">교육 격차 · 우리의 비전</span>
-      <div class="nm">민서 · 중학교 3학년 · 지방 소도시</div>
-      <p class="q">나를 아는 선생님이 없으면, 잘 가고 있는지조차 알 수 없어요.</p>
-      <p class="s">고액 과외는 멀고, AI마저 매달 큰 비용을 요구해요. 우리가 가장 먼저 닿고 싶은 자리입니다.</p>
-    </div>
-  </div>
-  <div class="prs-out up">
-    <p>이 모든 이름들 곁에, <em>우리가 앉습니다.</em></p>
-  </div>
-</section>
 
 <!-- ══════ 선언 ══════ -->
 <section class="creed" id="s-creed">
@@ -803,23 +864,6 @@
 </section>
 
 
-<!-- ◆◆◆ 무엇을 만드는가 ◆◆◆ -->
-<section class="wrap sec" id="s-make">
-  <div class="no up" style="display:flex; align-items:baseline; gap:16px; margin-bottom:22px;">
-    <b style="font-family:var(--en); font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--wine);">06 — WHAT WE BUILD</b>
-    <span style="flex:1; height:1px; background:var(--line);"></span>
-  </div>
-  <h3 class="up" style="font-family:var(--kr); font-weight:400; font-size:clamp(26px,3.8vw,42px); line-height:1.26; letter-spacing:-.035em; max-width:22ch;">손글씨 풀이를 분석해, 정답이 아닌 <em style="font-style:normal; color:var(--wine); font-weight:700;">'과정'을 진단</em>합니다.</h3>
-  <p class="up" style="margin-top:18px; font-size:16.5px; line-height:1.95; color:var(--ink2); max-width:52ch;">사진을 찍어 답만 맞히는 도구가 아닙니다. 학생이 직접 쓴 풀이의 흐름을 읽고, 어디서 논리가 끊겼는지를 짚습니다.</p>
-  <div class="flow up">
-    <div class="fstep"><div class="fn">01</div><img src="assets/brand/icons/icon-handwriting.svg" alt=""><h4>손글씨로 직접 풀이를 쓴다</h4></div>
-    <div class="fstep"><div class="fn">02</div><img src="assets/brand/icons/icon-ai-analysis.svg" alt=""><h4>AI가 풀이 과정을 분석한다</h4></div>
-    <div class="fstep"><div class="fn">03</div><img src="assets/brand/icons/icon-diagnosis.svg" alt=""><h4>어디서 막혔는지를 진단한다</h4></div>
-    <div class="fstep"><div class="fn">04</div><img src="assets/brand/icons/icon-persistence.svg" alt=""><h4>알 때까지, 과외선생님처럼 끈질기게 가르친다</h4></div>
-  </div>
-  <p class="makeline up">기존 평가는 틀린 문제만 봅니다.<br><em>우리는 정답이어도 그 안의 구멍을 찾아냅니다.</em></p>
-</section>
-
 <div class="band"><div class="track" id="band"></div></div>
 
 <!-- ══════ Chapter 2 ══════ -->
@@ -884,6 +928,28 @@
     <div class="layer"><span class="lv">Layer 2</span><span class="tx"><b>단계 채점</b> — 정해진 형식으로 입력한 단계를 맞다·틀리다로 나눕니다.</span><span class="who">적응학습 서비스</span></div>
     <div class="layer us"><span class="lv">Layer 3</span><span class="tx"><b>과정 진단</b> — 손으로 그린 도형과 그래프까지, 쓰는 도중의 흐름을 읽고 끊긴 지점을 짚습니다.</span><span class="who">Provee</span></div>
   </div>
+  <div class="up" style="margin-top:76px; padding-top:56px; border-top:1px solid var(--line);">
+    <span class="kicker"><b></b>경쟁사 분석 · 시장 지도</span>
+    <h3 style="margin-top:20px;">21개사를 세 축 위에 놓으면, <em>세 개의 섬</em>이 나옵니다.</h3>
+    <p class="sub">교육 AI가 "잘한다"고 말하는 것을 세 가지로 나눠 봤습니다. 각 원은 그 축을 갖춘 회사들의 영역입니다.</p>
+    <div class="vlegend">
+      <div>
+        <div class="k"><i style="background:#C8291D;"></i>상호작용</div>
+        <p>일방적으로 답을 주지 않고, 되묻고 대화하며 가르치는가</p>
+      </div>
+      <div>
+        <div class="k"><i style="background:#2B6560;"></i>손글씨</div>
+        <p>학생이 직접 쓴 풀이를 그대로 읽는가 (사진 인식이 아니라 과정)</p>
+      </div>
+      <div>
+        <div class="k"><i style="background:#6E6B3F;"></i>지속성</div>
+        <p>학생을 기억하고, 지난 기록 위에서 이어 가르치는가</p>
+      </div>
+    </div>
+    <div class="vcore-note">세 원이 겹치는 한가운데 — 세 축을 모두 갖춘 자리에는 Provee만 있습니다.</div>
+    <div class="vhint"><b>?</b>다이어그램 속 회사 이름을 눌러 보세요. 그 회사의 강점과 한계가 열립니다.</div>
+  </div>
+
   <div class="vgrid">
     <div class="up">
       <svg class="venn"  id="venn" viewBox="0 0 560 500" role="img" aria-label="상호작용·손글씨·지속성 3축 벤다이어그램. 세 축이 만나는 중심에 Provee가 있고 경쟁사는 각 영역에 흩어져 있음">
@@ -1117,9 +1183,7 @@
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost1',  ko:'① 빼앗긴 시간',      en:'1. The Time We Lost'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost2',  ko:'② 빼앗긴 불편',      en:'2. The Discomfort We Lost'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost3',  ko:'③ 빼앗긴 기쁨',      en:'3. The Joy We Lost'},
-    {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-people', ko:'④ 누가 빼앗겼나',    en:'4. Who Lost Them'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-creed',  ko:'우리의 선언',        en:'Our Manifesto'},
-    {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-make',   ko:'무엇을 만드는가',    en:'What We Build'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-market', ko:'① 시장',       en:'1. Our Market'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-model',  ko:'② 수익 구조',  en:'2. Our Business Model'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-edge',   ko:'③ 우리의 강점',en:'3. Our Edge'},
