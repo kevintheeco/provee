@@ -161,25 +161,56 @@
   .slot svg{width:26px; height:26px; color:var(--wine-line);}
   .slot.flat{aspect-ratio:auto; padding:34px 24px;}
 
-  /* ══ 히어로 ══ */
-  .hero{min-height:100dvh; display:flex; align-items:center; padding:170px 0 90px; position:relative; overflow:clip;}
-  .hero .glow{position:absolute; z-index:0; width:960px; height:960px; border-radius:50%; top:-420px; right:-300px; pointer-events:none;
-    background:radial-gradient(circle, rgba(138,28,43,.11), rgba(176,131,52,.06) 46%, transparent 68%);}
-  .hgrid{position:relative; z-index:1; display:grid; gap:56px; align-items:center;}
-  @media(min-width:1040px){ .hgrid{grid-template-columns:1.02fr .98fr; gap:76px;} }
-  .lock{display:flex; flex-direction:column; gap:8px; padding-bottom:30px; position:relative;}
-  .lock::after{content:""; position:absolute; left:0; bottom:0; width:56px; height:2px; background:var(--wine);}
-  .lock .wm{font-family:var(--wm); font-weight:700; font-size:clamp(40px,5.6vw,66px); letter-spacing:-.04em; line-height:1;}
+  /* ══ 히어로 — 중앙 락업 + 물감 배경 + 하단 띠 ══ */
+  .hero{min-height:100dvh; display:flex; flex-direction:column; justify-content:center;
+    padding:150px 0 0; position:relative; overflow:clip; text-align:center;}
+  /* 물감 번짐 */
+  .wash{position:absolute; inset:-10%; z-index:0; pointer-events:none; overflow:hidden;}
+  .wash span{position:absolute; border-radius:50%; filter:blur(72px); mix-blend-mode:multiply; opacity:.62;}
+  .wash .w1{width:60vw; height:60vw; left:-12vw; top:-20vw;
+    background:radial-gradient(circle, rgba(138,28,43,.34), rgba(138,28,43,.06) 55%, transparent 70%);
+    animation:wash1 30s var(--e) infinite alternate;}
+  .wash .w2{width:52vw; height:52vw; right:-14vw; top:-8vw;
+    background:radial-gradient(circle, rgba(196,146,58,.30), rgba(196,146,58,.05) 55%, transparent 70%);
+    animation:wash2 38s var(--e) infinite alternate;}
+  .wash .w3{width:46vw; height:46vw; left:24vw; bottom:-18vw;
+    background:radial-gradient(circle, rgba(43,101,96,.20), rgba(43,101,96,.04) 55%, transparent 70%);
+    animation:wash3 34s var(--e) infinite alternate;}
+  .wash .w4{width:34vw; height:34vw; right:8vw; bottom:-10vw;
+    background:radial-gradient(circle, rgba(167,48,62,.20), transparent 68%);
+    animation:wash1 42s var(--e) infinite alternate-reverse;}
+  @keyframes wash1{from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(5%,4%,0) scale(1.12);}}
+  @keyframes wash2{from{transform:translate3d(0,0,0) scale(1.06);} to{transform:translate3d(-6%,5%,0) scale(1);}}
+  @keyframes wash3{from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(4%,-5%,0) scale(1.1);}}
+  @media(prefers-reduced-motion:reduce){ .wash span{animation:none !important;} }
+
+  .hin{position:relative; z-index:1; flex:1; display:flex; align-items:center;}
+  .hin>.wrap{flex:1 1 auto; width:100%; min-width:0;}   /* 플렉스 자식이 내용 폭으로 커지는 것 방지 */
+  .lock{display:flex; flex-direction:column; align-items:center; gap:14px;}
+  .lock .tl{font-size:11px; font-weight:800; letter-spacing:.34em; text-transform:uppercase; color:var(--muted);}
+  .lock .wm{font-family:var(--wm); font-weight:700; font-size:clamp(62px,11.5vw,158px);
+    letter-spacing:-.045em; line-height:.92;}
   .lock .wm i{font-style:normal; color:var(--wine);}
-  .lock .tl{font-size:11px; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--muted);}
-  .hero h1{margin-top:34px; font-family:var(--kr); font-weight:400; font-size:clamp(38px,6.2vw,76px);
-    line-height:1.14; letter-spacing:-.045em;}
+  .lock .entag{font-family:var(--en); font-weight:600; font-size:clamp(15px,2.1vw,23px); letter-spacing:.01em;
+    color:var(--wine);}
+  .hero h1{margin-top:40px; font-family:var(--kr); font-weight:400; font-size:clamp(23px,3.5vw,40px);
+    line-height:1.42; letter-spacing:-.035em; max-width:21ch; margin-inline:auto;}
   .hero h1 em{font-style:normal; color:var(--wine);}
-  .hero .hi{margin-top:30px; font-size:17px; color:var(--ink2); line-height:1.95; max-width:44ch;}
+  .hero .hi{margin-top:22px; font-size:16px; color:var(--ink2); line-height:1.9; max-width:46ch; margin-inline:auto;}
   .hero .hi b{color:var(--ink); font-weight:600;}
-  .hero .acts{margin-top:38px; display:flex; gap:12px; flex-wrap:wrap;}
-  .hnote{display:flex; align-items:center; gap:12px; font-size:13px; color:var(--muted); margin-top:40px;}
-  .hnote span{flex:1; height:1px; background:var(--line);}
+  .hero .acts{margin-top:36px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;}
+
+  /* 하단 띠 */
+  .hstrip{position:relative; z-index:1; margin-top:54px; display:flex; gap:14px; justify-content:center;
+    padding:0 26px 40px; overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
+  .hstrip figure{margin:0; width:min(266px,25vw); aspect-ratio:4/3; border-radius:16px; overflow:hidden; flex:0 0 auto;
+    background:var(--paper2); box-shadow:0 16px 32px -22px rgba(30,24,17,.55);
+    transition:transform .6s var(--e);}
+  .hstrip figure:hover{transform:translateY(-4px);}
+  .hstrip img{width:100%; height:100%; object-fit:cover; display:block;}
+  @media(max-width:760px){ .hstrip{gap:10px; padding-bottom:30px;} .hstrip figure{width:44vw;} .hstrip figure:nth-child(n+3){display:none;} }
 
   /* ══ 장 표지 ══ */
   .chapter{padding:130px 0 0;}
@@ -286,7 +317,7 @@
   @media(max-width:600px){ .defn .dh span{display:none;} }
 
   /* ══ 흐르는 띠 ══ */
-  .band{padding:66px 0 0; overflow:hidden;
+  .band{padding:56px 0 0; margin:0 calc(50% - 50vw); overflow:hidden;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
     mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
   .band .track{display:flex; width:max-content; animation:slide 46s linear infinite;}
@@ -310,6 +341,26 @@
   .mrow.g .tag{color:var(--wine);}
   .mrow .d{font-size:16px; color:var(--ink2); max-width:54ch; line-height:1.9;}
   .mrow .d b{color:var(--ink); font-weight:700;}
+  .mrow{cursor:pointer; transition:background .3s var(--e);}
+  .mrow:hover{background:rgba(138,28,43,.03);}
+  .mrow .more{margin-top:12px; display:inline-flex; align-items:center; gap:8px; font-family:inherit;
+    font-size:13px; font-weight:800; color:var(--wine); background:none; border:0; cursor:pointer; padding:0;}
+  .mrow .more svg{width:13px; height:13px; transition:transform .5s var(--e);}
+  .mrow[aria-expanded="true"] .more svg{transform:rotate(180deg);}
+  .mdet{max-height:0; overflow:hidden; transition:max-height .8s var(--e);}
+  .mdin{padding:6px 0 34px;}
+  .mcols{display:grid; gap:16px;}
+  @media(min-width:820px){ .mcols{grid-template-columns:1fr 1fr;} }
+  .mcol{border-radius:20px; background:var(--card); box-shadow:var(--soft); padding:26px 26px 24px;}
+  .mcol .who{display:inline-flex; font-size:10.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--wine); background:var(--wine-tint); padding:5px 12px; border-radius:999px;}
+  .mcol h5{margin-top:14px; font-size:18px; font-weight:800; letter-spacing:-.02em;}
+  .mcol p{margin-top:10px; font-size:14.5px; line-height:1.85; color:var(--ink2);}
+  .mcol dl{margin:18px 0 0; padding-top:16px; border-top:1px solid var(--line2); display:grid; gap:11px;}
+  .mcol .kv{display:flex; gap:14px; align-items:baseline; font-size:13.5px;}
+  .mcol .kv dt{flex:0 0 74px; font-weight:800; color:var(--muted); font-size:11.5px; letter-spacing:.06em;}
+  .mcol .kv dd{margin:0; color:var(--ink2); line-height:1.7;}
+  .mcol .kv dd.fill{color:var(--wine); font-weight:700;}
 
   /* ══ 사업: 세 층위 ══ */
   .layers{margin-top:44px; display:grid; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;}
@@ -361,8 +412,28 @@
   @media(min-width:940px){ .team{grid-template-columns:repeat(3,1fr);} }
   .mem{background:var(--card); padding:24px; display:flex; gap:15px; align-items:center; transition:background .3s var(--e);}
   .mem:hover{background:var(--wine-tint);}
-  .mem .av{width:44px; height:44px; border-radius:50%; box-shadow:inset 0 0 0 1.5px var(--wine); display:grid; place-items:center;
-    font-family:var(--en); font-weight:700; font-size:14px; flex:0 0 auto;}
+  .mem{cursor:pointer;}
+  .mem .av{position:relative; width:52px; height:52px; border-radius:50%; box-shadow:inset 0 0 0 1.5px var(--wine);
+    display:grid; place-items:center; font-family:var(--en); font-weight:700; font-size:14px; flex:0 0 auto;
+    overflow:hidden; background:var(--paper2); transition:transform .35s var(--e);}
+  .mem:hover .av{transform:scale(1.06);}
+  .mem .av img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .mem.on{background:var(--wine-tint);}
+  .mem.on .av{box-shadow:inset 0 0 0 2px var(--wine);}
+  .bio{margin-top:18px; border-radius:22px; background:var(--card); box-shadow:var(--soft); padding:28px 28px 26px;
+    animation:ccin .5s var(--e);}
+  .bio[hidden]{display:none;}
+  .bio .t{display:flex; align-items:flex-start; gap:16px;}
+  .bio .ba{width:64px; height:64px; border-radius:50%; overflow:hidden; position:relative; flex:0 0 auto;
+    background:var(--paper2); box-shadow:inset 0 0 0 1.5px var(--wine); display:grid; place-items:center;
+    font-family:var(--en); font-weight:700; font-size:17px;}
+  .bio .ba img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .bio h5{font-size:19px; font-weight:800; letter-spacing:-.02em;}
+  .bio .ro{margin-top:5px; font-size:13px; color:var(--wine); font-weight:700;}
+  .bio .x{margin-left:auto; width:32px; height:32px; border-radius:50%; border:0; background:var(--paper2);
+    color:var(--muted); font-size:16px; cursor:pointer; display:grid; place-items:center; flex:0 0 auto;}
+  .bio .x:hover{color:var(--wine); background:var(--wine-tint);}
+  .bio p{margin-top:18px; font-size:15px; line-height:1.9; color:var(--ink2);}
   .mem .nm{font-weight:800; font-size:15.5px;}
   .mem .ro{font-size:13px; color:var(--muted); margin-top:2px;}
 
@@ -627,27 +698,29 @@
 
 <!-- ══════ Opening ══════ -->
 <section class="hero" id="s-open">
-  <span class="glow"></span>
-  <div class="wrap hgrid">
-    <div>
+  <div class="wash" aria-hidden="true"><span class="w1"></span><span class="w2"></span><span class="w3"></span><span class="w4"></span></div>
+
+  <div class="hin">
+    <div class="wrap">
       <div class="lock up in">
-        <div class="wm">Provee<i>.</i></div>
         <div class="tl">Prove your thinking</div>
+        <div class="wm">Provee<i>.</i></div>
+        <div class="entag">The AI math teacher who knows you.</div>
       </div>
-      <h1 class="up in">당신과 당신의 자녀들이<br>빼앗긴 것을, <em>돌려드립니다.</em></h1>
+      <h1 class="up in">당신과 당신의 자녀들이 빼앗긴 것을, <em>돌려드립니다.</em></h1>
       <p class="hi up in">안녕하세요. 저희는 대한민국의 학생들과 여러분들의 자녀들이 <b>빼앗긴 것들을 돌려드릴</b> AI 수학 과외 플랫폼 Provee입니다.</p>
       <div class="acts up in">
         <button class="btn w">먼저 만나보기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button>
         <a class="btn g" href="#s-lost1">무엇을 빼앗겼나 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></i></a>
       </div>
-      <div class="hnote up in"><span></span>시간 · 불편 · 기쁨</div>
     </div>
-    <div class="up in">
-      <figure class="plate">
-        <div class="m"><img src="assets/brand/hero-bg.jpg" alt="손으로 풀이를 써 내려간 노트"></div>
-        <figcaption><b>정답은 맞았는데, 왜 맞았는지 말하지 못했습니다.</b><br>그 자리에서 이 회사가 시작됐습니다.</figcaption>
-      </figure>
-    </div>
+  </div>
+
+  <div class="hstrip up in">
+    <figure><img src="assets/scenes/lecture-hall.jpg" alt=""></figure>
+    <figure><img src="assets/brand/hero-bg.jpg" alt=""></figure>
+    <figure><img src="assets/scenes/struggle.jpg" alt=""></figure>
+    <figure><img src="assets/scenes/joy-2.jpg" alt=""></figure>
   </div>
 </section>
 
@@ -896,7 +969,6 @@
 
 
 
-<div class="band"><div class="track" id="band"></div></div>
 
 <!-- ══════ Chapter 2 ══════ -->
 <div class="wrap chapter" id="c-biz">
@@ -926,9 +998,105 @@
   </div>
   <h3>하나의 손글씨 분석 엔진, <em>세 개의 시장.</em></h3>
   <p class="sub">같은 엔진이 개인에게는 과외 선생님이, 학원에는 진단 도구가, 지자체에는 교육 사다리가 됩니다.</p>
-  <div class="mrow"><div class="tag">B2C</div><div class="d"><b>학생·대학생 대상 월 구독.</b> 스스로 공부하는 개인에게 직접 가닿습니다.</div></div>
-  <div class="mrow"><div class="tag">B2B</div><div class="d"><b>학원·교육기관에 AI 진단·레벨테스트 납품.</b> 사람을 더 쓰지 않고도 1:1 수준의 진단을 제공합니다.</div></div>
-  <div class="mrow g"><div class="tag">B2G</div><div class="d"><b>정부·지자체 교육복지, 서울런 모델.</b> 교육 격차를 좁히는 계층 사다리가 됩니다.</div></div>
+  <div class="mrow" id="m-b2c" role="button" tabindex="0" aria-expanded="false" aria-controls="d-b2c">
+    <div class="tag">B2C</div>
+    <div class="d"><b>학생·대학생 대상 월 구독.</b> 스스로 공부하는 개인에게 직접 가닿습니다.
+      <button class="more" type="button">중·고등학생과 대학생, 나눠 보기
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mdet" id="d-b2c">
+    <div class="mdin">
+      <div class="mcols">
+        <div class="mcol">
+          <span class="who">중 · 고등학생</span>
+          <h5>내신과 수능, 손으로 푸는 시간</h5>
+          <p>학교 진도와 시험 범위에 맞춰 손글씨 풀이를 진단합니다. 도형과 그래프가 많은 단원일수록 차이가 큽니다.</p>
+          <dl>
+            <div class="kv"><dt>결제자</dt><dd>학부모</dd></div>
+            <div class="kv"><dt>사용자</dt><dd>학생</dd></div>
+            <div class="kv"><dt>받는 것</dt><dd>학생은 그 자리에서 되묻는 과외, 학부모는 무엇이 비었는지 적힌 리포트</dd></div>
+            <div class="kv"><dt>가격</dt><dd class="fill">월 구독료 — 확정 후 채웁니다</dd></div>
+          </dl>
+        </div>
+        <div class="mcol">
+          <span class="who">대학생</span>
+          <h5>강의가 끝난 뒤의 시간</h5>
+          <p>선형대수·미적분·수리통계처럼 혼자 복습해야 하는 과목을 맡습니다. 매번 처음부터 설명하지 않아도 됩니다.</p>
+          <dl>
+            <div class="kv"><dt>결제자</dt><dd>본인</dd></div>
+            <div class="kv"><dt>사용자</dt><dd>본인</dd></div>
+            <div class="kv"><dt>받는 것</dt><dd>강의 노트를 이어받아 막힌 지점부터 다시 세우는 대화</dd></div>
+            <div class="kv"><dt>가격</dt><dd class="fill">월 구독료 — 확정 후 채웁니다</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mrow" id="m-b2b" role="button" tabindex="0" aria-expanded="false" aria-controls="d-b2b">
+    <div class="tag">B2B</div>
+    <div class="d"><b>학원·교육기관에 AI 진단·레벨테스트 납품.</b> 사람을 더 쓰지 않고도 1:1 수준의 진단을 제공합니다.
+      <button class="more" type="button">어떻게 파는지 보기
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mdet" id="d-b2b">
+    <div class="mdin">
+      <div class="mcols">
+        <div class="mcol">
+          <span class="who">학원 · 교습소</span>
+          <h5>선생님이 수업 전에 아는 것</h5>
+          <p>한 반의 손글씨를 한눈에 봅니다. 누가 어디서 무너지는지 수업 전에 알고 들어갑니다.</p>
+          <dl>
+            <div class="kv"><dt>판매 단위</dt><dd>좌석 수 기준 월 단가</dd></div>
+            <div class="kv"><dt>가격</dt><dd class="fill">좌석 단가 — 확정 후 채웁니다</dd></div>
+          </dl>
+        </div>
+        <div class="mcol">
+          <span class="who">학교 · 공교육</span>
+          <h5>레벨테스트를 사람 없이</h5>
+          <p>학기 초 진단을 자동화합니다. 채점 인력을 늘리지 않고도 반 편성 근거를 만듭니다.</p>
+          <dl>
+            <div class="kv"><dt>판매 단위</dt><dd>연 단위 도입 · 학교별 계약</dd></div>
+            <div class="kv"><dt>가격</dt><dd class="fill">연 계약가 — 확정 후 채웁니다</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mrow g" id="m-b2g" role="button" tabindex="0" aria-expanded="false" aria-controls="d-b2g">
+    <div class="tag">B2G</div>
+    <div class="d"><b>정부·지자체 교육복지, 서울런 모델.</b> 교육 격차를 좁히는 계층 사다리가 됩니다.
+      <button class="more" type="button">어떤 사업인지 보기
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mdet" id="d-b2g">
+    <div class="mdin">
+      <div class="mcols">
+        <div class="mcol">
+          <span class="who">지자체 교육복지</span>
+          <h5>고액 과외가 닿지 않는 자리</h5>
+          <p>서울런처럼 지자체가 비용을 대고 학생이 무상으로 씁니다. 우리가 가장 먼저 닿고 싶은 자리입니다.</p>
+          <dl>
+            <div class="kv"><dt>판매 단위</dt><dd>지자체 단위 인원 계약</dd></div>
+            <div class="kv"><dt>가격</dt><dd class="fill">단가 — 확정 후 채웁니다</dd></div>
+          </dl>
+        </div>
+        <div class="mcol">
+          <span class="who">왜 이 시장인가</span>
+          <h5>같은 엔진, 가장 넓은 도달</h5>
+          <p>B2C·B2B에 태운 엔진을 그대로 씁니다. 추가 개발 없이 가장 많은 학생에게 닿는 경로입니다.</p>
+          <dl>
+            <div class="kv"><dt>의미</dt><dd>창립자가 말한 "낙담한 이들에게 다가가"가 실제로 실행되는 통로</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="slot flat" style="margin-top:34px;">
     <span class="t">시장 규모 숫자 자리</span>
     <span class="s">국내 수학 사교육 시장 · 타깃 학생 수 · 도달 가능 규모(TAM/SAM/SOM) — 대표님 확인 후 채워 넣을 자리입니다</span>
@@ -1065,6 +1233,9 @@
       <div class="rt"><h4>공교육 · 해외</h4><p>지자체 교육복지 사업과 해외 커리큘럼으로 넓힙니다.</p></div>
     </li>
   </ol>
+
+  <!-- 지나온 자리·앞으로 만들 화면 -->
+  <div class="band"><div class="track" id="band"></div></div>
 </section>
 
 <section class="wrap sec up" id="s-why">
@@ -1159,13 +1330,44 @@
   </div>
   <h3>깨어진 자리에서 <em>시작한 사람들.</em></h3>
   <p class="sub">여섯 명이 각자의 자리에서 이 문제를 붙들고 있습니다.</p>
+  <!-- ◆◆◆ 팀 ◆◆◆
+       사진은 assets/team/ 에 sm.jpg · jm.jpg · ew.jpg · sb.jpg · js.jpg · jb.jpg 로 올리면
+       자동으로 동그라미에 들어갑니다. 파일이 없으면 이니셜이 그대로 보입니다.
+       약력은 아래 BIOS 에서 한글만 고치시면 됩니다.
+  ◆◆◆ -->
   <div class="team">
-    <div class="mem"><span class="av">SM</span><div><div class="nm">김수민</div><div class="ro">CEO · 창립자</div></div></div>
-    <div class="mem"><span class="av">JM</span><div><div class="nm">최지민</div><div class="ro">CTO · 기술 총괄</div></div></div>
-    <div class="mem"><span class="av">EW</span><div><div class="nm">김은우</div><div class="ro">해외 총괄</div></div></div>
-    <div class="mem"><span class="av">SB</span><div><div class="nm">윤세빈</div><div class="ro">CBO · 브랜드</div></div></div>
-    <div class="mem"><span class="av">JS</span><div><div class="nm">임준서</div><div class="ro">재무 · 전략</div></div></div>
-    <div class="mem"><span class="av">JB</span><div><div class="nm">손정범</div><div class="ro">Head of Backend &amp; Data</div></div></div>
+      <div class="mem" data-bio="sm" role="button" tabindex="0">
+        <span class="av"><img src="assets/team/sm.jpg" alt="" onerror="this.remove()">SM</span>
+        <div><div class="nm">김수민</div><div class="ro">CEO · 창립자</div></div>
+      </div>
+      <div class="mem" data-bio="jm" role="button" tabindex="0">
+        <span class="av"><img src="assets/team/jm.jpg" alt="" onerror="this.remove()">JM</span>
+        <div><div class="nm">최지민</div><div class="ro">CTO · 기술 총괄</div></div>
+      </div>
+      <div class="mem" data-bio="ew" role="button" tabindex="0">
+        <span class="av"><img src="assets/team/ew.jpg" alt="" onerror="this.remove()">EW</span>
+        <div><div class="nm">김은우</div><div class="ro">해외 총괄</div></div>
+      </div>
+      <div class="mem" data-bio="sb" role="button" tabindex="0">
+        <span class="av"><img src="assets/team/sb.jpg" alt="" onerror="this.remove()">SB</span>
+        <div><div class="nm">윤세빈</div><div class="ro">CBO · 브랜드</div></div>
+      </div>
+      <div class="mem" data-bio="js" role="button" tabindex="0">
+        <span class="av"><img src="assets/team/js.jpg" alt="" onerror="this.remove()">JS</span>
+        <div><div class="nm">임준서</div><div class="ro">재무 · 전략</div></div>
+      </div>
+      <div class="mem" data-bio="jb" role="button" tabindex="0">
+        <span class="av"><img src="assets/team/jb.jpg" alt="" onerror="this.remove()">JB</span>
+        <div><div class="nm">손정범</div><div class="ro">Head of Backend & Data</div></div>
+      </div>
+  </div>
+  <div class="bio" id="bio" hidden>
+    <div class="t">
+      <span class="ba" id="bio-av"></span>
+      <div><h5 id="bio-n"></h5><div class="ro" id="bio-r"></div></div>
+      <button class="x" id="bio-x" type="button" aria-label="닫기">×</button>
+    </div>
+    <p id="bio-p"></p>
   </div>
 </section>
 
@@ -1447,6 +1649,56 @@
       }
       chip.addEventListener('click', open);
       chip.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+    });
+  })();
+
+  /* 시장 — 눌러서 펼치기 */
+  (function(){
+    ['b2c','b2b','b2g'].forEach(function(k){
+      var row=document.getElementById('m-'+k), det=document.getElementById('d-'+k);
+      if(!row||!det){ return; }
+      function toggle(){
+        var open=row.getAttribute('aria-expanded')==='true';
+        row.setAttribute('aria-expanded', String(!open));
+        det.style.maxHeight = open ? '0px' : det.scrollHeight+'px';
+      }
+      row.addEventListener('click', toggle);
+      row.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+      window.addEventListener('resize', function(){
+        if(row.getAttribute('aria-expanded')==='true'){ det.style.maxHeight=det.scrollHeight+'px'; }
+      });
+    });
+  })();
+
+  /* 팀 — 눌러서 약력 */
+  var BIOS={
+    sm:{k:'SM', n:'김수민', r:'CEO · 창립자', p:'경제학과 3학년에서 시작했습니다. 이 앱의 첫 번째 사용자가 자신이었고, 지금은 제품이 무엇을 말해야 하는지를 직접 씁니다.'},
+    jm:{k:'JM', n:'최지민', r:'CTO · 기술 총괄', p:'손글씨를 읽고 과정을 진단하는 엔진과 채점 구조를 맡습니다.'},
+    ew:{k:'EW', n:'김은우', r:'해외 총괄', p:'미국 커리큘럼과 해외 진출을 맡습니다. 한국과 미국 수학의 차이를 좁히는 일을 합니다.'},
+    sb:{k:'SB', n:'윤세빈', r:'CBO · 브랜드', p:'브랜드와 사용자 경험을 맡습니다. 학생이 처음 만나는 화면이 그의 자리입니다.'},
+    js:{k:'JS', n:'임준서', r:'재무 · 전략', p:'수익 구조와 원가 모델을 맡습니다. 이 사업이 지속 가능한지를 숫자로 확인합니다.'},
+    jb:{k:'JB', n:'손정범', r:'Head of Backend & Data', p:'서버와 데이터 기반을 맡습니다. 학생의 기록이 안전하게 쌓이는 자리를 만듭니다.'}
+  };
+  (function(){
+    var box=document.getElementById('bio'); if(!box){ return; }
+    function close(){ box.hidden=true; box.removeAttribute('data-open');
+      document.querySelectorAll('.mem.on').forEach(function(m){ m.classList.remove('on'); }); }
+    document.getElementById('bio-x').addEventListener('click', close);
+    document.querySelectorAll('.mem[data-bio]').forEach(function(m){
+      function open(){
+        var k=m.getAttribute('data-bio'), d=BIOS[k]; if(!d){ return; }
+        if(box.getAttribute('data-open')===k){ close(); return; }
+        document.querySelectorAll('.mem.on').forEach(function(o){ o.classList.remove('on'); });
+        m.classList.add('on');
+        var av=document.getElementById('bio-av');
+        av.innerHTML='<img src="assets/team/'+k+'.jpg" alt="" onerror="this.remove()">'+d.k;
+        document.getElementById('bio-n').textContent=d.n;
+        document.getElementById('bio-r').textContent=d.r;
+        document.getElementById('bio-p').textContent=d.p;
+        box.hidden=false; box.setAttribute('data-open',k);
+      }
+      m.addEventListener('click', open);
+      m.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
     });
   })();
 
