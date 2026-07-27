@@ -406,7 +406,9 @@
   /* ── 신앙 / 일반 ── */
   [data-mode="plain"] .only-faith{display:none !important;}
   [data-mode="faith"] .only-plain{display:none !important;}
-  .seg{display:flex; align-items:center; background:rgba(30,24,17,.05); border-radius:999px; padding:3px; margin-left:2px;}
+  .modebar{display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:22px 0 4px;}
+  .modebar .ml{font-size:13.5px; color:var(--muted);}
+  .seg{display:flex; align-items:center; background:rgba(30,24,17,.05); border-radius:999px; padding:3px;}
   .seg button{font-family:inherit; font-size:12px; font-weight:700; cursor:pointer; border:0; background:none;
     color:var(--muted); padding:6px 12px; border-radius:999px; transition:.3s var(--e); white-space:nowrap;}
   .seg button.on{background:var(--wine); color:#FFF6F3;}
@@ -590,10 +592,6 @@
 <div class="nav" id="nav">
   <div class="pill">
     <span class="bm">Provee<i>.</i></span>
-    <div class="seg" role="group" aria-label="읽기 버전">
-      <button type="button" data-mode-btn="plain" class="on">일반</button>
-      <button type="button" data-mode-btn="faith">신앙</button>
-    </div>
     <button class="burger" id="burger" aria-label="목차 열기" aria-expanded="false"><span></span><span></span></button>
   </div>
   <button class="rail" id="rail" aria-label="목차 열기">
@@ -617,7 +615,7 @@
         <div class="wm">Provee<i>.</i></div>
         <div class="tl">Prove your thinking</div>
       </div>
-      <h1 class="up in">당신의 자녀들이<br>빼앗긴 것을, <em>돌려드립니다.</em></h1>
+      <h1 class="up in">당신과 당신의 자녀들이<br>빼앗긴 것을, <em>돌려드립니다.</em></h1>
       <p class="hi up in">안녕하세요. 저희는 대한민국의 학생들과 여러분들의 자녀들이 <b>빼앗긴 것들을 돌려드릴</b> AI 수학 과외 플랫폼 Provee입니다.</p>
       <div class="acts up in">
         <button class="btn w">먼저 만나보기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button>
@@ -1068,6 +1066,14 @@
     </div>
     <div class="sbody" id="sbody">
       <div class="sinner">
+        <!-- ◆◆◆ 읽기 방식 — 이 이야기에만 적용됩니다 ◆◆◆ -->
+        <div class="modebar">
+          <span class="ml">이 이야기를 어떤 언어로 읽으시겠습니까?</span>
+          <div class="seg" role="group" aria-label="읽기 방식">
+            <button type="button" data-mode-btn="plain" class="on">담백하게</button>
+            <button type="button" data-mode-btn="faith">신앙의 언어로</button>
+          </div>
+        </div>
         <div class="chap">
           <div class="side">하나 · 시작</div>
           <div>
@@ -1195,7 +1201,6 @@
 <footer id="s-end">
   <div class="wrap">
     <p class="big">빼앗긴 시간과 불편과 기쁨을, <em>한 사람씩 돌려드리겠습니다.</em></p>
-    <p class="only-faith" style="margin-top:24px; font-family:var(--kr); font-style:italic; font-size:clamp(16px,2.2vw,20px); color:#E8A9A2; max-width:34ch; line-height:1.7;">"내 은혜가 네게 족하다. 내 능력이 약한 데서 온전하여진다."</p>
     <div class="acts">
       <button class="btn g">먼저 만나보기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button>
     </div>
@@ -1313,8 +1318,11 @@
       b.classList.toggle('on', b.getAttribute('data-mode-btn')===root.getAttribute('data-mode'));
     });
     if(save){ try{ localStorage.setItem('provee_mode', root.getAttribute('data-mode')); }catch(e){} }
-    if(typeof sbody!=='undefined' && sbtn && sbtn.getAttribute('aria-expanded')==='true'){
-      sbody.style.maxHeight=sbody.scrollHeight+'px';
+    // 신앙/일반에 따라 이야기 길이가 달라지므로 펼쳐진 상태면 높이를 다시 잰다
+    var sb=document.getElementById('sbody'), sbt=document.getElementById('sbtn');
+    if(sb && sbt && sbt.getAttribute('aria-expanded')==='true'){
+      sb.style.maxHeight='none';
+      var px=sb.scrollHeight; sb.style.maxHeight=px+'px';
     }
   }
   try{ var saved=localStorage.getItem('provee_mode'); if(saved){ setMode(saved,false); } }catch(e){}
