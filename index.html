@@ -272,6 +272,19 @@
   .amp div.dim .h{color:var(--muted);}
   .amp p{font-size:14.5px; line-height:1.8; color:var(--ink2);}
 
+  /* ── 정의 · 근거 카드 ── */
+  .defn{margin:46px 0; border-radius:22px; background:var(--card); box-shadow:var(--soft); overflow:hidden;}
+  .defn .dh{display:flex; align-items:center; gap:12px; padding:14px 26px; background:var(--wine); color:#FFF1EE;}
+  .defn .dh b{font-size:10.5px; font-weight:800; letter-spacing:.2em; text-transform:uppercase;}
+  .defn .dh span{margin-left:auto; font-family:var(--en); font-size:12.5px; opacity:.88; white-space:nowrap;}
+  .defn .db{padding:26px 26px 24px;}
+  .defn .term{font-family:var(--kr); font-weight:400; font-size:clamp(21px,3vw,29px); letter-spacing:-.03em; line-height:1.42;}
+  .defn .term em{font-style:normal; color:var(--wine); font-weight:700;}
+  .defn .desc{margin-top:14px; font-size:15.5px; line-height:1.92; color:var(--ink2);}
+  .defn cite{display:block; margin-top:18px; padding-top:14px; border-top:1px solid var(--line2);
+    font-style:normal; font-size:12.5px; color:var(--muted); letter-spacing:.02em;}
+  @media(max-width:600px){ .defn .dh span{display:none;} }
+
   /* ══ 흐르는 띠 ══ */
   .band{padding:66px 0 0; overflow:hidden;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
@@ -495,8 +508,8 @@
   .fgrid{display:grid; gap:20px;}
   @media(min-width:820px){ .fgrid{grid-template-columns:repeat(2,1fr);} }
   .face{border-radius:20px; overflow:hidden; background:var(--card); box-shadow:var(--soft);}
-  .face .fv{position:relative; aspect-ratio:16/10; background:var(--paper2); overflow:hidden;}
-  .face .fv video{width:100%; height:100%; object-fit:cover; object-position:center 34%; display:block;}
+  .face .fv{position:relative; aspect-ratio:1/1; background:var(--paper2); overflow:hidden;}
+  .face .fv video{width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;}
   .face .ft{padding:22px 24px 24px;}
   .face .tag{display:inline-flex; font-size:10px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
     color:var(--wine); background:var(--wine-tint); padding:5px 12px; border-radius:999px;}
@@ -517,6 +530,12 @@
   .fix ol{margin-top:22px; display:grid; gap:16px;}
   @media(min-width:900px){ .fix ol{grid-template-columns:repeat(3,1fr); gap:14px;} }
   .fix li{background:#FFFCFB; border-radius:16px; padding:22px 20px;}
+  .fix li .fslot{margin:-4px -4px 16px; aspect-ratio:4/3; border-radius:12px; display:grid; place-items:center; gap:6px;
+    text-align:center; padding:14px; border:1.5px dashed var(--wine-line);
+    background:repeating-linear-gradient(135deg,#FFF8F7 0 10px,#FBEEEC 10px 20px);}
+  .fix li .fslot svg{width:22px; height:22px; color:var(--wine-line);}
+  .fix li .fslot .t{font-size:12px; font-weight:800; color:var(--wine);}
+  .fix li .fslot .s{font-size:11px; color:var(--muted); line-height:1.5;}
   .fix li .fn{font-family:var(--en); font-size:11px; font-weight:700; letter-spacing:.16em; color:var(--wine);}
   .fix li h5{margin-top:10px; font-size:16px; font-weight:800; line-height:1.4; color:var(--wine-deep);}
   .fix li p{margin-top:9px; font-size:14px; line-height:1.78; color:#5A3A38;}
@@ -689,9 +708,9 @@
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>How we give it back</em></div>
       <ol>
-        <li><div class="fn">01</div><h5>쓰던 노트 그대로</h5><p>다시 찍거나 옮겨 적을 필요 없이, 학생이 그은 획을 그대로 읽습니다. 인식이 안 돼 되돌아가는 시간이 사라집니다.</p></li>
-        <li><div class="fn">02</div><h5>손으로 그린 도형까지</h5><p>그래프와 기하 모델을 이미지가 아니라 풀이의 일부로 읽습니다. 설명을 다시 붙이지 않아도 됩니다.</p></li>
-        <li><div class="fn">03</div><h5>어제를 기억합니다</h5><p>매번 처음부터 소개하지 않아도 됩니다. 지난 풀이와 습관 위에서 오늘을 이어서 시작합니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">01</div><h5>쓰던 노트 그대로</h5><p>다시 찍거나 옮겨 적을 필요 없이, 학생이 그은 획을 그대로 읽습니다. 인식이 안 돼 되돌아가는 시간이 사라집니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">02</div><h5>손으로 그린 도형까지</h5><p>그래프와 기하 모델을 이미지가 아니라 풀이의 일부로 읽습니다. 설명을 다시 붙이지 않아도 됩니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">03</div><h5>어제를 기억합니다</h5><p>매번 처음부터 소개하지 않아도 됩니다. 지난 풀이와 습관 위에서 오늘을 이어서 시작합니다.</p></li>
       </ol>
     </div>
   </div>
@@ -729,9 +748,9 @@
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>Desirable difficulty</em></div>
       <ol>
-        <li><div class="fn">01</div><h5>답을 먼저 주지 않습니다</h5><p>막힌 지점을 찾아 되묻습니다. 정답은 학생이 스스로 도달한 뒤에야 확인합니다.</p></li>
-        <li><div class="fn">02</div><h5>끝까지 쓰게 합니다</h5><p>중간에 포기하려는 순간에는 발판을 놓고, 너무 쉽게 답을 얻으려는 순간에는 다시 질문합니다.</p></li>
-        <li><div class="fn">03</div><h5>설명해야 넘어갑니다</h5><p>자기 언어로 말할 수 있을 때 다음으로 갑니다. 고개만 끄덕인 개념은 넘기지 않습니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">01</div><h5>답을 먼저 주지 않습니다</h5><p>막힌 지점을 찾아 되묻습니다. 정답은 학생이 스스로 도달한 뒤에야 확인합니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">02</div><h5>끝까지 쓰게 합니다</h5><p>중간에 포기하려는 순간에는 발판을 놓고, 너무 쉽게 답을 얻으려는 순간에는 다시 질문합니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">03</div><h5>설명해야 넘어갑니다</h5><p>자기 언어로 말할 수 있을 때 다음으로 갑니다. 고개만 끄덕인 개념은 넘기지 않습니다.</p></li>
       </ol>
     </div>
   </div>
@@ -743,7 +762,18 @@
   <div class="wrap col" style="padding-top:110px;">
     <div style="text-align:center;"><span class="kicker up"><b></b>우리의 선언 · 빼앗긴 불편에 대하여</span></div>
     <p class="lead up">어느 순간부터 우리는 <em>생각하는 수고</em>를 너무 쉽게 AI에 넘기기 시작했습니다.</p>
-    <p class="t up">답을 찾기 위해 오래 고민하는 시간, 틀린 이유를 되짚는 과정, 자신의 언어로 다시 설명해 보는 노력까지도 불필요한 불편으로 여기기 시작했습니다.</p>
+    <p class="t up">오래 고민하는 시간, 틀린 이유를 되짚는 과정, 자기 언어로 설명해 보는 노력. AI는 이 셋을 <b>'불필요한 불편'으로 분류하고 치워버렸습니다.</b> 그런데 학습과학은 정반대를 말합니다.</p>
+
+    <div class="defn up">
+      <div class="dh"><b>정의</b><span>Desirable Difficulty</span></div>
+      <div class="db">
+        <p class="term">바람직한 어려움 — <em>당장은 더디지만, 오래 남는 지식을 만드는 어려움.</em></p>
+        <p class="desc">스스로 기억을 꺼내고, 풀고, 틀리고, 다시 시도하는 과정. 학습 속도를 떨어뜨리는 것처럼 보이지만 실제로는 파지(retention)와 전이(transfer)를 높인다는 것이 반복 확인된 결과입니다.</p>
+        <cite>Robert A. Bjork &amp; Elizabeth L. Bjork · University of California, Los Angeles</cite>
+      </div>
+    </div>
+
+    <p class="big up">어떤 어려움은 제거해야 하지만,<br><em>어떤 어려움은 끝까지 통과해야 합니다.</em></p>
   </div>
 
   <div class="wrap col">
@@ -764,37 +794,30 @@
   </div>
 
   <div class="wrap col">
-    <p class="t up"><b>그러나 배움에는 반드시 거쳐야 하는 어려움이 있습니다.</b></p>
-    <div class="pull up">
-      <p>UCLA의 로버트 비요크와 엘리자베스 비요크는 이를 <em>'바람직한 어려움'</em>이라고 설명합니다.</p>
-      <cite>Robert &amp; Elizabeth Bjork · UCLA · Desirable Difficulties</cite>
+    <div class="defn up">
+      <div class="dh"><b>증언</b><span>2025 · OpenAI</span></div>
+      <div class="db">
+        <p class="term">ChatGPT가 <em>"한 세대 또는 두 세대를 침묵시키고 있다."</em></p>
+        <p class="desc">학생이 자기 글을 직접 쓰지 않으면 자기 목소리를 발견할 기회도 잃는다는 경고였습니다. 글쓰기만의 문제가 아닙니다. 씨름한 뒤에 얻는 성취는, 결과만 빨리 받아서는 대신 얻어지지 않습니다.</p>
+        <cite>데이브 에거스 · 작가 · 샘 올트먼의 초청으로 선 OpenAI 사내 강연에서</cite>
+      </div>
     </div>
-    <p class="t up">당장은 어렵고 더디게 느껴지더라도, 스스로 기억을 꺼내고 문제를 풀고 틀리고 다시 시도하는 과정이 <b>오래 남는 지식과 실제로 사용할 수 있는 능력</b>을 만든다는 것입니다.</p>
-    <p class="big up">배움은 편해지는 것만으로 완성되지 않습니다.<br>어떤 어려움은 제거해야 하지만,<br><em>어떤 어려움은 끝까지 통과해야 합니다.</em></p>
-
-    <div class="pull up">
-      <p>ChatGPT가 <em>"한 세대 또는 두 세대를 침묵시키고 있다."</em></p>
-      <cite>데이브 에거스 · 작가 · 샘 올트먼의 초청으로 선 OpenAI 사내 강연에서</cite>
-    </div>
-    <p class="t up">학생이 자신의 글을 직접 쓰지 않는다면 자신만의 목소리를 발견할 기회도 잃게 된다는 뜻이었습니다. 창작의 고통, 배움의 희열, 씨름한 뒤에 얻는 성취는 <b>결과만 빠르게 받는다고 대신 얻을 수 있는 것이 아닙니다.</b></p>
 
     <div class="amp up">
       <div>
         <div class="h">기초가 탄탄한 사람에게</div>
-        <p>AI는 강력한 확장 도구가 됩니다. 이미 가진 사고력과 지식, 태도를 몇 배로 키웁니다.</p>
+        <p>AI는 강력한 확장 도구가 됩니다. 이미 가진 사고력을 몇 배로 키웁니다.</p>
       </div>
       <div class="dim">
         <div class="h">기반이 약한 사람에게</div>
-        <p>AI가 주는 수많은 답은 능력의 성장이 아니라, <b>능력의 공백을 가리는 장치</b>가 됩니다.</p>
+        <p>수많은 답은 능력의 성장이 아니라, <b>능력의 공백을 가리는 장치</b>가 됩니다.</p>
       </div>
     </div>
 
     <p class="big up">답을 얻는 속도는 빨라졌지만<br>질문을 만드는 능력은 약해지고,<br>결과물은 그럴듯해졌지만<br><em>그 결과를 설명하는 능력은 사라집니다.</em></p>
 
-    <p class="t up">많은 수학학원은 문제를 풀게 한 뒤 답지를 바로 보여주지 않습니다. 해설을 읽으며 고개를 끄덕이는 것과 스스로 답을 만들어 내는 것은 전혀 다른 배움이기 때문입니다. <b>하지만 AI 시대에는 선생님이 답지를 걷어도 답은 사라지지 않습니다.</b></p>
-    <p class="t up">이 과정이 반복될수록 학생은 문제를 해결한 것이 아니라, <b>문제 해결을 외주화</b>하게 됩니다.</p>
-
-    <p class="lead up" style="margin-top:64px;">Provee는 <em>여기서 출발합니다.</em></p>
+    <p class="lead up" style="margin-top:60px;">Provee는 <em>여기서 출발합니다.</em></p>
+    <p class="t up">우리는 AI를 없애려 하지 않습니다. AI가 학생을 대신해 생각하지 않도록, <b>AI의 역할을 다시 설계합니다.</b> 포기하려는 순간에는 발판을 놓고, 너무 쉽게 답을 얻으려는 순간에는 다시 질문합니다.</p>
   </div>
 
   <div class="wrap col">
@@ -815,7 +838,6 @@
   </div>
 
   <div class="wrap col">
-    <p class="t up">우리는 AI를 없애려 하지 않습니다. AI가 학생을 대신해 생각하지 않도록, <b>AI의 역할을 다시 설계합니다.</b> 학생이 포기하려는 순간에는 발판을 놓고, 너무 쉽게 답을 얻으려는 순간에는 다시 질문하며, 스스로 고기를 잡을 수 있을 때까지 곁에 머뭅니다.</p>
     <p class="big up">나의 사고를 대신하는 AI가 아니라,<br><em>나를 보완하고 더 나은 내가 되도록 돕는</em><br>AI 과외 선생님.</p>
     <div class="sign up"><span class="wmk">Provee<i>.</i></span></div>
   </div>
@@ -863,9 +885,9 @@
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>The joy of getting there</em></div>
       <ol>
-        <li><div class="fn">01</div><h5>마지막 한 걸음은 학생이</h5><p>대신 밟아주지 않습니다. 풀어낸 사람이 학생이어야 그 순간이 학생의 것이 됩니다.</p></li>
-        <li><div class="fn">02</div><h5>잘 가고 있는지 보여줍니다</h5><p>개념지도로 어디까지 왔고 무엇이 비어 있는지 보여줍니다. 혼자여도 방향을 잃지 않습니다.</p></li>
-        <li><div class="fn">03</div><h5>넘어선 자리를 남깁니다</h5><p>못 풀던 문제를 스스로 풀어낸 순간이 기록으로 쌓입니다. 그게 다음을 버티게 합니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">01</div><h5>마지막 한 걸음은 학생이</h5><p>대신 밟아주지 않습니다. 풀어낸 사람이 학생이어야 그 순간이 학생의 것이 됩니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">02</div><h5>잘 가고 있는지 보여줍니다</h5><p>개념지도로 어디까지 왔고 무엇이 비어 있는지 보여줍니다. 혼자여도 방향을 잃지 않습니다.</p></li>
+        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">03</div><h5>넘어선 자리를 남깁니다</h5><p>못 풀던 문제를 스스로 풀어낸 순간이 기록으로 쌓입니다. 그게 다음을 버티게 합니다.</p></li>
       </ol>
     </div>
   </div>
