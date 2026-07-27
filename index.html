@@ -362,6 +362,43 @@
   .mcol .kv dd{margin:0; color:var(--ink2); line-height:1.7;}
   .mcol .kv dd.fill{color:var(--wine); font-weight:700;}
 
+  /* ── 요금제 ── */
+  .pgroup{margin-top:30px;}
+  .pgroup:first-child{margin-top:6px;}
+  .ph{display:flex; align-items:baseline; gap:14px; margin-bottom:18px;}
+  .ph b{font-size:16px; font-weight:800; letter-spacing:-.02em;}
+  .ph span{font-size:12.5px; color:var(--muted);}
+  .ph i{flex:1; height:1px; background:var(--line);}
+  .plans{display:grid; gap:16px;}
+  @media(min-width:900px){
+    .plans.one{grid-template-columns:minmax(0,420px);}
+    .plans.three{grid-template-columns:repeat(3,1fr);}
+  }
+  .plan{position:relative; display:flex; flex-direction:column; border-radius:22px; background:var(--card);
+    box-shadow:var(--soft); padding:28px 24px 24px; transition:transform .45s var(--e), box-shadow .45s var(--e);}
+  .plan:hover{transform:translateY(-3px); box-shadow:var(--deep);}
+  .plan.hi{box-shadow:inset 0 0 0 1.5px var(--wine), var(--soft);}
+  .plan .bdg{position:absolute; top:-11px; left:22px; font-size:10px; font-weight:800; letter-spacing:.14em;
+    text-transform:uppercase; color:#FFF1EE; background:var(--wine); padding:5px 12px; border-radius:999px;}
+  .plan .pn{font-size:18px; font-weight:800; letter-spacing:-.025em;}
+  .plan .pw{margin-top:7px; font-size:13px; color:var(--muted); line-height:1.6;}
+  .plan .price{margin-top:22px; display:flex; align-items:baseline; gap:7px; flex-wrap:wrap;}
+  .plan .price .cur{font-family:var(--en); font-size:clamp(26px,3.6vw,34px); font-weight:700; letter-spacing:-.02em;
+    color:var(--wine);}
+  .plan .price .blank{display:inline-block; width:clamp(92px,12vw,128px); height:clamp(26px,3.2vw,32px);
+    border-radius:9px; border:1.5px dashed var(--wine-line);
+    background:repeating-linear-gradient(135deg,#FFF8F7 0 9px,#FAEBE9 9px 18px);}
+  .plan .price .per{font-size:13px; color:var(--muted); font-weight:600;}
+  .plan .tbd{margin-top:9px; display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:700;
+    color:var(--wine); background:var(--wine-tint); padding:6px 12px; border-radius:999px;}
+  .plan ul{margin:20px 0 0; display:grid; gap:10px;}
+  .plan li{position:relative; padding-left:23px; font-size:13.5px; line-height:1.68; color:var(--ink2);}
+  .plan li::before{content:""; position:absolute; left:1px; top:6px; width:11px; height:6px;
+    border-left:2px solid var(--wine); border-bottom:2px solid var(--wine); transform:rotate(-45deg);}
+  .plan .go{margin-top:auto; padding-top:24px;}
+  .plan .go .btn{width:100%; justify-content:center; padding-left:20px;}
+  .pnote{margin-top:20px; font-size:12.5px; color:var(--muted); line-height:1.7;}
+
   /* ══ 사업: 세 층위 ══ */
   .layers{margin-top:44px; display:grid; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;}
   .layer{background:var(--card); padding:26px 28px; display:grid; gap:6px 26px; align-items:baseline;}
@@ -1008,29 +1045,73 @@
   </div>
   <div class="mdet" id="d-b2c">
     <div class="mdin">
-      <div class="mcols">
-        <div class="mcol">
-          <span class="who">중 · 고등학생</span>
-          <h5>내신과 수능, 손으로 푸는 시간</h5>
-          <p>학교 진도와 시험 범위에 맞춰 손글씨 풀이를 진단합니다. 도형과 그래프가 많은 단원일수록 차이가 큽니다.</p>
-          <dl>
-            <div class="kv"><dt>결제자</dt><dd>학부모</dd></div>
-            <div class="kv"><dt>사용자</dt><dd>학생</dd></div>
-            <div class="kv"><dt>받는 것</dt><dd>학생은 그 자리에서 되묻는 과외, 학부모는 무엇이 비었는지 적힌 리포트</dd></div>
-            <div class="kv"><dt>가격</dt><dd class="fill">월 구독료 — 확정 후 채웁니다</dd></div>
-          </dl>
+      <!-- ◆◆◆ 요금제 ◆◆◆  가격은 <span class="num">에 숫자만 넣으시면 됩니다. 아직 미확정이라 ― 로 둡니다. ◆◆◆ -->
+
+      <div class="pgroup">
+        <div class="ph"><b>중 · 고등학생</b><span>학교 진도와 시험 범위를 따라가는 정기 구독</span><i></i></div>
+        <div class="plans one">
+          <div class="plan hi">
+            <span class="bdg">정기 구독</span>
+            <div class="pn">월 정기</div>
+            <p class="pw">매일 쓰는 노트를 그대로 올리고, 막힌 자리를 그날 안에 짚습니다.</p>
+            <div class="price"><span class="cur">₩</span><span class="blank"></span><span class="per">/ 월</span></div>
+            <span class="tbd">가격 확정 후 공개</span>
+            <ul>
+              <li>손글씨 풀이 진단 무제한</li>
+              <li>막힌 지점 되묻기 · 설명 유도</li>
+              <li>개념지도와 진도 기록 누적</li>
+              <li>학부모용 리포트 제공</li>
+            </ul>
+            <div class="go"><button class="btn w">시작하기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button></div>
+          </div>
         </div>
-        <div class="mcol">
-          <span class="who">대학생</span>
-          <h5>강의가 끝난 뒤의 시간</h5>
-          <p>선형대수·미적분·수리통계처럼 혼자 복습해야 하는 과목을 맡습니다. 매번 처음부터 설명하지 않아도 됩니다.</p>
-          <dl>
-            <div class="kv"><dt>결제자</dt><dd>본인</dd></div>
-            <div class="kv"><dt>사용자</dt><dd>본인</dd></div>
-            <div class="kv"><dt>받는 것</dt><dd>강의 노트를 이어받아 막힌 지점부터 다시 세우는 대화</dd></div>
-            <div class="kv"><dt>가격</dt><dd class="fill">월 구독료 — 확정 후 채웁니다</dd></div>
-          </dl>
+      </div>
+
+      <div class="pgroup">
+        <div class="ph"><b>대학생</b><span>중간 · 기말 시험기간 전용 패스</span><i></i></div>
+        <div class="plans three">
+          <div class="plan">
+            <div class="pn">24시간 패스</div>
+            <p class="pw">내일이 시험일 때. 하루를 통째로 붙듭니다.</p>
+            <div class="price"><span class="cur">₩</span><span class="blank"></span><span class="per">/ 24시간</span></div>
+            <span class="tbd">가격 확정 후 공개</span>
+            <ul>
+              <li>24시간 동안 무제한 사용</li>
+              <li>강의 노트 이어받아 시작</li>
+              <li>기간이 끝나도 기록은 남습니다</li>
+            </ul>
+            <div class="go"><button class="btn g">담기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button></div>
+          </div>
+
+          <div class="plan">
+            <div class="pn">3일의 전사</div>
+            <p class="pw">주말에 몰아칠 때. 사흘을 통째로 씁니다.</p>
+            <div class="price"><span class="cur">₩</span><span class="blank"></span><span class="per">/ 3일</span></div>
+            <span class="tbd">가격 확정 후 공개</span>
+            <ul>
+              <li>3일 동안 무제한 사용</li>
+              <li>과목별로 나눠 진도 관리</li>
+              <li>틀린 이유를 되짚는 복습 묶음</li>
+            </ul>
+            <div class="go"><button class="btn g">담기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button></div>
+          </div>
+
+          <div class="plan hi">
+            <span class="bdg">가장 넉넉하게</span>
+            <div class="pn">7일의 전사</div>
+            <p class="pw">시험 기간 전체를 붙듭니다. 첫날부터 마지막 과목까지.</p>
+            <div class="price"><span class="cur">₩</span><span class="blank"></span><span class="per">/ 7일</span></div>
+            <span class="tbd">가격 확정 후 공개</span>
+            <ul>
+              <li>7일 동안 무제한 사용</li>
+              <li>과목별 개념지도와 남은 구멍 정리</li>
+              <li>시험 끝난 뒤 오답 회고 리포트</li>
+              <li>기간이 끝나도 기록은 남습니다</li>
+            </ul>
+            <div class="go"><button class="btn w">담기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button></div>
+          </div>
         </div>
+        <p class="pnote">결제는 본인이 하고, 사용도 본인이 합니다. 학기 정기권처럼 더 긴 상품은 시험기간 데이터를 보고 정합니다.</p>
       </div>
     </div>
   </div>
