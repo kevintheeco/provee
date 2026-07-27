@@ -527,6 +527,26 @@
   /* ── 신앙 / 일반 ── */
   [data-mode="plain"] .only-faith{display:none !important;}
   [data-mode="faith"] .only-plain{display:none !important;}
+  /* 창립자 영상 자리 */
+  .sfilm{margin:24px 0 8px; border-radius:20px; overflow:hidden; background:var(--paper2); box-shadow:var(--soft);}
+  .sfilm .m{aspect-ratio:16/9; display:grid; place-items:center; gap:9px; text-align:center; padding:20px;
+    border:1.5px dashed var(--wine-line); border-radius:20px;
+    background:repeating-linear-gradient(135deg,#FFF8F7 0 12px,#F7E9E7 12px 24px);}
+  .sfilm .m svg{width:30px; height:30px; color:var(--wine-line);}
+  .sfilm .m .t{font-size:14px; font-weight:800; color:var(--wine);}
+  .sfilm .m .s{font-size:12.5px; color:var(--muted); line-height:1.6;}
+  .sfilm video{width:100%; display:block; aspect-ratio:16/9; object-fit:cover;}
+
+  /* 읽지 않아도 읽히게 — 장이 하나씩 올라옴 */
+  .sinner .chap{opacity:0; transform:translateY(28px);
+    transition:opacity .95s var(--e), transform .95s var(--e);}
+  .sinner .chap.seen{opacity:1; transform:none;}
+  .sinner .sclose{opacity:0; transform:translateY(24px); transition:opacity .95s var(--e), transform .95s var(--e);}
+  .sinner .sclose.seen{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    .sinner .chap,.sinner .sclose{opacity:1 !important; transform:none !important;}
+  }
+
   .modebar{display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:22px 0 4px;}
   .modebar .ml{font-size:13.5px; color:var(--muted);}
   .seg{display:flex; align-items:center; background:rgba(30,24,17,.05); border-radius:999px; padding:3px;}
@@ -1348,6 +1368,20 @@
             <button type="button" data-mode-btn="faith">신앙의 언어로</button>
           </div>
         </div>
+
+        <!-- ◆◆◆ 창립자 영상 ◆◆◆
+             영상 파일을 assets/founder.mp4 로 올린 뒤, 아래 <div class="m"> ... </div> 를 통째로 지우고
+             <video src="assets/founder.mp4" poster="assets/founder.jpg" controls playsinline></video>
+             로 바꾸시면 됩니다.
+        ◆◆◆ -->
+        <figure class="sfilm">
+          <div class="m">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg>
+            <span class="t">창립자가 직접 말하는 영상 자리</span>
+            <span class="s">16:9 · 아래 글을 대표가 직접 이야기하는 짧은 영상</span>
+          </div>
+        </figure>
+
         <div class="chap">
           <div class="side">하나 · 시작</div>
           <div>
@@ -1577,6 +1611,7 @@
     railBar.style.width=(max>0 ? Math.min(100, y/max*100) : 0)+'%';
     rail.classList.toggle('on', y>vh*0.55);
     if(toTop){ toTop.classList.toggle('on', y>vh*1.2); }
+    if(window.__storySeen){ window.__storySeen(); }   // 관찰자가 안 돌아도 스크롤로 장을 켠다
 
     var cur=0, mark=y+vh*0.32;
     nodes.forEach(function(n,i){ if(n && n.offsetTop<=mark){ cur=i; } });
@@ -1844,12 +1879,40 @@
     });
   })();
 
+  /* 창립자 이야기 — 장이 하나씩 올라오게 */
+  (function(){
+    var inner=document.querySelector('.sinner'); if(!inner){ return; }
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      inner.querySelectorAll('.chap,.sclose').forEach(function(e){ e.classList.add('seen'); });
+      return;
+    }
+    var alive=false;
+    function revealAll(){ inner.querySelectorAll('.chap,.sclose').forEach(function(e){ e.classList.add('seen'); }); }
+    var io=new IntersectionObserver(function(es){ alive=true; es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target); }
+    }); },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    inner.querySelectorAll('.chap,.sclose').forEach(function(e){ io.observe(e); });
+    // 관찰자가 아예 반응하지 않는 환경이면 글이 통째로 안 보이므로, 2초 뒤 전부 표시
+    setTimeout(function(){ if(!alive){ revealAll(); } }, 2000);
+    // 펼친 순간 화면 안에 이미 들어와 있는 장은 바로 보여준다
+    window.__storySeen=function(){
+      inner.querySelectorAll('.chap:not(.seen),.sclose:not(.seen)').forEach(function(e){
+        var r=e.getBoundingClientRect();
+        // 화면에 들어왔거나, 빠르게 지나쳐 위로 올라간 장도 켠다
+        if(r.top < window.innerHeight*0.92){ e.classList.add('seen'); }
+      });
+    };
+  })();
+
   /* 창립자 이야기 */
   var sbtn=document.getElementById('sbtn'), sbody=document.getElementById('sbody'), sbtnTx=document.getElementById('sbtnTx');
   sbtn.addEventListener('click', function(){
     var open=sbtn.getAttribute('aria-expanded')==='true';
     sbtn.setAttribute('aria-expanded', String(!open));
-    if(!open){ sbody.style.maxHeight=sbody.scrollHeight+'px'; sbtnTx.textContent='이야기 접기'; }
+    if(!open){
+      sbody.style.maxHeight=sbody.scrollHeight+'px'; sbtnTx.textContent='이야기 접기';
+      if(window.__storySeen){ setTimeout(window.__storySeen, 120); }
+    }
     else{ sbody.style.maxHeight='0px'; sbtnTx.textContent='이야기 펼쳐 읽기'; }
   });
   window.addEventListener('resize', function(){
