@@ -412,26 +412,6 @@
   .seg button.on{background:var(--wine); color:#FFF6F3;}
   @media(max-width:560px){ .seg button{padding:6px 9px; font-size:11px;} }
 
-  /* ── 페르소나 ── */
-  .who-intro{max-width:34ch;}
-  .who-intro h3{margin-top:20px; font-family:var(--kr); font-weight:400; font-size:clamp(27px,4.2vw,46px);
-    line-height:1.24; letter-spacing:-.04em;}
-  .who-intro p{margin-top:18px; font-size:16.5px; color:var(--ink2); max-width:46ch;}
-  .prs{display:grid; gap:26px; align-items:center; padding:52px 0; border-top:1px solid var(--line);}
-  @media(min-width:900px){ .prs{grid-template-columns:.92fr 1.08fr; gap:56px;} .prs.flip .pv{order:2;} }
-  .pv{margin:0; border-radius:20px; overflow:hidden; background:var(--paper2); box-shadow:var(--deep); position:relative;}
-  .pv video{width:100%; display:block; aspect-ratio:4/3; object-fit:cover; object-position:center 34%;}
-  .pb .tag{display:inline-flex; font-size:10.5px; font-weight:800; letter-spacing:.18em; text-transform:uppercase;
-    color:var(--wine); background:var(--wine-tint); padding:6px 14px; border-radius:999px;}
-  .pb .nm{margin-top:18px; font-size:13.5px; font-weight:700; color:var(--muted); letter-spacing:.04em;}
-  .pb .q{margin-top:12px; font-family:var(--kr); font-weight:400; font-size:clamp(21px,3vw,32px);
-    line-height:1.5; letter-spacing:-.03em;}
-  .pb .q::before{content:"\201C"; color:var(--wine);} .pb .q::after{content:"\201D"; color:var(--wine);}
-  .pb .s{margin-top:16px; font-size:15.5px; line-height:1.9; color:var(--ink2); max-width:44ch;}
-  .prs-out{padding:64px 0 0; text-align:center;}
-  .prs-out p{font-family:var(--kr); font-weight:400; font-size:clamp(24px,4vw,40px); line-height:1.4;
-    letter-spacing:-.035em; max-width:22ch; margin:0 auto;}
-  .prs-out p em{font-style:normal; color:var(--wine); font-weight:700;}
 
   /* ── 무엇을 만드는가 4단계 ── */
   .flow{margin-top:44px; display:grid; gap:0;}
@@ -689,7 +669,7 @@
       <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
       <div class="fgrid">
         <div class="face">
-          <div class="fv"><video src="assets/personas/p1.mp4" poster="assets/personas/p1_poster.jpg" muted loop playsinline preload="metadata" aria-label="지훈 · 대학교 2학년의 이야기"></video></div>
+          <div class="fv"><video src="assets/personas/p1.mp4" poster="assets/personas/p1_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="지훈 · 대학교 2학년의 이야기"></video></div>
           <div class="ft">
             <span class="tag">대학생 · 일방향 강의</span>
             <div class="nm">지훈 · 대학교 2학년</div>
@@ -698,7 +678,7 @@
           </div>
         </div>
         <div class="face">
-          <div class="fv"><video src="assets/personas/p2.mp4" poster="assets/personas/p2_poster.jpg" muted loop playsinline preload="metadata" aria-label="서연 · 고등학교 3학년의 이야기"></video></div>
+          <div class="fv"><video src="assets/personas/p2.mp4" poster="assets/personas/p2_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="서연 · 고등학교 3학년의 이야기"></video></div>
           <div class="ft">
             <span class="tag">고3 이과 · 손풀이</span>
             <div class="nm">서연 · 고등학교 3학년</div>
@@ -738,16 +718,7 @@
       <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
       <div class="fgrid">
         <div class="face">
-          <div class="fv"><video src="assets/personas/p3.mp4" poster="assets/personas/p3_poster.jpg" muted loop playsinline preload="metadata" aria-label="다은 · 고등학교 2학년의 이야기"></video></div>
-          <div class="ft">
-            <span class="tag">예체능 → 수학</span>
-            <div class="nm">다은 · 고등학교 2학년</div>
-            <p class="q">중2 이후 놓았던 수학을, 고2에 다시 펴자니 막막해요.</p>
-            <p class="s">어디서부터 비어 있는지 저도 모르겠어요. 저를 아는 선생님도, 지난 기록도 없으니까요.</p>
-          </div>
-        </div>
-        <div class="face">
-          <div class="fv"><video src="assets/personas/p4.mp4" poster="assets/personas/p4_poster.jpg" muted loop playsinline preload="metadata" aria-label="준 · 국제학교 11학년의 이야기"></video></div>
+          <div class="fv"><video src="assets/personas/p4.mp4" poster="assets/personas/p4_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="준 · 국제학교 11학년의 이야기"></video></div>
           <div class="ft">
             <span class="tag">유학 준비 · SAT/AP</span>
             <div class="nm">준 · 국제학교 11학년</div>
@@ -767,51 +738,12 @@
     </div>
   </div>
 
-  <div class="lot up" id="s-lost3">
-    <div class="no"><b>03 — THE JOY WE LOST</b><span></span></div>
-    <h3>당신이 빼앗긴 <em>기쁨</em>을<br>돌려드립니다.</h3>
-    <div class="lotgrid">
-      <figure class="plate">
-        <div class="m"><img src="assets/scenes/joy-2.jpg" alt="스스로 풀어낸 것을 설명하며 웃는 학생"></div>
-        <figcaption><b>스스로 설명해낸 순간.</b><br>이 표정은 답을 받아 적어서는 나오지 않습니다.</figcaption>
-      </figure>
-      <div class="pair">
-        <div class="card">
-          <span class="lb">빼앗긴 것</span>
-          <p>답을 받아 적는 동안, 스스로 풀어냈을 때의 그 순간은 사라졌습니다. <b>맞았는데도 왜 맞았는지 말할 수 없습니다.</b></p>
-        </div>
-      </div>
-    </div>
-    <div class="faces up">
-      <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
-      <div class="fgrid">
-        <div class="face">
-          <div class="fv"><video src="assets/personas/p5.mp4" poster="assets/personas/p5_poster.jpg" muted loop playsinline preload="metadata" aria-label="민서 · 중학교 3학년 · 지방 소도시의 이야기"></video></div>
-          <div class="ft">
-            <span class="tag">교육 격차 · 우리의 비전</span>
-            <div class="nm">민서 · 중학교 3학년 · 지방 소도시</div>
-            <p class="q">나를 아는 선생님이 없으면, 잘 가고 있는지조차 알 수 없어요.</p>
-            <p class="s">고액 과외는 멀고, AI마저 매달 큰 비용을 요구해요. 우리가 가장 먼저 닿고 싶은 자리입니다.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="fix up">
-      <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>The joy of getting there</em></div>
-      <ol>
-        <li><div class="fn">01</div><h5>마지막 한 걸음은 학생이</h5><p>대신 밟아주지 않습니다. 풀어낸 사람이 학생이어야 그 순간이 학생의 것이 됩니다.</p></li>
-        <li><div class="fn">02</div><h5>잘 가고 있는지 보여줍니다</h5><p>개념지도로 어디까지 왔고 무엇이 비어 있는지 보여줍니다. 혼자여도 방향을 잃지 않습니다.</p></li>
-        <li><div class="fn">03</div><h5>넘어선 자리를 남깁니다</h5><p>못 풀던 문제를 스스로 풀어낸 순간이 기록으로 쌓입니다. 그게 다음을 버티게 합니다.</p></li>
-      </ol>
-    </div>
-  </div>
 </section>
-
 
 <!-- ══════ 선언 ══════ -->
 <section class="creed" id="s-creed">
   <div class="wrap col" style="padding-top:110px;">
-    <div style="text-align:center;"><span class="kicker up"><b></b>우리의 선언</span></div>
+    <div style="text-align:center;"><span class="kicker up"><b></b>우리의 선언 · 빼앗긴 불편에 대하여</span></div>
     <p class="lead up">어느 순간부터 우리는 <em>생각하는 수고</em>를 너무 쉽게 AI에 넘기기 시작했습니다.</p>
     <p class="t up">답을 찾기 위해 오래 고민하는 시간, 틀린 이유를 되짚는 과정, 자신의 언어로 다시 설명해 보는 노력까지도 불필요한 불편으로 여기기 시작했습니다.</p>
   </div>
@@ -890,6 +822,58 @@
     <div class="sign up"><span class="wmk">Provee<i>.</i></span></div>
   </div>
 </section>
+
+<section class="wrap">
+  <div class="lot up" id="s-lost3">
+    <div class="no"><b>03 — THE JOY WE LOST</b><span></span></div>
+    <h3>당신이 빼앗긴 <em>기쁨</em>을<br>돌려드립니다.</h3>
+    <div class="lotgrid">
+      <figure class="plate">
+        <div class="m"><img src="assets/scenes/joy-2.jpg" alt="스스로 풀어낸 것을 설명하며 웃는 학생"></div>
+        <figcaption><b>스스로 설명해낸 순간.</b><br>이 표정은 답을 받아 적어서는 나오지 않습니다.</figcaption>
+      </figure>
+      <div class="pair">
+        <div class="card">
+          <span class="lb">빼앗긴 것</span>
+          <p>답을 받아 적는 동안, 스스로 풀어냈을 때의 그 순간은 사라졌습니다. <b>맞았는데도 왜 맞았는지 말할 수 없습니다.</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="faces up">
+      <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
+      <div class="fgrid">
+        <div class="face">
+          <div class="fv"><video src="assets/personas/p3.mp4" poster="assets/personas/p3_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="다은 · 고등학교 2학년의 이야기"></video></div>
+          <div class="ft">
+            <span class="tag">예체능 → 수학</span>
+            <div class="nm">다은 · 고등학교 2학년</div>
+            <p class="q">중2 이후 놓았던 수학을, 고2에 다시 펴자니 막막해요.</p>
+            <p class="s">어디서부터 비어 있는지 저도 모르겠어요. 저를 아는 선생님도, 지난 기록도 없으니까요.</p>
+          </div>
+        </div>
+        <div class="face">
+          <div class="fv"><video src="assets/personas/p5.mp4" poster="assets/personas/p5_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="민서 · 중학교 3학년 · 지방 소도시의 이야기"></video></div>
+          <div class="ft">
+            <span class="tag">교육 격차 · 우리의 비전</span>
+            <div class="nm">민서 · 중학교 3학년 · 지방 소도시</div>
+            <p class="q">나를 아는 선생님이 없으면, 잘 가고 있는지조차 알 수 없어요.</p>
+            <p class="s">고액 과외는 멀고, AI마저 매달 큰 비용을 요구해요. 우리가 가장 먼저 닿고 싶은 자리입니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fix up">
+      <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>The joy of getting there</em></div>
+      <ol>
+        <li><div class="fn">01</div><h5>마지막 한 걸음은 학생이</h5><p>대신 밟아주지 않습니다. 풀어낸 사람이 학생이어야 그 순간이 학생의 것이 됩니다.</p></li>
+        <li><div class="fn">02</div><h5>잘 가고 있는지 보여줍니다</h5><p>개념지도로 어디까지 왔고 무엇이 비어 있는지 보여줍니다. 혼자여도 방향을 잃지 않습니다.</p></li>
+        <li><div class="fn">03</div><h5>넘어선 자리를 남깁니다</h5><p>못 풀던 문제를 스스로 풀어낸 순간이 기록으로 쌓입니다. 그게 다음을 버티게 합니다.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
 
 
 <div class="band"><div class="track" id="band"></div></div>
@@ -1232,8 +1216,8 @@
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-open',   ko:'여는 말',            en:'Opening'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost1',  ko:'① 빼앗긴 시간',      en:'1. The Time We Lost'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost2',  ko:'② 빼앗긴 불편',      en:'2. The Discomfort We Lost'},
-    {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost3',  ko:'③ 빼앗긴 기쁨',      en:'3. The Joy We Lost'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-creed',  ko:'우리의 선언',        en:'Our Manifesto'},
+    {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost3',  ko:'③ 빼앗긴 기쁨',      en:'3. The Joy We Lost'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-market', ko:'① 시장',       en:'1. Our Market'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-model',  ko:'② 수익 구조',  en:'2. Our Business Model'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-edge',   ko:'③ 우리의 강점',en:'3. Our Edge · Competitive Analysis'},
@@ -1340,13 +1324,18 @@
 
   /* 페르소나 영상 — 화면에 보일 때만 재생 */
   (function(){
-    var vids=document.querySelectorAll('.pv video');
+    var vids=document.querySelectorAll('.face video');
     if(!vids.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches){ return; }
+    // autoplay 로 이미 돌고 있으므로, 한 번이라도 화면에 들었던 영상만 화면 밖에서 멈춘다.
+    // (관찰 시작 직후 들어오는 "안 보임" 콜백에 전부 정지되던 문제 방지)
+    var seen=[];
+    function kick(v){ var pr=v.play(); if(pr&&pr.catch){ pr.catch(function(){}); } }
     var vio=new IntersectionObserver(function(es){ es.forEach(function(e){
-      var v=e.target;
-      if(e.isIntersecting){ var pr=v.play(); if(pr && pr.catch){ pr.catch(function(){}); } } else { v.pause(); }
-    }); },{threshold:.25});
-    vids.forEach(function(v){ vio.observe(v); });
+      var v=e.target, i=seen.indexOf(v);
+      if(e.isIntersecting){ if(i<0){ seen.push(v); } kick(v); }
+      else if(i>=0){ v.pause(); }
+    }); },{threshold:0, rootMargin:'240px 0px'});
+    vids.forEach(function(v){ v.muted=true; v.setAttribute('muted',''); kick(v); vio.observe(v); });
   })();
 
   /* 경쟁사 벤다이어그램 */
