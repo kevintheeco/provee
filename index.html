@@ -200,17 +200,21 @@
   .hero .hi b{color:var(--ink); font-weight:600;}
   .hero .acts{margin-top:36px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;}
 
-  /* 하단 띠 */
-  .hstrip{position:relative; z-index:1; margin-top:54px; display:flex; gap:14px; justify-content:center;
-    padding:0 26px 40px; overflow:hidden;
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
-    mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
-  .hstrip figure{margin:0; width:min(266px,25vw); aspect-ratio:4/3; border-radius:16px; overflow:hidden; flex:0 0 auto;
-    background:var(--paper2); box-shadow:0 16px 32px -22px rgba(30,24,17,.55);
-    transition:transform .6s var(--e);}
-  .hstrip figure:hover{transform:translateY(-4px);}
-  .hstrip img{width:100%; height:100%; object-fit:cover; display:block;}
-  @media(max-width:760px){ .hstrip{gap:10px; padding-bottom:30px;} .hstrip figure{width:44vw;} .hstrip figure:nth-child(n+3){display:none;} }
+  /* 하단 예고 카드 */
+  .teaser{position:relative; z-index:1; margin-top:52px; padding:0 30px 44px;}
+  .teaser .g{max-width:1080px; margin:0 auto; display:grid; gap:14px;}
+  @media(min-width:820px){ .teaser .g{grid-template-columns:repeat(3,1fr);} }
+  .tcard{display:block; text-align:left; background:var(--card); border-radius:20px; padding:24px 24px 22px;
+    box-shadow:var(--soft); transition:transform .45s var(--e), box-shadow .45s var(--e);}
+  .tcard:hover{transform:translateY(-4px); box-shadow:var(--deep);}
+  .tcard .n{font-family:var(--en); font-size:11.5px; font-weight:700; letter-spacing:.18em; color:var(--wine);}
+  .tcard h3{margin:12px 0 0; font-family:var(--kr); font-weight:400; font-size:clamp(21px,2.6vw,25px);
+    letter-spacing:-.03em; line-height:1.35;}
+  .tcard h3 em{font-style:normal; color:var(--wine);}
+  .tcard p{margin-top:10px; font-size:13.5px; line-height:1.72; color:var(--ink2);}
+  .tcard .go{margin-top:16px; display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:800; color:var(--wine);}
+  .tcard .go svg{width:12px; height:12px; transition:transform .45s var(--e);}
+  .tcard:hover .go svg{transform:translateX(3px);}
 
   /* ══ 장 표지 ══ */
   .chapter{padding:130px 0 0;}
@@ -315,6 +319,47 @@
   .defn cite{display:block; margin-top:18px; padding-top:14px; border-top:1px solid var(--line2);
     font-style:normal; font-size:12.5px; color:var(--muted); letter-spacing:.02em;}
   @media(max-width:600px){ .defn .dh span{display:none;} }
+
+  /* ══ 우리의 비전 — 움직이는 스토리보드 ══ */
+  .vsec{background:var(--paper2); padding:120px 0 130px;}
+  .vhead{max-width:668px; margin:0 auto; text-align:center;}
+  .vhead h3{margin-top:22px; font-family:var(--kr); font-weight:400; font-size:clamp(27px,4.2vw,46px);
+    line-height:1.32; letter-spacing:-.04em;}
+  .vhead h3 em{font-style:normal; color:var(--wine);}
+  .vhead .sub{margin-top:18px; font-size:16px; color:var(--ink2); line-height:1.9;}
+  .vbar{margin:34px auto 0; display:flex; justify-content:center;}
+
+  .board{max-width:700px; margin:56px auto 0; position:relative;}
+  .board::before{content:""; position:absolute; left:26px; top:12px; bottom:40px; width:2px; z-index:0;
+    background:repeating-linear-gradient(180deg, var(--wine-line) 0 8px, transparent 8px 16px);}
+  @media(max-width:640px){ .board::before{left:19px;} }
+  .scene{position:relative; z-index:1; display:grid; gap:18px; padding:0 0 34px 74px;
+    opacity:0; transform:translateY(30px); transition:opacity 1s var(--e), transform 1s var(--e);}
+  .scene.seen{opacity:1; transform:none;}
+  @media(max-width:640px){ .scene{padding-left:58px;} }
+  .scene .no{position:absolute; left:0; top:0; width:54px; height:54px; border-radius:50%;
+    display:grid; place-items:center; background:var(--card); box-shadow:inset 0 0 0 1.5px var(--wine-line), var(--soft);
+    font-family:var(--en); font-size:15px; font-weight:700; color:var(--wine);}
+  @media(max-width:640px){ .scene .no{width:40px; height:40px; font-size:13px;} }
+  .scene.last .no{background:var(--wine); color:#FFF1EE; box-shadow:0 12px 24px -14px rgba(94,18,32,.6);}
+  .scene .big3{font-family:var(--kr); font-weight:400; font-size:clamp(20px,2.9vw,29px); line-height:1.5;
+    letter-spacing:-.03em;}
+  .scene .big3 em{font-style:normal; color:var(--wine); font-weight:700;}
+  .scene .sm3{font-size:15.5px; line-height:1.92; color:var(--ink2);}
+  .scene .sm3 b{color:var(--ink); font-weight:700;}
+  .scene .cite3{font-size:12.5px; color:var(--muted); letter-spacing:.02em;}
+  .scene .vslot{aspect-ratio:16/9; border-radius:16px; display:grid; place-items:center; gap:7px; text-align:center;
+    padding:16px; border:1.5px dashed var(--wine-line);
+    background:repeating-linear-gradient(135deg,#FFFCFB 0 11px,#F8EDEB 11px 22px);}
+  .scene .vslot svg{width:24px; height:24px; color:var(--wine-line);}
+  .scene .vslot .t{font-size:12.5px; font-weight:800; color:var(--wine);}
+  .scene .vslot .s{font-size:11.5px; color:var(--muted);}
+  .vclose{max-width:700px; margin:24px auto 0; padding:30px 32px; border-radius:22px; background:var(--wine);
+    color:#FFF1EE; box-shadow:0 18px 36px -22px rgba(94,18,32,.6);}
+  .vclose p{font-family:var(--kr); font-weight:400; font-size:clamp(20px,2.9vw,28px); line-height:1.5; letter-spacing:-.03em;}
+  .vclose p em{font-style:normal; color:#F0BDB6; font-weight:700;}
+  .vclose .k{margin-top:14px; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.8; font-weight:700;}
+  @media(prefers-reduced-motion:reduce){ .scene{opacity:1 !important; transform:none !important;} }
 
   /* ══ 흐르는 띠 ══ */
   .band{padding:56px 0 0; margin:0 calc(50% - 50vw); overflow:hidden;
@@ -789,12 +834,17 @@
     </div>
   </div>
 
-  <div class="hstrip up in">
-    <figure><img src="assets/scenes/lecture-hall.jpg" alt=""></figure>
-    <figure><img src="assets/brand/hero-bg.jpg" alt=""></figure>
-    <figure><img src="assets/scenes/struggle.jpg" alt=""></figure>
-    <figure><img src="assets/scenes/joy-2.jpg" alt=""></figure>
-  </div>
+  <div class="teaser up in"><div class="g">
+    <a class="tcard" href="#s-lost1"><div class="n">01 — TIME</div><h3>빼앗긴 <em>시간</em></h3>
+      <p>문제를 푸는 시간보다 도구를 설득하는 시간이 깁니다.</p>
+      <span class="go">보러 가기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="tcard" href="#s-lost2"><div class="n">02 — DISCOMFORT</div><h3>빼앗긴 <em>불편</em></h3>
+      <p>고민하고 틀리고 다시 쓰는 시간을 AI가 치워버렸습니다.</p>
+      <span class="go">보러 가기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="tcard" href="#s-lost3"><div class="n">03 — JOY</div><h3>빼앗긴 <em>기쁨</em></h3>
+      <p>스스로 풀어냈을 때의 성취와 기쁨이 사라졌습니다.</p>
+      <span class="go">보러 가기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </div></div>
 </section>
 
 <!-- ══════ Chapter 1 ══════ -->
@@ -1001,7 +1051,7 @@
       <div class="pair">
         <div class="card">
           <span class="lb">빼앗긴 것</span>
-          <p>답을 받아 적는 동안, 스스로 풀어냈을 때의 그 순간은 사라졌습니다. <b>맞았는데도 왜 맞았는지 말할 수 없습니다.</b></p>
+          <p>답을 받아 적는 동안, <b>스스로 풀어냈을 때의 성취와 기쁨이 사라졌습니다.</b> 맞았는데도 왜 맞았는지 말할 수 없습니다.</p>
         </div>
       </div>
     </div>
@@ -1042,6 +1092,93 @@
 
 
 
+
+
+<!-- ◆◆◆ 우리의 비전 ◆◆◆
+     일반/신앙 두 버전이 아래 토글로 갈립니다. 장면은 스크롤하면 하나씩 올라옵니다.
+     각 장면의 점선 자리에 그림이나 영상을 넣으면 그대로 카드뉴스처럼 됩니다.
+◆◆◆ -->
+<section class="vsec" id="s-vision">
+  <div class="wrap">
+    <div class="vhead up">
+      <span class="kicker"><b></b>우리의 비전</span>
+      <h3>우리는 <em>낙담한 이들을 일으키는</em> 회사가 되려 합니다.</h3>
+      <p class="sub">같은 이야기를 두 가지 언어로 적었습니다. 편한 쪽으로 읽어 주세요.</p>
+      <div class="vbar">
+        <div class="seg" role="group" aria-label="읽기 방식">
+          <button type="button" data-mode-btn="plain" class="on">담백하게</button>
+          <button type="button" data-mode-btn="faith">신앙의 언어로</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="board only-plain">
+      <div class="scene">
+        <span class="no">01</span>
+        <p class="big3">잘하고 싶은데 마음만큼 되지 않아, <em>낙담해 본 사람</em>이 있습니다.</p>
+        <p class="sm3">집중력도 이해력도 근성도 부족하다고 스스로를 몰아세우던 밤. 창립자가 지나온 자리이고, 우리가 가장 먼저 떠올리는 사람입니다.</p>
+        <div class="vslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">낙담한 밤의 장면</span><span class="s">16:9 · 그림이나 영상</span></div>
+      </div>
+      <div class="scene">
+        <span class="no">02</span>
+        <p class="big3">개인화된 교육은 <em>너무 비쌉니다.</em></p>
+        <p class="sm3">나를 아는 선생님을 붙이는 데는 큰 돈이 듭니다. 그래서 가장 필요한 사람이 가장 먼저 밀려납니다.</p>
+      </div>
+      <div class="scene last">
+        <span class="no">03</span>
+        <p class="big3">우리는 <em>살 수 있는 가격으로</em> 그 자리에 갑니다.</p>
+        <p class="sm3">한 사람씩 일으키는 것. 그것이 이 회사가 존재하는 이유입니다.</p>
+      </div>
+    </div>
+
+    <div class="board only-faith">
+      <div class="scene">
+        <span class="no">01</span>
+        <p class="big3">처음에는 하나님을 위한다고 했지만, 사실은 <em>나의 성공을 위해</em> 기도했습니다.</p>
+        <p class="sm3">하나님을 사업의 성공을 위해 이용했습니다. 그것을 인정하는 데서 다시 시작했습니다.</p>
+      </div>
+      <div class="scene">
+        <span class="no">02</span>
+        <p class="big3">베다니라는 가난한 마을에, 삼남매의 막내 <em>마리아</em>가 살았습니다.</p>
+        <p class="sm3">넉넉하지 않은 형편에도 예수님과 제자들을 대접하는 것을 기뻐한 사람입니다. <b>예수님은 나의 작은 것, 초라한 것을 기뻐하십니다.</b></p>
+        <div class="vslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">베다니의 집 장면</span><span class="s">16:9 · 그림이나 영상</span></div>
+      </div>
+      <div class="scene">
+        <span class="no">03</span>
+        <p class="big3">그 마리아는 향유 옥합을 <em>온전히 깨뜨렸습니다.</em></p>
+        <p class="sm3">팔레스타인에서는 나지 않던 향유였고, 죽은 자를 장사 지낼 때 두세 방울씩 뿌리던 것이었습니다. 그것을 통째로 예수님의 발 앞에 붓고, 자신의 머리카락으로 그 발을 닦았습니다.</p>
+        <div class="vslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">향유 옥합 장면</span><span class="s">16:9 · 그림이나 영상</span></div>
+      </div>
+      <div class="scene">
+        <span class="no">04</span>
+        <p class="big3">액체는 땅에 더 많이 떨어졌습니다. <em>계산으로는 어리석은 일이었습니다.</em></p>
+        <p class="sm3">그러나 마리아에게 중요한 것은 효율이 아니라, 결국 <b>예수님께 닿는 것</b>이었습니다.</p>
+      </div>
+      <div class="scene">
+        <span class="no">05</span>
+        <p class="big3">우리의 시간과 젊음과 돈과 능력도 <em>언젠가 사라집니다.</em></p>
+        <p class="sm3">그래서 저도 그 발에 닿는 인생이 되고 싶었습니다. 회사도 그렇게 되기를 바랐습니다.</p>
+      </div>
+      <div class="scene">
+        <span class="no">06</span>
+        <p class="big3">"무엇을 드릴까요" 물었을 때, 제게 있는 것은 <em>기술뿐</em>이었습니다.</p>
+        <p class="sm3">"이 기술을 어떻게 드릴까요" 다시 물었더니, <b>나의 종들을 섬기라</b>는 마음을 주셨습니다.</p>
+      </div>
+      <div class="scene last">
+        <span class="no">07</span>
+        <p class="big3">그래서 우리는 <em>목회자의 자녀와 선교사의 자녀</em>를 섬깁니다.</p>
+        <p class="sm3">우리나라에 흩어진 목회자의 자녀(PK), 전 세계에 흩어진 선교사의 자녀(MK). 그들의 수학 교육을 전적으로 섬기는 기업이 되겠습니다.</p>
+        <div class="vslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">PK · MK 장면</span><span class="s">16:9 · 그림이나 영상</span></div>
+      </div>
+    </div>
+
+    <div class="vclose up">
+      <p class="only-plain">잘하고 싶은데 마음만큼 되지 않던 사람에게, <em>살 수 있는 가격으로</em> 닿겠습니다.</p>
+      <p class="only-faith">향유가 땅에 쏟아지더라도, <em>닿는 것</em>이 중요했던 그 마음으로.</p>
+      <div class="k">Provee · Our Vision</div>
+    </div>
+  </div>
+</section>
 
 <!-- ══════ Chapter 2 ══════ -->
 <div class="wrap chapter" id="c-biz">
@@ -1588,6 +1725,7 @@
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost2',  ko:'② 빼앗긴 불편',      en:'2. The Discomfort We Lost'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-creed',  ko:'우리의 선언',        en:'Our Manifesto'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost3',  ko:'③ 빼앗긴 기쁨',      en:'3. The Joy We Lost'},
+    {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-vision', ko:'우리의 비전',        en:'Our Vision'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-market', ko:'① 시장',       en:'1. Our Market'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-model',  ko:'② 수익 구조',  en:'2. Our Business Model'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-edge',   ko:'③ 우리의 강점',en:'3. Our Edge · Competitive Analysis'},
@@ -1637,7 +1775,8 @@
     railBar.style.width=(max>0 ? Math.min(100, y/max*100) : 0)+'%';
     rail.classList.toggle('on', y>vh*0.55);
     if(toTop){ toTop.classList.toggle('on', y>vh*1.2); }
-    if(window.__storySeen){ window.__storySeen(); }   // 관찰자가 안 돌아도 스크롤로 장을 켠다
+    if(window.__storySeen){ window.__storySeen(); }
+    if(window.__sceneSeen){ window.__sceneSeen(); }   // 관찰자가 안 돌아도 스크롤로 장을 켠다
 
     var cur=0, mark=y+vh*0.32;
     nodes.forEach(function(n,i){ if(n && n.offsetTop<=mark){ cur=i; } });
@@ -1903,6 +2042,24 @@
       if(e.key==='ArrowRight'){ e.preventDefault(); go(1); }
       else if(e.key==='ArrowLeft'){ e.preventDefault(); go(-1); }
     });
+  })();
+
+  /* 비전 스토리보드 — 장면이 하나씩 올라오게 */
+  (function(){
+    var scenes=document.querySelectorAll('.scene'); if(!scenes.length){ return; }
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      scenes.forEach(function(e){ e.classList.add('seen'); }); return;
+    }
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target); }
+    }); },{threshold:.15, rootMargin:'0px 0px -6% 0px'});
+    scenes.forEach(function(e){ io.observe(e); });
+    window.__sceneSeen=function(){
+      document.querySelectorAll('.scene:not(.seen)').forEach(function(e){
+        var r=e.getBoundingClientRect();
+        if(r.height>0 && r.top < window.innerHeight*0.9){ e.classList.add('seen'); }
+      });
+    };
   })();
 
   /* 창립자 이야기 — 장이 하나씩 올라오게 */
