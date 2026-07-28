@@ -298,6 +298,21 @@
   .creed .sign{margin-top:56px; text-align:center;}
   .creed .sign .wmk{font-family:var(--wm); font-weight:700; font-size:32px; letter-spacing:-.035em;}
   .creed .sign .wmk i{font-style:normal; color:var(--wine);}
+
+  /* ── 더 읽기 (긴 글 접기) ── */
+  .fold{overflow:hidden; max-height:0; opacity:0; transition:max-height .65s var(--e), opacity .4s var(--e);}
+  .fold[data-open="true"]{max-height:4200px; opacity:1;}
+  @media(prefers-reduced-motion:reduce){ .fold{transition:none;} }
+  .foldwrap{display:flex; justify-content:center; margin:30px 0 4px;}
+  .foldbtn{appearance:none; cursor:pointer; font-family:inherit; display:inline-flex; align-items:center; gap:9px;
+    padding:12px 24px; border-radius:999px; border:1.5px solid var(--wine-line); background:var(--card);
+    font-size:14px; font-weight:700; color:var(--wine); box-shadow:var(--soft);
+    transition:transform .2s var(--e), background .2s var(--e);}
+  .foldbtn:hover{background:var(--wine-tint);}
+  .foldbtn:active{transform:scale(.97);}
+  .foldbtn svg{width:15px; height:15px; transition:transform .3s var(--e);}
+  .foldbtn[aria-expanded="true"] svg{transform:rotate(180deg);}
+
   /* 증폭 대비 */
   .amp{margin:48px 0; display:grid; gap:14px;}
   @media(min-width:720px){ .amp{grid-template-columns:1fr 1fr;} }
@@ -348,12 +363,9 @@
   .scene .sm3{font-size:15.5px; line-height:1.92; color:var(--ink2);}
   .scene .sm3 b{color:var(--ink); font-weight:700;}
   .scene .cite3{font-size:12.5px; color:var(--muted); letter-spacing:.02em;}
-  .scene .vslot{aspect-ratio:16/9; border-radius:16px; display:grid; place-items:center; gap:7px; text-align:center;
-    padding:16px; border:1.5px dashed var(--wine-line);
-    background:repeating-linear-gradient(135deg,#FFFCFB 0 11px,#F8EDEB 11px 22px);}
-  .scene .vslot svg{width:24px; height:24px; color:var(--wine-line);}
-  .scene .vslot .t{font-size:12.5px; font-weight:800; color:var(--wine);}
-  .scene .vslot .s{font-size:11.5px; color:var(--muted);}
+  .scene .vshot{margin:0; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:var(--paper);
+    box-shadow:var(--soft);}
+  .scene .vshot img, .scene .vshot video{width:100%; height:100%; object-fit:cover; display:block;}
   .vclose{max-width:700px; margin:24px auto 0; padding:30px 32px; border-radius:22px; background:var(--wine);
     color:#FFF1EE; box-shadow:0 18px 36px -22px rgba(94,18,32,.6);}
   .vclose p{font-family:var(--kr); font-weight:400; font-size:clamp(20px,2.9vw,28px); line-height:1.5; letter-spacing:-.03em;}
@@ -590,12 +602,6 @@
   [data-mode="faith"] .only-plain{display:none !important;}
   /* 창립자 영상 자리 */
   .sfilm{margin:24px 0 8px; border-radius:20px; overflow:hidden; background:var(--paper2); box-shadow:var(--soft);}
-  .sfilm .m{aspect-ratio:16/9; display:grid; place-items:center; gap:9px; text-align:center; padding:20px;
-    border:1.5px dashed var(--wine-line); border-radius:20px;
-    background:repeating-linear-gradient(135deg,#FFF8F7 0 12px,#F7E9E7 12px 24px);}
-  .sfilm .m svg{width:30px; height:30px; color:var(--wine-line);}
-  .sfilm .m .t{font-size:14px; font-weight:800; color:var(--wine);}
-  .sfilm .m .s{font-size:12.5px; color:var(--muted); line-height:1.6;}
   .sfilm video{width:100%; display:block; aspect-ratio:16/9; object-fit:cover;}
 
   /* 읽지 않아도 읽히게 — 장이 하나씩 올라옴 */
@@ -719,12 +725,11 @@
   .fix ol{margin-top:22px; display:grid; gap:16px;}
   @media(min-width:900px){ .fix ol{grid-template-columns:repeat(3,1fr); gap:14px;} }
   .fix li{background:#FFFCFB; border-radius:16px; padding:22px 20px;}
-  .fix li .fslot{margin:-4px -4px 16px; aspect-ratio:4/3; border-radius:12px; display:grid; place-items:center; gap:6px;
-    text-align:center; padding:14px; border:1.5px dashed var(--wine-line);
-    background:repeating-linear-gradient(135deg,#FFF8F7 0 10px,#FBEEEC 10px 20px);}
-  .fix li .fslot svg{width:22px; height:22px; color:var(--wine-line);}
-  .fix li .fslot .t{font-size:12px; font-weight:800; color:var(--wine);}
-  .fix li .fslot .s{font-size:11px; color:var(--muted); line-height:1.5;}
+  .fix li .fmedia{margin:-4px -4px 16px; aspect-ratio:4/3; border-radius:12px; overflow:hidden;
+    background:var(--paper2); box-shadow:inset 0 0 0 1px var(--wine-line);}
+  .fix li .fmedia img, .fix li .fmedia video{width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .7s var(--e);}
+  @media(hover:hover){ .fix li:hover .fmedia img, .fix li:hover .fmedia video{transform:scale(1.035);} }
   .fix li .fn{font-family:var(--en); font-size:11px; font-weight:700; letter-spacing:.16em; color:var(--wine);}
   .fix li h5{margin-top:10px; font-size:16px; font-weight:800; line-height:1.4; color:var(--wine-deep);}
   .fix li p{margin-top:9px; font-size:14px; line-height:1.78; color:#5A3A38;}
@@ -904,9 +909,9 @@
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>How we give it back</em></div>
       <ol>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">01</div><h5>쓰던 노트 그대로</h5><p>다시 찍거나 옮겨 적을 필요 없이, 학생이 그은 획을 그대로 읽습니다. 인식이 안 돼 되돌아가는 시간이 사라집니다.</p></li>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">02</div><h5>손으로 그린 도형까지</h5><p>그래프와 기하 모델을 이미지가 아니라 풀이의 일부로 읽습니다. 설명을 다시 붙이지 않아도 됩니다.</p></li>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">03</div><h5>어제를 기억합니다</h5><p>매번 처음부터 소개하지 않아도 됩니다. 지난 풀이와 습관 위에서 오늘을 이어서 시작합니다.</p></li>
+        <li><figure class="fmedia"><img src="assets/product/ink-write.jpg" alt="학생이 손으로 써 내려간 이차함수 풀이를 Provee가 그대로 읽어들인 화면" loading="lazy" decoding="async"></figure><div class="fn">01</div><h5>쓰던 노트 그대로</h5><p>다시 찍거나 옮겨 적을 필요 없이, 학생이 그은 획을 그대로 읽습니다. 인식이 안 돼 되돌아가는 시간이 사라집니다.</p></li>
+        <li><figure class="fmedia"><img src="assets/product/hand-figure.jpg" alt="손으로 삐뚤게 그린 원을 복소평면 그래프로 읽어낸 화면" loading="lazy" decoding="async"></figure><div class="fn">02</div><h5>손으로 그린 도형까지</h5><p>그래프와 기하 모델을 이미지가 아니라 풀이의 일부로 읽습니다. 설명을 다시 붙이지 않아도 됩니다.</p></li>
+        <li><figure class="fmedia"><img src="assets/product/learn-hand.jpg" alt="학생이 쓰는 z와 2를 구별해 익히는 Provee 맞춤 설정 화면" loading="lazy" decoding="async"></figure><div class="fn">03</div><h5>어제를 기억합니다</h5><p>매번 처음부터 소개하지 않아도 됩니다. 지난 풀이와 습관 위에서 오늘을 이어서 시작합니다.</p></li>
       </ol>
     </div>
   </div>
@@ -944,9 +949,9 @@
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>Desirable difficulty</em></div>
       <ol>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">01</div><h5>답을 먼저 주지 않습니다</h5><p>막힌 지점을 찾아 되묻습니다. 정답은 학생이 스스로 도달한 뒤에야 확인합니다.</p></li>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">02</div><h5>끝까지 쓰게 합니다</h5><p>중간에 포기하려는 순간에는 발판을 놓고, 너무 쉽게 답을 얻으려는 순간에는 다시 질문합니다.</p></li>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">03</div><h5>설명해야 넘어갑니다</h5><p>자기 언어로 말할 수 있을 때 다음으로 갑니다. 고개만 끄덕인 개념은 넘기지 않습니다.</p></li>
+        <li><figure class="fmedia"><video src="assets/product/viz-steps.mp4" poster="assets/product/viz-steps.jpg" autoplay muted loop playsinline preload="metadata" aria-label="삼각형 넓이를 단계별로 하나씩 밟아 가며 그려 보이는 화면"></video></figure><div class="fn">01</div><h5>답을 먼저 주지 않습니다</h5><p>막힌 지점을 찾아 되묻습니다. 정답은 학생이 스스로 도달한 뒤에야 확인합니다.</p></li>
+        <li><figure class="fmedia"><video src="assets/product/past-exam.mp4" poster="assets/product/past-exam.jpg" autoplay muted loop playsinline preload="metadata" aria-label="수능 기출 타원 문제를 끝까지 단계별로 풀어 가는 화면"></video></figure><div class="fn">02</div><h5>끝까지 쓰게 합니다</h5><p>중간에 포기하려는 순간에는 발판을 놓고, 너무 쉽게 답을 얻으려는 순간에는 다시 질문합니다.</p></li>
+        <li><figure class="fmedia"><img src="assets/product/step-check.jpg" alt="풀이 단계마다 근거를 짚고 실수하기 쉬운 지점을 표시한 화면" loading="lazy" decoding="async"></figure><div class="fn">03</div><h5>설명해야 넘어갑니다</h5><p>자기 언어로 말할 수 있을 때 다음으로 갑니다. 고개만 끄덕인 개념은 넘기지 않습니다.</p></li>
       </ol>
     </div>
   </div>
@@ -990,6 +995,7 @@
   </div>
 
   <div class="wrap col">
+    <div class="fold" id="fd-creed">
     <div class="defn up">
       <div class="dh"><b>증언</b><span>2025 · OpenAI</span></div>
       <div class="db">
@@ -1011,6 +1017,8 @@
     </div>
 
     <p class="big up">답을 얻는 속도는 빨라졌지만<br>질문을 만드는 능력은 약해지고,<br>결과물은 그럴듯해졌지만<br><em>그 결과를 설명하는 능력은 사라집니다.</em></p>
+    </div>
+    <div class="foldwrap"><button class="foldbtn" type="button" data-fold="fd-creed" aria-expanded="false" aria-controls="fd-creed"><span>왜 그런지 더 읽기</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
 
     <p class="lead up" style="margin-top:60px;">Provee는 <em>여기서 출발합니다.</em></p>
     <p class="t up">우리는 AI를 없애려 하지 않습니다. AI가 학생을 대신해 생각하지 않도록, <b>AI의 역할을 다시 설계합니다.</b> 포기하려는 순간에는 발판을 놓고, 너무 쉽게 답을 얻으려는 순간에는 다시 질문합니다.</p>
@@ -1081,17 +1089,13 @@
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>The joy of getting there</em></div>
       <ol>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">01</div><h5>마지막 한 걸음은 학생이</h5><p>대신 밟아주지 않습니다. 풀어낸 사람이 학생이어야 그 순간이 학생의 것이 됩니다.</p></li>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">02</div><h5>잘 가고 있는지 보여줍니다</h5><p>개념지도로 어디까지 왔고 무엇이 비어 있는지 보여줍니다. 혼자여도 방향을 잃지 않습니다.</p></li>
-        <li><div class="fslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">영상 · 사진 자리</span><span class="s">4:3</span></div><div class="fn">03</div><h5>넘어선 자리를 남깁니다</h5><p>못 풀던 문제를 스스로 풀어낸 순간이 기록으로 쌓입니다. 그게 다음을 버티게 합니다.</p></li>
+        <li><figure class="fmedia"><img src="assets/product/ink-answer.jpg" alt="학생이 스스로 계산해 마지막 답에 동그라미를 친 손글씨 풀이" loading="lazy" decoding="async"></figure><div class="fn">01</div><h5>마지막 한 걸음은 학생이</h5><p>대신 밟아주지 않습니다. 풀어낸 사람이 학생이어야 그 순간이 학생의 것이 됩니다.</p></li>
+        <li><figure class="fmedia"><img src="assets/product/progress.jpg" alt="개념·복습·심화 진도를 세 줄 막대로 보여주는 화면" loading="lazy" decoding="async"></figure><div class="fn">02</div><h5>잘 가고 있는지 보여줍니다</h5><p>개념지도로 어디까지 왔고 무엇이 비어 있는지 보여줍니다. 혼자여도 방향을 잃지 않습니다.</p></li>
+        <li><figure class="fmedia"><img src="assets/product/memory-cards.jpg" alt="날짜별로 쌓인 학습 기록과 오늘 복습할 개념 수를 보여주는 화면" loading="lazy" decoding="async"></figure><div class="fn">03</div><h5>넘어선 자리를 남깁니다</h5><p>못 풀던 문제를 스스로 풀어낸 순간이 기록으로 쌓입니다. 그게 다음을 버티게 합니다.</p></li>
       </ol>
     </div>
   </div>
 </section>
-
-
-
-
 
 
 <!-- ◆◆◆ 우리의 비전 ◆◆◆
@@ -1117,7 +1121,9 @@
         <span class="no">01</span>
         <p class="big3">잘하고 싶은데 마음만큼 되지 않아, <em>낙담해 본 사람</em>이 있습니다.</p>
         <p class="sm3">집중력도 이해력도 근성도 부족하다고 스스로를 몰아세우던 밤. 창립자가 지나온 자리이고, 우리가 가장 먼저 떠올리는 사람입니다.</p>
-        <div class="vslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">낙담한 밤의 장면</span><span class="s">16:9 · 그림이나 영상</span></div>
+        <!-- ◆◆◆ 그림 자리 · 낙담한 밤의 장면 ◆◆◆  그림이 준비되면 아래 한 줄의 주석을 풀어 파일 이름만 바꿔주세요.
+        <figure class="vshot"><img src="assets/vision/night.jpg" alt="낙담한 밤의 장면" loading="lazy"></figure>
+        ◆◆◆ -->
       </div>
       <div class="scene">
         <span class="no">02</span>
@@ -1141,14 +1147,19 @@
         <span class="no">02</span>
         <p class="big3">베다니라는 가난한 마을에, 삼남매의 막내 <em>마리아</em>가 살았습니다.</p>
         <p class="sm3">넉넉하지 않은 형편에도 예수님과 제자들을 대접하는 것을 기뻐한 사람입니다. <b>예수님은 나의 작은 것, 초라한 것을 기뻐하십니다.</b></p>
-        <div class="vslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">베다니의 집 장면</span><span class="s">16:9 · 그림이나 영상</span></div>
+        <!-- ◆◆◆ 그림 자리 · 베다니의 집 장면 ◆◆◆
+        <figure class="vshot"><img src="assets/vision/bethany.jpg" alt="베다니의 집 장면" loading="lazy"></figure>
+        ◆◆◆ -->
       </div>
       <div class="scene">
         <span class="no">03</span>
         <p class="big3">그 마리아는 향유 옥합을 <em>온전히 깨뜨렸습니다.</em></p>
         <p class="sm3">팔레스타인에서는 나지 않던 향유였고, 죽은 자를 장사 지낼 때 두세 방울씩 뿌리던 것이었습니다. 그것을 통째로 예수님의 발 앞에 붓고, 자신의 머리카락으로 그 발을 닦았습니다.</p>
-        <div class="vslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">향유 옥합 장면</span><span class="s">16:9 · 그림이나 영상</span></div>
+        <!-- ◆◆◆ 그림 자리 · 향유 옥합 장면 ◆◆◆
+        <figure class="vshot"><img src="assets/vision/alabaster.jpg" alt="향유 옥합 장면" loading="lazy"></figure>
+        ◆◆◆ -->
       </div>
+      <div class="fold" id="fd-vision">
       <div class="scene">
         <span class="no">04</span>
         <p class="big3">액체는 땅에 더 많이 떨어졌습니다. <em>계산으로는 어리석은 일이었습니다.</em></p>
@@ -1168,8 +1179,12 @@
         <span class="no">07</span>
         <p class="big3">그래서 우리는 <em>목회자의 자녀와 선교사의 자녀</em>를 섬깁니다.</p>
         <p class="sm3">우리나라에 흩어진 목회자의 자녀(PK), 전 세계에 흩어진 선교사의 자녀(MK). 그들의 수학 교육을 전적으로 섬기는 기업이 되겠습니다.</p>
-        <div class="vslot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg><span class="t">PK · MK 장면</span><span class="s">16:9 · 그림이나 영상</span></div>
+        <!-- ◆◆◆ 그림 자리 · PK · MK 장면 ◆◆◆
+        <figure class="vshot"><img src="assets/vision/pkmk.jpg" alt="목회자·선교사 자녀의 장면" loading="lazy"></figure>
+        ◆◆◆ -->
       </div>
+      </div>
+      <div class="foldwrap"><button class="foldbtn" type="button" data-fold="fd-vision" aria-expanded="false" aria-controls="fd-vision"><span>이어지는 이야기 읽기</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
     </div>
 
     <div class="vclose up">
@@ -1533,17 +1548,11 @@
         </div>
 
         <!-- ◆◆◆ 창립자 영상 ◆◆◆
-             영상 파일을 assets/founder.mp4 로 올린 뒤, 아래 <div class="m"> ... </div> 를 통째로 지우고
-             <video src="assets/founder.mp4" poster="assets/founder.jpg" controls playsinline></video>
-             로 바꾸시면 됩니다.
-        ◆◆◆ -->
+             영상이 준비되면 아래 세 줄의 주석만 풀어주세요. 파일은 assets/founder.mp4 로 올리시면 됩니다.
         <figure class="sfilm">
-          <div class="m">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg>
-            <span class="t">창립자가 직접 말하는 영상 자리</span>
-            <span class="s">16:9 · 아래 글을 대표가 직접 이야기하는 짧은 영상</span>
-          </div>
+          <video src="assets/founder.mp4" poster="assets/founder.jpg" controls playsinline></video>
         </figure>
+        ◆◆◆ -->
 
         <div class="chap">
           <div class="side">하나 · 시작</div>
@@ -1814,6 +1823,24 @@
   setTimeout(function(){ document.querySelectorAll('.up:not(.in)').forEach(function(e){
     var r=e.getBoundingClientRect(); if(r.top<window.innerHeight && r.bottom>0){ e.classList.add('in'); }
   }); }, 2500);
+
+  /* 더 읽기 — 긴 글 접기 */
+  document.querySelectorAll('.foldbtn').forEach(function(btn){
+    var panel=document.getElementById(btn.getAttribute('data-fold'));
+    if(!panel) return;
+    var label=btn.querySelector('span'), shut=label?label.textContent:'';
+    btn.addEventListener('click', function(){
+      var open=panel.getAttribute('data-open')==='true';
+      panel.setAttribute('data-open', open?'false':'true');
+      btn.setAttribute('aria-expanded', open?'false':'true');
+      if(label){ label.textContent = open ? shut : '접기'; }
+      if(!open){
+        /* 접혀 있던 동안 등장 애니메이션이 지나갔을 수 있어 바로 보이게 한다 */
+        panel.querySelectorAll('.up').forEach(function(e){ e.classList.add('in'); });
+        panel.querySelectorAll('.scene').forEach(function(e){ e.classList.add('seen'); });
+      }
+    });
+  });
 
   /* 신앙 / 일반 */
   var root=document.documentElement;
