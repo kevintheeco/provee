@@ -695,6 +695,35 @@
   .why .fl{margin-top:14px; font-weight:700; color:var(--wine); font-size:16px;}
 
 
+  /* ── 두 아들 이야기 ── */
+  .duo{margin-top:52px; padding:40px 34px 34px; border-radius:26px; background:var(--card); box-shadow:var(--soft);}
+  @media(max-width:640px){ .duo{padding:30px 20px 26px; border-radius:22px;} }
+  .duo-h{text-align:center;}
+  .duo-h .k{font-size:12.5px; font-weight:700; letter-spacing:.02em; color:var(--muted);}
+  .duo-h h4{margin-top:12px; font-family:var(--kr); font-weight:400; font-size:clamp(22px,3.4vw,36px);
+    line-height:1.38; letter-spacing:-.035em;}
+  .duo-h h4 em{font-style:normal; color:var(--wine); font-weight:700;}
+  .duo-g{margin-top:34px; display:grid; gap:26px; align-items:start;}
+  @media(min-width:900px){ .duo-g{grid-template-columns:1fr auto 1fr; gap:30px;} }
+  .son{margin:0;}
+  .son .pics{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .son .pics img{width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border-radius:14px;
+    background:#141110; box-shadow:0 14px 30px -22px rgba(30,24,17,.85);
+    transition:transform .7s var(--e);}
+  @media(hover:hover){ .son:hover .pics img{transform:translateY(-4px);} }
+  .son figcaption{margin-top:18px; text-align:center;}
+  .son figcaption b{display:block; font-size:16.5px; font-weight:800; letter-spacing:-.02em;}
+  .son figcaption p{margin-top:9px; font-size:14px; line-height:1.78; color:var(--ink2);}
+  .son figcaption i{font-style:normal; color:var(--wine); font-weight:700;}
+  .duo-vs{display:grid; place-items:center; padding:8px 0;}
+  @media(min-width:900px){ .duo-vs{align-self:center; padding:0;} }
+  .duo-vs span{width:46px; height:46px; border-radius:50%; display:grid; place-items:center;
+    font-family:var(--en); font-size:12.5px; font-weight:700; letter-spacing:.05em; color:var(--muted);
+    background:var(--paper); box-shadow:inset 0 0 0 1.5px var(--line);}
+  .duo-a{margin-top:34px; padding-top:26px; border-top:1px solid var(--line2); text-align:center;
+    font-size:15.5px; line-height:1.92; color:var(--ink2); text-wrap:pretty;}
+  .duo-a b{color:var(--ink); font-weight:700;}
+
   /* ── 구간 안 사람들 ── */
   .faces{margin-top:48px;}
   .faces-h{display:flex; align-items:center; gap:14px; margin-bottom:24px;}
@@ -702,6 +731,7 @@
   .faces-h span{flex:1; height:1px; background:var(--line);}
   .fgrid{display:grid; gap:20px;}
   @media(min-width:820px){ .fgrid{grid-template-columns:repeat(2,1fr);} }
+  @media(min-width:1060px){ #s-faces .fgrid{grid-template-columns:repeat(3,1fr);} }
   .face{border-radius:20px; overflow:hidden; background:var(--card); box-shadow:var(--soft);}
   .face .fv{position:relative; aspect-ratio:1/1; background:var(--paper2); overflow:hidden;}
   .face .fv video{width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;}
@@ -883,29 +913,6 @@
         </div>
       </div>
     </div>
-    <div class="faces up">
-      <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
-      <div class="fgrid">
-        <div class="face">
-          <div class="fv"><video src="assets/personas/p1.mp4" poster="assets/personas/p1_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="지훈 · 대학교 2학년의 이야기"></video></div>
-          <div class="ft">
-            <span class="tag">대학생 · 일방향 강의</span>
-            <div class="nm">지훈 · 대학교 2학년</div>
-            <p class="q">강의는 끝났는데, 집에 오면 처음부터 혼자 다시 시작이에요.</p>
-            <p class="s">대형 강의에서 질문하며 따라가는 사람은 드뭅니다. 매번 AI에게 처음부터 설명해달라 하기도 지칩니다.</p>
-          </div>
-        </div>
-        <div class="face">
-          <div class="fv"><video src="assets/personas/p2.mp4" poster="assets/personas/p2_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="서연 · 고등학교 3학년의 이야기"></video></div>
-          <div class="ft">
-            <span class="tag">고3 이과 · 손풀이</span>
-            <div class="nm">서연 · 고등학교 3학년</div>
-            <p class="q">내가 그린 그래프는, AI도 못 알아봐요.</p>
-            <p class="s">풀 때마다 사진을 찍어 올리는 것도 번거로운데, 손으로 그린 기하와 그래프는 인식조차 되지 않습니다.</p>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>How we give it back</em></div>
       <ol>
@@ -932,19 +939,30 @@
         </div>
       </div>
     </div>
-    <div class="faces up">
-      <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
-      <div class="fgrid">
-        <div class="face">
-          <div class="fv"><video src="assets/personas/p4.mp4" poster="assets/personas/p4_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="준 · 국제학교 11학년의 이야기"></video></div>
-          <div class="ft">
-            <span class="tag">유학 준비 · SAT/AP</span>
-            <div class="nm">준 · 국제학교 11학년</div>
-            <p class="q">시급 8만 원 과외를, 매일 붙일 순 없잖아요.</p>
-            <p class="s">과외와 과외 사이, 혼자 붙들고 씨름하는 시간을 채워줄 것이 필요해요. 그런데 시중엔 마땅한 게 없어요.</p>
-          </div>
-        </div>
+    <!-- ◆◆◆ 두 아들 이야기 ◆◆◆ 그림은 assets/story/ 에 있습니다 ◆◆◆ -->
+    <div class="duo up">
+      <div class="duo-h">
+        <span class="k">한 어머니에게 두 아들이 있습니다</span>
+        <h4>누가 더 <em>수학을 잘하는</em> 학생일까요?</h4>
       </div>
+      <div class="duo-g">
+        <figure class="son">
+          <div class="pics">
+            <img src="assets/story/junseo-boy.jpg" alt="밤늦게 연필을 쥐고 문제를 푸는 첫째 준서" loading="lazy" decoding="async">
+            <img src="assets/story/junseo-book.jpg" alt="연필 풀이로 빼곡하고 빨간 세모가 그어진 준서의 문제집" loading="lazy" decoding="async">
+          </div>
+          <figcaption><b>첫째, 준서</b><p>밤새 연필로 빼곡하게 풉니다.<br>문제집엔 <i>X와 세모</i>가 가득합니다.</p></figcaption>
+        </figure>
+        <div class="duo-vs"><span>VS</span></div>
+        <figure class="son">
+          <div class="pics">
+            <img src="assets/story/soomin-boy.jpg" alt="휴대폰 옆에서 빨간 펜으로 동그라미를 치며 웃는 둘째 수민" loading="lazy" decoding="async">
+            <img src="assets/story/soomin-book.jpg" alt="전부 빨간 동그라미로 채워진 수민의 문제집과 휴대폰" loading="lazy" decoding="async">
+          </div>
+          <figcaption><b>둘째, 수민</b><p>&ldquo;모르는 건 AI한테 물어봐야지.&rdquo;<br>문제집은 전부 <i>동그라미</i>입니다.</p></figcaption>
+        </figure>
+      </div>
+      <p class="duo-a">채점만 보면 답은 분명합니다. 그러나 그 동그라미를 그린 것은 수민이가 아니라 <b>AI였습니다.</b> 준서의 세모 옆에는 지우고 다시 쓴 자국이 남았습니다. <b>끈기는 그 자국 위에 쌓입니다.</b> 그리고 시험장에는, 둘 다 혼자 앉습니다.</p>
     </div>
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>Desirable difficulty</em></div>
@@ -1063,29 +1081,6 @@
         </div>
       </div>
     </div>
-    <div class="faces up">
-      <div class="faces-h"><b>이건, 누군가의 이야기입니다</b><span></span></div>
-      <div class="fgrid">
-        <div class="face">
-          <div class="fv"><video src="assets/personas/p3.mp4" poster="assets/personas/p3_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="다은 · 고등학교 2학년의 이야기"></video></div>
-          <div class="ft">
-            <span class="tag">예체능 → 수학</span>
-            <div class="nm">다은 · 고등학교 2학년</div>
-            <p class="q">중2 이후 놓았던 수학을, 고2에 다시 펴자니 막막해요.</p>
-            <p class="s">어디서부터 비어 있는지 저도 모르겠어요. 저를 아는 선생님도, 지난 기록도 없으니까요.</p>
-          </div>
-        </div>
-        <div class="face">
-          <div class="fv"><video src="assets/personas/p5.mp4" poster="assets/personas/p5_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="민서 · 중학교 3학년 · 지방 소도시의 이야기"></video></div>
-          <div class="ft">
-            <span class="tag">교육 격차 · 우리의 비전</span>
-            <div class="nm">민서 · 중학교 3학년 · 지방 소도시</div>
-            <p class="q">나를 아는 선생님이 없으면, 잘 가고 있는지조차 알 수 없어요.</p>
-            <p class="s">고액 과외는 멀고, AI마저 매달 큰 비용을 요구해요. 우리가 가장 먼저 닿고 싶은 자리입니다.</p>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="fix up">
       <div class="fix-h"><b>그러나 우리는, 이렇게 돌려드립니다</b><em>The joy of getting there</em></div>
       <ol>
@@ -1097,6 +1092,62 @@
   </div>
 </section>
 
+
+<section class="wrap sec up" id="s-faces">
+  <div class="no" style="display:flex; align-items:baseline; gap:16px; margin-bottom:22px;">
+    <b style="font-family:var(--en); font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--wine);">WHOSE STORY IS THIS?</b>
+    <span style="flex:1; height:1px; background:var(--line);"></span>
+  </div>
+  <h3>혹시 이 중에, <em>당신의 얼굴</em>이 있습니까?</h3>
+  <p class="sub">저희가 만나 온 사람들입니다. 한 명쯤은 지금의 당신이거나, 당신의 자녀일지도 모릅니다.</p>
+  <div class="fgrid" style="margin-top:38px;">
+    <div class="face">
+      <div class="fv"><video src="assets/personas/p1.mp4" poster="assets/personas/p1_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="지훈 · 대학교 2학년의 이야기"></video></div>
+      <div class="ft">
+        <span class="tag">대학생 · 일방향 강의</span>
+        <div class="nm">지훈 · 대학교 2학년</div>
+        <p class="q">강의는 끝났는데, 집에 오면 처음부터 혼자 다시 시작이에요.</p>
+        <p class="s">대형 강의에서 질문하며 따라가는 사람은 드뭅니다. 매번 AI에게 처음부터 설명해달라 하기도 지칩니다.</p>
+      </div>
+    </div>
+    <div class="face">
+      <div class="fv"><video src="assets/personas/p2.mp4" poster="assets/personas/p2_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="서연 · 고등학교 3학년의 이야기"></video></div>
+      <div class="ft">
+        <span class="tag">고3 이과 · 손풀이</span>
+        <div class="nm">서연 · 고등학교 3학년</div>
+        <p class="q">내가 그린 그래프는, AI도 못 알아봐요.</p>
+        <p class="s">풀 때마다 사진을 찍어 올리는 것도 번거로운데, 손으로 그린 기하와 그래프는 인식조차 되지 않습니다.</p>
+      </div>
+    </div>
+    <div class="face">
+      <div class="fv"><video src="assets/personas/p4.mp4" poster="assets/personas/p4_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="준 · 국제학교 11학년의 이야기"></video></div>
+      <div class="ft">
+        <span class="tag">유학 준비 · SAT/AP</span>
+        <div class="nm">준 · 국제학교 11학년</div>
+        <p class="q">시급 8만 원 과외를, 매일 붙일 순 없잖아요.</p>
+        <p class="s">과외와 과외 사이, 혼자 붙들고 씨름하는 시간을 채워줄 것이 필요해요. 그런데 시중엔 마땅한 게 없어요.</p>
+      </div>
+    </div>
+    <div class="face">
+      <div class="fv"><video src="assets/personas/p3.mp4" poster="assets/personas/p3_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="다은 · 고등학교 2학년의 이야기"></video></div>
+      <div class="ft">
+        <span class="tag">예체능 → 수학</span>
+        <div class="nm">다은 · 고등학교 2학년</div>
+        <p class="q">중2 이후 놓았던 수학을, 고2에 다시 펴자니 막막해요.</p>
+        <p class="s">어디서부터 비어 있는지 저도 모르겠어요. 저를 아는 선생님도, 지난 기록도 없으니까요.</p>
+      </div>
+    </div>
+    <div class="face">
+      <div class="fv"><video src="assets/personas/p5.mp4" poster="assets/personas/p5_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="민서 · 중학교 3학년 · 지방 소도시의 이야기"></video></div>
+      <div class="ft">
+        <span class="tag">교육 격차 · 우리의 비전</span>
+        <div class="nm">민서 · 중학교 3학년 · 지방 소도시</div>
+        <p class="q">나를 아는 선생님이 없으면, 잘 가고 있는지조차 알 수 없어요.</p>
+        <p class="s">고액 과외는 멀고, AI마저 매달 큰 비용을 요구해요. 우리가 가장 먼저 닿고 싶은 자리입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ◆◆◆ 우리의 비전 ◆◆◆
      일반/신앙 두 버전이 아래 토글로 갈립니다. 장면은 스크롤하면 하나씩 올라옵니다.
@@ -1734,6 +1785,7 @@
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost2',  ko:'② 빼앗긴 끈기',      en:'2. The Grit We Lost'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-creed',  ko:'우리의 선언',        en:'Our Manifesto'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-lost3',  ko:'③ 빼앗긴 기쁨',      en:'3. The Joy We Lost'},
+    {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-faces',  ko:'당신의 얼굴',        en:'Whose Story Is This?'},
     {g:'Who Are We?', gko:'우리는 누구인가', gn:'01', id:'s-vision', ko:'우리의 비전',        en:'Our Vision'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-market', ko:'① 시장',       en:'1. Our Market'},
     {g:'How We Build the Business', gko:'어떻게 사업을 만드는가', gn:'02', id:'s-model',  ko:'② 수익 구조',  en:'2. Our Business Model'},
