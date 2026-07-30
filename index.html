@@ -446,6 +446,7 @@
   @media(min-width:900px){
     .plans.one{grid-template-columns:minmax(0,420px);}
     .plans.three{grid-template-columns:repeat(3,1fr);}
+    .plans.four{grid-template-columns:repeat(4,1fr);}
   }
   .plan{position:relative; display:flex; flex-direction:column; border-radius:22px; background:var(--card);
     box-shadow:var(--soft); padding:28px 24px 24px; transition:transform .45s var(--e), box-shadow .45s var(--e);}
@@ -462,6 +463,10 @@
     border-radius:9px; border:1.5px dashed var(--wine-line);
     background:repeating-linear-gradient(135deg,#FFF8F7 0 9px,#FAEBE9 9px 18px);}
   .plan .price .per{font-size:13px; color:var(--muted); font-weight:600;}
+  .plan .price .n{font-family:var(--en); font-size:clamp(26px,3.6vw,34px); font-weight:700; letter-spacing:-.02em; color:var(--ink);}
+  .plan .pd{margin-top:9px; display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:700;
+    color:var(--muted); background:var(--paper2); padding:6px 12px; border-radius:999px;}
+  .plan.hi .pd{color:var(--wine); background:var(--wine-tint);}
   .plan .tbd{margin-top:9px; display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:700;
     color:var(--wine); background:var(--wine-tint); padding:6px 12px; border-radius:999px;}
   .plan ul{margin:20px 0 0; display:grid; gap:10px;}
@@ -499,9 +504,12 @@
   .rt h4{font-size:17px; font-weight:800; line-height:1.4;}
   .rt p{margin-top:9px; font-size:14px; line-height:1.78; color:var(--ink2); max-width:26ch; margin-inline:auto;}
   .road li.now .rt h4{color:var(--wine-deep);}
+  .road li.done .dot{background:var(--paper2); box-shadow:inset 0 0 0 1.5px var(--line);}
+  .road li.done .dot .mo{color:var(--ink2);}
+  .road li.done .rt h4::after{content:" ✓"; color:var(--wine);}
   @media(min-width:940px){
-    .road{grid-template-columns:repeat(4,1fr); gap:0; padding:56px 0 66px;}
-    .road::before{content:""; position:absolute; left:12.5%; right:12.5%; top:50%; height:2px; z-index:0;
+    .road{grid-template-columns:repeat(5,1fr); gap:0; padding:56px 0 66px;}
+    .road::before{content:""; position:absolute; left:10%; right:10%; top:50%; height:2px; z-index:0;
       background:repeating-linear-gradient(90deg, var(--wine-line) 0 9px, transparent 9px 18px);}
     .road li:nth-child(odd){transform:translateY(-52px);}
     .road li:nth-child(even){transform:translateY(52px); flex-direction:column-reverse;}
@@ -1274,6 +1282,23 @@
   </div>
   <h3>하나의 손글씨 분석 엔진, <em>세 개의 시장.</em></h3>
   <p class="sub">같은 엔진이 개인에게는 과외 선생님이, 학원에는 진단 도구가, 지자체에는 교육 사다리가 됩니다.</p>
+
+  <div class="mstat" style="margin:26px 0 8px; display:grid; gap:14px;">
+    <div style="border-radius:18px; background:var(--card); box-shadow:inset 0 0 0 1px var(--line); padding:20px 22px;">
+      <div style="font-family:var(--en); font-size:26px; font-weight:700; color:var(--wine); letter-spacing:-.02em;">2.5조원</div>
+      <p style="margin-top:6px; font-size:13px; line-height:1.65; color:var(--ink2);">고교 수학 사교육 시장. 고교 사교육 전체 7.8조 중 수학이 가장 큽니다.</p>
+    </div>
+    <div style="border-radius:18px; background:var(--card); box-shadow:inset 0 0 0 1px var(--line); padding:20px 22px;">
+      <div style="font-family:var(--en); font-size:26px; font-weight:700; color:var(--wine); letter-spacing:-.02em;">−6.3만명</div>
+      <p style="margin-top:6px; font-size:13px; line-height:1.65; color:var(--ink2);">2025년 한 해 수학 사교육에서 이탈한 학생. 10년 중 가장 큰 폭입니다.</p>
+    </div>
+    <div style="border-radius:18px; background:var(--card); box-shadow:inset 0 0 0 1px var(--line); padding:20px 22px;">
+      <div style="font-family:var(--en); font-size:26px; font-weight:700; color:var(--wine); letter-spacing:-.02em;">39.1만원</div>
+      <p style="margin-top:6px; font-size:13px; line-height:1.65; color:var(--ink2);">남은 학생의 월평균 사교육비. 시장은 줄어든 게 아니라 둘로 갈라졌습니다.</p>
+    </div>
+  </div>
+  <p class="pnote" style="margin-bottom:26px;">출처: 국가데이터처·교육부 「2025년 초중고사교육비조사」 — 이탈한 수요는 가격으로 다시 부르고, 남은 수요에는 프리미엄 보완재로 들어갑니다.</p>
+  <style>@media(min-width:940px){ .mstat{grid-template-columns:repeat(3,1fr);} }</style>
   <div class="mrow" id="m-b2c" role="button" tabindex="0" aria-expanded="false" aria-controls="d-b2c">
     <div class="tag">B2C</div>
     <div class="d"><b>학생·대학생 대상 월 구독.</b> 스스로 공부하는 개인에게 직접 가닿습니다.
@@ -1293,8 +1318,8 @@
             <span class="bdg">정기 구독</span>
             <div class="pn">월 정기</div>
             <p class="pw">매일 쓰는 노트를 그대로 올리고, 막힌 자리를 그날 안에 짚습니다.</p>
-            <div class="price"><span class="cur">₩</span><span class="blank"></span><span class="per">/ 월</span></div>
-            <span class="tbd">가격 확정 후 공개</span>
+            <div class="price"><span class="cur">₩</span><span class="n">99,000</span><span class="per">/ 월</span></div>
+            <span class="pd">인강 월 14만원 아래 · 1:1 과외의 3분의 1</span>
             <ul>
               <li>손글씨 풀이 진단 무제한</li>
               <li>막힌 지점 되묻기 · 설명 유도</li>
@@ -1308,12 +1333,12 @@
 
       <div class="pgroup">
         <div class="ph"><b>대학생</b><span>중간 · 기말 시험기간 전용 패스</span><i></i></div>
-        <div class="plans three">
+        <div class="plans four">
           <div class="plan">
-            <div class="pn">24시간 패스</div>
+            <div class="pn">24시간의 전사</div>
             <p class="pw">내일이 시험일 때. 하루를 통째로 붙듭니다.</p>
-            <div class="price"><span class="cur">₩</span><span class="blank"></span><span class="per">/ 24시간</span></div>
-            <span class="tbd">가격 확정 후 공개</span>
+            <div class="price"><span class="cur">₩</span><span class="n">9,900</span><span class="per">/ 24시간</span></div>
+            <span class="pd">하루당 9,900원</span>
             <ul>
               <li>24시간 동안 무제한 사용</li>
               <li>강의 노트 이어받아 시작</li>
@@ -1325,8 +1350,8 @@
           <div class="plan">
             <div class="pn">3일의 전사</div>
             <p class="pw">주말에 몰아칠 때. 사흘을 통째로 씁니다.</p>
-            <div class="price"><span class="cur">₩</span><span class="blank"></span><span class="per">/ 3일</span></div>
-            <span class="tbd">가격 확정 후 공개</span>
+            <div class="price"><span class="cur">₩</span><span class="n">19,000</span><span class="per">/ 3일</span></div>
+            <span class="pd">하루당 6,333원</span>
             <ul>
               <li>3일 동안 무제한 사용</li>
               <li>과목별로 나눠 진도 관리</li>
@@ -1335,22 +1360,35 @@
             <div class="go"><button class="btn g">담기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button></div>
           </div>
 
-          <div class="plan hi">
-            <span class="bdg">가장 넉넉하게</span>
-            <div class="pn">7일의 전사</div>
+          <div class="plan">
+            <div class="pn">일주일의 전사</div>
             <p class="pw">시험 기간 전체를 붙듭니다. 첫날부터 마지막 과목까지.</p>
-            <div class="price"><span class="cur">₩</span><span class="blank"></span><span class="per">/ 7일</span></div>
-            <span class="tbd">가격 확정 후 공개</span>
+            <div class="price"><span class="cur">₩</span><span class="n">29,000</span><span class="per">/ 7일</span></div>
+            <span class="pd">하루당 4,143원</span>
             <ul>
               <li>7일 동안 무제한 사용</li>
               <li>과목별 개념지도와 남은 구멍 정리</li>
+              <li>시험 끝난 뒤 오답 회고 리포트</li>
+            </ul>
+            <div class="go"><button class="btn g">담기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button></div>
+          </div>
+
+          <div class="plan hi">
+            <span class="bdg">가장 넉넉하게</span>
+            <div class="pn">중간고사 패스 · 3주</div>
+            <p class="pw">시험 3주 전부터 시험 끝까지. 준비의 처음과 끝을 함께합니다.</p>
+            <div class="price"><span class="cur">₩</span><span class="n">49,000</span><span class="per">/ 3주</span></div>
+            <span class="pd">하루당 2,333원 — 길게 살수록 이득</span>
+            <ul>
+              <li>3주 동안 무제한 사용</li>
+              <li>시험 범위 전체 개념지도 완성</li>
               <li>시험 끝난 뒤 오답 회고 리포트</li>
               <li>기간이 끝나도 기록은 남습니다</li>
             </ul>
             <div class="go"><button class="btn w">담기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button></div>
           </div>
         </div>
-        <p class="pnote">결제는 본인이 하고, 사용도 본인이 합니다. 학기 정기권처럼 더 긴 상품은 시험기간 데이터를 보고 정합니다.</p>
+        <p class="pnote">결제는 본인이 하고, 사용도 본인이 합니다. 패스는 짧을수록 하루당 단가가 높습니다 — 급할수록 비싸고, 길게 살수록 이득인 구조입니다.</p>
       </div>
     </div>
   </div>
@@ -1427,10 +1465,7 @@
       </div>
     </div>
   </div>
-  <div class="slot flat" style="margin-top:34px;">
-    <span class="t">시장 규모 숫자 자리</span>
-    <span class="s">국내 수학 사교육 시장 · 타깃 학생 수 · 도달 가능 규모(TAM/SAM/SOM) — 대표님 확인 후 채워 넣을 자리입니다</span>
-  </div>
+  <p class="pnote" style="margin-top:34px;">수학 사교육 참여자는 약 54.8만 명으로 추정됩니다(참여자 수·감소분은 고교 학생 수와 수학 참여율을 이용한 자체 추정). 시장 근거 전체는 <a href="appendix.html" style="color:var(--wine); font-weight:700;">자료실</a>에 있습니다.</p>
 </section>
 
 <section class="wrap sec up" id="s-model">
@@ -1439,11 +1474,58 @@
     <span style="flex:1; height:1px; background:var(--line);"></span>
   </div>
   <h3>과외 한 달 값이 아니라, <em>한 달 구독으로.</em></h3>
-  <p class="sub">개인에게는 구독료로, 기관에는 좌석 단위 납품으로. 손글씨를 읽는 엔진 하나를 세 시장에 나눠 태워 원가를 낮춥니다.</p>
-  <div class="slot flat" style="margin-top:34px;">
-    <span class="t">가격·단가 자리</span>
-    <span class="s">B2C 월 구독료 · B2B 좌석 단가 · 예상 원가와 마진 — 재무 시뮬레이터 수치를 옮겨 넣을 자리입니다</span>
+  <p class="sub">쓰는 사람과 내는 사람이 다르면, 파는 방법도 달라야 합니다. 고등학생은 학부모가 결제하니 월 구독으로, 대학생은 본인이 결제하고 시험기간에만 몰리니 기간권으로 팝니다.</p>
+
+  <div style="margin-top:34px; display:grid; gap:16px;" class="bmrow">
+    <div style="border-radius:22px; background:var(--card); box-shadow:inset 0 0 0 1px var(--line), var(--soft); padding:26px 26px 24px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:.12em; color:var(--muted);">사용자 ≠ 결제자</div>
+      <div style="margin-top:8px; font-size:17px; font-weight:800;">고등학생 — 월 구독</div>
+      <div style="margin-top:14px; font-family:var(--en); font-size:30px; font-weight:700; color:var(--wine); letter-spacing:-.02em;">₩99,000<span style="font-size:13px; color:var(--muted); font-family:var(--f); font-weight:600;"> / 월</span></div>
+      <p style="margin-top:10px; font-size:13.5px; line-height:1.7; color:var(--ink2);">인강 월 14만원 아래, 1:1 과외 월 30만원의 3분의 1. 매달 들어오는 기저 매출이 됩니다.</p>
+    </div>
+    <div style="border-radius:22px; background:var(--card); box-shadow:inset 0 0 0 1px var(--line), var(--soft); padding:26px 26px 24px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:.12em; color:var(--muted);">사용자 = 결제자</div>
+      <div style="margin-top:8px; font-size:17px; font-weight:800;">대학생 — 시험기간 패스</div>
+      <div style="margin-top:14px; font-family:var(--en); font-size:30px; font-weight:700; color:var(--wine); letter-spacing:-.02em;">₩9,900–49,000</div>
+      <p style="margin-top:10px; font-size:13.5px; line-height:1.7; color:var(--ink2);">24시간부터 3주까지. 짧을수록 하루당 단가가 높아, 수요는 3주권으로 모입니다. 시험 시즌마다 얹히는 봉우리입니다.</p>
+    </div>
+    <div style="border-radius:22px; background:var(--card); box-shadow:inset 0 0 0 1px var(--line), var(--soft); padding:26px 26px 24px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:.12em; color:var(--muted);">기관 결제</div>
+      <div style="margin-top:8px; font-size:17px; font-weight:800;">학원 — 좌석 라이선스</div>
+      <div style="margin-top:14px; font-family:var(--en); font-size:30px; font-weight:700; color:var(--wine); letter-spacing:-.02em;">Seat</div>
+      <p style="margin-top:10px; font-size:13.5px; line-height:1.7; color:var(--ink2);">학생 단위 라이선스에 학습관리 대시보드를 얹어 납품합니다. 파일럿을 지나 단가를 확정합니다.</p>
+    </div>
   </div>
+  <style>@media(min-width:940px){ .bmrow{grid-template-columns:repeat(3,1fr);} }</style>
+
+  <div style="margin-top:26px; border-radius:22px; background:var(--card); box-shadow:inset 0 0 0 1px var(--line), var(--soft); padding:26px 26px 22px;">
+    <div style="font-size:12px; font-weight:800; letter-spacing:.1em; color:var(--muted); margin-bottom:18px;">월 학습 비용, 나란히 놓으면</div>
+    <div style="display:grid; gap:13px;">
+      <div style="display:grid; grid-template-columns:88px 1fr 74px; align-items:center; gap:14px;">
+        <span style="font-size:13.5px; font-weight:700; color:var(--ink2);">밀당 PT</span>
+        <span style="height:12px; border-radius:999px; background:var(--line); width:100%;"></span>
+        <b style="font-size:13.5px; text-align:right; color:var(--ink2);">38만원</b>
+      </div>
+      <div style="display:grid; grid-template-columns:88px 1fr 74px; align-items:center; gap:14px;">
+        <span style="font-size:13.5px; font-weight:700; color:var(--ink2);">1:1 과외</span>
+        <span style="height:12px; border-radius:999px; background:var(--line); width:79%;"></span>
+        <b style="font-size:13.5px; text-align:right; color:var(--ink2);">30만원</b>
+      </div>
+      <div style="display:grid; grid-template-columns:88px 1fr 74px; align-items:center; gap:14px;">
+        <span style="font-size:13.5px; font-weight:700; color:var(--ink2);">인강</span>
+        <span style="height:12px; border-radius:999px; background:var(--line); width:37%;"></span>
+        <b style="font-size:13.5px; text-align:right; color:var(--ink2);">14만원</b>
+      </div>
+      <div style="display:grid; grid-template-columns:88px 1fr 74px; align-items:center; gap:14px;">
+        <span style="font-size:13.5px; font-weight:800; color:var(--wine);">Provee</span>
+        <span style="height:12px; border-radius:999px; background:var(--wine); width:26%; box-shadow:0 6px 14px -8px rgba(138,28,43,.7);"></span>
+        <b style="font-size:13.5px; text-align:right; color:var(--wine);">9.9만원</b>
+      </div>
+    </div>
+    <p class="pnote" style="margin-top:16px;">밀당PT·인강 가격은 공개 요금 기준. 과외급 개인화를 인강보다 낮은 가격에 — 이 자리가 저희 포지션입니다.</p>
+  </div>
+
+  <p class="pnote" style="margin-top:18px;">사전 수요조사 101명 — 중·고등학생 사용 의향 84%, 필요 기능 1위(66%)는 "손으로 쓴 풀이 과정을 분석해 틀린 단계와 이유를 알려주는 기능". 자세한 근거는 <a href="appendix.html" style="color:var(--wine); font-weight:700;">자료실</a>에 열어 두었습니다.</p>
 </section>
 
 <section class="wrap sec up" id="s-edge">
@@ -1544,23 +1626,27 @@
     <span style="flex:1; height:1px; background:var(--line);"></span>
   </div>
   <h3>지금은 <em>함께 써 볼 사람</em>을 만나는 중입니다.</h3>
-  <p class="sub">네 개의 정거장을 지나 갑니다. 지금 서 있는 자리는 첫 번째입니다.</p>
+  <p class="sub">다섯 개의 정거장을 지나 갑니다. 첫 번째는 이미 지났습니다.</p>
   <ol class="road">
+    <li class="done">
+      <div class="dot"><div><div class="yr">2026</div><b class="mo">7월</b></div></div>
+      <div class="rt"><h4>MVP 테스트</h4><p>학생 18명이 손글씨 풀이를 실제로 올려 채점 전 과정을 검증했습니다.</p></div>
+    </li>
     <li class="now">
       <div class="dot"><div><div class="yr">2026</div><b class="mo">8월</b></div></div>
-      <div class="rt"><h4>베타 동행자 모집</h4><p>손글씨 풀이를 실제로 올려 볼 학생과 학부모를 만납니다.</p></div>
+      <div class="rt"><h4>실리콘밸리 IR · 베타 모집</h4><p>Plug and Play에서 데모를 선보이고, 베타 동행자를 모집합니다.</p></div>
     </li>
     <li>
-      <div class="dot"><div><div class="yr">2026</div><b class="mo">10월</b></div></div>
-      <div class="rt"><h4>학원 파일럿</h4><p>한 반 단위로 진단과 레벨테스트를 시범 도입합니다.</p></div>
+      <div class="dot"><div><div class="yr">2026</div><b class="mo">9월</b></div></div>
+      <div class="rt"><h4>2차 베타 200명</h4><p>중·고등학생과 대학생 200명이 한 달간 실제 시험공부에 씁니다.</p></div>
+    </li>
+    <li>
+      <div class="dot"><div><div class="yr">2026</div><b class="mo">10–11월</b></div></div>
+      <div class="rt"><h4>학원 파일럿 · 문제 소싱</h4><p>두 학원에서 반 단위 파일럿을 돌리고, 대형학원과 문제 소싱을 논의합니다.</p></div>
     </li>
     <li>
       <div class="dot"><div><div class="yr">2027</div><b class="mo">1월</b></div></div>
-      <div class="rt"><h4>정식 출시</h4><p>개인 구독을 열고, 학원 납품을 본격화합니다.</p></div>
-    </li>
-    <li>
-      <div class="dot"><div><div class="yr">2027</div><b class="mo">하반기</b></div></div>
-      <div class="rt"><h4>공교육 · 해외</h4><p>지자체 교육복지 사업과 해외 커리큘럼으로 넓힙니다.</p></div>
+      <div class="rt"><h4>정식 출시</h4><p>개인 구독을 열고, 학원 납품을 본격화합니다. 이후 SAT 등 해외로 넓힙니다.</p></div>
     </li>
   </ol>
 
@@ -1667,7 +1753,7 @@
     <span style="flex:1; height:1px; background:var(--line);"></span>
   </div>
   <h3>깨어진 자리에서 <em>시작한 사람들.</em></h3>
-  <p class="sub">여섯 명이 각자의 자리에서 이 문제를 붙들고 있습니다.</p>
+  <p class="sub">여섯 명이 각자의 자리에서 이 문제를 붙들고, LLM 수학 추론을 연구하는 NeurIPS 2025 공동 제1저자가 기술 자문으로 함께합니다.</p>
   <!-- ◆◆◆ 팀 ◆◆◆
        사진은 assets/team/ 에 sm.jpg · jm.jpg · ew.jpg · sb.jpg · js.jpg · jb.jpg 로 올리면
        자동으로 동그라미에 들어갑니다. 파일이 없으면 이니셜이 그대로 보입니다.
@@ -1698,6 +1784,10 @@
         <span class="av"><img src="assets/team/jb.jpg" alt="" onerror="this.remove()">JB</span>
         <div><div class="nm">손정범</div><div class="ro">Head of Backend & Data</div></div>
       </div>
+      <div class="mem" data-bio="kt" role="button" tabindex="0">
+        <span class="av"><img src="assets/team/kt.jpg" alt="" onerror="this.remove()">KT</span>
+        <div><div class="nm">김근태</div><div class="ro">AI 기술 자문</div></div>
+      </div>
   </div>
   <div class="bio" id="bio" hidden>
     <div class="t">
@@ -1716,6 +1806,7 @@
     <span style="flex:1; height:1px; background:var(--line);"></span>
   </div>
   <h3>쓰는 사람의 말이, <em>우리를 고칩니다.</em></h3>
+  <p class="sub">먼저, 사전 설문에서 학생 101명에게 들은 말입니다(주관식 원문 그대로). 베타를 지나며 이 자리는 실제 사용 후기로 채워집니다.</p>
   <!-- ◆◆◆ 후기 ◆◆◆
        대표님, 후기는 여기에 채우시면 됩니다.
        아래 <div class="vtrack"> 안에 이 한 덩어리를 붙여넣으세요.
@@ -1740,7 +1831,54 @@
   <div class="vwrap">
     <div class="vtrack" id="vtrack" role="region" aria-label="사용자 후기" tabindex="0">
       <!-- ▼ 여기에 후기 카드를 붙여넣으세요 ▼ -->
-
+      <article class="vcard">
+        <p class="vq">스스로 설명할 수 있을 때 까지 일으켜 주는 수학 친구</p>
+        <div class="vfoot">
+          <span class="vav">중</span>
+          <div><span class="vnm">중학교 2학년</span><span class="vro">사전 설문 · Provee 설명에서 끌리는 부분</span></div>
+          <span class="vstar" data-star="0"></span>
+        </div>
+      </article>
+      <article class="vcard">
+        <p class="vq">나의 풀이를 분석해서 어느 부분에서 실수를 하는지나 나의 사고방식등을 분석해주고 도와줬으면 좋겠다.</p>
+        <div class="vfoot">
+          <span class="vav">고</span>
+          <div><span class="vnm">고등학교 2학년</span><span class="vro">사전 설문 · 바라는 선생님</span></div>
+          <span class="vstar" data-star="0"></span>
+        </div>
+      </article>
+      <article class="vcard">
+        <p class="vq">칭찬해주세용</p>
+        <div class="vfoot">
+          <span class="vav">고</span>
+          <div><span class="vnm">고등학교 2학년</span><span class="vro">사전 설문 · 바라는 선생님</span></div>
+          <span class="vstar" data-star="0"></span>
+        </div>
+      </article>
+      <article class="vcard">
+        <p class="vq">AI가 답이 아닌 과정에 집중하여 수학 학습을 도와준다는 점이 다른 AI나 앱과는 차별점이 있는 것 같아 끌린다</p>
+        <div class="vfoot">
+          <span class="vav">고</span>
+          <div><span class="vnm">고등학교 2학년</span><span class="vro">사전 설문 · Provee 설명에서 끌리는 부분</span></div>
+          <span class="vstar" data-star="0"></span>
+        </div>
+      </article>
+      <article class="vcard">
+        <p class="vq">거듭 나를 설명안해도 되는 부분</p>
+        <div class="vfoot">
+          <span class="vav">중</span>
+          <div><span class="vnm">중학교 2학년</span><span class="vro">사전 설문 · Provee 설명에서 끌리는 부분</span></div>
+          <span class="vstar" data-star="0"></span>
+        </div>
+      </article>
+      <article class="vcard">
+        <p class="vq">학원을 다니지 않기 때문에 누군가에게 바로 물어볼 수 있다는 사실이 끌린다</p>
+        <div class="vfoot">
+          <span class="vav">고</span>
+          <div><span class="vnm">고등학교 2학년</span><span class="vro">사전 설문 · Provee 설명에서 끌리는 부분</span></div>
+          <span class="vstar" data-star="0"></span>
+        </div>
+      </article>
       <!-- ▲ 여기까지 ▲ -->
     </div>
     <div class="vnav">
@@ -1768,7 +1906,7 @@
     </div>
     <div class="row">
       <span><b>Provee.</b> · Prove Your Thinking · 2026</span>
-      <span><a href="v1.html" style="color:#E8A9A2;">이전 소개 페이지</a> · provee.kr</span>
+      <span><a href="appendix.html" style="color:#E8A9A2;">자료실 (IR Appendix)</a> · <a href="v1.html" style="color:#E8A9A2;">이전 소개 페이지</a> · provee.kr</span>
     </div>
   </div>
 </footer>
@@ -2037,7 +2175,8 @@
     ew:{k:'EW', n:'김은우', r:'해외 총괄', p:'미국 커리큘럼과 해외 진출을 맡습니다. 한국과 미국 수학의 차이를 좁히는 일을 합니다.'},
     sb:{k:'SB', n:'윤세빈', r:'CBO · 브랜드', p:'브랜드와 사용자 경험을 맡습니다. 학생이 처음 만나는 화면이 그의 자리입니다.'},
     js:{k:'JS', n:'임준서', r:'재무 · 전략', p:'수익 구조와 원가 모델을 맡습니다. 이 사업이 지속 가능한지를 숫자로 확인합니다.'},
-    jb:{k:'JB', n:'손정범', r:'Head of Backend & Data', p:'서버와 데이터 기반을 맡습니다. 학생의 기록이 안전하게 쌓이는 자리를 만듭니다.'}
+    jb:{k:'JB', n:'손정범', r:'Head of Backend & Data', p:'서버와 데이터 기반을 맡습니다. 학생의 기록이 안전하게 쌓이는 자리를 만듭니다.'},
+    kt:{k:'KT', n:'김근태', r:'AI 기술 자문', p:'LLM 수학 추론을 연구합니다. NeurIPS 2025 공동 제1저자로, 손글씨 인식과 AI 채점 엔진의 기술 검증을 함께합니다.'}
   };
   (function(){
     var box=document.getElementById('bio'); if(!box){ return; }
