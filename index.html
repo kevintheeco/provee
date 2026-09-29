@@ -3,54 +3,83 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Provee — 손으로 푸는 과정을 읽고, 답 대신 되물어 스스로 풀게 돕는 수학 학습 앱">
+<meta name="description" content="Provee | 손으로 푸는 과정을 읽고, 답 대신 되물어 스스로 풀게 돕는 수학 AI 튜터">
+<meta property="og:title" content="Provee | 손으로 풀어야 이해되는 과목을 위한 AI 튜터">
+<meta property="og:description" content="쓰는 순간 읽고, 막히면 되묻고, 푼 순서 그대로 다시 봅니다. 2026년 10월 서강대에서 먼저 엽니다.">
+<meta property="og:image" content="https://provee.kr/assets/brand/og-cover-2.jpg">
 <link rel="icon" href="assets/brand/favicon.svg">
-<title>Provee 제품 소개</title>
+<title>Provee | 손으로 푸는 과목을 위한 AI 튜터</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Poppins:wght@600;700&family=Caveat:wght@600;700&display=swap">
 <style>
 :root{
   --ivory:#F7F3EC; --paper:#FFFDF8; --card:#F6EFE4; --ink:#1E1811; --ink2:#5A5046; --ink3:#8A7F73; --line:#E6DCCB; --rule:#EDE5D6;
-  --wine:#8A1C2B; --wine-d:#5E1220; --wine-s:#F3E4E4; --wine-hl:rgba(138,28,43,.22); --pen:#221C39;
+  --wine:#8A1C2B; --wine-d:#5E1220; --wine-s:#F3E4E4; --pen:#221C39; --blue:#2F4C66;
   --font:"Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif; --brand:"Poppins","Noto Sans KR",sans-serif; --hand:"Caveat","Bradley Hand",cursive;
-  --ease:cubic-bezier(.2,0,0,1); --gut:clamp(20px,5vw,64px); --max:1200px;
+  --ease:cubic-bezier(.2,0,0,1); --gut:clamp(20px,5vw,64px); --max:1200px; --hdr:72px;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:136px}
 body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
 :focus-visible{outline:2px solid var(--wine);outline-offset:3px;border-radius:8px}
 .wm{font-family:var(--brand);font-weight:700;letter-spacing:-.05em}
 .wm i{font-style:normal;color:var(--wine)}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
+.sec{padding-block:clamp(88px,10vw,140px)}
+.sec-h{max-width:40em}
+.sec-h h2{margin:0;font-size:clamp(28px,3.4vw,42px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
+.sec-h p{margin:14px 0 0;font-size:17px;line-height:1.7;color:var(--ink2)}
+.sec-h.c{margin-inline:auto;text-align:center}
 
-/* ---------- header ---------- */
+/* ---------- header + mega menu ---------- */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s var(--ease),box-shadow .3s var(--ease)}
-.hdr.solid{background:rgba(247,243,236,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
-.hdr-in{max-width:var(--max);margin:0 auto;padding-inline:var(--gut);height:72px;display:flex;align-items:center;gap:40px}
+.hdr.solid{background:rgba(247,243,236,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.hdr-in{max-width:var(--max);margin:0 auto;padding-inline:var(--gut);height:var(--hdr);display:flex;align-items:center;gap:32px}
 .hdr .wm{font-size:26px;color:var(--ink)}
-.gnb{display:flex;gap:6px;list-style:none;margin:0;padding:0}
-.gnb a{display:flex;align-items:center;height:40px;padding-inline:14px;border-radius:10px;font-size:15px;font-weight:500;color:var(--ink2);transition:background .16s,color .16s}
-.gnb a:hover{background:rgba(30,24,17,.05);color:var(--ink)}
+.gnb{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.gnb>li{position:relative}
+.gnb a,.gnb-b{display:flex;align-items:center;gap:4px;height:40px;padding-inline:13px;border-radius:10px;font-size:15px;font-weight:500;color:var(--ink2);transition:background .16s,color .16s}
+.gnb a:hover,.gnb-b:hover,.gnb-b[aria-expanded="true"]{background:rgba(30,24,17,.05);color:var(--ink)}
 .gnb a[aria-current="true"]{color:var(--ink);font-weight:700}
+.gnb-b svg{transition:transform .2s var(--ease)}
+.gnb-b[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mega{position:absolute;top:calc(100% + 12px);left:-16px;width:600px;background:var(--paper);border-radius:20px;box-shadow:0 30px 70px -24px rgba(60,30,20,.38),inset 0 0 0 1px var(--line);padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:2px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s var(--ease),transform .24s var(--ease),visibility 0s .24s}
+.mega.on{opacity:1;visibility:visible;transform:none;transition:opacity .18s var(--ease),transform .24s var(--ease)}
+.mega a{display:grid;grid-template-columns:30px 1fr;column-gap:10px;row-gap:2px;height:auto;padding:14px;border-radius:14px}
+.mega a:hover{background:var(--card)}
+.mega .n{grid-row:span 2;font:700 13px/1.6 var(--brand);color:var(--wine)}
+.mega b{font-size:15px;color:var(--ink);font-weight:700}
+.mega span{font-size:13px;color:var(--ink3);line-height:1.5}
+.mega a.wide{grid-column:span 2;background:var(--card)}
+.mega a.wide:hover{background:#F0E6D6}
 .hdr-r{margin-left:auto;display:flex;gap:8px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding-inline:22px;border-radius:14px;font-weight:700;font-size:15px;white-space:nowrap;transition:background .16s var(--ease),transform .16s var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding-inline:22px;border-radius:14px;font-weight:700;font-size:15px;white-space:nowrap;transition:background .16s var(--ease),transform .16s var(--ease),box-shadow .16s}
 .btn:active{transform:scale(.98)}
 .btn-w{background:var(--wine);color:#fff}
 .btn-w:hover{background:var(--wine-d)}
 .btn-l{background:rgba(255,253,248,.85);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-l:hover{box-shadow:inset 0 0 0 1px #CFC2AD}
 .hdr .btn{height:42px;padding-inline:18px;font-size:14px}
 .burger{display:none;width:44px;height:44px;border-radius:12px;place-items:center}
-@media (max-width:900px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{display:none}}
-.drawer{position:fixed;inset:0;z-index:60;background:var(--ivory);padding:calc(env(safe-area-inset-top,0px) + 12px) var(--gut) 32px;display:flex;flex-direction:column;gap:8px;transform:translateY(-100%);transition:transform .4s var(--ease)}
-.drawer.on{transform:none}
-.drawer-top{display:flex;justify-content:space-between;align-items:center;height:60px}
-.drawer a.l{font-size:24px;font-weight:700;padding:14px 0;border-bottom:1px solid var(--line)}
-.drawer .btn{margin-top:auto}
+@media (max-width:1020px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{display:none}}
+.drawer{position:fixed;inset:0;z-index:60;background:var(--ivory);padding:calc(env(safe-area-inset-top,0px) + 6px) var(--gut) 28px;display:flex;flex-direction:column;overflow-y:auto;transform:translateY(-100%);transition:transform .4s var(--ease);visibility:hidden}
+.drawer.on{transform:none;visibility:visible}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;min-height:66px}
+.drawer a.l,.drawer summary{display:flex;align-items:center;justify-content:space-between;font-size:22px;font-weight:700;padding:15px 0;border-bottom:1px solid var(--line);cursor:pointer;list-style:none}
+.drawer summary::-webkit-details-marker{display:none}
+.drawer summary svg{transition:transform .2s}
+.drawer details[open] summary svg{transform:rotate(180deg)}
+.drawer .sub{display:grid;padding:6px 0 10px}
+.drawer .sub a{display:flex;gap:12px;padding:11px 0;font-size:17px;font-weight:600;color:var(--ink2)}
+.drawer .sub a small{font:700 13px/1.8 var(--brand);color:var(--wine)}
+.drawer .btn{margin-top:auto;flex:none}
+.drawer .d-cta{display:grid;gap:8px;margin-top:28px}
 
-/* ---------- hero (IR deck slide 1) ---------- */
+/* ---------- hero ---------- */
 .hero{position:relative;min-height:min(100svh,920px);display:flex;align-items:center;overflow:hidden;background:#EDE6DA}
 .hero-bg{position:absolute;inset:0;background:url(img/hero-pen.jpg) 70% 50%/cover no-repeat;transform:scale(1.04);animation:heroIn 2.4s var(--ease) forwards}
 @keyframes heroIn{to{transform:scale(1)}}
@@ -72,55 +101,134 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 /* ---------- features ---------- */
 .feats{position:relative;background:var(--ivory)}
-.feats-head{max-width:var(--max);margin:0 auto;padding:clamp(96px,11vw,150px) var(--gut) 24px;text-align:center}
-.feats-head h2{margin:0;font-size:clamp(28px,3.4vw,42px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
-.feats-head p{margin:14px auto 0;font-size:17px;line-height:1.7;color:var(--ink2);max-width:34em}
-.frows{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
-.frow{min-height:min(100vh,860px);display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(32px,5vw,72px);align-items:center;padding-block:56px}
+.feats-head{padding-top:clamp(96px,11vw,150px);padding-bottom:40px}
+.ftabs{position:sticky;top:var(--hdr);z-index:20;background:rgba(247,243,236,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line),0 -1px 0 var(--line)}
+.ftabs-in{max-width:var(--max);margin:0 auto;padding-inline:var(--gut);display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.ftabs-in::-webkit-scrollbar{display:none}
+.ftabs a{flex:none;display:flex;align-items:center;gap:8px;height:54px;padding-inline:14px;font-size:15px;font-weight:600;color:var(--ink3);box-shadow:inset 0 -2px 0 transparent;transition:color .2s,box-shadow .2s}
+.ftabs a small{font:700 12px var(--brand);color:var(--ink3);transition:color .2s}
+.ftabs a:hover{color:var(--ink2)}
+.ftabs a[aria-current="true"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
+.ftabs a[aria-current="true"] small{color:var(--wine)}
+.frow{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(72px,9vw,120px);border-bottom:1px solid var(--rule)}
+.frow:last-child{border-bottom:0}
+.frow.wide{grid-template-columns:1fr;gap:clamp(28px,4vw,48px)}
+.frow.wide .f-copy{display:grid;grid-template-columns:1fr auto;column-gap:48px;align-items:end}
+.frow.wide .f-copy>*{grid-column:1}
+.frow.wide .f-copy .f-side{grid-column:2;grid-row:1/span 4;align-self:end;display:grid;gap:12px;justify-items:end}
 .f-copy{display:flex;flex-direction:column;gap:16px;opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .9s var(--ease)}
 .f-vis{min-width:0;opacity:0;transform:translateY(40px) scale(.97);transition:opacity .9s var(--ease) .12s,transform 1s var(--ease) .12s}
 .frow.in .f-copy,.frow.in .f-vis{opacity:1;transform:none}
-.tag{align-self:flex-start;height:30px;display:inline-flex;align-items:center;padding-inline:12px;border-radius:999px;font-size:13px;font-weight:700}
-.tag.t1{background:#F3E4E4;color:#8A1C2B}.tag.t2{background:#E6ECF3;color:#2F4C66}.tag.t3{background:#F3ECDC;color:#7A5A1E}
+.fk{display:flex;align-items:baseline;gap:10px;font-size:15px;font-weight:700;color:var(--ink2)}
+.fk b{font:700 15px var(--brand);color:var(--wine)}
 .f-copy h3{margin:0;font-size:clamp(26px,2.8vw,36px);line-height:1.38;font-weight:800;letter-spacing:-.03em}
-.f-copy p{margin:0;font-size:17px;line-height:1.75;color:var(--ink2);max-width:28em}
-.steps{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:4px;counter-reset:st;position:relative}
-.steps li{counter-increment:st;position:relative;display:flex;align-items:center;gap:14px;min-height:44px;padding:8px 12px 8px 8px;border-radius:12px;font-size:16px;line-height:1.45;color:var(--ink3);transition:color .4s var(--ease),background .4s var(--ease)}
-.steps li::before{content:counter(st);flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;background:#fff;color:var(--ink3);box-shadow:inset 0 0 0 1.5px var(--line);transition:all .4s var(--ease)}
-.steps li.done{color:var(--ink2)}
-.steps li.done::before{background:var(--ink);color:#fff;box-shadow:none}
-.steps li.now{color:var(--ink);font-weight:700;background:rgba(255,253,248,.9);box-shadow:0 6px 18px -10px rgba(60,30,20,.3)}
-.steps li.now::before{background:var(--wine);color:#fff;box-shadow:0 0 0 5px rgba(138,28,43,.14)}
-@media (max-width:900px){.frow{grid-template-columns:1fr;min-height:0;padding-block:48px}.f-vis{order:2}}
-/* ---------- scene common (container-query sized, so text never clips) ---------- */
+.f-copy p{margin:0;font-size:17px;line-height:1.75;color:var(--ink2);max-width:30em}
+.fstat{display:flex;align-items:center;gap:14px;margin-top:6px;padding-top:18px;border-top:1px solid var(--line);max-width:30em}
+.fstat>b{flex:none;font:700 32px/1 var(--brand);letter-spacing:-.03em;color:var(--ink)}
+.fstat>span{font-size:14px;line-height:1.55;color:var(--ink2)}
+@media (max-width:900px){.frow,.frow.wide{grid-template-columns:1fr;gap:32px}.frow.wide .f-copy{display:flex;align-items:stretch}.frow.wide .f-copy .f-side{justify-items:start}}
+
+/* tooltip */
+.tip{position:relative;display:inline-grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #B8AD9F;color:var(--ink3);font:700 12px/1 var(--brand);cursor:help;vertical-align:middle}
+.tip::after{content:attr(data-tip);display:none;position:absolute;z-index:30;bottom:calc(100% + 10px);left:-10px;width:max-content;max-width:min(300px,calc(100vw - 64px));background:var(--ink);color:#F7F1E8;font:500 13px/1.6 var(--font);letter-spacing:0;text-align:left;padding:10px 12px;border-radius:10px;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);white-space:normal;animation:tipIn .18s var(--ease)}
+.tip:hover::after,.tip:focus-visible::after,.tip.on::after{display:block}
+@keyframes tipIn{from{opacity:0;transform:translateY(4px)}}
+
+/* segmented control */
+.seg{display:inline-flex;gap:2px;padding:4px;border-radius:13px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.seg button{height:38px;padding-inline:16px;border-radius:10px;font-size:14px;font-weight:600;color:var(--ink2);transition:background .2s,color .2s,box-shadow .2s}
+.seg button[aria-selected="true"]{background:var(--paper);color:var(--ink);box-shadow:0 2px 8px -3px rgba(60,30,20,.25),inset 0 0 0 1px var(--line)}
+.panes{position:relative}
+
+/* ---------- scene common ---------- */
 .dev{container-type:inline-size;position:relative;width:100%;aspect-ratio:4/3;background:#E7E3DC;border-radius:5cqw;padding:2.2cqw;box-shadow:0 60px 100px -50px rgba(60,30,20,.5),inset 0 0 0 1px rgba(0,0,0,.05)}
 .scr{position:relative;height:100%;border-radius:3cqw;overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
 .bar{flex:none;display:flex;align-items:center;gap:1.6cqw;height:6.6cqw;padding-inline:2.4cqw;border-bottom:1px solid var(--rule);font-size:1.9cqw;color:var(--ink3)}
 .bar .wm{font-size:2.5cqw;color:var(--ink)}
 .bar .end{margin-left:auto;border:1px solid var(--line);border-radius:99px;padding:.4cqw 1.6cqw;color:var(--ink2)}
 .dots{display:flex;gap:.9cqw}.dots i{width:1.8cqw;height:1.8cqw;border-radius:50%;display:block}
+.scap{margin:14px 0 0;font-size:13px;line-height:1.6;color:var(--ink3);text-align:center}
+.nb{position:absolute;left:0;right:0;bottom:0;top:6.6cqw;background:#fff}
+.nb.lined{background:#fff repeating-linear-gradient(to bottom,transparent 0 6.4cqw,var(--rule) 6.4cqw calc(6.4cqw + 1px))}
+.nb canvas{position:absolute;inset:0;width:100%;height:100%}
+.pop{position:absolute;right:2.6cqw;bottom:2.6cqw;width:42%;background:var(--card);border-radius:3cqw;box-shadow:0 3cqw 6cqw -2cqw rgba(60,30,20,.4);padding:2.4cqw;display:grid;gap:1.6cqw;opacity:0;transform:translateY(2cqw);transition:opacity .35s var(--ease),transform .45s cubic-bezier(.2,0,0,1.2)}
+.pop.on{opacity:1;transform:none}
+.pop .who{display:flex;align-items:center;gap:1.2cqw;font-size:1.9cqw;font-weight:700;color:var(--wine)}
+.pop .who b{width:3.6cqw;height:3.6cqw;border-radius:50%;background:var(--wine);color:#fff;display:grid;place-items:center;font:700 1.8cqw/1 var(--brand)}
+.pop p{margin:0;font-size:2.3cqw;line-height:1.55;font-weight:600;color:var(--ink)}
+.pop .btns{display:flex;justify-content:flex-end;gap:1cqw;flex-wrap:wrap}
+.pop .btns span{border:.25cqw solid var(--wine);color:var(--wine);background:var(--paper);border-radius:99px;padding:.8cqw 2cqw;font-size:1.9cqw;font-weight:700;transition:all .2s var(--ease);position:relative}
+.pop .btns span.tap{background:var(--wine);color:#fff}
+.tapdot{position:absolute;width:7cqw;height:7cqw;border-radius:50%;background:rgba(30,24,17,.18);transform:scale(.3);opacity:0;pointer-events:none}
+.tapdot.on{animation:tap .6s var(--ease)}
+@keyframes tap{0%{opacity:1;transform:scale(.3)}100%{opacity:0;transform:scale(1.2)}}
 
-/* B: GPT vs Provee */
-.duo{container-type:inline-size;position:relative;width:100%;aspect-ratio:1.3}
-.gpt{position:absolute;left:0;top:10%;width:30%;z-index:2;background:#212121;color:#ECECEC;border-radius:3cqw;padding:2.4cqw;display:flex;flex-direction:column;gap:1.8cqw;box-shadow:0 40px 70px -30px rgba(0,0,0,.6);aspect-ratio:.72}
-.gpt-h{font-size:1.7cqw;font-weight:600}.gpt-h small{color:#9B9B9B;font-weight:500;margin-left:.6cqw}
-.gpt-u{align-self:flex-end;background:#2F2F2F;border-radius:3cqw;padding:1cqw 1.8cqw;font-size:1.8cqw}
-.gpt-s{display:flex;align-items:center;gap:1.2cqw;font-size:2cqw}
-.gpt-s i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:#fff;animation:pulse 1.2s ease-in-out infinite}
+/* 01 input */
+.qcard{position:absolute;left:2.4cqw;top:8.6cqw;max-width:60%;background:var(--card);border-radius:2cqw;padding:1.4cqw 2cqw;font-size:2cqw;line-height:1.5;color:var(--ink2)}
+.qcard b{color:var(--ink);font-weight:700;margin-right:1cqw}
+.rec{position:absolute;left:2.4cqw;bottom:2.6cqw;display:flex;align-items:center;gap:1.6cqw;background:var(--paper);border-radius:2.4cqw;padding:1.4cqw 2.2cqw;box-shadow:0 1.6cqw 4cqw -1.4cqw rgba(60,30,20,.35),inset 0 0 0 1px var(--line);opacity:0;transform:translateY(1.6cqw);transition:opacity .35s var(--ease),transform .45s var(--ease)}
+.rec.on{opacity:1;transform:none}
+.rec small{font-size:1.7cqw;font-weight:700;color:var(--ink3)}
+.rec .m{font-family:"Times New Roman",Georgia,serif;font-style:italic;font-size:3cqw;color:var(--ink);white-space:nowrap}
+.rec .m sup{font-size:.6em}
+.rec .ok{width:3.4cqw;height:3.4cqw;border-radius:50%;background:#1F7A4D;display:grid;place-items:center}
+.rec .ok svg{width:2cqw;height:2cqw}
+
+/* 02 recognition */
+.rg{container-type:inline-size;position:relative;width:100%;display:grid;grid-template-columns:.8fr 1.2fr;gap:2.4cqw;align-items:stretch}
+.rg-card{border-radius:2.6cqw;padding:2.4cqw;display:flex;flex-direction:column;gap:1.8cqw;box-shadow:0 40px 80px -46px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
+.rg-a{background:#EFEAE2}
+.rg-b{background:var(--paper)}
+.rg-h{display:flex;align-items:baseline;gap:1.2cqw;font-size:1.7cqw;font-weight:700;color:var(--ink2)}
+.rg-h .wm{font-size:2cqw;color:var(--ink)}
+.rg-h small{font-weight:500;color:var(--ink3)}
+.ph{position:relative;aspect-ratio:2;border-radius:1.4cqw;background:#F4F1EA repeating-linear-gradient(to bottom,transparent 0 4.2cqw,#E2DCD1 4.2cqw calc(4.2cqw + 1px));transform:rotate(-1.6deg);box-shadow:0 1.4cqw 3cqw -1.2cqw rgba(0,0,0,.35);overflow:hidden}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.35),transparent 40%,rgba(0,0,0,.05))}
+.pb{position:relative;aspect-ratio:2.5;border-radius:1.4cqw;background:#fff;box-shadow:inset 0 0 0 1px var(--rule)}
+.ph canvas,.pb canvas{position:absolute;inset:0;width:100%;height:100%}
+.res{display:flex;align-items:center;justify-content:space-between;gap:1.4cqw;border-radius:1.6cqw;padding:1.3cqw 1.8cqw;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px var(--line)}
+.res small{font-size:1.5cqw;color:var(--ink3);line-height:1.4}
+.res b{font-family:"Times New Roman",Georgia,serif;font-style:italic;font-size:3.2cqw;font-weight:600;color:var(--ink2);white-space:nowrap}
+.rg-b .res{background:var(--paper);opacity:0;transform:translateY(1cqw);transition:opacity .35s var(--ease),transform .45s var(--ease)}
+.rg-b .res.on{opacity:1;transform:none;box-shadow:inset 0 0 0 .25cqw var(--wine)}
+.rg-b .res b{color:var(--wine)}
+.toks{display:flex;gap:1cqw;flex-wrap:wrap;min-height:5.4cqw}
+.toks span{display:inline-flex;align-items:center;gap:.8cqw;height:4.4cqw;padding-inline:1.4cqw;border-radius:1.2cqw;font-size:1.6cqw;color:var(--ink2);background:#fff;box-shadow:inset 0 0 0 .2cqw var(--c);opacity:0;transform:scale(.9);transition:opacity .25s var(--ease),transform .35s cubic-bezier(.2,0,0,1.3)}
+.toks span.on{opacity:1;transform:none}
+.toks span b{font-family:"Times New Roman",Georgia,serif;font-style:italic;font-size:2.6cqw;color:var(--c)}
+@media (max-width:640px){.rg{grid-template-columns:1fr}}
+
+/* 02 graph (GPT vs Provee) */
+.duo{container-type:inline-size;position:relative;width:100%;aspect-ratio:2.3}
+.gpt{position:absolute;left:0;top:8%;width:25%;z-index:2;background:#212121;color:#ECECEC;border-radius:2.4cqw;padding:2cqw;display:flex;flex-direction:column;gap:1.4cqw;box-shadow:0 40px 70px -30px rgba(0,0,0,.6);aspect-ratio:.72}
+.gpt-h{font-size:1.4cqw;font-weight:600}.gpt-h small{color:#9B9B9B;font-weight:500;margin-left:.6cqw}
+.gpt-u{align-self:flex-end;background:#2F2F2F;border-radius:3cqw;padding:.8cqw 1.4cqw;font-size:1.4cqw}
+.gpt-s{display:flex;align-items:center;gap:1cqw;font-size:1.6cqw}
+.gpt-s i{width:1.3cqw;height:1.3cqw;border-radius:50%;background:#fff;animation:pulse 1.2s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.3;transform:scale(.75)}}
 .gpt-s b{font-variant-numeric:tabular-nums}
-.gpt-m{font-size:1.6cqw;color:#9B9B9B;margin-top:-1cqw;padding-left:2.8cqw}
-.gpt-img{flex:1;border-radius:2.4cqw;background:linear-gradient(110deg,#2A2A2A 30%,#363636 50%,#2A2A2A 70%);background-size:200% 100%;animation:shim 1.6s linear infinite}
+.gpt-m{font-size:1.3cqw;color:#9B9B9B;margin-top:-.8cqw;padding-left:2.3cqw}
+.gpt-img{flex:1;border-radius:1.8cqw;background:linear-gradient(110deg,#2A2A2A 30%,#363636 50%,#2A2A2A 70%);background-size:200% 100%;animation:shim 1.6s linear infinite}
 @keyframes shim{to{background-position:-200% 0}}
-.gpt-c{font-size:1.7cqw;font-weight:600;opacity:.85}
-.pv{position:absolute;right:0;top:0;width:82%;height:92%;background:var(--paper);border-radius:3.6cqw;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 50px 90px -40px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
-.pv svg{min-height:0}
-.pv svg{display:block;width:100%;flex:1}
-.pv-f{display:flex;align-items:center;gap:.9cqw;padding:1.6cqw 2cqw;border-top:1px solid var(--rule);flex-wrap:wrap}
-.pv-f span{height:4.2cqw;display:inline-flex;align-items:center;padding-inline:1.5cqw;border-radius:99px;border:1px solid var(--line);font-size:1.8cqw;font-weight:600;color:var(--ink2);transition:all .25s var(--ease)}
+.gpt-c{font-size:1.4cqw;font-weight:600;opacity:.85}
+.pv{position:absolute;right:0;top:0;width:80%;height:100%;background:var(--paper);border-radius:2.8cqw;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 50px 90px -40px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
+.pv .bar{height:5cqw;font-size:1.5cqw}.pv .bar .wm{font-size:2cqw}
+.pv svg{display:block;width:100%;flex:1;min-height:0}
+.pv-f{display:flex;align-items:center;gap:.8cqw;padding:1.2cqw 1.6cqw;border-top:1px solid var(--rule);flex-wrap:wrap}
+.pv-f span{height:3.4cqw;display:inline-flex;align-items:center;padding-inline:1.2cqw;border-radius:99px;border:1px solid var(--line);font-size:1.4cqw;font-weight:600;color:var(--ink2);transition:all .25s var(--ease)}
 .pv-f span.on{background:var(--wine);border-color:var(--wine);color:#fff}
 
-/* C: note list -> replay */
+/* 03 ask */
+.qtab{position:absolute;left:2.4cqw;bottom:2.4cqw;height:5cqw;display:inline-flex;align-items:center;gap:1cqw;padding-inline:1.8cqw;border-radius:99px;background:var(--paper);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.14),inset 0 0 0 1px var(--line);font-size:1.9cqw;font-weight:600;color:var(--ink2);transition:opacity .3s var(--ease)}
+.exam{position:absolute;left:2.4cqw;top:8.6cqw;width:64%;background:#fff;border-radius:2.4cqw;box-shadow:0 3cqw 6cqw -2cqw rgba(30,24,17,.35),inset 0 0 0 1px var(--line);padding:1.6cqw;transform:translateX(-110%);transition:transform .55s var(--ease)}
+.exam.on{transform:none}
+.exam .im{position:relative}
+.exam img{display:block;width:100%;height:auto}
+.exam .hl{position:absolute;left:8.6%;top:.6%;width:25.6%;height:6.6%;border-radius:.8cqw;background:rgba(138,28,43,.24);transform-origin:left center;transform:scaleX(0);transition:transform .75s cubic-bezier(.45,.05,.55,.95);mix-blend-mode:multiply}
+.exam .hl.on{transform:scaleX(1)}
+.exam .lab{display:flex;align-items:center;gap:1cqw;margin-bottom:1cqw;font-size:1.8cqw;font-weight:700;color:var(--wine)}
+
+/* 04 note */
 .notes{container-type:inline-size;position:relative;width:100%;aspect-ratio:1.28}
 .list{position:absolute;left:0;top:2%;width:54%;background:var(--paper);border-radius:3.4cqw;box-shadow:0 40px 70px -40px rgba(60,30,20,.4),inset 0 0 0 1px var(--line);padding:2.6cqw;display:grid;gap:1.3cqw;transition:transform .6s var(--ease),opacity .6s var(--ease)}
 .list h4{margin:0;display:flex;justify-content:space-between;align-items:baseline;font-family:var(--brand);font-size:2.6cqw;color:var(--wine);letter-spacing:-.02em}
@@ -150,55 +258,124 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .track i::after{content:"";position:absolute;right:-1cqw;top:-.8cqw;width:2.2cqw;height:2.2cqw;border-radius:50%;background:var(--wine)}
 .prog small{font-size:1.8cqw;color:var(--ink3);min-width:13cqw;text-align:right;font-variant-numeric:tabular-nums}
 .notes.zoom .list{transform:translateX(-3%) scale(.96);opacity:.5}
-.tapdot{position:absolute;width:7cqw;height:7cqw;border-radius:50%;background:rgba(30,24,17,.18);transform:scale(.3);opacity:0;pointer-events:none}
-.tapdot.on{animation:tap .6s var(--ease)}
-@keyframes tap{0%{opacity:1;transform:scale(.3)}100%{opacity:0;transform:scale(1.2)}}
-
-/* handwriting reveal (smooth wipe) */
 .hw{position:absolute;font-family:var(--hand);font-weight:600;color:var(--pen);white-space:nowrap;line-height:1.1;padding:0 .3em;clip-path:inset(-30% 100% -30% 0)}
 .hw sup{font-size:.58em}
 .hw.go{transition:clip-path var(--d,1.2s) cubic-bezier(.45,.05,.55,.95)}
 .hw.on{clip-path:inset(-30% 0 -30% 0)}
 
+/* 05 ground */
+.gd{container-type:inline-size;position:relative;width:100%}
+.gw{position:relative;aspect-ratio:2.25;border-radius:2.4cqw;overflow:hidden;background:#2A2420;box-shadow:0 60px 110px -50px rgba(40,20,10,.6);display:flex;flex-direction:column}
+.gbar{flex:none;display:flex;align-items:center;gap:1.4cqw;height:5cqw;padding-inline:2cqw;background:#211C19;color:#CFC6BA;font-size:1.3cqw}
+.gbar .wm{font-size:1.8cqw;color:#fff}.gbar .wm i{color:#E0566A}
+.gbar .gn{font-family:var(--hand);font-size:2.4cqw;font-weight:700;color:#E9C9A5;margin-left:-.6cqw}
+.gbar .gl{display:inline-flex;align-items:center;gap:.8cqw;margin-left:1.6cqw;padding:.5cqw 1.2cqw;border-radius:1cqw;background:rgba(255,255,255,.08);color:#E8E0D6;white-space:nowrap}
+.gbar .gc{margin-left:auto;display:inline-flex;align-items:center;gap:.8cqw;white-space:nowrap}
+.gbar .gc i{width:1cqw;height:1cqw;border-radius:50%;background:#4CC38A;box-shadow:0 0 0 .4cqw rgba(76,195,138,.2)}
+.gbody{flex:1;min-height:0;display:grid;grid-template-columns:19% 1fr;gap:1.2cqw;padding:1.2cqw}
+.grail{display:grid;grid-template-rows:repeat(3,1fr);gap:1.2cqw;min-height:0}
+.tile{position:relative;border-radius:1.4cqw;background:#3A322D;display:grid;place-items:center;overflow:hidden;transition:box-shadow .25s}
+.tile b{width:6.4cqw;height:6.4cqw;border-radius:50%;display:grid;place-items:center;font-size:2.6cqw;font-weight:700;color:#fff}
+.tile.a b{background:#4A4263}.tile.b b{background:#3F5A73}
+.tile span{position:absolute;left:1cqw;bottom:.9cqw;font-size:1.2cqw;color:#EDE6DC;background:rgba(0,0,0,.35);padding:.2cqw .8cqw;border-radius:.6cqw}
+.tile.talk{box-shadow:inset 0 0 0 .3cqw #4CC38A}
+.tile.empty{background:transparent;box-shadow:inset 0 0 0 .15cqw rgba(255,255,255,.18)}
+.tile.empty span{position:static;background:none;color:#A89E92;font-size:1.3cqw}
+.gboard{position:relative;border-radius:1.4cqw;background:#FFFDF8 radial-gradient(circle,#E3D9C8 1px,transparent 1.4px) 0 0/2.6cqw 2.6cqw;overflow:hidden}
+.gboard canvas{position:absolute;inset:0;width:100%;height:100%}
+.gtools{position:absolute;left:1.2cqw;top:1.2cqw;display:flex;gap:.8cqw;background:var(--paper);border-radius:1.2cqw;padding:.7cqw;box-shadow:0 .6cqw 1.8cqw -.6cqw rgba(60,30,20,.35),inset 0 0 0 1px var(--line)}
+.gtools i{width:2.2cqw;height:2.2cqw;border-radius:50%;display:block}
+.cur{position:absolute;left:0;top:0;display:flex;align-items:center;gap:.5cqw;pointer-events:none;opacity:0;transition:opacity .25s;will-change:transform}
+.cur::before{content:"";width:1.3cqw;height:1.3cqw;border-radius:50%;background:var(--c);box-shadow:0 0 0 .35cqw rgba(255,255,255,.9)}
+.cur b{font-size:1.25cqw;font-weight:700;color:#fff;background:var(--c);padding:.25cqw .8cqw;border-radius:.7cqw;white-space:nowrap}
+.cur.on{opacity:1}
+.cur.flip{flex-direction:row-reverse}
+/* narrow screens: scenes switch layout so the text inside stays readable */
+@container (max-width:640px){
+  .gpt{width:36%;top:4%;padding:2.6cqw;gap:2cqw;border-radius:3.4cqw}
+  .gpt-h{font-size:2.6cqw}.gpt-u{font-size:2.6cqw;padding:1.2cqw 2cqw}.gpt-s{font-size:2.8cqw}.gpt-s i{width:2.2cqw;height:2.2cqw}.gpt-m{font-size:2.3cqw;padding-left:3.4cqw}.gpt-c{font-size:2.4cqw}
+  .pv{width:70%}.pv .bar{height:8cqw;font-size:2.6cqw}.pv .bar .wm{font-size:3.2cqw}
+  .pv-f{gap:1.2cqw;padding:1.8cqw}.pv-f span{height:5.6cqw;font-size:2.4cqw;padding-inline:1.8cqw}
+  .rg-card{padding:4cqw;gap:3cqw;border-radius:4.4cqw}
+  .rg-h{font-size:3.8cqw}.rg-h .wm{font-size:4.4cqw}
+  .res{padding:2.6cqw 3.4cqw;border-radius:3cqw}.res small{font-size:3.2cqw}.res b{font-size:6.6cqw}
+  .toks{gap:2cqw;min-height:10cqw}.toks span{height:9cqw;padding-inline:2.8cqw;border-radius:2.4cqw;font-size:3.2cqw}.toks span b{font-size:5.4cqw}
+  .gw{aspect-ratio:.95;border-radius:4cqw}
+  .gbar{height:10cqw;font-size:2.8cqw;padding-inline:3.4cqw;gap:2cqw}.gbar .wm{font-size:3.8cqw}.gbar .gn{font-size:5cqw}.gbar .gl{display:none}
+  .gbody{grid-template-columns:1fr;grid-template-rows:20cqw 1fr;gap:2.4cqw;padding:2.4cqw}
+  .grail{grid-template-rows:none;grid-template-columns:repeat(3,1fr);gap:2.4cqw}
+  .tile{border-radius:3cqw}.tile b{width:10cqw;height:10cqw;font-size:4.2cqw}.tile span{font-size:2.6cqw;left:1.8cqw;bottom:1.4cqw}.tile.empty span{font-size:2.8cqw}
+  .gboard{border-radius:3cqw;background-size:5cqw 5cqw}
+  .gtools{padding:1.4cqw;gap:1.4cqw;border-radius:2.4cqw}.gtools i{width:4cqw;height:4cqw}
+  .cur b{font-size:2.8cqw;padding:.6cqw 1.6cqw;border-radius:1.4cqw}.cur::before{width:2.6cqw;height:2.6cqw}
+}
+@media (max-width:760px){.duo{aspect-ratio:1.25}}
 
-/* A: 14번 real ink + condition highlight */
-.nb{position:absolute;left:0;right:0;bottom:0;top:6.6cqw;background:#fff}
-.nb canvas{position:absolute;inset:0;width:100%;height:100%}
-.qtab{position:absolute;left:2.4cqw;bottom:2.4cqw;height:5cqw;display:inline-flex;align-items:center;gap:1cqw;padding-inline:1.8cqw;border-radius:99px;background:var(--paper);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.14),inset 0 0 0 1px var(--line);font-size:1.9cqw;font-weight:600;color:var(--ink2);transition:opacity .3s var(--ease)}
-.exam{position:absolute;left:2.4cqw;top:8.6cqw;width:64%;background:#fff;border-radius:2.4cqw;box-shadow:0 3cqw 6cqw -2cqw rgba(30,24,17,.35),inset 0 0 0 1px var(--line);padding:1.6cqw;transform:translateX(-110%);transition:transform .55s var(--ease)}
-.exam.on{transform:none}
-.exam .im{position:relative}
-.exam img{display:block;width:100%;height:auto}
-.exam .hl{position:absolute;left:8.6%;top:.6%;width:25.6%;height:6.6%;border-radius:.8cqw;background:rgba(138,28,43,.24);transform-origin:left center;transform:scaleX(0);transition:transform .75s cubic-bezier(.45,.05,.55,.95);mix-blend-mode:multiply}
-.exam .hl.on{transform:scaleX(1)}
-.exam .lab{display:flex;align-items:center;gap:1cqw;margin-bottom:1cqw;font-size:1.8cqw;font-weight:700;color:var(--wine)}
-.pop{position:absolute;right:2.6cqw;bottom:2.6cqw;width:42%;background:var(--card);border-radius:3cqw;box-shadow:0 3cqw 6cqw -2cqw rgba(60,30,20,.4);padding:2.4cqw;display:grid;gap:1.6cqw;opacity:0;transform:translateY(2cqw);transition:opacity .35s var(--ease),transform .45s cubic-bezier(.2,0,0,1.2)}
-.pop.on{opacity:1;transform:none}
-.pop .who{display:flex;align-items:center;gap:1.2cqw;font-size:1.9cqw;font-weight:700;color:var(--wine)}
-.pop .who b{width:3.6cqw;height:3.6cqw;border-radius:50%;background:var(--wine);color:#fff;display:grid;place-items:center;font:700 1.8cqw/1 var(--brand)}
-.pop p{margin:0;font-size:2.3cqw;line-height:1.55;font-weight:600;color:var(--ink)}
-.pop .btns{display:flex;justify-content:flex-end;gap:1cqw;flex-wrap:wrap}
-.pop .btns span{border:.25cqw solid var(--wine);color:var(--wine);background:var(--paper);border-radius:99px;padding:.8cqw 2cqw;font-size:1.9cqw;font-weight:700;transition:all .2s var(--ease);position:relative}
-.pop .btns span.tap{background:var(--wine);color:#fff}
-.scap{margin:14px 0 0;font-size:13px;line-height:1.6;color:var(--ink3);text-align:center}
+/* ---------- compare ---------- */
+.cmp-wrap{margin-top:48px;overflow-x:auto;border-radius:24px;background:var(--paper);box-shadow:0 30px 60px -40px rgba(60,30,20,.3),inset 0 0 0 1px var(--line)}
+.cmp{width:100%;min-width:780px;border-collapse:separate;border-spacing:0;font-size:15px;line-height:1.6}
+.cmp th,.cmp td{padding:18px 20px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
+.cmp thead th{font-size:14px;font-weight:700;color:var(--ink3);padding-block:20px 16px}
+.cmp tbody th{width:150px;font-size:14px;font-weight:700;color:var(--ink2);background:var(--paper);position:sticky;left:0;z-index:1}
+.cmp td{color:var(--ink2)}
+.cmp .me{background:#FBF3F1;color:var(--ink);font-weight:600}
+.cmp thead .me{color:var(--wine);font-size:15px}
+.cmp thead .me .wm{font-size:17px;color:var(--wine)}
+.cmp-note{margin:14px 4px 0;font-size:13px;color:var(--ink3);line-height:1.6}
 
-/* placeholder (unused) */
-.pending{container-type:inline-size;display:grid;place-items:center;aspect-ratio:4/3;border-radius:4cqw;border:2px dashed var(--line);color:var(--ink3);font-size:2.4cqw;text-align:center;padding:4cqw;line-height:1.6}
+/* ---------- pricing ---------- */
+.pr-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.pr-ctl{display:flex;gap:10px;flex-wrap:wrap}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.plan{position:relative;display:flex;flex-direction:column;gap:14px;background:var(--paper);border-radius:22px;padding:26px 24px 28px;box-shadow:inset 0 0 0 1px var(--line)}
+.plan.main{box-shadow:inset 0 0 0 2px var(--wine),0 30px 60px -36px rgba(138,28,43,.45)}
+.plan .badge{position:absolute;top:20px;right:20px;height:26px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:8px;background:var(--wine-s);color:var(--wine);font-size:12px;font-weight:700}
+.plan h3{margin:0;display:flex;align-items:center;gap:8px;font-family:var(--brand);font-size:20px;letter-spacing:-.02em}
+.plan .lv{font-size:13px;font-weight:600;color:var(--ink3);margin-top:-8px}
+.price{display:flex;align-items:baseline;gap:6px;min-height:52px}
+.price b{font:700 34px/1.1 var(--brand);letter-spacing:-.03em}
+.price span{font-size:15px;color:var(--ink3);font-weight:600}
+.price small{display:block;width:100%}
+.alt{font-size:13px;color:var(--ink3);margin-top:-8px;min-height:20px}
+.plan ul{list-style:none;margin:6px 0 0;padding:14px 0 0;border-top:1px solid var(--rule);display:grid;gap:10px;font-size:15px;line-height:1.5;color:var(--ink2)}
+.plan li{display:flex;gap:10px}
+.plan li svg{flex:none;margin-top:3px}
+.pr-note{margin:18px 4px 0;font-size:13px;color:var(--ink3);line-height:1.6}
+@media (max-width:1020px){.plans{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.plans{grid-template-columns:1fr}}
 
+/* ---------- roadmap carousel ---------- */
+.rm-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.rm-nav{display:flex;gap:8px;flex:none}
+.rm-nav button{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);transition:opacity .2s,box-shadow .16s}
+.rm-nav button:hover{box-shadow:inset 0 0 0 1px #CFC2AD}
+.rm-nav button:disabled{opacity:.35;cursor:default}
+.rm-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,calc((100% - 48px)/4));gap:16px;margin-top:36px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
+.rm-track::-webkit-scrollbar{display:none}
+.rm{scroll-snap-align:start;display:flex;flex-direction:column;gap:10px;min-height:230px;background:var(--paper);border-radius:22px;padding:26px 24px;box-shadow:inset 0 0 0 1px var(--line)}
+.rm time{font:700 15px var(--brand);color:var(--ink3)}
+.rm.now{background:var(--ink);color:#F7F1E8;box-shadow:none}
+.rm.now time{color:#E0566A}
+.rm b{font-size:20px;line-height:1.4;letter-spacing:-.02em}
+.rm span{font-size:15px;line-height:1.6;color:var(--ink2)}
+.rm.now span{color:#CFC6BA}
+.rm .st{margin-top:auto;font-size:13px;font-weight:700;font-style:normal;color:var(--ink3)}
+.rm.now .st{color:#E0566A}
+@media (max-width:760px){.rm-track{grid-auto-columns:78%}.rm-nav{display:none}}
 
-/* ---------- company story (Mathpresso-style) ---------- */
-.story{margin-top:clamp(64px,8vw,120px)}
+/* ---------- company story ---------- */
+.story{margin-top:0}
 .st-in{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
-.st-hero{position:relative;min-height:70vh;display:flex;align-items:flex-end;background:linear-gradient(180deg,rgba(26,21,18,.15),rgba(26,21,18,.75)),url(img/hero-pen.jpg) 60% 40%/cover;color:#fff;padding-block:0 72px}
+.st-hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;background:linear-gradient(180deg,rgba(26,21,18,.15),rgba(26,21,18,.75)),url(img/hero-pen.jpg) 60% 40%/cover;color:#fff;padding-block:0 72px}
 .st-k{margin:0 0 12px;font-size:13px;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.75)}
 .st-hero h2{margin:0;font-family:var(--brand);font-weight:700;font-size:clamp(44px,7vw,96px);line-height:1;letter-spacing:-.04em}
 .st-hero h2 i{font-style:normal;color:#E0566A}
-.st-scroll{position:relative;height:300vh;background:#1A1512}
+.st-scroll{position:relative;height:240vh;background:#1A1512}
 .st-pin{position:sticky;top:0;height:100vh;display:grid;place-items:center;overflow:hidden}
 .st-line{grid-area:1/1;margin:0;padding-inline:var(--gut);text-align:center;color:#F7F1E8;font-size:clamp(24px,3.4vw,44px);line-height:1.45;font-weight:700;letter-spacing:-.03em;opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .8s var(--ease)}
 .st-line.on{opacity:1;transform:none}
-.st-mv{position:relative;overflow:hidden;color:#fff;padding-block:clamp(96px,12vw,160px);background:
-  radial-gradient(1200px 500px at 20% 10%,rgba(224,86,106,.35),transparent 60%),radial-gradient(900px 600px at 90% 100%,rgba(40,8,14,.6),transparent 60%),linear-gradient(135deg,#8A1C2B,#4A0E18)}
+.st-mv{position:relative;overflow:hidden;color:#fff;padding-block:clamp(96px,12vw,160px);background:radial-gradient(1200px 500px at 20% 10%,rgba(224,86,106,.35),transparent 60%),radial-gradient(900px 600px at 90% 100%,rgba(40,8,14,.6),transparent 60%),linear-gradient(135deg,#8A1C2B,#4A0E18)}
 .st-mv::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(92deg,rgba(255,255,255,.035) 0 1px,transparent 1px 7px);pointer-events:none}
 .st-mv h3{position:relative;margin:0;font-size:clamp(24px,3vw,38px);line-height:1.5;font-weight:700;letter-spacing:-.03em;max-width:24em}
 .mv{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:clamp(64px,8vw,120px);max-width:760px}
@@ -210,60 +387,95 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .og-card{background:var(--paper);border-radius:24px;box-shadow:0 30px 60px -30px rgba(60,30,20,.3),inset 0 0 0 1px var(--line);padding:28px;display:grid;gap:14px}
 .gr{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
 .gr span{font-size:16px;color:var(--ink2)}.gr b{font-size:34px;font-weight:800;color:var(--wine);font-variant-numeric:tabular-nums}.gr s{font-size:22px;color:var(--ink3);font-weight:600;margin-right:10px}
-.og-card small{font-size:13px;color:var(--ink3)}
-.st-time{padding-block:0 clamp(96px,11vw,150px)}
-.st-time h3{margin:0 0 40px;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em;text-align:center}
+.og-card small{font-size:13px;color:var(--ink3);line-height:1.6}
+.st-time{padding-block:0 clamp(80px,9vw,120px)}
+.st-time h3,.team h3{margin:0 0 36px;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em;text-align:center}
 .tl{list-style:none;margin:0 auto;padding:0;max-width:760px;position:relative}
 .tl::before{content:"";position:absolute;left:92px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl time{white-space:nowrap}
 .tl li{position:relative;display:grid;grid-template-columns:80px 1fr;column-gap:40px;row-gap:2px;padding-block:14px}
 .tl li::before{content:"";position:absolute;left:86px;top:21px;width:14px;height:14px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 4px var(--ivory)}
-.tl li.soon::before{background:var(--ivory);box-shadow:0 0 0 4px var(--ivory),inset 0 0 0 2px var(--wine)}
-.tl time{grid-row:span 2;font-size:15px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;padding-top:1px}
+.tl time{grid-row:span 2;font-size:15px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;padding-top:1px;white-space:nowrap}
 .tl b{font-size:17px;line-height:1.5}.tl span{font-size:15px;color:var(--ink3);line-height:1.5}
-.tl li.soon b{color:var(--ink2)}
-.st-end{background:linear-gradient(135deg,#8A1C2B,#5E1220);color:#fff;min-height:60vh;display:grid;place-items:center;text-align:center;padding:96px var(--gut)}
+.team{padding-block:0 clamp(96px,11vw,150px)}
+.tm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tm{display:grid;grid-template-columns:52px 1fr;column-gap:14px;row-gap:4px;align-items:start;background:var(--paper);border-radius:20px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}
+.tm .av{grid-row:span 3;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--card);font:600 16px var(--brand);color:var(--ink2)}
+.tm b{font-size:17px}
+.tm em{font-style:normal;font-size:13px;font-weight:700;color:var(--ink3)}
+.tm span{font-size:14px;line-height:1.55;color:var(--ink2)}
+.tm.ceo em{color:var(--wine)}
+@media (max-width:1020px){.tm-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.tm-grid{grid-template-columns:1fr}}
+.st-end{background:linear-gradient(135deg,#8A1C2B,#5E1220);color:#fff;min-height:56vh;display:grid;place-items:center;text-align:center;padding:96px var(--gut)}
 .st-end p{margin:0;font-size:clamp(24px,3.2vw,40px);line-height:1.5;font-weight:700;letter-spacing:-.03em}
 @media (max-width:760px){.mv{grid-template-columns:1fr}.st-origin{grid-template-columns:1fr}.tl::before{left:76px}.tl li{grid-template-columns:64px 1fr;column-gap:32px}.tl time{font-size:14px}.tl li::before{left:70px}.st-mv h3{font-size:22px}}
 
+/* ---------- FAQ accordion ---------- */
+.faq-list{margin-top:40px;border-top:1px solid var(--line)}
+.faq-list details{border-bottom:1px solid var(--line)}
+.faq-list summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px;font-size:18px;font-weight:700;cursor:pointer;list-style:none}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary i{flex:none;position:relative;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line)}
+.faq-list summary i::before,.faq-list summary i::after{content:"";position:absolute;left:8px;right:8px;top:13px;height:2px;border-radius:2px;background:var(--ink2);transition:transform .25s var(--ease)}
+.faq-list summary i::after{transform:rotate(90deg)}
+.faq-list details[open] summary i::after{transform:rotate(0)}
+.faq-list .ans{padding:0 4px 26px;font-size:16px;line-height:1.8;color:var(--ink2);max-width:46em}
+.faq-list .ans a{color:var(--wine);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.faq-list details[open] .ans{animation:up .35s var(--ease)}
+
 /* ---------- CTA + footer ---------- */
-.cta-band{max-width:var(--max);margin:clamp(72px,8vw,120px) auto 0;padding-inline:var(--gut)}
+.cta-band{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
 .cta-box{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(140deg,var(--wine),var(--wine-d));color:#fff;padding:clamp(40px,6vw,72px);text-align:center}
 .cta-box h2{margin:0;font-size:clamp(26px,3.2vw,40px);line-height:1.4;font-weight:800;letter-spacing:-.03em}
 .cta-box p{margin:14px 0 0;color:rgba(255,255,255,.82);font-size:17px}
-.cta-box .btn{margin-top:28px;background:#fff;color:var(--wine)}
+.cta-box .acts{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}
+.cta-box .btn-a{background:#fff;color:var(--wine)}
+.cta-box .btn-b{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 .ftr{margin-top:clamp(96px,10vw,140px);background:#2A2420;color:#CFC6BA;font-size:14px;line-height:1.8}
-.ftr-in{max-width:var(--max);margin:0 auto;padding:48px var(--gut) 56px;display:grid;gap:28px}
+.ftr-in{max-width:var(--max);margin:0 auto;padding:56px var(--gut) 56px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
 .ftr .wm{font-size:26px;color:#fff}
-.ftr-links{display:flex;flex-wrap:wrap;gap:8px 28px}
-.ftr-links a:hover{color:#fff}
+.ftr h4{margin:0 0 8px;font-size:13px;color:#fff;font-weight:700}
+.ftr nav{display:grid;gap:2px}
+.ftr a:hover{color:#fff}
 .ftr small{color:#9A9087}
+@media (max-width:760px){.ftr-in{grid-template-columns:1fr 1fr}.ftr .f0{grid-column:span 2}}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.st-scroll{height:auto}.st-pin{position:static;height:auto;gap:48px;padding-block:120px}.st-line{grid-area:auto}.hero .fade{opacity:1;transform:none}}
 </style>
-
 </head>
 <body>
 <header class="hdr" id="hdr">
   <div class="hdr-in">
-    <a class="wm" href="#top">Provee<i>.</i></a>
+    <a class="wm" href="#top" aria-label="Provee 처음으로">Provee<i>.</i></a>
     <ul class="gnb" aria-label="주 메뉴">
-      <li><a href="#f-ask" data-nav="ask">되묻는 튜터</a></li>
-      <li><a href="#f-graph" data-nav="graph">바로 그리는 그래프</a></li>
-      <li><a href="#f-note" data-nav="note">복습노트</a></li>
+      <li><button class="gnb-b" id="megaBtn" aria-expanded="false" aria-controls="mega">기능<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="mega" id="mega" role="menu">
+          <a href="#f-input" role="menuitem"><span class="n">01</span><b>필기 입력</b><span>사진 없이, 쓰는 순간 읽습니다</span></a>
+          <a href="#f-read" role="menuitem"><span class="n">02</span><b>획 인식과 그래프</b><span>쓴 순서로 읽고, 식에서 바로 그립니다</span></a>
+          <a href="#f-ask" role="menuitem"><span class="n">03</span><b>되묻는 튜터</b><span>막히면 정답 대신 놓친 조건을 짚습니다</span></a>
+          <a href="#f-note" role="menuitem"><span class="n">04</span><b>복습노트</b><span>내가 푼 순서 그대로 다시 봅니다</span></a>
+          <a href="#f-ground" class="wide" role="menuitem"><span class="n">05</span><b>Provee Ground</b><span>링크 하나로 모여 같은 노트에 함께 풉니다</span></a>
+        </div>
+      </li>
+      <li><a href="#compare" data-nav="compare">비교</a></li>
+      <li><a href="#pricing" data-nav="pricing">요금제</a></li>
       <li><a href="#story" data-nav="story">회사 이야기</a></li>
+      <li><a href="#faq" data-nav="faq">자주 묻는 질문</a></li>
     </ul>
     <div class="hdr-r">
       <a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a>
       <a class="btn btn-w" href="#join">출시 알림 받기</a>
-      <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="drawer"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
   </div>
 </header>
 <nav class="drawer" id="drawer" aria-label="모바일 메뉴" aria-hidden="true">
   <div class="drawer-top"><span class="wm" style="font-size:26px">Provee<i>.</i></span><button class="burger" style="display:grid" id="close" aria-label="메뉴 닫기"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
-  <a class="l" href="#f-ask">되묻는 튜터</a><a class="l" href="#f-graph">바로 그리는 그래프</a><a class="l" href="#f-note">복습노트</a><a class="l" href="#story">회사 이야기</a><a class="l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a>
-  <a class="btn btn-w" href="#join">출시 알림 받기</a>
+  <details open><summary>기능<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+    <div class="sub"><a href="#f-input"><small>01</small>필기 입력</a><a href="#f-read"><small>02</small>획 인식과 그래프</a><a href="#f-ask"><small>03</small>되묻는 튜터</a><a href="#f-note"><small>04</small>복습노트</a><a href="#f-ground"><small>05</small>Provee Ground</a></div>
+  </details>
+  <a class="l" href="#compare">비교</a><a class="l" href="#pricing">요금제</a><a class="l" href="#story">회사 이야기</a><a class="l" href="#faq">자주 묻는 질문</a>
+  <div class="d-cta"><a class="btn btn-w" href="#join">출시 알림 받기</a><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기</a></div>
 </nav>
 
 <main id="top">
@@ -279,41 +491,121 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 </section>
 
 <section class="feats" id="features">
-  <div class="feats-head">
-    <h2>답을 주는 대신,<br>스스로 풀게 돕습니다</h2>
-    <p>노트와 튜터가 한 화면에 있어, 풀다가 멈추지 않습니다.</p>
+  <div class="wrap feats-head">
+    <div class="sec-h c"><h2>답을 주는 대신,<br>스스로 풀게 돕습니다</h2><p>노트와 튜터가 한 화면에 있어, 풀다가 멈추지 않습니다.</p></div>
   </div>
-  <div class="frows">
-    <div class="frow" id="f-ask" data-k="ask">
+  <nav class="ftabs" aria-label="기능 목록"><div class="ftabs-in">
+    <a href="#f-input" data-f="input"><small>01</small>필기 입력</a>
+    <a href="#f-read" data-f="read"><small>02</small>획 인식과 그래프</a>
+    <a href="#f-ask" data-f="ask"><small>03</small>되묻는 튜터</a>
+    <a href="#f-note" data-f="note"><small>04</small>복습노트</a>
+    <a href="#f-ground" data-f="ground"><small>05</small>Provee Ground</a>
+  </div></nav>
+  <div class="wrap">
+    <div class="frow" id="f-input" data-f="input">
       <div class="f-copy">
-        <span class="tag t1">되묻는 튜터</span>
+        <span class="fk"><b>01</b>필기 입력</span>
+        <h3>사진 찍을 필요 없이,<br>쓰는 순간 읽습니다</h3>
+        <p>노트와 튜터가 한 화면에 있습니다. 찍고 올리고 기다리던 시간이 공부 시간으로 돌아옵니다.</p>
+        <div class="fstat"><b>86%</b><span>문제를 매번 찍어 올리는 과정이 번거로웠다는 대학생</span><span class="tip" tabindex="0" data-tip="URP 자체 설문(2026년 7월). 손풀이 과목 공부에 생성형 AI를 써 본 대학생 43명 중 37명이 '가끔' 이상 겪었다고 답했습니다.">i</span></div>
+      </div>
+      <div class="f-vis" data-scene="input"></div>
+    </div>
+
+    <div class="frow wide" id="f-read" data-f="read">
+      <div class="f-copy">
+        <span class="fk"><b>02</b>획 인식과 그래프</span>
+        <h3>쓴 순서대로 읽고,<br>그래프는 식에서 바로 그립니다</h3>
+        <p>사진 한 장이 아니라 획과 시간을 함께 읽어 겹쳐 쓴 글씨도 떼어 봅니다. 그래프는 이미지를 기다리지 않고 벡터로 그립니다.</p>
+        <div class="f-side">
+          <div class="seg" role="tablist" aria-label="보기 전환"><button role="tab" aria-selected="true" data-pane="recog">획 단위 인식</button><button role="tab" aria-selected="false" data-pane="graph">벡터 그래프</button></div>
+        </div>
+      </div>
+      <div class="f-vis">
+        <div class="panes"><div class="pane" data-pane="recog" data-scene="recog"></div><div class="pane" data-pane="graph" data-scene="graph" hidden></div></div>
+      </div>
+    </div>
+
+    <div class="frow" id="f-ask" data-f="ask">
+      <div class="f-copy">
+        <span class="fk"><b>03</b>되묻는 튜터</span>
         <h3>막히면 정답 대신<br>놓친 조건을 짚어 줍니다</h3>
-        <p>풀이가 멈춘 자리에서 문제의 핵심 조건에 형광펜을 긋고, 다시 읽어 보자고 묻습니다. 답은 학생이 적습니다.</p>
-        <ol class="steps" data-steps="ask"><li>손으로 풀어 나갑니다</li><li>잘못 그린 곡선에서 멈추고 묻습니다</li><li>문제 첫 줄 조건에 형광펜을 긋습니다</li><li>학생이 스스로 고쳐 끝까지 풉니다</li></ol>
+        <p>풀이가 멈춘 자리에서 핵심 조건에 형광펜을 긋고 다시 읽어 보자고 묻습니다. 과목과 실수 패턴을 기억해 물어본 만큼만 답합니다.</p>
+        <div class="fstat"><b>79%</b><span>생각할 틈 없이 정답과 전체 풀이부터 받았다는 대학생</span><span class="tip" tabindex="0" data-tip="URP 자체 설문(2026년 7월). 생성형 AI를 써 본 대학생 43명 중 34명이 '가끔' 이상 겪었다고 답했습니다.">i</span></div>
       </div>
-      <div class="f-vis" data-vis="ask"></div>
+      <div class="f-vis" data-scene="ask"></div>
     </div>
-    <div class="frow" id="f-graph" data-k="graph">
+
+    <div class="frow" id="f-note" data-f="note">
       <div class="f-copy">
-        <span class="tag t2">바로 그리는 그래프</span>
-        <h3>그래프를 기다리지 않고<br>식에서 바로 그립니다</h3>
-        <p>이미지를 만들어 보낼 때까지 기다리지 않습니다. 식을 읽어 좌표평면에 벡터로 바로 그리고, 풀이 단계에 맞춰 보여 줍니다.</p>
-        <ol class="steps" data-steps="graph"><li>y = x³ 곡선을 그립니다</li><li>y = 5x 직선을 겹칩니다</li><li>교점을 찾아 적분 한계로 씁니다</li><li>넓이를 칠하고 적분식으로 마무리합니다</li></ol>
-      </div>
-      <div class="f-vis" data-vis="graph"></div>
-    </div>
-    <div class="frow" id="f-note" data-k="note">
-      <div class="f-copy">
-        <span class="tag t3">복습노트</span>
+        <span class="fk"><b>04</b>복습노트</span>
         <h3>내가 푼 순서 그대로<br>다시 재생됩니다</h3>
-        <p>풀이도 질문도 과목과 단원별로 한곳에 쌓입니다. 누르면 답만이 아니라 생각한 순서가 되살아납니다.</p>
-        <ol class="steps" data-steps="note"><li>과목과 단원별로 쌓입니다</li><li>다시 보기를 누릅니다</li><li>쓴 순서대로 풀이가 재생됩니다</li></ol>
+        <p>풀이도 질문도 과목과 단원별로 한곳에 쌓입니다. 시험 전에는 남이 정리한 요약 대신 내 풀이를 다시 봅니다.</p>
+        <div class="fstat"><b>88%</b><span>새 채팅마다 내 수준과 맥락을 다시 설명해야 했다는 대학생</span><span class="tip" tabindex="0" data-tip="URP 자체 설문(2026년 7월). 생성형 AI를 써 본 대학생 43명 중 38명이 '가끔' 이상 겪었다고 답했습니다.">i</span></div>
       </div>
-      <div class="f-vis" data-vis="note"></div>
+      <div class="f-vis" data-scene="note"></div>
+    </div>
+
+    <div class="frow wide" id="f-ground" data-f="ground">
+      <div class="f-copy">
+        <span class="fk"><b>05</b>Provee Ground</span>
+        <h3>링크 하나로 모여,<br>같은 노트에 함께 풉니다</h3>
+        <p>가입 없이 들어와 얼굴을 보며 같은 노트와 PDF 위에 씁니다. 필기와 목소리는 기기끼리 직접 오가고 서버에 남지 않습니다.</p>
+        <div class="f-side"><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><small style="font-size:13px;color:var(--ink3)">지금 무료로 쓸 수 있습니다</small></div>
+      </div>
+      <div class="f-vis" data-scene="ground"></div>
     </div>
   </div>
 </section>
 
+<section class="sec" id="compare">
+  <div class="wrap">
+    <div class="sec-h"><h2>같은 수학 문제,<br>도구마다 학생이 하는 일이 다릅니다</h2></div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th scope="col"></th><th scope="col" class="me"><span class="wm">Provee<i>.</i></span></th><th scope="col">범용 AI 채팅</th><th scope="col">사진 풀이 앱</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">문제를 넣는 법</th><td class="me">노트에 그대로 씀</td><td>사진이나 파일을 올리고, 원하는 것을 글로 설명</td><td>문제를 카메라로 찍음</td></tr>
+          <tr><th scope="row">읽는 것</th><td class="me">쓴 획과 순서, 지운 식까지</td><td>올린 사진 한 장</td><td>문제 사진</td></tr>
+          <tr><th scope="row">막혔을 때</th><td class="me">놓친 조건을 되묻고, 스스로 쓰게 함</td><td>정답과 전체 풀이를 먼저 받는 경우가 많음</td><td>정답과 단계별 풀이</td></tr>
+          <tr><th scope="row">그래프</th><td class="me">식에서 벡터로 바로 그림</td><td>이미지를 만들 때까지 기다림</td><td>앱마다 다름</td></tr>
+          <tr><th scope="row">복습</th><td class="me">과목·단원별 노트, 풀이 재생</td><td>채팅마다 흩어짐</td><td>찍은 문제 목록</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp-note">2026년 9월 기준 공개 기능과 대표의 실제 사용 기록으로 정리했습니다. 서비스와 설정에 따라 다를 수 있습니다.</p>
+  </div>
+</section>
+
+<section class="sec" id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <div class="pr-top">
+      <div class="sec-h"><h2>필요한 만큼만 냅니다</h2><p>대학생은 시험 기간에 주 단위로, 중고등은 보호자가 월 단위로 결제합니다.</p></div>
+      <div class="pr-ctl">
+        <div class="seg" role="tablist" aria-label="대상 선택"><button role="tab" aria-selected="true" data-aud="univ">대학생</button><button role="tab" aria-selected="false" data-aud="hs">중고등</button></div>
+        <div class="seg" role="tablist" aria-label="결제 주기" id="cycle"><button role="tab" aria-selected="true" data-cyc="w">주 단위</button><button role="tab" aria-selected="false" data-cyc="m">월 단위</button></div>
+      </div>
+    </div>
+    <div class="plans" id="plans"></div>
+    <p class="pr-note" id="prNote"></p>
+  </div>
+</section>
+
+<section class="sec" id="roadmap" style="padding-top:0">
+  <div class="wrap">
+    <div class="rm-top">
+      <div class="sec-h"><h2>서강대에서 시작합니다</h2><p>한 학교에서 먼저 제대로 검증하고, 그다음에 넓힙니다.</p></div>
+      <div class="rm-nav"><button id="rmPrev" aria-label="이전"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button id="rmNext" aria-label="다음"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    </div>
+    <div class="rm-track" id="rmTrack">
+      <article class="rm now"><time>2026.10</time><b>서강대 무료 베타</b><span>중간고사 전에 정량과목 수강생부터 엽니다.</span><em class="st">다음 달</em></article>
+      <article class="rm"><time>2026.11</time><b>유료 요금제 시작</b><span>기말고사 기간에 주 단위 결제를 엽니다.</span><em class="st">예정</em></article>
+      <article class="rm"><time>2027 봄</time><b>전국 대학으로</b><span>서강대에서 확인한 지표로 전국 대학에 엽니다. 중고등 무료 버전도 함께 시작합니다.</span><em class="st">계획</em></article>
+      <article class="rm"><time>2027 가을</time><b>대학과 중고등, 두 트랙</b><span>같은 튜터 엔진으로 두 요금제를 함께 운영합니다.</span><em class="st">계획</em></article>
+      <article class="rm"><time>2028</time><b>미국 수학 시장</b><span>SAT·AP 수학을 준비하는 학생에게 영어판을 엽니다.</span><em class="st">계획</em></article>
+    </div>
+  </div>
+</section>
 
 <section class="story" id="story">
   <div class="st-hero"><div class="st-in"><p class="st-k">OUR STORY</p><h2>Prove your thinking<i>.</i></h2></div></div>
@@ -337,8 +629,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <p>2026년 6월 13일, 의지는 있지만 혼자서는 어려운 학생을 위한 도구를 직접 만들기로 했습니다.</p>
     </div>
     <div class="og-card">
-      <div class="gr"><span>경제수리통계학</span><b><s>D0</s>A−</b></div>
-      <div class="gr"><span>금융정책</span><b><s>B−</s>A0</b></div>
+      <div class="gr"><span>경제수리통계학</span><b><s>D0</s>A-</b></div>
+      <div class="gr"><span>금융정책</span><b><s>B-</s>A0</b></div>
       <small>만든 사람 본인의 2026년 1학기 중간고사, 기말고사 성적</small>
     </div>
   </div>
@@ -347,30 +639,59 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <ol class="tl">
       <li><time>2026.06</time><b>직접 쓰려고 개발 시작</b><span>매일 10시간 넘게 쓰고, 불편을 찾고, 고침</span></li>
       <li><time>2026.06</time><b>기말고사 직전, 학생 6명이 먼저 사용</b><span>경제학과와 동아리 학생 10명에게 소개</span></li>
-      <li><time>2026.07</time><b>손풀이 과목 학습자 설문</b><span>생성형 AI로 공부하며 겪는 불편을 직접 물음</span></li>
+      <li><time>2026.07</time><b>손풀이 과목 학습자 설문 105명</b><span>생성형 AI로 공부하며 겪는 불편을 직접 물음</span></li>
       <li><time>2026.08</time><b>실리콘밸리 Plug and Play IR 데모</b><span>"수익 전략이 없다"는 지적을 받고 사업 모델을 다시 짬</span></li>
-      <li class="soon"><time>2026.10</time><b>서강대 무료 베타</b><span>예정</span></li>
-      <li class="soon"><time>2026.11</time><b>유료 요금제 시작</b><span>예정</span></li>
-      <li class="soon"><time>2027</time><b>전국 대학 확장, 중고등 버전</b><span>계획</span></li>
+      <li><time>2026.08</time><b>수학·학습과학 총괄 합류</b><span>대치 종로학원 학습과학센터 고등수학 팀장 출신</span></li>
+      <li><time>2026.09</time><b>대방역 사무실 마련</b><span>서울기독교세계관연구소(SIEW) 지원</span></li>
     </ol>
   </div>
+  <div class="team st-in">
+    <h3>함께 만드는 사람들</h3>
+    <div class="tm-grid">
+      <div class="tm ceo"><span class="av">SM</span><b>김수민</b><em>CEO · 창립자</em><span>서강대 경제학과. 첫 사용자이자 제품 총괄</span></div>
+      <div class="tm"><span class="av">JB</span><b>손정범</b><em>CTO</em><span>백엔드·데이터·iOS, 개발팀 리드</span></div>
+      <div class="tm"><span class="av">HS</span><b>하승주</b><em>수학·학습과학 총괄</em><span>한양대 수학과. 前 대치 종로학원 학습과학센터 고등수학 팀장</span></div>
+      <div class="tm"><span class="av">JS</span><b>임준서</b><em>CFO</em><span>재무 모델, 가격, 시장 규모</span></div>
+      <div class="tm"><span class="av">SB</span><b>윤세빈</b><em>브랜드 전략</em><span>브랜드, 사용자 인터뷰</span></div>
+      <div class="tm"><span class="av">EW</span><b>김은우</b><em>글로벌 그로스</em><span>해외 마케팅, 콘텐츠</span></div>
+      <div class="tm"><span class="av">JM</span><b>최지민</b><em>그로스 마케터</em><span>홍보, 모션그래픽, 마케팅 자동화</span></div>
+      <div class="tm"><span class="av">JH</span><b>연주희</b><em>UI 디자이너</em><span>제품·브랜드 디자인</span></div>
+    </div>
+  </div>
   <div class="st-end"><p>시대가 바뀌어도,<br>사람이 자라고 배우는 교육의 가치는 사라지지 않습니다.</p></div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-h"><h2>자주 묻는 질문</h2></div>
+    <div class="faq-list">
+      <details><summary>언제부터 쓸 수 있나요?<i aria-hidden="true"></i></summary><div class="ans">2026년 10월, 서강대에서 무료 베타를 먼저 엽니다. 정량과목 수강생부터 시작해 2027년 봄에 전국 대학으로 넓힙니다.</div></details>
+      <details><summary>어떤 기기가 필요한가요?<i aria-hidden="true"></i></summary><div class="ans">펜으로 쓸 수 있는 태블릿이 가장 잘 맞습니다. 웹 브라우저에서 열리고, 앱도 함께 준비하고 있습니다.</div></details>
+      <details><summary>어떤 과목을 다루나요?<i aria-hidden="true"></i></summary><div class="ans">미적분, 통계, 선형대수, 계량경제, 물리처럼 손으로 풀며 배우는 과목입니다. 첫 학기는 서강대 정량과목에 맞춰 엽니다.</div></details>
+      <details><summary>답은 바로 알려 주지 않나요?<i aria-hidden="true"></i></summary><div class="ans">막힌 곳에서 먼저 되묻습니다. 그래도 어려우면 힌트를 한 단계씩 더 주고, 해설을 본 뒤에는 스스로 설명해 보게 합니다.</div></details>
+      <details><summary>내 필기 기록은 어디에 쓰이나요?<i aria-hidden="true"></i></summary><div class="ans">복습 재생과 막힌 곳을 찾는 데 씁니다. 자세한 처리 방식은 <a href="privacy.html">개인정보처리방침</a>에 적어 두었습니다.</div></details>
+      <details><summary>Provee Ground는 무료인가요?<i aria-hidden="true"></i></summary><div class="ans">네. 링크 하나로 누구나 들어올 수 있습니다. 모두 나가면 방은 10분 뒤 사라지고 기록은 남지 않습니다. <a href="https://proveeground.kr" target="_blank" rel="noopener">지금 열어 보기</a></div></details>
+      <details><summary>가격은 얼마인가요?<i aria-hidden="true"></i></summary><div class="ans">대학생은 1과목을 무료로 쓰고, 유료 요금제는 주 4,700원부터입니다. <a href="#pricing">요금제 보기</a></div></details>
+    </div>
+  </div>
 </section>
 
 <section class="cta-band" id="join">
   <div class="cta-box">
     <h2>10월, 서강대에서 먼저 엽니다</h2>
     <p>중간고사 전에 무료 베타를 시작합니다.</p>
-    <a class="btn" href="#join">출시 알림 받기</a>
+    <div class="acts"><a class="btn btn-a" href="mailto:soomin020114@gmail.com?subject=Provee%20%EC%B6%9C%EC%8B%9C%20%EC%95%8C%EB%A6%BC%20%EC%8B%A0%EC%B2%AD">출시 알림 받기</a><a class="btn btn-b" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 써 보기</a></div>
   </div>
 </section>
 </main>
 
 <footer class="ftr">
   <div class="ftr-in">
-    <span class="wm">Provee<i>.</i></span>
-    <div class="ftr-links"><a href="https://provee.kr/terms.html" target="_blank" rel="noopener">이용약관</a><a href="https://provee.kr/privacy.html" target="_blank" rel="noopener"><b>개인정보처리방침</b></a><a href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a></div>
-    <small>URP (법인 설립 준비 중) · 대표 김수민<br>© 2026 URP</small>
+    <div class="f0"><span class="wm">Provee<i>.</i></span><p style="margin:10px 0 0">손으로 풀어야 이해되는 과목을 위한 AI 튜터</p></div>
+    <nav aria-label="기능"><h4>기능</h4><a href="#f-input">필기 입력</a><a href="#f-read">획 인식과 그래프</a><a href="#f-ask">되묻는 튜터</a><a href="#f-note">복습노트</a><a href="#f-ground">Provee Ground</a></nav>
+    <nav aria-label="회사"><h4>회사</h4><a href="#story">회사 이야기</a><a href="#pricing">요금제</a><a href="#faq">자주 묻는 질문</a><a href="story.html">투자자 소개</a></nav>
+    <nav aria-label="안내"><h4>안내</h4><a href="terms.html">이용약관</a><a href="privacy.html"><b>개인정보처리방침</b></a><a href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a></nav>
+    <small class="f0">URP (법인 설립 준비 중) · 대표 김수민 · © 2026 URP</small>
   </div>
 </footer>
 
@@ -379,10 +700,112 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const sleep=ms=>new Promise(r=>setTimeout(r,RM?20:ms));
-
-/* ---------- scene builders: each returns {el, play(token), stop()} ---------- */
 let INK=null;const inkP=fetch('ink14.json').then(r=>r.json()).then(d=>INK=d).catch(()=>null);
-function sceneAsk(onStep){
+let INK2=null;const ink2P=fetch('ink0912.json').then(r=>r.json()).then(d=>INK2=d).catch(()=>null);
+
+/* ---------- shared ink helpers (points = [x,y,t]) ---------- */
+function bb(S){let a=1e9,b=1e9,c=-1e9,d=-1e9;for(const s of S)for(const p of s.p){a=Math.min(a,p[0]);b=Math.min(b,p[1]);c=Math.max(c,p[0]);d=Math.max(d,p[1])}return [a,b,c,d]}
+function fitCanvas(cv){const r=cv.getBoundingClientRect();if(!r.width)return null;const dpr=Math.min(2,devicePixelRatio||1);cv.width=Math.round(r.width*dpr);cv.height=Math.round(r.height*dpr);const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return {ctx,W:r.width,H:r.height}}
+function drawInk(ctx,S,t,tr,col,lw){ // draw strokes of S up to time t (ms, same clock as points), transform tr={k,ox,oy,x0,y0}; returns pen tip or null
+  let tip=null;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=col;ctx.fillStyle=col;ctx.lineWidth=lw;
+  const X=x=>tr.ox+(x-tr.x0)*tr.k,Y=y=>tr.oy+(y-tr.y0)*tr.k;
+  for(const s of S){const p=s.p;if(p[0][2]>t)break;let n=0;while(n<p.length&&p[n][2]<=t)n++;
+    if(n===1||p.length===1){ctx.beginPath();ctx.arc(X(p[0][0]),Y(p[0][1]),lw*.62,0,7);ctx.fill();tip=[X(p[0][0]),Y(p[0][1])];continue}
+    ctx.beginPath();ctx.moveTo(X(p[0][0]),Y(p[0][1]));
+    for(let j=1;j<n-1;j++)ctx.quadraticCurveTo(X(p[j][0]),Y(p[j][1]),(X(p[j][0])+X(p[j+1][0]))/2,(Y(p[j][1])+Y(p[j+1][1]))/2);
+    ctx.lineTo(X(p[n-1][0]),Y(p[n-1][1]));ctx.stroke();if(n<p.length)tip=[X(p[n-1][0]),Y(p[n-1][1])];else tip=[X(p[n-1][0]),Y(p[n-1][1]),1]}
+  return tip}
+function fitBox(S,W,H,bx,by,bw,bh){const [a,b,c,d]=bb(S);const k=Math.min(bw*W/(c-a),bh*H/(d-b));return {k,x0:a,y0:b,ox:bx*W+(bw*W-(c-a)*k)/2,oy:by*H+(bh*H-(d-b)*k)/2}}
+const endT=S=>{const l=S[S.length-1].p;return l[l.length-1][2]};
+function loopRAF(fn){let live=true,raf=0;const tick=now=>{if(!live)return;fn(now);raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick);return ()=>{live=false;cancelAnimationFrame(raf)}}
+
+/* ---------- 01 input: real ink written live, read, tutor replies ---------- */
+function sceneInput(){
+  const el=document.createElement('div');
+  el.innerHTML=`<div class="dev"><div class="scr">
+    <div class="bar"><span class="wm">Provee<i>.</i></span><span>수학(상) · 이차방정식</span><span class="dots"><i style="background:#221C39;box-shadow:0 0 0 .3cqw #fff,0 0 0 .55cqw #221C39"></i><i style="background:#C0392B"></i><i style="background:#FFD400"></i></span><span class="end">학습 종료</span></div>
+    <div class="nb lined"><canvas></canvas></div>
+    <div class="qcard"><b>문제</b>방정식 x² − 5x + 6 = 0 을 푸시오.</div>
+    <div class="rec"><small>읽은 식</small><span class="m">x<sup>2</sup> − 5x + 6 = 0</span><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    <div class="pop"><div class="who"><b>P</b>Provee</div><p>좋아. 이제 인수분해로 풀어 볼래?</p><div class="btns"><span class="b1">해볼게</span><span>힌트 줘</span></div></div>
+    <span class="tapdot"></span>
+  </div></div><p class="scap">대표가 태블릿에 직접 쓴 실제 필기 기록(획 14개, 5.8초)을 같은 속도로 재생했습니다.</p>`;
+  const cv=el.querySelector('canvas'),rec=el.querySelector('.rec'),pop=el.querySelector('.pop'),b1=el.querySelector('.b1'),dot=el.querySelector('.tapdot');let stopR=null;
+  return {el,stop(){stopR&&stopR()},async play(ok){
+    await ink2P;if(!INK2||!ok())return;const S=INK2.cover,E=endT(S);
+    const draw=t=>{const f=fitCanvas(cv);if(!f)return;const tr=fitBox(S,f.W,f.H,.08,.34,.7,.26);drawInk(f.ctx,S,t,tr,'#221C39',Math.max(2.2,f.W*.0062))};
+    if(RM){draw(E);rec.classList.add('on');pop.classList.add('on');return}
+    while(ok()){rec.classList.remove('on');pop.classList.remove('on');b1.classList.remove('tap');
+      const f=fitCanvas(cv);if(!f)return;const tr=fitBox(S,f.W,f.H,.08,.34,.7,.26),lw=Math.max(2.2,f.W*.0062);
+      const t0=performance.now()+500;stopR=loopRAF(now=>{f.ctx.clearRect(0,0,f.W,f.H);drawInk(f.ctx,S,now-t0,tr,'#221C39',lw)});
+      await sleep(500+E+300);stopR();if(!ok())return;
+      rec.classList.add('on');await sleep(1000);pop.classList.add('on');await sleep(1600);if(!ok())return;
+      const br=b1.getBoundingClientRect(),sr=el.querySelector('.scr').getBoundingClientRect();dot.style.left=(br.left-sr.left+br.width/2-dot.offsetWidth/2)+'px';dot.style.top=(br.top-sr.top+br.height/2-dot.offsetHeight/2)+'px';
+      dot.classList.remove('on');void dot.offsetWidth;dot.classList.add('on');b1.classList.add('tap');await sleep(2200);if(!ok())return;
+      const g=fitCanvas(cv);g&&g.ctx.clearRect(0,0,g.W,g.H)}
+  }};
+}
+
+/* ---------- 02a recognition: photo reads 24+1, strokes + time read 2x+1 ---------- */
+function sceneRecog(){
+  const el=document.createElement('div');
+  const G=[{s:[0],t:'2',c:'#8A1C2B'},{s:[1,2],t:'x',c:'#2F4C66'},{s:[3,4],t:'+',c:'#7A5A1E'},{s:[5],t:'1',c:'#1F7A4D'}];
+  el.innerHTML=`<div class="rg">
+    <div class="rg-card rg-a"><div class="rg-h">사진 한 장</div><div class="ph"><canvas></canvas></div><div class="res"><small>사진으로 올렸을 때<br>읽은 결과</small><b>24 + 1</b></div></div>
+    <div class="rg-card rg-b"><div class="rg-h"><span class="wm">Provee<i>.</i></span><small>획과 시간으로 읽기</small></div><div class="pb"><canvas></canvas></div>
+      <div class="toks">${G.map(g=>`<span style="--c:${g.c}"><b>${g.t}</b><em class="tt" style="font-style:normal"></em></span>`).join('')}</div>
+      <div class="res"><small>Provee가 읽은 결과</small><b>2x + 1</b></div></div>
+  </div><p class="scap">대표가 뭉쳐 쓴 실제 필기(2026년 9월 12일). 같은 필기를 찍어 GPT-5.6 Sol에 올렸을 때 "24 + 1"로 읽은 한 번의 실측이며, 일반화하지 않습니다.</p>`;
+  const [cA,cB]=el.querySelectorAll('canvas'),toks=[...el.querySelectorAll('.toks span')],res=el.querySelector('.rg-b .res');let stopR=null;
+  return {el,stop(){stopR&&stopR()},async play(ok){
+    await ink2P;if(!INK2||!ok())return;const S=INK2.blob,E=endT(S),SL=1.35;
+    const fa=fitCanvas(cA);if(!fa)return;const ta=fitBox(S,fa.W,fa.H,.1,.12,.8,.76);drawInk(fa.ctx,S,1e9,ta,'#3A3634',Math.max(2,fa.W*.013));
+    const gEnd=G.map(g=>Math.max(...g.s.map(i=>{const p=S[i].p;return p[p.length-1][2]})));
+    toks.forEach((tk,i)=>tk.querySelector('.tt').textContent=(S[G[i].s[0]].p[0][2]/1000).toFixed(1)+'초');
+    const paint=(f,tr,t,lw)=>{f.ctx.clearRect(0,0,f.W,f.H);
+      G.forEach((g,gi)=>{const sub=g.s.map(i=>S[i]);drawInk(f.ctx,sub,t,tr,t>=gEnd[gi]?g.c:'#221C39',lw)})};
+    if(RM){const f=fitCanvas(cB);if(!f)return;const tr=fitBox(S,f.W,f.H,.12,.14,.76,.72);paint(f,tr,1e9,Math.max(2,f.W*.011));toks.forEach(t=>t.classList.add('on'));res.classList.add('on');return}
+    while(ok()){toks.forEach(t=>t.classList.remove('on'));res.classList.remove('on');
+      const f=fitCanvas(cB);if(!f)return;const tr=fitBox(S,f.W,f.H,.12,.14,.76,.72),lw=Math.max(2,f.W*.011);const t0=performance.now()+400;
+      stopR=loopRAF(now=>{const t=(now-t0)/SL;paint(f,tr,t,lw);gEnd.forEach((e,i)=>{if(t>=e)toks[i].classList.add('on')})});
+      await sleep(400+E*SL+500);stopR();if(!ok())return;res.classList.add('on');await sleep(3200)}
+  }};
+}
+
+/* ---------- 02b graph: GPT waits for an image, Provee draws vectors ---------- */
+function sceneGraph(){
+  const el=document.createElement('div');
+  el.innerHTML=`<div class="duo"><div class="gpt"><div class="gpt-h">ChatGPT<small>GPT-5.6 Sol</small></div><div class="gpt-u">그래프로 알려줘</div>
+   <div class="gpt-s"><i></i><span><b class="t">0초</b> 동안 작업 중</span></div><div class="gpt-m">그래프 이미지를 생성하는 중…</div><div class="gpt-img"></div><div class="gpt-c">이미지를 기다립니다</div></div>
+   <div class="pv"><div class="bar"><span class="wm">Provee<i>.</i></span><span>곡선 사이 넓이</span></div><svg viewBox="0 0 520 250" preserveAspectRatio="xMidYMid meet" role="img" aria-label="y=x³ 과 y=5x 로 둘러싸인 넓이 그래프"></svg>
+   <div class="pv-f"><span>1단계</span><span>2단계</span><span>3단계</span><span>4단계</span><span>최종</span></div></div></div><p class="scap">왼쪽 대기 시간은 2026년 9월 12일 대표 실측(GPT-5.6 Sol, 그래프가 나오기까지 1분 13초)을 빠르게 돌렸습니다.</p>`;
+  const svg=el.querySelector('svg'),cx=200,cy=125,sx=44,sy=7.6,X=x=>cx+x*sx,Y=y=>cy-y*sy,r5=Math.sqrt(5);let s='';
+  for(let i=-3;i<=3;i++){if(!i)continue;s+=`<text x="${X(i)}" y="${cy+17}" font-size="11" fill="#8A7F73" text-anchor="middle">${i}</text><line x1="${X(i)}" y1="${cy-3}" x2="${X(i)}" y2="${cy+3}" stroke="#1E1811"/>`}
+  for(let j=-10;j<=10;j+=5){if(!j)continue;s+=`<text x="${cx-8}" y="${Y(j)+4}" font-size="11" fill="#8A7F73" text-anchor="end">${j}</text>`}
+  s+=`<line x1="${X(-3.8)}" y1="${cy}" x2="${X(3.8)}" y2="${cy}" stroke="#1E1811" stroke-width="1.2"/><line x1="${cx}" y1="${Y(-15.5)}" x2="${cx}" y2="${Y(15.5)}" stroke="#1E1811" stroke-width="1.2"/>`;
+  const cube=[];for(let x=-2.45;x<=2.4501;x+=.05)cube.push(`${X(x).toFixed(1)},${Y(x**3).toFixed(1)}`);
+  const a=[];for(let i=0;i<=40;i++){const x=r5*i/40;a.push([X(x),Y(5*x)])}for(let i=40;i>=0;i--){const x=r5*i/40;a.push([X(x),Y(x**3)])}
+  const p1=a.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' '),p2=a.map(([u,v])=>`${(2*cx-u).toFixed(1)},${(2*cy-v).toFixed(1)}`).join(' ');
+  s+=`<g class="k4" opacity="0"><polygon points="${p1}" fill="#8A1C2B" fill-opacity=".26"/><polygon points="${p2}" fill="#8A1C2B" fill-opacity=".26"/></g>`;
+  s+=`<polyline class="k1" points="${cube.join(' ')}" fill="none" stroke="#8A1C2B" stroke-width="2.4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`;
+  s+=`<line class="k2" x1="${X(-2.95)}" y1="${Y(-14.75)}" x2="${X(2.95)}" y2="${Y(14.75)}" stroke="#8A1C2B" stroke-width="2.4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`;
+  s+=`<g class="k3" opacity="0">${[-r5,0,r5].map(x=>`<circle cx="${X(x)}" cy="${Y(x**3)}" r="4.5" fill="#FFFDF8" stroke="#8A1C2B" stroke-width="2"/>`).join('')}<rect x="${X(r5)+12}" y="${Y(5*r5)-2}" width="104" height="24" rx="12" fill="#F3E4E4"/><text x="${X(r5)+64}" y="${Y(5*r5)+14}" font-size="12" font-weight="700" fill="#8A1C2B" text-anchor="middle">교점 = 적분 한계</text></g>`;
+  s+=`<g class="k5" opacity="0"><rect x="286" y="176" width="226" height="58" rx="10" fill="#FFFDF8" stroke="#E6DCCB"/><text x="300" y="211" font-size="15" fill="#1E1811" font-style="italic">S = 2∫<tspan font-size="9" dy="5">0</tspan><tspan font-size="9" dx="-5" dy="-15">√5</tspan><tspan dx="3" dy="10">(5x − x³)dx = 25/2</tspan></text></g>`;
+  svg.innerHTML=s;
+  const q=c=>svg.querySelector(c),chips=[...el.querySelectorAll('.pv-f span')],T=el.querySelector('.t');let iv;
+  const reset=()=>{['.k1','.k2'].forEach(c=>{q(c).style.transition='none';q(c).style.strokeDashoffset=1});['.k3','.k4','.k5'].forEach(c=>q(c).setAttribute('opacity',0));chips.forEach(c=>c.classList.remove('on'));T.textContent='0초'};
+  const final=()=>{['.k1','.k2'].forEach(c=>q(c).style.strokeDashoffset=0);['.k3','.k4','.k5'].forEach(c=>q(c).setAttribute('opacity',1));chips[4].classList.add('on');T.textContent='1분 13초'};
+  return {el,stop(){clearInterval(iv)},async play(ok){
+    if(RM){final();return}
+    while(ok()){reset();await sleep(500);const t0=performance.now();
+      iv=setInterval(()=>{const t=Math.min(73,Math.floor((performance.now()-t0)/90));T.textContent=t<60?`${t}초`:`1분 ${t-60}초`},90);
+      const st=[()=>{q('.k1').style.transition='stroke-dashoffset 1s cubic-bezier(.2,0,0,1)';q('.k1').style.strokeDashoffset=0},()=>{q('.k2').style.transition='stroke-dashoffset .8s cubic-bezier(.2,0,0,1)';q('.k2').style.strokeDashoffset=0},()=>q('.k3').setAttribute('opacity',1),()=>q('.k4').setAttribute('opacity',1),()=>q('.k5').setAttribute('opacity',1)];
+      for(let i=0;i<5&&ok();i++){chips.forEach((c,j)=>c.classList.toggle('on',j===i));st[i]();await sleep(1300)}
+      await sleep(3200);clearInterval(iv);if(!ok())return;T.textContent='1분 13초';await sleep(1800)}}};
+}
+
+/* ---------- 03 ask: real 2024 수능 14번 ink (v3) ---------- */
+function sceneAsk(){
   const el=document.createElement('div');
   el.innerHTML=`<div class="dev"><div class="scr">
     <div class="bar"><span class="wm">Provee<i>.</i></span><span>2024 수능 14번</span><span class="dots"><i style="background:#221C39;box-shadow:0 0 0 .3cqw #fff,0 0 0 .55cqw #221C39"></i><i style="background:#C0392B"></i><i style="background:#FFD400"></i></span><span class="end">학습 종료</span></div>
@@ -398,11 +821,10 @@ function sceneAsk(onStep){
   const cam={x:(BX0+BX1)/2,y:(BY0+BY1)/2,z:1,tx:0,ty:0,tz:1,follow:false};
   const S={vt:0,gone:0};
   function size(){const r=nb.getBoundingClientRect();if(!r.width)return false;dpr=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);k=Math.min(W/(BX1-BX0),H/(BY1-BY0));ctx=cv.getContext('2d');return true}
-  function build(){ // remove long pauses (cap 180ms) but keep real pen speed inside each stroke
+  function build(){
     const st=INK.s,SPLIT=550000;let v=0,lastT=null;const vs=[];
     st.forEach((q,i)=>{const t0=q.p[0][2],t1=q.p[q.p.length-1][2];v+=lastT==null?0:Math.min(180,Math.max(0,t0-lastT));vs.push({i,v0:v,t0,dur:t1-t0});v+=t1-t0;lastT=t1});
     const cut=vs.findIndex(x=>x.t0>=SPLIT);
-    // smooth camera path: stroke centroids, eased with a two-way exponential filter so the view glides instead of jumping stroke to stroke
     const c=st.map(q=>{let x=0,y=0;q.p.forEach(p=>{x+=p[0];y+=p[1]});return [x/q.p.length,y/q.p.length]});
     const a=.06,f=c.map(p=>p.slice());for(let i=1;i<f.length;i++){f[i][0]=f[i-1][0]+a*(c[i][0]-f[i-1][0]);f[i][1]=f[i-1][1]+a*(c[i][1]-f[i-1][1])}
     for(let i=f.length-2;i>=0;i--){f[i][0]=f[i+1][0]+a*(f[i][0]-f[i+1][0]);f[i][1]=f[i+1][1]+a*(f[i][1]-f[i+1][1])}
@@ -433,54 +855,26 @@ function sceneAsk(onStep){
   const aim=(x,y,z,follow=false)=>{cam.tx=x;cam.ty=y;cam.tz=z;cam.follow=follow};
   return {el,stop(){live=false;cancelAnimationFrame(raf);if(anim){const r=anim.res;anim=null;r()}},async play(ok){
     await inkP;if(!INK||!ok()||!size())return;tl=tl||build();const {P1,END}=tl;
-    if(RM){S.vt=END;S.gone=16;cam.z=cam.tz=1;draw();onStep(3,true);return}
+    if(RM){S.vt=END;S.gone=16;cam.z=cam.tz=1;draw();return}
     live=true;last=0;raf=requestAnimationFrame(frame);
     while(ok()){
       ex.classList.remove('on');hl.classList.remove('on');pop.classList.remove('on');b1.classList.remove('tap');tab.style.opacity=1;
-      S.vt=0;S.gone=0;const p0=tl.path[0];cam.x=cam.tx=p0[0];cam.y=cam.ty=p0[1];cam.z=cam.tz=2;aim(p0[0],p0[1],2,true);onStep(0);
+      S.vt=0;S.gone=0;const p0=tl.path[0];cam.x=cam.tx=p0[0];cam.y=cam.ty=p0[1];cam.z=cam.tz=2;aim(p0[0],p0[1],2,true);
       await wait(350);if(!ok())return;
       await play(0,P1,11000);if(!ok())return;
-      onStep(1);aim(1180,790,1.85);await wait(900);pop.classList.add('on');await wait(1800);if(!ok())return;
+      aim(1180,790,1.85);await wait(900);pop.classList.add('on');await wait(1800);if(!ok())return;
       const br=b1.getBoundingClientRect(),sr=el.querySelector('.scr').getBoundingClientRect();dot.style.left=(br.left-sr.left+br.width/2-dot.offsetWidth/2)+'px';dot.style.top=(br.top-sr.top+br.height/2-dot.offsetHeight/2)+'px';
       dot.classList.remove('on');void dot.offsetWidth;dot.classList.add('on');b1.classList.add('tap');await wait(450);
-      onStep(2);pop.classList.remove('on');tab.style.opacity=0;ex.classList.add('on');await wait(650);hl.classList.add('on');await wait(2700);if(!ok())return;
-      onStep(3);ex.classList.remove('on');tab.style.opacity=1;await wait(500);
+      pop.classList.remove('on');tab.style.opacity=0;ex.classList.add('on');await wait(650);hl.classList.add('on');await wait(2700);if(!ok())return;
+      ex.classList.remove('on');tab.style.opacity=1;await wait(500);
       for(let g=1;g<=16&&ok();g++){S.gone=g;await wait(40)}
       aim(1180,790,1.85,true);await play(P1,END,7500);if(!ok())return;
-      aim((BX0+BX1)/2,(BY0+BY1)/2,1);await wait(3600);onStep(3,true)}
+      aim((BX0+BX1)/2,(BY0+BY1)/2,1);await wait(3600)}
   }};
 }
-function sceneGraph(onStep){
-  const el=document.createElement('div');
-  el.innerHTML=`<div class="duo"><div class="gpt"><div class="gpt-h">ChatGPT<small>GPT-5.6 Sol</small></div><div class="gpt-u">그래프로 알려줘</div>
-   <div class="gpt-s"><i></i><span><b class="t">0초</b> 동안 작업 중</span></div><div class="gpt-m">그래프 이미지를 생성하는 중…</div><div class="gpt-img"></div><div class="gpt-c">이미지를 기다립니다</div></div>
-   <div class="pv"><div class="bar"><span class="wm">Provee<i>.</i></span><span>곡선 사이 넓이</span></div><svg viewBox="0 0 440 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="y=x³ 과 y=5x 로 둘러싸인 넓이 그래프"></svg>
-   <div class="pv-f"><span>1단계</span><span>2단계</span><span>3단계</span><span>4단계</span><span>최종</span></div></div></div>`;
-  const svg=el.querySelector('svg'),cx=220,cy=150,sx=52,sy=9.2,X=x=>cx+x*sx,Y=y=>cy-y*sy,r5=Math.sqrt(5);let s='';
-  for(let i=-3;i<=3;i++){if(!i)continue;s+=`<text x="${X(i)}" y="${cy+17}" font-size="12" fill="#8A7F73" text-anchor="middle">${i}</text><line x1="${X(i)}" y1="${cy-3}" x2="${X(i)}" y2="${cy+3}" stroke="#1E1811"/>`}
-  for(let j=-10;j<=10;j+=5){if(!j)continue;s+=`<text x="${cx-8}" y="${Y(j)+4}" font-size="12" fill="#8A7F73" text-anchor="end">${j}</text>`}
-  s+=`<line x1="${X(-4)}" y1="${cy}" x2="${X(4)}" y2="${cy}" stroke="#1E1811" stroke-width="1.2"/><line x1="${cx}" y1="${Y(-15)}" x2="${cx}" y2="${Y(15)}" stroke="#1E1811" stroke-width="1.2"/>`;
-  const cube=[];for(let x=-2.5;x<=2.5001;x+=.05)cube.push(`${X(x).toFixed(1)},${Y(x**3).toFixed(1)}`);
-  const a=[];for(let i=0;i<=40;i++){const x=r5*i/40;a.push([X(x),Y(5*x)])}for(let i=40;i>=0;i--){const x=r5*i/40;a.push([X(x),Y(x**3)])}
-  const p1=a.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' '),p2=a.map(([u,v])=>`${(2*cx-u).toFixed(1)},${(2*cy-v).toFixed(1)}`).join(' ');
-  s+=`<g class="k4" opacity="0"><polygon points="${p1}" fill="#8A1C2B" fill-opacity=".26"/><polygon points="${p2}" fill="#8A1C2B" fill-opacity=".26"/></g>`;
-  s+=`<polyline class="k1" points="${cube.join(' ')}" fill="none" stroke="#8A1C2B" stroke-width="2.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`;
-  s+=`<line class="k2" x1="${X(-2.9)}" y1="${Y(-14.5)}" x2="${X(2.9)}" y2="${Y(14.5)}" stroke="#8A1C2B" stroke-width="2.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`;
-  s+=`<g class="k3" opacity="0">${[-r5,0,r5].map(x=>`<circle cx="${X(x)}" cy="${Y(x**3)}" r="4.5" fill="#FFFDF8" stroke="#8A1C2B" stroke-width="2"/>`).join('')}<rect x="${X(r5)-116}" y="${Y(5*r5)-12}" width="104" height="24" rx="12" fill="#F3E4E4"/><text x="${X(r5)-64}" y="${Y(5*r5)+4}" font-size="12" font-weight="700" fill="#8A1C2B" text-anchor="middle">교점 = 적분 한계</text></g>`;
-  s+=`<g class="k5" opacity="0"><rect x="200" y="252" width="232" height="46" rx="10" fill="#FFFDF8" stroke="#E6DCCB"/><text x="222" y="281" font-size="15" fill="#1E1811" font-style="italic">S = 2∫<tspan font-size="9" dy="5">0</tspan><tspan font-size="9" dx="-5" dy="-15">√5</tspan><tspan dx="3" dy="10">(5x − x³) dx = 25/2</tspan></text></g>`;
-  svg.innerHTML=s;
-  const q=c=>svg.querySelector(c),chips=[...el.querySelectorAll('.pv-f span')],T=el.querySelector('.t');let iv;
-  const reset=()=>{['.k1','.k2'].forEach(c=>{q(c).style.transition='none';q(c).style.strokeDashoffset=1});['.k3','.k4','.k5'].forEach(c=>q(c).setAttribute('opacity',0));chips.forEach(c=>c.classList.remove('on'));T.textContent='0초'};
-  const final=()=>{['.k1','.k2'].forEach(c=>q(c).style.strokeDashoffset=0);['.k3','.k4','.k5'].forEach(c=>q(c).setAttribute('opacity',1));chips[4].classList.add('on');T.textContent='1분 13초'};
-  return {el,stop(){clearInterval(iv)},async play(ok){
-    if(RM){final();onStep(3,true);return}
-    while(ok()){reset();await sleep(500);const t0=performance.now();
-      iv=setInterval(()=>{const t=Math.min(73,Math.floor((performance.now()-t0)/90));T.textContent=t<60?`${t}초`:`1분 ${t-60}초`},90);
-      const st=[()=>{q('.k1').style.transition='stroke-dashoffset 1s cubic-bezier(.2,0,0,1)';q('.k1').style.strokeDashoffset=0},()=>{q('.k2').style.transition='stroke-dashoffset .8s cubic-bezier(.2,0,0,1)';q('.k2').style.strokeDashoffset=0},()=>q('.k3').setAttribute('opacity',1),()=>q('.k4').setAttribute('opacity',1),()=>q('.k5').setAttribute('opacity',1)];
-      for(let i=0;i<5&&ok();i++){chips.forEach((c,j)=>c.classList.toggle('on',j===i));onStep([0,1,2,3,3][i]);st[i]();await sleep(1300)}
-      onStep(3,true);await sleep(3200);clearInterval(iv);if(!ok())return;T.textContent='1분 13초';await sleep(1800)}}};
-}
-function sceneNote(onStep){
+
+/* ---------- 04 note: list, tap, replay (v3) ---------- */
+function sceneNote(){
   const el=document.createElement('div');
   el.innerHTML=`<div class="notes"><div class="list"><h4>Provee Note <small>나의 풀이</small></h4><div class="tabs"><b>수학 II</b><span>미적분</span><span>수학(상)</span></div>
    <div class="unit">도함수의 활용</div>
@@ -495,42 +889,112 @@ function sceneNote(onStep){
   const N=el.querySelector('.notes'),R=el.querySelector('.rp'),L=[...el.querySelectorAll('.hw')],bar=el.querySelector('.track i'),tm=el.querySelector('.prog small'),dot=el.querySelector('.tapdot');let iv;
   const write=(e,ms)=>{e.style.setProperty('--d',ms+'ms');e.classList.add('go');requestAnimationFrame(()=>e.classList.add('on'));return sleep(ms)};
   return {el,stop(){clearInterval(iv)},async play(ok){
-    if(RM){onStep(2,true);N.classList.add('zoom');R.classList.add('on');L.forEach(e=>e.classList.add('on'));bar.style.width='100%';tm.textContent='0:36 / 0:36';return}
-    while(ok()){L.forEach(e=>e.classList.remove('go','on'));R.classList.remove('on');N.classList.remove('zoom');bar.style.transition='none';bar.style.width='0';tm.textContent='0:00 / 0:36';onStep(0);await sleep(1300);onStep(1);
-      dot.classList.remove('on');void dot.offsetWidth;dot.classList.add('on');await sleep(400);N.classList.add('zoom');R.classList.add('on');await sleep(650);onStep(2);
+    if(RM){N.classList.add('zoom');R.classList.add('on');L.forEach(e=>e.classList.add('on'));bar.style.width='100%';tm.textContent='0:36 / 0:36';return}
+    while(ok()){L.forEach(e=>e.classList.remove('go','on'));R.classList.remove('on');N.classList.remove('zoom');bar.style.transition='none';bar.style.width='0';tm.textContent='0:00 / 0:36';await sleep(1300);
+      dot.classList.remove('on');void dot.offsetWidth;dot.classList.add('on');await sleep(400);N.classList.add('zoom');R.classList.add('on');await sleep(650);
       bar.style.transition='width 6.4s linear';requestAnimationFrame(()=>bar.style.width='100%');const t0=performance.now();
       iv=setInterval(()=>{const s=Math.min(36,Math.round((performance.now()-t0)/6400*36));tm.textContent=`0:${String(s).padStart(2,'0')} / 0:36`},120);
       for(const [i,ms] of [[0,1800],[1,1500],[2,1400],[3,1400]]){if(!ok())break;await write(L[i],ms)}
-      await sleep(700);clearInterval(iv);if(!ok())return;tm.textContent='0:36 / 0:36';onStep(2,true);await sleep(2600)}}};
+      await sleep(700);clearInterval(iv);if(!ok())return;tm.textContent='0:36 / 0:36';await sleep(2600)}}};
 }
-const MAKE={ask:sceneAsk,graph:sceneGraph,note:sceneNote};
 
-/* ---------- one scene per feature row; left step list follows the motion ---------- */
-const scenes={},run={};
-$$('.frow').forEach(row=>{const k=row.dataset.k,lis=[...row.querySelectorAll('.steps li')];
-  const onStep=(n,all)=>lis.forEach((li,i)=>{li.classList.toggle('done',i<n||(all&&i<=n));li.classList.toggle('now',!all&&i===n)});
-  const sc=MAKE[k](onStep);row.querySelector('.f-vis').appendChild(sc.el);scenes[k]=sc;onStep(0)});
+/* ---------- 05 ground: two people write on one note at the same time ---------- */
+function sceneGround(){
+  const el=document.createElement('div');
+  el.innerHTML=`<div class="gd"><div class="gw">
+    <div class="gbar"><span class="wm">Provee<i>.</i></span><span class="gn">Ground</span><span class="gl"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 005.66 0l3-3a4 4 0 00-5.66-5.66l-1 1M14 10a4 4 0 00-5.66 0l-3 3a4 4 0 005.66 5.66l1-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>proveeground.kr 초대 링크</span><span class="gc"><i></i>2명 참여 중</span></div>
+    <div class="gbody">
+      <div class="grail"><div class="tile a"><b>민</b><span>민서</span></div><div class="tile b"><b>도</b><span>도윤</span></div><div class="tile empty"><span>링크로 초대</span></div></div>
+      <div class="gboard"><canvas></canvas><div class="gtools"><i style="background:#221C39"></i><i style="background:#2F4C66"></i><i style="background:#C0392B"></i></div><span class="cur" data-w="a" style="--c:#221C39"><b>민서</b></span><span class="cur" data-w="b" style="--c:#2F4C66"><b>도윤</b></span></div>
+    </div></div></div><p class="scap">두 사람의 필기는 대표가 직접 쓴 실제 획 기록 두 개를 동시에 재생해 만든 장면입니다. 이름은 예시입니다.</p>`;
+  const cv=el.querySelector('canvas'),ta=el.querySelector('.tile.a'),tb=el.querySelector('.tile.b'),ca=el.querySelector('.cur[data-w=a]'),cb=el.querySelector('.cur[data-w=b]');let stopR=null;
+  return {el,stop(){stopR&&stopR()},async play(ok){
+    await ink2P;if(!INK2||!ok())return;const A=INK2.cover,B=INK2.fact,EA=endT(A),B0=B[0].p[0][2],EB=endT(B)-B0,DB=1700,SB=1.45;
+    const setup=()=>{const f=fitCanvas(cv);if(!f)return null;return {f,trA:fitBox(A,f.W,f.H,.06,.16,.54,.26),trB:fitBox(B,f.W,f.H,.4,.5,.54,.42),lw:Math.max(2,f.W*.0058)}};
+    const frame=(s,tA,tB)=>{const {f,trA,trB,lw}=s;f.ctx.clearRect(0,0,f.W,f.H);
+      const pa=drawInk(f.ctx,A,tA,trA,'#221C39',lw),pb=drawInk(f.ctx,B,tB,trB,'#2F4C66',lw);
+      const act=(p,t,E,cur,tile)=>{const on=p&&t>=0&&t<=E+250;cur.classList.toggle('on',!!on);tile.classList.toggle('talk',!!on);if(p){const fl=p[0]>f.W*.76;cur.classList.toggle('flip',fl);const cw=cur.offsetWidth;cur.style.transform=`translate(${fl?p[0]-cw+4:p[0]-4}px,${p[1]-4}px)`}};
+      act(pa,tA,EA,ca,ta);act(pb,tB-B0,EB,cb,tb)};
+    if(RM){const s=setup();s&&frame(s,1e9,1e12);return}
+    while(ok()){const s=setup();if(!s)return;const t0=performance.now()+400;
+      stopR=loopRAF(now=>{const e=now-t0;frame(s,e,B0+(e-DB)*SB)});
+      await sleep(400+Math.max(EA,DB+EB/SB)+2600);stopR();if(!ok())return;[ca,cb].forEach(c=>c.classList.remove('on'));[ta,tb].forEach(t=>t.classList.remove('talk'));
+      s.f.ctx.clearRect(0,0,s.f.W,s.f.H);await sleep(500)}
+  }};
+}
+const MAKE={input:sceneInput,recog:sceneRecog,graph:sceneGraph,ask:sceneAsk,note:sceneNote,ground:sceneGround};
+
+/* ---------- mount scenes; play only while visible ---------- */
+const scenes={},run={},vis={};
+$$('[data-scene]').forEach(h=>{const k=h.dataset.scene,sc=MAKE[k]();h.appendChild(sc.el);scenes[k]=sc});
 const start=k=>{const tok=(run[k]=(run[k]||0)+1);scenes[k].play(()=>run[k]===tok)};
 const stop=k=>{run[k]=(run[k]||0)+1;scenes[k].stop()};
-const rio=new IntersectionObserver(es=>es.forEach(e=>{const row=e.target,k=row.dataset.k;
-  if(e.isIntersecting){row.classList.add('in');start(k);$$('[data-nav]').forEach(a=>a.setAttribute('aria-current',a.dataset.nav===k))}else stop(k)}),{threshold:.35});
+/* 02: segmented tabs switch between recognition and graph, auto-advance until the user picks one */
+const readRow=$('#f-read'),segBtns=[...readRow.querySelectorAll('.seg button')],panes=[...readRow.querySelectorAll('.pane')];let pane='recog',pinned=false,autoT=0;
+function showPane(p){pane=p;segBtns.forEach(b=>b.setAttribute('aria-selected',b.dataset.pane===p));panes.forEach(x=>x.hidden=x.dataset.pane!==p);['recog','graph'].forEach(k=>k===p?(vis.read&&start(k)):stop(k));clearTimeout(autoT);if(!pinned&&vis.read)autoT=setTimeout(()=>showPane(p==='recog'?'graph':'recog'),p==='recog'?9000:11500)}
+segBtns.forEach(b=>b.onclick=()=>{pinned=true;showPane(b.dataset.pane)});
+const tabsA=$$('.ftabs a');
+const rio=new IntersectionObserver(es=>es.forEach(e=>{const row=e.target,f=row.dataset.f;vis[f]=e.isIntersecting;
+  if(e.isIntersecting){row.classList.add('in');if(f==='read')showPane(pane);else start(f)}
+  else{if(f==='read'){clearTimeout(autoT);stop('recog');stop('graph')}else stop(f)}}),{threshold:.3});
 $$('.frow').forEach(r=>rio.observe(r));
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const f=e.target.dataset.f;tabsA.forEach(a=>{const on=a.dataset.f===f;a.setAttribute('aria-current',on);if(on){const box=a.parentElement;box.scrollTo({left:a.offsetLeft-box.clientWidth/2+a.offsetWidth/2,behavior:'smooth'})}})}}),{rootMargin:'-45% 0px -50% 0px'});
+$$('.frow').forEach(r=>cio.observe(r));
 
+/* ---------- pricing ---------- */
+const CK='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#8A1C2B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const PLANS={
+  univ:[
+    {n:'Free',lv:'무료',w:'0원',m:'0원',unit:'',alt:'1과목은 계속 무료',f:['1과목','문제풀이와 힌트','Provee Ground']},
+    {n:'Americano',lv:'Basic',w:'4,700원',m:'15,900원',tip:'카페 음료 한 잔 값을 기준으로 이름을 붙였습니다.',f:['2과목','문제풀이 무제한','힌트 중심 AI 개입']},
+    {n:'Matcha',lv:'Pro',main:1,w:'6,500원',m:'19,900원',f:['3과목','중간·기말 모의시험','실수 패턴 기억','과목 간 기억 공유']},
+    {n:'Sandwich',lv:'Max',w:'8,300원',m:'28,900원',f:['과목 무제한','실시간 AI 개입','학기 간 기억 공유']}],
+  hs:[
+    {n:'Free',lv:'무료',m:'0원',alt:'하루 5문제',f:['하루 5문제','문제풀이와 힌트']},
+    {n:'Basic',lv:'과외 한 시간',m:'25,000원',f:['문제풀이 무제한','단원평가']},
+    {n:'Pro',lv:'선생님과 반나절',main:1,m:'39,000원',f:['수능형 모의시험','실수 패턴 기반 개입']},
+    {n:'Max',lv:'선생님과 하루 종일',m:'53,000원',f:['실전 수능 환경 시험','실시간 개입','개인별 학습 로드맵']}]};
+let aud='univ',cyc='w';
+function renderPlans(){const box=$('#plans'),L=PLANS[aud];$('#cycle').hidden=aud!=='univ';
+  box.innerHTML=L.map(p=>{const price=aud==='univ'?(cyc==='w'?p.w:p.m):p.m,unit=price==='0원'?'':(aud==='univ'&&cyc==='w'?'/ 주':'/ 월');
+    const alt=p.alt||(aud==='univ'?(cyc==='w'?`월 결제 시 ${p.m}`:`주 결제 시 ${p.w}`):'보호자 결제');
+    return `<article class="plan${p.main?' main':''}">${p.main?'<span class="badge">주력</span>':''}<h3>${p.n}${p.tip?`<span class="tip" tabindex="0" data-tip="${p.tip}">i</span>`:''}</h3><span class="lv">${p.lv}</span><div class="price"><b>${price}</b><span>${unit}</span></div><span class="alt">${alt}</span><ul>${p.f.map(x=>`<li>${CK}${x}</li>`).join('')}</ul></article>`}).join('');
+  $('#prNote').textContent=aud==='univ'?'출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 24% 쌉니다.':'출시 전 계획 가격이며 바뀔 수 있습니다. 중고등 버전은 2027년에 엽니다.'}
+$$('[data-aud]').forEach(b=>b.onclick=()=>{aud=b.dataset.aud;$$('[data-aud]').forEach(x=>x.setAttribute('aria-selected',x===b));renderPlans()});
+$$('[data-cyc]').forEach(b=>b.onclick=()=>{cyc=b.dataset.cyc;$$('[data-cyc]').forEach(x=>x.setAttribute('aria-selected',x===b));renderPlans()});
+renderPlans();
 
-/* story: statements swap with scroll progress inside the pinned block */
+/* ---------- roadmap carousel ---------- */
+const trk=$('#rmTrack'),pv=$('#rmPrev'),nx=$('#rmNext');
+const rmUpd=()=>{pv.disabled=trk.scrollLeft<4;nx.disabled=trk.scrollLeft+trk.clientWidth>=trk.scrollWidth-4};
+const step=()=>trk.querySelector('.rm').offsetWidth+16;
+pv.onclick=()=>trk.scrollBy({left:-step(),behavior:'smooth'});nx.onclick=()=>trk.scrollBy({left:step(),behavior:'smooth'});
+trk.addEventListener('scroll',rmUpd,{passive:true});addEventListener('resize',rmUpd);rmUpd();
+
+/* ---------- tooltips on touch ---------- */
+document.addEventListener('click',e=>{const t=e.target.closest('.tip');$$('.tip.on').forEach(x=>{if(x!==t)x.classList.remove('on')});if(t)t.classList.toggle('on')});
+
+/* ---------- story: statements swap with scroll ---------- */
 const stS=$('#stScroll'),lines=[...stS.querySelectorAll('.st-line')];let stRaf=0,stOn=false;
 function stTick(){if(!stOn)return;const r=stS.getBoundingClientRect(),prog=Math.min(.999,Math.max(0,-r.top/(r.height-innerHeight)));const i=Math.floor(prog*lines.length);
   lines.forEach((l,j)=>l.classList.toggle('on',j===i));stRaf=requestAnimationFrame(stTick)}
 new IntersectionObserver(([e])=>{stOn=e.isIntersecting;if(stOn){cancelAnimationFrame(stRaf);stTick()}}).observe(stS);
 if(RM)lines.forEach(l=>l.classList.add('on'));
 
-/* header + drawer */
-const hdr=$('#hdr');new IntersectionObserver(([e])=>hdr.classList.toggle('solid',!e.isIntersecting),{rootMargin:'-80px 0px 0px 0px'}).observe($('.hero'));
+/* ---------- header, mega menu, drawer, gnb current ---------- */
+const hdr=$('#hdr');new IntersectionObserver(([e])=>{hdr.classList.toggle('solid',!e.isIntersecting);if(e.isIntersecting)$$('[data-nav]').forEach(a=>a.removeAttribute('aria-current'))},{rootMargin:'-80px 0px 0px 0px'}).observe($('.hero'));
+const mb=$('#megaBtn'),mg=$('#mega');let mT=0;
+const mset=o=>{mg.classList.toggle('on',o);mb.setAttribute('aria-expanded',o)};
+mb.onclick=e=>{e.stopPropagation();mset(!mg.classList.contains('on'))};
+const li=mb.parentElement;li.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches){clearTimeout(mT);mset(true)}});li.addEventListener('mouseleave',()=>{mT=setTimeout(()=>mset(false),160)});
+mg.addEventListener('click',e=>{if(e.target.closest('a'))mset(false)});
+document.addEventListener('click',e=>{if(!e.target.closest('.gnb'))mset(false)});
 const dr=$('#drawer'),bg=$('#burger');const dset=o=>{dr.classList.toggle('on',o);dr.setAttribute('aria-hidden',!o);bg.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
 bg.onclick=()=>dset(true);$('#close').onclick=()=>dset(false);dr.addEventListener('click',e=>{if(e.target.closest('a'))dset(false)});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')dset(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){dset(false);mset(false)}});
+const nav=$$('[data-nav]');const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nav.forEach(a=>a.setAttribute('aria-current',a.dataset.nav===e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+['compare','pricing','story','faq'].forEach(id=>sio.observe(document.getElementById(id)));
 })();
 </script>
-
 </body>
 </html>
