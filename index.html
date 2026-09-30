@@ -612,7 +612,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .hero.zoom.dz{height:480vh}
 .dz .z-scr{display:flex;align-items:center}
 .dz-in{padding-top:var(--hdr);opacity:0;transform:translateY(24px);will-change:opacity,transform}
-.dz .z-scr{will-change:opacity,clip-path}
+.dz .z-scr{will-change:opacity,clip-path;pointer-events:none} /* 보이지 않는 태블릿 화면이 첫 화면 버튼 클릭을 가로채지 않게 */
 .dz .z-vid{backface-visibility:hidden}
 /* 영상·태블릿 구간에서는 메뉴줄 흐림을 끈다(재생 중인 영상 위 흐림은 매 프레임 비싸서 멈칫함). 배경은 거의 불투명이라 겉보기는 같다 */
 .hdr.solid.noblur{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(247,243,236,.985)}
