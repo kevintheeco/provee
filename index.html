@@ -619,43 +619,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 /* 끊김 방지: 장면·셔터·종이를 각자 합성 층으로 미리 올려 두어, 처음 보일 때 새로 그리지 않게 */
 .dz .sc{will-change:opacity}
 .dz .sc:not(.on){opacity:.004} /* 눈에 안 보일 만큼만 남겨 미리 그려 둔다 */
-.dz .shot,.dz .tp-phone,.dz .tp-pen,.dz .s3-l{will-change:transform}
+.dz .shot,.dz .s3-l{will-change:transform}
 .dz .flash{will-change:opacity}
 .dz .cam i,.dz .cam-read,.dz .b3pop,.dz .rd-r{will-change:transform,opacity}
 .dz .s3-dev{contain:layout paint}
 .s3.fin .s3-src,.dz.fin .s3-src{opacity:0}
 .s3-l .rd{margin-top:22px;width:min(460px,100%)}
 .s3-l .rd-r{padding:11px 16px}.s3-l .rd-r b{font-size:22px}.s3-l .rd-r small{font-size:13px}
-/* 왕복 장면 */
-.sct{background:#E7DFD2}
-.trip{position:absolute;inset:0}
-.tp-top{position:absolute;right:3cqw;top:2.6cqw;display:flex;gap:2cqw;font-size:1.9cqw;color:#5A5046}
-.tp-top b{font:700 2.6cqw/1 var(--brand);color:var(--wine)}
-.tp-note{position:absolute;left:5cqw;top:8cqw;width:52cqw;height:40cqw;border-radius:1.4cqw;background:#FBF8F1 repeating-linear-gradient(180deg,transparent 0 5cqw,rgba(47,76,102,.12) 5cqw calc(5cqw + 1px));box-shadow:0 1.4cqw 3cqw -1cqw rgba(60,30,20,.3);transform:rotate(-1.5deg)}
-.tp-note canvas{width:100%;height:100%;display:block}
-.tp-phone{position:absolute;right:9cqw;top:6cqw;width:21cqw;height:43cqw;border-radius:3.2cqw;background:#1E1811;padding:1cqw;box-shadow:0 1.6cqw 3.4cqw -1cqw rgba(30,24,17,.45);transform:rotate(4deg);transition:transform .3s var(--ease)}
-.trip.away .tp-phone{transform:rotate(0) translateY(-1cqw) scale(1.04)}
-.tp-scr{position:relative;width:100%;height:100%;border-radius:2.4cqw;overflow:hidden;background:#fff}
-.st{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6cqw;opacity:0;transition:opacity .25s}
-.st.on{opacity:1}
-.st small{font-size:1.5cqw;color:#666}
-.st-cam{background:#111}.st-cam i{width:60%;height:40%;border:.35cqw solid rgba(255,255,255,.85);border-radius:1cqw}
-.spin{width:4cqw;height:4cqw;border-radius:50%;border:.5cqw solid #E5E2DC;border-top-color:#888;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.dots3{display:flex;gap:.8cqw}.dots3 i{width:1.2cqw;height:1.2cqw;border-radius:50%;background:#999;animation:dot3 1s infinite}
-.dots3 i:nth-child(2){animation-delay:.15s}.dots3 i:nth-child(3){animation-delay:.3s}
-@keyframes dot3{0%,100%{opacity:.25}50%{opacity:1}}
-.st-ans{justify-content:flex-start;align-items:stretch;padding:3cqw 2cqw;gap:1.1cqw}
-.st-ans i{height:1.1cqw;border-radius:1cqw;background:#E4E1DC}.st-ans i:nth-child(2n){width:72%}
-.tp-pen{position:absolute;left:0;top:0;width:3.4cqw;height:3.4cqw;margin:-1.7cqw 0 0 -1.7cqw;border-radius:50%;background:rgba(138,28,43,.18);box-shadow:0 0 0 .5cqw rgba(138,28,43,.35);transition:left .35s var(--ease),top .35s var(--ease)}
-.tp-bar{position:absolute;left:5cqw;right:5cqw;bottom:3.4cqw}
-.tp-track{display:flex;height:2.2cqw;border-radius:2cqw;overflow:hidden;background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1px rgba(30,24,17,.08)}
-.tp-track i{flex:none;height:100%}
-.tp-track i.w{background:#221C39}.tp-track i.a{background:var(--wine);opacity:.85}
-.tp-leg{display:flex;gap:3cqw;margin-top:1.2cqw;font-size:1.6cqw;color:#5A5046}
-.tp-leg span{display:flex;align-items:center;gap:.8cqw}
-.tp-leg span::before{content:"";width:1.6cqw;height:1.6cqw;border-radius:.4cqw;background:#221C39}
-.tp-leg .a::before{background:var(--wine);opacity:.85}
+/* 첫 장면: 찍고, 타이핑하고, 기다리는 실사 영상 */
+.sct{background:#EDE6DA}
+.s0v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .25s var(--ease)}
+.s0v.out{opacity:0}
+.kw{transition:opacity .25s var(--ease)}
+.kw.dim{opacity:.28}
 .s3-st b{min-width:2.6em}
 @media (max-width:860px){
   .dz-in{align-content:start;padding-top:calc(var(--hdr) + 12px)}
@@ -728,23 +704,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="z-scr"><div class="wrap s3-in dz-in">
       <div class="s3-copy">
         <p class="s3-k">손으로 푸는 과목을 AI로 공부하면</p>
-        <div class="s3-lines"><div class="s3-l on"><h2>노트에 쓰다 막히면<br>폰을 들고, 찍고, 기다립니다</h2><p class="s3-st"><b>86%</b><span>문제를 매번 찍어 올리는 게 번거로웠다</span></p></div><div class="s3-l"><h2>사진으로 올리면<br>식이 다르게 읽히기도 합니다</h2><p class="s3-st"><b>24+1</b><span>뭉쳐 쓴 2x + 1을 사진으로 GPT에 올렸을 때 읽은 식</span></p></div><div class="s3-l"><h2>생각하기도 전에<br>풀이 전체가 도착합니다</h2><p class="s3-st"><b>79%</b><span>생각할 틈 없이 전체 풀이부터 받았다</span></p></div><div class="s3-l"><h2>새 채팅을 열면<br>처음부터 다시 설명합니다</h2><p class="s3-st"><b>88%</b><span>새 채팅마다 내 수준을 다시 설명해야 했다</span></p></div><div class="s3-l fin"><h2>풀이는 학생이 쓰고,<br>Provee는 옆에서 읽습니다</h2><p class="s3-p">펜으로 쓰는 식을 따라 읽다가, 막힌 곳에서만 먼저 말을 겁니다.</p><div class="rd"><div class="rd-r bad"><small>같은 필기를 사진으로<br>GPT에 올렸을 때</small><b>24 + 1</b></div><div class="rd-r good"><small>Provee가 쓴 순서대로<br>읽은 결과</small><b>2x + 1</b></div></div></div></div>
+        <div class="s3-lines"><div class="s3-l on"><h2><span class="kw">사진 찍고,</span> <span class="kw">타이핑하고,</span> <span class="kw">기다리고.</span><br>수학은 언제 푸나요?</h2><p class="s3-st"><b>86%</b><span>문제를 매번 찍어 올리는 게 번거로웠다</span></p></div><div class="s3-l"><h2>사진으로 올리면<br>식이 다르게 읽히기도 합니다</h2><p class="s3-st"><b>24+1</b><span>뭉쳐 쓴 2x + 1을 사진으로 GPT에 올렸을 때 읽은 식</span></p></div><div class="s3-l"><h2>생각하기도 전에<br>풀이 전체가 도착합니다</h2><p class="s3-st"><b>79%</b><span>생각할 틈 없이 전체 풀이부터 받았다</span></p></div><div class="s3-l"><h2>새 채팅을 열면<br>처음부터 다시 설명합니다</h2><p class="s3-st"><b>88%</b><span>새 채팅마다 내 수준을 다시 설명해야 했다</span></p></div><div class="s3-l fin"><h2>풀이는 학생이 쓰고,<br>Provee는 옆에서 읽습니다</h2><p class="s3-p">펜으로 쓰는 식을 따라 읽다가, 막힌 곳에서만 먼저 말을 겁니다.</p><div class="rd"><div class="rd-r bad"><small>같은 필기를 사진으로<br>GPT에 올렸을 때</small><b>24 + 1</b></div><div class="rd-r good"><small>Provee가 쓴 순서대로<br>읽은 결과</small><b>2x + 1</b></div></div></div></div>
         <p class="s3-src">%: 생성형 AI를 써 본 대학생 43명 설문(URP, 2026년 7월)<br>24+1: 대표의 실제 필기 사진을 GPT-5.6 Sol에 올린 1회 실측</p>
         <div class="s3-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
       </div>
       <div class="s3-stage" aria-hidden="true"><div class="s3-dev">
-      <div class="sc sct on"><div class="trip">
-        <div class="tp-top"><span>오간 횟수 <b class="tp-n">0</b>회</span></div>
-        <div class="tp-note"><canvas></canvas></div>
-        <div class="tp-phone"><div class="tp-scr">
-          <div class="st st-cam"><i></i></div>
-          <div class="st st-up"><span class="spin"></span><small>사진 올리는 중</small></div>
-          <div class="st st-wait"><span class="dots3"><i></i><i></i><i></i></span><small>답을 만드는 중</small></div>
-          <div class="st st-ans"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div></div>
-        <div class="tp-pen"></div>
-        <div class="tp-bar"><div class="tp-track"></div><div class="tp-leg"><span class="w">푸는 시간</span><span class="a">폰으로 오가는 시간</span></div></div>
-      </div></div>
+      <div class="sc sct on"><video class="s0v" muted playsinline preload="auto" poster="img/s0-study.jpg"><source src="img/s0-study.mp4" type="video/mp4"></video></div>
       <div class="sc sc0"><div class="cam"><div class="shot"><canvas></canvas></div><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i><div class="flash"></div><div class="cam-read">사진으로 읽은 식 <b>24 + 1</b></div></div><div class="shut"><span></span></div></div>
       <div class="sc sc1"><div class="cht"><div class="ct-top"><b>AI 채팅</b></div><div class="ct-body"><div class="b3me"><div class="thumb"><canvas></canvas></div></div><div class="ai"><div class="b3av"></div><div class="lines"><p class="first">사진 속 식은 <b>24 + 1</b> 입니다. 차례대로 풀어 보면</p></div></div></div></div></div>
       <div class="sc sc2"><div class="nc"><aside><div class="b3nb">+ 새 채팅</div><ul></ul></aside><div class="nc-main"><div class="nc-empty">무엇을 도와드릴까요?</div><div class="nc-in"><span class="typ"></span><i class="caret"></i></div></div></div></div>
@@ -1315,29 +1280,14 @@ let M=null;const measure=()=>{const W=innerWidth,H=Z.querySelector('.z-pin').off
   const [cx,cy]=P(small?[.66,.82]:O);vid.style.transformOrigin=`${cx}px ${cy}px`;
   M={W,H,small,P,cx,cy,Qp:Q.map(P),R:[[0,0],[W,0],[W,H*.45],[W,H],[0,H]]}};
 const inkP=DR.ink;
-// 왕복 장면: 쓰다가 폰으로 가서 찍고 올리고 기다리고, 다시 노트로. 막대에 푸는 시간과 오가는 시간이 쌓인다
-const trip=async ok=>{const sc=SC[0],tr=sc.querySelector('.trip'),cv=sc.querySelector('canvas'),pen=sc.querySelector('.tp-pen'),n=sc.querySelector('.tp-n'),track=sc.querySelector('.tp-track'),st=[...sc.querySelectorAll('.st')];
-  track.innerHTML='';n.textContent='0';tr.classList.remove('away');st.forEach(x=>x.classList.remove('on'));
-  const ink=await inkP;if(!ok()||!ink)return;const S=ink.cover,f=DR.fit(cv);if(!f)return;const box=DR.box(S,f.W,f.H,.08,.3,.84,.34),lw=Math.max(1.6,f.W*.007);
-  const TOTAL=16600;let used=0,drawn=0;
-  const spot=el=>{const a=el.getBoundingClientRect(),b=tr.getBoundingClientRect();return [a.left-b.left+a.width*.5,a.top-b.top+a.height*.5]};
-  const at=([x,y])=>{pen.style.left=x+'px';pen.style.top=y+'px'};
-  const grow=async(kind,ms,during)=>{const i=document.createElement('i');i.className=kind;track.appendChild(i);const t0=performance.now();
-    await new Promise(res=>{const tick=now=>{if(!ok())return res();const d=Math.min(ms,now-t0);i.style.width=((used+d)/TOTAL*100-used/TOTAL*100)+'%';during&&during(d/ms);if(d<ms)requestAnimationFrame(tick);else res()};requestAnimationFrame(tick)});used+=ms};
-  const noteSpot=()=>{const c=cv.getBoundingClientRect(),b=tr.getBoundingClientRect();const k=Math.min(S.length,drawn+1),q=S[k-1].p,pt=q[q.length-1];return [c.left-b.left+box.ox+(pt[0]-box.x0)*box.k,c.top-b.top+box.oy+(pt[1]-box.y0)*box.k]};
-  at(noteSpot());
-  for(let k=0;ok()&&used<TOTAL-2600;k++){
-    // 쓰기: 획 두세 개
-    const from=drawn,to=Math.min(S.length,drawn+(k%2?2:3));const tA=from?S[from].p[0][2]:0,tB=S[to-1].p[S[to-1].p.length-1][2];
-    await grow('w',900,q=>{const t=tA+(tB-tA)*q;f.ctx.clearRect(0,0,f.W,f.H);const tp=DR.draw(f.ctx,S,t,box,'#221C39',lw);if(tp){const c=cv.getBoundingClientRect(),b=tr.getBoundingClientRect();at([c.left-b.left+tp[0],c.top-b.top+tp[1]])}});drawn=to;if(!ok())return;
-    // 폰으로
-    tr.classList.add('away');at(spot(sc.querySelector('.tp-phone')));
-    const show=i=>st.forEach((x,j)=>x.classList.toggle('on',j===i));
-    await grow('a',2300,q=>show(q<.18?0:q<.45?1:q<.8?2:3));if(!ok())return;
-    n.textContent=String(k+1);show(-1);tr.classList.remove('away');at(noteSpot());await DR.sleep(0);
-    if(drawn>=S.length)drawn=0;
-  }};
-const play=[trip,
+// 첫 장면: 실사 영상. 동작이 나오는 순간 제목 단어가 하나씩 켜진다(찍고 → 타이핑하고 → 기다리고)
+const CUT=[.2,2.8,5]; // 영상 속 각 동작이 시작되는 초(사진 0.2 · 타이핑 2.8 · 폰 보며 기다림 5.0)
+const s0=async ok=>{const v=SC[0].querySelector('video'),K=[...L[0].querySelectorAll('.kw')];
+  const mark=()=>{const t=v.currentTime;K.forEach((e,j)=>e.classList.toggle('dim',t<CUT[j]))};
+  const again=()=>{v.classList.add('out');setTimeout(()=>{if(!ok())return;v.currentTime=0;v.play().catch(()=>{});v.classList.remove('out')},260)};
+  v.addEventListener('ended',again);v.classList.remove('out');v.currentTime=0;v.play().catch(()=>{});
+  await new Promise(res=>{const tick=()=>{if(!ok()){v.removeEventListener('ended',again);v.pause();v.classList.remove('out');K.forEach(e=>e.classList.remove('dim'));return res()}mark();requestAnimationFrame(tick)};requestAnimationFrame(tick)})};
+const play=[s0,
   async ok=>{const sc=SC[1];sc.classList.remove('aim','snap','read');const ink=await inkP;if(!ok())return;
     const f=DR.fit(sc.querySelector('canvas'));if(f&&ink){const S=ink.blob;f.ctx.clearRect(0,0,f.W,f.H);DR.draw(f.ctx,S,1e9,DR.box(S,f.W,f.H,.22,.12,.56,.56),'#2A2A33',Math.max(2,f.W*.012))}
     await DR.sleep(120);if(!ok())return;sc.classList.add('aim');await DR.sleep(420);if(!ok())return;sc.classList.add('snap');await DR.sleep(380);if(!ok())return;sc.classList.remove('snap');await DR.sleep(150);if(ok())sc.classList.add('read')},
