@@ -374,7 +374,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .story{margin-top:0}
 .st-in{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
 .st-hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;background:linear-gradient(180deg,rgba(26,21,18,.15),rgba(26,21,18,.75)),url(img/hero-pen.jpg) 60% 40%/cover;color:#fff;padding-block:0 72px}
-.st-k{margin:0 0 12px;font-size:13px;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.75)}
+.st-k{margin:0 0 12px;font-size:14px;font-weight:700;letter-spacing:.06em;color:rgba(255,255,255,.8)}
+.st-hero>.st-in{width:100%}
 .st-hero h2{margin:0;font-family:var(--brand);font-weight:700;font-size:clamp(44px,7vw,96px);line-height:1;letter-spacing:-.04em}
 .st-hero h2 i{font-style:normal;color:#E0566A}
 .st-scroll{position:relative;height:240vh;background:#1A1512}
@@ -387,34 +388,106 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .mv{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:clamp(64px,8vw,120px);max-width:760px}
 .mv div{display:grid;gap:8px;padding-top:16px;border-top:1px solid rgba(255,255,255,.4)}
 .mv b{font-size:17px}.mv span{color:rgba(255,255,255,.82);font-size:16px;line-height:1.6}
-.st-origin{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(96px,11vw,150px)}
+.st-origin{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,96px);align-items:center;padding-block:clamp(96px,11vw,150px)}
 .og-copy h3{margin:0 0 20px;font-size:clamp(28px,3.2vw,40px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
 .og-copy p{margin:0 0 14px;font-size:17px;line-height:1.8;color:var(--ink2);max-width:32em}
-.og-card{background:var(--paper);border-radius:24px;box-shadow:0 30px 60px -30px rgba(60,30,20,.3),inset 0 0 0 1px var(--line);padding:28px;display:grid;gap:14px}
-.gr{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
-.gr span{font-size:16px;color:var(--ink2)}.gr b{font-size:34px;font-weight:800;color:var(--wine);font-variant-numeric:tabular-nums}.gr s{font-size:22px;color:var(--ink3);font-weight:600;margin-right:10px}
-.og-card small{font-size:13px;color:var(--ink3);line-height:1.6}
-.st-time{padding-block:0 clamp(80px,9vw,120px)}
-.st-time h3,.team h3{margin:0 0 36px;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em;text-align:center}
-.tl{list-style:none;margin:0 auto;padding:0;max-width:760px;position:relative}
-.tl::before{content:"";position:absolute;left:92px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl li{position:relative;display:grid;grid-template-columns:80px 1fr;column-gap:40px;row-gap:2px;padding-block:14px}
-.tl li::before{content:"";position:absolute;left:86px;top:21px;width:14px;height:14px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 4px var(--ivory)}
-.tl time{grid-row:span 2;font-size:15px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;padding-top:1px;white-space:nowrap}
-.tl b{font-size:17px;line-height:1.5}.tl span{font-size:15px;color:var(--ink3);line-height:1.5}
-.team{padding-block:0 clamp(96px,11vw,150px)}
-.tm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.tm{display:grid;grid-template-columns:52px 1fr;column-gap:14px;row-gap:4px;align-items:start;background:var(--paper);border-radius:20px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}
+.og-copy .og-line{margin-top:28px;padding-left:16px;border-left:3px solid var(--wine);font-size:19px;line-height:1.6;font-weight:700;color:var(--ink)}
+.og-ph{margin:0;justify-self:end;width:min(100%,420px)}
+.og-ph img{display:block;width:100%;height:auto;aspect-ratio:813/1082;object-fit:cover;border-radius:24px;background:#1A1512;box-shadow:0 40px 80px -40px rgba(30,24,17,.55);clip-path:inset(14% 0 0 0 round 24px);opacity:0;transform:translateY(24px);transition:clip-path .45s var(--ease),opacity .3s var(--ease),transform .45s var(--ease)}
+.og-ph.on img{clip-path:inset(0 0 0 0 round 24px);opacity:1;transform:none}
+.og-ph figcaption{margin-top:12px;font-size:12px;line-height:1.5;color:var(--ink3)}
+/* 지나온 길: 기본(좁은 화면)은 세로로 이어지고, 넓은 화면은 스크롤하면 오른쪽으로 이어진다 */
+.st-time{position:relative;--cw:clamp(272px,min(55vw,46vh),420px);--gap:clamp(28px,3vw,48px);padding-block:0 clamp(80px,9vw,120px)}
+.tx-head h3{margin:0;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em}
+.tx-head p{margin:10px 0 0;font-size:17px;line-height:1.6;color:var(--ink2)}
+.tx-view{position:relative;margin-top:clamp(28px,3.4vw,44px)}
+.tx{list-style:none;margin:0 auto;padding:0 var(--gut) 0 calc(var(--gut) + 34px);max-width:600px;position:relative;display:grid;gap:44px;--fill:0}
+.tx::before,.tx::after{content:"";position:absolute;left:calc(var(--gut) + 6px);top:var(--l0,11px);width:2px;height:var(--ll,0px);background:var(--line);border-radius:2px}
+.tx::after{background:var(--wine);transform-origin:50% 0;transform:scaleY(var(--fill))}
+.tx-i{position:relative;display:flex;flex-direction:column;min-width:0}
+.tx-i time{font:700 15px/24px var(--brand);letter-spacing:-.01em;color:var(--ink3);font-variant-numeric:tabular-nums;transition:color .25s var(--ease)}
+.tx-i .dot{position:absolute;left:-34px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--ivory);box-shadow:inset 0 0 0 2px #C9BCA8,0 0 0 5px var(--ivory);transition:background .2s var(--ease),box-shadow .2s var(--ease),transform .25s var(--ease)}
+.tx-i.on time{color:var(--ink)}
+.tx-i.on .dot{background:var(--wine);box-shadow:inset 0 0 0 2px var(--wine),0 0 0 5px var(--ivory);transform:scale(1.12)}
+.tx-i.next.on .dot{background:var(--ivory)}
+.tx-i>figure,.tx-i>b,.tx-i>span,.tx-i>.tx-note{opacity:0;transform:translateY(18px);transition:opacity .3s var(--ease),transform .35s var(--ease)}
+.tx-i.on>figure,.tx-i.on>b,.tx-i.on>span,.tx-i.on>.tx-note{opacity:1;transform:none}
+.tx-i.on>b{transition-delay:.05s}.tx-i.on>span,.tx-i.on>.tx-note{transition-delay:.08s}
+.tx-i>b{margin-top:16px;font-size:18px;line-height:1.45;letter-spacing:-.02em}
+.tx-i>span{margin-top:6px;font-size:15px;line-height:1.6;color:var(--ink2)}
+.tx-note{margin-top:8px;font-style:normal;font-size:15px;line-height:1.55;font-weight:700;color:var(--wine)}
+.tx-i.next>span{color:var(--wine);font-weight:700}
+.tv{position:relative;margin:12px 0 0;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.tv img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.tv-z img{object-position:0 0;transform:scale(1.2) translate(-.4%,-.8%);transform-origin:0 0}
+.tv-hana img{object-position:80% 50%}
+.tv figcaption{position:absolute;left:10px;bottom:10px;max-width:calc(100% - 20px);padding:4px 9px;border-radius:8px;background:rgba(255,253,248,.94);font-size:12px;line-height:1.5;color:var(--ink2);box-shadow:0 1px 0 rgba(30,24,17,.06)}
+.tv-n,.tv-p,.tv-m{display:grid;place-items:center;padding:18px 18px 44px}
+.tv-dots{display:grid;gap:7px}
+.tv-dots.d10{grid-template-columns:repeat(5,24px);gap:12px 14px}
+.tv-dots.d105{grid-template-columns:repeat(15,9px);gap:6px}
+.tv-dots i{display:block;aspect-ratio:1;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C9BCA8;transition:background .2s var(--ease) calc(var(--k)*var(--dl)),box-shadow .2s var(--ease) calc(var(--k)*var(--dl))}
+.tv-dots.d10{--dl:34ms}.tv-dots.d105{--dl:3ms}
+.on .d10 i.a{background:var(--wine);box-shadow:inset 0 0 0 1.5px var(--wine)}
+.on .d105 i.a{background:var(--ink2);box-shadow:inset 0 0 0 1.5px var(--ink2)}
+.on .d105 i.b{background:var(--wine);box-shadow:inset 0 0 0 1.5px var(--wine)}
+.tv .k{display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 5px 1px 0;vertical-align:middle}
+.tv .k.a{background:var(--ink2)}.tv .k.b{background:var(--wine);margin-left:8px}
+.tv-q{background:#1E1811}
+.tv-q img{object-position:40% 50%}
+.tv-q::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,11,.72),rgba(20,15,11,.2) 46%,rgba(20,15,11,0) 70%);pointer-events:none}
+.tv-q .q{position:absolute;left:18px;right:18px;top:16px}
+.tv-q p{margin:0;color:#F7F1E8;font-size:clamp(20px,1.9vw,26px);font-weight:800;letter-spacing:-.03em;line-height:1.35}
+.tv-q svg{display:block;width:78%;height:14px;margin-top:6px;overflow:visible}
+.tv-q path{fill:none;stroke:#E0566A;stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .45s var(--ease) .15s}
+.on .tv-q path{stroke-dashoffset:0}
+.tv-p div{display:grid;justify-items:center;gap:12px}.tv-p strong{font-size:18px;letter-spacing:-.02em}
+.tv-p .av{display:grid;place-items:center;width:96px;height:96px;margin:0;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);font:600 26px var(--brand);color:var(--ink2)}
+.tv-m .stn{position:relative;display:flex;justify-content:space-between;width:78%;padding-top:4px}
+.tv-m .stn::before{content:"";position:absolute;left:6px;right:6px;top:10px;height:3px;border-radius:3px;background:#C9BCA8}
+.tv-m .stn i{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;width:14px;font-style:normal}
+.tv-m .stn i::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 3px #C9BCA8}
+.tv-m .stn i.me::before{width:22px;height:22px;margin-top:-4px;box-shadow:inset 0 0 0 5px var(--wine)}
+.tv-m .stn em{font-style:normal;font-size:13px;color:var(--ink3);white-space:nowrap}
+.tv-m .stn i.me em{font-size:17px;font-weight:800;color:var(--ink)}
+.tv-x{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;padding:20px 22px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);outline:1.5px dashed #C9BCA8;outline-offset:-1.5px}
+.tv-x p{margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.4;letter-spacing:-.02em}
+.tv-x a{display:inline-flex;align-items:center;height:40px;padding-inline:16px;border-radius:12px;background:var(--wine);color:#fff;font-size:14px;font-weight:600}
+.tv-x a:hover{background:var(--wine-d)}
+.tx-src{margin:36px auto 0;font-size:12px;line-height:1.6;color:var(--ink3)}
+@media (min-width:761px) and (min-height:600px) and (prefers-reduced-motion:no-preference){
+  .st-time{height:calc(100vh + var(--run,0px));padding:0}
+  .tx-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--hdr) + 8px) 0 20px}
+  .tx{display:flex;gap:var(--gap);width:max-content;max-width:none;margin:0;padding:0 max(var(--gut),calc((100vw - var(--max))/2 + var(--gut)));will-change:transform}
+  .tx::before,.tx::after{left:var(--l0,0px);top:30px;width:var(--ll,0px);height:2px}
+  .tx::after{transform-origin:0 50%;transform:scaleX(var(--fill))}
+  .tx-i{width:var(--cw);flex:none}
+  .tx-i .dot{position:relative;left:0;top:0;margin:0 0 6px}
+  .tx-src{margin-top:clamp(20px,3vh,32px)}
+  .tx-pin>.st-in{width:100%}
+}
+@media (min-width:761px) and (min-height:600px) and (max-height:760px) and (prefers-reduced-motion:no-preference){.tv{aspect-ratio:16/9}.tx-i>b{margin-top:12px}}
+@media (min-width:761px) and (min-height:860px) and (prefers-reduced-motion:no-preference){.tv{aspect-ratio:4/3}}
+@media (min-width:761px) and (prefers-reduced-motion:reduce){.tx{max-width:var(--max);grid-template-columns:repeat(auto-fill,minmax(250px,1fr));padding:0 var(--gut);gap:48px 28px}.tx::before,.tx::after{display:none}.tx-i .dot{position:relative;left:0;top:0;margin:0 0 6px}}
+.team{padding-block:clamp(96px,11vw,150px)}
+.team h3{margin:0 0 36px;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em;text-align:center}
+.tm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tm{display:grid;grid-template-columns:52px 1fr;column-gap:14px;row-gap:4px;align-items:start;align-content:start;background:var(--paper);border-radius:20px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}
 .tm .av{grid-row:span 3;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--card);font:600 16px var(--brand);color:var(--ink2)}
 .tm b{font-size:17px}
 .tm em{font-style:normal;font-size:13px;font-weight:700;color:var(--ink3)}
 .tm span{font-size:14px;line-height:1.55;color:var(--ink2)}
-.tm.ceo em{color:var(--wine)}
-@media (max-width:1020px){.tm-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.tm-grid{grid-template-columns:1fr}}
+.tm.ceo{grid-column:span 2;grid-template-columns:76px 1fr;column-gap:20px;padding:28px;background:#1E1811;box-shadow:none}
+.tm.ceo .av{grid-row:span 4;width:76px;height:76px;font-size:22px;background:var(--wine);color:#fff}
+.tm.ceo b{font-size:20px;color:#F7F1E8}
+.tm.ceo em{font-size:14px;color:#E0566A}
+.tm.ceo em.also{color:#F7F1E8}
+.tm.ceo span{font-size:15px;color:#CFC6BA;margin-top:4px}
+@media (max-width:1020px){.tm-grid{grid-template-columns:repeat(2,1fr)}.tm.hs{grid-column:span 2}}
+@media (max-width:520px){.tm-grid{grid-template-columns:1fr}.tm.ceo,.tm.hs{grid-column:auto}.tm.ceo{grid-template-columns:60px 1fr;column-gap:14px;padding:24px}.tm.ceo .av{width:60px;height:60px;font-size:18px}}
 .st-end{background:linear-gradient(135deg,#8A1C2B,#5E1220);color:#fff;min-height:56vh;display:grid;place-items:center;text-align:center;padding:96px var(--gut)}
 .st-end p{margin:0;font-size:clamp(24px,3.2vw,40px);line-height:1.5;font-weight:700;letter-spacing:-.03em}
-@media (max-width:760px){.mv{grid-template-columns:1fr}.st-origin{grid-template-columns:1fr}.tl::before{left:76px}.tl li{grid-template-columns:64px 1fr;column-gap:32px}.tl time{font-size:14px}.tl li::before{left:70px}.st-mv h3{font-size:22px}}
+@media (max-width:760px){.mv{grid-template-columns:1fr}.st-origin{grid-template-columns:1fr}.og-ph{justify-self:start;width:min(100%,360px)}.st-mv h3{font-size:22px}}
 
 /* ---------- FAQ accordion ---------- */
 .faq-list{margin-top:40px;border-top:1px solid var(--line)}
@@ -836,7 +909,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 </section>
 
 <section class="story" id="story">
-  <div class="st-hero"><div class="st-in"><p class="st-k">OUR STORY</p><h2>Prove your thinking<i>.</i></h2></div></div>
+  <div class="st-hero"><div class="st-in"><p class="st-k">회사 이야기</p><h2>Prove your thinking<i>.</i></h2></div></div>
   <div class="st-scroll" id="stScroll">
     <div class="st-pin">
       <p class="st-line">AI가 똑똑해질수록,<br>학생은 덜 생각하게 됐습니다.</p>
@@ -847,42 +920,63 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   <div class="st-mv">
     <div class="st-in">
       <h3>학습에 꼭 필요한 바람직한 어려움은 지키고,<br>설명하는 기쁨과 자긍심을 학생에게 돌려줍니다.</h3>
-      <div class="mv"><div><b>Our mission</b><span>답이 아니라 과정을 가르치는 참된 선생님을 곁에</span></div><div><b>Our vision</b><span>교육이 닿지 못한 곳까지 이어지는 세계의 교육 사다리</span></div></div>
+      <div class="mv"><div><b>미션</b><span>답이 아니라 과정을 가르치는 참된 선생님을 곁에</span></div><div><b>비전</b><span>교육이 닿지 못한 곳까지 이어지는 세계의 교육 사다리</span></div></div>
     </div>
   </div>
   <div class="st-origin st-in">
     <div class="og-copy">
       <h3>첫 사용자는<br>만든 사람이었습니다</h3>
       <p>2026년 1학기, 서강대 경제학과 3학년. 계량경제, 미적분, 수리통계, 선형대수를 한 학기에 들었습니다. 통학 3시간을 줄이려 고시원에 살며 새벽까지 공부해도, 매일 AI와 씨름하느라 순공부 시간이 모자랐습니다.</p>
+      <p>풀이를 찍어 올리고, 잘못 읽은 식을 다시 설명하고, 흩어진 채팅을 뒤지다 보면 하루가 갔습니다. 다음 날 진도는 또 밀렸습니다.</p>
       <p>2026년 6월 13일, 의지는 있지만 혼자서는 어려운 학생을 위한 도구를 직접 만들기로 했습니다.</p>
+      <p class="og-line">이 과목에서 쌓여야 하는 것은 정리된 자료가 아니라, 풀어 본 경험입니다.</p>
     </div>
-    <div class="og-card">
-      <div class="gr"><span>경제수리통계학</span><b><s>D0</s>A-</b></div>
-      <div class="gr"><span>금융정책</span><b><s>B-</s>A0</b></div>
-      <small>만든 사람 본인의 2026년 1학기 중간고사, 기말고사 성적</small>
-    </div>
+    <figure class="og-ph" id="ogPh"><img src="assets/story/desk-2026-spring.jpg" width="813" height="1082" alt="노트북에 띄운 적분 문제를 태블릿에 손으로 풀어 내려간 필기" loading="lazy" decoding="async"><figcaption>만든 사람의 태블릿 필기. 노트북에 띄운 적분 문제를 손으로 풀던 때</figcaption></figure>
   </div>
-  <div class="st-time st-in">
-    <h3>Provee가 지나온 길</h3>
-    <ol class="tl">
-      <li><time>2026.06</time><b>직접 쓰려고 개발 시작</b><span>매일 10시간 넘게 쓰고, 불편을 찾고, 고침</span></li>
-      <li><time>2026.06</time><b>기말고사 직전, 학생 6명이 먼저 사용</b><span>경제학과와 동아리 학생 10명에게 소개</span></li>
-      <li><time>2026.07</time><b>손풀이 과목 학습자 설문 105명</b><span>생성형 AI로 공부하며 겪는 불편을 직접 물음</span></li>
-      <li><time>2026.08</time><b>실리콘밸리 Plug and Play IR 데모</b><span>"수익 전략이 없다"는 지적을 받고 사업 모델을 다시 짬</span></li>
-      <li><time>2026.08</time><b>수학·학습과학 총괄 합류</b><span>대치 종로학원 학습과학센터 고등수학 팀장 출신</span></li>
-      <li><time>2026.09</time><b>대방역 사무실 마련</b><span>서울기독교세계관연구소(SIEW) 지원</span></li>
-    </ol>
+  <div class="st-time" id="stTime">
+    <div class="tx-pin">
+      <div class="tx-head st-in"><h3>Provee가 지나온 길</h3><p>6월에 만들기 시작해, 10월 서강대 출시를 앞두고 있습니다.</p></div>
+      <div class="tx-view">
+        <ol class="tx" id="txTrack">
+          <li class="tx-i"><time>2026.06</time><i class="dot"></i>
+            <figure class="tv tv-z"><img src="assets/product/learn-hand.jpg" width="1120" height="840" alt="Provee 초기 시제품에서 학생이 쓰는 z를 익히는 맞춤 설정 화면" loading="lazy" decoding="async"><figcaption>초기 시제품 화면, 2026년 7월</figcaption></figure>
+            <b>직접 쓰려고 개발 시작</b><span>6월 13일부터 매일 10시간 넘게 쓰고, 불편을 찾고, 고쳤습니다</span></li>
+          <li class="tx-i"><time>2026.06</time><i class="dot"></i>
+            <figure class="tv tv-n" aria-hidden="true"><div class="tv-dots d10" data-a="6" data-b="4"></div><figcaption>소개한 10명 중 먼저 쓴 6명</figcaption></figure>
+            <b>기말고사 직전, 학생 6명이 먼저 사용</b><span>경제학과·동아리 학생 10명에게 소개</span></li>
+          <li class="tx-i"><time>2026.07</time><i class="dot"></i>
+            <figure class="tv tv-n" aria-hidden="true"><div class="tv-dots d105" data-a="42" data-b="63"></div><figcaption><em class="k a"></em>중고생 42 <em class="k b"></em>대학생·대학원생·졸업생 63</figcaption></figure>
+            <b>손풀이 과목 학습자 설문 105명</b><span>중고생 42명, 대학생·대학원생·졸업생 63명에게 AI 학습의 불편을 물음</span><em class="tx-note">지금 공부 중인 85명 중 74명이 쓰고 싶다고 답했습니다</em></li>
+          <li class="tx-i"><time>2026.07</time><i class="dot"></i>
+            <figure class="tv tv-hana"><img src="assets/story/event-hana-0730.jpg" width="1400" height="686" alt="강의실 칠판 앞에서 마이크를 들고 Provee를 발표하는 김수민 대표. 왼쪽 화면에 발표 슬라이드와 남은 시간 02:10이 보인다" loading="lazy" decoding="async"><figcaption>7월 30일 발표 현장</figcaption></figure>
+            <b>하나 소셜벤처 유니버시티 최종 발표</b><span>7월 30일, 3분 IR 발표</span></li>
+          <li class="tx-i"><time>2026.08</time><i class="dot"></i>
+            <figure class="tv tv-q"><img src="assets/story/event-plugandplay-0805.jpg" width="1400" height="687" alt="Plug and Play 무대에서 마이크를 들고 IR 데모를 하는 김수민 대표" loading="lazy" decoding="async"><div class="q"><p>“비즈니스 모델이 없다”</p><svg aria-hidden="true" viewBox="0 0 240 16" preserveAspectRatio="none"><path pathLength="1" d="M3 11 C 50 5, 110 4, 160 8 S 220 12, 237 6"/></svg></div><figcaption>8월 5일, Plug and Play Tech Center</figcaption></figure>
+            <b>실리콘밸리 Plug and Play IR 데모</b><span>무대에서 받은 이 지적을 듣고 사업 모델을 다시 짬</span></li>
+          <li class="tx-i"><time>2026.08</time><i class="dot"></i>
+            <figure class="tv tv-p" aria-hidden="true"><div><span class="av">HS</span><strong>하승주</strong></div><figcaption>한양대 수학과</figcaption></figure>
+            <b>수학·학습과학 총괄 합류</b><span>前 대치 종로학원 학습과학센터 고등수학 팀장</span></li>
+          <li class="tx-i"><time>2026.09</time><i class="dot"></i>
+            <figure class="tv tv-m" aria-hidden="true"><div class="stn"><i><em>노량진</em></i><i class="me"><em>대방</em></i><i><em>신길</em></i></div><figcaption>1호선 대방역</figcaption></figure>
+            <b>대방역 사무실 확보</b><span>서울기독교세계관연구소(SIEW) 지원</span></li>
+          <li class="tx-i next"><time>2026.10</time><i class="dot"></i>
+            <figure class="tv tv-x"><p>다음 달,<br>서강대에서 먼저 엽니다</p><a href="#join">사전신청하기</a></figure>
+            <b>서강대 무료 베타</b><span>예정</span></li>
+        </ol>
+      </div>
+      <p class="tx-src st-in">설문: URP 자체 온라인 설문, 2026년 7월, 응답 105명(중고생 42·대학생 63). 사용 의향은 5점 중 4~5점, 현재 공부 중인 응답자 85명 기준.</p>
+    </div>
   </div>
   <div class="team st-in">
     <h3>함께 만드는 사람들</h3>
     <div class="tm-grid">
-      <div class="tm ceo"><span class="av">SM</span><b>김수민</b><em>CEO · 창립자</em><span>서강대 경제학과. 첫 사용자이자 제품 총괄</span></div>
-      <div class="tm"><span class="av">JB</span><b>손정범</b><em>CTO</em><span>백엔드·데이터·iOS, 개발팀 리드</span></div>
-      <div class="tm"><span class="av">HS</span><b>하승주</b><em>수학·학습과학 총괄</em><span>한양대 수학과. 前 대치 종로학원 학습과학센터 고등수학 팀장</span></div>
+      <div class="tm ceo"><span class="av">SM</span><b>김수민</b><em>CEO · 창립자</em><em class="also">프론트엔드 총괄 · UX 설계 총괄</em><span>서강대 경제학과. 첫 사용자이자 제품 총괄. 화면과 사용 흐름을 직접 설계하고 만듭니다</span></div>
+      <div class="tm"><span class="av">JB</span><b>손정범</b><em>CTO</em><span>개발팀 리드. 백엔드·데이터·iOS</span></div>
+      <div class="tm hs"><span class="av">HS</span><b>하승주</b><em>수학·학습과학 총괄</em><span>한양대 수학과. 前 대치 종로학원 학습과학센터 고등수학 팀장. 개발팀 겸임</span></div>
       <div class="tm"><span class="av">JS</span><b>임준서</b><em>CFO</em><span>재무 모델, 가격, 시장 규모</span></div>
-      <div class="tm"><span class="av">SB</span><b>윤세빈</b><em>브랜드 전략</em><span>브랜드, 사용자 인터뷰</span></div>
-      <div class="tm"><span class="av">EW</span><b>김은우</b><em>글로벌 그로스</em><span>해외 마케팅, 콘텐츠</span></div>
-      <div class="tm"><span class="av">JM</span><b>최지민</b><em>그로스 마케터</em><span>홍보, 모션그래픽, 마케팅 자동화</span></div>
+      <div class="tm"><span class="av">SB</span><b>윤세빈</b><em>브랜드 전략 총괄</em><span>브랜드, 사용자 인터뷰</span></div>
+      <div class="tm"><span class="av">EW</span><b>김은우</b><em>글로벌 마케팅</em><span>해외 마케팅, 콘텐츠</span></div>
+      <div class="tm"><span class="av">JM</span><b>최지민</b><em>그로스 마케터</em><span>그로스팀. AX, 제품 홍보, 모션그래픽, 마케팅 자동화</span></div>
       <div class="tm"><span class="av">JH</span><b>연주희</b><em>UI 디자이너</em><span>제품·브랜드 디자인</span></div>
     </div>
   </div>
@@ -1218,6 +1312,28 @@ function stTick(){if(!stOn)return;const r=stS.getBoundingClientRect(),prog=Math.
   lines.forEach((l,j)=>l.classList.toggle('on',j===i));stRaf=requestAnimationFrame(stTick)}
 new IntersectionObserver(([e])=>{stOn=e.isIntersecting;if(stOn){cancelAnimationFrame(stRaf);stTick()}}).observe(stS);
 if(RM)lines.forEach(l=>l.classList.add('on'));
+/* ---------- story: first-user photo reveals once ---------- */
+const ogPh=$('#ogPh');if(RM)ogPh.classList.add('on');else new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){ogPh.classList.add('on');o.disconnect()}}),{rootMargin:'0px 0px -18% 0px'}).observe(ogPh);
+
+/* ---------- story: milestones join one by one as you scroll (wide: left to right, narrow: top to bottom) ---------- */
+const tS=$('#stTime'),tTr=$('#txTrack'),tIt=[...tTr.querySelectorAll('.tx-i')];
+$$('.tv-dots').forEach(d=>{const a=+d.dataset.a,n=a+ +d.dataset.b;let h='';for(let k=0;k<n;k++)h+=`<i class="${k<a?'a':'b'}" style="--k:${k}"></i>`;d.innerHTML=h});
+const tMQ=matchMedia('(min-width:761px) and (min-height:600px) and (prefers-reduced-motion:no-preference)');
+let tWide=false,tRun=0,tDot=[],tRaf=0,tLive=false,tY=-1;
+function tLayout(){tWide=tMQ.matches;tTr.style.transform='';
+  tDot=tIt.map(li=>{const d=li.querySelector('.dot');return tWide?li.offsetLeft+d.offsetLeft+7:li.offsetTop+d.offsetTop+7});
+  const a=tDot[0],b=tDot[tDot.length-1];tTr.style.setProperty('--l0',a+'px');tTr.style.setProperty('--ll',(b-a)+'px');
+  tRun=tWide?Math.max(0,tTr.scrollWidth-tS.clientWidth):0;tS.style.setProperty('--run',tRun+'px');tY=-1;tDraw()}
+function tDraw(){let head;
+  if(RM){head=1e9}
+  else if(tWide){const r=tS.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight))),x=p*tRun;
+    tTr.style.transform=`translate3d(${-x}px,0,0)`;head=x+tS.clientWidth*(.3+.64*p)}
+  else head=innerHeight*.66-tTr.getBoundingClientRect().top;
+  const a=tDot[0],b=tDot[tDot.length-1];tTr.style.setProperty('--fill',Math.min(1,Math.max(0,(head-a)/Math.max(1,b-a))).toFixed(4));
+  tIt.forEach((li,i)=>li.classList.toggle('on',tDot[i]<=head+1))}
+function tTick(){if(!tLive)return;if(scrollY!==tY){tY=scrollY;tDraw()}tRaf=requestAnimationFrame(tTick)}
+new IntersectionObserver(([e])=>{tLive=e.isIntersecting&&!RM;cancelAnimationFrame(tRaf);if(tLive)tTick()}).observe(tS);
+addEventListener('resize',tLayout);tMQ.addEventListener?.('change',tLayout);document.fonts?.ready.then(tLayout);addEventListener('load',tLayout);tLayout();
 
 /* ---------- header, mega menu, drawer, gnb current ---------- */
 const hdr=$('#hdr');new IntersectionObserver(([e])=>{if(e.isIntersecting)$$('[data-nav]').forEach(a=>a.removeAttribute('aria-current'))},{rootMargin:'-80px 0px 0px 0px'}).observe($('.hero'));
