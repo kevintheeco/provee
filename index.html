@@ -234,40 +234,66 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .exam .hl.on{transform:scaleX(1)}
 .exam .lab{display:flex;align-items:center;gap:1cqw;margin-bottom:1cqw;font-size:1.8cqw;font-weight:700;color:var(--wine)}
 
-/* 04 note */
-.notes{container-type:inline-size;position:relative;width:100%;aspect-ratio:1.28}
-.list{position:absolute;left:0;top:2%;width:54%;background:var(--paper);border-radius:3.4cqw;box-shadow:0 40px 70px -40px rgba(60,30,20,.4),inset 0 0 0 1px var(--line);padding:2.6cqw;display:grid;gap:1.3cqw;transition:transform .35s var(--ease),opacity .35s var(--ease)}
-.list h4{margin:0;display:flex;justify-content:space-between;align-items:baseline;font-family:var(--brand);font-size:2.6cqw;color:var(--wine);letter-spacing:-.02em}
-.list h4 small{font:500 1.8cqw var(--font);color:var(--ink3)}
-.tabs{display:flex;gap:2.4cqw;font-size:2cqw;color:var(--ink3);border-bottom:1px solid var(--rule);padding-bottom:1cqw}
-.tabs b{color:var(--ink);box-shadow:0 calc(1cqw + 1px) 0 -1px var(--ink)}
-.unit{font-size:1.9cqw;font-weight:700;color:var(--ink2);margin-top:.6cqw}
-.row{display:grid;grid-template-columns:8cqw 1fr auto;gap:1.6cqw;align-items:center;background:#fff;border:1px solid var(--rule);border-radius:2cqw;padding:1.2cqw}
-.row .th{height:5.4cqw;border-radius:1cqw;background:repeating-linear-gradient(to bottom,#fff 0 1.1cqw,#F0EAE0 1.1cqw calc(1.1cqw + 1px));position:relative;overflow:hidden}
-.row .th::after{content:"";position:absolute;left:1cqw;right:1.4cqw;top:1.3cqw;height:2.2cqw;border-top:2px solid #B9B2C8;border-radius:40%}
-.row b{font-size:2cqw;display:block;line-height:1.35}
-.row small{font-size:1.7cqw;color:var(--ink3)}
-.row .again{font-size:1.8cqw;font-weight:700;color:var(--wine);white-space:nowrap}
-.row.hot{border-color:var(--wine);box-shadow:0 0 0 .5cqw var(--wine-s)}
-.rp{position:absolute;right:0;top:12%;width:62%;background:var(--paper);border-radius:3.4cqw;box-shadow:0 50px 90px -40px rgba(60,30,20,.5),inset 0 0 0 1px var(--line);padding:2.8cqw;display:grid;gap:.8cqw;transform:translateX(4cqw) scale(.94);opacity:0;transition:transform .35s var(--ease),opacity .35s var(--ease)}
-.rp.on{transform:none;opacity:1}
-.rh{display:flex;justify-content:space-between;align-items:center;font-size:1.8cqw;color:var(--ink3)}
-.rh .wm{font-size:2.5cqw;color:var(--wine);letter-spacing:-.02em}
-.rp h5{margin:.4cqw 0 0;font-size:2.8cqw}
-.rp .sub{font-size:1.8cqw;color:var(--ink3)}
-.board{position:relative;height:28cqw;margin-top:1cqw;border-radius:2cqw;background:#fff;background-image:repeating-linear-gradient(to bottom,transparent 0 6.5cqw,var(--rule) 6.5cqw calc(6.5cqw + 1px));box-shadow:inset 0 0 0 1px var(--rule)}
-.prog{display:flex;align-items:center;gap:1.8cqw;margin-top:1.4cqw}
-.prog .pp{width:6cqw;height:6cqw;border-radius:50%;background:var(--wine);display:grid;place-items:center;flex:none}
-.prog .pp::before{content:"";width:1.8cqw;height:2.2cqw;border-left:.65cqw solid #fff;border-right:.65cqw solid #fff}
-.track{flex:1;height:.6cqw;border-radius:1cqw;background:var(--line);position:relative}
-.track i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--wine);border-radius:1cqw}
-.track i::after{content:"";position:absolute;right:-1cqw;top:-.8cqw;width:2.2cqw;height:2.2cqw;border-radius:50%;background:var(--wine)}
-.prog small{font-size:1.8cqw;color:var(--ink3);min-width:13cqw;text-align:right;font-variant-numeric:tabular-nums}
-.notes.zoom .list{transform:translateX(-3%) scale(.96);opacity:.5}
-.hw{position:absolute;font-family:var(--hand);font-weight:600;color:var(--pen);white-space:nowrap;line-height:1.1;padding:0 .3em;clip-path:inset(-30% 100% -30% 0)}
-.hw sup{font-size:.58em}
-.hw.go{transition:clip-path var(--d,1.2s) cubic-bezier(.45,.05,.55,.95)}
-.hw.on{clip-path:inset(-30% 0 -30% 0)}
+/* 04 note: the same real page, first as a photo (result only), then as a record of where and when each stroke was written */
+.nt{container-type:inline-size;position:relative;width:100%}
+.nt-card{background:var(--paper);border-radius:3cqw;padding:2.2cqw;display:grid;gap:1.4cqw;box-shadow:0 50px 90px -40px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
+.nt-bar{display:flex;align-items:center;gap:1.4cqw;padding:.4cqw .6cqw 0;font-size:max(1.9cqw,11px);color:var(--ink3);white-space:nowrap}
+.nt-bar .wm{font-size:max(2.5cqw,13px);color:var(--ink)}
+.nt-clk{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink2)}
+.nt-clk b{color:var(--wine);font-weight:700}
+.nt-pg{position:relative;aspect-ratio:2170/1760;border-radius:1.8cqw;background:#fff;box-shadow:inset 0 0 0 1px var(--rule);overflow:hidden}
+.nt-pg>canvas{position:absolute;inset:0;width:100%;height:100%}
+.nt-fl{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.nt-vf i{position:absolute;width:7cqw;height:7cqw;border:solid var(--ink);border-width:0;opacity:0;transition:opacity .25s var(--ease)}
+.nt-vf i:nth-child(1){left:2.4cqw;top:2.4cqw;border-left-width:.45cqw;border-top-width:.45cqw}
+.nt-vf i:nth-child(2){right:2.4cqw;top:2.4cqw;border-right-width:.45cqw;border-top-width:.45cqw}
+.nt-vf i:nth-child(3){left:2.4cqw;bottom:2.4cqw;border-left-width:.45cqw;border-bottom-width:.45cqw}
+.nt-vf i:nth-child(4){right:2.4cqw;bottom:2.4cqw;border-right-width:.45cqw;border-bottom-width:.45cqw}
+.nt-vf.nt-on i{opacity:.8}
+.nt-tag{display:flex;align-items:center;gap:.9cqw;padding:.8cqw 1.6cqw;border-radius:99px;background:rgba(255,253,248,.94);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.12),inset 0 0 0 1px var(--line);font-size:max(1.8cqw,11px);font-weight:600;color:var(--ink2);white-space:nowrap;transition:opacity .2s var(--ease),transform .25s var(--ease)}
+.nt-tag b{font-weight:700;color:var(--ink)}
+.nt-tag.nt-pv b{color:var(--wine)}
+.nt-tag.nt-off{opacity:0;transform:translateY(-.8cqw)}
+.nt-pg .nt-tag{position:absolute;left:5cqw;bottom:4cqw}
+.nt-end{position:absolute;left:5cqw;bottom:4cqw;display:flex;align-items:center;gap:1cqw;padding:1cqw 2.2cqw 1cqw 1.8cqw;border-radius:99px;background:var(--wine);color:#fff;font-size:max(2cqw,12px);font-weight:700;white-space:nowrap;box-shadow:0 1.2cqw 3cqw -1cqw rgba(94,18,32,.5);opacity:0;transform:translateY(1.2cqw);transition:opacity .22s var(--ease),transform .3s cubic-bezier(.2,0,0,1.2)}
+.nt-end svg{width:max(2.4cqw,13px);height:max(2.4cqw,13px);flex:none}
+.nt-end.nt-on{opacity:1;transform:none}
+.nt-bd{position:absolute;width:max(4.2cqw,19px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:700 max(2.2cqw,10px)/1 var(--brand);color:#B3A89A;background:var(--paper);box-shadow:inset 0 0 0 max(.3cqw,1.5px) #CFC5B7;transform:translate(-50%,-50%) scale(0);transition:transform .25s cubic-bezier(.2,0,0,1.35),background .2s,color .2s,box-shadow .2s}
+.nt-bd.nt-on{transform:translate(-50%,-50%) scale(1)}
+.nt-bd.nt-done{color:var(--wine);box-shadow:inset 0 0 0 max(.3cqw,1.5px) var(--wine)}
+.nt-bd.nt-cur{color:#fff;background:var(--wine);box-shadow:0 0 0 max(.7cqw,3px) rgba(138,28,43,.18);transform:translate(-50%,-50%) scale(1.14)}
+.nt-bd em.nt-l{left:auto;right:calc(100% + max(.6cqw,3px))}
+.nt-bd em{position:absolute;left:calc(100% + max(.6cqw,3px));top:50%;transform:translateY(-50%);padding:.3cqw .8cqw;border-radius:99px;background:rgba(255,253,248,.92);font:600 max(1.7cqw,10px)/1.2 var(--font);color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* a: time bar under the page */
+.nt-tl{position:relative;padding:0 1.2cqw .4cqw}
+.nt-tb{position:relative;height:max(6.4cqw,30px)}
+.nt-tb .nt-bd{top:38%}
+.nt-tb .nt-bd i{position:absolute;left:50%;top:100%;width:1px;margin-left:-.5px;background:#CFC5B7;transform-origin:top center}
+.nt-tb .nt-bd.nt-done i,.nt-tb .nt-bd.nt-cur i{background:var(--wine)}
+.nt-wv{position:relative;height:6cqw;border-radius:.8cqw;background:#FAF6EF;box-shadow:inset 0 0 0 1px var(--rule)}
+.nt-wv canvas{position:absolute;inset:0;width:100%;height:100%}
+.nt-pl{position:absolute;top:-.9cqw;bottom:-.9cqw;left:0;width:max(.4cqw,2px);margin-left:max(-.2cqw,-1px);border-radius:1cqw;background:var(--wine);opacity:0;transition:opacity .2s}
+.nt-pl.nt-on{opacity:1}
+.nt-lb{position:relative;height:max(5.4cqw,26px);transition:opacity .3s var(--ease)}
+.nt-lb.nt-off{opacity:0}
+.nt-gp{position:absolute;top:.8cqw;height:1.1cqw;border:1px solid #BDB2A4;border-top:0;border-radius:0 0 .4cqw .4cqw}
+.nt-gp em{position:absolute;left:50%;top:calc(100% + .5cqw);transform:translateX(-50%);font-style:normal;font-size:max(1.6cqw,10px);line-height:1.2;color:var(--ink3);white-space:nowrap}
+.nt-gp.nt-lo em{top:calc(100% + max(2.6cqw,13px))}
+.nt-gp.nt-er{border-color:var(--wine)}
+.nt-gp.nt-er em{color:var(--wine);font-weight:700}
+/* b: the page itself, route and order numbers */
+.nt-b{padding:2.6cqw 1.6cqw 1.2cqw}
+.nt-sh{position:relative;aspect-ratio:2170/1760;border-radius:1.6cqw;background:#fff;box-shadow:0 40px 80px -40px rgba(60,30,20,.5),inset 0 0 0 1px var(--line);transition:transform .38s var(--ease),background-color .3s,box-shadow .3s}
+.nt-sh>canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit}
+.nt-sh::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1.6cqw #fff;background:linear-gradient(118deg,rgba(255,255,255,.5),rgba(255,255,255,0) 38%);opacity:0;transition:opacity .3s}
+.nt-sh.nt-photo{transform:rotate(-2.2deg) scale(.93);background:#EEE8DE;box-shadow:0 2.4cqw 5cqw -1.6cqw rgba(30,20,10,.45),inset 0 0 0 1px rgba(0,0,0,.06)}
+.nt-sh.nt-photo::after{opacity:1}
+.nt-hd{display:flex;align-items:center;justify-content:space-between;gap:2cqw;min-height:6cqw;margin-bottom:2.2cqw}
+.nt-ck{display:flex;align-items:baseline;gap:.8cqw;padding:.8cqw 1.6cqw;border-radius:1.4cqw;background:rgba(255,253,248,.94);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.12),inset 0 0 0 1px var(--line);font-size:max(1.7cqw,10px);color:var(--ink3);white-space:nowrap;transition:opacity .2s var(--ease)}
+.nt-ck b{font:700 max(2.6cqw,14px)/1 var(--brand);color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.nt-ck.nt-off{opacity:0}
+.nt-x{position:absolute;padding:.4cqw 1.1cqw;border-radius:99px;background:var(--paper);box-shadow:inset 0 0 0 max(.25cqw,1px) var(--wine);font-size:max(1.6cqw,10px);font-weight:700;color:var(--wine);white-space:nowrap;opacity:0;transform:translateY(.6cqw);transition:opacity .2s var(--ease),transform .25s var(--ease)}
+.nt-x.nt-on{opacity:1;transform:none}
 
 /* 05 ground */
 .gd{container-type:inline-size;position:relative;width:100%}
@@ -847,8 +873,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="frow" id="f-note" data-f="note">
       <div class="f-copy">
         <span class="fk"><b>04</b>복습노트</span>
-        <h3>내가 푼 순서 그대로<br>다시 재생됩니다</h3>
-        <p>풀이도 질문도 과목과 단원별로 한곳에 쌓입니다. 시험 전에는 남이 정리한 요약 대신 내 풀이를 다시 봅니다.</p>
+        <h3>여기저기 흩어 써도<br>푼 순서 그대로 다시 봅니다</h3>
+        <p>사진에는 다 쓴 결과만 남습니다. Provee는 획마다 어디에, 언제 썼는지 함께 기록합니다. 페이지를 오가며 적은 풀이도 쓴 순서대로 다시 보고, 어디서 오래 멈췄는지도 확인할 수 있습니다.</p>
         
       </div>
       <div class="f-vis" data-scene="note"></div>
@@ -1153,9 +1179,10 @@ function sceneAsk(){
     <div class="exam"><div class="lab">문제 다시 읽기</div><div class="im"><img src="img/q14.png" alt="2024학년도 수능 수학 14번 문제: 두 자연수 a, b에 대하여 함수 f(x)는 ..."><span class="hl"></span></div></div>
     <div class="pop"><div class="who"><b>P</b>Provee</div><p>잠깐, 문제 첫 줄을 다시 읽어 볼까? 놓친 조건이 있어.</p><div class="btns"><span class="b1">다시 읽을게</span><span>힌트 더 줘</span></div></div>
     <span class="tapdot"></span>
-  </div></div><p class="scap">대표가 직접 푼 2024 수능 14번 실제 필기 기록(획 594개, 18분)을 빠르게 재생했습니다.</p>`;
+  </div></div><p class="scap">대표가 2024 수능 14번을 푼 실제 필기 기록(획 594개, 18분) 가운데 그래프를 그리는 대목부터 빠르게 재생했습니다.</p>`;
   const cv=el.querySelector('canvas'),nb=el.querySelector('.nb'),ex=el.querySelector('.exam'),hl=el.querySelector('.hl'),pop=el.querySelector('.pop'),b1=el.querySelector('.b1'),tab=el.querySelector('.qtab'),dot=el.querySelector('.tapdot');
-  const BX0=120,BY0=140,BX1=2140,BY1=1790,WRONG_A=403,WRONG_B=418;
+  // strokes 397-402 mark the point (2,9); 403-418 are the wrong upward-convex curve and its x=b guide, erased before 421 redraws it as ∪ (434)
+  const BX0=120,BY0=140,BX1=2140,BY1=1790,START=397,WRONG_A=403,WRONG_B=418,REDO=434,AHA=451,GX=1210,GY=800,GZ=2.05;
   let W,H,dpr,k,ctx,tl=null,raf=0,live=false,last=0,anim=null;
   const cam={x:(BX0+BX1)/2,y:(BY0+BY1)/2,z:1,tx:0,ty:0,tz:1,follow:false};
   const S={vt:0,gone:0};
@@ -1167,7 +1194,8 @@ function sceneAsk(){
     const c=st.map(q=>{let x=0,y=0;q.p.forEach(p=>{x+=p[0];y+=p[1]});return [x/q.p.length,y/q.p.length]});
     const a=.06,f=c.map(p=>p.slice());for(let i=1;i<f.length;i++){f[i][0]=f[i-1][0]+a*(c[i][0]-f[i-1][0]);f[i][1]=f[i-1][1]+a*(c[i][1]-f[i-1][1])}
     for(let i=f.length-2;i>=0;i--){f[i][0]=f[i+1][0]+a*(f[i][0]-f[i+1][0]);f[i][1]=f[i+1][1]+a*(f[i][1]-f[i+1][1])}
-    return {vs,cut,P1:vs[cut].v0,END:vs[vs.length-1].v0+vs[vs.length-1].dur,path:f};
+    const V=i=>vs[i].v0;
+    return {vs,cut,P1:vs[cut].v0,END:vs[vs.length-1].v0+vs[vs.length-1].dur,path:f,S0:V(START),W0:V(WRONG_A),W1:V(WRONG_A+1),R0:V(REDO),R1:V(REDO+1),A0:V(AHA)};
   }
   function curIndex(vt){const vs=tl.vs;let lo=0,hi=vs.length-1;while(lo<hi){const m=(lo+hi+1)>>1;if(vs[m].v0<=vt)lo=m;else hi=m-1}return lo}
   function draw(){
@@ -1193,49 +1221,151 @@ function sceneAsk(){
   const wait=ms=>new Promise(r=>setTimeout(r,ms));
   const aim=(x,y,z,follow=false)=>{cam.tx=x;cam.ty=y;cam.tz=z;cam.follow=follow};
   return {el,stop(){live=false;cancelAnimationFrame(raf);if(anim){const r=anim.res;anim=null;r()}},async play(ok){
-    await inkP;if(!INK||!ok()||!size())return;tl=tl||build();const {P1,END}=tl;
+    await inkP;if(!INK||!ok()||!size())return;tl=tl||build();const {P1,END,S0,W0,W1,R0,R1,A0}=tl;
     if(RM){S.vt=END;S.gone=16;cam.z=cam.tz=1;draw();return}
     live=true;last=0;raf=requestAnimationFrame(frame);
     while(ok()){
       ex.classList.remove('on');hl.classList.remove('on');pop.classList.remove('on');b1.classList.remove('tap');tab.style.opacity=1;
-      S.vt=0;S.gone=0;const p0=tl.path[0];cam.x=cam.tx=p0[0];cam.y=cam.ty=p0[1];cam.z=cam.tz=2;aim(p0[0],p0[1],2,true);
-      await wait(200);if(!ok())return;
-      await play(0,P1,8000);if(!ok())return;
-      aim(1180,790,1.85);await wait(600);pop.classList.add('on');await wait(1300);if(!ok())return;
+      // open on the graph with everything written before stroke 397 already on the page
+      S.vt=S0;S.gone=0;cam.x=cam.tx=GX;cam.y=cam.ty=GY;cam.z=cam.tz=GZ;aim(GX,GY,GZ);
+      await wait(150);if(!ok())return;
+      await play(S0,W0,420);if(!ok())return;await play(W0,W1,760);if(!ok())return;await play(W1,P1,700);if(!ok())return;
+      pop.classList.add('on');await wait(950);if(!ok())return;
       const br=b1.getBoundingClientRect(),sr=el.querySelector('.scr').getBoundingClientRect();dot.style.left=(br.left-sr.left+br.width/2-dot.offsetWidth/2)+'px';dot.style.top=(br.top-sr.top+br.height/2-dot.offsetHeight/2)+'px';
-      dot.classList.remove('on');void dot.offsetWidth;dot.classList.add('on');b1.classList.add('tap');await wait(350);
-      pop.classList.remove('on');tab.style.opacity=0;ex.classList.add('on');await wait(450);hl.classList.add('on');await wait(2000);if(!ok())return;
-      ex.classList.remove('on');tab.style.opacity=1;await wait(350);
-      for(let g=1;g<=16&&ok();g++){S.gone=g;await wait(30)}
-      aim(1180,790,1.85,true);await play(P1,END,5500);if(!ok())return;
-      aim((BX0+BX1)/2,(BY0+BY1)/2,1);await wait(2600)}
+      dot.classList.remove('on');void dot.offsetWidth;dot.classList.add('on');b1.classList.add('tap');await wait(260);
+      pop.classList.remove('on');tab.style.opacity=0;ex.classList.add('on');await wait(360);hl.classList.add('on');await wait(1500);if(!ok())return;
+      ex.classList.remove('on');tab.style.opacity=1;await wait(260);
+      for(let g=1;g<=16&&ok();g++){S.gone=g;await wait(18)}
+      await play(P1,R0,260);if(!ok())return;await play(R0,R1,820);if(!ok())return;await play(R1,A0,520);if(!ok())return;
+      aim((BX0+BX1)/2,(BY0+BY1)/2,1);await play(A0,END,1700);if(!ok())return;
+      await wait(1900)}
   }};
 }
 
-/* ---------- 04 note: list, tap, replay (v3) ---------- */
-function sceneNote(){
+/* ---------- 04 note: the real 14번 page, first as a photo (result only), then as a record of where + when each stroke was written ---------- */
+/* ?note=a (default): replay against a time bar · ?note=b: numbered route over the page */
+const NOTE_V=new URLSearchParams(location.search).get('note')==='b'?'b':'a';
+const NP={x0:10,y0:40,w:2170,h:1760};
+// where the page was written, in order (first stroke of each area); the solver went back to the middle graph at 397
+const NREG=[0,154,270,336,397,476,542],NTAG=[[100,122],[112,585],[800,1052],[1345,128],[1030,648,'l'],[140,1300],[1480,1270]]; // number badges sit just off the ink; 'l' puts the time label on the left
+const NER=[403,420]; // wrong upward-convex curve and its guides, erased before stroke 421 redraws the graph
+const REPLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.2v4.4h4.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+let ND=null;
+function noteData(){if(ND)return ND;const st=INK.s,n=st.length,T0=q=>q.p[0][2],T1=q=>q.p[q.p.length-1][2],E=T1(st[n-1]);
+  const er=st.map((q,i)=>{if(!q.e)return 1/0;let j=i+1;while(j<n&&st[j].e)j++;return j<n?T0(st[j]):E}); // an erased stroke goes when the next kept stroke begins
+  const reg=NREG.map((a,k)=>{const b=(NREG[k+1]||n)-1;let f=a,l=b;while(st[f].e)f++;while(st[l].e)l--;return {a,b,t:T0(st[a]),lv:a?T1(st[a-1]):0,p0:st[f].p[0],p1:st[l].p[st[l].p.length-1],tag:NTAG[k]}});
+  const gaps=[];for(let i=1;i<n;i++){const g=T0(st[i])-T1(st[i-1]);if(g>=90000)gaps.push([T1(st[i-1]),T0(st[i])])}
+  let v=0,lt=null;const vs=st.map(q=>{v+=lt==null?0:Math.min(180,Math.max(0,T0(q)-lt));const o={v0:v,t0:T0(q),t1:T1(q)};v+=o.t1-o.t0;lt=o.t1;return o});
+  const len=st.map(q=>{let L=0;for(let j=1;j<q.p.length;j++)L+=Math.hypot(q.p[j][0]-q.p[j-1][0],q.p[j][1]-q.p[j-1][1]);return L});
+  return ND={st,n,E,er,reg,gaps,vs,len,T0,T1}}
+const mmss=ms=>{const s=Math.floor(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const hexMix=(a,b,u)=>{const A=parseInt(a.slice(1),16),B=parseInt(b.slice(1),16),c=s=>Math.round(((A>>s)&255)*(1-u)+((B>>s)&255)*u);return `rgb(${c(16)},${c(8)},${c(0)})`};
+function notePaint(f,t,o){ // t: real ms written so far · o.photo: finished page only · o.dim: 0..1 fade of strokes not replayed yet · o.over(ctx,k): overlay in page units
+  const D=ND,{ctx,W,H}=f,k=W/NP.w,ink=o.ink||'#221C39';ctx.clearRect(0,0,W,H);ctx.save();ctx.scale(k,k);ctx.translate(-NP.x0,-NP.y0);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=Math.max(1.15,W*.0024)/k;
+  const A=new Path2D(),B=new Path2D(),R=new Path2D(),G=new Path2D();let tip=null;
+  const add=(P,p,m)=>{P.moveTo(p[0][0],p[0][1]);if(m<2){P.lineTo(p[0][0]+.5,p[0][1]);return}for(let j=1;j<m-1;j++)P.quadraticCurveTo(p[j][0],p[j][1],(p[j][0]+p[j+1][0])/2,(p[j][1]+p[j+1][1])/2);P.lineTo(p[m-1][0],p[m-1][1])};
+  for(let i=0;i<D.n;i++){const q=D.st[i],p=q.p;
+    if(o.photo){if(!q.e)add(A,p,p.length);continue}
+    if(p[0][2]>t){if(!q.e)add(B,p,p.length);continue}
+    let m=p.length;if(p[m-1][2]>t){m=0;while(m<p.length&&p[m][2]<=t)m++}
+    if(q.e){if(t<D.er[i])add(R,p,m);else if(o.ghost)add(G,p,p.length)}else add(A,p,m);
+    tip=p[m-1]}
+  if(!o.photo){ctx.strokeStyle=hexMix(ink,'#DDD6CB',o.dim);ctx.stroke(B);ctx.strokeStyle='rgba(138,28,43,.22)';ctx.stroke(G)}
+  ctx.strokeStyle=ink;ctx.stroke(A);ctx.strokeStyle='#8A1C2B';ctx.stroke(R);
+  o.over&&o.over(ctx,k,tip);ctx.restore()}
+function noteRoute(ctx,k,a,b,u,dash,al){ // arc from a to b drawn up to u, arrowhead at the moving end
+  const dx=b[0]-a[0],dy=b[1]-a[1],c=[(a[0]+b[0])/2-dy*.16,(a[1]+b[1])/2+dx*.16],P=s=>[(1-s)*(1-s)*a[0]+2*(1-s)*s*c[0]+s*s*b[0],(1-s)*(1-s)*a[1]+2*(1-s)*s*c[1]+s*s*b[1]];
+  ctx.save();ctx.globalAlpha=al;ctx.strokeStyle=ctx.fillStyle='#8A1C2B';ctx.lineWidth=1.7/k;ctx.setLineDash(dash?[6/k,5/k]:[]);ctx.beginPath();
+  const N=Math.max(2,Math.ceil(48*u));for(let i=0;i<=N;i++){const q=P(u*i/N);i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1])}ctx.stroke();
+  if(u>.04){const h=P(u),g=P(u-.03),an=Math.atan2(h[1]-g[1],h[0]-g[0]),s=8/k;ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(h[0],h[1]);ctx.lineTo(h[0]-s*Math.cos(an-.5),h[1]-s*Math.sin(an-.5));ctx.lineTo(h[0]-s*Math.cos(an+.5),h[1]-s*Math.sin(an+.5));ctx.closePath();ctx.fill()}
+  ctx.restore()}
+const noteTip=(ctx,k,p)=>{ctx.fillStyle='#8A1C2B';ctx.beginPath();ctx.arc(p[0],p[1],3.4/k,0,7);ctx.fill()};
+const TAG_PHOTO='<b>사진</b>다 쓴 결과만',TAG_REC='<b>Provee 기록</b>획마다 위치와 시각';
+function noteMount(el,frame,prep){let stopR=null,ro=null;const cv=el.querySelector('canvas');
+  return {el,stop(){stopR&&stopR();stopR=null},async play(ok){
+    await inkP;if(!INK||!ok())return;noteData();const {FINAL,LOOP}=prep();stopR&&stopR();
+    if(RM){frame(FINAL,true);if(!ro){ro=new ResizeObserver(()=>frame(FINAL,true));ro.observe(cv)}return}
+    const t0=performance.now();stopR=loopRAF(now=>{if(ok())frame((now-t0)%LOOP)})}}}
+
+/* a: the page and a time bar share one clock; 18 minutes play in 7 seconds, pauses and erased strokes stay marked on the bar */
+function noteA(){
   const el=document.createElement('div');
-  el.innerHTML=`<div class="notes"><div class="list"><h4>Provee Note <small>나의 풀이</small></h4><div class="tabs"><b>수학 II</b><span>미적분</span><span>수학(상)</span></div>
-   <div class="unit">도함수의 활용</div>
-   <div class="row hot"><span class="th"></span><span><b>미분 · 실근의 개수</b><small>복습 2회</small></span><span class="again">다시 보기</span></div>
-   <div class="row"><span class="th"></span><span><b>삼차함수 g(x) = k</b><small>막힌 곳 1곳</small></span><span class="again">다시 보기</span></div>
-   <div class="unit">적분</div>
-   <div class="row"><span class="th"></span><span><b>곡선 사이 넓이</b><small>복습 1회</small></span><span class="again">다시 보기</span></div>
-   <span class="tapdot" style="right:3%;top:37%"></span></div>
-   <div class="rp"><div class="rh"><span class="wm">Provee Note</span><span>복습 2회</span></div><h5>미분 · 실근의 개수</h5><span class="sub">서로 다른 세 실근 중 양의 실근이 두 개가 되는 k</span>
-   <div class="board">${['f(x) = x<sup>3</sup> − 3x<sup>2</sup> − 9x + 5',"f'(x) = 3(x+1)(x−3)","f'(x) = 0 : x = −1, 3",'f(−1) = 10, f(3) = −22'].map((t,i)=>`<div class="hw" style="left:2cqw;top:${.6+i*6.6}cqw;font-size:4.4cqw${i===3?';color:#8A1C2B':''}">${t}</div>`).join('')}</div>
-   <div class="prog"><span class="pp" aria-hidden="true"></span><div class="track"><i></i></div><small>0:00 / 0:36</small></div></div></div>`;
-  const N=el.querySelector('.notes'),R=el.querySelector('.rp'),L=[...el.querySelectorAll('.hw')],bar=el.querySelector('.track i'),tm=el.querySelector('.prog small'),dot=el.querySelector('.tapdot');let iv;
-  const write=(e,ms)=>{e.style.setProperty('--d',ms+'ms');e.classList.add('go');requestAnimationFrame(()=>e.classList.add('on'));return sleep(ms)};
-  return {el,stop(){clearInterval(iv)},async play(ok){
-    if(RM){N.classList.add('zoom');R.classList.add('on');L.forEach(e=>e.classList.add('on'));bar.style.width='100%';tm.textContent='0:36 / 0:36';return}
-    while(ok()){L.forEach(e=>e.classList.remove('go','on'));R.classList.remove('on');N.classList.remove('zoom');bar.style.transition='none';bar.style.width='0';tm.textContent='0:00 / 0:36';await sleep(700);
-      dot.classList.remove('on');void dot.offsetWidth;dot.classList.add('on');await sleep(300);N.classList.add('zoom');R.classList.add('on');await sleep(400);
-      bar.style.transition='width 4.6s linear';requestAnimationFrame(()=>bar.style.width='100%');const t0=performance.now();
-      iv=setInterval(()=>{const s=Math.min(36,Math.round((performance.now()-t0)/4600*36));tm.textContent=`0:${String(s).padStart(2,'0')} / 0:36`},120);
-      for(const [i,ms] of [[0,1250],[1,1050],[2,1000],[3,1000]]){if(!ok())break;await write(L[i],ms)}
-      await sleep(400);clearInterval(iv);if(!ok())return;tm.textContent='0:36 / 0:36';await sleep(2000)}}};
+  el.innerHTML=`<div class="nt nt-a"><div class="nt-card">
+    <div class="nt-bar"><span class="wm">Provee<i>.</i></span><span>복습노트 · 2024 수능 14번</span><span class="nt-clk"></span></div>
+    <div class="nt-pg"><canvas></canvas><span class="nt-fl"></span><span class="nt-vf" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div class="nt-pb"></div><span class="nt-tag"></span><span class="nt-end">${REPLAY}푼 순서 그대로 다시 보기</span></div>
+    <div class="nt-tl"><div class="nt-tb"></div><div class="nt-wv"><canvas></canvas><i class="nt-pl"></i></div><div class="nt-lb nt-off"></div></div>
+  </div></div><p class="scap">대표가 2024 수능 14번을 푼 실제 필기 기록(획 594개, 18분)입니다. 아래 막대는 획마다 쓴 실제 시각이고, 18분을 7초로 줄여 재생했습니다.</p>`;
+  const $e=s=>el.querySelector(s),cv=$e('.nt-pg>canvas'),wv=$e('.nt-wv canvas'),fl=$e('.nt-fl'),vf=$e('.nt-vf'),tag=$e('.nt-tag'),end=$e('.nt-end'),clk=$e('.nt-clk'),ph=$e('.nt-pl'),lb=$e('.nt-lb'),pb=$e('.nt-pb'),tb=$e('.nt-tb');
+  const P0=1000,Q0=1700,QMS=7000,Q1=Q0+QMS,LOOP=Q1+2600;
+  let f=null,g=null,bp=[],bt=[],S={};
+  const set=(k,v,fn)=>{if(S[k]!==v){S[k]=v;fn(v)}};
+  function build(){const D=ND,pc=(v,a,w)=>((v-a)/w*100).toFixed(2)+'%';
+    pb.innerHTML=D.reg.map((r,k)=>`<span class="nt-bd" style="left:${pc(r.tag[0],NP.x0,NP.w)};top:${pc(r.tag[1],NP.y0,NP.h)}">${k+1}</span>`).join('');
+    tb.innerHTML=D.reg.map((r,k)=>`<span class="nt-bd">${k+1}<i></i></span>`).join('');
+    const ea=D.T0(D.st[NER[0]]),eb=D.T1(D.st[NER[1]]),dur=ms=>{const s=Math.round(ms/1000);return `${Math.floor(s/60)}분 ${s%60}초`};
+    lb.innerHTML=D.gaps.map(([a,b],i)=>`<span class="nt-gp${i===D.gaps.length-1?' nt-lo':''}" style="left:${pc(a,0,D.E)};width:${pc(b,a,D.E)}"><em>${dur(b-a)} 멈춤</em></span>`).join('')+`<span class="nt-gp nt-er" style="left:${pc(ea,0,D.E)};width:${pc(eb,ea,D.E)}"><em>지운 획</em></span>`;
+    bp=[...pb.children];bt=[...tb.children]}
+  function lay(){ // time-bar badges: keep each at its real time, push apart only where they would overlap, and draw a leader down to the exact moment
+    const W=tb.clientWidth,H=tb.clientHeight,bw=bt[0].offsetWidth,gap=bw+3,tx=ND.reg.map(r=>r.t/ND.E*W),xs=tx.slice();
+    for(let it=0;it<40;it++){let mv=0;for(let i=1;i<xs.length;i++){const d=xs[i]-xs[i-1];if(d<gap){xs[i-1]-=(gap-d)/2;xs[i]+=(gap-d)/2;mv=1}}for(let i=0;i<xs.length;i++)xs[i]=Math.min(W-bw/2,Math.max(bw/2,xs[i]));if(!mv)break}
+    bt.forEach((b,i)=>{b.style.left=xs[i]+'px';const dx=tx[i]-xs[i],dy=H-(b.offsetTop+bw/2),ln=b.firstElementChild;ln.style.height=Math.hypot(dx,dy)+'px';ln.style.transform=`rotate(${-Math.atan2(dx,dy)}rad)`})}
+  function wave(t,rev){const D=ND,{ctx,W,H}=g,X=W*rev;ctx.clearRect(0,0,W,H);
+    for(let i=0;i<D.n;i++){const q=D.st[i],t0=D.T0(q),x=t0/D.E*W;if(!rev||x>X)break;const w=Math.max(1,(D.T1(q)-t0)/D.E*W),h=H*Math.min(.84,.2+Math.sqrt(D.len[i])/34);
+      ctx.fillStyle=q.e?(t0<=t?'#8A1C2B':'#E6C9CD'):(t0<=t?'#221C39':'#D8D0C3');ctx.fillRect(x,(H-h)/2,w,h)}}
+  function frame(T,force){const D=ND;
+    if(force||!f||!g||cv.clientWidth!==f.cw||wv.clientWidth!==g.cw){f=fitCanvas(cv);g=fitCanvas(wv);if(!f||!g)return;f.cw=cv.clientWidth;g.cw=wv.clientWidth;lay()}
+    const photo=T<P0,t=T<Q0?0:T>=Q1?D.E:(T-Q0)/QMS*D.E,sc=t0=>Q0+t0/D.E*QMS;
+    notePaint(f,photo?1/0:t,{photo,dim:photo?0:Math.min(1,(T-P0)/300),ghost:true,over:(ctx,k,tip)=>{if(photo)return;
+      for(let r=1;r<D.reg.length;r++){const R=D.reg[r],jb=sc(R.t),ja=Math.min(sc(R.lv),jb-260),u=Math.min(1,(T-ja)/(jb-ja)),al=1-Math.min(1,Math.max(0,(T-jb-250)/600));
+        if(u>0&&al>0)noteRoute(ctx,k,D.reg[r-1].p1,R.p0,u,false,al)}
+      if(tip&&T>=Q0&&T<Q1+200&&sc(tip[2])>T-260)noteTip(ctx,k,tip)}});
+    wave(t,photo?0:Math.min(1,(T-P0)/450));
+    set('fl',T<260?+(0.85*(1-T/260)).toFixed(2):0,v=>fl.style.opacity=v);
+    set('vf',photo,v=>vf.classList.toggle('nt-on',v));
+    set('tag',photo?0:T<Q1?1:2,v=>{tag.className='nt-tag'+(v===1?' nt-pv':v===2?' nt-off':'');if(v<2)tag.innerHTML=v?TAG_REC:TAG_PHOTO});
+    set('end',T>=Q1+150,v=>end.classList.toggle('nt-on',v));
+    set('clk',photo?'':`<b>${mmss(t)}</b> / ${mmss(D.E)}`,v=>clk.innerHTML=v);
+    set('ph',photo?-1:+(t/D.E*100).toFixed(2),v=>{ph.classList.toggle('nt-on',v>=0);if(v>=0)ph.style.left=v+'%'});
+    set('lb',photo,v=>lb.classList.toggle('nt-off',v));
+    let cur=-1;if(T>=Q0)D.reg.forEach((r,k)=>{if(r.t<=t)cur=k});
+    D.reg.forEach((r,k)=>{const s=photo||T<P0+120+k*50?'':T<Q0||k>cur?'nt-on':k<cur||T>=Q1?'nt-on nt-done':'nt-on nt-cur';set('b'+k,s,v=>{bp[k].className='nt-bd '+v;bt[k].className='nt-bd '+v})})}
+  return noteMount(el,frame,()=>{if(!bp.length)build();return {FINAL:Q1+2000,LOOP}});
 }
+
+/* b: one sheet, the pen's route between areas drawn as numbered stops with the minute each was started */
+function noteB(){
+  const el=document.createElement('div');
+  el.innerHTML=`<div class="nt nt-b"><div class="nt-hd"><span class="nt-tag"></span><span class="nt-ck nt-off">쓴 시각<b>0:00</b></span></div>
+    <div class="nt-sh"><canvas></canvas><div class="nt-pb"></div><span class="nt-x">지운 획</span><span class="nt-end">${REPLAY}푼 순서 그대로 다시 보기</span></div></div>
+    <p class="scap">대표가 2024 수능 14번을 푼 실제 필기 기록(획 594개, 18분)입니다. 번호는 쓰는 자리를 옮긴 순서, 옆 숫자는 그 자리를 쓰기 시작한 시각이고, 붉은 획은 풀다가 지운 획입니다.</p>`;
+  const $e=s=>el.querySelector(s),cv=$e('canvas'),sh=$e('.nt-sh'),tag=$e('.nt-tag'),ck=$e('.nt-ck'),ckb=$e('.nt-ck b'),end=$e('.nt-end'),pb=$e('.nt-pb'),xe=$e('.nt-x');
+  const P0=1100,Q0=1500,J=380,BUD=5600;let Q1=0,LOOP=0,SEG=[],f=null,bp=[],S={};
+  const set=(k,v,fn)=>{if(S[k]!==v){S[k]=v;fn(v)}};
+  function build(){const D=ND,vs=D.vs,pc=(v,a,w)=>((v-a)/w*100).toFixed(2)+'%';
+    pb.innerHTML=D.reg.map((r,k)=>`<span class="nt-bd" style="left:${pc(r.tag[0],NP.x0,NP.w)};top:${pc(r.tag[1],NP.y0,NP.h)}">${k+1}<em${r.tag[2]?' class="nt-l"':''}>${mmss(r.t)}</em></span>`).join('');bp=[...pb.children];
+    const x0=D.st[NER[0]].p;let a=1e9,b=1e9,c=-1e9;for(let i=NER[0];i<=NER[1];i++)for(const p of D.st[i].p){a=Math.min(a,p[0]);b=Math.min(b,p[1]);c=Math.max(c,p[0])}
+    xe.style.left=pc((a+c)/2+40,NP.x0,NP.w);xe.style.top=pc(b-58,NP.y0,NP.h);xe.style.translate='-50% -50%';
+    const span=D.reg.map(r=>vs[r.b].v0+vs[r.b].t1-vs[r.b].t0-vs[r.a].v0),wt=span.map((x,k)=>k===4?x*2.2:x),sum=wt.reduce((x,y)=>x+y,0);let T=Q0;SEG=[]; // area 5 (wrong curve, erase, redraw) gets more time
+    D.reg.forEach((r,k)=>{if(k){SEG.push({k,j:1,a:T,b:T+J});T+=J}const d=Math.max(420,BUD*wt[k]/sum);SEG.push({k,j:0,a:T,b:T+d,va:vs[r.a].v0,vb:vs[r.a].v0+span[k]});T+=d});
+    Q1=T;LOOP=Q1+2600}
+  function realAt(vt){const vs=ND.vs;let lo=0,hi=vs.length-1;while(lo<hi){const m=(lo+hi+1)>>1;if(vs[m].v0<=vt)lo=m;else hi=m-1}
+    const s=vs[lo],d=vt-s.v0,du=s.t1-s.t0;if(d<=du||lo===vs.length-1)return s.t0+Math.min(d,du);const nx=vs[lo+1],gv=nx.v0-s.v0-du;return s.t1+(d-du)/gv*(nx.t0-s.t1)}
+  function frame(T,force){const D=ND;
+    if(force||!f||cv.clientWidth!==f.cw){f=fitCanvas(cv);if(!f)return;f.cw=cv.clientWidth}
+    const photo=T<P0,sg=SEG.find(s=>T>=s.a&&T<s.b);let t=T<Q0?0:D.E,cur=-1;
+    if(sg){cur=sg.k;if(sg.j){const r=D.reg[sg.k];t=r.lv+(T-sg.a)/J*(r.t-r.lv)}else t=realAt(sg.va+(T-sg.a)/(sg.b-sg.a)*(sg.vb-sg.va))}
+    notePaint(f,photo?1/0:t,{photo,ink:photo?'#3A3634':'#221C39',dim:photo?0:Math.min(1,(T-P0)/300),ghost:true,over:(ctx,k,tip)=>{if(photo)return;
+      SEG.forEach(s=>{if(s.j&&T>=s.a)noteRoute(ctx,k,D.reg[s.k-1].p1,D.reg[s.k].p0,Math.min(1,(T-s.a)/J),true,.9)});
+      if(tip&&sg&&!sg.j)noteTip(ctx,k,tip)}});
+    set('sh',photo,v=>sh.classList.toggle('nt-photo',v));
+    set('tag',photo?0:1,v=>{tag.className='nt-tag'+(v?' nt-pv':'');tag.innerHTML=v?TAG_REC:TAG_PHOTO});
+    set('ck',photo,v=>ck.classList.toggle('nt-off',v));set('ckt',mmss(t),v=>ckb.textContent=v);
+    set('x',!photo&&t>=D.er[NER[0]],v=>xe.classList.toggle('nt-on',v));
+    set('end',T>=Q1+150,v=>end.classList.toggle('nt-on',v));
+    D.reg.forEach((r,k)=>{const j=k?SEG.find(s=>s.j&&s.k===k):null,shown=!photo&&T>=(j?j.b-80:Q0);const s=!shown?'':T>=Q1||k<cur?'nt-on nt-done':k===cur?'nt-on nt-cur':'nt-on nt-done';set('b'+k,s,v=>bp[k].className='nt-bd '+v)})}
+  return noteMount(el,frame,()=>{if(!SEG.length)build();return {FINAL:Q1+1400,LOOP}});
+}
+function sceneNote(){return NOTE_V==='b'?noteB():noteA()}
 
 /* ---------- 05 ground: two people write on one note at the same time ---------- */
 function sceneGround(){
