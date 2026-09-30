@@ -57,12 +57,13 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .mega a.wide{grid-column:span 2;background:var(--card)}
 .mega a.wide:hover{background:#F0E6D6}
 .hdr-r{margin-left:auto;display:flex;gap:8px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding-inline:22px;border-radius:14px;font-weight:700;font-size:15px;white-space:nowrap;transition:background .16s var(--ease),transform .16s var(--ease),box-shadow .16s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding-inline:22px;border-radius:14px;font-weight:500;font-size:15px;white-space:nowrap;transition:background .16s var(--ease),transform .16s var(--ease),box-shadow .16s}
 .btn:active{transform:scale(.98)}
-.btn-w{background:var(--wine);color:#fff}
-.btn-w:hover{background:var(--wine-d)}
-.btn-l{background:rgba(255,253,248,.85);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
-.btn-l:hover{box-shadow:inset 0 0 0 1px #CFC2AD}
+/* 은은한 글래스: 윗면에 빛이 맺히고 부드러운 그림자, 흰 버튼은 뒤가 흐리게 비침 */
+.btn-w{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 55%),var(--wine);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 1px 2px rgba(90,15,28,.25),0 8px 20px rgba(138,28,43,.22)}
+.btn-w:hover{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 55%),var(--wine-d)}
+.btn-l{background:rgba(255,255,255,.42);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 1px 2px rgba(30,24,17,.06),0 6px 18px rgba(30,24,17,.07)}
+.btn-l:hover{background:rgba(255,255,255,.6)}
 .hdr .btn{height:42px;padding-inline:18px;font-size:14px}
 .burger{display:none;width:44px;height:44px;border-radius:12px;place-items:center}
 @media (max-width:1020px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{display:none}}
@@ -84,10 +85,15 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .hero-bg{position:absolute;inset:0;background:url(img/hero-pen.jpg) 70% 50%/cover no-repeat;transform:scale(1.04);animation:heroIn 2.4s var(--ease) forwards}
 @keyframes heroIn{to{transform:scale(1)}}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(247,243,236,.97) 0%,rgba(247,243,236,.93) 34%,rgba(247,243,236,.55) 52%,rgba(247,243,236,0) 68%)}
-.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:120px var(--gut) 72px}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:120px var(--gut) 72px;--wmfs:clamp(72px,11vw,150px)}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--ink2)}
-.hero .wm{display:block;font-size:clamp(72px,11vw,150px);line-height:.95;color:var(--ink);margin-top:14px}
-.hero h1{margin:28px 0 0;font-size:clamp(24px,2.6vw,34px);line-height:1.45;font-weight:700;color:var(--wine);letter-spacing:-.02em}
+/* 윗글 P의 세로획을 큰 Provee의 P 세로획에 맞춤(글자 옆 여백 .06em 보정), 윗글 밑과 P 윗선 간격은 큰 글씨의 .152배 */
+.hero .eyebrow{margin:0 0 0 calc(var(--wmfs)*.06 - .06em);line-height:1}
+.hero .wm{display:block;font-size:var(--wmfs);line-height:.95;color:var(--ink);margin-top:calc(var(--wmfs)*.032)}
+.hero h1{margin:28px 0 0;font-size:clamp(24px,2.6vw,34px);line-height:1.45;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+/* 형광펜: 첫 줄에 투명한 노랑이 왼쪽에서 오른쪽으로 그어짐 */
+.hero-hl{color:inherit;background:linear-gradient(rgba(255,210,0,.42),rgba(255,210,0,.42)) 0 58%/0% 72% no-repeat;padding-inline:.08em;margin-inline:-.08em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;animation:heroHl .95s cubic-bezier(.55,.1,.3,1) 1.25s forwards}
+@keyframes heroHl{to{background-size:100% 72%}}
 .hero p{margin:16px 0 0;font-size:clamp(15px,1.3vw,17px);line-height:1.75;color:var(--ink2);max-width:30em}
 .hero p b{color:var(--wine)}
 .hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
@@ -431,6 +437,24 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .cta-box .acts{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}
 .cta-box .btn-a{background:#fff;color:var(--wine)}
 .cta-box .btn-b{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.cta-box .pre{max-width:520px;margin:30px auto 0;text-align:left}
+.pre-row{display:flex;gap:8px}
+.pre-row input[type=email]{flex:1;min-width:0;height:52px;padding-inline:18px;border:0;border-radius:14px;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.3);color:#fff;font:500 16px var(--font);outline:none;transition:box-shadow .16s,background .16s}
+.pre-row input[type=email]::placeholder{color:rgba(255,255,255,.62)}
+.pre-row input[type=email]:focus{background:rgba(255,255,255,.2);box-shadow:inset 0 0 0 2px rgba(255,255,255,.8)}
+.pre-row .btn{height:52px;flex:none}
+.pre .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.pre-ok{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.8);cursor:pointer}
+.pre-ok input{flex:none;width:16px;height:16px;margin:3px 0 0;accent-color:#fff}
+.pre-ok a{text-decoration:underline;text-underline-offset:2px}
+.pre-msg{min-height:1.6em;margin:10px 0 0!important;font-size:14px!important;font-weight:600;color:#fff!important}
+.pre.done .pre-row,.pre.done .pre-ok{display:none}
+.pre.done .pre-msg{font-size:17px!important;text-align:center}
+.cta-box .pre-note{margin-top:6px;font-size:13px;color:rgba(255,255,255,.66)}
+.pre-alt{display:inline-block;margin-top:22px;font-size:14px;font-weight:600;color:#fff;opacity:.85;text-decoration:underline;text-underline-offset:3px}
+.pre-alt:hover{opacity:1}
+@media (max-width:560px){.pre-row{flex-direction:column}.pre-row input[type=email]{flex:none;width:100%}.pre-row .btn{width:100%}.cta-box br.pc{display:none}}
 .ftr{margin-top:clamp(96px,10vw,140px);background:#2A2420;color:#CFC6BA;font-size:14px;line-height:1.8}
 .ftr-in{max-width:var(--max);margin:0 auto;padding:56px var(--gut) 56px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
 .ftr .wm{font-size:26px;color:#fff}
@@ -440,7 +464,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .ftr small{color:#9A9087}
 @media (max-width:760px){.ftr-in{grid-template-columns:1fr 1fr}.ftr .f0{grid-column:span 2}}
 
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.st-scroll{height:auto}.st-pin{position:static;height:auto;gap:48px;padding-block:120px}.st-line{grid-area:auto}.hero .fade{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-hl{background-size:100% 72%}.st-scroll{height:auto}.st-pin{position:static;height:auto;gap:48px;padding-block:120px}.st-line{grid-area:auto}.hero .fade{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -464,7 +488,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     </ul>
     <div class="hdr-r">
       <a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a>
-      <a class="btn btn-w" href="#join">출시 알림 받기</a>
+      <a class="btn btn-w" href="#join">사전신청</a>
       <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="drawer"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
   </div>
@@ -475,7 +499,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="sub"><a href="#f-input"><small>01</small>필기 입력</a><a href="#f-read"><small>02</small>획 인식과 그래프</a><a href="#f-ask"><small>03</small>되묻는 튜터</a><a href="#f-note"><small>04</small>복습노트</a><a href="#f-ground"><small>05</small>Provee Ground</a></div>
   </details>
   <a class="l" href="#compare">비교</a><a class="l" href="#pricing">요금제</a><a class="l" href="#story">회사 이야기</a><a class="l" href="#faq">자주 묻는 질문</a>
-  <div class="d-cta"><a class="btn btn-w" href="#join">출시 알림 받기</a><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기</a></div>
+  <div class="d-cta"><a class="btn btn-w" href="#join">사전신청 혜택 받기</a><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기</a></div>
 </nav>
 
 <main id="top">
@@ -484,9 +508,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   <div class="hero-in">
     <p class="eyebrow fade" style="animation-delay:.1s">PROVE YOUR THINKING</p>
     <span class="wm fade" style="animation-delay:.25s">Provee<i>.</i></span>
-    <h1 class="fade" style="animation-delay:.45s">손으로 풀어야 이해되는<br>과목을 위한 AI 튜터</h1>
+    <h1 class="fade" style="animation-delay:.45s"><mark class="hero-hl">손으로 풀어야 이해되는</mark><br>과목을 위한 AI 튜터</h1>
     <p class="fade" style="animation-delay:.6s">미적분, 통계, 선형대수, 물리처럼<br><b>직접 문제를 풀어가는 과정 자체가 학습</b>인<br>과목을 위한 당신만의 선생님</p>
-    <div class="cta fade" style="animation-delay:.75s"><a class="btn btn-w" href="#join">출시 알림 받기</a><a class="btn btn-l" href="#features">기능 보기</a></div>
+    <div class="cta fade" style="animation-delay:.75s"><a class="btn btn-w" href="#join">사전신청 혜택 받기</a><a class="btn btn-l" href="#features">기능 보기</a></div>
   </div>
 </section>
 
@@ -678,9 +702,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 <section class="cta-band" id="join">
   <div class="cta-box">
-    <h2>10월, 서강대에서 먼저 엽니다</h2>
-    <p>중간고사 전에 무료 베타를 시작합니다.</p>
-    <div class="acts"><a class="btn btn-a" href="mailto:soomin020114@gmail.com?subject=Provee%20%EC%B6%9C%EC%8B%9C%20%EC%95%8C%EB%A6%BC%20%EC%8B%A0%EC%B2%AD">출시 알림 받기</a><a class="btn btn-b" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 써 보기</a></div>
+    <h2>10월 15일까지 사전신청하면<br>Matcha 2주 무료</h2>
+    <p>10월, 서강대에서 먼저 엽니다. 이메일을 남겨 주시면 저장해 두었다가, <br class="pc">여는 날 Matcha 요금제(주 6,500원) 2주 무료 혜택을 메일로 보내 드립니다.</p>
+    <form class="pre" id="preForm" novalidate>
+      <div class="pre-row">
+        <label class="sr" for="preEmail">이메일</label>
+        <input id="preEmail" type="email" inputmode="email" autocomplete="email" placeholder="이메일 주소를 입력하세요" required>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-a" type="submit">사전신청</button>
+      </div>
+      <label class="pre-ok"><input id="preAgree" type="checkbox"> <span>(필수) 사전신청 혜택 메일을 보내기 위해 이메일을 받고, 2026년 11월 30일에 지웁니다. <a href="privacy.html#prereg" target="_blank" rel="noopener">개인정보처리방침</a></span></label>
+      <p class="pre-msg" id="preMsg" role="status" aria-live="polite"></p>
+    </form>
+    <a class="pre-alt" href="https://proveeground.kr" target="_blank" rel="noopener">지금은 Provee Ground를 무료로 써 볼 수 있어요 →</a>
   </div>
 </section>
 </main>
@@ -982,7 +1016,8 @@ new IntersectionObserver(([e])=>{stOn=e.isIntersecting;if(stOn){cancelAnimationF
 if(RM)lines.forEach(l=>l.classList.add('on'));
 
 /* ---------- header, mega menu, drawer, gnb current ---------- */
-const hdr=$('#hdr');new IntersectionObserver(([e])=>{hdr.classList.toggle('solid',!e.isIntersecting);if(e.isIntersecting)$$('[data-nav]').forEach(a=>a.removeAttribute('aria-current'))},{rootMargin:'-80px 0px 0px 0px'}).observe($('.hero'));
+const hdr=$('#hdr');new IntersectionObserver(([e])=>{if(e.isIntersecting)$$('[data-nav]').forEach(a=>a.removeAttribute('aria-current'))},{rootMargin:'-80px 0px 0px 0px'}).observe($('.hero'));
+const hdrSolid=()=>hdr.classList.toggle('solid',scrollY>8);addEventListener('scroll',hdrSolid,{passive:true});hdrSolid();
 const mb=$('#megaBtn'),mg=$('#mega');let mT=0;
 const mset=o=>{mg.classList.toggle('on',o);mb.setAttribute('aria-expanded',o)};
 mb.onclick=e=>{e.stopPropagation();mset(!mg.classList.contains('on'))};
@@ -995,6 +1030,17 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){dset(false);mset(fa
 const nav=$$('[data-nav]');const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nav.forEach(a=>a.setAttribute('aria-current',a.dataset.nav===e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
 ['compare','pricing','story','faq'].forEach(id=>sio.observe(document.getElementById(id)));
 })();
+
+/* ---------- 사전신청 ---------- */
+(()=>{const $=s=>document.querySelector(s),f=$('#preForm');if(!f)return;const em=$('#preEmail'),ag=$('#preAgree'),msg=$('#preMsg'),bt=f.querySelector('button');
+const API=location.hostname==='localhost'?'http://localhost:8799/api/prereg':'https://prereg.provee.kr/api/prereg';
+f.addEventListener('submit',async e=>{e.preventDefault();const v=em.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)){msg.textContent='이메일 주소를 확인해 주세요';em.focus();return}
+  if(!ag.checked){msg.textContent='개인정보 수집에 동의해 주세요';ag.focus();return}
+  bt.disabled=true;msg.textContent='보내는 중…';
+  try{const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:v,consent:true,src:'provee.kr',website:f.website.value})});const d=await r.json();
+    if(!r.ok)throw new Error(d.error||'');f.classList.add('done');msg.textContent=d.dup?'이미 저장된 주소예요. 10월 오픈 때 혜택 메일을 보내 드릴게요.':'저장했어요. 10월 오픈 때 혜택 메일을 보내 드릴게요.'}
+  catch(x){msg.textContent=x.message||'지금 신청이 안 돼요. 잠시 후 다시 해 주세요.';bt.disabled=false}})})();
 </script>
 </body>
 </html>
