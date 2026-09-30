@@ -153,7 +153,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .bar .wm{font-size:2.5cqw;color:var(--ink)}
 .bar .end{margin-left:auto;border:1px solid var(--line);border-radius:99px;padding:.4cqw 1.6cqw;color:var(--ink2)}
 .dots{display:flex;gap:.9cqw}.dots i{width:1.8cqw;height:1.8cqw;border-radius:50%;display:block}
-.scap{margin:14px 0 0;font-size:13px;line-height:1.6;color:var(--ink3);text-align:center}
+.scap{margin:12px 0 0;font-size:11px;line-height:1.5;color:var(--ink3);text-align:center}
 .nb{position:absolute;left:0;right:0;bottom:0;top:6.6cqw;background:#fff}
 .nb.lined{background:#fff repeating-linear-gradient(to bottom,transparent 0 6.4cqw,var(--rule) 6.4cqw calc(6.4cqw + 1px))}
 .nb canvas{position:absolute;inset:0;width:100%;height:100%}
@@ -328,7 +328,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .cmp .me{background:#FBF3F1;color:var(--ink);font-weight:600}
 .cmp thead .me{color:var(--wine);font-size:15px}
 .cmp thead .me .wm{font-size:17px;color:var(--wine)}
-.cmp-note{margin:14px 4px 0;font-size:13px;color:var(--ink3);line-height:1.6}
+.cmp-note{margin:12px 4px 0;font-size:11px;color:var(--ink3);line-height:1.5}
 
 /* ---------- pricing ---------- */
 .pr-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -347,7 +347,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .plan ul{list-style:none;margin:6px 0 0;padding:14px 0 0;border-top:1px solid var(--rule);display:grid;gap:10px;font-size:15px;line-height:1.5;color:var(--ink2)}
 .plan li{display:flex;gap:10px}
 .plan li svg{flex:none;margin-top:3px}
-.pr-note{margin:18px 4px 0;font-size:13px;color:var(--ink3);line-height:1.6}
+.pr-note{margin:16px 4px 0;font-size:11px;color:var(--ink3);line-height:1.5}
 @media (max-width:1020px){.plans{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.plans{grid-template-columns:1fr}}
 
@@ -393,7 +393,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .og-card{background:var(--paper);border-radius:24px;box-shadow:0 30px 60px -30px rgba(60,30,20,.3),inset 0 0 0 1px var(--line);padding:28px;display:grid;gap:14px}
 .gr{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
 .gr span{font-size:16px;color:var(--ink2)}.gr b{font-size:34px;font-weight:800;color:var(--wine);font-variant-numeric:tabular-nums}.gr s{font-size:22px;color:var(--ink3);font-weight:600;margin-right:10px}
-.og-card small{font-size:13px;color:var(--ink3);line-height:1.6}
+.og-card small{font-size:11px;color:var(--ink3);line-height:1.5}
 .st-time{padding-block:0 clamp(80px,9vw,120px)}
 .st-time h3,.team h3{margin:0 0 36px;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em;text-align:center}
 .tl{list-style:none;margin:0 auto;padding:0;max-width:760px;position:relative}
@@ -517,7 +517,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .s3-st b{font:700 34px/1 var(--brand);letter-spacing:-.03em;color:var(--wine)}
 .s3-st span{font-size:16px;line-height:1.5;color:var(--ink2)}
 .s3-p{margin:22px 0 0;font-size:18px;line-height:1.7;color:var(--ink2);max-width:26em}
-.s3-src{margin:26px 0 0;font-size:12.5px;color:var(--ink3);transition:opacity .25s}
+.hero .s3-src{display:grid;max-width:none;margin:14px 0 0;font-size:11px;line-height:1.45;color:var(--ink3);transition:opacity .25s} /* .hero p(17px)보다 앞서도록 */
+.s3-src span{grid-area:1/1;opacity:0;transition:opacity .2s var(--ease)} /* 지금 보이는 수치의 출처 한 줄만 */
+.s3-src .sv,.dz[data-sc="1"] .s3-src .gp{opacity:1}.dz[data-sc="1"] .s3-src .sv{opacity:0}
 .s3.fin .s3-src{opacity:0}
 .s3-dots{display:flex;gap:6px;margin-top:22px}
 .s3-dots i{width:22px;height:4px;border-radius:4px;background:var(--line);transition:background .2s,width .2s var(--ease)}
@@ -526,25 +528,28 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .s3-dev{position:relative;aspect-ratio:4/3;border-radius:28px;background:#1E1811;padding:1.6cqw;box-shadow:0 40px 80px -30px rgba(60,30,20,.45),0 0 0 1px rgba(30,24,17,.08)}
 .sc{position:absolute;inset:1.6cqw;border-radius:20px;overflow:hidden;opacity:0;transition:opacity .25s var(--ease)}
 .sc.on{opacity:1}
-/* 0 사진 찍기 */
-.sc0{background:#0F0C0A;display:flex;flex-direction:column}
-.cam{position:relative;flex:1;margin:5cqw 7cqw 2cqw}
-.shot{position:absolute;inset:0;border-radius:1cqw;background:#F3EEE3 repeating-linear-gradient(180deg,transparent 0 5.4cqw,rgba(47,76,102,.12) 5.4cqw calc(5.4cqw + 1px));transform:rotate(-2deg);transition:transform .18s var(--ease),filter .25s}
-.shot canvas{width:100%;height:100%;display:block}
-.sc0.snap .shot{transform:rotate(-2deg) scale(.965)}
-.cam i{position:absolute;width:6cqw;height:6cqw;border:.5cqw solid #fff;opacity:.9;transition:transform .3s var(--ease)}
-.cam .c1{left:-1.5cqw;top:-1.5cqw;border-right:0;border-bottom:0;border-radius:1.4cqw 0 0 0}.cam .c2{right:-1.5cqw;top:-1.5cqw;border-left:0;border-bottom:0;border-radius:0 1.4cqw 0 0}
-.cam .c3{left:-1.5cqw;bottom:-1.5cqw;border-right:0;border-top:0;border-radius:0 0 0 1.4cqw}.cam .c4{right:-1.5cqw;bottom:-1.5cqw;border-left:0;border-top:0;border-radius:0 0 1.4cqw 0}
-.sc0:not(.aim) .c1{transform:translate(-2cqw,-2cqw)}.sc0:not(.aim) .c2{transform:translate(2cqw,-2cqw)}.sc0:not(.aim) .c3{transform:translate(-2cqw,2cqw)}.sc0:not(.aim) .c4{transform:translate(2cqw,2cqw)}
-.flash{position:absolute;inset:-6cqw;background:#fff;opacity:0;pointer-events:none}
-.sc0.snap .flash{animation:flash .35s ease-out}
-@keyframes flash{0%{opacity:.9}100%{opacity:0}}
-.shut{height:11cqw;display:grid;place-items:center}
-.shut span{width:7.4cqw;height:7.4cqw;border-radius:50%;background:#fff;box-shadow:0 0 0 .7cqw #0F0C0A,0 0 0 1.1cqw #fff;transition:transform .15s}
-.sc0.snap .shut span{transform:scale(.86)}
-.cam-read{position:absolute;left:50%;bottom:3cqw;transform:translate(-50%,1.6cqw);display:flex;align-items:center;gap:1.4cqw;padding:1.4cqw 2.4cqw;border-radius:99px;background:#fff;font-size:1.9cqw;color:#555;white-space:nowrap;box-shadow:0 1cqw 3cqw rgba(0,0,0,.3);opacity:0;transition:opacity .22s,transform .3s var(--ease)}
-.cam-read b{font:700 2.6cqw/1 var(--brand);color:var(--wine)}
-.sc0.read .cam-read{opacity:1;transform:translate(-50%,0)}
+/* 1 사진으로 올린 필기를 GPT가 24 + 1로 읽음: 대표의 실제 대화 캡처(img/gpt-24p1-chat.jpg, 1179×1010)를 조각내 차례로 드러낸다 */
+.scg{background:#000}
+.gc{position:absolute;left:0;right:0;bottom:0;aspect-ratio:1179/1010;isolation:isolate;transform:translate3d(0,34%,0);transition:transform .34s var(--ease)}
+.gc>*{position:absolute;display:block}
+.gc-ph,.gc-me,.gc-re{background:url(img/gpt-24p1-chat.jpg) no-repeat}
+.gc-ph{left:58.948%;top:2.772%;width:37.320%;height:58.218%;background-size:267.955% 171.769%;background-position:94.046% 6.635%;opacity:0;transform:translate3d(0,6%,0) scale(.96);transform-origin:100% 100%;transition:opacity .22s var(--ease),transform .32s var(--ease)}
+.gc-me{left:58.948%;top:62.178%;width:37.320%;height:14.653%;background-size:267.955% 682.432%;background-position:94.046% 72.854%;opacity:0;transform:translate3d(0,24%,0);transition:opacity .2s var(--ease),transform .28s var(--ease)}
+.gc-re{left:3.393%;top:87.129%;width:62.765%;height:6.139%;background-size:159.324% 1629.032%;background-position:9.112% 92.827%;clip-path:inset(0 100% 0 0)}
+.gc-dot{left:4.326%;top:88.812%;width:2.545%;height:2.970%;border-radius:50%;background:#fff;opacity:0;transform:scale(.4);transition:opacity .14s,transform .2s var(--ease)}
+.gc-hl{left:24.597%;top:87.624%;width:17.303%;height:5.347%;border-radius:.7cqw;background:var(--wine);mix-blend-mode:screen;transform:scaleX(0);transform-origin:0 50%;transition:transform .26s var(--ease)}
+.gc-ring{left:67.854%;top:19.010%;width:14.843%;height:12.871%;overflow:visible}
+.gc-ring path{fill:none;stroke:var(--wine);stroke-width:2.6;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .38s var(--ease)}
+.scg.g1 .gc-ph{opacity:1;transform:none}
+.scg.g2 .gc{transform:translate3d(0,18%,0)}
+.scg.g2 .gc-me{opacity:1;transform:none}
+.scg.g3 .gc-dot{opacity:1;transform:none;animation:gdot .5s ease-in-out infinite alternate}
+.scg.g3 .gc{transform:none} /* 생각 중 점이 뜰 때 답 자리까지 내려 둔다 */
+.scg.g4 .gc-dot{opacity:0;animation:none}
+.scg.g5 .gc-hl{transform:none}
+.scg.g6 .gc-ring path{stroke-dashoffset:0}
+.scg.rs,.scg.rs *{transition:none!important}
+@keyframes gdot{to{transform:scale(.7)}}
 .lines .first{margin:0 0 .6cqw;font-size:2cqw;line-height:1.5;color:#333}
 .lines .first b{font-family:var(--brand);color:var(--wine)}
 /* 1 풀이가 쏟아짐 */
@@ -616,12 +621,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .dz .z-vid{backface-visibility:hidden}
 /* 영상·태블릿 구간에서는 메뉴줄 흐림을 끈다(재생 중인 영상 위 흐림은 매 프레임 비싸서 멈칫함). 배경은 거의 불투명이라 겉보기는 같다 */
 .hdr.solid.noblur{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(247,243,236,.985)}
-/* 끊김 방지: 장면·셔터·종이를 각자 합성 층으로 미리 올려 두어, 처음 보일 때 새로 그리지 않게 */
+/* 끊김 방지: 장면·종이를 각자 합성 층으로 미리 올려 두어, 처음 보일 때 새로 그리지 않게 */
 .dz .sc{will-change:opacity}
 .dz .sc:not(.on){opacity:.004} /* 눈에 안 보일 만큼만 남겨 미리 그려 둔다 */
-.dz .shot,.dz .s3-l{will-change:transform}
-.dz .flash{will-change:opacity}
-.dz .cam i,.dz .cam-read,.dz .b3pop,.dz .rd-r{will-change:transform,opacity}
+.dz .sc.on{z-index:1} /* 지금 장면을 맨 위에 두어, 미리 그려 둔 다른 장면이 검은 화면 위로 비치지 않게 */
+.dz .gc,.dz .s3-l{will-change:transform}
+.dz .gc-ph,.dz .gc-me,.dz .b3pop,.dz .rd-r{will-change:transform,opacity}
 .dz .s3-dev{contain:layout paint}
 .s3.fin .s3-src,.dz.fin .s3-src{opacity:0}
 .s3-l .rd{margin-top:22px;width:min(460px,100%)}
@@ -636,7 +641,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 @media (max-width:860px){
   .dz-in{align-content:start;padding-top:calc(var(--hdr) + 12px)}
   .s3-l .rd{display:none}
-  .s3-src{font-size:11px;margin-top:14px}
+  .hero .s3-src{margin-top:10px}
 }
 @media (prefers-reduced-motion:reduce){
   .hero.zoom.dz{height:auto}
@@ -650,6 +655,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 @media (prefers-reduced-motion:reduce) and (max-width:760px){.dz .z-copy{align-items:flex-end}}
 
 .hero-fade{position:absolute;left:0;right:0;bottom:0;height:160px;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(247,243,236,0),var(--ivory))}
+/* 출처·각주·캡션은 한 크기로 작고 옅게(본문은 그대로) */
+@media (max-width:760px){.scap,.cmp-note,.pr-note,.og-card small,.hero .s3-src{font-size:10.5px}}
 
 </style>
 </head>
@@ -704,13 +711,13 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="z-scr"><div class="wrap s3-in dz-in">
       <div class="s3-copy">
         <p class="s3-k">손으로 푸는 과목을 AI로 공부하면</p>
-        <div class="s3-lines"><div class="s3-l on"><h2><span class="kw">사진 찍고,</span> <span class="kw">타이핑하고,</span> <span class="kw">기다리고.</span><br>수학은 언제 푸나요?</h2><p class="s3-st"><b>86%</b><span>문제를 매번 찍어 올리는 게 번거로웠다</span></p></div><div class="s3-l"><h2>사진으로 올리면<br>식이 다르게 읽히기도 합니다</h2><p class="s3-st"><b>24+1</b><span>뭉쳐 쓴 2x + 1을 사진으로 GPT에 올렸을 때 읽은 식</span></p></div><div class="s3-l"><h2>생각하기도 전에<br>풀이 전체가 도착합니다</h2><p class="s3-st"><b>79%</b><span>생각할 틈 없이 전체 풀이부터 받았다</span></p></div><div class="s3-l"><h2>새 채팅을 열면<br>처음부터 다시 설명합니다</h2><p class="s3-st"><b>88%</b><span>새 채팅마다 내 수준을 다시 설명해야 했다</span></p></div><div class="s3-l fin"><h2>풀이는 학생이 쓰고,<br>Provee는 옆에서 읽습니다</h2><p class="s3-p">펜으로 쓰는 식을 따라 읽다가, 막힌 곳에서만 먼저 말을 겁니다.</p><div class="rd"><div class="rd-r bad"><small>같은 필기를 사진으로<br>GPT에 올렸을 때</small><b>24 + 1</b></div><div class="rd-r good"><small>Provee가 쓴 순서대로<br>읽은 결과</small><b>2x + 1</b></div></div></div></div>
-        <p class="s3-src">%: 생성형 AI를 써 본 대학생 43명 설문(URP, 2026년 7월)<br>24+1: 대표의 실제 필기 사진을 GPT-5.6 Sol에 올린 1회 실측</p>
+        <div class="s3-lines"><div class="s3-l on"><h2><span class="kw">사진 찍고,</span> <span class="kw">타이핑하고,</span> <span class="kw">기다리고.</span><br>수학은 언제 푸나요?</h2><p class="s3-st"><b>86%</b><span>문제를 매번 찍어 올리는 게 번거로웠다</span></p></div><div class="s3-l"><h2>사진으로 올리면<br>식이 다르게 읽히기도 합니다</h2><p class="s3-st"><b>24+1</b><span>뭉쳐 쓴 2x + 1을 사진으로 올렸을 때 GPT가 읽은 식</span></p></div><div class="s3-l"><h2>생각하기도 전에<br>풀이 전체가 도착합니다</h2><p class="s3-st"><b>79%</b><span>생각할 틈 없이 전체 풀이부터 받았다</span></p></div><div class="s3-l"><h2>새 채팅을 열면<br>처음부터 다시 설명합니다</h2><p class="s3-st"><b>88%</b><span>새 채팅마다 내 수준을 다시 설명해야 했다</span></p></div><div class="s3-l fin"><h2>풀이는 학생이 쓰고,<br>Provee는 옆에서 읽습니다</h2><p class="s3-p">펜으로 쓰는 식을 따라 읽다가, 막힌 곳에서만 먼저 말을 겁니다.</p><div class="rd"><div class="rd-r bad"><small>같은 필기를 사진으로<br>GPT에 올렸을 때</small><b>24 + 1</b></div><div class="rd-r good"><small>Provee가 쓴 순서대로<br>읽은 결과</small><b>2x + 1</b></div></div></div></div>
         <div class="s3-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+        <p class="s3-src"><span class="sv">%: 생성형 AI를 써 본 대학생 43명 설문(URP, 2026년 7월)</span><span class="gp">24+1: 대표의 필기 사진을 GPT-5.6 Sol에 올린 1회 실측, 화면은 실제 대화 캡처</span></p>
       </div>
       <div class="s3-stage" aria-hidden="true"><div class="s3-dev">
       <div class="sc sct on"><video class="s0v" muted playsinline preload="auto" poster="img/s0-study.jpg"><source src="img/s0-study.mp4" type="video/mp4"></video></div>
-      <div class="sc sc0"><div class="cam"><div class="shot"><canvas></canvas></div><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i><div class="flash"></div><div class="cam-read">사진으로 읽은 식 <b>24 + 1</b></div></div><div class="shut"><span></span></div></div>
+      <div class="sc scg"><div class="gc"><i class="gc-ph"></i><i class="gc-me"></i><i class="gc-dot"></i><i class="gc-re"></i><i class="gc-hl"></i><svg class="gc-ring" viewBox="0 0 100 100" preserveAspectRatio="none"><path pathLength="1" d="M90 30C76 6 30 2 10 26C-6 46 6 84 44 94C74 101 100 82 96 52C94 40 88 30 76 22"/></svg></div></div>
       <div class="sc sc1"><div class="cht"><div class="ct-top"><b>AI 채팅</b></div><div class="ct-body"><div class="b3me"><div class="thumb"><canvas></canvas></div></div><div class="ai"><div class="b3av"></div><div class="lines"><p class="first">사진 속 식은 <b>24 + 1</b> 입니다. 차례대로 풀어 보면</p></div></div></div></div></div>
       <div class="sc sc2"><div class="nc"><aside><div class="b3nb">+ 새 채팅</div><ul></ul></aside><div class="nc-main"><div class="nc-empty">무엇을 도와드릴까요?</div><div class="nc-in"><span class="typ"></span><i class="caret"></i></div></div></div></div>
       <div class="sc sc3"><div class="b3pv"><div class="b3bar"><span class="wm">Provee<i>.</i></span><span>이차방정식</span></div><div class="b3paper"><canvas></canvas></div><div class="b3pop"><small>읽은 식</small><b>2x + 1</b><i></i></div></div></div>
@@ -1288,9 +1295,14 @@ const s0=async ok=>{const v=SC[0].querySelector('video'),K=[...L[0].querySelecto
   v.addEventListener('ended',again);v.classList.remove('out');v.currentTime=0;v.play().catch(()=>{});
   await new Promise(res=>{const tick=()=>{if(!ok()){v.removeEventListener('ended',again);v.pause();v.classList.remove('out');K.forEach(e=>e.classList.remove('dim'));return res()}mark();requestAnimationFrame(tick)};requestAnimationFrame(tick)})};
 const play=[s0,
-  async ok=>{const sc=SC[1];sc.classList.remove('aim','snap','read');const ink=await inkP;if(!ok())return;
-    const f=DR.fit(sc.querySelector('canvas'));if(f&&ink){const S=ink.blob;f.ctx.clearRect(0,0,f.W,f.H);DR.draw(f.ctx,S,1e9,DR.box(S,f.W,f.H,.22,.12,.56,.56),'#2A2A33',Math.max(2,f.W*.012))}
-    await DR.sleep(120);if(!ok())return;sc.classList.add('aim');await DR.sleep(420);if(!ok())return;sc.classList.add('snap');await DR.sleep(380);if(!ok())return;sc.classList.remove('snap');await DR.sleep(150);if(ok())sc.classList.add('read')},
+  // 대표의 실제 GPT 대화 캡처: 필기 사진이 올라가고, 질문, 생각 중 점, 답이 토막토막 나온 뒤 "24 + 1"에 와인색 표시, 사진 속 필기에 동그라미
+  async ok=>{const sc=SC[1],re=sc.querySelector('.gc-re'),K=[13,26.9,43.4,51.9,72.4,85.8,100]; // 답 글자 토막이 끝나는 위치(%)
+    const st=n=>{for(let k=1;k<=6;k++)sc.classList.toggle('g'+k,k<=n)},clip=v=>{re.style.clipPath=`inset(0 ${100-v}% 0 0)`};
+    sc.classList.add('rs');st(0);clip(0);void sc.offsetWidth;sc.classList.remove('rs');
+    if(DR.RM){st(6);clip(100);return}
+    for(const [ms,n] of [[80,1],[400,2],[300,3],[380,4]]){await DR.sleep(ms);if(!ok())return;st(n)}
+    for(const v of K){clip(v);await DR.sleep(55);if(!ok())return}
+    await DR.sleep(110);if(!ok())return;st(5);await DR.sleep(230);if(ok())st(6)},
   async ok=>{const sc=SC[2],box=sc.querySelector('.lines'),body=sc.querySelector('.ct-body');box.querySelectorAll('i').forEach(x=>x.remove());body.scrollTop=0;
     const ink=await inkP;const f=DR.fit(sc.querySelector('.thumb canvas'));if(f&&ink){const S=ink.blob;f.ctx.clearRect(0,0,f.W,f.H);DR.draw(f.ctx,S,1e9,DR.box(S,f.W,f.H,.2,.14,.6,.64),'#2A2A33',1.6)}
     await DR.sleep(150);
@@ -1308,7 +1320,7 @@ const play=[s0,
 let cur=-1,tok=0;
 const go=i=>{if(i===cur)return;cur=i;const my=++tok;const ok=()=>my===tok;
   L.forEach((l,j)=>l.classList.toggle('on',j===i));D.forEach((d,j)=>d.classList.toggle('on',j===i));SC.forEach((c,j)=>c.classList.toggle('on',j===i));
-  Z.classList.toggle('fin',i===4);if(i>=0)play[i](ok)};
+  Z.classList.toggle('fin',i===4);Z.dataset.sc=i;if(i>=0)play[i](ok)};
 const ZP=.2; // 전체 스크롤 중 화면 속으로 들어가는 구간 비율
 // 영상: 스크롤을 시작하면 끝 장면으로 건너뛰지 않고 빠르게 감아 끝낸다(건너뛰기는 다시 읽느라 멈칫함)
 const ffwd=()=>{if(vid.ended||!vid.duration||vid.currentTime>=vid.duration-.08)return;if(vid.playbackRate<6)vid.playbackRate=6;
