@@ -168,7 +168,7 @@ const T={
 'x &gt; 2 쪽을 위로 볼록하게 그렸네. 첫 줄에서 a가 어떤 수라고 했지?':'You drew the x > 2 part curving upward. What did the first line say a is?',
 '다시 읽을게':'I\'ll reread it',
 '힌트 더 줘':'Another hint',
-'대표가 2024학년도 수능 14번을 푼 실제 필기(획 594개, 18분) 가운데 그래프 대목을 빠르게 재생한 화면. 실제로는 혼자 고쳤고, 펜 멈춤 표시와 말풍선, 형광펜은 기능을 보여 주기 위한 연출':'The graph part of our CEO\'s real handwriting from 2024 CSAT Question 14 (594 strokes, 18 minutes), sped up. In reality he fixed it on his own; the pause timer, the speech bubble and the highlight are staged to show the feature',
+'대표가 2024학년도 수능 14번을 푼 실제 필기(획 594개, 18분) 가운데 그래프 대목을 빠르게 재생한 화면. 실제로는 혼자 고쳤고, 펜 멈춤 표시와 말풍선, 형광펜은 기능을 보여 주기 위한 연출':'The graph part of our CEO\'s real handwriting from 2024 CSAT Question 14 (594 strokes, 18 minutes), sped up. In reality our CEO fixed it alone; the pause timer, the speech bubble and the highlight are staged to show the feature',
 /* 05 Provee Note */
 '지운 획':'Erased',
 '다시 보기':'Replay',
@@ -187,7 +187,7 @@ const T={
 '다시 보는 중':'Replaying',
 '다 봤어요':'Done',
 '연출':'Staged',
-'등굣길, 시험 10분 전, 버스 안에서 같은 학생이 폰으로 Provee Note를 열어 자기 풀이를 다시 보는 연출 장면':'Staged scene: the same student opens Provee Note on a phone on the way to school, 10 minutes before an exam and on the bus, and replays his own solutions',
+'등굣길, 시험 10분 전, 버스 안에서 같은 학생이 폰으로 Provee Note를 열어 자기 풀이를 다시 보는 연출 장면':'Staged scene: the same student opens Provee Note on a phone on the way to school, 10 minutes before an exam and on the bus, and replays their own solutions',
 'AI로 만든 연출 사진(실존 인물 아님) 위에 앱 화면을 겹친 장면. 폰 속 필기는 대표가 직접 쓴 실제 필기 두 개(이차방정식 획 39개, 2024 수능 14번 획 594개)를 빠르게 재생한 것':'Staged AI-generated photos (not a real person) with the app screen laid on top. The handwriting on the phone is two real records our CEO wrote himself (a quadratic, 39 strokes; 2024 CSAT Q14, 594 strokes), replayed at speed',
 /* 06 Provee Ground (이름은 예시) */
 'proveeground.kr 초대 링크':'proveeground.kr invite link',
