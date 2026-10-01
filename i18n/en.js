@@ -71,6 +71,32 @@ const T={
 '이차방정식':'Quadratic equations',
 '읽은 식':'Read as',
 
+// subjects: 외우는 공부와 풀어 보는 공부 (index.html #subjects). 이 섹션 줄은 여기 한곳에만 둔다
+'외우는 공부와 풀어 보는 공부':'Learning by heart, learning by solving',
+'외운 것은 카드로 꺼내 보면 되지만, <br><em>푸는 힘은 직접 풀어 봐야 붙습니다</em>':'What you memorize, flashcards help you recall. <br><em>The power to solve only comes from solving.</em>',
+'AI 학습 도구는 이미 많습니다. 많은 도구가 강의자료를 요약하고 퀴즈와 플래시카드로 바꿔, 외우는 공부를 잘 돕습니다. 손으로 풀어 보는 공부를 돕는 도구는 드뭅니다.':'There are already plenty of AI study tools. Many turn lecture notes into summaries, quizzes and flashcards, and they do a good job of helping you memorize. Tools that help you work problems out by hand are rare.',
+'외우는 공부':'Learning by heart',
+'단어 · 용어 · 정의':'Words · terms · definitions',
+'여러 번 꺼내 보며 익히는 공부입니다. 카드로 스스로 시험해 보는 방식이 잘 맞습니다.':'You learn it by recalling it again and again. Quizzing yourself with cards works well.',
+'<b>AI 튜터가 할 일</b>노트 정리, 마인드맵, 플래시카드를 만드는 수고를 줄여 줍니다.':'<b>What an AI tutor should do</b>Take the effort out of making notes, mind maps and flashcards.',
+'손으로 푸는 공부':'Solving by hand',
+'미적분 · 통계 · 선형대수 · 물리 문제 풀이':'Problem solving in calculus · statistics · linear algebra · physics',
+'그렸다 지우고 다시 그리는 시행착오 속에서 푸는 힘이 붙습니다.':'The power to solve grows through trial and error: drawing, erasing, drawing again.',
+'<b>AI 튜터가 할 일</b>사진 찍고 다시 설명하는 수고는 없애고, 생각하는 시간은 학생에게 남겨 둡니다. 막힌 곳에서만 먼저 묻습니다.':'<b>What an AI tutor should do</b>Remove the hassle of snapping photos and explaining again, and leave the thinking time to the student. Speak up first only where you are stuck.',
+'2024학년도 수능 14번을 18분 동안 손으로 푼 실제 필기. 그래프를 그렸다가 지우고 다시 그렸고, 중간에 3분 19초 동안 펜을 놓았습니다.':'Real handwriting from solving Question 14 of the 2024 CSAT math exam by hand over 18 minutes. A graph was drawn, erased and redrawn, and the pen was set down for 3 minutes 19 seconds along the way.',
+'오른쪽은 대표가 2024학년도 수능 14번을 18분 동안 푼 실제 필기(획 594개)를 빠르게 재생했습니다. 점선은 그렸다가 지운 획입니다. 왼쪽 카드는 설명을 위한 예시입니다.':'On the right is real handwriting by our CEO (594 strokes) from solving Question 14 of the 2024 CSAT math exam over 18 minutes, replayed at speed. Dotted lines are strokes that were drawn and then erased. The cards on the left are an illustration.',
+'앞면 카드는 설명을 위한 예시입니다. 판을 뒤집으면 나오는 필기는 대표가 2024학년도 수능 14번을 18분 동안 푼 실제 기록(획 594개)이며, 스크롤에 맞춰 다시 그립니다. 점선은 그렸다가 지운 획입니다.':'The flashcards on the front are an illustration. The handwriting on the back is a real record of our CEO solving Question 14 of the 2024 CSAT math exam over 18 minutes (594 strokes), redrawn as you scroll. Dotted lines are strokes that were drawn and then erased.',
+'영단어':'Vocabulary',
+'뜻':'Meaning',
+'버리다':'to leave behind',
+'꺼리는':'unwilling',
+'정확한':'exact',
+'피할 수 없는':'unavoidable',
+'외운 카드':'Cards learned',
+'지우고 다시 그린 그래프':'Graph erased and redrawn',
+'펜을 놓은 3분 19초':'Pen lifted for 3m 19s',
+// /subjects
+
 /* ---------- 기능 5개 ---------- */
 '기능 목록':'Feature list',
 '사진 찍을 필요 없이,<br>쓰는 순간 읽습니다':'No photos needed.<br>It reads as you write',
