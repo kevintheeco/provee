@@ -349,6 +349,37 @@ const T={
 '지금 신청이 안 돼요. 잠시 후 다시 해 주세요.':'We couldn\'t sign you up just now. Please try again in a moment.',
 '지금은 Provee Ground를 무료로 써 볼 수 있어요 →':'Meanwhile, you can try Provee Ground for free →',
 
+// global-fix: 페이지 전역 검증단 수정(헤더 신청 버튼, 비교표, 요금제, 로드맵, 회사 이야기 문장, FAQ, 사전신청).
+// 같은 열쇠가 위에 있으면 여기 값이 이긴다(객체에서 뒤에 쓴 값이 남음): '사전신청' 버튼 이름을 Get early access로.
+'사전신청':'Get early access',
+'10월 15일까지 사전신청하면<br>Matcha 2주 무료':'Sign up for early access by October 15<br>and get 2 weeks of Matcha free',
+'지금은 Provee Ground를 무료로 써 볼 수 있어요':'Meanwhile, try Provee Ground for free',
+// 비교표(행 순서를 기능 01~05에 맞춤, 좁은 화면 카드의 칸 이름표는 위의 '범용 AI 채팅'·'사진 풀이 앱'을 그대로 씀)
+'식에서 바로 선으로 그림':'Drawn as lines straight from the equation',
+'그림을 만들거나 코드를 돌리는 동안 기다리기도 함':'You may wait while it makes an image or runs code',
+'내가 쓴 풀이를 보고 놓친 조건을 먼저 묻고, 힌트는 한 단계씩':'Looks at what you wrote, asks about the condition you missed, then gives hints one step at a time',
+'기본은 정답과 전체 풀이부터. 학습 모드에선 되묻기도 하지만, 쓰는 과정은 보지 못함':'By default, the answer and full solution come first. Study modes may ask questions back, but can\'t see you write',
+'Provee Note에 과목별로 모여, 폰으로도 언제든 다시 봄':'Collected by subject in Provee Note, ready to replay on your phone anytime',
+'채팅마다 흩어지기 쉬움':'Easily scattered across chats',
+// 요금제
+'힌트 중심 도움':'Hint-first help',
+'과목을 넘어 이어지는 기억':'Remembers you across subjects',
+'풀이 중 실시간 도움':'Real-time help while you solve',
+'다음 학기까지 이어지는 기억':'Remembers you into next semester',
+'실수 패턴에 맞춘 도움':'Help tuned to your mistake patterns',
+'출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 23% 쌉니다.':'Planned pre-launch prices in Korean won (KRW), subject to change. Monthly billing is up to 23% cheaper than four weekly payments.',
+'요금제 이름은 카페 메뉴 하나 값을 기준으로 붙였습니다. 출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 23% 쌉니다.':'Each plan is named after a café item that costs about the same. Planned pre-launch prices in Korean won (KRW), subject to change. Monthly billing is up to 23% cheaper than four weekly payments.',
+// 로드맵
+'대학과 중고등을 함께':'University and secondary school, together',
+'같은 튜터가 대학생과 중고등학생을 함께 가르칩니다.':'The same tutor teaches university, middle and high school students.',
+// 회사 이야기
+'AI가 답을 빨리 줄수록,<br>학생이 생각할 틈은 줄었습니다.<small>고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a>Bastani 외, PNAS, 2025</a></small>':'The faster AI hands over answers,<br>the less room students have to think.<small>In a field experiment with nearly 1,000 high school students, those who practiced with a standard ChatGPT-style AI scored 17% lower on an exam without AI than students who never had it. An AI designed to give hints instead of answers largely prevented that loss. <a>Bastani et al., PNAS, 2025</a></small>',
+'사진 한 장이면 답이 나오면서,<br>공부는 받아 적는 일이 되어 갔습니다.':'Once a single photo could get you the answer,<br>studying slowly turned into copying.',
+'답은 AI가 알아도,<br>실력은 직접 풀어 본 사람에게 쌓입니다.':'AI may know the answer,<br>but skill builds up in whoever works it out.',
+// 자주 묻는 질문
+'ChatGPT와 무엇이 다른가요?':'How is it different from ChatGPT?',
+'ChatGPT도 사진 속 풀이를 읽고, 학습 모드에서는 답 대신 되묻기도 합니다. 차이는 무엇을 받느냐에 있습니다. Provee는 다 쓴 사진 한 장이 아니라 노트에 쓰는 획을 순서와 시각까지 받습니다. 그래서 풀이가 멈춘 자리에서 내가 쓴 식을 보고 막힌 곳에서만 먼저 묻고, 다 푼 뒤에는 Provee Note에서 쓴 순서 그대로 다시 볼 수 있습니다.':'ChatGPT can read work in a photo too, and its study mode may ask you questions instead of giving the answer. The difference is what each one receives. Instead of one photo of a finished page, Provee gets the strokes you write in your notes, with their order and timing. So where your work stops, it looks at what you wrote and asks first, only where you\'re stuck. When you\'re done, you can replay it in Provee Note in the order you wrote it.',
+
 /* ---------- 바닥글 ---------- */
 '손으로 풀어야 이해되는 과목을 위한 AI 튜터':'An AI tutor for subjects you learn with pen in hand',
 '회사':'Company',
@@ -361,6 +392,7 @@ const T={
 /* 같은 원문이라도 자리에 따라 다르게 옮길 때: [CSS 선택자, {원문: 번역}] */
 const SCOPED=[
   ['#faq .sec-h h2',{'자주 묻는 질문':'Frequently asked questions'}],
+  ['.hdr .btn-w',{'사전신청':'Early access'}], // global-fix: 폰 머리글은 자리가 좁아 짧게
 ];
 /* 스크립트가 숫자를 넣어 만드는 글자 (정규식, 태그가 섞인 열쇠에도 쓸 수 있다) */
 const RULES=[

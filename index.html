@@ -68,7 +68,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .btn-l:hover{background:rgba(255,255,255,.6)}
 .hdr .btn{height:42px;padding-inline:18px;font-size:14px}
 .burger{display:none;width:44px;height:44px;border-radius:12px;place-items:center}
-@media (max-width:1020px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{display:none}}
+@media (max-width:1020px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{height:38px;padding-inline:14px;font-size:13px;border-radius:12px}}
+/* 폰: 햄버거 옆에 작게. 자리가 빠듯하면 간격부터 줄인다 */
+@media (max-width:599px){.hdr .wm,.hdr-r>*{flex:none;white-space:nowrap}.hdr-in{gap:12px}.hdr-r{gap:4px}.hdr .btn-w{height:34px;padding-inline:11px;border-radius:10px}.hdr .burger{width:40px;height:40px}}
 .drawer{position:fixed;inset:0;z-index:60;background:var(--ivory);padding:calc(env(safe-area-inset-top,0px) + 6px) var(--gut) 28px;display:flex;flex-direction:column;overflow-y:auto;transform:translateY(-100%);transition:transform .28s var(--ease);visibility:hidden}
 .drawer.on{transform:none;visibility:visible}
 .drawer-top{display:flex;justify-content:space-between;align-items:center;min-height:66px}
@@ -383,7 +385,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 /* ---------- compare ---------- */
 .cmp-wrap{margin-top:48px;overflow-x:auto;border-radius:24px;background:var(--paper);box-shadow:0 30px 60px -40px rgba(60,30,20,.3),inset 0 0 0 1px var(--line)}
-.cmp{width:100%;min-width:780px;border-collapse:separate;border-spacing:0;font-size:15px;line-height:1.6}
+.cmp{width:100%;min-width:680px;table-layout:fixed;border-collapse:separate;border-spacing:0;font-size:15px;line-height:1.6}
+.cmp thead th:first-child{width:clamp(112px,12vw,150px)}
 .cmp th,.cmp td{padding:18px 20px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
 .cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
 .cmp thead th{font-size:14px;font-weight:700;color:var(--ink3);padding-block:20px 16px}
@@ -393,6 +396,24 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .cmp thead .me{color:var(--wine);font-size:15px}
 .cmp thead .me .wm{font-size:17px;color:var(--wine)}
 .cmp-note{margin:12px 4px 0;font-size:11px;color:var(--ink3);line-height:1.5}
+/* 칸 이름표(.cmp-h)는 좁은 화면 카드에서만 보인다 */
+.cmp-h{display:none}
+/* 760px 이하: 표 대신 질문 하나에 카드 하나. Provee 줄은 먹색 굵게 + 왼쪽 와인 선, 나머지 둘은 회색 두 줄 */
+@media (max-width:760px){
+ .cmp-wrap{overflow:visible}
+ .cmp,.cmp tbody{display:block;min-width:0}
+ .cmp thead{display:none}
+ .cmp tr{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:20px 18px 22px;border-bottom:1px solid var(--rule)}
+ .cmp tr:last-child{border-bottom:0}
+ .cmp th,.cmp td,.cmp tbody th{display:block;width:auto;padding:0;border:0;position:static;background:none}
+ .cmp tbody th{font-size:13px;color:var(--ink3);margin-bottom:2px}
+ .cmp td.me{margin-bottom:4px;padding:10px 12px 11px 14px;border-radius:0 12px 12px 0;background:#FBF3F1;box-shadow:inset 2px 0 0 var(--wine);font-size:16px;line-height:1.55;font-weight:700;color:var(--ink)}
+ .cmp td:not(.me){font-size:14px;line-height:1.55;color:var(--ink3)}
+ .cmp-h{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--ink3)}
+ .cmp td.me .cmp-h{font:700 13px/1.4 var(--brand);color:var(--wine)}
+ .cmp td:not(.me) .cmp-h{display:inline;margin:0;font-size:inherit;color:var(--ink2)}
+ .cmp td:not(.me) .cmp-h::after{content:" · ";font-weight:400;color:var(--ink3)}
+}
 
 /* ---------- pricing ---------- */
 .pr-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -426,7 +447,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .pr-note{margin:16px 4px 0;font-size:11px;color:var(--ink3);line-height:1.5}
 @media (max-width:1100px){.plans{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.plans{grid-template-columns:1fr;row-gap:16px}.p-hd{grid-template-columns:76px 1fr;grid-template-areas:"ic nm" "ic lv";column-gap:14px;align-items:center;align-content:center}.p-ic,.plan.main .p-ic{width:76px;height:76px;margin:0;padding:0;border-radius:18px;box-shadow:none}.p-ic svg{width:70px;height:70px}.plan h3{align-self:end}.plan .lv{align-self:start}.p-hd.nt h3{grid-row:1/3;align-self:center}}
-/* 시안 B(?price=b): 카페 메뉴판. 한 장짜리 종이 위에 네 줄, 이름과 값 사이 점선 */
+/* 시안 B(기본, ?price=a 면 카드형 A): 카페 메뉴판. 한 장짜리 종이 위에 네 줄, 이름과 값 사이 점선 */
 .plans.pb{grid-template-columns:1fr;row-gap:0;margin-top:40px;padding:10px;border-radius:24px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line),0 30px 60px -44px rgba(60,30,20,.3)}
 .pb .plan{display:grid;grid-row:auto;grid-template-columns:72px 1fr;grid-template-rows:none;column-gap:22px;align-items:start;padding:24px 26px;border-radius:16px;background:none;box-shadow:none}
 .pb .plan+.plan::before{content:"";position:absolute;left:26px;right:26px;top:0;border-top:1px dashed #DCCFBC}
@@ -499,7 +520,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .rm time{font:700 15px var(--brand);color:var(--ink3)}
 .rm.now{background:var(--ink);color:#F7F1E8;box-shadow:none}
 .rm.now time{color:#E0566A}
-.rm b{font-size:20px;line-height:1.4;letter-spacing:-.02em}
+.rm b{font-size:20px;line-height:1.4;letter-spacing:-.02em;text-wrap:balance}
 .rm span{font-size:15px;line-height:1.6;color:var(--ink2)}
 .rm.now span{color:#CFC6BA}
 .rm .st{margin-top:auto;font-size:13px;font-weight:700;font-style:normal;color:var(--ink3)}
@@ -518,6 +539,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .st-pin{position:sticky;top:0;height:100vh;display:grid;place-items:center;overflow:hidden}
 .st-line{grid-area:1/1;margin:0;padding-inline:var(--gut);text-align:center;color:#F7F1E8;font-size:clamp(24px,3.4vw,44px);line-height:1.45;font-weight:700;letter-spacing:-.03em;opacity:0;transform:translateY(20px);transition:opacity .4s var(--ease),transform .45s var(--ease)}
 .st-line.on{opacity:1;transform:none}
+.st-line{text-wrap:balance}
+.st-cite{display:block;text-wrap:pretty;max-width:40em;margin:22px auto 0;font-size:12px;line-height:1.65;font-weight:400;letter-spacing:0;color:rgba(247,241,232,.5)}
+.st-cite a{color:rgba(247,241,232,.72);text-decoration:underline;text-underline-offset:2px}
 .st-mv{position:relative;overflow:hidden;color:#fff;padding-block:clamp(96px,12vw,160px);background:radial-gradient(1200px 500px at 20% 10%,rgba(224,86,106,.35),transparent 60%),radial-gradient(900px 600px at 90% 100%,rgba(40,8,14,.6),transparent 60%),linear-gradient(135deg,#8A1C2B,#4A0E18)}
 .st-mv::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(92deg,rgba(255,255,255,.035) 0 1px,transparent 1px 7px);pointer-events:none}
 .st-mv h3{position:relative;margin:0;font-size:clamp(24px,3vw,38px);line-height:1.5;font-weight:700;letter-spacing:-.03em;max-width:24em}
@@ -653,8 +677,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .pre-row .btn{height:52px;flex:none}
 .pre .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.pre-ok{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.8);cursor:pointer}
-.pre-ok input{flex:none;width:16px;height:16px;margin:3px 0 0;accent-color:#fff}
+/* 동의 줄은 처음부터 칸으로 보이게 하고, 이메일을 쓰기 시작했는데 체크가 없으면 테두리를 밝혀 미리 알린다 */
+.pre-ok{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:11px 14px 12px;border-radius:14px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.24);font-size:13px;line-height:1.6;color:rgba(255,255,255,.9);cursor:pointer;transition:box-shadow .2s var(--ease),background .2s var(--ease)}
+.pre-ok.need{background:rgba(255,255,255,.15);box-shadow:inset 0 0 0 2px #fff}
+.pre-ok:has(input:checked){box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.pre-ok input{flex:none;width:18px;height:18px;margin:2px 0 0;accent-color:#fff;cursor:pointer}
+.pre-row .btn[aria-disabled="true"]{opacity:.62}
 .pre-ok a{text-decoration:underline;text-underline-offset:2px}
 .pre-msg{min-height:1.6em;margin:10px 0 0!important;font-size:14px!important;font-weight:600;color:#fff!important}
 .pre.done .pre-row,.pre.done .pre-ok{display:none}
@@ -899,7 +927,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 .hero-fade{position:absolute;left:0;right:0;bottom:0;height:160px;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(247,243,236,0),var(--ivory))}
 /* 출처·각주·캡션은 한 크기로 작고 옅게(본문은 그대로) */
-@media (max-width:760px){.scap,.cmp-note,.pr-note,.og-card small,.hero .s3-src{font-size:10.5px}}
+@media (max-width:760px){.scap,.cmp-note,.pr-note,.og-card small,.hero .s3-src{font-size:11px}}
 
 /* 사진 자리(대표가 사진을 주면 채움) */
 .og-empty{aspect-ratio:813/1082;display:grid;place-items:center;border-radius:24px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(201,188,168,.12) 10px 11px);box-shadow:inset 0 0 0 1.5px #D8CCB9}
@@ -1163,11 +1191,11 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <table class="cmp">
         <thead><tr><th scope="col"></th><th scope="col" class="me"><span class="wm">Provee<i>.</i></span></th><th scope="col">범용 AI 채팅</th><th scope="col">사진 풀이 앱</th></tr></thead>
         <tbody>
-          <tr><th scope="row">문제를 넣는 법</th><td class="me">노트에 그대로 씀</td><td>사진이나 파일을 올리고, 원하는 것을 글로 설명</td><td>문제를 카메라로 찍음</td></tr>
-          <tr><th scope="row">읽는 것</th><td class="me">쓴 획과 순서, 지운 식까지</td><td>올린 사진 한 장</td><td>문제 사진</td></tr>
-          <tr><th scope="row">막혔을 때</th><td class="me">놓친 조건을 되묻고, 스스로 쓰게 함</td><td>정답과 전체 풀이를 먼저 받는 경우가 많음</td><td>정답과 단계별 풀이</td></tr>
-          <tr><th scope="row">그래프</th><td class="me">식에서 벡터로 바로 그림</td><td>이미지를 만들 때까지 기다림</td><td>앱마다 다름</td></tr>
-          <tr><th scope="row">복습</th><td class="me">과목·단원별 노트, 풀이 재생</td><td>채팅마다 흩어짐</td><td>찍은 문제 목록</td></tr>
+          <tr><th scope="row">문제를 넣는 법</th><td class="me"><small class="cmp-h">Provee</small>노트에 그대로 씀</td><td><small class="cmp-h">범용 AI 채팅</small>사진이나 파일을 올리고, 원하는 것을 글로 설명</td><td><small class="cmp-h">사진 풀이 앱</small>문제를 카메라로 찍음</td></tr>
+          <tr><th scope="row">읽는 것</th><td class="me"><small class="cmp-h">Provee</small>쓴 획과 순서, 지운 식까지</td><td><small class="cmp-h">범용 AI 채팅</small>올린 사진 한 장</td><td><small class="cmp-h">사진 풀이 앱</small>문제 사진</td></tr>
+          <tr><th scope="row">그래프</th><td class="me"><small class="cmp-h">Provee</small>식에서 바로 선으로 그림</td><td><small class="cmp-h">범용 AI 채팅</small>그림을 만들거나 코드를 돌리는 동안 기다리기도 함</td><td><small class="cmp-h">사진 풀이 앱</small>앱마다 다름</td></tr>
+          <tr><th scope="row">막혔을 때</th><td class="me"><small class="cmp-h">Provee</small>내가 쓴 풀이를 보고 놓친 조건을 먼저 묻고, 힌트는 한 단계씩</td><td><small class="cmp-h">범용 AI 채팅</small>기본은 정답과 전체 풀이부터. 학습 모드에선 되묻기도 하지만, 쓰는 과정은 보지 못함</td><td><small class="cmp-h">사진 풀이 앱</small>정답과 단계별 풀이</td></tr>
+          <tr><th scope="row">복습</th><td class="me"><small class="cmp-h">Provee</small>Provee&nbsp;Note에 과목별로 모여, 폰으로도 언제든 다시&nbsp;봄</td><td><small class="cmp-h">범용 AI 채팅</small>채팅마다 흩어지기 쉬움</td><td><small class="cmp-h">사진 풀이 앱</small>찍은 문제 목록</td></tr>
         </tbody>
       </table>
     </div>
@@ -1199,7 +1227,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <article class="rm now"><time>2026.10</time><b>서강대 무료 베타</b><span>중간고사 전에 정량과목 수강생부터 엽니다.</span><em class="st">이번 달</em></article>
       <article class="rm"><time>2026.11</time><b>유료 요금제 시작</b><span>기말고사 기간에 주 단위 결제를 엽니다.</span><em class="st">예정</em></article>
       <article class="rm"><time>2027 봄</time><b>전국 대학으로</b><span>서강대에서 확인한 지표로 전국 대학에 엽니다. 중고등 무료 버전도 함께 시작합니다.</span><em class="st">계획</em></article>
-      <article class="rm"><time>2027 가을</time><b>대학과 중고등, 두 트랙</b><span>같은 튜터 엔진으로 두 요금제를 함께 운영합니다.</span><em class="st">계획</em></article>
+      <article class="rm"><time>2027 가을</time><b>대학과 중고등을 함께</b><span>같은 튜터가 대학생과 중고등학생을 함께 가르칩니다.</span><em class="st">계획</em></article>
       <article class="rm"><time>2028</time><b>미국 수학 시장</b><span>SAT·AP 수학을 준비하는 학생에게 영어판을 엽니다.</span><em class="st">계획</em></article>
     </div>
   </div>
@@ -1209,8 +1237,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   <div class="st-hero"><div class="st-in"><p class="st-k">회사 이야기</p><h2>Prove your thinking<i>.</i></h2></div></div>
   <div class="st-scroll" id="stScroll">
     <div class="st-pin">
-      <p class="st-line">AI가 똑똑해질수록,<br>학생은 덜 생각하게 됐습니다.</p>
-      <p class="st-line">사진 한 장이면 답이 나오는 시대.<br>그 편리함이 받아 적는 공부가 됐습니다.</p>
+      <p class="st-line">AI가 답을 빨리 줄수록,<br>학생이 생각할 틈은 줄었습니다.<small class="st-cite">고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani 외, PNAS, 2025</a></small></p>
+      <p class="st-line">사진 한 장이면 답이 나오면서,<br>공부는 받아 적는 일이 되어&nbsp;갔습니다.</p>
       <p class="st-line">Provee는 이 흐름을 거꾸로 갑니다.</p>
     </div>
   </div>
@@ -1276,13 +1304,14 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <div class="tm"><span class="av">JH</span><b>연주희</b><em>UI 디자이너</em><span>제품·브랜드 디자인</span></div>
     </div>
   </div>
-  <div class="st-end"><p>시대가 바뀌어도,<br>사람이 자라고 배우는 교육의 가치는 사라지지 않습니다.</p></div>
+  <div class="st-end"><p>답은 AI가 알아도,<br>실력은 직접 풀어 본 사람에게 쌓입니다.</p></div>
 </section>
 
 <section class="sec" id="faq">
   <div class="wrap">
     <div class="sec-h"><h2>자주 묻는 질문</h2></div>
     <div class="faq-list">
+      <details><summary>ChatGPT와 무엇이 다른가요?<i aria-hidden="true"></i></summary><div class="ans">ChatGPT도 사진 속 풀이를 읽고, 학습 모드에서는 답 대신 되묻기도 합니다. 차이는 무엇을 받느냐에 있습니다. Provee는 다 쓴 사진 한 장이 아니라 노트에 쓰는 획을 순서와 시각까지 받습니다. 그래서 풀이가 멈춘 자리에서 내가 쓴 식을 보고 막힌 곳에서만 먼저 묻고, 다 푼 뒤에는 Provee&nbsp;Note에서 쓴 순서 그대로 다시 볼 수 있습니다.</div></details>
       <details><summary>언제부터 쓸 수 있나요?<i aria-hidden="true"></i></summary><div class="ans">2026년 10월, 서강대에서 무료 베타를 먼저 엽니다. 정량과목 수강생부터 시작해 2027년 봄에 전국 대학으로 넓힙니다.</div></details>
       <details><summary>어떤 기기가 필요한가요?<i aria-hidden="true"></i></summary><div class="ans">펜으로 쓸 수 있는 태블릿이 가장 잘 맞습니다. 웹 브라우저에서 열리고, 앱도 함께 준비하고 있습니다.</div></details>
       <details><summary>어떤 과목을 다루나요?<i aria-hidden="true"></i></summary><div class="ans">미적분, 통계, 선형대수, 계량경제, 물리처럼 손으로 풀며 배우는 과목입니다. 첫 학기는 서강대 정량과목에 맞춰 엽니다.</div></details>
@@ -1308,7 +1337,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <label class="pre-ok"><input id="preAgree" type="checkbox"> <span>(필수) 사전신청 혜택 메일을 보내기 위해 이메일을 받고, 2026년 11월 30일에 지웁니다. <a href="privacy.html#prereg" target="_blank" rel="noopener">개인정보처리방침</a></span></label>
       <p class="pre-msg" id="preMsg" role="status" aria-live="polite"></p>
     </form>
-    <a class="pre-alt" href="https://proveeground.kr" target="_blank" rel="noopener">지금은 Provee Ground를 무료로 써 볼 수 있어요 →</a>
+    <a class="pre-alt" href="https://proveeground.kr" target="_blank" rel="noopener">지금은 Provee Ground를 무료로 써 볼 수 있어요</a>
   </div>
 </section>
 </main>
@@ -1689,18 +1718,18 @@ h0:prClk(0),h1:prClk(30),h6:prClk(180),h12:prClk(360)};
 /* icon·cup·cupM은 새 키. cup=가격 옆 비유(주 단위), cupM=월 단위일 때 비유. 없으면 lv를 비유로 쓴다 */
 const PLANS={
   univ:[
-    {n:'Free',lv:'무료',w:'0원',m:'0원',unit:'',alt:'1과목은 계속 무료',f:['1과목','문제풀이와 힌트','Provee Ground'],icon:'water',cup:'물 한 잔처럼 부담 없이'},
-    {n:'Americano',lv:'Basic',w:'4,700원',m:'15,900원',tip:'요금제 이름은 카페 메뉴 하나 값을 기준으로 붙였습니다.',f:['2과목','문제풀이 무제한','힌트 중심 AI 개입'],icon:'americano',cup:'아메리카노 한 잔 값으로 일주일',cupM:'아메리카노 네 잔보다 싸게'},
-    {n:'Matcha',lv:'Pro',main:1,w:'6,500원',m:'19,900원',f:['3과목','중간·기말 모의시험','실수 패턴 기억','과목 간 기억 공유'],icon:'matcha',cup:'말차 라테 한 잔 값으로 일주일',cupM:'말차 라테 네 잔보다 싸게'},
-    {n:'Sandwich',lv:'Max',w:'8,300원',m:'28,900원',f:['과목 무제한','실시간 AI 개입','학기 간 기억 공유'],icon:'sandwich',cup:'샌드위치 하나 값으로 일주일',cupM:'샌드위치 네 개보다 싸게'}],
+    {n:'Free',lv:'',w:'0원',m:'0원',unit:'',alt:'1과목은 계속 무료',f:['1과목','문제풀이와 힌트','Provee Ground'],icon:'water',cup:'물 한 잔처럼 부담 없이'},
+    {n:'Americano',lv:'Basic',w:'4,700원',m:'15,900원',tip:'요금제 이름은 카페 메뉴 하나 값을 기준으로 붙였습니다.',f:['2과목','문제풀이 무제한','힌트 중심 도움'],icon:'americano',cup:'아메리카노 한 잔 값으로 일주일',cupM:'아메리카노 네 잔보다 싸게'},
+    {n:'Matcha',lv:'Pro',main:1,w:'6,500원',m:'19,900원',f:['3과목','중간·기말 모의시험','실수 패턴 기억','과목을 넘어 이어지는 기억'],icon:'matcha',cup:'말차 라테 한 잔 값으로 일주일',cupM:'말차 라테 네 잔보다 싸게'},
+    {n:'Sandwich',lv:'Max',w:'8,300원',m:'28,900원',f:['과목 무제한','풀이 중 실시간 도움','다음 학기까지 이어지는 기억'],icon:'sandwich',cup:'샌드위치 하나 값으로 일주일',cupM:'샌드위치 네 개보다 싸게'}],
   hs:[
-    {n:'Free',lv:'무료',m:'0원',alt:'하루 5문제',f:['하루 5문제','문제풀이와 힌트'],icon:'h0',cup:'먼저 가볍게 써 보기'},
+    {n:'Free',lv:'',m:'0원',alt:'하루 5문제',f:['하루 5문제','문제풀이와 힌트'],icon:'h0',cup:'먼저 가볍게 써 보기'},
     {n:'Basic',lv:'과외 한 시간',m:'25,000원',f:['문제풀이 무제한','단원평가'],icon:'h1'},
-    {n:'Pro',lv:'선생님과 반나절',main:1,m:'39,000원',f:['수능형 모의시험','실수 패턴 기반 개입'],icon:'h6'},
-    {n:'Max',lv:'선생님과 하루 종일',m:'53,000원',f:['실전 수능 환경 시험','실시간 개입','개인별 학습 로드맵'],icon:'h12'}]};
+    {n:'Pro',lv:'선생님과 반나절',main:1,m:'39,000원',f:['수능형 모의시험','실수 패턴에 맞춘 도움'],icon:'h6'},
+    {n:'Max',lv:'선생님과 하루 종일',m:'53,000원',f:['실전 수능 환경 시험','풀이 중 실시간 도움','개인별 학습 로드맵'],icon:'h12'}]};
 const PR_T={badge:'추천',base:'기본 제공',plus:n=>`${n}에 더해`,uW:'/ 주',uM:'/ 월',altW:v=>`월 결제 시 ${v}`,altM:v=>`주 결제 시 ${v}`,parent:'보호자 결제',
-  note:{univ:'출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 24% 쌉니다.',hs:'출시 전 계획 가격이며 바뀔 수 있습니다. 중고등 버전은 2027년에 엽니다.'}};
-const PRV=new URLSearchParams(location.search).get('price')==='b'?'b':'a';
+  note:{univ:'출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 23% 쌉니다.',hs:'출시 전 계획 가격이며 바뀔 수 있습니다. 중고등 버전은 2027년에 엽니다.'}};
+const PRV=new URLSearchParams(location.search).get('price')==='a'?'a':'b'; /* 기본은 시안 B(메뉴판), ?price=a 로 카드형 */
 let aud='univ',cyc='w';
 const prIc=k=>`<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">${PR_IC[k]||''}</svg>`;
 function prVals(p){const uv=aud==='univ',wk=uv&&cyc==='w',price=uv?(wk?p.w:p.m):p.m,free=/^\D*0\D*$/.test(price),
@@ -1744,7 +1773,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('.tip');$$('.tip.
 
 /* ---------- story: statements swap with scroll ---------- */
 const stS=$('#stScroll'),lines=[...stS.querySelectorAll('.st-line')];let stRaf=0,stOn=false;
-function stTick(){if(!stOn)return;const r=stS.getBoundingClientRect(),prog=Math.min(.999,Math.max(0,-r.top/(r.height-innerHeight)));const i=Math.floor(prog*lines.length);
+function stTick(){if(!stOn||RM)return; /* 움직임 줄이기면 세 문장을 모두 켜 둔 채 둔다 */const r=stS.getBoundingClientRect(),prog=Math.min(.999,Math.max(0,-r.top/(r.height-innerHeight)));const i=Math.floor(prog*lines.length);
   lines.forEach((l,j)=>l.classList.toggle('on',j===i));stRaf=requestAnimationFrame(stTick)}
 new IntersectionObserver(([e])=>{stOn=e.isIntersecting;if(stOn){cancelAnimationFrame(stRaf);stTick()}}).observe(stS);
 if(RM)lines.forEach(l=>l.classList.add('on'));
@@ -1788,11 +1817,14 @@ const nav=$$('[data-nav]');const sio=new IntersectionObserver(es=>es.forEach(e=>
 })();
 
 /* ---------- 사전신청 ---------- */
-(()=>{const $=s=>document.querySelector(s),f=$('#preForm');if(!f)return;const em=$('#preEmail'),ag=$('#preAgree'),msg=$('#preMsg'),bt=f.querySelector('button');
+(()=>{const $=s=>document.querySelector(s),f=$('#preForm');if(!f)return;const em=$('#preEmail'),ag=$('#preAgree'),msg=$('#preMsg'),bt=f.querySelector('button'),ok=f.querySelector('.pre-ok');
+/* 체크 전에는 버튼을 옅게(누르면 이유를 알려 줌), 이메일을 쓰기 시작했는데 체크가 없으면 동의 줄을 밝힌다 */
+const sync=()=>{bt.setAttribute('aria-disabled',String(!ag.checked));ok.classList.toggle('need',!ag.checked&&em.value.trim().length>0)};
+em.addEventListener('input',sync);ag.addEventListener('change',()=>{sync();if(ag.checked&&!bt.disabled)msg.textContent=''});sync();
 const API=location.hostname==='localhost'?'http://localhost:8799/api/prereg':'https://prereg.provee.kr/api/prereg';
 f.addEventListener('submit',async e=>{e.preventDefault();const v=em.value.trim();
   if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)){msg.textContent='이메일 주소를 확인해 주세요';em.focus();return}
-  if(!ag.checked){msg.textContent='개인정보 수집에 동의해 주세요';ag.focus();return}
+  if(!ag.checked){msg.textContent='개인정보 수집에 동의해 주세요';ok.classList.add('need');ag.focus();return}
   bt.disabled=true;msg.textContent='보내는 중…';
   try{const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:v,consent:true,src:'provee.kr',website:f.website.value})});const d=await r.json();
     if(!r.ok)throw new Error(d.error||'');f.classList.add('done');msg.textContent=d.dup?'이미 저장된 주소예요. 10월 오픈 때 혜택 메일을 보내 드릴게요.':'저장했어요. 10월 오픈 때 혜택 메일을 보내 드릴게요.'}
