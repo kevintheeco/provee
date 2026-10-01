@@ -68,7 +68,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .btn-l:hover{background:rgba(255,255,255,.6)}
 .hdr .btn{height:42px;padding-inline:18px;font-size:14px}
 .burger{display:none;width:44px;height:44px;border-radius:12px;place-items:center}
-@media (max-width:1020px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{display:none}}
+@media (max-width:1020px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{height:38px;padding-inline:14px;font-size:13px;border-radius:12px}}
+/* 폰: 햄버거 옆에 작게. 자리가 빠듯하면 간격부터 줄인다 */
+@media (max-width:599px){.hdr .wm,.hdr-r>*{flex:none;white-space:nowrap}.hdr-in{gap:12px}.hdr-r{gap:4px}.hdr .btn-w{height:34px;padding-inline:11px;border-radius:10px}.hdr .burger{width:40px;height:40px}}
 .drawer{position:fixed;inset:0;z-index:60;background:var(--ivory);padding:calc(env(safe-area-inset-top,0px) + 6px) var(--gut) 28px;display:flex;flex-direction:column;overflow-y:auto;transform:translateY(-100%);transition:transform .28s var(--ease);visibility:hidden}
 .drawer.on{transform:none;visibility:visible}
 .drawer-top{display:flex;justify-content:space-between;align-items:center;min-height:66px}
@@ -278,60 +280,78 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .exam .hl.on{transform:scaleX(1)}
 .exam .lab{display:flex;align-items:center;gap:1cqw;margin-bottom:1cqw;font-size:1.8cqw;font-weight:700;color:var(--wine)}
 
-/* 05 note: the real page replays against a time bar; pauses and erased strokes stay marked on the bar */
-.nt{container-type:inline-size;position:relative;width:100%}
-.nt-card{background:var(--paper);border-radius:3cqw;padding:2.2cqw;display:grid;gap:1.4cqw;box-shadow:0 50px 90px -40px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
-.nt-bar{display:flex;align-items:center;gap:1.4cqw;padding:.4cqw .6cqw 0;font-size:max(1.9cqw,11px);color:var(--ink3);white-space:nowrap}
-.nt-bar .wm{font-size:max(2.5cqw,13px);color:var(--ink)}
-.nt-clk{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink2)}
-.nt-clk b{color:var(--wine);font-weight:700}
-.nt-pg{position:relative;aspect-ratio:2170/1760;border-radius:1.8cqw;background:#fff;box-shadow:inset 0 0 0 1px var(--rule);overflow:hidden}
-.nt-pg>canvas{position:absolute;inset:0;width:100%;height:100%}
-.nt-fl{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+/* 02 read: page tags, order badges, clock pill, erased label (the nt- names come from the old 05 note scene) */
 .nt-tag{display:flex;align-items:center;gap:.9cqw;padding:.8cqw 1.6cqw;border-radius:99px;background:rgba(255,253,248,.94);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.12),inset 0 0 0 1px var(--line);font-size:max(1.8cqw,11px);font-weight:600;color:var(--ink2);white-space:nowrap;transition:opacity .2s var(--ease),transform .25s var(--ease)}
 .nt-tag b{font-weight:700;color:var(--ink)}
 .nt-tag.nt-pv b{color:var(--wine)}
 .nt-tag.nt-off{opacity:0;transform:translateY(-.8cqw)}
-.nt-end{position:absolute;left:5cqw;bottom:4cqw;display:flex;align-items:center;gap:1cqw;padding:1cqw 2.2cqw 1cqw 1.8cqw;border-radius:99px;background:var(--wine);color:#fff;font-size:max(2cqw,12px);font-weight:700;white-space:nowrap;box-shadow:0 1.2cqw 3cqw -1cqw rgba(94,18,32,.5);opacity:0;transform:translateY(1.2cqw);transition:opacity .22s var(--ease),transform .3s cubic-bezier(.2,0,0,1.2)}
-.nt-end svg{width:max(2.4cqw,13px);height:max(2.4cqw,13px);flex:none}
-.nt-end.nt-on{opacity:1;transform:none}
 .nt-bd{position:absolute;width:max(4.2cqw,19px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:700 max(2.2cqw,10px)/1 var(--brand);color:#B3A89A;background:var(--paper);box-shadow:inset 0 0 0 max(.3cqw,1.5px) #CFC5B7;transform:translate(-50%,-50%) scale(0);transition:transform .25s cubic-bezier(.2,0,0,1.35),background .2s,color .2s,box-shadow .2s}
 .nt-bd.nt-on{transform:translate(-50%,-50%) scale(1)}
 .nt-bd.nt-done{color:var(--wine);box-shadow:inset 0 0 0 max(.3cqw,1.5px) var(--wine)}
 .nt-bd.nt-cur{color:#fff;background:var(--wine);box-shadow:0 0 0 max(.7cqw,3px) rgba(138,28,43,.18);transform:translate(-50%,-50%) scale(1.14)}
 .nt-bd em.nt-l{left:auto;right:calc(100% + max(.6cqw,3px))}
 .nt-bd em{position:absolute;left:calc(100% + max(.6cqw,3px));top:50%;transform:translateY(-50%);padding:.3cqw .8cqw;border-radius:99px;background:rgba(255,253,248,.92);font:600 max(1.7cqw,10px)/1.2 var(--font);color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
-/* time bar under the page */
-.nt-tl{position:relative;display:grid;grid-template-columns:auto 1fr;column-gap:1.6cqw;align-items:start;padding:.8cqw 1.2cqw .4cqw}
-.nt-pp{width:max(6cqw,30px);height:max(6cqw,30px);border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff}
-.nt-pp svg{width:45%;height:45%}
-.nt-tr{position:relative;min-width:0}
-.nt-wv{position:relative;height:6cqw;border-radius:.8cqw;background:#FAF6EF;box-shadow:inset 0 0 0 1px var(--rule)}
-.nt-wv canvas{position:absolute;inset:0;width:100%;height:100%}
-.nt-pl{position:absolute;top:-.9cqw;bottom:-.9cqw;left:0;width:max(.4cqw,2px);margin-left:max(-.2cqw,-1px);border-radius:1cqw;background:var(--wine);opacity:0;transition:opacity .2s}
-.nt-pl.nt-on{opacity:1}
-.nt-lb{position:relative;height:max(5.4cqw,26px);transition:opacity .3s var(--ease)}
-.nt-lb.nt-off{opacity:0}
-.nt-gp{position:absolute;top:.8cqw;height:1.1cqw;border:1px solid #BDB2A4;border-top:0;border-radius:0 0 .4cqw .4cqw}
-.nt-gp em{position:absolute;left:50%;top:calc(100% + .5cqw);transform:translateX(-50%);font-style:normal;font-size:max(1.6cqw,10px);line-height:1.2;color:var(--ink3);white-space:nowrap}
-.nt-gp.nt-lo em{top:calc(100% + max(2.6cqw,13px))}
-.nt-gp.nt-er{border-color:var(--wine)}
-.nt-gp.nt-er em{color:var(--wine);font-weight:700}
-.nt-gp em{transition:color .2s}
-.nt-gp.nt-hot{border-color:var(--ink)}.nt-gp.nt-hot em{color:var(--ink);font-weight:700}
-.nt-ps{position:absolute;display:flex;align-items:center;gap:.8cqw;padding:.5cqw 1.3cqw .5cqw .9cqw;border-radius:99px;background:var(--ink);color:#fff;font-size:max(1.7cqw,11px);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;translate:max(1.6cqw,8px) -50%;opacity:0;transform:scale(.9);transform-origin:left center;transition:opacity .18s var(--ease),transform .22s var(--ease)}
-.nt-ps svg{width:max(2cqw,12px);height:max(2cqw,12px);flex:none}
-.nt-ps.nt-on{opacity:1;transform:none}
-.nt-ps.nt-l{translate:calc(-100% - max(1.6cqw,8px)) -50%;transform-origin:right center}
-.nt-dot{position:absolute;width:max(1.6cqw,8px);height:max(1.6cqw,8px);margin:min(-.8cqw,-4px) 0 0 min(-.8cqw,-4px);border-radius:50%;background:var(--ink);box-shadow:0 0 0 0 rgba(30,24,17,.35);opacity:0;transition:opacity .15s}
-.nt-dot.nt-on{opacity:1;animation:ntPing 1s ease-out infinite}
-@keyframes ntPing{0%{box-shadow:0 0 0 0 rgba(30,24,17,.35)}100%{box-shadow:0 0 0 max(2.4cqw,12px) rgba(30,24,17,0)}}
-/* shared with 02: clock pill, erased label */
 .nt-ck{display:flex;align-items:baseline;gap:.8cqw;padding:.8cqw 1.6cqw;border-radius:1.4cqw;background:rgba(255,253,248,.94);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.12),inset 0 0 0 1px var(--line);font-size:max(1.7cqw,10px);color:var(--ink3);white-space:nowrap;transition:opacity .2s var(--ease)}
 .nt-ck b{font:700 max(2.6cqw,14px)/1 var(--brand);color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .nt-ck.nt-off{opacity:0}
 .nt-x{position:absolute;padding:.4cqw 1.1cqw;border-radius:99px;background:var(--paper);box-shadow:inset 0 0 0 max(.25cqw,1px) var(--wine);font-size:max(1.6cqw,10px);font-weight:700;color:var(--wine);white-space:nowrap;opacity:0;transform:translateY(.6cqw);transition:opacity .2s var(--ease),transform .25s var(--ease)}
 .nt-x.nt-on{opacity:1;transform:none}
+
+/* 05 Provee Note: one student at three moments (staged photos); the phone screen is HTML laid onto each photo's blank screen in perspective, the ink is real */
+.pn{position:relative;width:100%}
+.pn-fr{position:relative;aspect-ratio:1;border-radius:24px;overflow:hidden;background:#CFC6B8;box-shadow:0 60px 100px -50px rgba(60,30,20,.5);isolation:isolate}
+.pn-ph{position:absolute;left:0;top:0;width:1000px;height:1000px;max-width:none;transform-origin:0 0;opacity:0;pointer-events:none;user-select:none}
+.pn-scr{position:absolute;left:0;top:0;z-index:3;width:300px;height:650px;transform-origin:0 0;border-radius:27px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.3;visibility:hidden}
+.pn-sb{position:absolute;left:0;right:0;top:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:4px 24px 0 34px;font:600 15px/1 var(--font);font-variant-numeric:tabular-nums;color:var(--ink)}
+.pn-tm{display:grid}.pn-tm span{grid-area:1/1;opacity:0}.pn-tm span.on{opacity:1}
+.pn-di{position:absolute;left:50%;top:11px;width:90px;height:26px;margin-left:-45px;border-radius:13px;background:#0C0B0B}
+.pn-ic{display:flex;align-items:center;gap:5px}.pn-ic svg{display:block;height:12px;width:auto}
+.pn-app{position:absolute;left:0;right:0;top:46px;bottom:0;overflow:hidden}
+.pn-pane{position:absolute;inset:0;padding:4px 16px 0;background:var(--paper)}
+.pn-pl{display:flex;flex-direction:column;padding-bottom:30px}
+.pn-hd{display:flex;align-items:center;gap:6px;height:40px}
+.pn-bk{font-style:normal;font-size:30px;line-height:1;color:var(--wine);margin:-5px 2px 0 -2px}
+.pn-br{flex:1;font:600 20px/1 var(--brand);color:var(--wine);letter-spacing:-.01em;white-space:nowrap}
+.pn-hd small{font-size:13px;color:var(--ink3);white-space:nowrap}
+.pn-tabs{display:flex;gap:18px;margin:6px 0 2px;box-shadow:inset 0 -1px 0 var(--line)}
+.pn-tabs span{padding:4px 0 8px;font-size:16px;font-weight:800;box-shadow:inset 0 -2px 0 var(--wine)}
+.pn-uh{display:flex;align-items:center;gap:10px;margin:14px 0 8px;font-size:13.5px;font-weight:800;color:var(--ink)}
+.pn-uh::after{content:"";flex:1;height:1px;background:var(--line)}
+.pn-cd{position:relative;border-radius:14px;background:#fff;box-shadow:0 2px 6px -2px rgba(30,24,17,.12),inset 0 0 0 1px var(--line);padding:6px;transform-origin:50% 50%}
+.pn-th{position:relative;height:104px;border-radius:10px;background:#FFFEFA;box-shadow:inset 0 0 0 1px var(--rule);overflow:hidden}
+.pn-th canvas,.pn-pa canvas{position:absolute;inset:0;width:100%;height:100%}
+.pn-cr{display:flex;align-items:center;gap:8px;padding:8px 4px 3px}
+.pn-cr>span{flex:1;min-width:0;display:grid;gap:3px}
+.pn-cr b{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pn-sub{display:grid;font-size:11.5px;color:var(--ink3);white-space:nowrap}.pn-sub>span{grid-area:1/1}
+.pn-rv{display:inline-flex;align-items:center;gap:4px;opacity:0}.pn-rv svg{width:13px;height:13px;color:var(--wine)}
+.pn-cd.pn-done .pn-sub>span:first-child{opacity:0}.pn-cd.pn-done .pn-rv{opacity:1}
+.pn-cr em{display:inline-flex;align-items:center;gap:4px;font-style:normal;font-size:12px;font-weight:600;color:var(--wine);white-space:nowrap}.pn-cr em svg{width:14px;height:14px}
+.pn-bd{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--ink3);white-space:nowrap;opacity:0;transform:scale(.7);transition:opacity .2s var(--ease),transform .28s cubic-bezier(.2,0,0,1.4)}
+.pn-bd svg{width:15px;height:15px;color:var(--wine)}
+.pn-pl.pn-done .pn-bd{opacity:1;transform:none}
+.pn-tt{margin:6px 0 3px;font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.pn-pr{margin:0 0 12px;font-size:12.5px;line-height:1.5;color:var(--ink3)}
+.pn-pa{position:relative;flex:none;margin:auto 0;height:217px;border-radius:14px;background:#FFFEFA;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.pn-sc{position:relative;flex:none;height:3px;margin:20px 0 0;border-radius:3px;background:var(--line)}
+.pn-sc i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:3px;background:var(--wine)}
+.pn-sc i::after{content:"";position:absolute;right:-6px;top:-4.5px;width:12px;height:12px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 2px #fff}
+.pn-ct{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-top:14px}
+.pn-st{display:grid;font-size:12.5px;color:var(--ink3);white-space:nowrap}.pn-st span{grid-area:1/1}
+.pn-pb{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--wine);color:#fff;box-shadow:0 6px 14px -6px rgba(94,18,32,.6)}
+.pn-pb svg{grid-area:1/1;width:20px;height:20px}
+.pn-st span+span,.pn-pb svg+svg,.pn-pl.pn-done .pn-st span:first-child,.pn-pl.pn-done .pn-pb svg:first-child{opacity:0}
+.pn-pl.pn-done .pn-st span+span,.pn-pl.pn-done .pn-pb svg+svg{opacity:1}
+.pn-un{text-align:right;font-size:12px;color:var(--ink3);white-space:nowrap}
+.pn-ft{margin:14px 0 0;text-align:center;font-size:11.5px;color:var(--ink3)}
+.pn-tap{position:absolute;z-index:5;left:0;top:0;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:rgba(138,28,43,.2);opacity:0;pointer-events:none}
+.pn-home{position:absolute;left:50%;bottom:8px;width:112px;height:4px;margin-left:-56px;border-radius:2px;background:rgba(30,24,17,.3)}
+.pn-mo{position:absolute;left:16px;top:16px;z-index:4;display:grid}
+.pn-mo span{grid-area:1/1;justify-self:start;display:flex;align-items:baseline;gap:8px;padding:9px 15px;border-radius:99px;background:rgba(255,253,248,.94);box-shadow:0 8px 20px -10px rgba(30,24,17,.45);font:600 15px/1.2 var(--brand);color:var(--wine);font-variant-numeric:tabular-nums;white-space:nowrap;opacity:0;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .3s var(--ease)}
+.pn-mo span b{font:800 15px/1.2 var(--font);color:var(--ink)}
+.pn-mo span.on{opacity:1;transform:none}
+.pn-yn{position:absolute;right:12px;bottom:12px;z-index:4;padding:3px 8px;border-radius:6px;background:rgba(30,24,17,.42);color:rgba(255,255,255,.92);font-size:11px;font-weight:600;line-height:1.4}
+@media (max-width:600px){.pn-fr{aspect-ratio:4/5;border-radius:18px}.pn-mo{left:12px;top:12px}.pn-mo span{padding:7px 12px;font-size:13.5px}.pn-mo span b{font-size:13.5px}.pn-yn{right:10px;bottom:10px}}
 
 /* 05 ground */
 .gd{container-type:inline-size;position:relative;width:100%}
@@ -383,7 +403,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 /* ---------- compare ---------- */
 .cmp-wrap{margin-top:48px;overflow-x:auto;border-radius:24px;background:var(--paper);box-shadow:0 30px 60px -40px rgba(60,30,20,.3),inset 0 0 0 1px var(--line)}
-.cmp{width:100%;min-width:780px;border-collapse:separate;border-spacing:0;font-size:15px;line-height:1.6}
+.cmp{width:100%;min-width:680px;table-layout:fixed;border-collapse:separate;border-spacing:0;font-size:15px;line-height:1.6}
+.cmp thead th:first-child{width:clamp(112px,12vw,150px)}
 .cmp th,.cmp td{padding:18px 20px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
 .cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
 .cmp thead th{font-size:14px;font-weight:700;color:var(--ink3);padding-block:20px 16px}
@@ -393,6 +414,24 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .cmp thead .me{color:var(--wine);font-size:15px}
 .cmp thead .me .wm{font-size:17px;color:var(--wine)}
 .cmp-note{margin:12px 4px 0;font-size:11px;color:var(--ink3);line-height:1.5}
+/* 칸 이름표(.cmp-h)는 좁은 화면 카드에서만 보인다 */
+.cmp-h{display:none}
+/* 760px 이하: 표 대신 질문 하나에 카드 하나. Provee 줄은 먹색 굵게 + 왼쪽 와인 선, 나머지 둘은 회색 두 줄 */
+@media (max-width:760px){
+ .cmp-wrap{overflow:visible}
+ .cmp,.cmp tbody{display:block;min-width:0}
+ .cmp thead{display:none}
+ .cmp tr{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:20px 18px 22px;border-bottom:1px solid var(--rule)}
+ .cmp tr:last-child{border-bottom:0}
+ .cmp th,.cmp td,.cmp tbody th{display:block;width:auto;padding:0;border:0;position:static;background:none}
+ .cmp tbody th{font-size:13px;color:var(--ink3);margin-bottom:2px}
+ .cmp td.me{margin-bottom:4px;padding:10px 12px 11px 14px;border-radius:0 12px 12px 0;background:#FBF3F1;box-shadow:inset 2px 0 0 var(--wine);font-size:16px;line-height:1.55;font-weight:700;color:var(--ink)}
+ .cmp td:not(.me){font-size:14px;line-height:1.55;color:var(--ink3)}
+ .cmp-h{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--ink3)}
+ .cmp td.me .cmp-h{font:700 13px/1.4 var(--brand);color:var(--wine)}
+ .cmp td:not(.me) .cmp-h{display:inline;margin:0;font-size:inherit;color:var(--ink2)}
+ .cmp td:not(.me) .cmp-h::after{content:" · ";font-weight:400;color:var(--ink3)}
+}
 
 /* ---------- pricing ---------- */
 .pr-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -426,7 +465,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .pr-note{margin:16px 4px 0;font-size:11px;color:var(--ink3);line-height:1.5}
 @media (max-width:1100px){.plans{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.plans{grid-template-columns:1fr;row-gap:16px}.p-hd{grid-template-columns:76px 1fr;grid-template-areas:"ic nm" "ic lv";column-gap:14px;align-items:center;align-content:center}.p-ic,.plan.main .p-ic{width:76px;height:76px;margin:0;padding:0;border-radius:18px;box-shadow:none}.p-ic svg{width:70px;height:70px}.plan h3{align-self:end}.plan .lv{align-self:start}.p-hd.nt h3{grid-row:1/3;align-self:center}}
-/* 시안 B(?price=b): 카페 메뉴판. 한 장짜리 종이 위에 네 줄, 이름과 값 사이 점선 */
+/* 시안 B(기본, ?price=a 면 카드형 A): 카페 메뉴판. 한 장짜리 종이 위에 네 줄, 이름과 값 사이 점선 */
 .plans.pb{grid-template-columns:1fr;row-gap:0;margin-top:40px;padding:10px;border-radius:24px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line),0 30px 60px -44px rgba(60,30,20,.3)}
 .pb .plan{display:grid;grid-row:auto;grid-template-columns:72px 1fr;grid-template-rows:none;column-gap:22px;align-items:start;padding:24px 26px;border-radius:16px;background:none;box-shadow:none}
 .pb .plan+.plan::before{content:"";position:absolute;left:26px;right:26px;top:0;border-top:1px dashed #DCCFBC}
@@ -499,7 +538,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .rm time{font:700 15px var(--brand);color:var(--ink3)}
 .rm.now{background:var(--ink);color:#F7F1E8;box-shadow:none}
 .rm.now time{color:#E0566A}
-.rm b{font-size:20px;line-height:1.4;letter-spacing:-.02em}
+.rm b{font-size:20px;line-height:1.4;letter-spacing:-.02em;text-wrap:balance}
 .rm span{font-size:15px;line-height:1.6;color:var(--ink2)}
 .rm.now span{color:#CFC6BA}
 .rm .st{margin-top:auto;font-size:13px;font-weight:700;font-style:normal;color:var(--ink3)}
@@ -518,6 +557,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .st-pin{position:sticky;top:0;height:100vh;display:grid;place-items:center;overflow:hidden}
 .st-line{grid-area:1/1;margin:0;padding-inline:var(--gut);text-align:center;color:#F7F1E8;font-size:clamp(24px,3.4vw,44px);line-height:1.45;font-weight:700;letter-spacing:-.03em;opacity:0;transform:translateY(20px);transition:opacity .4s var(--ease),transform .45s var(--ease)}
 .st-line.on{opacity:1;transform:none}
+.st-line{text-wrap:balance}
+.st-cite{display:block;text-wrap:pretty;max-width:40em;margin:22px auto 0;font-size:12px;line-height:1.65;font-weight:400;letter-spacing:0;color:rgba(247,241,232,.5)}
+.st-cite a{color:rgba(247,241,232,.72);text-decoration:underline;text-underline-offset:2px}
 .st-mv{position:relative;overflow:hidden;color:#fff;padding-block:clamp(96px,12vw,160px);background:radial-gradient(1200px 500px at 20% 10%,rgba(224,86,106,.35),transparent 60%),radial-gradient(900px 600px at 90% 100%,rgba(40,8,14,.6),transparent 60%),linear-gradient(135deg,#8A1C2B,#4A0E18)}
 .st-mv::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(92deg,rgba(255,255,255,.035) 0 1px,transparent 1px 7px);pointer-events:none}
 .st-mv h3{position:relative;margin:0;font-size:clamp(24px,3vw,38px);line-height:1.5;font-weight:700;letter-spacing:-.03em;max-width:24em}
@@ -653,8 +695,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .pre-row .btn{height:52px;flex:none}
 .pre .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.pre-ok{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.8);cursor:pointer}
-.pre-ok input{flex:none;width:16px;height:16px;margin:3px 0 0;accent-color:#fff}
+/* 동의 줄은 처음부터 칸으로 보이게 하고, 이메일을 쓰기 시작했는데 체크가 없으면 테두리를 밝혀 미리 알린다 */
+.pre-ok{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:11px 14px 12px;border-radius:14px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.24);font-size:13px;line-height:1.6;color:rgba(255,255,255,.9);cursor:pointer;transition:box-shadow .2s var(--ease),background .2s var(--ease)}
+.pre-ok.need{background:rgba(255,255,255,.15);box-shadow:inset 0 0 0 2px #fff}
+.pre-ok:has(input:checked){box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.pre-ok input{flex:none;width:18px;height:18px;margin:2px 0 0;accent-color:#fff;cursor:pointer}
+.pre-row .btn[aria-disabled="true"]{opacity:.62}
 .pre-ok a{text-decoration:underline;text-underline-offset:2px}
 .pre-msg{min-height:1.6em;margin:10px 0 0!important;font-size:14px!important;font-weight:600;color:#fff!important}
 .pre.done .pre-row,.pre.done .pre-ok{display:none}
@@ -727,7 +773,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .s3-p{margin:22px 0 0;font-size:18px;line-height:1.7;color:var(--ink2);max-width:26em}
 .hero .s3-src{display:grid;max-width:none;margin:14px 0 0;font-size:11px;line-height:1.45;color:var(--ink3);transition:opacity .25s} /* .hero p(17px)보다 앞서도록 */
 .s3-src span{grid-area:1/1;opacity:0;transition:opacity .2s var(--ease)} /* 지금 보이는 수치의 출처 한 줄만 */
-.s3-src .sv,.dz[data-sc="1"] .s3-src .gp,.dz[data-sc="2"] .s3-src .fq{opacity:1}.dz[data-sc="1"] .s3-src .sv,.dz[data-sc="2"] .s3-src .sv{opacity:0}
+.s3-src .sv,.dz[data-sc="1"] .s3-src .gp,.dz[data-sc="2"] .s3-src .fq,.dz[data-sc="3"] .s3-src .nw{opacity:1}.dz:is([data-sc="1"],[data-sc="2"],[data-sc="3"]) .s3-src .sv{opacity:0}
 .s3.fin .s3-src{opacity:0}
 .s3-dots{display:flex;gap:6px;margin-top:22px}
 .s3-dots i{width:22px;height:4px;border-radius:4px;background:var(--line);transition:background .2s,width .2s var(--ease)}
@@ -736,23 +782,23 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .s3-dev{position:relative;aspect-ratio:4/3;border-radius:28px;background:#1E1811;padding:1.6cqw;box-shadow:0 40px 80px -30px rgba(60,30,20,.45),0 0 0 1px rgba(30,24,17,.08)}
 .sc{position:absolute;inset:1.6cqw;border-radius:20px;overflow:hidden;opacity:0;transition:opacity .25s var(--ease)}
 .sc.on{opacity:1}
-/* 1 사진으로 올린 필기를 GPT가 24 + 1로 읽음: 대표의 실제 대화 캡처(img/gpt-24p1-chat.jpg, 1179×1010)를 조각내 차례로 드러낸다 */
+/* 1 사진으로 올린 필기를 GPT가 24 + 1로 읽음: 대표의 실제 대화 캡처(img/gpt-24p1-chat.jpg, 1179×1010)를 조각내 차례로 드러낸다.
+   조각은 모두 같은 배율(원본 1px = 0.14cqw)로 키우고, 빈 검은 자리는 줄였다. 사진은 필기 둘레만(원본 y 145~369), 답은 "ㅋㅋ" 앞까지(원본 x 40~682).
+   위치·크기 단위 cqw: 태블릿 화면(.sc) 안쪽 96.8 × 71.8 */
 .scg{background:#000}
-.gc{position:absolute;left:0;right:0;bottom:0;aspect-ratio:1179/1010;isolation:isolate;transform:translate3d(0,34%,0);transition:transform .34s var(--ease)}
-.gc>*{position:absolute;display:block}
+.scg .gc{position:absolute;inset:0;isolation:isolate}
+.scg .gc>*{position:absolute;display:block}
 .gc-ph,.gc-me,.gc-re{background:url(img/gpt-24p1-chat.jpg) no-repeat}
-.gc-ph{left:58.948%;top:2.772%;width:37.320%;height:58.218%;background-size:267.955% 171.769%;background-position:94.046% 6.635%;opacity:0;transform:translate3d(0,6%,0) scale(.96);transform-origin:100% 100%;transition:opacity .22s var(--ease),transform .32s var(--ease)}
-.gc-me{left:58.948%;top:62.178%;width:37.320%;height:14.653%;background-size:267.955% 682.432%;background-position:94.046% 72.854%;opacity:0;transform:translate3d(0,24%,0);transition:opacity .2s var(--ease),transform .28s var(--ease)}
-.gc-re{left:3.393%;top:87.129%;width:62.765%;height:6.139%;background-size:159.324% 1629.032%;background-position:9.112% 92.827%;clip-path:inset(0 100% 0 0)}
-.gc-dot{left:4.326%;top:88.812%;width:2.545%;height:2.970%;border-radius:50%;background:#fff;opacity:0;transform:scale(.4);transition:opacity .14s,transform .2s var(--ease)}
-.gc-hl{left:24.597%;top:87.624%;width:17.303%;height:5.347%;border-radius:.7cqw;background:var(--wine);mix-blend-mode:screen;transform:scaleX(0);transform-origin:0 50%;transition:transform .26s var(--ease)}
-.gc-ring{left:67.854%;top:19.010%;width:14.843%;height:12.871%;overflow:visible}
-.gc-ring path{fill:none;stroke:var(--wine);stroke-width:2.6;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .38s var(--ease)}
+.gc-ph{left:33.26cqw;top:2.5cqw;width:60.48cqw;height:31.36cqw;border-radius:4cqw;background-size:272.917% 450.893%;background-position:93.574% 18.448%;opacity:0;transform:translate3d(0,6%,0) scale(.96);transform-origin:100% 100%;transition:opacity .2s var(--ease),transform .3s var(--ease)}
+.gc-me{left:32.7cqw;top:35.26cqw;width:61.6cqw;height:20.72cqw;background-size:267.955% 682.432%;background-position:94.046% 72.854%;opacity:0;transform:translate3d(0,24%,0);transition:opacity .2s var(--ease),transform .28s var(--ease)}
+.gc-re{left:2.5cqw;top:58.22cqw;width:89.88cqw;height:10.08cqw;background-size:183.645% 1402.778%;background-position:7.449% 93.390%;clip-path:inset(0 100% 0 0)}
+.gc-dot{left:4.04cqw;top:61.16cqw;width:4.2cqw;height:4.2cqw;border-radius:50%;background:#fff;opacity:0;transform:scale(.4);transition:opacity .14s,transform .2s var(--ease)}
+.gc-hl{left:37.5cqw;top:59.06cqw;width:28.28cqw;height:8.4cqw;border-radius:.9cqw;background:var(--wine);mix-blend-mode:screen;transform:scaleX(0);transform-origin:0 50%;transition:transform .26s var(--ease)}
+.gc-ring{left:47.4cqw;top:8.8cqw;width:24.5cqw;height:18.9cqw;overflow:visible}
+.gc-ring path{fill:none;stroke:var(--wine);stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:2 2;stroke-dashoffset:2;transition:stroke-dashoffset .38s var(--ease)} /* 화면에서 고리가 커지면 선 길이 환산이 어긋나 끝이 비치므로 마디를 넉넉히(2) */
 .scg.g1 .gc-ph{opacity:1;transform:none}
-.scg.g2 .gc{transform:translate3d(0,18%,0)}
 .scg.g2 .gc-me{opacity:1;transform:none}
 .scg.g3 .gc-dot{opacity:1;transform:none;animation:gdot .5s ease-in-out infinite alternate}
-.scg.g3 .gc{transform:none} /* 생각 중 점이 뜰 때 답 자리까지 내려 둔다 */
 .scg.g4 .gc-dot{opacity:0;animation:none}
 .scg.g5 .gc-hl{transform:none}
 .scg.g6 .gc-ring path{stroke-dashoffset:0}
@@ -868,12 +914,23 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .dz .sc{will-change:opacity}
 .dz .sc:not(.on){opacity:.004} /* 눈에 안 보일 만큼만 남겨 미리 그려 둔다 */
 .dz .sc.on{z-index:1} /* 지금 장면을 맨 위에 두어, 미리 그려 둔 다른 장면이 검은 화면 위로 비치지 않게 */
-.dz .gc,.dz .s3-l{will-change:transform}
+.dz .s3-l{will-change:transform}
 .dz .gc-ph,.dz .gc-me,.dz .b3pop,.dz .rd-r{will-change:transform,opacity}
 .dz .s3-dev{contain:layout paint}
 .s3.fin .s3-src,.dz.fin .s3-src{opacity:0}
 .s3-l .rd{margin-top:22px;width:min(460px,100%)}
 .s3-l .rd-r{padding:11px 16px}.s3-l .rd-r b{font-size:22px}.s3-l .rd-r small{font-size:13px}
+/* 해결 장면: 틀린 답은 회색 가운데 줄, 맞은 답은 먹색 + 와인 밑줄(와인은 Provee 쪽에만) */
+.s3-l .rd-r.bad b{color:var(--ink3);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(30,24,17,.35)}
+.s3-l .rd-r.good b{color:var(--ink);background:linear-gradient(var(--wine),var(--wine)) 0 100%/100% 3px no-repeat;padding-bottom:4px}
+.s3-l .rd-r.good b::after{display:none}
+/* 눈썹 문구: 문제 넷은 "AI로 공부하면", 해결 장면만 "Provee로 공부하면" */
+.dz .s3-k{display:grid}
+.dz .s3-k span{grid-area:1/1;transition:opacity .25s var(--ease)}
+.dz .s3-k .s3-kp{color:var(--wine);opacity:0}
+.dz.fin .s3-k span:first-child{opacity:0}
+.dz.fin .s3-k .s3-kp{opacity:1}
+.dz .s3-st span,.dz .s3-p{text-wrap:pretty} /* 수치 설명 끝 한 단어만 다음 줄로 떨어지지 않게 */
 /* 첫 장면: 찍고, 타이핑하고, 기다리는 실사 영상 */
 .sct{background:#EDE6DA}
 .s0v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .25s var(--ease)}
@@ -899,7 +956,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 .hero-fade{position:absolute;left:0;right:0;bottom:0;height:160px;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(247,243,236,0),var(--ivory))}
 /* 출처·각주·캡션은 한 크기로 작고 옅게(본문은 그대로) */
-@media (max-width:760px){.scap,.cmp-note,.pr-note,.og-card small,.hero .s3-src{font-size:10.5px}}
+@media (max-width:760px){.scap,.cmp-note,.pr-note,.og-card small,.hero .s3-src{font-size:11px}}
 
 /* 사진 자리(대표가 사진을 주면 채움) */
 .og-empty{aspect-ratio:813/1082;display:grid;place-items:center;border-radius:24px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(201,188,168,.12) 10px 11px);box-shadow:inset 0 0 0 1.5px #D8CCB9}
@@ -1007,7 +1064,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
           <a href="#f-read" role="menuitem"><span class="n">02</span><b>획 단위 인식</b><span>사진이 놓치는 쓴 순서까지 읽습니다</span></a>
           <a href="#f-graph" role="menuitem"><span class="n">03</span><b>바로 그리는 그래프</b><span>기다리지 않고 식에서 바로 그립니다</span></a>
           <a href="#f-ask" role="menuitem"><span class="n">04</span><b>되묻는 튜터</b><span>막히면 정답 대신 놓친 조건을 짚습니다</span></a>
-          <a href="#f-note" role="menuitem"><span class="n">05</span><b>복습노트</b><span>내가 푼 순서 그대로 다시 봅니다</span></a>
+          <a href="#f-note" role="menuitem"><span class="n">05</span><b>Provee Note</b><span>언제 어디서든 내 풀이를 다시 봅니다</span></a>
           <a href="#f-ground" class="alt" role="menuitem"><span class="n">06</span><b>Provee Ground</b><span>링크 하나로 같은 노트에 함께 풉니다</span></a>
         </div>
       </li>
@@ -1027,7 +1084,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 <nav class="drawer" id="drawer" aria-label="모바일 메뉴" aria-hidden="true">
   <div class="drawer-top"><span class="wm" style="font-size:26px">Provee<i>.</i></span><button class="lang-b" type="button" data-lang translate="no" lang="en" aria-label="View in English">EN</button><button class="burger" style="display:grid" id="close" aria-label="메뉴 닫기"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
   <details open><summary>기능<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-    <div class="sub"><a href="#f-input"><small>01</small>필기 입력</a><a href="#f-read"><small>02</small>획 단위 인식</a><a href="#f-graph"><small>03</small>바로 그리는 그래프</a><a href="#f-ask"><small>04</small>되묻는 튜터</a><a href="#f-note"><small>05</small>복습노트</a><a href="#f-ground"><small>06</small>Provee Ground</a></div>
+    <div class="sub"><a href="#f-input"><small>01</small>필기 입력</a><a href="#f-read"><small>02</small>획 단위 인식</a><a href="#f-graph"><small>03</small>바로 그리는 그래프</a><a href="#f-ask"><small>04</small>되묻는 튜터</a><a href="#f-note"><small>05</small>Provee Note</a><a href="#f-ground"><small>06</small>Provee Ground</a></div>
   </details>
   <a class="l" href="#compare">비교</a><a class="l" href="#pricing">요금제</a><a class="l" href="#story">회사 이야기</a><a class="l" href="#faq">자주 묻는 질문</a>
   <div class="d-cta"><a class="btn btn-w" href="#join">사전신청 혜택 받기</a><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기</a></div>
@@ -1042,23 +1099,23 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <p class="eyebrow fade" style="animation-delay:.05s">PROVE YOUR THINKING</p>
     <span class="wm fade" style="animation-delay:.12s">Provee<i>.</i></span>
     <h1 class="fade" style="animation-delay:.22s"><mark class="hero-hl">손으로 풀어야 이해되는</mark><br>과목을 위한 AI 튜터</h1>
-    <p class="fade" style="animation-delay:.3s">미적분, 통계, 선형대수, 물리처럼<br><b>직접 문제를 풀어가는 과정 자체가 학습</b>인<br>과목을 위한 당신만의 선생님</p>
+    <p class="fade" style="animation-delay:.3s">미적분, 통계, 선형대수, 물리를<br>태블릿에 펜으로 푸는 동안<br>옆에서 읽고, <b>막힐 때만 말을 거는</b> 선생님</p>
     <div class="cta fade" style="animation-delay:.38s"><a class="btn btn-w" href="#join">사전신청 혜택 받기</a><a class="btn btn-l" href="#features">기능 보기</a></div>
   </div>
 </div>
     <div class="z-scr"><div class="wrap s3-in dz-in">
       <div class="s3-copy">
-        <p class="s3-k">손으로 푸는 과목을 AI로 공부하면</p>
-        <div class="s3-lines"><div class="s3-l on"><h2><span class="kw">사진 찍고,</span> <span class="kw">타이핑하고,</span> <span class="kw">기다리고.</span><br>수학은 언제 푸나요?</h2><p class="s3-st"><b>86%</b><span>문제를 매번 찍어 올리는 게 번거로웠다</span></p></div><div class="s3-l"><h2>사진으로 올리면<br>식이 다르게 읽히기도 합니다</h2><p class="s3-st"><b>24+1</b><span>뭉쳐 쓴 2x + 1을 사진으로 올렸을 때 GPT가 읽은 식</span></p></div><div class="s3-l"><h2>하나 물었는데 답과 풀이,<br>묻지 않은 것까지 쏟아집니다</h2><p class="s3-st"><b>63%</b><span>AI가 스스로 생각하게 돕기보다 정답과 전체 풀이를 바로 보여 줄 때가 많았다</span></p></div><div class="s3-l"><h2>새 채팅을 열면<br>처음부터 다시 설명합니다</h2><p class="s3-st"><b>88%</b><span>새 채팅마다 내 수준을 다시 설명해야 했다</span></p></div><div class="s3-l fin"><h2>풀이는 학생이 쓰고,<br>Provee는 옆에서 읽습니다</h2><p class="s3-p">펜으로 쓰는 식을 따라 읽다가, 막힌 곳에서만 먼저 말을 겁니다.</p><div class="rd"><div class="rd-r bad"><small>같은 필기를 사진으로<br>GPT에 올렸을 때</small><b>24 + 1</b></div><div class="rd-r good"><small>Provee가 쓴 순서대로<br>읽은 결과</small><b>2x + 1</b></div></div></div></div>
+        <p class="s3-k"><span>손으로 푸는 과목을 AI로 공부하면</span><span class="s3-kp">Provee로 공부하면</span></p>
+        <div class="s3-lines"><div class="s3-l on"><h2><span class="kw">사진 찍고,</span> <span class="kw">타이핑하고,</span> <span class="kw">기다리고.</span><br>수학은 언제 푸나요?</h2><p class="s3-st"><b>63%</b><span>문제나 풀이를 찍고 캡처해 올리는 과정이 번거로울 때가 많았다</span></p></div><div class="s3-l"><h2>분명 2x + 1이라고 썼는데<br>AI는 24 + 1로 읽었습니다</h2><p class="s3-st"><b>60%</b><span>AI가 손글씨나 수식을 잘못 읽을 때가 많았다</span></p></div><div class="s3-l"><h2>하나 물었는데 답과 풀이,<br>묻지 않은 것까지 쏟아집니다</h2><p class="s3-st"><b>63%</b><span>AI가 스스로 생각하게 돕기보다 정답과 전체 풀이를 바로 보여 줄 때가 많았다</span></p></div><div class="s3-l"><h2>새 채팅을 열면<br>내 수준부터 다시 설명합니다</h2><p class="s3-st"><b>77%</b><span>대화가 길어지거나 새 채팅을 열면 내 수준을 다시 설명해야 할 때가 많았다</span></p></div><div class="s3-l fin"><h2>풀이는 학생이 쓰고,<br>Provee는 옆에서 읽습니다</h2><p class="s3-p">찍어 올리지 않아도 쓴 순서대로 읽고, 물어본 만큼만 답합니다. 지난 풀이는 노트에 그대로 남습니다.</p><div class="rd"><div class="rd-r bad"><small>같은 필기를 사진으로<br>GPT에 올렸을 때</small><b>24 + 1</b></div><div class="rd-r good"><small>Provee가 쓴 순서대로<br>읽은 결과</small><b>2x + 1</b></div></div></div></div>
         <div class="s3-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
-        <p class="s3-src"><span class="sv">%: 생성형 AI를 써 본 대학생 43명 설문(URP, 2026년 7월)</span><span class="gp">24+1: 대표의 필기 사진을 GPT-5.6 Sol에 올린 1회 실측, 화면은 실제 대화 캡처</span><span class="fq">63%: 생성형 AI를 써 본 대학(원)생·졸업생 43명 중 27명, '자주' 이상(URP, 2026년 7월). 화면은 재구성</span></p>
+        <p class="s3-src"><span class="sv">63%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 27명, '자주' 이상(URP 온라인 설문 응답 105명 중 대학 응답, 2026년 7월, 지인·커뮤니티 모집). 영상은 연출</span><span class="gp">60%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 26명, '자주' 이상(URP, 2026년 7월). 24 + 1: 2026년 9월 12일 GPT-5.6 Sol, 1회 실측, 실제 대화 캡처 일부</span><span class="fq">63%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 27명, '자주' 이상(URP, 2026년 7월). 화면은 재구성</span><span class="nw">77%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 33명, '자주' 이상(URP, 2026년 7월). 화면은 재구성</span></p>
       </div>
       <div class="s3-stage" aria-hidden="true"><div class="s3-dev">
       <div class="sc sct on"><video class="s0v" muted playsinline preload="auto" poster="img/s0-study.jpg"><source src="img/s0-study.mp4" type="video/mp4"></video></div>
       <div class="sc scg"><div class="gc"><i class="gc-ph"></i><i class="gc-me"></i><i class="gc-dot"></i><i class="gc-re"></i><i class="gc-hl"></i><svg class="gc-ring" viewBox="0 0 100 100" preserveAspectRatio="none"><path pathLength="1" d="M90 30C76 6 30 2 10 26C-6 46 6 84 44 94C74 101 100 82 96 52C94 40 88 30 76 22"/></svg></div></div>
       <div class="sc sc1"><div class="cht"><div class="ct-top"><b>AI 채팅</b></div><div class="ct-body fl"><div class="fl-doc"><div class="fl-q">삼차함수의 개형 종류 알려줘</div></div><i class="fl-bar"><i></i></i><i class="fl-fade"></i><i class="fl-hl"></i><i class="fl-wa"></i><i class="fl-br"></i><b class="fl-lb fl-lb1">물어본 것</b><b class="fl-lb fl-lb2">묻지 않은 것</b></div></div></div>
       <div class="sc sc2"><div class="nc"><aside><div class="b3nb">+ 새 채팅</div><ul></ul></aside><div class="nc-main"><div class="nc-empty">무엇을 도와드릴까요?</div><div class="nc-in"><span class="typ"></span><i class="caret"></i></div></div></div></div>
-      <div class="sc sc3"><div class="b3pv"><div class="b3bar"><span class="wm">Provee<i>.</i></span><span>이차방정식</span></div><div class="b3paper"><canvas></canvas></div><div class="b3pop"><small>읽은 식</small><b>2x + 1</b><i></i></div></div></div>
+      <div class="sc sc3"><div class="b3pv"><div class="b3bar"><span class="wm">Provee<i>.</i></span><span>일차식</span></div><div class="b3paper"><canvas></canvas></div><div class="b3pop"><small>읽은 식</small><b>2x + 1</b><i></i></div></div></div>
 
       </div></div>
     </div></div>
@@ -1095,7 +1152,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <a href="#f-read" data-f="read"><small>02</small>획 단위 인식</a>
     <a href="#f-graph" data-f="graph"><small>03</small>바로 그리는 그래프</a>
     <a href="#f-ask" data-f="ask"><small>04</small>되묻는 튜터</a>
-    <a href="#f-note" data-f="note"><small>05</small>복습노트</a>
+    <a href="#f-note" data-f="note"><small>05</small>Provee Note</a>
     <a href="#f-ground" data-f="ground"><small>06</small>Provee Ground</a>
   </div></nav>
   <div class="wrap">
@@ -1112,7 +1169,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <div class="f-copy">
         <span class="fk"><b>02</b>획 단위 인식</span>
         <h3>사진은 다 쓴 결과만 보고,<br>Provee는 쓴 순서까지 읽습니다</h3>
-        <p>사진을 읽는 AI가 받는 건 다 쓴 페이지 한 장이라, 무엇을 먼저 썼는지 남지 않습니다. Provee는 획마다 쓴 자리와 시각을 함께 받아 여기저기 흩어 쓴 풀이를 쓴 순서대로 잇고, 지운 식과 펜을 멈춘 시간까지 압니다. 이 기록이 그대로 복습노트가 됩니다.</p>
+        <p>사진을 읽는 AI가 받는 건 다 쓴 페이지 한 장이라, 무엇을 먼저 썼는지 남지 않습니다. Provee는 획마다 쓴 자리와 시각을 함께 받아 여기저기 흩어 쓴 풀이를 쓴 순서대로 잇고, 지운 식과 펜을 멈춘 시간까지 압니다. 이 기록이 그대로 Provee Note가 됩니다.</p>
       </div>
       <div class="f-vis" data-scene="read"></div>
     </div>
@@ -1137,9 +1194,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
     <div class="frow" id="f-note" data-f="note">
       <div class="f-copy">
-        <span class="fk"><b>05</b>복습노트</span>
-        <h3>펜이 멈췄던 3분 19초까지,<br>푼 순서 그대로 다시 봅니다</h3>
-        <p>획마다 어디에, 언제 썼는지 함께 남아 풀이가 쓴 순서대로 다시 재생됩니다. 오래 멈춘 구간과 지운 식은 시간 막대에 표시돼, 시험 전에 내가 오래 고민한 곳부터 다시 볼 수 있습니다.</p>
+        <span class="fk"><b>05</b>Provee Note</span>
+        <h3>학교 가는 길에도,<br>시험 직전에도<br>내가 쓴 풀이를 꺼내 봅니다</h3>
+        <p>손으로 푼 풀이가 과목과 단원별로 차곡차곡 모입니다. 버스 안에서도, 시험장 앞에서도 폰에서 하나를 누르면 내 글씨가 쓴 순서 그대로 다시 써집니다.</p>
       </div>
       <div class="f-vis" data-scene="note"></div>
     </div>
@@ -1163,11 +1220,11 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <table class="cmp">
         <thead><tr><th scope="col"></th><th scope="col" class="me"><span class="wm">Provee<i>.</i></span></th><th scope="col">범용 AI 채팅</th><th scope="col">사진 풀이 앱</th></tr></thead>
         <tbody>
-          <tr><th scope="row">문제를 넣는 법</th><td class="me">노트에 그대로 씀</td><td>사진이나 파일을 올리고, 원하는 것을 글로 설명</td><td>문제를 카메라로 찍음</td></tr>
-          <tr><th scope="row">읽는 것</th><td class="me">쓴 획과 순서, 지운 식까지</td><td>올린 사진 한 장</td><td>문제 사진</td></tr>
-          <tr><th scope="row">막혔을 때</th><td class="me">놓친 조건을 되묻고, 스스로 쓰게 함</td><td>정답과 전체 풀이를 먼저 받는 경우가 많음</td><td>정답과 단계별 풀이</td></tr>
-          <tr><th scope="row">그래프</th><td class="me">식에서 벡터로 바로 그림</td><td>이미지를 만들 때까지 기다림</td><td>앱마다 다름</td></tr>
-          <tr><th scope="row">복습</th><td class="me">과목·단원별 노트, 풀이 재생</td><td>채팅마다 흩어짐</td><td>찍은 문제 목록</td></tr>
+          <tr><th scope="row">문제를 넣는 법</th><td class="me"><small class="cmp-h">Provee</small>노트에 그대로 씀</td><td><small class="cmp-h">범용 AI 채팅</small>사진이나 파일을 올리고, 원하는 것을 글로 설명</td><td><small class="cmp-h">사진 풀이 앱</small>문제를 카메라로 찍음</td></tr>
+          <tr><th scope="row">읽는 것</th><td class="me"><small class="cmp-h">Provee</small>쓴 획과 순서, 지운 식까지</td><td><small class="cmp-h">범용 AI 채팅</small>올린 사진 한 장</td><td><small class="cmp-h">사진 풀이 앱</small>문제 사진</td></tr>
+          <tr><th scope="row">그래프</th><td class="me"><small class="cmp-h">Provee</small>식에서 바로 선으로 그림</td><td><small class="cmp-h">범용 AI 채팅</small>그림을 만들거나 코드를 돌리는 동안 기다리기도 함</td><td><small class="cmp-h">사진 풀이 앱</small>앱마다 다름</td></tr>
+          <tr><th scope="row">막혔을 때</th><td class="me"><small class="cmp-h">Provee</small>내가 쓴 풀이를 보고 놓친 조건을 먼저 묻고, 힌트는 한 단계씩</td><td><small class="cmp-h">범용 AI 채팅</small>기본은 정답과 전체 풀이부터. 학습 모드에선 되묻기도 하지만, 쓰는 과정은 보지 못함</td><td><small class="cmp-h">사진 풀이 앱</small>정답과 단계별 풀이</td></tr>
+          <tr><th scope="row">복습</th><td class="me"><small class="cmp-h">Provee</small>Provee&nbsp;Note에 과목별로 모여, 폰으로도 언제든 다시&nbsp;봄</td><td><small class="cmp-h">범용 AI 채팅</small>채팅마다 흩어지기 쉬움</td><td><small class="cmp-h">사진 풀이 앱</small>찍은 문제 목록</td></tr>
         </tbody>
       </table>
     </div>
@@ -1199,7 +1256,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <article class="rm now"><time>2026.10</time><b>서강대 무료 베타</b><span>중간고사 전에 정량과목 수강생부터 엽니다.</span><em class="st">이번 달</em></article>
       <article class="rm"><time>2026.11</time><b>유료 요금제 시작</b><span>기말고사 기간에 주 단위 결제를 엽니다.</span><em class="st">예정</em></article>
       <article class="rm"><time>2027 봄</time><b>전국 대학으로</b><span>서강대에서 확인한 지표로 전국 대학에 엽니다. 중고등 무료 버전도 함께 시작합니다.</span><em class="st">계획</em></article>
-      <article class="rm"><time>2027 가을</time><b>대학과 중고등, 두 트랙</b><span>같은 튜터 엔진으로 두 요금제를 함께 운영합니다.</span><em class="st">계획</em></article>
+      <article class="rm"><time>2027 가을</time><b>대학과 중고등을 함께</b><span>같은 튜터가 대학생과 중고등학생을 함께 가르칩니다.</span><em class="st">계획</em></article>
       <article class="rm"><time>2028</time><b>미국 수학 시장</b><span>SAT·AP 수학을 준비하는 학생에게 영어판을 엽니다.</span><em class="st">계획</em></article>
     </div>
   </div>
@@ -1209,8 +1266,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   <div class="st-hero"><div class="st-in"><p class="st-k">회사 이야기</p><h2>Prove your thinking<i>.</i></h2></div></div>
   <div class="st-scroll" id="stScroll">
     <div class="st-pin">
-      <p class="st-line">AI가 똑똑해질수록,<br>학생은 덜 생각하게 됐습니다.</p>
-      <p class="st-line">사진 한 장이면 답이 나오는 시대.<br>그 편리함이 받아 적는 공부가 됐습니다.</p>
+      <p class="st-line">AI가 답을 빨리 줄수록,<br>학생이 생각할 틈은 줄었습니다.<small class="st-cite">고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani 외, PNAS, 2025</a></small></p>
+      <p class="st-line">사진 한 장이면 답이 나오면서,<br>공부는 받아 적는 일이 되어&nbsp;갔습니다.</p>
       <p class="st-line">Provee는 이 흐름을 거꾸로 갑니다.</p>
     </div>
   </div>
@@ -1276,13 +1333,14 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <div class="tm"><span class="av">JH</span><b>연주희</b><em>UI 디자이너</em><span>제품·브랜드 디자인</span></div>
     </div>
   </div>
-  <div class="st-end"><p>시대가 바뀌어도,<br>사람이 자라고 배우는 교육의 가치는 사라지지 않습니다.</p></div>
+  <div class="st-end"><p>답은 AI가 알아도,<br>실력은 직접 풀어 본 사람에게 쌓입니다.</p></div>
 </section>
 
 <section class="sec" id="faq">
   <div class="wrap">
     <div class="sec-h"><h2>자주 묻는 질문</h2></div>
     <div class="faq-list">
+      <details><summary>ChatGPT와 무엇이 다른가요?<i aria-hidden="true"></i></summary><div class="ans">ChatGPT도 사진 속 풀이를 읽고, 학습 모드에서는 답 대신 되묻기도 합니다. 차이는 무엇을 받느냐에 있습니다. Provee는 다 쓴 사진 한 장이 아니라 노트에 쓰는 획을 순서와 시각까지 받습니다. 그래서 풀이가 멈춘 자리에서 내가 쓴 식을 보고 막힌 곳에서만 먼저 묻고, 다 푼 뒤에는 Provee&nbsp;Note에서 쓴 순서 그대로 다시 볼 수 있습니다.</div></details>
       <details><summary>언제부터 쓸 수 있나요?<i aria-hidden="true"></i></summary><div class="ans">2026년 10월, 서강대에서 무료 베타를 먼저 엽니다. 정량과목 수강생부터 시작해 2027년 봄에 전국 대학으로 넓힙니다.</div></details>
       <details><summary>어떤 기기가 필요한가요?<i aria-hidden="true"></i></summary><div class="ans">펜으로 쓸 수 있는 태블릿이 가장 잘 맞습니다. 웹 브라우저에서 열리고, 앱도 함께 준비하고 있습니다.</div></details>
       <details><summary>어떤 과목을 다루나요?<i aria-hidden="true"></i></summary><div class="ans">미적분, 통계, 선형대수, 계량경제, 물리처럼 손으로 풀며 배우는 과목입니다. 첫 학기는 서강대 정량과목에 맞춰 엽니다.</div></details>
@@ -1308,7 +1366,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <label class="pre-ok"><input id="preAgree" type="checkbox"> <span>(필수) 사전신청 혜택 메일을 보내기 위해 이메일을 받고, 2026년 11월 30일에 지웁니다. <a href="privacy.html#prereg" target="_blank" rel="noopener">개인정보처리방침</a></span></label>
       <p class="pre-msg" id="preMsg" role="status" aria-live="polite"></p>
     </form>
-    <a class="pre-alt" href="https://proveeground.kr" target="_blank" rel="noopener">지금은 Provee Ground를 무료로 써 볼 수 있어요 →</a>
+    <a class="pre-alt" href="https://proveeground.kr" target="_blank" rel="noopener">지금은 Provee Ground를 무료로 써 볼 수 있어요</a>
   </div>
 </section>
 </main>
@@ -1316,7 +1374,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 <footer class="ftr">
   <div class="ftr-in">
     <div class="f0"><span class="wm">Provee<i>.</i></span><p style="margin:10px 0 0">손으로 풀어야 이해되는 과목을 위한 AI 튜터</p></div>
-    <nav aria-label="기능"><h4>기능</h4><a href="#f-input">필기 입력</a><a href="#f-read">획 단위 인식</a><a href="#f-graph">바로 그리는 그래프</a><a href="#f-ask">되묻는 튜터</a><a href="#f-note">복습노트</a><a href="#f-ground">Provee Ground</a></nav>
+    <nav aria-label="기능"><h4>기능</h4><a href="#f-input">필기 입력</a><a href="#f-read">획 단위 인식</a><a href="#f-graph">바로 그리는 그래프</a><a href="#f-ask">되묻는 튜터</a><a href="#f-note">Provee Note</a><a href="#f-ground">Provee Ground</a></nav>
     <nav aria-label="회사"><h4>회사</h4><a href="#story">회사 이야기</a><a href="#pricing">요금제</a><a href="#faq">자주 묻는 질문</a><a href="story.html">투자자 소개</a></nav>
     <nav aria-label="안내"><h4>안내</h4><a href="terms.html">이용약관</a><a href="privacy.html"><b>개인정보처리방침</b></a><a href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a></nav>
     <small class="f0">URP (법인 설립 준비 중) · 대표 김수민 · © 2026 URP</small>
@@ -1491,12 +1549,11 @@ function sceneAsk(){
   }};
 }
 
-/* ---------- the real 14번 page (ink14.json), shared by 02 read and 05 note ---------- */
+/* ---------- the real 14번 page (ink14.json): 02 read draws it with these helpers; 05 note replays it on the phone ---------- */
 const NP={x0:10,y0:40,w:2170,h:1760};
 // where the page was written, in order (first stroke of each area); the solver went back to the middle graph at 397
 const NREG=[0,154,270,336,397,476,542],NTAG=[[100,122],[112,585],[800,1052],[1345,128],[1030,648,'l'],[140,1300],[1480,1270]]; // number badges sit just off the ink; 'l' puts the time label on the left
 const NER=[403,420]; // wrong upward-convex curve and its guides, erased before stroke 421 redraws the graph
-const REPLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.2v4.4h4.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 let ND=null;
 function noteData(){if(ND)return ND;const st=INK.s,n=st.length,T0=q=>q.p[0][2],T1=q=>q.p[q.p.length-1][2],E=T1(st[n-1]);
   const er=st.map((q,i)=>{if(!q.e)return 1/0;let j=i+1;while(j<n&&st[j].e)j++;return j<n?T0(st[j]):E}); // an erased stroke goes when the next kept stroke begins
@@ -1597,44 +1654,101 @@ function sceneRead(){
   return noteMount(el,frame,()=>{if(!K)build();narrow=rv.clientWidth<=600;P0=narrow?1300:650;Q0=P0+320;return {FINAL:Q0+Q1+1,LOOP:Q0+Q1+HOLD}});
 }
 
-/* ---------- 05 note: the page and a time bar share one clock; 18 minutes play in 7 seconds. Long pauses show where the pen stopped ---------- */
-function noteA(){
+/* ---------- 05 Provee Note: one phone at three moments of a day. The photos are staged; the phone screen is HTML laid onto each photo's blank screen in perspective; the ink is real (ink0912 quadratic, ink14 page) ---------- */
+// [file, moment, status-bar clock, chip clock, screen corners tl,tr,br,bl as fractions of the photo, measured on its blank grey screen]
+const PN_MO=[['walk','등굣길','8:12','08:12',[[.3977,.1699],[.6844,.1807],[.644,.8341],[.3484,.8152]]],
+  ['exam','시험 10분 전','13:50','13:50',[[.3129,.1805],[.6097,.1635],[.6902,.8136],[.3872,.8424]]],
+  ['bus','버스 안','18:04','18:04',[[.3676,.1483],[.681,.1586],[.6375,.8591],[.3139,.834]]]];
+function quadMatrix(w,h,q){ // CSS matrix3d mapping the w×h box onto quad q (tl,tr,br,bl)
+  const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]=q,dx1=x1-x2,dx2=x3-x2,dx3=x0-x1+x2-x3,dy1=y1-y2,dy2=y3-y2,dy3=y0-y1+y2-y3,den=dx1*dy2-dx2*dy1;
+  const g=(dx3*dy2-dx2*dy3)/den,hh=(dx1*dy3-dx3*dy1)/den,a=x1-x0+g*x1,b=x3-x0+hh*x3,d=y1-y0+g*y1,e=y3-y0+hh*y3;
+  return 'matrix3d('+[a/w,d/w,0,g/w,b/h,e/h,0,hh/h,0,0,1,0,x0,y0,0,1].map(v=>+v.toPrecision(9)).join(',')+')'}
+const quadAxis=q=>[[(q[0][0]+q[1][0]+q[2][0]+q[3][0])/4,(q[0][1]+q[1][1]+q[2][1]+q[3][1])/4],[(q[2][0]+q[3][0]-q[0][0]-q[1][0])/2,(q[2][1]+q[3][1]-q[0][1]-q[1][1])/2]]; // centre and top-to-bottom axis of a quad
+function pnTimed(S,gap,tf){ // one clock for a list of strokes: pauses capped at gap ms, points moved by tf; an erased stroke goes when the next kept stroke starts
+  let v=0,lt=null;const R=S.map(q=>{const t0=q.p[0][2],t1=q.p[q.p.length-1][2];v+=lt==null?0:Math.min(gap,Math.max(0,t0-lt));const v0=v;v+=t1-t0;lt=t1;return {e:q.e,er:1/0,p:q.p.map(p=>[...tf(p),v0+p[2]-t0])}});
+  R.forEach((s,i)=>{if(!s.e)return;let j=i+1;while(j<R.length&&R[j].e)j++;if(j<R.length)s.er=R[j].p[0][2]});return R}
+function pnInk(ctx,S,V,lw){let tip=null;const P=new Path2D();
+  for(const s of S){const p=s.p;if(p[0][2]>V)break;if(s.er<=V)continue;let m=p.length;if(p[m-1][2]>V){m=0;while(m<p.length&&p[m][2]<=V)m++;tip=p[m-1]}
+    P.moveTo(p[0][0],p[0][1]);if(m<2){P.lineTo(p[0][0]+.2,p[0][1]);continue}
+    for(let j=1;j<m-1;j++)P.quadraticCurveTo(p[j][0],p[j][1],(p[j][0]+p[j+1][0])/2,(p[j][1]+p[j+1][1])/2);P.lineTo(p[m-1][0],p[m-1][1])}
+  ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=lw;ctx.strokeStyle='#221C39';ctx.stroke(P);return tip}
+function sceneNote(){
   const el=document.createElement('div');
-  const PLAY='<svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>',PAUSE='<svg viewBox="0 0 24 24"><path d="M7.5 5.5h3v13h-3zM13.5 5.5h3v13h-3z" fill="currentColor"/></svg>';
-  const CLOCK='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 9v4.4l2.6 1.6M9.5 2.8h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
-  el.innerHTML=`<div class="nt nt-a"><div class="nt-card">
-    <div class="nt-bar"><span class="wm">Provee<i>.</i></span><span>복습노트 · 2024 수능 14번</span><span class="nt-clk"></span></div>
-    <div class="nt-pg"><canvas></canvas><span class="nt-fl"></span><i class="nt-dot"></i><span class="nt-ps">${CLOCK}<span>펜 멈춤 <b>0:00</b></span></span><span class="nt-end">${REPLAY}푼 순서 그대로 다시 보기</span></div>
-    <div class="nt-tl"><span class="nt-pp" aria-hidden="true"></span><div class="nt-tr"><div class="nt-wv"><canvas></canvas><i class="nt-pl"></i></div><div class="nt-lb"></div></div></div>
-  </div></div><p class="scap">같은 14번 필기(획 594개, 18분)를 7초로 줄여 재생한 화면. 아래 막대의 눈금 하나가 획 하나를 쓴 시각</p>`;
-  const $e=s=>el.querySelector(s),cv=$e('.nt-pg>canvas'),wv=$e('.nt-wv canvas'),fl=$e('.nt-fl'),end=$e('.nt-end'),clk=$e('.nt-clk'),ph=$e('.nt-pl'),lb=$e('.nt-lb'),pp=$e('.nt-pp'),dot=$e('.nt-dot'),ps=$e('.nt-ps'),psb=$e('.nt-ps b');
-  const Q0=520,QMS=7000,Q1=Q0+QMS,LOOP=Q1+2600;
-  let f=null,g=null,gp=[],stops=[],S={};
+  const RE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1M3.5 4v5h5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const OK='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1.2" fill="currentColor"/></svg>';
+  const ICONS='<svg viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.3c2.4 0 4.5.9 6.1 2.4l1.3-1.4A10.5 10.5 0 0 0 8 .4 10.5 10.5 0 0 0 .6 3.3l1.3 1.4A8.6 8.6 0 0 1 8 2.3zm0 3.6c1.4 0 2.6.5 3.5 1.4l1.3-1.4A6.7 6.7 0 0 0 8 4a6.7 6.7 0 0 0-4.8 1.9l1.3 1.4C5.4 6.4 6.6 5.9 8 5.9zm0 3.5c.5 0 1 .2 1.3.5L8 11.6 6.7 9.9c.3-.3.8-.5 1.3-.5z"/></svg><svg viewBox="0 0 27 12" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="10.8" rx="3.2" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.2" y="2.2" width="16.5" height="7.6" rx="1.8"/><path d="M25 4.1v3.8c.8-.3 1.3-1 1.3-1.9s-.5-1.6-1.3-1.9z" opacity=".45"/></svg>';
+  const card=(c,unit,title,sub)=>`<h5 class="pn-uh"><span>${unit}</span></h5><div class="pn-cd" data-c="${c}"><div class="pn-th"><canvas></canvas></div><div class="pn-cr"><span><b>${title}</b><small class="pn-sub"><span>${sub}</span><span class="pn-rv">복습 1회${OK}</span></small></span><em>${RE}다시 보기</em></div></div>`;
+  const player=(c,title,prompt,unit,foot)=>`<div class="pn-pane pn-pl" data-c="${c}"><div class="pn-hd"><i class="pn-bk">‹</i><b class="pn-br">Provee Note</b><span class="pn-bd">복습 1회${OK}</span></div><h4 class="pn-tt">${title}</h4><p class="pn-pr">${prompt}</p><div class="pn-pa"><canvas></canvas></div><div class="pn-sc"><i></i></div><div class="pn-ct"><span class="pn-st"><span>다시 보는 중</span><span>다 봤어요</span></span><span class="pn-pb">${PAUSE}${RE}</span><span class="pn-un">${unit}</span></div><p class="pn-ft">${foot}</p></div>`;
+  el.innerHTML=`<div class="pn"><div class="pn-fr" role="img" aria-label="등굣길, 시험 10분 전, 버스 안에서 같은 학생이 폰으로 Provee Note를 열어 자기 풀이를 다시 보는 연출 장면">
+    ${PN_MO.map(m=>`<img class="pn-ph" src="img/note-${m[0]}.webp" alt="" decoding="async" fetchpriority="low">`).join('')}
+    <div class="pn-scr" aria-hidden="true"><div class="pn-sb"><span class="pn-tm">${PN_MO.map(m=>`<span>${m[2]}</span>`).join('')}</span><i class="pn-di"></i><span class="pn-ic">${ICONS}</span></div>
+      <div class="pn-app"><div class="pn-pane pn-ls"><div class="pn-hd"><i class="pn-bk">‹</i><b class="pn-br">Provee Note</b><small>나의 풀이</small></div><div class="pn-tabs"><span>수학</span></div>
+        ${card('b','수능 기출','2024 수능 14번','풀이 18분 · 지움 20획')}${card('a','이차방정식','x² − 5x + 6 = 0','풀이 36초')}</div>
+        ${player('a','x² − 5x + 6 = 0','방정식 x² − 5x + 6 = 0 을 푸시오.','이차방정식','풀이 36초')}${player('b','2024 수능 14번','두 자연수 a, b에 대하여 함수 f(x)는 …','수능 기출','풀이 18분 · 지움 20획')}</div>
+      <i class="pn-tap"></i><i class="pn-home"></i></div>
+    <div class="pn-mo">${PN_MO.map(m=>`<span><b>${m[1]}</b>${m[3]}</span>`).join('')}</div><span class="pn-yn">연출</span>
+  </div></div><p class="scap">AI로 만든 연출 사진(실존 인물 아님) 위에 앱 화면을 겹친 장면. 폰 속 필기는 대표가 직접 쓴 실제 필기 두 개(이차방정식 획 39개, 2024 수능 14번 획 594개)를 빠르게 재생한 것</p>`;
+  const $e=s=>el.querySelector(s),$a=s=>[...el.querySelectorAll(s)],fr=$e('.pn-fr'),scr=$e('.pn-scr'),imgs=$a('.pn-ph'),chips=$a('.pn-mo>span'),clocks=$a('.pn-tm>span'),ls=$e('.pn-ls'),tap=$e('.pn-tap');
+  const PL={a:$e('.pn-pl[data-c=a]'),b:$e('.pn-pl[data-c=b]')},CD={a:$e('.pn-cd[data-c=a]'),b:$e('.pn-cd[data-c=b]')};
+  const SW=300,SH=650,PW=268,PH=217,R=2,D=3000,XF=240,LOOP=3*D,SL=280,KB=.035;
+  // beats (ms): tap the quadratic, it slides in and replays; back to the list, tap the 14번 page, it replays across the next moment
+  const BT={a:{tap:480,in:700,p0:1000,p1:2600,out:3060},b:{tap:3500,in:3720,p0:4020,p1:8020,out:LOOP-XF}},FINAL=8300;
+  let built=false,F=null,fw=0,fh=0,stopR=null,ro=null,S={},INKS={},tapAt={};
   const set=(k,v,fn)=>{if(S[k]!==v){S[k]=v;fn(v)}};
-  function build(){const D=ND,pc=(v,a,w)=>((v-a)/w*100).toFixed(2)+'%';
-    const ea=D.T0(D.st[NER[0]]),eb=D.T1(D.st[NER[1]]);
-    lb.innerHTML=D.gaps.map(([a,b],i)=>`<span class="nt-gp${i===D.gaps.length-1?' nt-lo':''}" style="left:${pc(a,0,D.E)};width:${pc(b,a,D.E)}"><em>${msKo(b-a)} 멈춤</em></span>`).join('')+`<span class="nt-gp nt-er" style="left:${pc(ea,0,D.E)};width:${pc(eb,ea,D.E)}"><em>지운 획</em></span>`;
-    gp=[...lb.children];
-    stops=D.gaps.map(([a])=>{const i=D.st.findIndex(q=>D.T1(q)===a),p=D.st[i].p[D.st[i].p.length-1];return {x:pc(p[0],NP.x0,NP.w),y:pc(p[1],NP.y0,NP.h),l:(p[0]-NP.x0)/NP.w>.62}})}
-  function wave(t,rev){const D=ND,{ctx,W,H}=g,X=W*rev;ctx.clearRect(0,0,W,H);
-    for(let i=0;i<D.n;i++){const q=D.st[i],t0=D.T0(q),x=t0/D.E*W;if(!rev||x>X)break;const w=Math.max(1,(D.T1(q)-t0)/D.E*W),h=H*Math.min(.84,.2+Math.sqrt(D.len[i])/34);
-      ctx.fillStyle=q.e?(t0<=t?'#8A1C2B':'#E6C9CD'):(t0<=t?'#221C39':'#D8D0C3');ctx.fillRect(x,(H-h)/2,w,h)}}
-  function frame(T,force){const D=ND;
-    if(force||!f||!g||cv.clientWidth!==f.cw||wv.clientWidth!==g.cw){f=fitCanvas(cv);g=fitCanvas(wv);if(!f||!g)return;f.cw=cv.clientWidth;g.cw=wv.clientWidth}
-    const t=T<Q0?0:T>=Q1?D.E:(T-Q0)/QMS*D.E;
-    notePaint(f,t,{dim:1,ghost:true,over:(ctx,k,tip)=>{if(tip&&T>=Q0&&T<Q1+200&&Q0+tip[2]/D.E*QMS>T-260)noteTip(ctx,k,tip)}});
-    wave(t,Math.min(1,T/420));
-    set('fl',T<200?+(0.7*(1-T/200)).toFixed(2):0,v=>fl.style.opacity=v);
-    set('end',T>=Q1+150,v=>end.classList.toggle('nt-on',v));
-    set('pp',T<Q0?0:T<Q1?1:2,v=>pp.innerHTML=v===1?PAUSE:v===2?REPLAY:PLAY);
-    set('clk',`<b>${mmss(t)}</b> / ${mmss(D.E)}`,v=>clk.innerHTML=v);
-    set('ph',T<Q0?-1:+(t/D.E*100).toFixed(2),v=>{ph.classList.toggle('nt-on',v>=0);if(v>=0)ph.style.left=v+'%'});
-    // while the playhead crosses a long pause, the page marks where the pen stopped and the bar lights that pause
-    const zi=T>=Q0&&T<Q1?D.gaps.findIndex(([a,b])=>t>=a&&t<b):-1;
-    set('zi',zi,v=>{gp.forEach((x,i)=>x.classList.toggle('nt-hot',i===v));dot.classList.toggle('nt-on',v>=0);ps.classList.toggle('nt-on',v>=0);
-      if(v>=0){const s=stops[v];dot.style.left=ps.style.left=s.x;dot.style.top=ps.style.top=s.y;ps.classList.toggle('nt-l',s.l)}});
-    set('zt',zi>=0?mmss(t-D.gaps[zi][0]):'',v=>{if(v)psb.textContent=v})}
-  return noteMount(el,frame,()=>{if(!gp.length)build();return {FINAL:Q1+2000,LOOP}});
+  const ease=u=>u<=0?0:u>=1?1:1-Math.pow(1-u,3),seg=(T,a,b)=>Math.min(1,Math.max(0,(T-a)/(b-a)));
+  const canvasOf=(box,w,h)=>{const c=box.querySelector('canvas');c.width=w*R;c.height=h*R;const ctx=c.getContext('2d');ctx.setTransform(R,0,0,R,0,0);return ctx};
+  function lines(){const F2=INK2.fact,yc=s=>s.p.reduce((a,p)=>a+p[1],0)/s.p.length;return [INK2.cover,F2.filter(s=>yc(s)<500),F2.filter(s=>yc(s)>=500)]}
+  function quadInk(w,h,k,x0,cy){ // the three lines stacked left, one clock
+    const L=lines(),B=L.map(bb),own=new Map();L.forEach((S,i)=>S.forEach(s=>own.set(s,i)));
+    const tf=i=>p=>[x0+(p[0]-B[i][0])*k,cy[i]*h-(B[i][3]-B[i][1])*k/2+(p[1]-B[i][1])*k];
+    const all=[...INK2.cover,...INK2.fact];let v=0,lt=null;
+    return all.map(q=>{const i=own.get(q),t0=q.p[0][2],t1=q.p[q.p.length-1][2];v+=lt==null?0:Math.min(180,Math.max(0,t0-lt));const v0=v;v+=t1-t0;lt=t1;return {e:0,er:1/0,p:q.p.map(p=>[...tf(i)(p),v0+p[2]-t0])}})}
+  function build(){if(built)return;built=true;
+    const k14=PW/NP.w;INKS.b=pnTimed(INK.s,180,p=>[(p[0]-NP.x0)*k14,(p[1]-NP.y0)*k14]);
+    const kq=.66*PW/(bb(INK2.cover)[2]-bb(INK2.cover)[0]);INKS.a=quadInk(PW,PH,kq,18,[.22,.5,.78]);
+    INKS.vA=endT(INKS.a);INKS.vB=endT(INKS.b);
+    // thumbnails: the finished ink
+    const TW=256,TH=104,kt=TW/NP.w,tb=canvasOf(CD.b,TW,TH);
+    pnInk(tb,pnTimed(INK.s,180,p=>[(p[0]-NP.x0)*kt,(p[1]-NP.y0-40)*kt]),1e12,1.05);
+    const ta=canvasOf(CD.a,TW,TH);pnInk(ta,quadInk(TW,TH,.3*TW/(bb(INK2.cover)[2]-bb(INK2.cover)[0]),16,[.24,.52,.79]),1e12,1.3);
+    ['a','b'].forEach(c=>{PL[c].ctx=canvasOf(PL[c],PW,PH);PL[c].fill=PL[c].querySelector('.pn-sc i');
+      let x=0,y=0,n=CD[c].querySelector('em');const w=n.offsetWidth,h=n.offsetHeight;while(n&&n!==scr){x+=n.offsetLeft;y+=n.offsetTop;n=n.offsetParent}tapAt[c]=[x+w/2,y+h/2]})}
+  function fit(){const W=fr.clientWidth,H=fr.clientHeight;if(!W||!H)return false;const PF=W/H<.9?.8:.74;fw=W;fh=H;
+    F=PN_MO.map(m=>{const q=m[4],ph=(Math.hypot(q[3][0]-q[0][0],q[3][1]-q[0][1])+Math.hypot(q[2][0]-q[1][0],q[2][1]-q[1][1]))/2,cx=q.reduce((a,p)=>a+p[0],0)/4,cy=q.reduce((a,p)=>a+p[1],0)/4;
+      const s=Math.max(PF*H/ph,W,H),ox=Math.min(0,Math.max(W-s,W*.54-cx*s)),oy=Math.min(0,Math.max(H-s,H*.5-cy*s));return {s,ox,oy,ax:ox+cx*s,ay:oy+cy*s,q}});
+    return true}
+  const place=(j,z)=>{const f=F[j],s=f.s*z,ox=f.ax-(f.ax-f.ox)*z,oy=f.ay-(f.ay-f.oy)*z;return {s,ox,oy,Q:f.q.map(([x,y])=>[ox+x*s,oy+y*s])}};
+  function frame(T,force){
+    if(force||fr.clientWidth!==fw||fr.clientHeight!==fh){if(!fit())return;S={}}
+    // photos: hold one moment, cross-fade to the next in the last XF ms; each drifts in slowly about its phone
+    const cur=Math.min(2,Math.floor(T/D)),loc=T-cur*D,nx=(cur+1)%3,x=loc>D-XF?ease((loc-(D-XF))/XF):0;
+    const zf=j=>1+KB*Math.min(1,((T-(j*D-XF))%LOOP+LOOP)%LOOP/(D+XF));
+    const pc=place(cur,zf(cur)),pn=x>0?place(nx,zf(nx)):null;
+    // while the photos cross-fade, both are turned and scaled so their phones sit on one in-between phone: the phone stays, the day changes around it
+    let Q=pn?pc.Q.map((p,i)=>[p[0]+(pn.Q[i][0]-p[0])*x,p[1]+(pn.Q[i][1]-p[1])*x]):pc.Q;
+    imgs.forEach((im,j)=>{const P=j===cur?pc:j===nx&&pn?pn:null;im.style.opacity=P?(j===cur?1:x):0;if(!P)return;im.style.zIndex=j===cur?1:2;
+      const [c0,v0]=quadAxis(P.Q),[c1,v1]=quadAxis(Q),k=Math.hypot(...v1)/Math.hypot(...v0),th=Math.atan2(v1[1],v1[0])-Math.atan2(v0[1],v0[0]),co=Math.cos(th)*k,si=Math.sin(th)*k,m=P.s/1000,
+        ex=c1[0]+co*(P.ox-c0[0])-si*(P.oy-c0[1]),ey=c1[1]+si*(P.ox-c0[0])+co*(P.oy-c0[1]);
+      im.style.transform=`matrix(${co*m},${si*m},${-si*m},${co*m},${ex},${ey})`});
+    const cx=Q.reduce((a,p)=>a+p[0],0)/4,cy=Q.reduce((a,p)=>a+p[1],0)/4;Q=Q.map(([u,v])=>[cx+(u-cx)*1.006,cy+(v-cy)*1.006]);
+    scr.style.transform=quadMatrix(SW,SH,Q);set('vis',1,()=>scr.style.visibility='visible');
+    const act=x>=.5?nx:cur;set('m',act,v=>{chips.forEach((c,i)=>c.classList.toggle('on',i===v));clocks.forEach((c,i)=>c.classList.toggle('on',i===v))});
+    // app: list, then a solution slides in and replays in the order it was written
+    let pl=0;
+    ['a','b'].forEach(c=>{const b=BT[c],p=ease(seg(T,b.in,b.in+SL))-ease(seg(T,b.out,b.out+SL)),u=seg(T,b.p0,b.p1),P=PL[c];pl=Math.max(pl,p);
+      set('x'+c,+p.toFixed(3),v=>P.style.transform=`translateX(${((1-v)*100).toFixed(2)}%)`);
+      set('d'+c,T>=b.p1,v=>{P.classList.toggle('pn-done',v);CD[c].classList.toggle('pn-done',v)});
+      set('u'+c,+u.toFixed(4),v=>{const ctx=P.ctx;ctx.clearRect(0,0,PW,PH);const tip=pnInk(ctx,INKS[c],v*INKS[c==='a'?'vA':'vB'],c==='a'?2:1.25);
+        if(tip&&v>0&&v<1){ctx.fillStyle='#8A1C2B';ctx.beginPath();ctx.arc(tip[0],tip[1],3,0,7);ctx.fill()}P.fill.style.width=(v*100)+'%'});
+      const k=seg(T,b.tap,b.tap+240);set('k'+c,+(k>0&&k<1?Math.sin(Math.PI*k):0).toFixed(3),v=>CD[c].style.transform=v?`scale(${1-.03*v})`:'')});
+    set('ls',+pl.toFixed(3),v=>ls.style.transform=v?`translateX(${(-30*v).toFixed(2)}%)`:'');
+    const tc=T>=BT.b.tap-100?'b':'a',r=seg(T,BT[tc].tap,BT[tc].tap+340);
+    set('tp',tc+(+r.toFixed(3)),()=>{tap.style.left=tapAt[tc][0]+'px';tap.style.top=tapAt[tc][1]+'px';tap.style.opacity=r>0&&r<1?(1-r).toFixed(3):0;tap.style.transform=`scale(${(.35+r*.9).toFixed(3)})`})}
+  return {el,stop(){stopR&&stopR();stopR=null},async play(ok){
+    await Promise.all([inkP,ink2P]);if(!INK||!INK2||!ok())return;build();stopR&&stopR();
+    if(RM){frame(FINAL,true);if(!ro){ro=new ResizeObserver(()=>frame(FINAL,true));ro.observe(fr)}return}
+    const t0=performance.now();stopR=loopRAF(now=>{if(ok())frame((now-t0)%LOOP)})}};
 }
 
 /* ---------- 05 ground: two people write on one note at the same time ---------- */
@@ -1661,7 +1775,7 @@ function sceneGround(){
       s.f.ctx.clearRect(0,0,s.f.W,s.f.H);await sleep(350)}
   }};
 }
-const MAKE={input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,note:noteA,ground:sceneGround};
+const MAKE={input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,note:sceneNote,ground:sceneGround};
 
 /* ---------- mount scenes; play only while their row is on screen ---------- */
 const scenes={},run={};
@@ -1689,18 +1803,18 @@ h0:prClk(0),h1:prClk(30),h6:prClk(180),h12:prClk(360)};
 /* icon·cup·cupM은 새 키. cup=가격 옆 비유(주 단위), cupM=월 단위일 때 비유. 없으면 lv를 비유로 쓴다 */
 const PLANS={
   univ:[
-    {n:'Free',lv:'무료',w:'0원',m:'0원',unit:'',alt:'1과목은 계속 무료',f:['1과목','문제풀이와 힌트','Provee Ground'],icon:'water',cup:'물 한 잔처럼 부담 없이'},
-    {n:'Americano',lv:'Basic',w:'4,700원',m:'15,900원',tip:'요금제 이름은 카페 메뉴 하나 값을 기준으로 붙였습니다.',f:['2과목','문제풀이 무제한','힌트 중심 AI 개입'],icon:'americano',cup:'아메리카노 한 잔 값으로 일주일',cupM:'아메리카노 네 잔보다 싸게'},
-    {n:'Matcha',lv:'Pro',main:1,w:'6,500원',m:'19,900원',f:['3과목','중간·기말 모의시험','실수 패턴 기억','과목 간 기억 공유'],icon:'matcha',cup:'말차 라테 한 잔 값으로 일주일',cupM:'말차 라테 네 잔보다 싸게'},
-    {n:'Sandwich',lv:'Max',w:'8,300원',m:'28,900원',f:['과목 무제한','실시간 AI 개입','학기 간 기억 공유'],icon:'sandwich',cup:'샌드위치 하나 값으로 일주일',cupM:'샌드위치 네 개보다 싸게'}],
+    {n:'Free',lv:'',w:'0원',m:'0원',unit:'',alt:'1과목은 계속 무료',f:['1과목','문제풀이와 힌트','Provee Ground'],icon:'water',cup:'물 한 잔처럼 부담 없이'},
+    {n:'Americano',lv:'Basic',w:'4,700원',m:'15,900원',tip:'요금제 이름은 카페 메뉴 하나 값을 기준으로 붙였습니다.',f:['2과목','문제풀이 무제한','힌트 중심 도움'],icon:'americano',cup:'아메리카노 한 잔 값으로 일주일',cupM:'아메리카노 네 잔보다 싸게'},
+    {n:'Matcha',lv:'Pro',main:1,w:'6,500원',m:'19,900원',f:['3과목','중간·기말 모의시험','실수 패턴 기억','과목을 넘어 이어지는 기억'],icon:'matcha',cup:'말차 라테 한 잔 값으로 일주일',cupM:'말차 라테 네 잔보다 싸게'},
+    {n:'Sandwich',lv:'Max',w:'8,300원',m:'28,900원',f:['과목 무제한','풀이 중 실시간 도움','다음 학기까지 이어지는 기억'],icon:'sandwich',cup:'샌드위치 하나 값으로 일주일',cupM:'샌드위치 네 개보다 싸게'}],
   hs:[
-    {n:'Free',lv:'무료',m:'0원',alt:'하루 5문제',f:['하루 5문제','문제풀이와 힌트'],icon:'h0',cup:'먼저 가볍게 써 보기'},
+    {n:'Free',lv:'',m:'0원',alt:'하루 5문제',f:['하루 5문제','문제풀이와 힌트'],icon:'h0',cup:'먼저 가볍게 써 보기'},
     {n:'Basic',lv:'과외 한 시간',m:'25,000원',f:['문제풀이 무제한','단원평가'],icon:'h1'},
-    {n:'Pro',lv:'선생님과 반나절',main:1,m:'39,000원',f:['수능형 모의시험','실수 패턴 기반 개입'],icon:'h6'},
-    {n:'Max',lv:'선생님과 하루 종일',m:'53,000원',f:['실전 수능 환경 시험','실시간 개입','개인별 학습 로드맵'],icon:'h12'}]};
+    {n:'Pro',lv:'선생님과 반나절',main:1,m:'39,000원',f:['수능형 모의시험','실수 패턴에 맞춘 도움'],icon:'h6'},
+    {n:'Max',lv:'선생님과 하루 종일',m:'53,000원',f:['실전 수능 환경 시험','풀이 중 실시간 도움','개인별 학습 로드맵'],icon:'h12'}]};
 const PR_T={badge:'추천',base:'기본 제공',plus:n=>`${n}에 더해`,uW:'/ 주',uM:'/ 월',altW:v=>`월 결제 시 ${v}`,altM:v=>`주 결제 시 ${v}`,parent:'보호자 결제',
-  note:{univ:'출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 24% 쌉니다.',hs:'출시 전 계획 가격이며 바뀔 수 있습니다. 중고등 버전은 2027년에 엽니다.'}};
-const PRV=new URLSearchParams(location.search).get('price')==='b'?'b':'a';
+  note:{univ:'출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 23% 쌉니다.',hs:'출시 전 계획 가격이며 바뀔 수 있습니다. 중고등 버전은 2027년에 엽니다.'}};
+const PRV=new URLSearchParams(location.search).get('price')==='a'?'a':'b'; /* 기본은 시안 B(메뉴판), ?price=a 로 카드형 */
 let aud='univ',cyc='w';
 const prIc=k=>`<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">${PR_IC[k]||''}</svg>`;
 function prVals(p){const uv=aud==='univ',wk=uv&&cyc==='w',price=uv?(wk?p.w:p.m):p.m,free=/^\D*0\D*$/.test(price),
@@ -1744,7 +1858,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('.tip');$$('.tip.
 
 /* ---------- story: statements swap with scroll ---------- */
 const stS=$('#stScroll'),lines=[...stS.querySelectorAll('.st-line')];let stRaf=0,stOn=false;
-function stTick(){if(!stOn)return;const r=stS.getBoundingClientRect(),prog=Math.min(.999,Math.max(0,-r.top/(r.height-innerHeight)));const i=Math.floor(prog*lines.length);
+function stTick(){if(!stOn||RM)return; /* 움직임 줄이기면 세 문장을 모두 켜 둔 채 둔다 */const r=stS.getBoundingClientRect(),prog=Math.min(.999,Math.max(0,-r.top/(r.height-innerHeight)));const i=Math.floor(prog*lines.length);
   lines.forEach((l,j)=>l.classList.toggle('on',j===i));stRaf=requestAnimationFrame(stTick)}
 new IntersectionObserver(([e])=>{stOn=e.isIntersecting;if(stOn){cancelAnimationFrame(stRaf);stTick()}}).observe(stS);
 if(RM)lines.forEach(l=>l.classList.add('on'));
@@ -1788,11 +1902,14 @@ const nav=$$('[data-nav]');const sio=new IntersectionObserver(es=>es.forEach(e=>
 })();
 
 /* ---------- 사전신청 ---------- */
-(()=>{const $=s=>document.querySelector(s),f=$('#preForm');if(!f)return;const em=$('#preEmail'),ag=$('#preAgree'),msg=$('#preMsg'),bt=f.querySelector('button');
+(()=>{const $=s=>document.querySelector(s),f=$('#preForm');if(!f)return;const em=$('#preEmail'),ag=$('#preAgree'),msg=$('#preMsg'),bt=f.querySelector('button'),ok=f.querySelector('.pre-ok');
+/* 체크 전에는 버튼을 옅게(누르면 이유를 알려 줌), 이메일을 쓰기 시작했는데 체크가 없으면 동의 줄을 밝힌다 */
+const sync=()=>{bt.setAttribute('aria-disabled',String(!ag.checked));ok.classList.toggle('need',!ag.checked&&em.value.trim().length>0)};
+em.addEventListener('input',sync);ag.addEventListener('change',()=>{sync();if(ag.checked&&!bt.disabled)msg.textContent=''});sync();
 const API=location.hostname==='localhost'?'http://localhost:8799/api/prereg':'https://prereg.provee.kr/api/prereg';
 f.addEventListener('submit',async e=>{e.preventDefault();const v=em.value.trim();
   if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)){msg.textContent='이메일 주소를 확인해 주세요';em.focus();return}
-  if(!ag.checked){msg.textContent='개인정보 수집에 동의해 주세요';ag.focus();return}
+  if(!ag.checked){msg.textContent='개인정보 수집에 동의해 주세요';ok.classList.add('need');ag.focus();return}
   bt.disabled=true;msg.textContent='보내는 중…';
   try{const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:v,consent:true,src:'provee.kr',website:f.website.value})});const d=await r.json();
     if(!r.ok)throw new Error(d.error||'');f.classList.add('done');msg.textContent=d.dup?'이미 저장된 주소예요. 10월 오픈 때 혜택 메일을 보내 드릴게요.':'저장했어요. 10월 오픈 때 혜택 메일을 보내 드릴게요.'}
@@ -1852,12 +1969,13 @@ const s0=async ok=>{const v=SC[0].querySelector('video'),K=[...L[0].querySelecto
   await new Promise(res=>{const tick=()=>{if(!ok()){v.removeEventListener('ended',again);v.pause();v.classList.remove('out');K.forEach(e=>e.classList.remove('dim'));return res()}mark();requestAnimationFrame(tick)};requestAnimationFrame(tick)})};
 const play=[s0,
   // 대표의 실제 GPT 대화 캡처: 필기 사진이 올라가고, 질문, 생각 중 점, 답이 토막토막 나온 뒤 "24 + 1"에 와인색 표시, 사진 속 필기에 동그라미
-  async ok=>{const sc=SC[1],re=sc.querySelector('.gc-re'),K=[13,26.9,43.4,51.9,72.4,85.8,100]; // 답 글자 토막이 끝나는 위치(%)
+  async ok=>{const sc=SC[1],re=sc.querySelector('.gc-re'),K=[15.1,31.2,50.2,59.8,76.6,83.6,100]; // 답 글자 토막(이번·건은·**24·+·1**·로·보여)이 끝나는 위치(%)
     const st=n=>{for(let k=1;k<=6;k++)sc.classList.toggle('g'+k,k<=n)},clip=v=>{re.style.clipPath=`inset(0 ${100-v}% 0 0)`};
     sc.classList.add('rs');st(0);clip(0);void sc.offsetWidth;sc.classList.remove('rs');
     if(DR.RM){st(6);clip(100);return}
-    for(const [ms,n] of [[80,1],[400,2],[300,3],[380,4]]){await DR.sleep(ms);if(!ok())return;st(n)}
-    for(const v of K){clip(v);await DR.sleep(55);if(!ok())return}
+    st(1); // 사진은 장면이 열리자마자 띄워 검은 화면으로 기다리는 시간을 없앤다
+    for(const [ms,n] of [[260,2],[240,3],[300,4]]){await DR.sleep(ms);if(!ok())return;st(n)}
+    for(const v of K){clip(v);await DR.sleep(50);if(!ok())return}
     await DR.sleep(110);if(!ok())return;st(5);await DR.sleep(230);if(ok())st(6)},
   // 하나만 물었는데: 짧은 질문 말풍선 → 답 덩어리가 점점 빨라지며 쌓이고 화면이 따라 내려감 → 한 발 물러서면 물어본 것은 맨 위 한 칸, 나머지는 화면 밖까지 이어진다
   async ok=>{const b=SC[2].querySelector('.fl'),doc=b.querySelector('.fl-doc'),K=[...doc.children],B=K.slice(1),th=b.querySelector('.fl-bar i'),
@@ -1907,7 +2025,7 @@ const HDR=document.getElementById('hdr');
 const render=p=>{if(!M)measure();const m=M;HDR&&HDR.classList.toggle('noblur',p<.999);
   if(p>.015)ffwd();
   const q=p/ZP;
-  const a=ease(seg(q,0,.3)),z=ease(seg(q,.04,.7)),on=seg(q,.25,.45),fill=ease(seg(q,.4,.75)),tx=ease(seg(q,.58,.85));
+  const a=ease(seg(q,0,.3)),z=ease(seg(q,.04,.7)),on=seg(q,.2,.36),fill=ease(seg(q,.4,.75)),tx=1-Math.pow(1-seg(q,.26,.52),2); // 안쪽 장면을 종이색 판과 겹쳐 들여, 판만 보이는 단색 프레임이 없게
   copy.style.opacity=1-a;copy.style.transform=`translate3d(0,${(-50*a).toFixed(2)}px,0)`;veil.style.opacity=1-a;hint.style.opacity=1-seg(q,0,.12);
   copy.style.visibility=a>=1?'hidden':'visible';
   const s=1+1.6*z;vid.style.transform=`scale(${s.toFixed(4)})`;
@@ -1916,7 +2034,7 @@ const render=p=>{if(!M)measure();const m=M;HDR&&HDR.classList.toggle('noblur',p<
     scr.style.clipPath=`polygon(${pts.map(([x,y])=>`${x.toFixed(1)}px ${y.toFixed(1)}px`).join(',')})`;clipOff=false}
   else if(fill>=1&&!clipOff){scr.style.clipPath='none';clipOff=true}
   inn.style.opacity=Math.max(tx,warm?.004:0);inn.style.transform=`translate3d(0,${(24*(1-tx)).toFixed(2)}px,0)`;
-  const sp=cl((p-ZP)/(1-ZP),0,.9999);go(q<.58?-1:Math.floor(sp*5))};
+  const sp=cl((p-ZP)/(1-ZP),0,.9999);go(q<.26?-1:Math.floor(sp*5))};
 if(DR.RM){scr.style.opacity=1;scr.style.clipPath='none';inn.style.opacity=1;go(4);return}
 // 스크롤 위치를 그대로 따라가지 않고 부드럽게 쫓아간다. 휠 한 칸의 계단이 매끈한 움직임이 된다
 const target=()=>{const r=Z.getBoundingClientRect(),span=r.height-innerHeight;return span>0?cl(-r.top/span):1};

@@ -35,47 +35,52 @@ const T={
 '획 단위 인식':'Stroke-level recognition',
 '바로 그리는 그래프':'Instant graphs',
 '되묻는 튜터':'A tutor that asks back',
-'복습노트':'Review notes',
 '찍지 않고, 쓰는 대로 읽습니다':'No photos. It reads as you write',
 '사진이 놓치는 쓴 순서까지 읽습니다':'Reads the order you wrote in, which a photo misses',
 '기다리지 않고 식에서 바로 그립니다':'Graphs straight from the equation, no waiting',
 '막히면 정답 대신 놓친 조건을 짚습니다':'Points to what you missed, not the answer',
-'내가 푼 순서 그대로 다시 봅니다':'Replay your work in the order you wrote it',
+'언제 어디서든 내 풀이를 다시 봅니다':'Your own work, anytime, anywhere',
 '링크 하나로 같은 노트에 함께 풉니다':'One link, the same notes, solved together',
 
 /* ---------- 첫 화면 ---------- */
 '창가 책상에서 태블릿에 펜으로 쓰는 손':'A hand writing with a pen on a tablet at a desk by the window',
 '<mark>손으로 풀어야 이해되는</mark><br>과목을 위한 AI 튜터':'An AI tutor for subjects<br><mark>you learn with pen in hand</mark>',
-'미적분, 통계, 선형대수, 물리처럼<br><b>직접 문제를 풀어가는 과정 자체가 학습</b>인<br>과목을 위한 당신만의 선생님':'A tutor of your own for calculus, statistics, <br>linear algebra, physics and every subject where <br><b>working the problem out is the learning</b>',
 '기능 보기':'See features',
 
 /* 첫 화면: 태블릿 속 장면 5개와 왼쪽 문구 */
 '손으로 푸는 과목을 AI로 공부하면':'Studying pen-and-paper subjects with AI',
 '<span>사진 찍고,</span> <span>타이핑하고,</span> <span>기다리고.</span><br>수학은 언제 푸나요?':'<span>Snap,</span> <span>type,</span> <span>wait.</span><br>When do you do math?',
-'문제를 매번 찍어 올리는 게 번거로웠다':'found snapping and uploading every problem a hassle',
-'사진으로 올리면<br>식이 다르게 읽히기도 합니다':'A photo can<br>get your math wrong',
-'뭉쳐 쓴 2x + 1을 사진으로 GPT에 올렸을 때 읽은 식':'what GPT read from a photo of a cramped 2x + 1',
 '하나 물었는데 답과 풀이,<br>묻지 않은 것까지 쏟아집니다':'You ask one thing.<br>It answers everything.',
 'AI가 스스로 생각하게 돕기보다 정답과 전체 풀이를 바로 보여 줄 때가 많았다':'often got the answer and full solution instead of help thinking',
 '삼차함수의 개형 종류 알려줘':'What shapes can a cubic graph take?',
 '물어본 것':'What I asked',
 '묻지 않은 것':'What I didn\'t ask',
-'63%: 생성형 AI를 써 본 대학(원)생·졸업생 43명 중 27명, \'자주\' 이상(URP, 2026년 7월). 화면은 재구성':'63%: 27 of 43 undergrads, grad students and recent grads who have used generative AI, "often" or more (URP survey, July 2026). Screen is a reconstruction',
-'새 채팅을 열면<br>처음부터 다시 설명합니다':'Every new chat<br>starts from scratch',
-'새 채팅마다 내 수준을 다시 설명해야 했다':'had to re-explain their level in every new chat',
 '풀이는 학생이 쓰고,<br>Provee는 옆에서 읽습니다':'You write the solution.<br>Provee reads along.',
-'펜으로 쓰는 식을 따라 읽다가, 막힌 곳에서만 먼저 말을 겁니다.':'It follows the math as you write and speaks up only where you get stuck.',
 '같은 필기를 사진으로<br>GPT에 올렸을 때':'Same handwriting,<br>uploaded to GPT as a photo',
 'Provee가 쓴 순서대로<br>읽은 결과':'Provee, reading<br>in stroke order',
-'%: 생성형 AI를 써 본 대학생 43명 설문(URP, 2026년 7월)<br>24+1: 대표의 실제 필기 사진을 GPT-5.6 Sol에 올린 1회 실측':'%: Survey of 43 university students who have used generative AI (URP, July 2026)<br>24+1: A single test with a photo of our CEO\'s real handwriting, uploaded to GPT-5.6 Sol',
 '사진으로 읽은 식 <b>24 + 1</b>':'Read from photo: <b>24 + 1</b>',
 'AI 채팅':'AI Chat',
 '사진 속 식은 <b>24 + 1</b> 입니다. 차례대로 풀어 보면':'The expression in the photo is <b>24 + 1</b>. Working through it step by step,',
 '+ 새 채팅':'+ New chat',
 '새 채팅':'New chat',
 '무엇을 도와드릴까요?':'How can I help?',
-'이차방정식':'Quadratic equations',
 '읽은 식':'Read as',
+
+// hero-fix: 첫 화면 검증단 수정(설문 '자주' 이상 기준, 장면 문구, 출처 줄). 출처 줄은 장면마다 span 하나씩이라 span 글자 그대로가 열쇠
+'미적분, 통계, 선형대수, 물리를<br>태블릿에 펜으로 푸는 동안<br>옆에서 읽고, <b>막힐 때만 말을 거는</b> 선생님':'A tutor that reads along as you work through <br>calculus, statistics, linear algebra and physics <br>with a pen on your tablet, and <b>speaks up only when you\'re stuck</b>',
+'Provee로 공부하면':'Studying with Provee',
+'문제나 풀이를 찍고 캡처해 올리는 과정이 번거로울 때가 많았다':'often found snapping, screenshotting and uploading their work a hassle',
+'분명 2x + 1이라고 썼는데<br>AI는 24 + 1로 읽었습니다':'I wrote 2x + 1.<br>The AI read it as 24 + 1.',
+'AI가 손글씨나 수식을 잘못 읽을 때가 많았다':'often had AI misread their handwriting or math',
+'새 채팅을 열면<br>내 수준부터 다시 설명합니다':'Open a new chat<br>and explain your level again',
+'대화가 길어지거나 새 채팅을 열면 내 수준을 다시 설명해야 할 때가 많았다':'often had to re-explain their level when a chat ran long or they opened a new one',
+'찍어 올리지 않아도 쓴 순서대로 읽고, 물어본 만큼만 답합니다. 지난 풀이는 노트에 그대로 남습니다.':'No photos to upload. It reads your work in the order you write it and answers only what you ask. Past work stays in your notes.',
+'일차식':'Linear expression',
+'63%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 27명, \'자주\' 이상(URP 온라인 설문 응답 105명 중 대학 응답, 2026년 7월, 지인·커뮤니티 모집). 영상은 연출':'63%: 27 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (university respondents among 105 in URP\'s online survey, July 2026, recruited via friends and communities). The video is staged',
+'60%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 26명, \'자주\' 이상(URP, 2026년 7월). 24 + 1: 2026년 9월 12일 GPT-5.6 Sol, 1회 실측, 실제 대화 캡처 일부':'60%: 26 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (URP survey, July 2026). 24 + 1: GPT-5.6 Sol, September 12, 2026, a single test, cropped from the actual chat',
+'63%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 27명, \'자주\' 이상(URP, 2026년 7월). 화면은 재구성':'63%: 27 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (URP survey, July 2026). Screen is a reconstruction',
+'77%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 33명, \'자주\' 이상(URP, 2026년 7월). 화면은 재구성':'77%: 33 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (URP survey, July 2026). Screen is a reconstruction',
+// /hero-fix
 
 // subjects: 외우는 공부와 풀어 보는 공부 (index.html #subjects). 이 섹션 줄은 여기 한곳에만 둔다
 '외우는 공부와 풀어 보는 공부':'Learning by heart, learning by solving',
@@ -108,13 +113,13 @@ const T={
 '펜을 내려놓지 않아도<br>튜터가 읽습니다':'Keep your pen down.<br>Your tutor reads as you write',
 '노트와 튜터가 한 화면에 있어, 한 줄을 쓰면 읽은 식이 바로 옆에 뜹니다. 폰을 들어 찍고 올리던 시간이 그대로 푸는 시간이 됩니다.':'Your notes and your tutor share one screen. Write a line and what Provee read appears right beside it. The time you spent picking up your phone to snap and upload goes back into solving.',
 '사진은 다 쓴 결과만 보고,<br>Provee는 쓴 순서까지 읽습니다':'A photo sees only the finished page.<br>Provee reads the order you wrote it in',
-'사진을 읽는 AI가 받는 건 다 쓴 페이지 한 장이라, 무엇을 먼저 썼는지 남지 않습니다. Provee는 획마다 쓴 자리와 시각을 함께 받아 여기저기 흩어 쓴 풀이를 쓴 순서대로 잇고, 지운 식과 펜을 멈춘 시간까지 압니다. 이 기록이 그대로 복습노트가 됩니다.':'An AI that reads photos gets one finished page, with no trace of what came first. Provee receives every stroke with where and when it was written, so it follows work scattered across the page in the order you wrote it, and knows what you erased and where your pen paused. That record becomes your review notes.',
+'사진을 읽는 AI가 받는 건 다 쓴 페이지 한 장이라, 무엇을 먼저 썼는지 남지 않습니다. Provee는 획마다 쓴 자리와 시각을 함께 받아 여기저기 흩어 쓴 풀이를 쓴 순서대로 잇고, 지운 식과 펜을 멈춘 시간까지 압니다. 이 기록이 그대로 Provee Note가 됩니다.':'An AI that reads photos gets one finished page, with no trace of what came first. Provee receives every stroke with where and when it was written, so it follows work scattered across the page in the order you wrote it, and knows what you erased and where your pen paused. That record becomes your Provee Note.',
 'AI가 그려 주기를 기다리던 1~2분,<br>이제 Provee에서는 바로.':'The minute or two you waited for AI to draw a graph?<br>On Provee, it\'s instant.',
 'Provee는 그래프를 그림 파일로 만들지 않고, 식에서 바로 선으로 그립니다. 교점과 넓이처럼 풀이에 필요한 표시도 단계마다 함께 올라옵니다.':'Provee doesn\'t render an image file. It draws the graph straight from the equation, and the marks your solution needs, like intersections and areas, appear step by step.',
 '막히면 정답 대신<br>놓친 조건을 짚어 줍니다':'Stuck? It points to<br>what you missed,<br>not the answer',
 '화면 속 실제 풀이에서는 거꾸로 그린 그래프를 혼자 고치기까지 1분 반이 걸렸습니다. Provee는 펜이 멈춘 그 자리에서 학생이 그린 그림을 보고 먼저 묻고, 힌트는 더 필요할 때만 한 단계씩 엽니다.':'In the real solution shown here, it took a minute and a half to catch a graph drawn upside down and fix it alone. Provee asks first, right where the pen stops, based on what the student drew, and opens hints one step at a time only when more help is needed.',
-'펜이 멈췄던 3분 19초까지,<br>푼 순서 그대로 다시 봅니다':'Replay your work in the order you wrote it,<br>down to the 3 min 19 s your pen paused',
-'획마다 어디에, 언제 썼는지 함께 남아 풀이가 쓴 순서대로 다시 재생됩니다. 오래 멈춘 구간과 지운 식은 시간 막대에 표시돼, 시험 전에 내가 오래 고민한 곳부터 다시 볼 수 있습니다.':'Every stroke keeps where and when it was written, so your solution replays in order. Long pauses and erased work are marked on the timeline, so before an exam you can start with the spots you spent longest on.',
+'학교 가는 길에도,<br>시험 직전에도<br>내가 쓴 풀이를 꺼내 봅니다':'On the way to school,<br>right before an exam,<br>pull up your own work',
+'손으로 푼 풀이가 과목과 단원별로 차곡차곡 모입니다. 버스 안에서도, 시험장 앞에서도 폰에서 하나를 누르면 내 글씨가 쓴 순서 그대로 다시 써집니다.':'Everything you solve by hand is filed by subject and unit. On the bus or outside the exam room, tap one on your phone and your own handwriting writes itself out again, in the order you wrote it.',
 '링크 하나로 모여,<br>같은 노트에 함께 풉니다':'Join with one link,<br>solve on the same notes',
 '가입 없이 들어와 얼굴을 보며 같은 노트와 PDF 위에 씁니다. 필기와 목소리는 기기끼리 직접 오가고 서버에 남지 않습니다.':'Join without signing up, see each other, and write on the same notes and PDFs. Ink and voice travel directly between devices and are never stored on a server.',
 '지금 무료로 쓸 수 있습니다':'Free to use right now',
@@ -165,13 +170,26 @@ const T={
 '다시 읽을게':'I\'ll reread it',
 '힌트 더 줘':'Another hint',
 '대표가 2024학년도 수능 14번을 푼 실제 필기(획 594개, 18분) 가운데 그래프 대목을 빠르게 재생한 화면. 실제로는 혼자 고쳤고, 펜 멈춤 표시와 말풍선, 형광펜은 기능을 보여 주기 위한 연출':'The graph part of our CEO\'s real handwriting from 2024 CSAT Question 14 (594 strokes, 18 minutes), sped up. In reality he fixed it on his own; the pause timer, the speech bubble and the highlight are staged to show the feature',
-/* 05 복습노트 */
-'복습노트 · 2024 수능 14번':'Review notes · 2024 CSAT Q14',
+/* 05 Provee Note */
 '지운 획':'Erased',
-'푼 순서 그대로 다시 보기':'Replay in the order you wrote',
 '다시 보기':'Replay',
 '미적분':'Calculus',
-'같은 14번 필기(획 594개, 18분)를 7초로 줄여 재생한 화면. 아래 막대의 눈금 하나가 획 하나를 쓴 시각':'The same Q14 handwriting (594 strokes, 18 minutes) replayed in 7 seconds. Each tick on the bar is when one stroke was written',
+'등굣길':'Walking to school',
+'시험 10분 전':'10 min before the exam',
+'버스 안':'On the bus',
+'나의 풀이':'My solutions',
+'수학':'Math',
+'수능 기출':'Past CSAT',
+'풀이 18분 · 지움 20획':'18 min · 20 strokes erased',
+'풀이 36초':'36 s',
+'복습 1회':'Reviewed 1×',
+'방정식 x² − 5x + 6 = 0 을 푸시오.':'Solve x² − 5x + 6 = 0.',
+'두 자연수 a, b에 대하여 함수 f(x)는 …':'For two natural numbers a and b, the function f(x) is …',
+'다시 보는 중':'Replaying',
+'다 봤어요':'Done',
+'연출':'Staged',
+'등굣길, 시험 10분 전, 버스 안에서 같은 학생이 폰으로 Provee Note를 열어 자기 풀이를 다시 보는 연출 장면':'Staged scene: the same student opens Provee Note on a phone on the way to school, 10 minutes before an exam and on the bus, and replays his own solutions',
+'AI로 만든 연출 사진(실존 인물 아님) 위에 앱 화면을 겹친 장면. 폰 속 필기는 대표가 직접 쓴 실제 필기 두 개(이차방정식 획 39개, 2024 수능 14번 획 594개)를 빠르게 재생한 것':'Staged AI-generated photos (not a real person) with the app screen laid on top. The handwriting on the phone is two real records our CEO wrote himself (a quadratic, 39 strokes; 2024 CSAT Q14, 594 strokes), replayed at speed',
 /* 06 Provee Ground (이름은 예시) */
 'proveeground.kr 초대 링크':'proveeground.kr invite link',
 '2명 참여 중':'2 people here',
@@ -349,6 +367,37 @@ const T={
 '지금 신청이 안 돼요. 잠시 후 다시 해 주세요.':'We couldn\'t sign you up just now. Please try again in a moment.',
 '지금은 Provee Ground를 무료로 써 볼 수 있어요 →':'Meanwhile, you can try Provee Ground for free →',
 
+// global-fix: 페이지 전역 검증단 수정(헤더 신청 버튼, 비교표, 요금제, 로드맵, 회사 이야기 문장, FAQ, 사전신청).
+// 같은 열쇠가 위에 있으면 여기 값이 이긴다(객체에서 뒤에 쓴 값이 남음): '사전신청' 버튼 이름을 Get early access로.
+'사전신청':'Get early access',
+'10월 15일까지 사전신청하면<br>Matcha 2주 무료':'Sign up for early access by October 15<br>and get 2 weeks of Matcha free',
+'지금은 Provee Ground를 무료로 써 볼 수 있어요':'Meanwhile, try Provee Ground for free',
+// 비교표(행 순서를 기능 01~05에 맞춤, 좁은 화면 카드의 칸 이름표는 위의 '범용 AI 채팅'·'사진 풀이 앱'을 그대로 씀)
+'식에서 바로 선으로 그림':'Drawn as lines straight from the equation',
+'그림을 만들거나 코드를 돌리는 동안 기다리기도 함':'You may wait while it makes an image or runs code',
+'내가 쓴 풀이를 보고 놓친 조건을 먼저 묻고, 힌트는 한 단계씩':'Looks at what you wrote, asks about the condition you missed, then gives hints one step at a time',
+'기본은 정답과 전체 풀이부터. 학습 모드에선 되묻기도 하지만, 쓰는 과정은 보지 못함':'By default, the answer and full solution come first. Study modes may ask questions back, but can\'t see you write',
+'Provee Note에 과목별로 모여, 폰으로도 언제든 다시 봄':'Collected by subject in Provee Note, ready to replay on your phone anytime',
+'채팅마다 흩어지기 쉬움':'Easily scattered across chats',
+// 요금제
+'힌트 중심 도움':'Hint-first help',
+'과목을 넘어 이어지는 기억':'Remembers you across subjects',
+'풀이 중 실시간 도움':'Real-time help while you solve',
+'다음 학기까지 이어지는 기억':'Remembers you into next semester',
+'실수 패턴에 맞춘 도움':'Help tuned to your mistake patterns',
+'출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 23% 쌉니다.':'Planned pre-launch prices in Korean won (KRW), subject to change. Monthly billing is up to 23% cheaper than four weekly payments.',
+'요금제 이름은 카페 메뉴 하나 값을 기준으로 붙였습니다. 출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 23% 쌉니다.':'Each plan is named after a café item that costs about the same. Planned pre-launch prices in Korean won (KRW), subject to change. Monthly billing is up to 23% cheaper than four weekly payments.',
+// 로드맵
+'대학과 중고등을 함께':'University and secondary school, together',
+'같은 튜터가 대학생과 중고등학생을 함께 가르칩니다.':'The same tutor teaches university, middle and high school students.',
+// 회사 이야기
+'AI가 답을 빨리 줄수록,<br>학생이 생각할 틈은 줄었습니다.<small>고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a>Bastani 외, PNAS, 2025</a></small>':'The faster AI hands over answers,<br>the less room students have to think.<small>In a field experiment with nearly 1,000 high school students, those who practiced with a standard ChatGPT-style AI scored 17% lower on an exam without AI than students who never had it. An AI designed to give hints instead of answers largely prevented that loss. <a>Bastani et al., PNAS, 2025</a></small>',
+'사진 한 장이면 답이 나오면서,<br>공부는 받아 적는 일이 되어 갔습니다.':'Once a single photo could get you the answer,<br>studying slowly turned into copying.',
+'답은 AI가 알아도,<br>실력은 직접 풀어 본 사람에게 쌓입니다.':'AI may know the answer,<br>but skill builds up in whoever works it out.',
+// 자주 묻는 질문
+'ChatGPT와 무엇이 다른가요?':'How is it different from ChatGPT?',
+'ChatGPT도 사진 속 풀이를 읽고, 학습 모드에서는 답 대신 되묻기도 합니다. 차이는 무엇을 받느냐에 있습니다. Provee는 다 쓴 사진 한 장이 아니라 노트에 쓰는 획을 순서와 시각까지 받습니다. 그래서 풀이가 멈춘 자리에서 내가 쓴 식을 보고 막힌 곳에서만 먼저 묻고, 다 푼 뒤에는 Provee Note에서 쓴 순서 그대로 다시 볼 수 있습니다.':'ChatGPT can read work in a photo too, and its study mode may ask you questions instead of giving the answer. The difference is what each one receives. Instead of one photo of a finished page, Provee gets the strokes you write in your notes, with their order and timing. So where your work stops, it looks at what you wrote and asks first, only where you\'re stuck. When you\'re done, you can replay it in Provee Note in the order you wrote it.',
+
 /* ---------- 바닥글 ---------- */
 '손으로 풀어야 이해되는 과목을 위한 AI 튜터':'An AI tutor for subjects you learn with pen in hand',
 '회사':'Company',
@@ -416,6 +465,7 @@ const T={
 /* 같은 원문이라도 자리에 따라 다르게 옮길 때: [CSS 선택자, {원문: 번역}] */
 const SCOPED=[
   ['#faq .sec-h h2',{'자주 묻는 질문':'Frequently asked questions'}],
+  ['.hdr .btn-w',{'사전신청':'Early access'}], // global-fix: 폰 머리글은 자리가 좁아 짧게
 ];
 /* 스크립트가 숫자를 넣어 만드는 글자 (정규식, 태그가 섞인 열쇠에도 쓸 수 있다) */
 const RULES=[
