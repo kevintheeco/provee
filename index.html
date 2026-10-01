@@ -1691,7 +1691,7 @@ function sceneNote(){
   </div></div><p class="scap">AI로 만든 연출 사진(실존 인물 아님) 위에 앱 화면을 겹친 장면. 폰 속 필기는 대표가 직접 쓴 실제 필기 두 개(이차방정식 획 39개, 2024 수능 14번 획 594개)를 빠르게 재생한 것</p>`;
   const $e=s=>el.querySelector(s),$a=s=>[...el.querySelectorAll(s)],fr=$e('.pn-fr'),scr=$e('.pn-scr'),imgs=$a('.pn-ph'),chips=$a('.pn-mo>span'),clocks=$a('.pn-tm>span'),ls=$e('.pn-ls'),tap=$e('.pn-tap');
   const PL={a:$e('.pn-pl[data-c=a]'),b:$e('.pn-pl[data-c=b]')},CD={a:$e('.pn-cd[data-c=a]'),b:$e('.pn-cd[data-c=b]')};
-  const SW=300,SH=650,PW=268,PH=217,R=2,D=3000,XF=360,LOOP=3*D,SL=280,KB=.035;
+  const SW=300,SH=650,PW=268,PH=217,R=2,D=3000,XF=240,LOOP=3*D,SL=280,KB=.035;
   // beats (ms): tap the quadratic, it slides in and replays; back to the list, tap the 14번 page, it replays across the next moment
   const BT={a:{tap:480,in:700,p0:1000,p1:2600,out:3060},b:{tap:3500,in:3720,p0:4020,p1:8020,out:LOOP-XF}},FINAL=8300;
   let built=false,F=null,fw=0,fh=0,stopR=null,ro=null,S={},INKS={},tapAt={};
