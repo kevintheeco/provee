@@ -831,6 +831,92 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 /* 출처·각주·캡션은 한 크기로 작고 옅게(본문은 그대로) */
 @media (max-width:760px){.scap,.cmp-note,.pr-note,.og-card small,.hero .s3-src{font-size:10.5px}}
 
+/* 손풀이 vs 암기형 */
+.sj-sec{position:relative;padding-block:clamp(88px,10vw,140px) clamp(72px,8vw,112px);background:var(--ivory)}
+.sj-head{margin-bottom:clamp(36px,4.5vw,56px)}
+.sj-k{margin:0 0 14px;font-size:15px;font-weight:700;color:var(--ink3)}
+.sj-head h2{margin:0;font-size:clamp(28px,3.4vw,42px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
+.sj-head h2 em{font-style:normal;color:var(--wine)}
+.sj-head>p:last-child{margin:16px 0 0;font-size:17px;line-height:1.7;color:var(--ink2);max-width:34em}
+.sj-duo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto 1fr auto;border-radius:28px;overflow:hidden;background:var(--paper);box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line);transition:opacity .4s var(--ease),transform .45s var(--ease)}
+.sj-duo.sj-pre{opacity:0;transform:translateY(18px)}
+.sj{grid-row:1/span 3;display:grid;grid-template-rows:subgrid;padding:clamp(24px,3vw,40px)}
+.sj-m{background:#EFE8DC}
+.sj-top h3{margin:0;font-size:22px;line-height:1.35;font-weight:800;letter-spacing:-.02em}
+.sj-top p{margin:6px 0 0;font-size:15px;line-height:1.5;font-weight:500;color:var(--ink3)}
+.sj-vis{position:relative;min-width:0;margin-block:22px 26px}
+.sj-txt .sj-say{margin:0;font-size:19px;line-height:1.55;font-weight:700;letter-spacing:-.02em}
+.sj-txt .sj-ai{margin:16px 0 0;padding-top:16px;border-top:1px solid rgba(30,24,17,.1);font-size:16px;line-height:1.7;color:var(--ink2)}
+.sj-txt .sj-ai b{display:block;margin-bottom:4px;font-size:13px;font-weight:700;color:var(--ink3)}
+.sj-h .sj-ai b{color:var(--wine)}
+.sj-src{margin:14px 4px 0;font-size:12px;line-height:1.6;color:var(--ink3)}
+/* 왼쪽: 같은 박자로 넘어가는 플래시카드(예시) */
+.sj-fc{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:18px}
+.sj-fcd{position:relative;min-height:210px;perspective:1400px}
+.sj-fcc{position:absolute;left:50%;top:46%;width:min(86%,330px);aspect-ratio:3/2;transform-style:preserve-3d;transform:translate(-50%,-50%);transition:transform .3s cubic-bezier(.5,0,.2,1),opacity .24s var(--ease)}
+.sj-fcc>div{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:8px;padding:16px;border-radius:16px;background:#fff;text-align:center;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-shadow:0 14px 30px -16px rgba(60,30,20,.35),inset 0 0 0 1px rgba(30,24,17,.06)}
+.sj-fcc small{font-size:13px;font-weight:600;color:var(--ink3)}
+.sj-fcc b{font-size:clamp(20px,2vw,23px);font-weight:800;letter-spacing:-.02em}
+.sj-fcc .sj-bk{transform:rotateY(180deg)}
+.sj-fcc .sj-bk b{font:700 clamp(28px,2.7vw,34px)/1 var(--brand);letter-spacing:-.02em}
+.sj-fco{position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:50%;background:#1F7A4D;display:grid;place-items:center;transform:scale(0);transition:transform .22s cubic-bezier(.3,1.6,.5,1)}
+.sj-fcc.ok .sj-fco{transform:none}
+.sj-fcb{display:grid;gap:10px}
+.sj-fcs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.sj-fcs i{height:6px;border-radius:3px;background:rgba(30,24,17,.1);transition:background .18s}
+.sj-fcs i.on{background:var(--ink)}
+.sj-fcn{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink3)}
+.sj-fcn b{font:600 13px var(--brand);color:var(--ink)}
+/* 오른쪽: 실제 풀이가 쌓이는 종이와, 펜이 움직인 시각을 찍은 띠 */
+.sj-ipg{position:relative;aspect-ratio:5/4;border-radius:14px;background:#fff;background-image:linear-gradient(rgba(30,24,17,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(30,24,17,.045) 1px,transparent 1px);background-size:24px 24px;box-shadow:inset 0 0 0 1px var(--rule)}
+.sj-ipg canvas{position:absolute;inset:0;width:100%;height:100%}
+.sj-clk{position:absolute;left:12px;bottom:12px;height:28px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:8px;background:rgba(255,253,248,.94);box-shadow:inset 0 0 0 1px var(--line);font:600 14px/1 var(--brand);font-variant-numeric:tabular-nums;color:var(--ink)}
+.sj-itl{position:relative;margin-top:12px;padding-block:24px 22px}
+.sj-itl canvas{display:block;width:100%;height:18px}
+.sj-itl .sj-lb{position:absolute;display:flex;justify-content:center;white-space:nowrap;font-size:12px;font-weight:700;line-height:1;opacity:0;transition:opacity .22s var(--ease),transform .26s var(--ease)}
+.sj-itl .sj-lb.on{opacity:1;transform:none}
+.sj-itl .sj-er{top:0;color:var(--wine);transform:translateY(4px)}
+.sj-itl .sj-er::after{content:"";position:absolute;left:0;right:0;top:17px;height:4px;border:1.5px solid currentColor;border-bottom:0;border-radius:2px 2px 0 0}
+.sj-itl .sj-ps{bottom:0;color:var(--ink2);transform:translateY(-4px)}
+.sj-itl .sj-ps::before{content:"";position:absolute;left:0;right:0;top:-8px;height:4px;border:1.5px solid rgba(30,24,17,.35);border-top:0;border-radius:0 0 2px 2px}
+.sj-itl .sj-t0,.sj-itl .sj-t1{position:absolute;bottom:0;font:600 12px/1 var(--brand);color:var(--ink3)}
+.sj-itl .sj-t0{left:0}.sj-itl .sj-t1{right:0}
+@media (max-width:860px){
+  .sj-duo{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  .sj{grid-row:auto;grid-template-rows:none}
+  .sj-m .sj-vis{min-height:300px}
+  .sj-m{box-shadow:inset 0 -1px 0 var(--line)}
+}
+@media (max-width:560px){.sj-head h2 br{display:none}}
+/* 시안 b: 한 화면에서 판이 뒤집히며 암기형에서 손풀이로 넘어간다 */
+.sj-sec.sj-vb{padding-bottom:0}
+.sj-vb .sj-run{position:relative;height:300vh}
+.sj-vb .sj-pin{position:sticky;top:var(--hdr);height:calc(100vh - var(--hdr));height:calc(100svh - var(--hdr));display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.sj-vb .sj-pin>.wrap{width:100%}
+.sj-vb .sj-duo{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);grid-template-rows:auto auto;grid-template-areas:"top vis" "txt vis";column-gap:clamp(32px,5vw,72px);row-gap:22px;border-radius:0;overflow:visible;background:none;box-shadow:none}
+.sj-vb .sj{display:contents}
+.sj-vb .sj-top{grid-area:top;align-self:end}
+.sj-vb .sj-txt{grid-area:txt;align-self:start;max-width:26em}
+.sj-vb .sj-top h3{font-size:clamp(26px,2.8vw,34px)}
+.sj-vb .sj-txt .sj-say{font-size:clamp(19px,1.8vw,22px)}
+.sj-vb .sj-vis{grid-area:vis;margin:0;border-radius:24px;padding:clamp(16px,2.2vw,26px);-webkit-backface-visibility:hidden;backface-visibility:hidden;will-change:transform}
+.sj-vb .sj-m .sj-vis{background:#EFE8DC;box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line)}
+.sj-vb .sj-h .sj-vis{background:var(--paper);box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line);transform:perspective(2600px) rotateY(-180deg)}
+.sj-vb .sj-fc{inset:clamp(16px,2.2vw,26px)}
+.sj-vb .sj-top,.sj-vb .sj-txt{transition:opacity .28s var(--ease),transform .32s var(--ease)}
+.sj-vb.sj-sth .sj-m .sj-top,.sj-vb.sj-sth .sj-m .sj-txt{opacity:0;transform:translateY(-12px);pointer-events:none}
+.sj-vb:not(.sj-sth) .sj-h .sj-top,.sj-vb:not(.sj-sth) .sj-h .sj-txt{opacity:0;transform:translateY(12px);pointer-events:none}
+.sj-vb .sj-src{margin-top:16px}
+@media (max-width:860px){
+  .sj-vb .sj-duo{grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "vis" "txt";row-gap:14px}
+  .sj-vb .sj-top h3{font-size:22px}.sj-vb .sj-top p{margin-top:2px}
+  .sj-vb .sj-vis{width:100%;max-width:520px;justify-self:center}
+  .sj-vb .sj-m .sj-vis{min-height:0}
+  .sj-vb .sj-txt{max-width:none}.sj-vb .sj-txt .sj-say{font-size:17px}.sj-vb .sj-txt .sj-ai{margin-top:10px;padding-top:10px;font-size:15px}
+  .sj-vb .sj-src{font-size:11px;margin-top:10px}
+}
+@media (max-width:860px) and (max-height:760px){.sj-vb .sj-ipg{aspect-ratio:1.45}}
+
 </style>
 </head>
 <body>
@@ -900,6 +986,29 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     </div></div>
     <div class="z-hint" aria-hidden="true"><span></span></div>
   </div>
+</section>
+
+<section class="sj-sec" id="subjects" aria-labelledby="sj-h">
+  <div class="wrap sj-head">
+    <p class="sj-k">외우는 과목과 손으로 푸는 과목</p>
+    <h2 id="sj-h">손으로 풀어야 하는 과목에는 <br><em>풀이형 과목 전용 앱</em>이 필요합니다</h2>
+    <p>AI 학습 도구는 이미 많습니다. 대부분은 강의자료와 녹음을 요약하고, 퀴즈와 플래시카드로 바꿔 외우는 공부를 돕습니다.</p>
+  </div>
+  <div class="sj-run"><div class="sj-pin"><div class="wrap">
+    <div class="sj-duo">
+      <article class="sj sj-m">
+        <div class="sj-top"><h3>외우는 과목</h3><p>역사 · 교양 · 이론 강의</p></div>
+        <div class="sj-vis" aria-hidden="true"></div>
+        <div class="sj-txt"><p class="sj-say">강의 내용을 외우고 정리하는 공부입니다.</p><p class="sj-ai"><b>AI 튜터가 할 일</b>노트 정리, 마인드맵, 플래시카드를 만드는 수고를 줄여 줍니다.</p></div>
+      </article>
+      <article class="sj sj-h">
+        <div class="sj-top"><h3>손으로 푸는 과목</h3><p>미적분 · 통계 · 선형대수 · 물리</p></div>
+        <div class="sj-vis" role="img" aria-label="2024 수능 14번을 18분 동안 손으로 푼 실제 필기. 그래프를 그렸다가 지우고 다시 그렸고, 중간에 3분 19초 동안 펜을 멈췄습니다."></div>
+        <div class="sj-txt"><p class="sj-say">문제를 풀며 겪은 시행착오와 사고력, 끈기가 곧 실력입니다.</p><p class="sj-ai"><b>AI 튜터가 할 일</b>사진 찍고 다시 설명하는 수고는 없애고, 스스로 생각하는 시간은 학생에게 남겨 둡니다.</p></div>
+      </article>
+    </div>
+    <p class="sj-src">오른쪽은 대표가 2024 수능 14번을 18분 동안 푼 실제 필기(획 594개)를 빠르게 재생했습니다. 점선은 그렸다가 지운 획입니다. 왼쪽 카드는 설명을 위한 예시입니다.</p>
+  </div></div></div>
 </section>
 
 <section class="feats" id="features">
@@ -1710,6 +1819,95 @@ measure();render(pD);
 const prewarm=()=>{if(pD>.01)return;warm=true;scr.style.clipPath='none';clipOff=true;scr.style.opacity=.004;inn.style.opacity=.004;
   requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{if(pD<=.01){clipOff=false;render(pD)}},120)))};
 (window.requestIdleCallback||setTimeout)(prewarm,{timeout:900})})();
+
+/* 손풀이 vs 암기형: 왼쪽은 카드가 같은 박자로 넘어가고, 오른쪽은 대표의 실제 풀이(2024 수능 14번)가 지우고 멈추며 쌓인다.
+   ?subj=b 는 한 화면에서 스크롤에 따라 판이 뒤집히며 암기형에서 손풀이로 넘어간다 */
+(()=>{const sec=document.getElementById('subjects');if(!sec)return;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const V=!RM&&new URLSearchParams(location.search).get('subj')==='b'?'b':'a';sec.classList.add('sj-v'+V);
+const duo=sec.querySelector('.sj-duo'),visM=sec.querySelector('.sj-m .sj-vis'),visH=sec.querySelector('.sj-h .sj-vis');
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(p,a,b)=>cl((p-a)/(b-a)),ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+
+/* 왼쪽: 플래시카드(예시). 한 장마다 앞면 → 뒤집기 → 맞음 세 박자 */
+const CARDS=[['훈민정음 반포','1446년'],['임진왜란 발발','1592년'],['갑오개혁','1894년'],['3·1 운동','1919년']],NS=CARDS.length*3-1,BEAT=450;
+const CK='<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+visM.innerHTML=`<div class="sj-fc"><div class="sj-fcd">${CARDS.map(([q,a])=>`<div class="sj-fcc"><div class="sj-ft"><small>한국사</small><b>${q}</b></div><div class="sj-bk"><small>정답</small><b>${a}</b><span class="sj-fco">${CK}</span></div></div>`).join('')}</div><div class="sj-fcb"><div class="sj-fcs">${CARDS.map(()=>'<i></i>').join('')}</div><div class="sj-fcn"><span>외운 카드</span><span><b>0</b> / ${CARDS.length}</span></div></div></div>`;
+const FC=[...visM.querySelectorAll('.sj-fcc')],FS=[...visM.querySelectorAll('.sj-fcs i')],FN=visM.querySelector('.sj-fcn b');
+let cs=-1;
+const cards=s=>{s=cl(Math.floor(s),0,NS);if(s===cs)return;cs=s;const cur=Math.floor(s/3),k=s-cur*3,n=cur+(k===2?1:0);
+  FC.forEach((c,j)=>{const d=j-cur;let x=0,y=0,sc=1,r=0,ry=0,o=1;
+    if(d<0){x=-125;y=8;r=-9;ry=180;o=0}else if(d===0){ry=k?180:0}else{y=d*13;sc=1-d*.06;o=d<3?1:0}
+    c.style.transform=`translate(-50%,-50%) translate(${x}%,${y}px) rotate(${r}deg) scale(${sc}) rotateY(${ry}deg)`;c.style.opacity=o;c.style.zIndex=10-Math.abs(d);c.classList.toggle('ok',d<0||(d===0&&k===2))});
+  FS.forEach((i,j)=>i.classList.toggle('on',j<n));FN.textContent=n};
+cards(0);
+
+/* 오른쪽: 실제 필기. 쓰는 동안은 빠르게 흐르고, 펜이 오래 멈춘 구간은 시계만 돈다. 지운 획은 점선으로 남긴다 */
+visH.innerHTML='<div class="sj-ip"><div class="sj-ipg"><canvas></canvas><span class="sj-clk">00:00</span></div><div class="sj-itl"><span class="sj-lb sj-er"><span>지우고 다시 그린 그래프</span></span><canvas></canvas><span class="sj-lb sj-ps"><span></span></span><span class="sj-t0">0:00</span><span class="sj-t1"></span></div></div>';
+const pgEl=visH.querySelector('.sj-ipg'),[cvP,cvT]=visH.querySelectorAll('canvas'),clk=visH.querySelector('.sj-clk'),lbE=visH.querySelector('.sj-er'),lbP=visH.querySelector('.sj-ps');
+const A=.03,AG=.006,B0=60,B1=100; // 펜을 댄 시간은 약 33배, 짧은 쉼은 0.3초까지만, 20초 넘는 멈춤은 길이에 따라 0.1~0.4초
+const mmss=t=>{t=Math.floor(t/1000);return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
+let S=null,TT=0,PBT=0,PB=[],PE=[],GH=[],ER=null,GP=null,box=null,P=null,T=null,lastPb=-1;
+function build(d){S=d.s;const t=q=>q.p[0][2],u=q=>q.p[q.p.length-1][2];TT=u(S[S.length-1]);let pb=0,best=[0,0];
+  S.forEach((q,i)=>{if(i){const g=Math.max(0,t(q)-u(S[i-1]));pb+=Math.min(g,300)*AG+(g>20000?B0+B1*Math.log2(g/20000):0);if(g>best[0])best=[g,i]}PB[i]=pb;pb+=(u(q)-t(q))*A;PE[i]=pb});PBT=pb;
+  // 지운 획은 다음에 남은 획을 쓰기 전, 쉬는 구간 한가운데에서 점선으로 바뀐다
+  S.forEach((q,i)=>{if(!q.e)return;let k=i+1;while(k<S.length&&S[k].e)k++;GH[i]=k<S.length?(PE[k-1]+PB[k])/2:PBT});
+  // 가장 길게 이어서 지운 묶음, 가장 긴 멈춤
+  let run=null,r0=-1;S.forEach((q,i)=>{if(q.e){if(r0<0)r0=i;if(!run||i-r0>run[1]-run[0])run=[r0,i]}else r0=-1});
+  ER={a:t(S[run[0]]),b:u(S[run[1]]),g:GH[run[0]]};const gi=best[1];GP={a:u(S[gi-1]),b:t(S[gi]),ms:best[0]};
+  const s=Math.round(GP.ms/1000);lbP.firstChild.textContent=`${Math.floor(s/60)}분 ${s%60}초 멈춤`;visH.querySelector('.sj-t1').textContent=mmss(TT).replace(/^0/,'');
+  let a=1e9,b=1e9,c=-1e9,e=-1e9;for(const q of S)for(const p of q.p){a=Math.min(a,p[0]);b=Math.min(b,p[1]);c=Math.max(c,p[0]);e=Math.max(e,p[1])}box=[a,b,c,e]}
+function fit(cv){const W=cv.clientWidth,H=cv.clientHeight;if(!W||!H)return null;const dpr=Math.min(2,devicePixelRatio||1);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return {ctx,W,H}}
+function size(){if(!S)return false;P=fit(cvP);T=fit(cvT);if(!P||!T)return false;
+  const [a,b,c,e]=box,pad=.06,k=Math.min(P.W*(1-2*pad)/(c-a),P.H*(1-2*pad)/(e-b));P.k=k;P.ox=(P.W-(c-a)*k)/2-a*k;P.oy=(P.H-(e-b)*k)/2-b*k;P.lw=Math.max(1.3,5.2*k);
+  const place=(el,a,b)=>{const L=a/TT*100,R=b/TT*100;el.style.left=L+'%';el.style.width=Math.max(.5,R-L)+'%'};place(lbE,ER.a,ER.b);place(lbP,GP.a,GP.b);lastPb=-1;return true}
+const at=pb=>{let lo=0,hi=S.length-1;if(pb<=0)return -1;while(lo<hi){const m=(lo+hi+1)>>1;if(PB[m]<=pb)lo=m;else hi=m-1}return lo};
+const realAt=pb=>{const i=at(pb);if(i<0)return 0;const q=S[i],t0=q.p[0][2],t1=q.p[q.p.length-1][2];if(pb<=PE[i])return t0+(pb-PB[i])/A;if(i===S.length-1)return t1;const n=S[i+1].p[0][2];return t1+(n-t1)*cl((pb-PE[i])/(PB[i+1]-PE[i]))};
+function paint(pb){if(!S||!P)return;pb=cl(pb,0,PBT);if(pb===lastPb)return;lastPb=pb;
+  const {ctx,W,H,k,ox,oy,lw}=P,X=x=>ox+x*k,Y=y=>oy+y*k,i=at(pb);ctx.clearRect(0,0,W,H);ctx.lineCap='round';ctx.lineJoin='round';let tip=null;
+  for(let j=0;j<=i;j++){const q=S[j],p=q.p,upto=pb>=PE[j]?Infinity:p[0][2]+(pb-PB[j])/A;let n=0;while(n<p.length&&p[n][2]<=upto)n++;if(!n)continue;
+    const g=q.e&&pb>=GH[j];ctx.setLineDash(g?[lw*2.4,lw*2.6]:[]);ctx.strokeStyle=g?'rgba(138,28,43,.5)':'#221C39';ctx.lineWidth=g?lw*.85:lw;
+    ctx.beginPath();ctx.moveTo(X(p[0][0]),Y(p[0][1]));if(n===1)ctx.lineTo(X(p[0][0])+.01,Y(p[0][1]));
+    for(let m=1;m<n-1;m++)ctx.quadraticCurveTo(X(p[m][0]),Y(p[m][1]),(X(p[m][0])+X(p[m+1][0]))/2,(Y(p[m][1])+Y(p[m+1][1]))/2);
+    if(n>1)ctx.lineTo(X(p[n-1][0]),Y(p[n-1][1]));ctx.stroke();if(j===i&&upto!==Infinity)tip=[X(p[n-1][0]),Y(p[n-1][1])]}
+  ctx.setLineDash([]);if(tip&&pb<PBT){ctx.fillStyle='#8A1C2B';ctx.beginPath();ctx.arc(tip[0],tip[1],Math.max(2.4,lw*1.5),0,7);ctx.fill()}
+  const rt=pb>=PBT?TT:realAt(pb);clk.textContent=mmss(rt);
+  // 띠: 획마다 쓴 시각에 짧은 눈금. 지운 획은 와인색, 아직 안 쓴 획은 옅게
+  const c=T.ctx,w=T.W,h=T.H;c.clearRect(0,0,w,h);
+  for(let j=0;j<S.length;j++){const x=Math.round(S[j].p[0][2]/TT*(w-1))+.5,done=j<=i;c.fillStyle=done?(S[j].e?'#8A1C2B':'rgba(30,24,17,.72)'):'rgba(30,24,17,.13)';c.fillRect(x-.5,2,1.2,h-4)}
+  const hx=rt/TT*(w-1);c.fillStyle='#8A1C2B';c.fillRect(Math.round(hx)-1,0,2,h);
+  lbE.classList.toggle('on',pb>=ER.g);lbP.classList.toggle('on',rt>=GP.a+(GP.b-GP.a)*.35)}
+
+let pbNow=0;const show=pb=>{pbNow=pb;paint(pb)};
+let loaded=null;const load=()=>loaded||(loaded=fetch('ink14.json').then(r=>r.json()).then(d=>{build(d);size();return true}).catch(()=>false));
+new ResizeObserver(()=>{if(S&&size())paint(pbNow)}).observe(pgEl);
+
+if(RM){cards(NS);load().then(ok=>ok&&show(1e9));return}
+
+if(V==='a'){
+  // 들어올 때 한 번 재생하고, 화면 밖으로 완전히 나가면 처음으로 되돌려 다음에 다시 재생한다
+  duo.classList.add('sj-pre');
+  new IntersectionObserver(([e])=>{if(e.isIntersecting){duo.classList.remove('sj-pre');load()}},{rootMargin:'0px 0px -12% 0px'}).observe(duo);
+  new IntersectionObserver(([e])=>{if(e.isIntersecting)load()},{rootMargin:'900px 0px'}).observe(sec);
+  let tC=0,rI=0,dC=0,dI=0;
+  const playC=()=>{clearInterval(tC);let s=0;cs=-1;cards(0);tC=setInterval(()=>{s++;cards(s);if(s>=NS)clearInterval(tC)},BEAT)};
+  const playI=async()=>{cancelAnimationFrame(rI);if(!await load()||!dI)return;show(0);const t0=performance.now()+220;const tick=now=>{const pb=now-t0;show(pb);rI=pb<PBT?requestAnimationFrame(tick):0};rI=requestAnimationFrame(tick)};
+  new IntersectionObserver(([e])=>{if(e.intersectionRatio>=.5){if(!dC){dC=1;playC()}}else if(!e.isIntersecting){dC=0;clearInterval(tC);cs=-1;cards(0)}},{threshold:[0,.5]}).observe(visM);
+  new IntersectionObserver(([e])=>{if(e.intersectionRatio>=.45){if(!dI){dI=1;playI()}}else if(!e.isIntersecting){dI=0;cancelAnimationFrame(rI);rI=0;show(0)}},{threshold:[0,.45]}).observe(visH);
+  return}
+
+/* 시안 b: 스크롤 진행에 따라 카드는 계단식으로 넘어가고(박자가 딱딱 끊김), 판이 뒤집힌 뒤 필기는 스크롤을 따라 매끈하게 흐른다 */
+const run=sec.querySelector('.sj-run');
+const target=()=>{const r=run.getBoundingClientRect(),span=r.height-innerHeight;return span>0?cl(-r.top/span):1};
+const render=p=>{cards(seg(p,.03,.34)*(NS+1));
+  const th=180*ease(seg(p,.37,.47));visM.style.transform=`perspective(2600px) rotateY(${th.toFixed(2)}deg)`;visH.style.transform=`perspective(2600px) rotateY(${(th-180).toFixed(2)}deg)`;
+  sec.classList.toggle('sj-sth',th>=90);if(S)show(seg(p,.5,.95)*PBT)};
+let pD=target(),loop=0,last=0;
+const tick=now=>{const dt=Math.min(64,now-(last||now));last=now;const pT=target();pD+=(pT-pD)*(1-Math.exp(-dt/70));if(Math.abs(pT-pD)<.0004)pD=pT;render(pD);loop=pD!==pT?requestAnimationFrame(tick):0;if(!loop)last=0};
+const kick=()=>{if(!loop)loop=requestAnimationFrame(tick)};
+let near=false;new IntersectionObserver(([e])=>{near=e.isIntersecting;if(near){load().then(()=>render(pD));kick()}},{rootMargin:'900px 0px'}).observe(run);
+addEventListener('scroll',()=>{if(near)kick()},{passive:true});
+addEventListener('resize',()=>{if(near)kick()});
+render(pD)})();
 
 </script>
 </body>
