@@ -28,7 +28,6 @@ const T={
 '요금제':'Pricing',
 '회사 이야기':'Our story',
 '자주 묻는 질문':'FAQ',
-'사전신청':'Pre-register',
 '사전신청 혜택 받기':'Get the early-bird offer',
 'Provee Ground 열기':'Open Provee Ground',
 '필기 입력':'Handwriting input',
@@ -353,7 +352,6 @@ const T={
 '대학생은 1과목을 무료로 쓰고, 유료 요금제는 주 4,700원부터입니다. <a>요금제 보기</a>':'University students get one subject free, and paid plans start at ₩4,700 (KRW) a week. <a>See pricing</a>',
 
 /* ---------- 사전신청 ---------- */
-'10월 15일까지 사전신청하면<br>Matcha 2주 무료':'Pre-register by October 15<br>and get 2 weeks of Matcha free',
 '10월, 서강대에서 먼저 엽니다. 이메일을 남겨 주시면 저장해 두었다가, <br>여는 날 Matcha 요금제(주 6,500원) 2주 무료 혜택을 메일로 보내 드립니다.':'We open first at Sogang University in October. Leave your email and we\'ll keep it on file, <br>then send you two free weeks of the Matcha plan (₩6,500 a week) on launch day.',
 '이메일':'Email',
 '이메일 주소를 입력하세요':'Enter your email address',
@@ -407,6 +405,62 @@ const T={
 '투자자 소개':'For investors',
 '이용약관':'Terms of Service',
 'URP (법인 설립 준비 중) · 대표 김수민 · © 2026 URP':'URP (incorporation in progress) · CEO Soomin Kim · © 2026 URP',
+
+/* ================= 2차: 통합본(808e8c4)에서 새로 생기거나 바뀐 문장 ================= */
+/* 첫 화면 */
+'뭉쳐 쓴 2x + 1을 사진으로 올렸을 때 GPT가 읽은 식':'what GPT read from a photo of a cramped 2x + 1',
+'%: 생성형 AI를 써 본 대학생 43명 설문(URP, 2026년 7월)':'%: Survey of 43 university students who have used generative AI (URP, July 2026)',
+'24+1: 대표의 필기 사진을 GPT-5.6 Sol에 올린 1회 실측, 화면은 실제 대화 캡처':'24+1: A single test with a photo of our CEO\'s handwriting uploaded to GPT-5.6 Sol. The screen is a real chat capture.',
+
+/* 기능 03·04 */
+'쓴 시각<b>0:00</b>':'Written <b>0:00</b>',
+
+/* 요금제 (PLANS의 cup·cupM, PR_T) */
+'추천':'Recommended',
+'기본 제공':'Includes',
+'물 한 잔처럼 부담 없이':'As easy as a glass of water',
+'아메리카노 한 잔 값으로 일주일':'A week for the price of an Americano',
+'말차 라테 한 잔 값으로 일주일':'A week for the price of a matcha latte',
+'샌드위치 하나 값으로 일주일':'A week for the price of a sandwich',
+'아메리카노 네 잔보다 싸게':'Less than four Americanos',
+'말차 라테 네 잔보다 싸게':'Less than four matcha lattes',
+'샌드위치 네 개보다 싸게':'Less than four sandwiches',
+'먼저 가볍게 써 보기':'An easy way to start',
+'요금제 이름은 카페 메뉴 하나 값을 기준으로 붙였습니다.':'Each plan is named after a café item that costs about the same.',
+
+/* 로드맵·회사 이야기 */
+'이번 달':'This month',
+'미션':'Mission',
+'비전':'Vision',
+'풀이를 찍어 올리고, 잘못 읽은 식을 다시 설명하고, 흩어진 채팅을 뒤지다 보면 하루가 갔습니다. 다음 날 진도는 또 밀렸습니다.':'Snapping solutions, re-explaining misread equations and digging through scattered chats ate up whole days, and the coursework kept slipping further behind.',
+'6월에 만들기 시작해, 10월 서강대 출시를 앞두고 있습니다.':'Started in June, launching at Sogang University in October.',
+'6월 13일부터 매일 10시간 넘게 쓰고, 불편을 찾고, 고쳤습니다':'From June 13, used it 10+ hours a day, found what was frustrating and fixed it',
+'경제학과·동아리 학생 10명에게 소개':'Shown to 10 students from the economics department and a campus club',
+'<em></em>중고생 42 <em></em>대학생·대학원생·졸업생 63':'<em></em>Middle & high school 42 <em></em>University, grad & graduates 63',
+'중고생 42명, 대학생·대학원생·졸업생 63명에게 AI 학습의 불편을 물음':'Asked 42 middle and high schoolers and 63 university students, grad students and graduates what gets in the way of learning with AI',
+'지금 공부 중인 85명 중 74명이 쓰고 싶다고 답했습니다':'74 of the 85 respondents currently studying said they want to use it',
+'하나 소셜벤처 유니버시티 최종 발표':'Final pitch at Hana Social Venture University',
+'7월 30일, 3분 IR 발표':'July 30, a three-minute investor pitch',
+'무대에서 받은 이 지적을 듣고 사업 모델을 다시 짬':'Took that feedback from the stage and rebuilt the business model',
+'한양대 수학과':'Mathematics, Hanyang University',
+'前 대치 종로학원 학습과학센터 고등수학 팀장':'Former high school math lead, Jongro Academy Learning Science Center (Daechi)',
+'노량진':'Noryangjin','대방':'Daebang','신길':'Singil',
+'대방역 사무실 확보':'Secured an office at Daebang Station',
+'이번 달,<br>서강대에서 먼저 엽니다':'This month,<br>we open first at Sogang',
+'사전신청하기':'Pre-register',
+'설문: URP 자체 온라인 설문, 2026년 7월, 응답 105명(중고생 42·대학생 63). 사용 의향은 5점 중 4~5점, 현재 공부 중인 응답자 85명 기준.':'Survey: URP\'s own online survey, July 2026, 105 respondents (42 middle and high school, 63 university). Intent to use means 4 or 5 on a 5-point scale, among the 85 respondents currently studying.',
+'프론트엔드 총괄 · UX 설계 총괄':'Head of Frontend · Head of UX Design',
+'서강대 경제학과. 첫 사용자이자 제품 총괄. 화면과 사용 흐름을 직접 설계하고 만듭니다':'Economics, Sogang University. First user and head of product, designing and building the screens and user flows',
+'한양대 수학과. 前 대치 종로학원 학습과학센터 고등수학 팀장. 개발팀 겸임':'Mathematics, Hanyang University. Former high school math lead, Jongro Academy Learning Science Center (Daechi). Also on the engineering team',
+'브랜드 전략 총괄':'Head of Brand Strategy',
+'글로벌 마케팅':'Global Marketing',
+'그로스팀. AX, 제품 홍보, 모션그래픽, 마케팅 자동화':'Growth team. AX, product promotion, motion graphics, marketing automation',
+/* 3차: 통합본(2c93edc) 병합 뒤 남은 누락 */
+'요금제 이름은 카페 메뉴 하나 값을 기준으로 붙였습니다. 출시 전 계획 가격이며 바뀔 수 있습니다. 월 결제는 4주 가격보다 최대 24% 쌉니다.':'Each plan is named after a café item that costs about the same. Planned pre-launch prices in Korean won (KRW), subject to change. Monthly billing is up to 24% cheaper than four weekly payments.',
+'대표 사진 자리':'Founder photo goes here',
+'사진 자리':'Photo goes here',
+'개발팀 리드. 백엔드·데이터':'Engineering lead. Backend and data',
+'이차방정식':'Quadratics', // Provee Note 장면 폰 속 카드 이름
 };
 
 /* 같은 원문이라도 자리에 따라 다르게 옮길 때: [CSS 선택자, {원문: 번역}] */
@@ -417,6 +471,8 @@ const SCOPED=[
 /* 스크립트가 숫자를 넣어 만드는 글자 (정규식, 태그가 섞인 열쇠에도 쓸 수 있다) */
 const RULES=[
   [/^<b>([^<]*초)<\/b> 동안 작업 중$/,'Working for <b>$1</b>'],
+  [/^(\d+)분 (\d+)초 멈춤$/,'Paused $1m $2s'],
+  [/^(Free|Basic|Pro|Max|Americano|Matcha|Sandwich)에 더해$/,'Everything in $1, plus'],
   [/^(\d+(?:\.\d+)?)초$/,'$1s'],
   [/^(\d+)분 (\d+)초$/,'$1m $2s'],
   [/^(\d+)분 (\d+)초 멈춤$/,'$1m $2s pause'],
