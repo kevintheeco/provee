@@ -367,6 +367,8 @@ const T={
 '지금 신청이 안 돼요. 잠시 후 다시 해 주세요.':'We couldn\'t sign you up just now. Please try again in a moment.',
 '지금은 Provee Ground를 무료로 써 볼 수 있어요 →':'Meanwhile, you can try Provee Ground for free →',
 
+'Provee를 만든 김수민 대표':'Soomin Kim, who built Provee',
+'와인색 니트를 입고 나무 계단 서가에 앉은 김수민 대표':'Soomin Kim in a wine-red sweater, sitting on wooden bookshelf stairs',
 // global-fix: 페이지 전역 검증단 수정(헤더 신청 버튼, 비교표, 요금제, 로드맵, 회사 이야기 문장, FAQ, 사전신청).
 // 같은 열쇠가 위에 있으면 여기 값이 이긴다(객체에서 뒤에 쓴 값이 남음): '사전신청' 버튼 이름을 Get early access로.
 '사전신청':'Get early access',
