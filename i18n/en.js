@@ -28,7 +28,6 @@ const T={
 '요금제':'Pricing',
 '회사 이야기':'Our story',
 '자주 묻는 질문':'FAQ',
-'사전신청':'Pre-register',
 '사전신청 혜택 받기':'Get the early-bird offer',
 'Provee Ground 열기':'Open Provee Ground',
 '필기 입력':'Handwriting input',
@@ -353,7 +352,6 @@ const T={
 '대학생은 1과목을 무료로 쓰고, 유료 요금제는 주 4,700원부터입니다. <a>요금제 보기</a>':'University students get one subject free, and paid plans start at ₩4,700 (KRW) a week. <a>See pricing</a>',
 
 /* ---------- 사전신청 ---------- */
-'10월 15일까지 사전신청하면<br>Matcha 2주 무료':'Pre-register by October 15<br>and get 2 weeks of Matcha free',
 '10월, 서강대에서 먼저 엽니다. 이메일을 남겨 주시면 저장해 두었다가, <br>여는 날 Matcha 요금제(주 6,500원) 2주 무료 혜택을 메일로 보내 드립니다.':'We open first at Sogang University in October. Leave your email and we\'ll keep it on file, <br>then send you two free weeks of the Matcha plan (₩6,500 a week) on launch day.',
 '이메일':'Email',
 '이메일 주소를 입력하세요':'Enter your email address',
@@ -460,6 +458,7 @@ const T={
 '대표 사진 자리':'Founder photo goes here',
 '사진 자리':'Photo goes here',
 '개발팀 리드. 백엔드·데이터':'Engineering lead. Backend and data',
+'이차방정식':'Quadratics', // Provee Note 장면 폰 속 카드 이름
 };
 
 /* 같은 원문이라도 자리에 따라 다르게 옮길 때: [CSS 선택자, {원문: 번역}] */
