@@ -491,7 +491,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .st-origin{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,96px);align-items:center;padding-block:clamp(96px,11vw,150px)}
 .og-copy h3{margin:0 0 20px;font-size:clamp(28px,3.2vw,40px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
 .og-copy p{margin:0 0 14px;font-size:17px;line-height:1.8;color:var(--ink2);max-width:32em}
-.og-copy .og-line{margin-top:28px;padding-left:16px;border-left:3px solid var(--wine);font-size:19px;line-height:1.6;font-weight:700;color:var(--ink)}
 .og-ph{margin:0;justify-self:end;width:min(100%,420px)}
 .og-ph img{display:block;width:100%;height:auto;aspect-ratio:813/1082;object-fit:cover;border-radius:24px;background:#1A1512;box-shadow:0 40px 80px -40px rgba(30,24,17,.55);clip-path:inset(14% 0 0 0 round 24px);opacity:0;transform:translateY(24px);transition:clip-path .45s var(--ease),opacity .3s var(--ease),transform .45s var(--ease)}
 .og-ph.on img{clip-path:inset(0 0 0 0 round 24px);opacity:1;transform:none}
@@ -831,6 +830,10 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 /* 출처·각주·캡션은 한 크기로 작고 옅게(본문은 그대로) */
 @media (max-width:760px){.scap,.cmp-note,.pr-note,.og-card small,.hero .s3-src{font-size:10.5px}}
 
+/* 사진 자리(대표가 사진을 주면 채움) */
+.og-empty{aspect-ratio:813/1082;display:grid;place-items:center;border-radius:24px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(201,188,168,.12) 10px 11px);box-shadow:inset 0 0 0 1.5px #D8CCB9}
+.og-empty span,.tv-empty span{font-size:12px;letter-spacing:.02em;color:var(--ink3)}
+.tv-empty{display:grid;place-items:center;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(201,188,168,.12) 10px 11px);box-shadow:inset 0 0 0 1.5px #D8CCB9}
 /* 손풀이 vs 암기형 */
 .sj-sec{position:relative;padding-block:clamp(88px,10vw,140px) clamp(72px,8vw,112px);background:var(--ivory)}
 .sj-head{margin-bottom:clamp(36px,4.5vw,56px)}
@@ -1146,9 +1149,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <p>2026년 1학기, 서강대 경제학과 3학년. 계량경제, 미적분, 수리통계, 선형대수를 한 학기에 들었습니다. 통학 3시간을 줄이려 고시원에 살며 새벽까지 공부해도, 매일 AI와 씨름하느라 순공부 시간이 모자랐습니다.</p>
       <p>풀이를 찍어 올리고, 잘못 읽은 식을 다시 설명하고, 흩어진 채팅을 뒤지다 보면 하루가 갔습니다. 다음 날 진도는 또 밀렸습니다.</p>
       <p>2026년 6월 13일, 의지는 있지만 혼자서는 어려운 학생을 위한 도구를 직접 만들기로 했습니다.</p>
-      <p class="og-line">이 과목에서 쌓여야 하는 것은 정리된 자료가 아니라, 풀어 본 경험입니다.</p>
     </div>
-    <figure class="og-ph" id="ogPh"><img src="assets/story/desk-2026-spring.jpg" width="813" height="1082" alt="노트북에 띄운 적분 문제를 태블릿에 손으로 풀어 내려간 필기" loading="lazy" decoding="async"><figcaption>만든 사람의 태블릿 필기. 노트북에 띄운 적분 문제를 손으로 풀던 때</figcaption></figure>
+    <figure class="og-ph og-empty" id="ogPh" aria-hidden="true"><span>대표 사진 자리</span></figure>
   </div>
   <div class="st-time" id="stTime">
     <div class="tx-pin">
@@ -1156,25 +1158,25 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <div class="tx-view">
         <ol class="tx" id="txTrack">
           <li class="tx-i"><time>2026.06</time><i class="dot"></i>
-            <figure class="tv tv-z"><img src="assets/product/learn-hand.jpg" width="1120" height="840" alt="Provee 초기 시제품에서 학생이 쓰는 z를 익히는 맞춤 설정 화면" loading="lazy" decoding="async"><figcaption>초기 시제품 화면, 2026년 7월</figcaption></figure>
+            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
             <b>직접 쓰려고 개발 시작</b><span>6월 13일부터 매일 10시간 넘게 쓰고, 불편을 찾고, 고쳤습니다</span></li>
           <li class="tx-i"><time>2026.06</time><i class="dot"></i>
-            <figure class="tv tv-n" aria-hidden="true"><div class="tv-dots d10" data-a="6" data-b="4"></div><figcaption>소개한 10명 중 먼저 쓴 6명</figcaption></figure>
+            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
             <b>기말고사 직전, 학생 6명이 먼저 사용</b><span>경제학과·동아리 학생 10명에게 소개</span></li>
           <li class="tx-i"><time>2026.07</time><i class="dot"></i>
-            <figure class="tv tv-n" aria-hidden="true"><div class="tv-dots d105" data-a="42" data-b="63"></div><figcaption><em class="k a"></em>중고생 42 <em class="k b"></em>대학생·대학원생·졸업생 63</figcaption></figure>
+            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
             <b>손풀이 과목 학습자 설문 105명</b><span>중고생 42명, 대학생·대학원생·졸업생 63명에게 AI 학습의 불편을 물음</span><em class="tx-note">지금 공부 중인 85명 중 74명이 쓰고 싶다고 답했습니다</em></li>
           <li class="tx-i"><time>2026.07</time><i class="dot"></i>
-            <figure class="tv tv-hana"><img src="assets/story/event-hana-0730.jpg" width="1400" height="686" alt="강의실 칠판 앞에서 마이크를 들고 Provee를 발표하는 김수민 대표. 왼쪽 화면에 발표 슬라이드와 남은 시간 02:10이 보인다" loading="lazy" decoding="async"><figcaption>7월 30일 발표 현장</figcaption></figure>
+            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
             <b>하나 소셜벤처 유니버시티 최종 발표</b><span>7월 30일, 3분 IR 발표</span></li>
           <li class="tx-i"><time>2026.08</time><i class="dot"></i>
-            <figure class="tv tv-q"><img src="assets/story/event-plugandplay-0805.jpg" width="1400" height="687" alt="Plug and Play 무대에서 마이크를 들고 IR 데모를 하는 김수민 대표" loading="lazy" decoding="async"><div class="q"><p>“비즈니스 모델이 없다”</p><svg aria-hidden="true" viewBox="0 0 240 16" preserveAspectRatio="none"><path pathLength="1" d="M3 11 C 50 5, 110 4, 160 8 S 220 12, 237 6"/></svg></div><figcaption>8월 5일, Plug and Play Tech Center</figcaption></figure>
+            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
             <b>실리콘밸리 Plug and Play IR 데모</b><span>무대에서 받은 이 지적을 듣고 사업 모델을 다시 짬</span></li>
           <li class="tx-i"><time>2026.08</time><i class="dot"></i>
-            <figure class="tv tv-p" aria-hidden="true"><div><span class="av">HS</span><strong>하승주</strong></div><figcaption>한양대 수학과</figcaption></figure>
+            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
             <b>수학·학습과학 총괄 합류</b><span>前 대치 종로학원 학습과학센터 고등수학 팀장</span></li>
           <li class="tx-i"><time>2026.09</time><i class="dot"></i>
-            <figure class="tv tv-m" aria-hidden="true"><div class="stn"><i><em>노량진</em></i><i class="me"><em>대방</em></i><i><em>신길</em></i></div><figcaption>1호선 대방역</figcaption></figure>
+            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
             <b>대방역 사무실 확보</b><span>서울기독교세계관연구소(SIEW) 지원</span></li>
           <li class="tx-i next"><time>2026.10</time><i class="dot"></i>
             <figure class="tv tv-x"><p>이번 달,<br>서강대에서 먼저 엽니다</p><a href="#join">사전신청하기</a></figure>
