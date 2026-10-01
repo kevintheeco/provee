@@ -278,60 +278,78 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .exam .hl.on{transform:scaleX(1)}
 .exam .lab{display:flex;align-items:center;gap:1cqw;margin-bottom:1cqw;font-size:1.8cqw;font-weight:700;color:var(--wine)}
 
-/* 05 note: the real page replays against a time bar; pauses and erased strokes stay marked on the bar */
-.nt{container-type:inline-size;position:relative;width:100%}
-.nt-card{background:var(--paper);border-radius:3cqw;padding:2.2cqw;display:grid;gap:1.4cqw;box-shadow:0 50px 90px -40px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
-.nt-bar{display:flex;align-items:center;gap:1.4cqw;padding:.4cqw .6cqw 0;font-size:max(1.9cqw,11px);color:var(--ink3);white-space:nowrap}
-.nt-bar .wm{font-size:max(2.5cqw,13px);color:var(--ink)}
-.nt-clk{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink2)}
-.nt-clk b{color:var(--wine);font-weight:700}
-.nt-pg{position:relative;aspect-ratio:2170/1760;border-radius:1.8cqw;background:#fff;box-shadow:inset 0 0 0 1px var(--rule);overflow:hidden}
-.nt-pg>canvas{position:absolute;inset:0;width:100%;height:100%}
-.nt-fl{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+/* 02 read: page tags, order badges, clock pill, erased label (the nt- names come from the old 05 note scene) */
 .nt-tag{display:flex;align-items:center;gap:.9cqw;padding:.8cqw 1.6cqw;border-radius:99px;background:rgba(255,253,248,.94);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.12),inset 0 0 0 1px var(--line);font-size:max(1.8cqw,11px);font-weight:600;color:var(--ink2);white-space:nowrap;transition:opacity .2s var(--ease),transform .25s var(--ease)}
 .nt-tag b{font-weight:700;color:var(--ink)}
 .nt-tag.nt-pv b{color:var(--wine)}
 .nt-tag.nt-off{opacity:0;transform:translateY(-.8cqw)}
-.nt-end{position:absolute;left:5cqw;bottom:4cqw;display:flex;align-items:center;gap:1cqw;padding:1cqw 2.2cqw 1cqw 1.8cqw;border-radius:99px;background:var(--wine);color:#fff;font-size:max(2cqw,12px);font-weight:700;white-space:nowrap;box-shadow:0 1.2cqw 3cqw -1cqw rgba(94,18,32,.5);opacity:0;transform:translateY(1.2cqw);transition:opacity .22s var(--ease),transform .3s cubic-bezier(.2,0,0,1.2)}
-.nt-end svg{width:max(2.4cqw,13px);height:max(2.4cqw,13px);flex:none}
-.nt-end.nt-on{opacity:1;transform:none}
 .nt-bd{position:absolute;width:max(4.2cqw,19px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:700 max(2.2cqw,10px)/1 var(--brand);color:#B3A89A;background:var(--paper);box-shadow:inset 0 0 0 max(.3cqw,1.5px) #CFC5B7;transform:translate(-50%,-50%) scale(0);transition:transform .25s cubic-bezier(.2,0,0,1.35),background .2s,color .2s,box-shadow .2s}
 .nt-bd.nt-on{transform:translate(-50%,-50%) scale(1)}
 .nt-bd.nt-done{color:var(--wine);box-shadow:inset 0 0 0 max(.3cqw,1.5px) var(--wine)}
 .nt-bd.nt-cur{color:#fff;background:var(--wine);box-shadow:0 0 0 max(.7cqw,3px) rgba(138,28,43,.18);transform:translate(-50%,-50%) scale(1.14)}
 .nt-bd em.nt-l{left:auto;right:calc(100% + max(.6cqw,3px))}
 .nt-bd em{position:absolute;left:calc(100% + max(.6cqw,3px));top:50%;transform:translateY(-50%);padding:.3cqw .8cqw;border-radius:99px;background:rgba(255,253,248,.92);font:600 max(1.7cqw,10px)/1.2 var(--font);color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
-/* time bar under the page */
-.nt-tl{position:relative;display:grid;grid-template-columns:auto 1fr;column-gap:1.6cqw;align-items:start;padding:.8cqw 1.2cqw .4cqw}
-.nt-pp{width:max(6cqw,30px);height:max(6cqw,30px);border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff}
-.nt-pp svg{width:45%;height:45%}
-.nt-tr{position:relative;min-width:0}
-.nt-wv{position:relative;height:6cqw;border-radius:.8cqw;background:#FAF6EF;box-shadow:inset 0 0 0 1px var(--rule)}
-.nt-wv canvas{position:absolute;inset:0;width:100%;height:100%}
-.nt-pl{position:absolute;top:-.9cqw;bottom:-.9cqw;left:0;width:max(.4cqw,2px);margin-left:max(-.2cqw,-1px);border-radius:1cqw;background:var(--wine);opacity:0;transition:opacity .2s}
-.nt-pl.nt-on{opacity:1}
-.nt-lb{position:relative;height:max(5.4cqw,26px);transition:opacity .3s var(--ease)}
-.nt-lb.nt-off{opacity:0}
-.nt-gp{position:absolute;top:.8cqw;height:1.1cqw;border:1px solid #BDB2A4;border-top:0;border-radius:0 0 .4cqw .4cqw}
-.nt-gp em{position:absolute;left:50%;top:calc(100% + .5cqw);transform:translateX(-50%);font-style:normal;font-size:max(1.6cqw,10px);line-height:1.2;color:var(--ink3);white-space:nowrap}
-.nt-gp.nt-lo em{top:calc(100% + max(2.6cqw,13px))}
-.nt-gp.nt-er{border-color:var(--wine)}
-.nt-gp.nt-er em{color:var(--wine);font-weight:700}
-.nt-gp em{transition:color .2s}
-.nt-gp.nt-hot{border-color:var(--ink)}.nt-gp.nt-hot em{color:var(--ink);font-weight:700}
-.nt-ps{position:absolute;display:flex;align-items:center;gap:.8cqw;padding:.5cqw 1.3cqw .5cqw .9cqw;border-radius:99px;background:var(--ink);color:#fff;font-size:max(1.7cqw,11px);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;translate:max(1.6cqw,8px) -50%;opacity:0;transform:scale(.9);transform-origin:left center;transition:opacity .18s var(--ease),transform .22s var(--ease)}
-.nt-ps svg{width:max(2cqw,12px);height:max(2cqw,12px);flex:none}
-.nt-ps.nt-on{opacity:1;transform:none}
-.nt-ps.nt-l{translate:calc(-100% - max(1.6cqw,8px)) -50%;transform-origin:right center}
-.nt-dot{position:absolute;width:max(1.6cqw,8px);height:max(1.6cqw,8px);margin:min(-.8cqw,-4px) 0 0 min(-.8cqw,-4px);border-radius:50%;background:var(--ink);box-shadow:0 0 0 0 rgba(30,24,17,.35);opacity:0;transition:opacity .15s}
-.nt-dot.nt-on{opacity:1;animation:ntPing 1s ease-out infinite}
-@keyframes ntPing{0%{box-shadow:0 0 0 0 rgba(30,24,17,.35)}100%{box-shadow:0 0 0 max(2.4cqw,12px) rgba(30,24,17,0)}}
-/* shared with 02: clock pill, erased label */
 .nt-ck{display:flex;align-items:baseline;gap:.8cqw;padding:.8cqw 1.6cqw;border-radius:1.4cqw;background:rgba(255,253,248,.94);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.12),inset 0 0 0 1px var(--line);font-size:max(1.7cqw,10px);color:var(--ink3);white-space:nowrap;transition:opacity .2s var(--ease)}
 .nt-ck b{font:700 max(2.6cqw,14px)/1 var(--brand);color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .nt-ck.nt-off{opacity:0}
 .nt-x{position:absolute;padding:.4cqw 1.1cqw;border-radius:99px;background:var(--paper);box-shadow:inset 0 0 0 max(.25cqw,1px) var(--wine);font-size:max(1.6cqw,10px);font-weight:700;color:var(--wine);white-space:nowrap;opacity:0;transform:translateY(.6cqw);transition:opacity .2s var(--ease),transform .25s var(--ease)}
 .nt-x.nt-on{opacity:1;transform:none}
+
+/* 05 Provee Note: one student at three moments (staged photos); the phone screen is HTML laid onto each photo's blank screen in perspective, the ink is real */
+.pn{position:relative;width:100%}
+.pn-fr{position:relative;aspect-ratio:1;border-radius:24px;overflow:hidden;background:#CFC6B8;box-shadow:0 60px 100px -50px rgba(60,30,20,.5);isolation:isolate}
+.pn-ph{position:absolute;left:0;top:0;width:1000px;height:1000px;max-width:none;transform-origin:0 0;opacity:0;pointer-events:none;user-select:none}
+.pn-scr{position:absolute;left:0;top:0;z-index:3;width:300px;height:650px;transform-origin:0 0;border-radius:27px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.3;visibility:hidden}
+.pn-sb{position:absolute;left:0;right:0;top:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:4px 24px 0 34px;font:600 15px/1 var(--font);font-variant-numeric:tabular-nums;color:var(--ink)}
+.pn-tm{display:grid}.pn-tm span{grid-area:1/1;opacity:0}.pn-tm span.on{opacity:1}
+.pn-di{position:absolute;left:50%;top:11px;width:90px;height:26px;margin-left:-45px;border-radius:13px;background:#0C0B0B}
+.pn-ic{display:flex;align-items:center;gap:5px}.pn-ic svg{display:block;height:12px;width:auto}
+.pn-app{position:absolute;left:0;right:0;top:46px;bottom:0;overflow:hidden}
+.pn-pane{position:absolute;inset:0;padding:4px 16px 0;background:var(--paper)}
+.pn-pl{display:flex;flex-direction:column;padding-bottom:30px}
+.pn-hd{display:flex;align-items:center;gap:6px;height:40px}
+.pn-bk{font-style:normal;font-size:30px;line-height:1;color:var(--wine);margin:-5px 2px 0 -2px}
+.pn-br{flex:1;font:600 20px/1 var(--brand);color:var(--wine);letter-spacing:-.01em;white-space:nowrap}
+.pn-hd small{font-size:13px;color:var(--ink3);white-space:nowrap}
+.pn-tabs{display:flex;gap:18px;margin:6px 0 2px;box-shadow:inset 0 -1px 0 var(--line)}
+.pn-tabs span{padding:4px 0 8px;font-size:16px;font-weight:800;box-shadow:inset 0 -2px 0 var(--wine)}
+.pn-uh{display:flex;align-items:center;gap:10px;margin:14px 0 8px;font-size:13.5px;font-weight:800;color:var(--ink)}
+.pn-uh::after{content:"";flex:1;height:1px;background:var(--line)}
+.pn-cd{position:relative;border-radius:14px;background:#fff;box-shadow:0 2px 6px -2px rgba(30,24,17,.12),inset 0 0 0 1px var(--line);padding:6px;transform-origin:50% 50%}
+.pn-th{position:relative;height:104px;border-radius:10px;background:#FFFEFA;box-shadow:inset 0 0 0 1px var(--rule);overflow:hidden}
+.pn-th canvas,.pn-pa canvas{position:absolute;inset:0;width:100%;height:100%}
+.pn-cr{display:flex;align-items:center;gap:8px;padding:8px 4px 3px}
+.pn-cr>span{flex:1;min-width:0;display:grid;gap:3px}
+.pn-cr b{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pn-sub{display:grid;font-size:11.5px;color:var(--ink3);white-space:nowrap}.pn-sub>span{grid-area:1/1}
+.pn-rv{display:inline-flex;align-items:center;gap:4px;opacity:0}.pn-rv svg{width:13px;height:13px;color:var(--wine)}
+.pn-cd.pn-done .pn-sub>span:first-child{opacity:0}.pn-cd.pn-done .pn-rv{opacity:1}
+.pn-cr em{display:inline-flex;align-items:center;gap:4px;font-style:normal;font-size:12px;font-weight:600;color:var(--wine);white-space:nowrap}.pn-cr em svg{width:14px;height:14px}
+.pn-bd{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--ink3);white-space:nowrap;opacity:0;transform:scale(.7);transition:opacity .2s var(--ease),transform .28s cubic-bezier(.2,0,0,1.4)}
+.pn-bd svg{width:15px;height:15px;color:var(--wine)}
+.pn-pl.pn-done .pn-bd{opacity:1;transform:none}
+.pn-tt{margin:6px 0 3px;font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.pn-pr{margin:0 0 12px;font-size:12.5px;line-height:1.5;color:var(--ink3)}
+.pn-pa{position:relative;flex:none;margin:auto 0;height:217px;border-radius:14px;background:#FFFEFA;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.pn-sc{position:relative;flex:none;height:3px;margin:20px 0 0;border-radius:3px;background:var(--line)}
+.pn-sc i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:3px;background:var(--wine)}
+.pn-sc i::after{content:"";position:absolute;right:-6px;top:-4.5px;width:12px;height:12px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 2px #fff}
+.pn-ct{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-top:14px}
+.pn-st{display:grid;font-size:12.5px;color:var(--ink3);white-space:nowrap}.pn-st span{grid-area:1/1}
+.pn-pb{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--wine);color:#fff;box-shadow:0 6px 14px -6px rgba(94,18,32,.6)}
+.pn-pb svg{grid-area:1/1;width:20px;height:20px}
+.pn-st span+span,.pn-pb svg+svg,.pn-pl.pn-done .pn-st span:first-child,.pn-pl.pn-done .pn-pb svg:first-child{opacity:0}
+.pn-pl.pn-done .pn-st span+span,.pn-pl.pn-done .pn-pb svg+svg{opacity:1}
+.pn-un{text-align:right;font-size:12px;color:var(--ink3);white-space:nowrap}
+.pn-ft{margin:14px 0 0;text-align:center;font-size:11.5px;color:var(--ink3)}
+.pn-tap{position:absolute;z-index:5;left:0;top:0;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:rgba(138,28,43,.2);opacity:0;pointer-events:none}
+.pn-home{position:absolute;left:50%;bottom:8px;width:112px;height:4px;margin-left:-56px;border-radius:2px;background:rgba(30,24,17,.3)}
+.pn-mo{position:absolute;left:16px;top:16px;z-index:4;display:grid}
+.pn-mo span{grid-area:1/1;justify-self:start;display:flex;align-items:baseline;gap:8px;padding:9px 15px;border-radius:99px;background:rgba(255,253,248,.94);box-shadow:0 8px 20px -10px rgba(30,24,17,.45);font:600 15px/1.2 var(--brand);color:var(--wine);font-variant-numeric:tabular-nums;white-space:nowrap;opacity:0;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .3s var(--ease)}
+.pn-mo span b{font:800 15px/1.2 var(--font);color:var(--ink)}
+.pn-mo span.on{opacity:1;transform:none}
+.pn-yn{position:absolute;right:12px;bottom:12px;z-index:4;padding:3px 8px;border-radius:6px;background:rgba(30,24,17,.42);color:rgba(255,255,255,.92);font-size:11px;font-weight:600;line-height:1.4}
+@media (max-width:600px){.pn-fr{aspect-ratio:4/5;border-radius:18px}.pn-mo{left:12px;top:12px}.pn-mo span{padding:7px 12px;font-size:13.5px}.pn-mo span b{font-size:13.5px}.pn-yn{right:10px;bottom:10px}}
 
 /* 05 ground */
 .gd{container-type:inline-size;position:relative;width:100%}
@@ -1007,7 +1025,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
           <a href="#f-read" role="menuitem"><span class="n">02</span><b>획 단위 인식</b><span>사진이 놓치는 쓴 순서까지 읽습니다</span></a>
           <a href="#f-graph" role="menuitem"><span class="n">03</span><b>바로 그리는 그래프</b><span>기다리지 않고 식에서 바로 그립니다</span></a>
           <a href="#f-ask" role="menuitem"><span class="n">04</span><b>되묻는 튜터</b><span>막히면 정답 대신 놓친 조건을 짚습니다</span></a>
-          <a href="#f-note" role="menuitem"><span class="n">05</span><b>복습노트</b><span>내가 푼 순서 그대로 다시 봅니다</span></a>
+          <a href="#f-note" role="menuitem"><span class="n">05</span><b>Provee Note</b><span>언제 어디서든 내 풀이를 다시 봅니다</span></a>
           <a href="#f-ground" class="alt" role="menuitem"><span class="n">06</span><b>Provee Ground</b><span>링크 하나로 같은 노트에 함께 풉니다</span></a>
         </div>
       </li>
@@ -1027,7 +1045,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 <nav class="drawer" id="drawer" aria-label="모바일 메뉴" aria-hidden="true">
   <div class="drawer-top"><span class="wm" style="font-size:26px">Provee<i>.</i></span><button class="lang-b" type="button" data-lang translate="no" lang="en" aria-label="View in English">EN</button><button class="burger" style="display:grid" id="close" aria-label="메뉴 닫기"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
   <details open><summary>기능<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-    <div class="sub"><a href="#f-input"><small>01</small>필기 입력</a><a href="#f-read"><small>02</small>획 단위 인식</a><a href="#f-graph"><small>03</small>바로 그리는 그래프</a><a href="#f-ask"><small>04</small>되묻는 튜터</a><a href="#f-note"><small>05</small>복습노트</a><a href="#f-ground"><small>06</small>Provee Ground</a></div>
+    <div class="sub"><a href="#f-input"><small>01</small>필기 입력</a><a href="#f-read"><small>02</small>획 단위 인식</a><a href="#f-graph"><small>03</small>바로 그리는 그래프</a><a href="#f-ask"><small>04</small>되묻는 튜터</a><a href="#f-note"><small>05</small>Provee Note</a><a href="#f-ground"><small>06</small>Provee Ground</a></div>
   </details>
   <a class="l" href="#compare">비교</a><a class="l" href="#pricing">요금제</a><a class="l" href="#story">회사 이야기</a><a class="l" href="#faq">자주 묻는 질문</a>
   <div class="d-cta"><a class="btn btn-w" href="#join">사전신청 혜택 받기</a><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기</a></div>
@@ -1095,7 +1113,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <a href="#f-read" data-f="read"><small>02</small>획 단위 인식</a>
     <a href="#f-graph" data-f="graph"><small>03</small>바로 그리는 그래프</a>
     <a href="#f-ask" data-f="ask"><small>04</small>되묻는 튜터</a>
-    <a href="#f-note" data-f="note"><small>05</small>복습노트</a>
+    <a href="#f-note" data-f="note"><small>05</small>Provee Note</a>
     <a href="#f-ground" data-f="ground"><small>06</small>Provee Ground</a>
   </div></nav>
   <div class="wrap">
@@ -1112,7 +1130,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <div class="f-copy">
         <span class="fk"><b>02</b>획 단위 인식</span>
         <h3>사진은 다 쓴 결과만 보고,<br>Provee는 쓴 순서까지 읽습니다</h3>
-        <p>사진을 읽는 AI가 받는 건 다 쓴 페이지 한 장이라, 무엇을 먼저 썼는지 남지 않습니다. Provee는 획마다 쓴 자리와 시각을 함께 받아 여기저기 흩어 쓴 풀이를 쓴 순서대로 잇고, 지운 식과 펜을 멈춘 시간까지 압니다. 이 기록이 그대로 복습노트가 됩니다.</p>
+        <p>사진을 읽는 AI가 받는 건 다 쓴 페이지 한 장이라, 무엇을 먼저 썼는지 남지 않습니다. Provee는 획마다 쓴 자리와 시각을 함께 받아 여기저기 흩어 쓴 풀이를 쓴 순서대로 잇고, 지운 식과 펜을 멈춘 시간까지 압니다. 이 기록이 그대로 Provee Note가 됩니다.</p>
       </div>
       <div class="f-vis" data-scene="read"></div>
     </div>
@@ -1137,9 +1155,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
     <div class="frow" id="f-note" data-f="note">
       <div class="f-copy">
-        <span class="fk"><b>05</b>복습노트</span>
-        <h3>펜이 멈췄던 3분 19초까지,<br>푼 순서 그대로 다시 봅니다</h3>
-        <p>획마다 어디에, 언제 썼는지 함께 남아 풀이가 쓴 순서대로 다시 재생됩니다. 오래 멈춘 구간과 지운 식은 시간 막대에 표시돼, 시험 전에 내가 오래 고민한 곳부터 다시 볼 수 있습니다.</p>
+        <span class="fk"><b>05</b>Provee Note</span>
+        <h3>학교 가는 길에도,<br>시험 직전에도<br>내가 쓴 풀이를 꺼내 봅니다</h3>
+        <p>손으로 푼 풀이가 과목과 단원별로 차곡차곡 모입니다. 버스 안에서도, 시험장 앞에서도 폰에서 하나를 누르면 내 글씨가 쓴 순서 그대로 다시 써집니다.</p>
       </div>
       <div class="f-vis" data-scene="note"></div>
     </div>
@@ -1316,7 +1334,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 <footer class="ftr">
   <div class="ftr-in">
     <div class="f0"><span class="wm">Provee<i>.</i></span><p style="margin:10px 0 0">손으로 풀어야 이해되는 과목을 위한 AI 튜터</p></div>
-    <nav aria-label="기능"><h4>기능</h4><a href="#f-input">필기 입력</a><a href="#f-read">획 단위 인식</a><a href="#f-graph">바로 그리는 그래프</a><a href="#f-ask">되묻는 튜터</a><a href="#f-note">복습노트</a><a href="#f-ground">Provee Ground</a></nav>
+    <nav aria-label="기능"><h4>기능</h4><a href="#f-input">필기 입력</a><a href="#f-read">획 단위 인식</a><a href="#f-graph">바로 그리는 그래프</a><a href="#f-ask">되묻는 튜터</a><a href="#f-note">Provee Note</a><a href="#f-ground">Provee Ground</a></nav>
     <nav aria-label="회사"><h4>회사</h4><a href="#story">회사 이야기</a><a href="#pricing">요금제</a><a href="#faq">자주 묻는 질문</a><a href="story.html">투자자 소개</a></nav>
     <nav aria-label="안내"><h4>안내</h4><a href="terms.html">이용약관</a><a href="privacy.html"><b>개인정보처리방침</b></a><a href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a></nav>
     <small class="f0">URP (법인 설립 준비 중) · 대표 김수민 · © 2026 URP</small>
@@ -1491,12 +1509,11 @@ function sceneAsk(){
   }};
 }
 
-/* ---------- the real 14번 page (ink14.json), shared by 02 read and 05 note ---------- */
+/* ---------- the real 14번 page (ink14.json): 02 read draws it with these helpers; 05 note replays it on the phone ---------- */
 const NP={x0:10,y0:40,w:2170,h:1760};
 // where the page was written, in order (first stroke of each area); the solver went back to the middle graph at 397
 const NREG=[0,154,270,336,397,476,542],NTAG=[[100,122],[112,585],[800,1052],[1345,128],[1030,648,'l'],[140,1300],[1480,1270]]; // number badges sit just off the ink; 'l' puts the time label on the left
 const NER=[403,420]; // wrong upward-convex curve and its guides, erased before stroke 421 redraws the graph
-const REPLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.2v4.4h4.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 let ND=null;
 function noteData(){if(ND)return ND;const st=INK.s,n=st.length,T0=q=>q.p[0][2],T1=q=>q.p[q.p.length-1][2],E=T1(st[n-1]);
   const er=st.map((q,i)=>{if(!q.e)return 1/0;let j=i+1;while(j<n&&st[j].e)j++;return j<n?T0(st[j]):E}); // an erased stroke goes when the next kept stroke begins
@@ -1597,44 +1614,101 @@ function sceneRead(){
   return noteMount(el,frame,()=>{if(!K)build();narrow=rv.clientWidth<=600;P0=narrow?1300:650;Q0=P0+320;return {FINAL:Q0+Q1+1,LOOP:Q0+Q1+HOLD}});
 }
 
-/* ---------- 05 note: the page and a time bar share one clock; 18 minutes play in 7 seconds. Long pauses show where the pen stopped ---------- */
-function noteA(){
+/* ---------- 05 Provee Note: one phone at three moments of a day. The photos are staged; the phone screen is HTML laid onto each photo's blank screen in perspective; the ink is real (ink0912 quadratic, ink14 page) ---------- */
+// [file, moment, status-bar clock, chip clock, screen corners tl,tr,br,bl as fractions of the photo, measured on its blank grey screen]
+const PN_MO=[['walk','등굣길','8:12','08:12',[[.3977,.1699],[.6844,.1807],[.644,.8341],[.3484,.8152]]],
+  ['exam','시험 10분 전','13:50','13:50',[[.3129,.1805],[.6097,.1635],[.6902,.8136],[.3872,.8424]]],
+  ['bus','버스 안','18:04','18:04',[[.3676,.1483],[.681,.1586],[.6375,.8591],[.3139,.834]]]];
+function quadMatrix(w,h,q){ // CSS matrix3d mapping the w×h box onto quad q (tl,tr,br,bl)
+  const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]=q,dx1=x1-x2,dx2=x3-x2,dx3=x0-x1+x2-x3,dy1=y1-y2,dy2=y3-y2,dy3=y0-y1+y2-y3,den=dx1*dy2-dx2*dy1;
+  const g=(dx3*dy2-dx2*dy3)/den,hh=(dx1*dy3-dx3*dy1)/den,a=x1-x0+g*x1,b=x3-x0+hh*x3,d=y1-y0+g*y1,e=y3-y0+hh*y3;
+  return 'matrix3d('+[a/w,d/w,0,g/w,b/h,e/h,0,hh/h,0,0,1,0,x0,y0,0,1].map(v=>+v.toPrecision(9)).join(',')+')'}
+const quadAxis=q=>[[(q[0][0]+q[1][0]+q[2][0]+q[3][0])/4,(q[0][1]+q[1][1]+q[2][1]+q[3][1])/4],[(q[2][0]+q[3][0]-q[0][0]-q[1][0])/2,(q[2][1]+q[3][1]-q[0][1]-q[1][1])/2]]; // centre and top-to-bottom axis of a quad
+function pnTimed(S,gap,tf){ // one clock for a list of strokes: pauses capped at gap ms, points moved by tf; an erased stroke goes when the next kept stroke starts
+  let v=0,lt=null;const R=S.map(q=>{const t0=q.p[0][2],t1=q.p[q.p.length-1][2];v+=lt==null?0:Math.min(gap,Math.max(0,t0-lt));const v0=v;v+=t1-t0;lt=t1;return {e:q.e,er:1/0,p:q.p.map(p=>[...tf(p),v0+p[2]-t0])}});
+  R.forEach((s,i)=>{if(!s.e)return;let j=i+1;while(j<R.length&&R[j].e)j++;if(j<R.length)s.er=R[j].p[0][2]});return R}
+function pnInk(ctx,S,V,lw){let tip=null;const P=new Path2D();
+  for(const s of S){const p=s.p;if(p[0][2]>V)break;if(s.er<=V)continue;let m=p.length;if(p[m-1][2]>V){m=0;while(m<p.length&&p[m][2]<=V)m++;tip=p[m-1]}
+    P.moveTo(p[0][0],p[0][1]);if(m<2){P.lineTo(p[0][0]+.2,p[0][1]);continue}
+    for(let j=1;j<m-1;j++)P.quadraticCurveTo(p[j][0],p[j][1],(p[j][0]+p[j+1][0])/2,(p[j][1]+p[j+1][1])/2);P.lineTo(p[m-1][0],p[m-1][1])}
+  ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=lw;ctx.strokeStyle='#221C39';ctx.stroke(P);return tip}
+function sceneNote(){
   const el=document.createElement('div');
-  const PLAY='<svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>',PAUSE='<svg viewBox="0 0 24 24"><path d="M7.5 5.5h3v13h-3zM13.5 5.5h3v13h-3z" fill="currentColor"/></svg>';
-  const CLOCK='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 9v4.4l2.6 1.6M9.5 2.8h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
-  el.innerHTML=`<div class="nt nt-a"><div class="nt-card">
-    <div class="nt-bar"><span class="wm">Provee<i>.</i></span><span>복습노트 · 2024 수능 14번</span><span class="nt-clk"></span></div>
-    <div class="nt-pg"><canvas></canvas><span class="nt-fl"></span><i class="nt-dot"></i><span class="nt-ps">${CLOCK}<span>펜 멈춤 <b>0:00</b></span></span><span class="nt-end">${REPLAY}푼 순서 그대로 다시 보기</span></div>
-    <div class="nt-tl"><span class="nt-pp" aria-hidden="true"></span><div class="nt-tr"><div class="nt-wv"><canvas></canvas><i class="nt-pl"></i></div><div class="nt-lb"></div></div></div>
-  </div></div><p class="scap">같은 14번 필기(획 594개, 18분)를 7초로 줄여 재생한 화면. 아래 막대의 눈금 하나가 획 하나를 쓴 시각</p>`;
-  const $e=s=>el.querySelector(s),cv=$e('.nt-pg>canvas'),wv=$e('.nt-wv canvas'),fl=$e('.nt-fl'),end=$e('.nt-end'),clk=$e('.nt-clk'),ph=$e('.nt-pl'),lb=$e('.nt-lb'),pp=$e('.nt-pp'),dot=$e('.nt-dot'),ps=$e('.nt-ps'),psb=$e('.nt-ps b');
-  const Q0=520,QMS=7000,Q1=Q0+QMS,LOOP=Q1+2600;
-  let f=null,g=null,gp=[],stops=[],S={};
+  const RE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1M3.5 4v5h5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const OK='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1.2" fill="currentColor"/></svg>';
+  const ICONS='<svg viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.3c2.4 0 4.5.9 6.1 2.4l1.3-1.4A10.5 10.5 0 0 0 8 .4 10.5 10.5 0 0 0 .6 3.3l1.3 1.4A8.6 8.6 0 0 1 8 2.3zm0 3.6c1.4 0 2.6.5 3.5 1.4l1.3-1.4A6.7 6.7 0 0 0 8 4a6.7 6.7 0 0 0-4.8 1.9l1.3 1.4C5.4 6.4 6.6 5.9 8 5.9zm0 3.5c.5 0 1 .2 1.3.5L8 11.6 6.7 9.9c.3-.3.8-.5 1.3-.5z"/></svg><svg viewBox="0 0 27 12" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="10.8" rx="3.2" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.2" y="2.2" width="16.5" height="7.6" rx="1.8"/><path d="M25 4.1v3.8c.8-.3 1.3-1 1.3-1.9s-.5-1.6-1.3-1.9z" opacity=".45"/></svg>';
+  const card=(c,unit,title,sub)=>`<h5 class="pn-uh"><span>${unit}</span></h5><div class="pn-cd" data-c="${c}"><div class="pn-th"><canvas></canvas></div><div class="pn-cr"><span><b>${title}</b><small class="pn-sub"><span>${sub}</span><span class="pn-rv">복습 1회${OK}</span></small></span><em>${RE}다시 보기</em></div></div>`;
+  const player=(c,title,prompt,unit,foot)=>`<div class="pn-pane pn-pl" data-c="${c}"><div class="pn-hd"><i class="pn-bk">‹</i><b class="pn-br">Provee Note</b><span class="pn-bd">복습 1회${OK}</span></div><h4 class="pn-tt">${title}</h4><p class="pn-pr">${prompt}</p><div class="pn-pa"><canvas></canvas></div><div class="pn-sc"><i></i></div><div class="pn-ct"><span class="pn-st"><span>다시 보는 중</span><span>다 봤어요</span></span><span class="pn-pb">${PAUSE}${RE}</span><span class="pn-un">${unit}</span></div><p class="pn-ft">${foot}</p></div>`;
+  el.innerHTML=`<div class="pn"><div class="pn-fr" role="img" aria-label="등굣길, 시험 10분 전, 버스 안에서 같은 학생이 폰으로 Provee Note를 열어 자기 풀이를 다시 보는 연출 장면">
+    ${PN_MO.map(m=>`<img class="pn-ph" src="img/note-${m[0]}.webp" alt="" decoding="async" fetchpriority="low">`).join('')}
+    <div class="pn-scr" aria-hidden="true"><div class="pn-sb"><span class="pn-tm">${PN_MO.map(m=>`<span>${m[2]}</span>`).join('')}</span><i class="pn-di"></i><span class="pn-ic">${ICONS}</span></div>
+      <div class="pn-app"><div class="pn-pane pn-ls"><div class="pn-hd"><i class="pn-bk">‹</i><b class="pn-br">Provee Note</b><small>나의 풀이</small></div><div class="pn-tabs"><span>수학</span></div>
+        ${card('b','수능 기출','2024 수능 14번','풀이 18분 · 지움 20획')}${card('a','이차방정식','x² − 5x + 6 = 0','풀이 36초')}</div>
+        ${player('a','x² − 5x + 6 = 0','방정식 x² − 5x + 6 = 0 을 푸시오.','이차방정식','풀이 36초')}${player('b','2024 수능 14번','두 자연수 a, b에 대하여 함수 f(x)는 …','수능 기출','풀이 18분 · 지움 20획')}</div>
+      <i class="pn-tap"></i><i class="pn-home"></i></div>
+    <div class="pn-mo">${PN_MO.map(m=>`<span><b>${m[1]}</b>${m[3]}</span>`).join('')}</div><span class="pn-yn">연출</span>
+  </div></div><p class="scap">AI로 만든 연출 사진(실존 인물 아님) 위에 앱 화면을 겹친 장면. 폰 속 필기는 대표가 직접 쓴 실제 필기 두 개(이차방정식 획 39개, 2024 수능 14번 획 594개)를 빠르게 재생한 것</p>`;
+  const $e=s=>el.querySelector(s),$a=s=>[...el.querySelectorAll(s)],fr=$e('.pn-fr'),scr=$e('.pn-scr'),imgs=$a('.pn-ph'),chips=$a('.pn-mo>span'),clocks=$a('.pn-tm>span'),ls=$e('.pn-ls'),tap=$e('.pn-tap');
+  const PL={a:$e('.pn-pl[data-c=a]'),b:$e('.pn-pl[data-c=b]')},CD={a:$e('.pn-cd[data-c=a]'),b:$e('.pn-cd[data-c=b]')};
+  const SW=300,SH=650,PW=268,PH=217,R=2,D=3000,XF=360,LOOP=3*D,SL=280,KB=.035;
+  // beats (ms): tap the quadratic, it slides in and replays; back to the list, tap the 14번 page, it replays across the next moment
+  const BT={a:{tap:480,in:700,p0:1000,p1:2600,out:3060},b:{tap:3500,in:3720,p0:4020,p1:8020,out:LOOP-XF}},FINAL=8300;
+  let built=false,F=null,fw=0,fh=0,stopR=null,ro=null,S={},INKS={},tapAt={};
   const set=(k,v,fn)=>{if(S[k]!==v){S[k]=v;fn(v)}};
-  function build(){const D=ND,pc=(v,a,w)=>((v-a)/w*100).toFixed(2)+'%';
-    const ea=D.T0(D.st[NER[0]]),eb=D.T1(D.st[NER[1]]);
-    lb.innerHTML=D.gaps.map(([a,b],i)=>`<span class="nt-gp${i===D.gaps.length-1?' nt-lo':''}" style="left:${pc(a,0,D.E)};width:${pc(b,a,D.E)}"><em>${msKo(b-a)} 멈춤</em></span>`).join('')+`<span class="nt-gp nt-er" style="left:${pc(ea,0,D.E)};width:${pc(eb,ea,D.E)}"><em>지운 획</em></span>`;
-    gp=[...lb.children];
-    stops=D.gaps.map(([a])=>{const i=D.st.findIndex(q=>D.T1(q)===a),p=D.st[i].p[D.st[i].p.length-1];return {x:pc(p[0],NP.x0,NP.w),y:pc(p[1],NP.y0,NP.h),l:(p[0]-NP.x0)/NP.w>.62}})}
-  function wave(t,rev){const D=ND,{ctx,W,H}=g,X=W*rev;ctx.clearRect(0,0,W,H);
-    for(let i=0;i<D.n;i++){const q=D.st[i],t0=D.T0(q),x=t0/D.E*W;if(!rev||x>X)break;const w=Math.max(1,(D.T1(q)-t0)/D.E*W),h=H*Math.min(.84,.2+Math.sqrt(D.len[i])/34);
-      ctx.fillStyle=q.e?(t0<=t?'#8A1C2B':'#E6C9CD'):(t0<=t?'#221C39':'#D8D0C3');ctx.fillRect(x,(H-h)/2,w,h)}}
-  function frame(T,force){const D=ND;
-    if(force||!f||!g||cv.clientWidth!==f.cw||wv.clientWidth!==g.cw){f=fitCanvas(cv);g=fitCanvas(wv);if(!f||!g)return;f.cw=cv.clientWidth;g.cw=wv.clientWidth}
-    const t=T<Q0?0:T>=Q1?D.E:(T-Q0)/QMS*D.E;
-    notePaint(f,t,{dim:1,ghost:true,over:(ctx,k,tip)=>{if(tip&&T>=Q0&&T<Q1+200&&Q0+tip[2]/D.E*QMS>T-260)noteTip(ctx,k,tip)}});
-    wave(t,Math.min(1,T/420));
-    set('fl',T<200?+(0.7*(1-T/200)).toFixed(2):0,v=>fl.style.opacity=v);
-    set('end',T>=Q1+150,v=>end.classList.toggle('nt-on',v));
-    set('pp',T<Q0?0:T<Q1?1:2,v=>pp.innerHTML=v===1?PAUSE:v===2?REPLAY:PLAY);
-    set('clk',`<b>${mmss(t)}</b> / ${mmss(D.E)}`,v=>clk.innerHTML=v);
-    set('ph',T<Q0?-1:+(t/D.E*100).toFixed(2),v=>{ph.classList.toggle('nt-on',v>=0);if(v>=0)ph.style.left=v+'%'});
-    // while the playhead crosses a long pause, the page marks where the pen stopped and the bar lights that pause
-    const zi=T>=Q0&&T<Q1?D.gaps.findIndex(([a,b])=>t>=a&&t<b):-1;
-    set('zi',zi,v=>{gp.forEach((x,i)=>x.classList.toggle('nt-hot',i===v));dot.classList.toggle('nt-on',v>=0);ps.classList.toggle('nt-on',v>=0);
-      if(v>=0){const s=stops[v];dot.style.left=ps.style.left=s.x;dot.style.top=ps.style.top=s.y;ps.classList.toggle('nt-l',s.l)}});
-    set('zt',zi>=0?mmss(t-D.gaps[zi][0]):'',v=>{if(v)psb.textContent=v})}
-  return noteMount(el,frame,()=>{if(!gp.length)build();return {FINAL:Q1+2000,LOOP}});
+  const ease=u=>u<=0?0:u>=1?1:1-Math.pow(1-u,3),seg=(T,a,b)=>Math.min(1,Math.max(0,(T-a)/(b-a)));
+  const canvasOf=(box,w,h)=>{const c=box.querySelector('canvas');c.width=w*R;c.height=h*R;const ctx=c.getContext('2d');ctx.setTransform(R,0,0,R,0,0);return ctx};
+  function lines(){const F2=INK2.fact,yc=s=>s.p.reduce((a,p)=>a+p[1],0)/s.p.length;return [INK2.cover,F2.filter(s=>yc(s)<500),F2.filter(s=>yc(s)>=500)]}
+  function quadInk(w,h,k,x0,cy){ // the three lines stacked left, one clock
+    const L=lines(),B=L.map(bb),own=new Map();L.forEach((S,i)=>S.forEach(s=>own.set(s,i)));
+    const tf=i=>p=>[x0+(p[0]-B[i][0])*k,cy[i]*h-(B[i][3]-B[i][1])*k/2+(p[1]-B[i][1])*k];
+    const all=[...INK2.cover,...INK2.fact];let v=0,lt=null;
+    return all.map(q=>{const i=own.get(q),t0=q.p[0][2],t1=q.p[q.p.length-1][2];v+=lt==null?0:Math.min(180,Math.max(0,t0-lt));const v0=v;v+=t1-t0;lt=t1;return {e:0,er:1/0,p:q.p.map(p=>[...tf(i)(p),v0+p[2]-t0])}})}
+  function build(){if(built)return;built=true;
+    const k14=PW/NP.w;INKS.b=pnTimed(INK.s,180,p=>[(p[0]-NP.x0)*k14,(p[1]-NP.y0)*k14]);
+    const kq=.66*PW/(bb(INK2.cover)[2]-bb(INK2.cover)[0]);INKS.a=quadInk(PW,PH,kq,18,[.22,.5,.78]);
+    INKS.vA=endT(INKS.a);INKS.vB=endT(INKS.b);
+    // thumbnails: the finished ink
+    const TW=256,TH=104,kt=TW/NP.w,tb=canvasOf(CD.b,TW,TH);
+    pnInk(tb,pnTimed(INK.s,180,p=>[(p[0]-NP.x0)*kt,(p[1]-NP.y0-40)*kt]),1e12,1.05);
+    const ta=canvasOf(CD.a,TW,TH);pnInk(ta,quadInk(TW,TH,.3*TW/(bb(INK2.cover)[2]-bb(INK2.cover)[0]),16,[.24,.52,.79]),1e12,1.3);
+    ['a','b'].forEach(c=>{PL[c].ctx=canvasOf(PL[c],PW,PH);PL[c].fill=PL[c].querySelector('.pn-sc i');
+      let x=0,y=0,n=CD[c].querySelector('em');const w=n.offsetWidth,h=n.offsetHeight;while(n&&n!==scr){x+=n.offsetLeft;y+=n.offsetTop;n=n.offsetParent}tapAt[c]=[x+w/2,y+h/2]})}
+  function fit(){const W=fr.clientWidth,H=fr.clientHeight;if(!W||!H)return false;const PF=W/H<.9?.8:.74;fw=W;fh=H;
+    F=PN_MO.map(m=>{const q=m[4],ph=(Math.hypot(q[3][0]-q[0][0],q[3][1]-q[0][1])+Math.hypot(q[2][0]-q[1][0],q[2][1]-q[1][1]))/2,cx=q.reduce((a,p)=>a+p[0],0)/4,cy=q.reduce((a,p)=>a+p[1],0)/4;
+      const s=Math.max(PF*H/ph,W,H),ox=Math.min(0,Math.max(W-s,W*.54-cx*s)),oy=Math.min(0,Math.max(H-s,H*.5-cy*s));return {s,ox,oy,ax:ox+cx*s,ay:oy+cy*s,q}});
+    return true}
+  const place=(j,z)=>{const f=F[j],s=f.s*z,ox=f.ax-(f.ax-f.ox)*z,oy=f.ay-(f.ay-f.oy)*z;return {s,ox,oy,Q:f.q.map(([x,y])=>[ox+x*s,oy+y*s])}};
+  function frame(T,force){
+    if(force||fr.clientWidth!==fw||fr.clientHeight!==fh){if(!fit())return;S={}}
+    // photos: hold one moment, cross-fade to the next in the last XF ms; each drifts in slowly about its phone
+    const cur=Math.min(2,Math.floor(T/D)),loc=T-cur*D,nx=(cur+1)%3,x=loc>D-XF?ease((loc-(D-XF))/XF):0;
+    const zf=j=>1+KB*Math.min(1,((T-(j*D-XF))%LOOP+LOOP)%LOOP/(D+XF));
+    const pc=place(cur,zf(cur)),pn=x>0?place(nx,zf(nx)):null;
+    // while the photos cross-fade, both are turned and scaled so their phones sit on one in-between phone: the phone stays, the day changes around it
+    let Q=pn?pc.Q.map((p,i)=>[p[0]+(pn.Q[i][0]-p[0])*x,p[1]+(pn.Q[i][1]-p[1])*x]):pc.Q;
+    imgs.forEach((im,j)=>{const P=j===cur?pc:j===nx&&pn?pn:null;im.style.opacity=P?(j===cur?1:x):0;if(!P)return;im.style.zIndex=j===cur?1:2;
+      const [c0,v0]=quadAxis(P.Q),[c1,v1]=quadAxis(Q),k=Math.hypot(...v1)/Math.hypot(...v0),th=Math.atan2(v1[1],v1[0])-Math.atan2(v0[1],v0[0]),co=Math.cos(th)*k,si=Math.sin(th)*k,m=P.s/1000,
+        ex=c1[0]+co*(P.ox-c0[0])-si*(P.oy-c0[1]),ey=c1[1]+si*(P.ox-c0[0])+co*(P.oy-c0[1]);
+      im.style.transform=`matrix(${co*m},${si*m},${-si*m},${co*m},${ex},${ey})`});
+    const cx=Q.reduce((a,p)=>a+p[0],0)/4,cy=Q.reduce((a,p)=>a+p[1],0)/4;Q=Q.map(([u,v])=>[cx+(u-cx)*1.006,cy+(v-cy)*1.006]);
+    scr.style.transform=quadMatrix(SW,SH,Q);set('vis',1,()=>scr.style.visibility='visible');
+    const act=x>=.5?nx:cur;set('m',act,v=>{chips.forEach((c,i)=>c.classList.toggle('on',i===v));clocks.forEach((c,i)=>c.classList.toggle('on',i===v))});
+    // app: list, then a solution slides in and replays in the order it was written
+    let pl=0;
+    ['a','b'].forEach(c=>{const b=BT[c],p=ease(seg(T,b.in,b.in+SL))-ease(seg(T,b.out,b.out+SL)),u=seg(T,b.p0,b.p1),P=PL[c];pl=Math.max(pl,p);
+      set('x'+c,+p.toFixed(3),v=>P.style.transform=`translateX(${((1-v)*100).toFixed(2)}%)`);
+      set('d'+c,T>=b.p1,v=>{P.classList.toggle('pn-done',v);CD[c].classList.toggle('pn-done',v)});
+      set('u'+c,+u.toFixed(4),v=>{const ctx=P.ctx;ctx.clearRect(0,0,PW,PH);const tip=pnInk(ctx,INKS[c],v*INKS[c==='a'?'vA':'vB'],c==='a'?2:1.25);
+        if(tip&&v>0&&v<1){ctx.fillStyle='#8A1C2B';ctx.beginPath();ctx.arc(tip[0],tip[1],3,0,7);ctx.fill()}P.fill.style.width=(v*100)+'%'});
+      const k=seg(T,b.tap,b.tap+240);set('k'+c,+(k>0&&k<1?Math.sin(Math.PI*k):0).toFixed(3),v=>CD[c].style.transform=v?`scale(${1-.03*v})`:'')});
+    set('ls',+pl.toFixed(3),v=>ls.style.transform=v?`translateX(${(-30*v).toFixed(2)}%)`:'');
+    const tc=T>=BT.b.tap-100?'b':'a',r=seg(T,BT[tc].tap,BT[tc].tap+340);
+    set('tp',tc+(+r.toFixed(3)),()=>{tap.style.left=tapAt[tc][0]+'px';tap.style.top=tapAt[tc][1]+'px';tap.style.opacity=r>0&&r<1?(1-r).toFixed(3):0;tap.style.transform=`scale(${(.35+r*.9).toFixed(3)})`})}
+  return {el,stop(){stopR&&stopR();stopR=null},async play(ok){
+    await Promise.all([inkP,ink2P]);if(!INK||!INK2||!ok())return;build();stopR&&stopR();
+    if(RM){frame(FINAL,true);if(!ro){ro=new ResizeObserver(()=>frame(FINAL,true));ro.observe(fr)}return}
+    const t0=performance.now();stopR=loopRAF(now=>{if(ok())frame((now-t0)%LOOP)})}};
 }
 
 /* ---------- 05 ground: two people write on one note at the same time ---------- */
@@ -1661,7 +1735,7 @@ function sceneGround(){
       s.f.ctx.clearRect(0,0,s.f.W,s.f.H);await sleep(350)}
   }};
 }
-const MAKE={input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,note:noteA,ground:sceneGround};
+const MAKE={input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,note:sceneNote,ground:sceneGround};
 
 /* ---------- mount scenes; play only while their row is on screen ---------- */
 const scenes={},run={};
