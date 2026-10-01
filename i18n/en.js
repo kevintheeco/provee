@@ -367,6 +367,9 @@ const T={
 
 'Provee를 만든 김수민 대표':'Soomin Kim, who built Provee',
 '와인색 니트를 입고 나무 계단 서가에 앉은 김수민 대표':'Soomin Kim in a wine-red sweater, sitting on wooden bookshelf stairs',
+'강의실 칠판 앞에서 Provee를 발표하는 김수민 대표':'Soomin Kim presenting Provee in front of a classroom blackboard',
+'Plug and Play 무대에서 발표하는 김수민 대표, 뒤 화면에 Provee. Answers got cheap. Thinking isn\'t.':'Soomin Kim on the Plug and Play stage; the screen behind reads "Provee. Answers got cheap. Thinking isn\'t."',
+'8월 6일(현지). 무대 질의응답에서 받은 지적으로 사업 모델을 다시 짬':'August 6 (local time). Rebuilt the business model after feedback in the on-stage Q&A',
 // global-fix: 페이지 전역 검증단 수정(헤더 신청 버튼, 비교표, 요금제, 로드맵, 회사 이야기 문장, FAQ, 사전신청).
 // 같은 열쇠가 위에 있으면 여기 값이 이긴다(객체에서 뒤에 쓴 값이 남음): '사전신청' 버튼 이름을 Get early access로.
 '사전신청':'Get early access',
