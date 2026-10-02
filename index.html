@@ -973,21 +973,15 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 /* 손풀이 vs 암기형 */
 .sj-sec{position:relative;padding-block:clamp(88px,10vw,140px) clamp(72px,8vw,112px);background:var(--ivory)}
 .sj-head{margin-bottom:clamp(36px,4.5vw,56px)}
-.sj-k{margin:0 0 14px;font-size:15px;font-weight:700;color:var(--ink3)}
 .sj-head h2{margin:0;font-size:clamp(28px,3.4vw,42px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
 .sj-head h2 em{font-style:normal;color:var(--wine)}
-.sj-head>p:last-child{margin:16px 0 0;font-size:17px;line-height:1.7;color:var(--ink2);max-width:34em}
-.sj-duo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto 1fr auto;border-radius:28px;overflow:hidden;background:var(--paper);box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line);transition:opacity .4s var(--ease),transform .45s var(--ease)}
+.sj-duo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto 1fr;border-radius:28px;overflow:hidden;background:var(--paper);box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line);transition:opacity .4s var(--ease),transform .45s var(--ease)}
 .sj-duo.sj-pre{opacity:0;transform:translateY(18px)}
-.sj{grid-row:1/span 3;display:grid;grid-template-rows:subgrid;padding:clamp(22px,2.6vw,32px) clamp(22px,2.8vw,40px)}
+.sj{grid-row:1/span 2;display:grid;grid-template-rows:subgrid;padding:clamp(22px,2.6vw,32px) clamp(22px,2.8vw,40px)}
 .sj-m{background:#EFE8DC}
 .sj-top h3{margin:0;font-size:22px;line-height:1.35;font-weight:800;letter-spacing:-.02em}
 .sj-top p{margin:6px 0 0;font-size:15px;line-height:1.5;font-weight:500;color:var(--ink3)}
-.sj-vis{position:relative;min-width:0;margin-block:18px 20px}
-.sj-txt .sj-say{margin:0;font-size:19px;line-height:1.55;font-weight:700;letter-spacing:-.02em}
-.sj-txt .sj-ai{margin:12px 0 0;padding-top:12px;border-top:1px solid rgba(30,24,17,.1);font-size:16px;line-height:1.7;color:var(--ink2)}
-.sj-txt .sj-ai b{display:block;margin-bottom:4px;font-size:13px;font-weight:700;color:var(--ink3)}
-.sj-h .sj-ai b{color:var(--wine)}
+.sj-vis{position:relative;min-width:0;margin-block:18px 0}
 .sj-src{margin:14px 4px 0;font-size:12px;line-height:1.6;color:var(--ink3)}
 /* 왼쪽: 같은 박자로 넘어가는 플래시카드(예시) */
 .sj-fc{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:18px}
@@ -1021,40 +1015,37 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .sj-itl .sj-ps::before{content:"";position:absolute;left:0;right:0;top:-8px;height:4px;border:1.5px solid rgba(30,24,17,.35);border-top:0;border-radius:0 0 2px 2px}
 .sj-itl .sj-t0,.sj-itl .sj-t1{position:absolute;bottom:0;font:600 12px/1 var(--brand);color:var(--ink3)}
 .sj-itl .sj-t0{left:0}.sj-itl .sj-t1{right:0}
-/* 데스크톱 a: 카드 아래 문장까지 한 화면에 들어오게 종이 높이를 화면 높이에 묶는다 */
-@media (min-width:861px){.sj-va .sj-ipg{width:100%;max-height:max(270px,calc(100vh - 510px))}}
+/* 데스크톱 a: 제목부터 카드 바닥까지 한 화면에 들어오게 종이 높이를 화면 높이에 묶는다 */
+@media (min-width:861px){.sj-va .sj-ipg{width:100%;max-height:max(270px,calc(100vh - 470px))}}
 @media (max-width:860px){
   .sj-duo{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
   .sj{grid-row:auto;grid-template-rows:none}
   .sj-m .sj-vis{min-height:300px}
   .sj-m{box-shadow:inset 0 -1px 0 var(--line)}
 }
-@media (max-width:560px){.sj-head h2 br{display:none}}
 /* 시안 b: 한 화면에서 판이 뒤집히며 암기형에서 손풀이로 넘어간다 */
 .sj-sec.sj-vb{padding-bottom:0}
 .sj-vb .sj-run{position:relative;height:180vh}
 .sj-vb .sj-pin{position:sticky;top:var(--hdr);height:calc(100vh - var(--hdr));height:calc(100svh - var(--hdr));display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .sj-vb .sj-pin>.wrap{width:100%}
-.sj-vb .sj-duo{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);grid-template-rows:auto auto;grid-template-areas:"top vis" "txt vis";column-gap:clamp(32px,5vw,72px);row-gap:22px;border-radius:0;overflow:visible;background:none;box-shadow:none}
+.sj-vb .sj-head{margin-bottom:clamp(18px,3vh,28px)}
+.sj-vb .sj-duo{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);grid-template-rows:auto;grid-template-areas:"top vis";column-gap:clamp(32px,5vw,72px);row-gap:22px;border-radius:0;overflow:visible;background:none;box-shadow:none}
 .sj-vb .sj{display:contents}
-.sj-vb .sj-top{grid-area:top;align-self:end}
-.sj-vb .sj-txt{grid-area:txt;align-self:start;max-width:26em}
+.sj-vb .sj-top{grid-area:top;align-self:center}
 .sj-vb .sj-top h3{font-size:clamp(26px,2.8vw,34px)}
-.sj-vb .sj-txt .sj-say{font-size:clamp(19px,1.8vw,22px)}
 .sj-vb .sj-vis{grid-area:vis;margin:0;border-radius:24px;padding:clamp(16px,2.2vw,26px);-webkit-backface-visibility:hidden;backface-visibility:hidden;will-change:transform}
 .sj-vb .sj-m .sj-vis{background:#EFE8DC;box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line)}
 .sj-vb .sj-h .sj-vis{background:var(--paper);box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line);transform:perspective(2600px) rotateY(-180deg)}
 .sj-vb .sj-fc{inset:clamp(16px,2.2vw,26px)}
-.sj-vb .sj-top,.sj-vb .sj-txt{transition:opacity .28s var(--ease),transform .32s var(--ease)}
-.sj-vb.sj-sth .sj-m .sj-top,.sj-vb.sj-sth .sj-m .sj-txt{opacity:0;transform:translateY(-12px);pointer-events:none}
-.sj-vb:not(.sj-sth) .sj-h .sj-top,.sj-vb:not(.sj-sth) .sj-h .sj-txt{opacity:0;transform:translateY(12px);pointer-events:none}
+.sj-vb .sj-top{transition:opacity .28s var(--ease),transform .32s var(--ease)}
+.sj-vb.sj-sth .sj-m .sj-top{opacity:0;transform:translateY(-12px);pointer-events:none}
+.sj-vb:not(.sj-sth) .sj-h .sj-top{opacity:0;transform:translateY(12px);pointer-events:none}
 .sj-vb .sj-src{margin-top:16px}
 @media (max-width:860px){
-  .sj-vb .sj-duo{grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "vis" "txt";row-gap:14px}
+  .sj-vb .sj-duo{grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "vis";row-gap:14px}
   .sj-vb .sj-top h3{font-size:22px}.sj-vb .sj-top p{margin-top:2px}
   .sj-vb .sj-vis{width:100%;max-width:520px;justify-self:center}
   .sj-vb .sj-m .sj-vis{min-height:0}
-  .sj-vb .sj-txt{max-width:none}.sj-vb .sj-txt .sj-say{font-size:17px}.sj-vb .sj-txt .sj-ai{margin-top:10px;padding-top:10px;font-size:15px}
   .sj-vb .sj-src{font-size:11px;margin-top:10px}
 }
 @media (max-width:860px) and (max-height:760px){.sj-vb .sj-ipg{aspect-ratio:1.45}}
@@ -1132,25 +1123,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 </section>
 
 <section class="sj-sec" id="subjects" aria-labelledby="sj-h">
-  <div class="wrap sj-head">
-    <p class="sj-k">외우는 공부와 풀어 보는 공부</p>
-    <h2 id="sj-h">외운 것은 카드로 꺼내 보면 되지만, <br><em>푸는 힘은 직접 풀어 봐야 붙습니다</em></h2>
-    <p>AI 학습 도구는 이미 많습니다. 많은 도구가 강의자료를 요약하고 퀴즈와 플래시카드로 바꿔, 외우는 공부를 잘 돕습니다. 손으로 풀어 보는 공부를 돕는 도구는 드뭅니다.</p>
-  </div>
   <div class="sj-run"><div class="sj-pin"><div class="wrap">
+    <div class="sj-head"><h2 id="sj-h">외우는 공부가 아닌,<br><em>진짜 풀어야 하는 공부</em></h2></div>
     <div class="sj-duo">
       <article class="sj sj-m">
         <div class="sj-top"><h3>외우는 공부</h3><p>단어 · 용어 · 정의</p></div>
         <div class="sj-vis" aria-hidden="true"></div>
-        <div class="sj-txt"><p class="sj-say">여러 번 꺼내 보며 익히는 공부입니다. 카드로 스스로 시험해 보는 방식이 잘 맞습니다.</p><p class="sj-ai"><b>AI 튜터가 할 일</b>노트 정리, 마인드맵, 플래시카드를 만드는 수고를 줄여 줍니다.</p></div>
       </article>
       <article class="sj sj-h">
-        <div class="sj-top"><h3>손으로 푸는 공부</h3><p>미적분 · 통계 · 선형대수 · 물리 문제 풀이</p></div>
+        <div class="sj-top"><h3>풀어야 하는 공부</h3><p>미적분 · 통계 · 선형대수 · 물리 문제 풀이</p></div>
         <div class="sj-vis" role="img" aria-label="2024학년도 수능 14번을 18분 동안 손으로 푼 실제 필기. 그래프를 그렸다가 지우고 다시 그렸고, 중간에 3분 19초 동안 펜을 놓았습니다."></div>
-        <div class="sj-txt"><p class="sj-say">그렸다 지우고 다시 그리는 시행착오 속에서 푸는 힘이 붙습니다.</p><p class="sj-ai"><b>AI 튜터가 할 일</b>사진 찍고 다시 설명하는 수고는 없애고, 생각하는 시간은 학생에게 남겨 둡니다. 막힌 곳에서만 먼저 묻습니다.</p></div>
       </article>
     </div>
-    <p class="sj-src">오른쪽은 대표가 2024학년도 수능 14번을 18분 동안 푼 실제 필기(획 594개)를 빠르게 재생했습니다. 점선은 그렸다가 지운 획입니다. 왼쪽 카드는 설명을 위한 예시입니다.</p>
+    <p class="sj-src">오른쪽은 대표가 2024학년도 수능 14번을 18분 동안 푼 실제 필기를 빠르게 재생한 것입니다. 점선은 지운 획, 왼쪽 카드는 예시입니다.</p>
   </div></div></div>
 </section>
 
@@ -2075,7 +2060,7 @@ const prewarm=()=>{if(pD>.01)return;warm=true;scr.style.clipPath='none';clipOff=
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const q=new URLSearchParams(location.search).get('subj'),V=RM?'a':q==='a'||q==='b'?q:matchMedia('(max-width:860px)').matches?'b':'a';sec.classList.add('sj-v'+V);
 // b는 한 자리에서 판이 뒤집히므로 '오른쪽·왼쪽' 대신 앞면·뒷면으로 적는다
-if(V==='b')sec.querySelector('.sj-src').textContent='앞면 카드는 설명을 위한 예시입니다. 판을 뒤집으면 나오는 필기는 대표가 2024학년도 수능 14번을 18분 동안 푼 실제 기록(획 594개)이며, 스크롤에 맞춰 다시 그립니다. 점선은 그렸다가 지운 획입니다.';
+if(V==='b')sec.querySelector('.sj-src').textContent='앞면 카드는 예시입니다. 뒷면은 대표가 2024학년도 수능 14번을 18분 동안 푼 실제 필기이며, 점선은 지운 획입니다.';
 const duo=sec.querySelector('.sj-duo'),visM=sec.querySelector('.sj-m .sj-vis'),visH=sec.querySelector('.sj-h .sj-vis');
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(p,a,b)=>cl((p-a)/(b-a)),ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 
