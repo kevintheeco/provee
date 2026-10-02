@@ -717,6 +717,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 /* 지나온 길: 기본(좁은 화면)은 세로로 이어지고, 넓은 화면은 스크롤하면 오른쪽으로 이어진다 */
 .st-time{position:relative;--cw:clamp(272px,min(55vw,46vh),420px);--gap:clamp(28px,3vw,48px);padding-block:0 clamp(80px,9vw,120px)}
 .tx-head h3{margin:0;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em}
+.tx-head p+p{margin-top:2px}
 .tx-head p{margin:10px 0 0;font-size:17px;line-height:1.6;color:var(--ink2)}
 .tx-view{position:relative;margin-top:clamp(28px,3.4vw,44px)}
 .tx{list-style:none;margin:0 auto;padding:0 var(--gut) 0 calc(var(--gut) + 34px);max-width:600px;position:relative;display:grid;gap:44px;--fill:0}
@@ -1179,6 +1180,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .sj-w1{margin:0;font-size:clamp(26px,3vw,38px);line-height:1.4;font-weight:800;letter-spacing:-.03em}
 .sj-cite{margin:0;max-width:46em;font-size:14px;line-height:1.7;color:var(--ink3)}
 .sj-cite a{color:var(--ink2);text-decoration:underline;text-underline-offset:3px}
+.sj-w3{margin:6px 0 0;font-size:clamp(18px,1.7vw,21px);line-height:1.55;font-weight:700;letter-spacing:-.02em;color:var(--ink2)}
 .sj-w2{margin:10px 0 0;font-size:clamp(19px,1.8vw,22px);font-weight:700;letter-spacing:-.02em}
 .sj-vb .sj-run{position:relative;height:180vh}
 .sj-vb .sj-pin{position:sticky;top:var(--hdr);height:calc(100vh - var(--hdr));height:calc(100svh - var(--hdr));display:flex;flex-direction:column;justify-content:center;overflow:hidden}
@@ -1294,6 +1296,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   <div class="wrap sj-why">
     <p class="sj-w1">AI가 답을 빨리 줄수록,<br>학생이 생각할 틈은 줄었습니다.</p>
     <p class="sj-cite">고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani 외, PNAS, 2025</a></p>
+    <p class="sj-w3">사진 한 장이면 답이 나오면서,<br>공부는 받아 적는 일이 되어 갔습니다.</p>
     <p class="sj-w2">Provee는 이 흐름을 거꾸로 갑니다.</p>
   </div>
 
@@ -1433,7 +1436,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   </div>
   <div class="st-time" id="stTime">
     <div class="tx-pin">
-      <div class="tx-head st-in"><h3>지나온 길과 갈 길</h3><p>6월에 만들기 시작해, 10월 서강대에서 먼저 엽니다.</p></div>
+      <div class="tx-head st-in"><h3>지나온 길과 갈 길</h3><p>6월에 만들기 시작해, 10월 서강대에서 먼저 엽니다.</p><p>한 학교에서 먼저 제대로 검증하고, 그다음에 넓힙니다.</p></div>
       <div class="tx-view">
         <ol class="tx" id="txTrack">
           <li class="tx-i txt"><time>2026.06</time><i class="dot"></i>
@@ -1454,11 +1457,11 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
             <b>대방역 사무실 확보</b><span>서울기독교세계관연구소(SIEW) 지원</span></li>
           <li class="tx-i next"><time>2026.10</time><i class="dot"></i>
             <figure class="tv tv-x"><p>이번 달,<br>서강대에서 먼저 엽니다</p><a class="btn btn-w" href="#join">사전신청 혜택 받기</a></figure>
-            <b>서강대 무료 베타</b><span>예정</span></li>
+            <b>서강대 무료 베타</b><span>중간고사 전에 정량과목 수강생부터 엽니다.</span></li>
           <li class="tx-i txt tx-later"><time>2026.11</time><i class="dot"></i>
             <b>유료 요금제 시작</b><span>기말고사 기간에 주 단위 결제를 엽니다</span></li>
           <li class="tx-i txt tx-later"><time>2027 봄</time><i class="dot"></i>
-            <b>전국 대학으로</b><span>중고등 무료 버전도 함께 시작합니다</span></li>
+            <b>전국 대학으로</b><span>서강대에서 확인한 지표로 전국 대학에 엽니다. 중고등 무료 버전도 함께 시작합니다.</span></li>
           <li class="tx-i txt tx-later"><time>2027 가을</time><i class="dot"></i>
             <b>대학과 중고등을 함께</b><span>같은 튜터가 대학생과 중고등학생을 함께 가르칩니다</span></li>
           <li class="tx-i txt tx-later"><time>2028</time><i class="dot"></i>
