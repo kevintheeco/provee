@@ -973,10 +973,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 /* 장면 점: 지금 장면은 다음으로 넘어갈 때까지 남은 시간만큼 차오르고, 누르면 그 장면으로 간다 */
 .dz .s3-dots i{position:relative;cursor:pointer}
 .dz .s3-dots i::before{content:"";position:absolute;inset:-12px -3px} /* 4px 막대도 손가락으로 누를 수 있게 */
-.dz .s3-dots i.on{background:var(--line)}
-.dz .s3-dots i.on::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--ink);transform-origin:left;animation:dotfill var(--dur,3s) linear forwards}
-.dz.fin .s3-dots i.on::after{animation:none}
-@keyframes dotfill{from{transform:scaleX(0)}to{transform:none}}
 .dz:not([data-sc="-1"]) .s3-dots{pointer-events:auto}
 .dz .z-scr{display:flex;align-items:center}
 .dz-in{padding-top:var(--hdr);opacity:0;transform:translateY(24px);will-change:opacity,transform}
@@ -2175,13 +2171,12 @@ const play=[s0,
     const msg='저 미적분 처음 듣는 1학년이고, 극한부터 헷갈려요. 공식 말고 개념부터 설명해 주세요.';
     for(let k=1;k<=msg.length&&ok();k++){typ.textContent=msg.slice(0,k);await DR.sleep(DR.RM?0:16)}},
 ];
-// 장면은 휠 한 칸으로 바로 넘길 수 있고, 멈춰 있어도 잠깐 뒤 저절로 다음 장면으로 간다. 마지막 장면에서 멈춘다
-const LAST=play.length-1,DUR=[3800,2800,3000]; // 장면마다 머무는 시간(ms): 움직임이 끝나고 제목을 읽을 만큼만
+// 장면은 저절로 넘어가지 않고 휠 한 칸·한 번 밀기·아래 화살표 한 번에 하나씩 넘어간다. 마지막 장면에서 멈춘다
+const LAST=play.length-1;
 let cur=-1,tok=0;
 const go=i=>{if(i===cur)return;cur=i;const my=++tok;const ok=()=>my===tok;
   L.forEach((l,j)=>l.classList.toggle('on',j===i));D.forEach((d,j)=>d.classList.toggle('on',j===i));SC.forEach((c,j)=>c.classList.toggle('on',j===i));
-  Z.classList.toggle('fin',i===LAST);Z.dataset.sc=i;if(i>=0)play[i](ok);
-  if(i>=0&&i<LAST){Z.style.setProperty('--dur',DUR[i]+'ms');setTimeout(()=>{if(ok())go(i+1)},DUR[i])}};
+  Z.classList.toggle('fin',i===LAST);Z.dataset.sc=i;if(i>=0)play[i](ok)};
 Z.dataset.sc=-1;Z.querySelector('.s3-dots').removeAttribute('aria-hidden');
 D.forEach((d,j)=>{d.setAttribute('role','button');d.tabIndex=0;d.setAttribute('aria-label',`${j+1}번째 장면`);
   const pick=()=>{if(cur!==j){cur=-9;go(j)}};d.addEventListener('click',pick);d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}})});
