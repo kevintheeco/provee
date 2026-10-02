@@ -498,36 +498,38 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 }
 
 /* ---------- compare ---------- */
-.cmp-wrap{margin-top:48px;overflow-x:auto;border-radius:24px;background:var(--paper);box-shadow:0 30px 60px -40px rgba(60,30,20,.3),inset 0 0 0 1px var(--line)}
-.cmp{width:100%;min-width:680px;table-layout:fixed;border-collapse:separate;border-spacing:0;font-size:15px;line-height:1.6}
-.cmp thead th:first-child{width:clamp(112px,12vw,150px)}
-.cmp th,.cmp td{padding:18px 20px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
-.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
-.cmp thead th{font-size:14px;font-weight:700;color:var(--ink3);padding-block:20px 16px}
-.cmp tbody th{width:150px;font-size:14px;font-weight:700;color:var(--ink2);background:var(--paper);position:sticky;left:0;z-index:1}
-.cmp td{color:var(--ink2)}
-.cmp .me{background:#FBF3F1;color:var(--ink);font-weight:600}
-.cmp thead .me{color:var(--wine);font-size:15px}
-.cmp thead .me .wm{font-size:17px;color:var(--wine)}
-.cmp-note{margin:12px 4px 0;font-size:11px;color:var(--ink3);line-height:1.5}
-/* 칸 이름표(.cmp-h)는 좁은 화면 카드에서만 보인다 */
-.cmp-h{display:none}
-/* 760px 이하: 표 대신 질문 하나에 카드 하나. Provee 줄은 먹색 굵게 + 왼쪽 와인 선, 나머지 둘은 회색 두 줄 */
-@media (max-width:760px){
- .cmp-wrap{overflow:visible}
- .cmp,.cmp tbody{display:block;min-width:0}
- .cmp thead{display:none}
- .cmp tr{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:20px 18px 22px;border-bottom:1px solid var(--rule)}
- .cmp tr:last-child{border-bottom:0}
- .cmp th,.cmp td,.cmp tbody th{display:block;width:auto;padding:0;border:0;position:static;background:none}
- .cmp tbody th{font-size:13px;color:var(--ink3);margin-bottom:2px}
- .cmp td.me{margin-bottom:4px;padding:10px 12px 11px 14px;border-radius:0 12px 12px 0;background:#FBF3F1;box-shadow:inset 2px 0 0 var(--wine);font-size:16px;line-height:1.55;font-weight:700;color:var(--ink)}
- .cmp td:not(.me){font-size:14px;line-height:1.55;color:var(--ink3)}
- .cmp-h{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--ink3)}
- .cmp td.me .cmp-h{font:700 13px/1.4 var(--brand);color:var(--wine)}
- .cmp td:not(.me) .cmp-h{display:inline;margin:0;font-size:inherit;color:var(--ink2)}
- .cmp td:not(.me) .cmp-h::after{content:" · ";font-weight:400;color:var(--ink3)}
-}
+/* 비교: 같은 문제를 풀 때 학생이 하는 일. 왼쪽 AI 채팅은 일곱 가지, 오른쪽 Provee는 하나씩 지워져 '직접 풀기'만 남는다 */
+.td{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(14px,2vw,24px);margin-top:44px;align-items:stretch}
+.td-c{border-radius:24px;padding:clamp(20px,2.4vw,30px);background:var(--paper);box-shadow:0 30px 60px -44px rgba(60,30,20,.3),inset 0 0 0 1px var(--line)}
+.td-ai{background:#F1ECE4;box-shadow:inset 0 0 0 1px var(--line)}
+.td-h{display:flex;align-items:baseline;gap:4px;padding-bottom:14px;margin-bottom:4px;border-bottom:1px solid var(--line);font-size:16px;font-weight:700;color:var(--ink2)}
+.td-pv .td-h .wm{font-size:20px;color:var(--ink)}
+.td-n{margin-left:auto;font-size:14px;font-weight:600;color:var(--ink3);white-space:nowrap}
+.td-n i{display:inline-block;min-width:.62em;text-align:right;font:700 28px/1 var(--brand);font-style:normal;color:var(--ink);margin-left:6px}
+.td-l{list-style:none;margin:0;padding:0}
+.td-l li{position:relative;display:flex;align-items:center;gap:10px;min-height:48px;max-height:90px;padding:6px 0;border-bottom:1px dashed var(--rule);font-size:16px;line-height:1.45;color:var(--ink);overflow:hidden;transition:max-height .45s var(--ease),min-height .45s var(--ease),padding .45s var(--ease),opacity .35s var(--ease),border-color .3s,font-size .4s var(--ease)}
+.td-l li::before{content:"";flex:none;width:18px;height:18px;border-radius:5px;box-shadow:inset 0 0 0 1.6px #B9AE9F;transition:background .2s,box-shadow .2s}
+.td-l li:last-child{border-bottom:0}
+.td-l em{margin-left:auto;font:600 13px var(--brand);font-style:normal;color:var(--ink3);white-space:nowrap}
+.td-solve{font-weight:800}
+.td-pv li s{text-decoration:none;background:linear-gradient(var(--ink2),var(--ink2)) 0 58%/0% 2px no-repeat;transition:background-size .4s var(--ease),color .3s}
+.td-r{margin-left:auto;padding:3px 10px;border-radius:99px;background:#EAF3EC;color:#1F7A4D;font-size:13px;font-weight:700;white-space:nowrap;opacity:0;transform:translateX(8px);transition:opacity .25s var(--ease),transform .3s var(--ease)}
+.td-pv li.x s{color:var(--ink3);background-size:100% 2px}.td-pv li.x .td-r{opacity:1;transform:none}
+.td-pv li.x::before{background:#1F7A4D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.3l2.3 2.3 4.7-5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat;box-shadow:none}
+.td-pv li.gone{max-height:0;min-height:0;padding-block:0;opacity:0;border-color:transparent}
+.td-pv li.td-solve.big{font-size:clamp(22px,2.2vw,28px);min-height:76px}
+.td-pv li.td-solve.big::before{width:24px;height:24px;border-radius:7px;box-shadow:inset 0 0 0 2.5px var(--ink)}
+.td-pv{display:flex;flex-direction:column}
+.td-pv .td-l{flex:1;display:flex;flex-direction:column;justify-content:center}
+.td-done{display:none;padding-top:18px;border-top:1px solid var(--line)}
+.td-done p{margin:0 0 10px;font-size:15px;font-weight:600;color:var(--ink2)}
+.td-done ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.td-done li{padding:5px 12px;border-radius:99px;background:#EAF3EC;color:#1F7A4D;font-size:14px;font-weight:700;opacity:0;transform:translateY(10px);transition:opacity .3s var(--ease),transform .4s var(--ease)}
+.td-done.on{display:block}.td-done.in li{opacity:1;transform:none}
+.td-hl{color:inherit;background:linear-gradient(rgba(255,210,0,.42),rgba(255,210,0,.42)) 0 58%/0% 72% no-repeat;padding-inline:.08em;margin-inline:-.08em;border-radius:.12em;transition:background-size .6s cubic-bezier(.55,.1,.3,1) .2s}
+.td-hl.on{background-size:100% 72%}
+.td-src{margin:14px 4px 0;font-size:11px;color:var(--ink3);line-height:1.5}
+@media (max-width:760px){.td{grid-template-columns:minmax(0,1fr);margin-top:28px}.td-l li{font-size:15px;min-height:44px}.td-r{font-size:12px;padding:2px 8px}}
 
 /* ---------- pricing ---------- */
 .pr-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -1015,7 +1017,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 .hero-fade{position:absolute;left:0;right:0;bottom:0;height:160px;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(247,243,236,0),var(--ivory))}
 /* 출처·각주·캡션은 한 크기로 작고 옅게(본문은 그대로) */
-@media (max-width:760px){.scap,.cmp-note,.pr-note,.og-card small,.hero .s3-src{font-size:11px}}
+@media (max-width:760px){.scap,.td-src,.pr-note,.og-card small,.hero .s3-src{font-size:11px}}
 
 /* 사진 자리(대표가 사진을 주면 채움) */
 .og-empty{aspect-ratio:813/1082;display:grid;place-items:center;border-radius:24px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(201,188,168,.12) 10px 11px);box-shadow:inset 0 0 0 1.5px #D8CCB9}
@@ -1307,19 +1309,14 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 <section class="sec" id="compare">
   <div class="wrap">
     <div class="sec-h"><h2>같은 수학 문제,<br>도구마다 학생이 하는 일이 다릅니다</h2></div>
-    <div class="cmp-wrap">
-      <table class="cmp">
-        <thead><tr><th scope="col"></th><th scope="col" class="me"><span class="wm">Provee<i>.</i></span></th><th scope="col">범용 AI 채팅</th><th scope="col">사진 풀이 앱</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">문제를 넣는 법</th><td class="me"><small class="cmp-h">Provee</small>노트에 그대로 씀</td><td><small class="cmp-h">범용 AI 채팅</small>사진이나 파일을 올리고, 원하는 것을 글로 설명</td><td><small class="cmp-h">사진 풀이 앱</small>문제를 카메라로 찍음</td></tr>
-          <tr><th scope="row">읽는 것</th><td class="me"><small class="cmp-h">Provee</small>쓴 획과 순서, 지운 식까지</td><td><small class="cmp-h">범용 AI 채팅</small>올린 사진 한 장</td><td><small class="cmp-h">사진 풀이 앱</small>문제 사진</td></tr>
-          <tr><th scope="row">그래프</th><td class="me"><small class="cmp-h">Provee</small>식에서 바로 선으로 그림</td><td><small class="cmp-h">범용 AI 채팅</small>그림을 만들거나 코드를 돌리는 동안 기다리기도 함</td><td><small class="cmp-h">사진 풀이 앱</small>앱마다 다름</td></tr>
-          <tr><th scope="row">막혔을 때</th><td class="me"><small class="cmp-h">Provee</small>내가 쓴 풀이를 보고 놓친 조건을 먼저 묻고, 힌트는 한 단계씩</td><td><small class="cmp-h">범용 AI 채팅</small>기본은 정답과 전체 풀이부터. 학습 모드에선 되묻기도 하지만, 쓰는 과정은 보지 못함</td><td><small class="cmp-h">사진 풀이 앱</small>정답과 단계별 풀이</td></tr>
-          <tr><th scope="row">복습</th><td class="me"><small class="cmp-h">Provee</small>Provee&nbsp;Note에 과목별로 모여, 폰으로도 언제든 다시&nbsp;봄</td><td><small class="cmp-h">범용 AI 채팅</small>채팅마다 흩어지기 쉬움</td><td><small class="cmp-h">사진 풀이 앱</small>찍은 문제 목록</td></tr>
-        </tbody>
-      </table>
+    <div class="td" id="tdBox">
+      <div class="td-c td-ai"><div class="td-h"><span>AI 채팅으로 풀 때</span><b class="td-n"><span>할 일</span><i>7</i></b></div>
+        <ol class="td-l"><li><span>문제와 풀이를 사진 찍어 올리기</span><em>63%</em></li><li><span>원하는 것을 글로 다시 설명하기</span></li><li><span>잘못 읽은 식 고쳐 쓰기</span><em>60%</em></li><li><span>그래프가 나올 때까지 기다리기</span><em>1분 13초</em></li><li><span>쏟아진 풀이에서 필요한 것 찾기</span><em>63%</em></li><li><span>새 채팅마다 내 수준 다시 설명하기</span><em>77%</em></li><li class="td-solve"><span>직접 풀기</span></li></ol></div>
+      <div class="td-c td-pv"><div class="td-h"><span><b class="wm">Provee<i>.</i></b>로 풀 때</span><b class="td-n"><span>할 일</span><i>7</i></b></div>
+        <ol class="td-l"><li><span><s>문제와 풀이를 사진 찍어 올리기</s></span><b class="td-r">쓰는 대로 읽어요</b></li><li><span><s>원하는 것을 글로 다시 설명하기</s></span><b class="td-r">획으로 알아봐요</b></li><li><span><s>잘못 읽은 식 고쳐 쓰기</s></span><b class="td-r">2x + 1 그대로</b></li><li><span><s>그래프가 나올 때까지 기다리기</s></span><b class="td-r">바로 그려요</b></li><li><span><s>쏟아진 풀이에서 필요한 것 찾기</s></span><b class="td-r">물어본 만큼만</b></li><li><span><s>새 채팅마다 내 수준 다시 설명하기</s></span><b class="td-r">지난 풀이가 이어져요</b></li><li class="td-solve"><span><mark class="td-hl">직접 풀기</mark></span></li></ol>
+        <div class="td-done"><p>나머지 여섯 가지는 Provee가 맡아요</p><ul><li>쓰는 대로 읽어요</li><li>획으로 알아봐요</li><li>2x + 1 그대로</li><li>바로 그려요</li><li>물어본 만큼만</li><li>지난 풀이가 이어져요</li></ul></div></div>
     </div>
-    <p class="cmp-note">2026년 9월 기준 공개 기능과 대표의 실제 사용 기록으로 정리했습니다. 서비스와 설정에 따라 다를 수 있습니다.</p>
+    <p class="td-src">63%·60%·77%는 URP 설문(2026년 7월, 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 '자주' 이상 겪었다는 비율), 1분 13초는 GPT-5.6 Sol이 그래프를 내놓기까지 걸린 1회 실측(2026년 9월 12일). 서비스와 설정에 따라 다를 수 있습니다.</p>
   </div>
 </section>
 
@@ -2031,6 +2028,16 @@ const rmUpd=()=>{pv.disabled=trk.scrollLeft<4;nx.disabled=trk.scrollLeft+trk.cli
 const step=()=>trk.querySelector('.rm').offsetWidth+16;
 pv.onclick=()=>trk.scrollBy({left:-step(),behavior:'smooth'});nx.onclick=()=>trk.scrollBy({left:step(),behavior:'smooth'});
 trk.addEventListener('scroll',rmUpd,{passive:true});addEventListener('resize',rmUpd);rmUpd();
+
+/* ---------- 비교: Provee 쪽 할 일이 하나씩 지워진다 ---------- */
+{const box=document.getElementById('tdBox');if(box){const L=[...box.querySelectorAll('.td-pv .td-l li:not(.td-solve)')],so=box.querySelector('.td-pv .td-solve'),n=box.querySelector('.td-pv .td-n i'),hl=box.querySelector('.td-hl');
+  const dn=box.querySelector('.td-done'),C=[...dn.querySelectorAll('li')];
+  const fin=()=>{L.forEach(li=>li.classList.add('x','gone'));so.classList.add('big');hl.classList.add('on');n.textContent='1';dn.classList.add('on','in')};
+  if(RM)fin();else new IntersectionObserver(([e],o)=>{if(!e.isIntersecting)return;o.disconnect();
+    L.forEach((li,k)=>setTimeout(()=>{li.classList.add('x');n.textContent=String(6-k)},500+k*420));
+    setTimeout(()=>{L.forEach(li=>li.classList.add('gone'))},500+L.length*420+700);
+    setTimeout(()=>{so.classList.add('big');hl.classList.add('on');n.textContent='1';dn.classList.add('on');
+      C.forEach((c,k)=>c.style.transitionDelay=(350+k*90)+'ms');requestAnimationFrame(()=>requestAnimationFrame(()=>dn.classList.add('in')))},500+L.length*420+1050)},{threshold:.55}).observe(box.querySelector('.td-pv'))}}
 
 /* ---------- tooltips on touch ---------- */
 document.addEventListener('click',e=>{const t=e.target.closest('.tip');$$('.tip.on').forEach(x=>{if(x!==t)x.classList.remove('on')});if(t)t.classList.toggle('on')});
