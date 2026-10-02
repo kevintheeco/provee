@@ -120,25 +120,62 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .ftabs a:hover{color:var(--ink2)}
 .ftabs a[aria-current="true"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
 .ftabs a[aria-current="true"] small{color:var(--wine)}
-.frow{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(72px,9vw,120px);border-bottom:1px solid var(--rule)}
+.frow{display:grid;grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);gap:clamp(32px,5vw,72px);align-items:start;padding-block:clamp(72px,9vw,120px);border-bottom:1px solid var(--rule)}
 .frow:last-child{border-bottom:0}
-.frow.wide{grid-template-columns:1fr;gap:clamp(28px,4vw,48px)}
-.frow.wide .f-copy{display:grid;grid-template-columns:1fr auto;column-gap:48px;align-items:end}
-.frow.wide .f-copy>*{grid-column:1}
-.frow.wide .f-copy .f-side{grid-column:2;grid-row:1/span 4;align-self:end;display:grid;gap:12px;justify-items:end}
+/* 기능은 장(章)처럼: 큰 번호 → 학생의 카톡 질문 → 바로 아래 Provee의 답(제목). 글은 왼쪽에 붙어 있고 모션은 오른쪽에서 지나간다 */
+.frow .f-copy{position:sticky;top:calc(var(--hdr) + 78px)}
+.frow.f-head{grid-template-columns:1fr;padding-bottom:0;border-bottom:0}
+.frow.f-head .f-copy{position:static}
+.frow.f-head+.frow{padding-top:clamp(40px,5vw,64px)}
+.f-hd{display:flex;align-items:flex-end;gap:14px}
+.f-num{position:relative;font:700 clamp(64px,7vw,104px)/.82 var(--brand);letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px #CDBFA9}
+.f-num i{position:absolute;right:-12px;top:-6px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;-webkit-text-stroke:0;font:700 15px/1 var(--brand);font-style:normal}
+.f-hd .fk{padding-bottom:4px}
+.f-side{display:flex;gap:12px;align-items:center;margin-top:4px}
+/* 카톡 대화(예시): 하늘색 바탕, 내가 보낸 노란 말풍선, 읽으면 사라지는 1, 상대가 입력 중 */
+.kt{display:grid;gap:8px;max-width:440px;padding:12px 14px 14px;border-radius:18px;background:#BACEE0;font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+.kt-dt{justify-self:center;padding:3px 11px;border-radius:99px;background:rgba(0,0,0,.13);color:#fff;font-size:11px;font-weight:600}
+.kt-me{justify-self:end;display:flex;align-items:flex-end;gap:5px;max-width:90%}
+.kt-me p{margin:0;padding:8px 11px;border-radius:14px 4px 14px 14px;background:#FEE500;color:#191919;font-size:15px;line-height:1.45;font-weight:400;max-width:100%}
+.kt-mt{flex:none;display:grid;justify-items:end;font-size:10.5px;line-height:1.35;color:#53606E;white-space:nowrap}
+.kt-mt i{font-style:normal;font-weight:700;color:#E8BE00;transition:opacity .2s}
+.kt-img{justify-self:end;width:104px;aspect-ratio:3/4;border-radius:12px;background:#ddd url(img/gpt-24p1-chat.jpg) 93.46% 8.05%/274.19% 175.65% no-repeat;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.kt-ty{display:flex;align-items:flex-start;gap:8px;max-height:44px;overflow:hidden}
+.kt-av{flex:none;position:relative;display:grid;place-items:center;width:34px;height:34px;border-radius:13px;background:var(--ink)}
+.kt-av::before{content:"P";font:700 16px/1 var(--brand);color:#fff}
+.kt-av::after{content:"";position:absolute;right:7px;bottom:8px;width:4px;height:4px;border-radius:50%;background:#E0485C}
+.kt-dots{display:inline-flex;gap:4px;padding:11px 12px;border-radius:4px 14px 14px 14px;background:#fff}
+.kt-dots i{width:6px;height:6px;border-radius:50%;background:#9AA3AD;animation:sjdt 1s ease-in-out infinite}
+.kt-dots i:nth-child(2){animation-delay:.15s}.kt-dots i:nth-child(3){animation-delay:.3s}
+/* 순서: 사진·질문이 올라오고 → 1이 사라지고(읽음) → Provee가 입력 중 → 아래에 답 */
+.kt-me,.kt-img{opacity:0;transform:translateY(8px) scale(.94);transform-origin:100% 100%;transition:opacity .25s var(--ease),transform .35s cubic-bezier(.2,1.3,.4,1)}
+.frow.in .kt-img{opacity:1;transform:none;transition-delay:.15s}
+.frow.in .kt-me{opacity:1;transform:none;transition-delay:.25s}
+.frow.in .kt-img~.kt-me{transition-delay:.5s}
+.frow.in .kt-mt i{opacity:0;transition-delay:1s}
+.kt-ty{opacity:0}
+.frow.in .kt-ty{animation:ktty .8s 1.1s both}
+@keyframes ktty{0%{opacity:0;transform:translateY(6px)}15%,80%{opacity:1;transform:none;max-height:44px}100%{opacity:0;max-height:0;margin-top:-8px}}
+.f-ans{display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(10px);transition:opacity .4s var(--ease),transform .45s var(--ease)}
+.frow.in .f-ans{opacity:1;transform:none;transition-delay:1.75s}
+.frow.f-head.in .f-ans{transition-delay:0s}
+.f-ans .f-hl{transition-delay:2.15s}.f-head .f-hl{transition-delay:.45s}
+.frow:not(.f-head) .f-copy h3{font-size:clamp(24px,2.5vw,32px)}
+.f-who{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--ink2)}
+.f-who .kt-av{width:28px;height:28px;border-radius:11px}.f-who .kt-av::before{font-size:13px}.f-who .kt-av::after{right:5px;bottom:6px;width:3px;height:3px}
+@media (prefers-reduced-motion:reduce){.kt-ty{display:none}}
 .f-copy{display:flex;flex-direction:column;gap:16px;opacity:0;transform:translateY(16px);transition:opacity .45s var(--ease),transform .5s var(--ease)}
 .f-vis{min-width:0;opacity:0;transform:translateY(24px) scale(.98);transition:opacity .5s var(--ease) .06s,transform .55s var(--ease) .06s}
 .frow.in .f-copy,.frow.in .f-vis{opacity:1;transform:none}
 .f-hl{color:inherit;background:linear-gradient(rgba(255,210,0,.42),rgba(255,210,0,.42)) 0 58%/0% 72% no-repeat;padding-inline:.08em;margin-inline:-.08em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .7s cubic-bezier(.55,.1,.3,1) .45s}
 .f-hl.on{background-size:100% 72%}
 .fk{display:flex;align-items:baseline;gap:10px;font-size:15px;font-weight:700;color:var(--ink2)}
-.fk b{font:700 15px var(--brand);color:var(--wine)}
 .f-copy h3{margin:0;font-size:clamp(26px,2.8vw,36px);line-height:1.38;font-weight:800;letter-spacing:-.03em}
 .f-copy p{margin:0;font-size:17px;line-height:1.75;color:var(--ink2);max-width:30em}
 .fstat{display:flex;align-items:center;gap:14px;margin-top:6px;padding-top:18px;border-top:1px solid var(--line);max-width:30em}
 .fstat>b{flex:none;font:700 32px/1 var(--brand);letter-spacing:-.03em;color:var(--ink)}
 .fstat>span{font-size:14px;line-height:1.55;color:var(--ink2)}
-@media (max-width:900px){.frow,.frow.wide{grid-template-columns:1fr;gap:32px}.frow.wide .f-copy{display:flex;align-items:stretch}.frow.wide .f-copy .f-side{justify-items:start}}
+@media (max-width:900px){.frow{grid-template-columns:1fr;gap:32px}.frow .f-copy{position:static}.f-num{font-size:64px}.kt{max-width:none}}
 
 /* tooltip */
 .tip{position:relative;display:inline-grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #B8AD9F;color:var(--ink3);font:700 12px/1 var(--brand);cursor:help;vertical-align:middle}
@@ -262,14 +299,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .rec .ok svg{width:1.8cqw;height:1.8cqw}
 @container (max-width:460px){.rec small{display:none}.rec{padding:.8cqw 1.4cqw .8cqw 2cqw}.rec .ok{width:max(3cqw,13px);height:max(3cqw,13px)}.rec .ok svg{width:70%;height:70%}}
 
-/* 02: 장점 두 가지(1 잘못 읽지 않음, 2 놓치지 않음)를 번호 제목 아래 장면으로 */
-.f-pt{display:grid;gap:18px}
-.f-pth{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:8px;align-items:start}
-.f-pth b{grid-row:1;display:grid;place-items:center;width:32px;height:32px;margin-top:2px;border-radius:50%;background:var(--ink);color:#fff;font:700 15px/1 var(--brand)}
-.f-pth>span{grid-column:2;font-size:clamp(22px,2.3vw,28px);line-height:1.4;font-weight:800;letter-spacing:-.025em}
-.f-pth small{grid-column:2;font-size:17px;line-height:1.6;font-weight:500;color:var(--ink2)}
-.f-pth strong{font-weight:700;color:var(--ink)}
-@media (max-width:640px){.f-pth{column-gap:10px}.f-pth b{width:28px;height:28px;font-size:14px}.f-pth small{font-size:15px}}
 /* 02-1: 사진 한 장으로 추정한 24 + 1(대표의 실제 대화) 옆에서, 같은 글씨가 획 여섯 개로 쓴 순서대로 떠올라 2x + 1로 읽힌다 */
 .cin{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);border-radius:24px;overflow:hidden;background:#15120F;color:#F4EEE4;box-shadow:0 50px 90px -46px rgba(30,15,10,.6)}
 .cin-ch{display:grid;align-content:center;gap:14px;padding:22px 20px 22px 24px;background:#000}
@@ -312,7 +341,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .cin.fin .cin-tk i{opacity:1;transform:none}
 .cin-rs b{margin-left:auto;font:italic 600 30px/1 "Times New Roman",Georgia,serif;color:#fff}
 .cin-rs em{flex:none;width:24px;height:24px;border-radius:50%;background:#2E9E6A url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}
-@media (max-width:760px){.cin.ex .cin-bd{transform:translate(-50%,-150%) rotateZ(30deg) rotateX(-56deg) scale(.82)}.cin{grid-template-columns:minmax(0,1fr)}.cin-ch{padding:16px}.cin-st{padding:16px;grid-template-rows:auto minmax(220px,1fr) auto}.cin-sk{width:min(72cqw,360px)}.cin-tk i{min-width:24px;height:24px;font-size:16px}.cin-rs{padding:0 12px;gap:8px}.cin-rs b{font-size:26px}}
+.cin-w{container-type:inline-size} /* 장면은 화면 너비가 아니라 자기 칸 너비를 보고 배치를 바꾼다 */
+@container (max-width:760px){.cin{grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr)}.cin-ch{padding:16px 14px;gap:10px}.cin-lb{flex-direction:column;gap:2px;white-space:normal}.cin-gs b{font-size:22px}.cin-tk{display:none}.cin-rs b{white-space:nowrap;font-size:26px}.cin-st{padding:16px 18px 18px}.cin-tg{font-size:14px}}
+@container (max-width:520px){.cin.ex .cin-bd{transform:translate(-50%,-150%) rotateZ(30deg) rotateX(-56deg) scale(.82)}.cin{grid-template-columns:minmax(0,1fr)}.cin-ch{padding:16px}.cin-st{padding:16px;grid-template-rows:auto minmax(220px,1fr) auto}.cin-sk{width:min(72cqw,360px)}.cin-tk i{min-width:24px;height:24px;font-size:16px}.cin-rs{padding:0 12px;gap:8px}.cin-rs b{font-size:26px}}
 
 /* 02 read: one real page, as a photo (left, what a photo-reading AI receives) and as Provee's stroke record (right) */
 .rv{container:rv/inline-size;position:relative;width:100%}
@@ -1281,56 +1312,70 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   <div class="wrap">
     <div class="frow" id="f-input" data-f="input">
       <div class="f-copy">
-        <span class="fk"><b>01</b>필기 입력</span>
-        <h3>앱 네 개를 오가던 공부,<br>Provee에선 <mark class="f-hl">앱 전환 0번</mark></h3>
-        <p>노트도, AI도, 강의자료도 한 화면에서.</p>
+        <div class="f-hd"><span class="f-num">01</span><span class="fk">필기 입력</span></div>
+        <div class="kt" role="img" aria-label="예시 대화. 학생: 문제 찍어서 올리고, 강의자료 다시 열고, 답 기다리고.. 앱만 네 개째예요 ㅠㅠ"><span class="kt-dt">예시 대화</span><div class="kt-me"><span class="kt-mt"><i>1</i>오후 11:42</span><p>문제 찍어서 올리고, 강의자료 다시 열고, 답 기다리고.. 앱만 네 개째예요 ㅠㅠ</p></div><div class="kt-ty"><span class="kt-av"></span><span class="kt-dots"><i></i><i></i><i></i></span></div></div>
+        <div class="f-ans"><span class="f-who"><span class="kt-av"></span>Provee</span><h3>앱 네 개를 오가던 공부,<br>Provee에선 <mark class="f-hl">앱 전환 0번</mark></h3><p>노트도, AI도, 강의자료도 한 화면에서.</p></div>
       </div>
       <div class="f-vis" data-scene="input"></div>
     </div>
 
-    <div class="frow wide" id="f-read" data-f="read">
+    <div class="frow f-head" id="f-read" data-f="read">
       <div class="f-copy">
-        <span class="fk"><b>02</b>획 단위 인식</span>
-        <h3>편하게 쓰세요,<br>읽는 건 <mark class="f-hl">Provee가 할게요</mark></h3>
-        <p>사진 한 장 대신, 획마다 쓴 자리와 시각을 받으니까요.</p>
+        <div class="f-hd"><span class="f-num">02</span><span class="fk">획 단위 인식</span></div>
+        <div class="f-ans"><h3>편하게 쓰세요,<br>읽는 건 <mark class="f-hl">Provee가 할게요</mark></h3><p>사진 한 장 대신, 획마다 쓴 자리와 시각을 받으니까요.</p></div>
       </div>
-      <div class="f-pt"><h4 class="f-pth"><b>1</b><span><mark class="f-hl">뭉쳐 써도 괜찮아요.</mark> Provee는 알아요.</span><small>2를 다 쓰고 x를 쓰기까지 <strong>0.2초</strong>, 그 틈까지 봤으니까요</small></h4><div class="f-vis" data-scene="recog"></div></div>
-      <div class="f-pt"><h4 class="f-pth"><b>2</b><span>어디서부터 풀었는지 설명은 그만,<br>Provee는 이미 <mark class="f-hl">순서까지 알아요</mark></span><small><strong>일곱 군데</strong>를 오간 순서, 지운 그래프, 펜을 놓은 <strong>3분 19초</strong>까지</small></h4><div class="f-vis" data-scene="read"></div></div>
     </div>
 
-    <div class="frow wide" id="f-graph" data-f="graph">
+    <div class="frow" data-f="read">
       <div class="f-copy">
-        <span class="fk"><b>03</b>바로 그리는 그래프</span>
-        <h3>AI가 1분 13초 걸린 그래프,<br>Provee는 <mark class="f-hl">바로 그려요</mark></h3>
-        <p>식에서 바로 긋는 선, 교점과 넓이까지 단계마다.</p>
+        <div class="f-hd"><span class="f-num">02<i>1</i></span><span class="fk">획 단위 인식</span></div>
+        <div class="kt" role="img" aria-label="예시 대화. 학생: 이렇게 써도 알아보나요? AI는 못 알아보던데요.."><span class="kt-dt">예시 대화</span><i class="kt-img"></i><div class="kt-me"><span class="kt-mt"><i>1</i>오후 11:58</span><p>이렇게 써도 알아보나요? AI는 못 알아보던데요..</p></div><div class="kt-ty"><span class="kt-av"></span><span class="kt-dots"><i></i><i></i><i></i></span></div></div>
+        <div class="f-ans"><span class="f-who"><span class="kt-av"></span>Provee</span><h3><mark class="f-hl">뭉쳐 써도 괜찮아요.</mark><br>Provee는 알아요.</h3><p>2를 다 쓰고 x를 쓰기까지 <strong>0.2초</strong>, 그 틈까지 봤으니까요</p></div>
+      </div>
+      <div class="f-vis" data-scene="recog"></div>
+    </div>
+
+    <div class="frow" data-f="read">
+      <div class="f-copy">
+        <div class="f-hd"><span class="f-num">02<i>2</i></span><span class="fk">획 단위 인식</span></div>
+        <div class="kt" role="img" aria-label="예시 대화. 학생: 여기저기 막 써서 어디부터 풀었는지 설명하기가 너무 힘들어요"><span class="kt-dt">예시 대화</span><div class="kt-me"><span class="kt-mt"><i>1</i>오전 12:07</span><p>여기저기 막 써서 어디부터 풀었는지 설명하기가 너무 힘들어요</p></div><div class="kt-ty"><span class="kt-av"></span><span class="kt-dots"><i></i><i></i><i></i></span></div></div>
+        <div class="f-ans"><span class="f-who"><span class="kt-av"></span>Provee</span><h3>어디서부터 풀었는지<br>설명은 그만, Provee는<br>이미 <mark class="f-hl">순서까지 알아요</mark></h3><p><strong>일곱 군데</strong>를 오간 순서, 지운 그래프, 펜을 놓은 <strong>3분 19초</strong>까지</p></div>
+      </div>
+      <div class="f-vis" data-scene="read"></div>
+    </div>
+
+    <div class="frow" id="f-graph" data-f="graph">
+      <div class="f-copy">
+        <div class="f-hd"><span class="f-num">03</span><span class="fk">바로 그리는 그래프</span></div>
+        <div class="kt" role="img" aria-label="예시 대화. 학생: 그래프 그려 달라고 했는데 아직도 생성 중이래요.. 1분 넘었어요"><span class="kt-dt">예시 대화</span><div class="kt-me"><span class="kt-mt"><i>1</i>오전 12:15</span><p>그래프 그려 달라고 했는데 아직도 생성 중이래요.. 1분 넘었어요</p></div><div class="kt-ty"><span class="kt-av"></span><span class="kt-dots"><i></i><i></i><i></i></span></div></div>
+        <div class="f-ans"><span class="f-who"><span class="kt-av"></span>Provee</span><h3>AI가 1분 13초 걸린 그래프,<br>Provee는 <mark class="f-hl">바로 그려요</mark></h3><p>식에서 바로 긋는 선, 교점과 넓이까지 단계마다.</p></div>
       </div>
       <div class="f-vis" data-scene="graph"></div>
     </div>
 
     <div class="frow" id="f-ask" data-f="ask">
       <div class="f-copy">
-        <span class="fk"><b>04</b>되묻는 튜터</span>
-        <h3>문제를 다시<br>읽어 보자는 Provee,<br><mark class="f-hl">내 옆의 과외 선생님</mark></h3>
-        <p>펜이 멈추면 먼저 묻고, 정답 대신 놓친 조건을 짚어요.</p>
+        <div class="f-hd"><span class="f-num">04</span><span class="fk">되묻는 튜터</span></div>
+        <div class="kt" role="img" aria-label="예시 대화. 학생: 답만 보면 이해한 것 같은데 다음에 또 못 풀어요 ㅠ"><span class="kt-dt">예시 대화</span><div class="kt-me"><span class="kt-mt"><i>1</i>오전 12:31</span><p>답만 보면 이해한 것 같은데 다음에 또 못 풀어요 ㅠ</p></div><div class="kt-ty"><span class="kt-av"></span><span class="kt-dots"><i></i><i></i><i></i></span></div></div>
+        <div class="f-ans"><span class="f-who"><span class="kt-av"></span>Provee</span><h3>문제를 다시<br>읽어 보자는 Provee,<br><mark class="f-hl">내 옆의 과외 선생님</mark></h3><p>펜이 멈추면 먼저 묻고, 정답 대신 놓친 조건을 짚어요.</p></div>
       </div>
       <div class="f-vis" data-scene="ask"></div>
     </div>
 
     <div class="frow" id="f-note" data-f="note">
       <div class="f-copy">
-        <span class="fk"><b>05</b>Provee Note</span>
-        <h3>버스 안에서 복습,<br><mark class="f-hl">내가 헷갈렸던 내 풀이로</mark></h3>
-        <p>과목과 단원별로 모인 풀이, 누르면 쓴 순서 그대로.</p>
+        <div class="f-hd"><span class="f-num">05</span><span class="fk">Provee Note</span></div>
+        <div class="kt" role="img" aria-label="예시 대화. 학생: 시험 10분 전인데 내가 헷갈렸던 그 풀이 어디 있더라.."><span class="kt-dt">예시 대화</span><div class="kt-me"><span class="kt-mt"><i>1</i>오후 1:40</span><p>시험 10분 전인데 내가 헷갈렸던 그 풀이 어디 있더라..</p></div><div class="kt-ty"><span class="kt-av"></span><span class="kt-dots"><i></i><i></i><i></i></span></div></div>
+        <div class="f-ans"><span class="f-who"><span class="kt-av"></span>Provee</span><h3>버스 안에서 복습,<br><mark class="f-hl">내가 헷갈렸던 내 풀이로</mark></h3><p>과목과 단원별로 모인 풀이, 누르면 쓴 순서 그대로.</p></div>
       </div>
       <div class="f-vis" data-scene="note"></div>
     </div>
 
-    <div class="frow wide" id="f-ground" data-f="ground">
+    <div class="frow" id="f-ground" data-f="ground">
       <div class="f-copy">
-        <span class="fk"><b>06</b>Provee Ground</span>
-        <h3>혼자 막힌 문제,<br><mark class="f-hl">같이 풀래요?</mark></h3>
-        <p>링크 하나로, 가입 없이, 지금 무료로.</p>
-        <div class="f-side"><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="f-hd"><span class="f-num">06</span><span class="fk">Provee Ground</span></div>
+        <div class="kt" role="img" aria-label="예시 대화. 학생: 이 문제 혼자서는 도저히 모르겠어요 ㅠ 같이 풀 사람.."><span class="kt-dt">예시 대화</span><div class="kt-me"><span class="kt-mt"><i>1</i>오후 10:05</span><p>이 문제 혼자서는 도저히 모르겠어요 ㅠ 같이 풀 사람..</p></div><div class="kt-ty"><span class="kt-av"></span><span class="kt-dots"><i></i><i></i><i></i></span></div></div>
+        <div class="f-ans"><span class="f-who"><span class="kt-av"></span>Provee</span><h3>혼자 막힌 문제,<br><mark class="f-hl">같이 풀래요?</mark></h3><p>링크 하나로, 가입 없이, 지금 무료로.</p><div class="f-side"><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
       </div>
       <div class="f-vis" data-scene="ground"></div>
     </div>
@@ -1934,7 +1979,7 @@ function sceneGround(){
 }
 /* ---------- 02-1 recog: the real chat where a photo of 2x + 1 was read as 24 + 1, then the same ink lifts into its six strokes in the order they were written ---------- */
 function sceneRecog(){
-  const el=document.createElement('div');el.className='cin';
+  const el=document.createElement('div');el.className='cin';const wrap=document.createElement('div');wrap.className='cin-w';wrap.appendChild(el);
   // 획 번호 → 글자 묶음과 색(어두운 무대용 밝은 색), 획마다 쓴 시각
   const G=[{s:[0],t:'2',c:'#E0485C'},{s:[1,2],t:'x',c:'#6FA0D8'},{s:[3,4],t:'+',c:'#D9A441'},{s:[5],t:'1',c:'#3FB27F'}],SC=[];G.forEach(g=>g.s.forEach(i=>SC[i]=g.c));
   const BD=['1 · 0.0초','2 · 0.7초','3 · 1.1초','4 · 2.8초','5 · 3.0초','6 · 3.3초'];
@@ -1952,7 +1997,7 @@ function sceneRecog(){
       ly.innerHTML=`<svg viewBox="0 0 ${W} ${H}" aria-hidden="true"><path d="${dd}"/></svg><span class="cin-bd" style="--x:${((p[0][0]-x0)/W*100).toFixed(1)}%;--y:${((p[0][1]-y0)/H*100).toFixed(1)}%">${BD[i]}</span>`;
       sk.appendChild(ly);L.push(ly)})};
   const set=(k,on)=>el.classList.toggle(k,on);
-  return {el,stop(){},async play(ok){
+  return {el:wrap,stop(){},async play(ok){
     await ink2P;if(!INK2||!ok())return;build();
     if(RM){['ul','ex','fin'].forEach(k=>set(k,true));L.forEach(l=>l.classList.add('lit'));return}
     while(ok()){el.classList.add('rs');['ul','ex','fin'].forEach(k=>set(k,false));L.forEach(l=>l.classList.remove('lit'));void el.offsetWidth;el.classList.remove('rs');
