@@ -903,7 +903,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .rd-cap{margin:0;font-size:12.5px;line-height:1.6;color:var(--ink3);text-align:center;max-width:44em}
 
 /* 시안 D */
-.hero.zoom.dz{height:245vh} /* 화면 속으로 들어가기 0.45장 + 문제 장면 하나당 0.2장. 멈춰 있어도 장면은 저절로 넘어간다 */
+.hero.zoom.dz{height:164vh} /* 화면 속으로 들어가기 0.6장 + 무대 0.04장. 장면은 스크롤 거리가 아니라 휠 한 칸·한 번 쓸기마다 하나씩 넘어간다 */
 /* 장면 점: 지금 장면은 다음으로 넘어갈 때까지 남은 시간만큼 차오르고, 누르면 그 장면으로 간다 */
 .dz .s3-dots i{position:relative;cursor:pointer}
 .dz .s3-dots i::before{content:"";position:absolute;inset:-12px -3px} /* 4px 막대도 손가락으로 누를 수 있게 */
@@ -2005,10 +2005,9 @@ const play=[s0,
     const t0=performance.now()+80;await new Promise(res=>{const tick=now=>{if(!ok())return res();const t=(now-t0)/SL;f.ctx.clearRect(0,0,f.W,f.H);DR.tok(f.ctx,S,t,tr,lw,'#221C39');if(t<E)requestAnimationFrame(tick);else res()};requestAnimationFrame(tick)});
     if(!ok())return;await DR.sleep(200);if(ok()){pop.classList.add('on');Z.querySelector('.s3-l.fin .rd').classList.add('on')}},
 ];
-// 문제 구간 시안: a=스크롤 짧게, b=스크롤 대신 시간으로 저절로 넘김(점을 누르면 그 장면으로). 없으면 지금 판
-// 장면은 스크롤로 바로 넘길 수 있고, 멈춰 있어도 잠깐 뒤 저절로 다음 장면으로 간다. 마지막(해결) 장면에서 멈춘다
+// 장면은 휠 한 칸으로 바로 넘길 수 있고, 멈춰 있어도 잠깐 뒤 저절로 다음 장면으로 간다. 마지막(해결) 장면에서 멈춘다
 const DUR=[3800,2800,3000,2700]; // 장면마다 머무는 시간(ms): 움직임이 끝나고 제목을 읽을 만큼만
-let cur=-1,tok=0,sI=-1;
+let cur=-1,tok=0;
 const go=i=>{if(i===cur)return;cur=i;const my=++tok;const ok=()=>my===tok;
   L.forEach((l,j)=>l.classList.toggle('on',j===i));D.forEach((d,j)=>d.classList.toggle('on',j===i));SC.forEach((c,j)=>c.classList.toggle('on',j===i));
   Z.classList.toggle('fin',i===4);Z.dataset.sc=i;if(i>=0)play[i](ok);
@@ -2016,9 +2015,7 @@ const go=i=>{if(i===cur)return;cur=i;const my=++tok;const ok=()=>my===tok;
 Z.dataset.sc=-1;Z.querySelector('.s3-dots').removeAttribute('aria-hidden');
 D.forEach((d,j)=>{d.setAttribute('role','button');d.tabIndex=0;d.setAttribute('aria-label',`${j+1}번째 장면`);
   const pick=()=>{if(cur!==j){cur=-9;go(j)}};d.addEventListener('click',pick);d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}})});
-// 스크롤로 앞 장면을 넘어서면 그 장면으로, 거꾸로 올라가면 올라간 장면으로. 시간이 앞서 있으면 그대로 둔다
-const byScroll=s=>{if(s>cur||s<sI&&s<cur)go(s);sI=s};
-const ZP=.31; // 전체 스크롤 중 화면 속으로 들어가는 구간 비율
+const ZP=.94; // 전체 스크롤 중 화면 속으로 들어가는 구간 비율. 나머지는 장면을 넘기는 동안 머무는 무대
 // 영상: 스크롤을 시작하면 끝 장면으로 건너뛰지 않고 빠르게 감아 끝낸다(건너뛰기는 다시 읽느라 멈칫함)
 const ffwd=()=>{if(vid.ended||!vid.duration||vid.currentTime>=vid.duration-.08)return;if(vid.playbackRate<6)vid.playbackRate=6;
   if(vid.paused)vid.play().catch(()=>{vid.currentTime=vid.duration-.04})};
@@ -2036,7 +2033,7 @@ const render=p=>{if(!M)measure();const m=M;HDR&&HDR.classList.toggle('noblur',p<
     scr.style.clipPath=`polygon(${pts.map(([x,y])=>`${x.toFixed(1)}px ${y.toFixed(1)}px`).join(',')})`;clipOff=false}
   else if(fill>=1&&!clipOff){scr.style.clipPath='none';clipOff=true}
   inn.style.opacity=Math.max(tx,warm?.004:0);inn.style.transform=`translate3d(0,${(24*(1-tx)).toFixed(2)}px,0)`;
-  const sp=cl((p-ZP)/(1-ZP),0,.9999);byScroll(q<.26?-1:Math.floor(sp*5))};
+  if(q<.26)go(-1);else if(cur<0)go(0)};
 if(DR.RM){scr.style.opacity=1;scr.style.clipPath='none';inn.style.opacity=1;go(4);return}
 // 스크롤 위치를 그대로 따라가지 않고 부드럽게 쫓아간다. 휠 한 칸의 계단이 매끈한 움직임이 된다
 const target=()=>{const r=Z.getBoundingClientRect(),span=r.height-innerHeight;return span>0?cl(-r.top/span):1};
@@ -2048,6 +2045,41 @@ addEventListener('scroll',kick,{passive:true});
 let lastW=innerWidth; // 휴대폰 주소창이 접혔다 펴지는 높이 변화로 장면이 처음부터 다시 돌지 않게, 너비가 바뀔 때만 지금 장면을 다시 그린다
 addEventListener('resize',()=>{M=null;clipOff=false;if(innerWidth!==lastW&&cur>=0){const c=cur;cur=-9;go(c)}lastW=innerWidth;kick()});
 measure();render(pD);
+// 한 번 굴리면 한 장면: 휠 한 칸·트랙패드 한 번 쓸기·휴대폰 한 번 밀기·아래 화살표 한 번이
+// 첫 화면에서는 태블릿 화면 속으로 들어가기, 무대에서는 다음 장면 하나가 된다. 해결 장면에서 한 번 더 내리면 평소처럼 스크롤된다
+const at=()=>{const t=Z.getBoundingClientRect().top+scrollY,span=Z.offsetHeight-innerHeight;return {y:scrollY,t,s:t+ZP*span,e:t+span}};
+let anim=0,lock=0,up=false; // up: 아래 섹션에서 올라와 무대에 들어온 중. 이때 위로 가는 입력은 장면을 되감지 않고 그대로 지나간다
+{let lastY=scrollY;addEventListener('scroll',()=>{const P=at(),y=scrollY;if(lastY>P.e+2&&y<=P.e+2)up=true;if(y<P.s-4)up=false;lastY=y},{passive:true})}
+const glide=(to,ms=760)=>{cancelAnimationFrame(anim);const from=scrollY,t0=performance.now();
+  const f=now=>{const k=cl((now-t0)/ms);scrollTo({top:from+(to-from)*ease(k),behavior:'instant'});anim=k<1?requestAnimationFrame(f):0};anim=requestAnimationFrame(f)};
+// dir 1=아래, -1=위. 지금 자리에서 이 입력을 히어로가 받으면 할 일을, 아니면 null(평소 스크롤)을 돌려준다
+const plan=dir=>{const P=at();if(P.y<P.t-2||P.y>P.e+2)return null;
+  if(P.y<P.s-4)return dir>0?()=>glide(P.s):null;
+  if(dir>0)return cur<4?()=>{up=false;go(Math.max(cur,-1)+1)}:null;
+  return up?null:cur>0?()=>go(cur-1):()=>glide(P.t)};
+const fire=(f,gap)=>{const now=performance.now();if(now-lock<gap)return;lock=now;f()};
+// 휠: 손을 멈췄다 다시 굴린 것만 새 입력으로 친다. 트랙패드 관성으로 이어지는 작은 신호는 장면을 더 넘기지 않고 먹는다
+let wT=0,wA=0,g=0,gIn=false,gUsed=-1;
+addEventListener('wheel',e=>{if(e.ctrlKey)return;const dy=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);if(!dy||Math.abs(e.deltaX)>Math.abs(dy))return;
+  const now=performance.now(),gap=now-wT,a=Math.abs(dy),dir=dy>0?1:-1;wT=now;
+  const fresh=gap>180||a>wA*1.6+4||(a>=50&&gap>60&&a>=wA&&now-lock>600);wA=a; // 마지막 항: 마우스 휠을 쉬지 않고 굴릴 때(큰 값이 띄엄띄엄) 0.6초마다 한 장면
+  if(fresh){g++;gIn=!!plan(dir)} // 아래 섹션에서 올라오던 손놀림은 히어로를 그대로 지나가게 둔다
+  if(anim){e.preventDefault();return}
+  const f=plan(dir);
+  if(!f){if(gUsed===g)e.preventDefault();return} // 해결 장면으로 넘긴 그 손놀림의 남은 관성으로 바로 빠져나가지 않게
+  if(!gIn)return;
+  e.preventDefault();if(fresh&&performance.now()-lock>=380){gUsed=g;fire(f,380)}},{passive:false});
+addEventListener('keydown',e=>{if(e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey)return;const t=e.target;
+  if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||e.key===' '&&/^(BUTTON|A)$/.test(t.tagName)))return;
+  const k=e.key,dir=k==='ArrowDown'||k==='PageDown'||k===' '&&!e.shiftKey?1:k==='ArrowUp'||k==='PageUp'||k===' '&&e.shiftKey?-1:0;if(!dir)return;
+  if(anim){e.preventDefault();return}const f=plan(dir);if(!f)return;e.preventDefault();fire(f,250)});
+// 휴대폰: 한 번 밀 때 처음 움직인 방향으로 히어로가 받을지 정하고, 받으면 그 손가락 하나에 장면 하나
+let tY=null,tF=null,tDone=false;
+addEventListener('touchstart',e=>{tY=e.touches.length===1?e.touches[0].clientY:null;tF=null;tDone=false},{passive:true});
+addEventListener('touchmove',e=>{if(tY===null)return;const dy=tY-e.touches[0].clientY;
+  if(tF===null){if(!dy)return;tF=anim?'eat':plan(dy>0?1:-1)||false}
+  if(!tF||!e.cancelable)return;e.preventDefault();
+  if(tF!=='eat'&&!tDone&&Math.abs(dy)>24){tDone=true;fire(tF,300)}},{passive:false});
 // 페이지를 연 직후, 사람이 스크롤하기 전에 태블릿 안 화면 전체를 눈에 안 보이게 한 번 그려 둔다.
 // 이렇게 하면 확대 도중이나 장면이 바뀔 때 처음 그리느라 멈칫하지 않는다
 const prewarm=()=>{if(pD>.01)return;warm=true;scr.style.clipPath='none';clipOff=true;scr.style.opacity=.004;inn.style.opacity=.004;
