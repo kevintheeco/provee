@@ -983,28 +983,75 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .sj-top p{margin:6px 0 0;font-size:15px;line-height:1.5;font-weight:500;color:var(--ink3)}
 .sj-vis{position:relative;min-width:0;margin-block:18px 0}
 .sj-src{margin:14px 4px 0;font-size:12px;line-height:1.6;color:var(--ink3)}
-/* 왼쪽: 같은 박자로 넘어가는 플래시카드(예시) */
-.sj-fc{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:18px}
-.sj-fcd{position:relative;min-height:210px;perspective:1400px}
-.sj-fcc{position:absolute;left:50%;top:46%;width:min(86%,330px);aspect-ratio:3/2;transform-style:preserve-3d;transform:translate(-50%,-50%);transition:transform .3s cubic-bezier(.5,0,.2,1),opacity .24s var(--ease)}
-.sj-fcc>div{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:8px;padding:16px;border-radius:16px;background:#fff;text-align:center;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-shadow:0 14px 30px -16px rgba(60,30,20,.35),inset 0 0 0 1px rgba(30,24,17,.06)}
-.sj-fcc small{font-size:13px;font-weight:600;color:var(--ink3)}
-.sj-fcc b{font-size:clamp(20px,2vw,23px);font-weight:800;letter-spacing:-.02em}
-.sj-fcc .sj-bk{transform:rotateY(180deg)}
-.sj-fcc .sj-ft b{font:700 clamp(26px,2.6vw,32px)/1.1 var(--brand);letter-spacing:-.02em}
-.sj-fcc .sj-bk b{font-size:clamp(22px,2.2vw,26px)}
-.sj-fco{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;background:var(--ink);display:grid;place-items:center;transform:scale(0);transition:transform .22s cubic-bezier(.3,1.6,.5,1)}
-.sj-fcc.ok .sj-fco{transform:none}
-.sj-fcb{display:grid;gap:10px}
-.sj-fcs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.sj-fcs i{height:6px;border-radius:3px;background:rgba(30,24,17,.1);transition:background .18s}
-.sj-fcs i.on{background:var(--ink)}
-.sj-fcn{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink3)}
-.sj-fcn b{font:600 13px var(--brand);color:var(--ink)}
+/* 왼쪽: 기존 AI에게 부탁하면 녹음 요약·플래시카드·마인드맵·퀴즈가 여기저기서 바로 튀어나온다(예시).
+   10:11 무대 하나에 배치를 고정하고 판 크기에 맞춰 통째로 줄인다(무대 안 크기·자리는 무대 너비 cqw 기준) */
+.mm{position:absolute;inset:0;container-type:size}
+.mm-st{position:absolute;left:50%;top:50%;width:min(100cqw,90.9cqh);aspect-ratio:10/11;transform:translate(-50%,-50%);container-type:size}
+.mm-st>*{position:absolute;opacity:0;transform:translate(var(--fx,0),var(--fy,0)) scale(.82);transition:opacity .34s var(--ease),transform .56s cubic-bezier(.2,1.25,.35,1)}
+.mm-st>.on{opacity:1;transform:none}
+.mm-it{background:#fff;border-radius:4cqw;box-shadow:0 0 0 1px rgba(64,96,170,.12),0 2cqw 6cqw -2cqw rgba(56,88,170,.34)}
+.mm-pr{z-index:2;display:flex;align-items:center;gap:2.2cqw;padding:1.7cqw 1.7cqw 1.7cqw 3.6cqw;border-radius:99px;background:#fff;white-space:nowrap;font-size:3.4cqw;font-weight:600;color:var(--ink);box-shadow:0 0 0 1px rgba(64,96,170,.14),0 1.6cqw 5cqw -1.6cqw rgba(56,88,170,.38)}
+.mm-pr i{width:6.4cqw;height:6.4cqw;border-radius:50%;background:#E6ECF8;display:grid;place-items:center}
+.mm-pr svg{width:3.2cqw;height:3.2cqw}
+.mm-hd{display:flex;align-items:center;gap:2cqw;font-size:3.4cqw;font-weight:700}
+.mm-hd small{margin-left:auto;font:600 3cqw var(--brand);color:var(--ink3)}
+.mm-hd i{width:2.4cqw;height:2.4cqw;border-radius:50%;background:#D64545;box-shadow:0 0 0 1.2cqw rgba(214,69,69,.14)}
+/* 녹음 요약 */
+.mm-rec{left:2cqw;top:2cqw;width:58cqw;padding:3.2cqw;--fx:-10cqw;--fy:-8cqw}
+.mm-wv{display:flex;align-items:center;gap:.8cqw;height:7cqw;margin:2cqw 0}
+.mm-wv b{flex:1;height:var(--h);border-radius:1cqw;background:#9AAAD0}
+.mm-rec.on .mm-wv b{animation:mmwv 1.1s ease-in-out var(--d) infinite alternate}
+@keyframes mmwv{to{transform:scaleY(.35)}}
+.mm-sm{display:grid;gap:1.4cqw;padding-top:2cqw;border-top:1px solid rgba(30,24,17,.08)}
+.mm-sm small{font-size:2.8cqw;font-weight:700;color:#4E66A6}
+.mm-sm b{display:block;height:2cqw;border-radius:1cqw;background:rgba(30,24,17,.12);width:var(--w);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease) var(--d)}
+.mm-rec.sum .mm-sm b{transform:none}
+.mm-p1{left:26cqw;top:32cqw;--fx:-12cqw}
+/* 퀴즈 */
+.mm-qz{right:2cqw;top:6cqw;width:34cqw;padding:3cqw;display:grid;gap:1.8cqw;--fx:10cqw;--fy:-8cqw}
+.mm-qz p{margin:0;display:flex;align-items:center;gap:1.6cqw}
+.mm-qz p i{flex:none;width:3.2cqw;height:3.2cqw;border-radius:50%;box-shadow:inset 0 0 0 1.5px #B9C3DD}
+.mm-qz p.ok i{background:#4E66A6;box-shadow:none}
+.mm-qz p b{height:2cqw;border-radius:1cqw;background:rgba(30,24,17,.12);width:var(--w)}
+/* 플래시카드 */
+.mm-fc{right:3cqw;top:46cqw;width:40cqw;aspect-ratio:4/3;perspective:120cqw;--fx:14cqw;--fy:4cqw}
+.mm-fc::before,.mm-fc::after{content:"";position:absolute;inset:0;border-radius:4cqw;background:#fff;box-shadow:0 0 0 1px rgba(64,96,170,.1)}
+.mm-fc::before{transform:translate(2.2cqw,2.6cqw) rotate(4deg)}.mm-fc::after{transform:translate(1.1cqw,1.3cqw) rotate(2deg)}
+.mm-fci{position:absolute;inset:0;z-index:1;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.5,0,.2,1)}
+.mm-fc.flip .mm-fci{transform:rotateY(180deg)}
+.mm-fci>div{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:1.4cqw;padding:2cqw;border-radius:4cqw;background:#fff;text-align:center;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-shadow:0 0 0 1px rgba(64,96,170,.12),0 2cqw 6cqw -2cqw rgba(56,88,170,.34)}
+.mm-fci>div:last-child{transform:rotateY(180deg)}
+.mm-fci small{font-size:2.8cqw;font-weight:600;color:var(--ink3)}
+.mm-fci b{font-size:5.6cqw;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.mm-fci>div:last-child b{font-size:4cqw}
+.mm-p2{right:4cqw;top:39cqw;--fx:10cqw}
+/* 마인드맵 */
+.mm-map{left:2cqw;bottom:2cqw;width:50cqw;padding:2.6cqw;--fy:12cqw}
+.mm-map svg{display:block;width:100%;height:auto;overflow:visible}
+.mm-map path{fill:none;stroke:#9AAAD0;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s var(--ease) var(--d)}
+.mm-map g{opacity:0;transition:opacity .3s var(--ease) var(--d)}
+.mm-map.on path{stroke-dashoffset:0}.mm-map.on g{opacity:1}
+.mm-map rect{fill:#EEF2FB}.mm-map .c rect{fill:#4E66A6}
+.mm-map text{font:600 11px var(--font);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.mm-map .c text{fill:#fff;font-weight:700}
+.mm-p3{left:22cqw;top:70cqw;--fx:-8cqw;--fy:6cqw}
 /* 오른쪽: 실제 풀이가 쌓이는 종이와, 펜이 움직인 시각을 찍은 띠 */
 .sj-ipg{position:relative;aspect-ratio:5/4;border-radius:14px;background:#fff;background-image:linear-gradient(rgba(30,24,17,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(30,24,17,.045) 1px,transparent 1px);background-size:24px 24px;box-shadow:inset 0 0 0 1px var(--rule)}
 .sj-ipg canvas{position:absolute;inset:0;width:100%;height:100%}
-.sj-clk{position:absolute;left:12px;bottom:12px;height:28px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:8px;background:rgba(255,253,248,.94);box-shadow:inset 0 0 0 1px var(--line);font:600 14px/1 var(--brand);font-variant-numeric:tabular-nums;color:var(--ink)}
+.sj-bar{position:absolute;left:12px;bottom:12px;display:flex;gap:6px}
+.sj-clk{height:28px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:8px;background:rgba(255,253,248,.94);box-shadow:inset 0 0 0 1px var(--line);font:600 14px/1 var(--brand);font-variant-numeric:tabular-nums;color:var(--ink)}
+.sj-st{height:28px;display:inline-flex;align-items:center;gap:7px;padding-inline:10px;border-radius:8px;background:rgba(255,253,248,.94);box-shadow:inset 0 0 0 1px var(--line);font-size:13px;font-weight:700;color:var(--ink)}
+.sj-st i{width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.sj-st[data-s="t"] i{background:#C08A2E;animation:sjbl 1s ease-in-out infinite}
+.sj-st[data-s="e"] i{background:var(--wine)}
+.sj-st[data-s="f"] i{background:#1F7A4D}
+@keyframes sjbl{50%{opacity:.3}}
+/* 펜을 놓고 고민하는 동안 펜 끝 옆에 뜨는 말줄임 말풍선 */
+.sj-tk{position:absolute;display:flex;gap:5px;padding:11px 13px;border-radius:14px 14px 14px 4px;background:#fff;box-shadow:0 8px 20px -10px rgba(60,30,20,.45),inset 0 0 0 1px var(--line);transform:translate(8px,calc(-100% - 8px)) scale(.5);transform-origin:0 100%;opacity:0;transition:opacity .18s var(--ease),transform .26s cubic-bezier(.3,1.5,.5,1);pointer-events:none}
+.sj-tk.on{opacity:1;transform:translate(8px,calc(-100% - 8px))}
+.sj-tk i{width:7px;height:7px;border-radius:50%;background:var(--ink2);animation:sjdt 1s ease-in-out infinite}
+.sj-tk i:nth-child(2){animation-delay:.15s}.sj-tk i:nth-child(3){animation-delay:.3s}
+@keyframes sjdt{0%,60%,100%{transform:none;opacity:.35}30%{transform:translateY(-3px);opacity:1}}
 .sj-itl{position:relative;margin-top:12px;padding-block:24px 22px}
 .sj-itl canvas{display:block;width:100%;height:18px}
 .sj-itl .sj-lb{position:absolute;display:flex;justify-content:center;white-space:nowrap;font-size:12px;font-weight:700;line-height:1;opacity:0;transition:opacity .22s var(--ease),transform .26s var(--ease)}
@@ -1036,7 +1083,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .sj-vb .sj-vis{grid-area:vis;margin:0;border-radius:24px;padding:clamp(16px,2.2vw,26px);-webkit-backface-visibility:hidden;backface-visibility:hidden;will-change:transform}
 .sj-vb .sj-m .sj-vis{background:#EFE8DC;box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line)}
 .sj-vb .sj-h .sj-vis{background:var(--paper);box-shadow:0 40px 80px -52px rgba(60,30,20,.42),inset 0 0 0 1px var(--line);transform:perspective(2600px) rotateY(-180deg)}
-.sj-vb .sj-fc{inset:clamp(16px,2.2vw,26px)}
+.sj-vb .mm{inset:clamp(16px,2.2vw,26px)}
 .sj-vb .sj-top{transition:opacity .28s var(--ease),transform .32s var(--ease)}
 .sj-vb.sj-sth .sj-m .sj-top{opacity:0;transform:translateY(-12px);pointer-events:none}
 .sj-vb:not(.sj-sth) .sj-h .sj-top{opacity:0;transform:translateY(12px);pointer-events:none}
@@ -2086,7 +2133,7 @@ const prewarm=()=>{if(pD>.01)return;warm=true;scr.style.clipPath='none';clipOff=
   requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{if(pD<=.01){clipOff=false;render(pD)}},120)))};
 (window.requestIdleCallback||setTimeout)(prewarm,{timeout:900})})();
 
-/* 손풀이 vs 암기형: 왼쪽은 카드가 같은 박자로 넘어가고, 오른쪽은 대표의 실제 풀이(2024 수능 14번)가 지우고 멈추며 쌓인다.
+/* 외우는 공부 vs 풀어야 하는 공부: 왼쪽은 기존 AI가 요약·카드·마인드맵을 바로 만들어 내고, 오른쪽은 대표의 실제 풀이(2024 수능 14번)가 쓰고 고민하고 지우며 쌓인다.
    ?subj=b 는 한 화면에서 스크롤에 따라 판이 뒤집히며 암기형에서 손풀이로 넘어간다 */
 (()=>{const sec=document.getElementById('subjects');if(!sec)return;
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2096,33 +2143,43 @@ if(V==='b')sec.querySelector('.sj-src').textContent='앞면 카드는 예시입�
 const duo=sec.querySelector('.sj-duo'),visM=sec.querySelector('.sj-m .sj-vis'),visH=sec.querySelector('.sj-h .sj-vis');
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(p,a,b)=>cl((p-a)/(b-a)),ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 
-/* 왼쪽: 플래시카드(예시). 한 장마다 앞면 → 뒤집기 → 맞음 세 박자 */
-const CARDS=[['abandon','버리다'],['reluctant','꺼리는'],['precise','정확한'],['inevitable','피할 수 없는']],NS=CARDS.length*3-1,BEAT=450;
-const CK='<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-visM.innerHTML=`<div class="sj-fc"><div class="sj-fcd">${CARDS.map(([q,a])=>`<div class="sj-fcc"><div class="sj-ft"><small>영단어</small><b>${q}</b></div><div class="sj-bk"><small>뜻</small><b>${a}</b><span class="sj-fco">${CK}</span></div></div>`).join('')}</div><div class="sj-fcb"><div class="sj-fcs">${CARDS.map(()=>'<i></i>').join('')}</div><div class="sj-fcn"><span>외운 카드</span><span><b>0</b> / ${CARDS.length}</span></div></div></div>`;
-const FC=[...visM.querySelectorAll('.sj-fcc')],FS=[...visM.querySelectorAll('.sj-fcs i')],FN=visM.querySelector('.sj-fcn b');
+/* 왼쪽(예시): 부탁 말풍선이 뜨면 녹음 요약 → 플래시카드 → 마인드맵이 판 여기저기서 튀어나온다. 단계 0~NS */
+const GO='<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="#4E66A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i>';
+const WV=[.45,.7,.35,.9,.6,1,.5,.8,.4,.65,.95,.55,.3,.75,.5,.85,.4,.6,.9,.45,.7,.35,.8,.55,.4,.65].map((h,j)=>`<b style="--h:${h*100}%;--d:-${(j*.13%1.1).toFixed(2)}s"></b>`).join('');
+const MN=[[36,20,'인지질',46],[164,20,'단백질',46],[36,98,'능동 수송',56],[164,98,'삼투',38]];
+const MAP=`<svg viewBox="0 0 200 118" aria-hidden="true">${MN.map(([x,y],j)=>`<path pathLength="1" style="--d:${.08+j*.08}s" d="M100 59C${x<100?76:124} 59 ${x<100?60:140} ${y} ${x} ${y}"/>`).join('')}
+  <g class="c" style="--d:0s"><rect x="72" y="48" width="56" height="22" rx="11"/><text x="100" y="59">세포막</text></g>
+  ${MN.map(([x,y,t,w],j)=>`<g style="--d:${.3+j*.08}s"><rect x="${x-w/2}" y="${y-10}" width="${w}" height="20" rx="10"/><text x="${x}" y="${y}">${t}</text></g>`).join('')}</svg>`;
+visM.innerHTML=`<div class="mm"><div class="mm-st">
+  <div class="mm-it mm-rec"><div class="mm-hd"><i></i><span>생물 3강 녹음</span><small>48:12</small></div><div class="mm-wv">${WV}</div><div class="mm-sm"><small>AI 요약</small><b style="--w:94%;--d:0s"></b><b style="--w:70%;--d:.12s"></b></div></div>
+  <div class="mm-pr mm-p1">녹음 요약해 줘${GO}</div>
+  <div class="mm-it mm-qz"><div class="mm-hd"><span>퀴즈 10문항</span></div><p><i></i><b style="--w:80%"></b></p><p class="ok"><i></i><b style="--w:64%"></b></p><p><i></i><b style="--w:72%"></b></p></div>
+  <div class="mm-it mm-fc"><div class="mm-fci"><div><small>플래시카드</small><b>삼투</b></div><div><small>뜻</small><b>막을 지나는 물의 이동</b></div></div></div>
+  <div class="mm-pr mm-p2">플래시카드 만들어 줘${GO}</div>
+  <div class="mm-it mm-map">${MAP}</div>
+  <div class="mm-pr mm-p3">마인드맵으로 정리해 줘${GO}</div></div></div>`;
+const MM={p1:1,rec:2,sum:3,p2:4,fc:5,flip:6,p3:7,map:8,qz:9},NS=9,BEAT=400,mq=k=>visM.querySelector('.mm-'+k);
 let cs=-1;
-const cards=s=>{s=cl(Math.floor(s),0,NS);if(s===cs)return;cs=s;const cur=Math.floor(s/3),k=s-cur*3,n=cur+(k===2?1:0);
-  FC.forEach((c,j)=>{const d=j-cur;let x=0,y=0,sc=1,r=0,ry=0,o=1;
-    if(d<0){x=-125;y=8;r=-9;ry=180;o=0}else if(d===0){ry=k?180:0}else{y=d*13;sc=1-d*.06;o=d<3?1:0}
-    c.style.transform=`translate(-50%,-50%) translate(${x}%,${y}px) rotate(${r}deg) scale(${sc}) rotateY(${ry}deg)`;c.style.opacity=o;c.style.zIndex=10-Math.abs(d);c.classList.toggle('ok',d<0||(d===0&&k===2))});
-  FS.forEach((i,j)=>i.classList.toggle('on',j<n));FN.textContent=n};
+const cards=s=>{s=cl(Math.floor(s),0,NS);if(s===cs)return;cs=s;
+  for(const k of ['p1','rec','p2','fc','p3','map','qz'])mq(k).classList.toggle('on',s>=MM[k]);
+  mq('rec').classList.toggle('sum',s>=MM.sum);mq('fc').classList.toggle('flip',s>=MM.flip)};
 cards(0);
 
 /* 오른쪽: 실제 필기. 쓰는 동안은 빠르게 흐르고, 펜이 오래 멈춘 구간은 시계만 돈다. 지운 획은 점선으로 남긴다 */
-visH.innerHTML='<div class="sj-ip"><div class="sj-ipg"><canvas></canvas><span class="sj-clk">00:00</span></div><div class="sj-itl"><span class="sj-lb sj-er"><span>지우고 다시 그린 그래프</span></span><canvas></canvas><span class="sj-lb sj-ps"><span>펜을 놓은 3분 19초</span></span><span class="sj-t0">0:00</span><span class="sj-t1"></span></div></div>';
-const pgEl=visH.querySelector('.sj-ipg'),[cvP,cvT]=visH.querySelectorAll('canvas'),clk=visH.querySelector('.sj-clk'),lbE=visH.querySelector('.sj-er'),lbP=visH.querySelector('.sj-ps');
-const A=.03,AG=.006,B0=60,B1=100; // 펜을 댄 시간은 약 33배, 짧은 쉼은 0.3초까지만, 20초 넘는 멈춤은 길이에 따라 0.1~0.4초
+visH.innerHTML='<div class="sj-ip"><div class="sj-ipg"><canvas></canvas><span class="sj-tk"><i></i><i></i><i></i></span><span class="sj-bar"><span class="sj-clk">00:00</span><span class="sj-st" data-s="w"><i></i><span>쓰는 중</span></span></span></div><div class="sj-itl"><span class="sj-lb sj-er"><span>지우고 다시 그린 그래프</span></span><canvas></canvas><span class="sj-lb sj-ps"><span>펜을 놓고 고민한 3분 19초</span></span><span class="sj-t0">0:00</span><span class="sj-t1"></span></div></div>';
+const pgEl=visH.querySelector('.sj-ipg'),[cvP,cvT]=visH.querySelectorAll('canvas'),clk=visH.querySelector('.sj-clk'),lbE=visH.querySelector('.sj-er'),lbP=visH.querySelector('.sj-ps'),stE=visH.querySelector('.sj-st'),tkE=visH.querySelector('.sj-tk');
+const A=.03,AG=.006,B0=60,B1=100,TH=60000; // 펜을 댄 시간은 약 33배, 짧은 쉼은 0.3초까지만, 20초 넘는 멈춤은 0.1~0.3초. 1분 넘게 펜을 놓은 곳(고민)은 1초 안팎 머문다
+const ST={w:'쓰는 중',t:'고민하는 중',e:'지우고 다시 쓰는 중',f:'다 풀었어요'};
 const mmss=t=>{t=Math.floor(t/1000);return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
-let S=null,TT=0,PBT=0,PB=[],PE=[],GH=[],ER=null,GP=null,box=null,P=null,T=null,lastPb=-1;
+let S=null,TT=0,PBT=0,PB=[],PE=[],GH=[],EV=[],ER=null,GP=null,box=null,P=null,T=null,lastPb=-1,stNow='w';
 function build(d){S=d.s;const t=q=>q.p[0][2],u=q=>q.p[q.p.length-1][2];TT=u(S[S.length-1]);let pb=0,best=[0,0];
-  S.forEach((q,i)=>{if(i){const g=Math.max(0,t(q)-u(S[i-1]));pb+=Math.min(g,300)*AG+(g>20000?B0+B1*Math.log2(g/20000):0);if(g>best[0])best=[g,i]}PB[i]=pb;pb+=(u(q)-t(q))*A;PE[i]=pb});PBT=pb;
+  S.forEach((q,i)=>{if(i){const g=Math.max(0,t(q)-u(S[i-1]));pb+=Math.min(g,300)*AG+(g>=TH?900+300*Math.log2(g/TH):g>20000?B0+B1*Math.log2(g/20000):0);if(g>best[0])best=[g,i]}PB[i]=pb;pb+=(u(q)-t(q))*A;PE[i]=pb});PBT=pb;
   // 지운 획은 다음에 남은 획을 쓰기 전, 쉬는 구간 한가운데에서 점선으로 바뀐다
-  S.forEach((q,i)=>{if(!q.e)return;let k=i+1;while(k<S.length&&S[k].e)k++;GH[i]=k<S.length?(PE[k-1]+PB[k])/2:PBT});
+  S.forEach((q,i)=>{if(!q.e)return;let k=i+1;while(k<S.length&&S[k].e)k++;GH[i]=k<S.length?(PE[k-1]+PB[k])/2:PBT});EV=[...new Set(GH.filter(v=>v!=null))];
   // 가장 길게 이어서 지운 묶음, 가장 긴 멈춤
   let run=null,r0=-1;S.forEach((q,i)=>{if(q.e){if(r0<0)r0=i;if(!run||i-r0>run[1]-run[0])run=[r0,i]}else r0=-1});
   ER={a:t(S[run[0]]),b:u(S[run[1]]),g:GH[run[0]]};const gi=best[1];GP={a:u(S[gi-1]),b:t(S[gi]),ms:best[0]};
-  const s=Math.round(GP.ms/1000),pl=`펜을 놓은 ${Math.floor(s/60)}분 ${s%60}초`;if(lbP.firstChild.textContent!==pl)lbP.firstChild.textContent=pl;visH.querySelector('.sj-t1').textContent=mmss(TT).replace(/^0/,'');
+  const s=Math.round(GP.ms/1000),pl=`펜을 놓고 고민한 ${Math.floor(s/60)}분 ${s%60}초`;if(lbP.firstChild.textContent!==pl)lbP.firstChild.textContent=pl;visH.querySelector('.sj-t1').textContent=mmss(TT).replace(/^0/,'');
   let a=1e9,b=1e9,c=-1e9,e=-1e9;for(const q of S)for(const p of q.p){a=Math.min(a,p[0]);b=Math.min(b,p[1]);c=Math.max(c,p[0]);e=Math.max(e,p[1])}box=[a,b,c,e]}
 function fit(cv){const W=cv.clientWidth,H=cv.clientHeight;if(!W||!H)return null;const dpr=Math.min(2,devicePixelRatio||1);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return {ctx,W,H}}
 function size(){if(!S)return false;P=fit(cvP);T=fit(cvT);if(!P||!T)return false;
@@ -2138,6 +2195,12 @@ function paint(pb){if(!S||!P)return;pb=cl(pb,0,PBT);if(pb===lastPb)return;lastPb
     for(let m=1;m<n-1;m++)ctx.quadraticCurveTo(X(p[m][0]),Y(p[m][1]),(X(p[m][0])+X(p[m+1][0]))/2,(Y(p[m][1])+Y(p[m+1][1]))/2);
     if(n>1)ctx.lineTo(X(p[n-1][0]),Y(p[n-1][1]));ctx.stroke();if(j===i&&upto!==Infinity)tip=[X(p[n-1][0]),Y(p[n-1][1])]}
   ctx.setLineDash([]);if(tip&&pb<PBT){ctx.fillStyle='#8A1C2B';ctx.beginPath();ctx.arc(tip[0],tip[1],Math.max(2.4,lw*1.5),0,7);ctx.fill()}
+  // 지금 무엇을 하는 중인지: 1분 넘게 펜을 놓은 사이면 고민, 획을 지운 직후면 지우고 다시, 끝나면 다 풀었어요
+  let st=pb>=PBT?'f':'w',th=null;
+  if(st==='w'&&i>=0&&i<S.length-1&&pb>PE[i]){const l=S[i].p[S[i].p.length-1];if(S[i+1].p[0][2]-l[2]>=TH){st='t';th=[X(l[0]),Y(l[1])]}}
+  if(st==='w'&&EV.some(v=>pb>=v&&pb<v+900))st='e';
+  if(st!==stNow){stNow=st;stE.dataset.s=st;stE.lastChild.textContent=ST[st]}
+  if(th){tkE.style.left=th[0].toFixed(1)+'px';tkE.style.top=th[1].toFixed(1)+'px'}tkE.classList.toggle('on',!!th);
   const rt=pb>=PBT?TT:realAt(pb);clk.textContent=mmss(rt);
   // 띠: 획마다 쓴 시각에 짧은 눈금. 지운 획은 와인색, 아직 안 쓴 획은 옅게
   const c=T.ctx,w=T.W,h=T.H;c.clearRect(0,0,w,h);
@@ -2163,10 +2226,10 @@ if(V==='a'){
   new IntersectionObserver(([e])=>{if(e.intersectionRatio>=.45){if(!dI){dI=1;playI()}}else if(!e.isIntersecting){dI=0;cancelAnimationFrame(rI);rI=0;show(0)}},{threshold:[0,.45]}).observe(visH);
   return}
 
-/* 시안 b: 스크롤 진행에 따라 카드는 계단식으로 넘어가고(박자가 딱딱 끊김), 판이 뒤집힌 뒤 필기는 스크롤을 따라 매끈하게 흐른다 */
+/* 시안 b: 스크롤 진행에 따라 AI 결과물이 하나씩 튀어나오고, 판이 뒤집힌 뒤 필기는 스크롤을 따라 매끈하게 흐른다 */
 const run=sec.querySelector('.sj-run');
 const target=()=>{const r=run.getBoundingClientRect(),span=r.height-innerHeight;return span>0?cl(-r.top/span):1};
-const render=p=>{const j=Math.min(CARDS.length*2-1,Math.floor(seg(p,.03,.32)*CARDS.length*2));cards(Math.floor(j/2)*3+(j%2?2:0));
+const render=p=>{cards(seg(p,.03,.3)*NS);
   const th=180*ease(seg(p,.34,.44));visM.style.transform=`perspective(2600px) rotateY(${th.toFixed(2)}deg)`;visH.style.transform=`perspective(2600px) rotateY(${(th-180).toFixed(2)}deg)`;
   sec.classList.toggle('sj-sth',th>=90);if(S)show(seg(p,.46,.96)*PBT)};
 let pD=target(),loop=0,last=0;
