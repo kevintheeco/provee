@@ -129,6 +129,7 @@ const T={
 '<b>문제</b>방정식 x² − 5x + 6 = 0 을 푸시오.':'<b>Problem</b>Solve x² − 5x + 6 = 0.',
 '앞의 창들은 설명을 위한 예시입니다. Provee 화면 속 필기는 대표가 태블릿에 직접 쓴 실제 필기(획 14개, 25개)를 빠르게 재생한 것입니다.':'The separate windows are an illustration. The handwriting in the Provee screen is real, written by our CEO on a tablet (14 and 25 strokes), replayed at speed.',
 '강의자료.pdf':'Lecture slides.pdf',
+'필기 사진을 올리고 이거 뭐라 쓴거게 라고 묻자 AI가 이번 건은 24 + 1로 보여 라고 답한 실제 대화':'A real chat: a photo of handwriting with the question "what did I write?", and the AI answering that it looks like 24 + 1',
 '앱 전환 <b>0</b>번':'<b>0</b> app switches',
 '3강 이차방정식':'Lecture 3 · Quadratics',
 '강의자료':'Lecture slides',
