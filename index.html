@@ -67,7 +67,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .btn-l{background:rgba(255,255,255,.42);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 1px 2px rgba(30,24,17,.06),0 6px 18px rgba(30,24,17,.07)}
 .btn-l:hover{background:rgba(255,255,255,.6)}
 .hdr .btn{height:42px;padding-inline:18px;font-size:14px}
-.hdr .btn-w{transition:opacity .2s}.at-join .hdr .btn-w,.at-hero .hdr .btn-w{opacity:0;pointer-events:none}
+.at-join .hdr .btn-w,.at-hero .hdr .btn-w,.at-now .hdr .btn-w{display:none}
 .burger{display:none;width:44px;height:44px;border-radius:12px;place-items:center}
 @media (max-width:1020px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{height:38px;padding-inline:14px;font-size:13px;border-radius:12px}}
 /* 폰: 햄버거 옆에 작게. 자리가 빠듯하면 간격부터 줄인다 */
@@ -90,7 +90,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .hero-bg{position:absolute;inset:0;background:url(img/hero-pen.jpg) 70% 50%/cover no-repeat;transform:scale(1.04);animation:heroIn 2.4s var(--ease) forwards}
 @keyframes heroIn{to{transform:scale(1)}}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(247,243,236,.97) 0%,rgba(247,243,236,.93) 34%,rgba(247,243,236,.55) 52%,rgba(247,243,236,0) 68%)}
-.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:120px var(--gut) 72px;--wmfs:clamp(60px,8.4vw,116px)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:120px var(--gut) 72px;--wmfs:clamp(48px,6.6vw,92px)}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--ink2)}
 /* 윗글 P의 세로획을 큰 Provee의 P 세로획에 맞춤(글자 옆 여백 .06em 보정), 윗글 밑과 P 윗선 간격은 큰 글씨의 .152배 */
 .hero .eyebrow{margin:0 0 0 calc(var(--wmfs)*.06 - .06em);line-height:1}
@@ -119,6 +119,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .ftabs a{flex:none;display:flex;align-items:center;gap:8px;height:54px;padding-inline:14px;font-size:15px;font-weight:600;color:var(--ink3);box-shadow:inset 0 -2px 0 transparent;transition:color .2s,box-shadow .2s}
 .ftabs a small{font:700 12px var(--brand);color:var(--ink3);transition:color .2s}
 .ftabs a:hover{color:var(--ink2)}
+.ftabs .ftabs-cta{margin-left:auto;align-self:center;height:38px;padding-inline:16px;font-size:14px;color:#fff;box-shadow:none}.ftabs .ftabs-cta:hover{color:#fff}
+@media (max-width:1020px){.ftabs .ftabs-cta{display:none}}
 .hdr{transition:transform .25s var(--ease),background .2s var(--ease),box-shadow .2s var(--ease)}.ft-on .hdr{transform:translateY(-100%)}.ft-on .ftabs{top:0}
 @media (max-width:760px){.ftabs-in{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent)}}
 .ftabs a[aria-current="true"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
@@ -373,7 +375,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .rv-a b{font:600 19px/1 var(--brand);color:var(--ink2);margin-right:2px}
 .rv-b{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:10px;row-gap:2px;font-size:15px;font-weight:600;color:var(--ink);box-shadow:inset 1px 0 0 var(--line);opacity:0;transform:translateX(-6px);transition:opacity .2s var(--ease),transform .28s var(--ease)}
 .rv-b.on{opacity:1;transform:none}
-.rv-b b{font:700 21px/1 var(--brand);color:var(--wine);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.rv-b b{font:700 21px/1 var(--brand);color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .rv-b small{font-size:13px;font-weight:500;color:var(--ink3)}
 .rv-sq{display:inline-flex;gap:4px;align-self:center}
 .rv-sq i{width:21px;height:21px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--brand);font-style:normal;color:#C9BFB1;box-shadow:inset 0 0 0 1.5px #DCD3C6;transition:color .2s,box-shadow .2s,background .2s,transform .25s cubic-bezier(.2,0,0,1.35)}
@@ -612,10 +614,10 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .price{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:6px;margin-top:14px}
 .price b{display:inline-grid;overflow:hidden;padding-block:3px;font:700 clamp(28px,2.5vw,34px)/1.15 var(--brand);letter-spacing:-.03em}
 .pr-v{grid-area:1/1;white-space:nowrap}
-.plan.main .price b{color:var(--wine)}
+.plan.main .price b{color:var(--ink)}
 .price .pr-u{font-size:15px;color:var(--ink3);font-weight:600}
 .pr-cup{margin:4px 0 0;font-size:15px;line-height:1.5;font-weight:600;color:var(--ink)}
-.plan.main .pr-cup{color:var(--wine-d)}
+.plan.main .pr-cup{color:var(--ink)}
 .alt{display:block;margin-top:4px;font-size:13px;line-height:1.5;color:var(--ink3);min-height:20px}
 .p-plus{margin:18px 0 0;padding-top:14px;border-top:1px solid var(--rule);font-size:13px;font-weight:600;line-height:1.5;color:var(--ink3)}
 .plan ul{list-style:none;margin:0;padding:10px 0 0;display:grid;gap:10px;align-content:start;font-size:15px;line-height:1.5;color:var(--ink2)}
@@ -735,7 +737,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .tx-i>b{margin-top:16px;font-size:18px;line-height:1.45;letter-spacing:-.02em}
 .tx-i>span{margin-top:6px;font-size:15px;line-height:1.6;color:var(--ink2)}
 .tx-note{margin-top:8px;font-style:normal;font-size:15px;line-height:1.55;font-weight:700;color:var(--ink)}
-.tx-i.next>span{color:var(--wine);font-weight:700}
+.tx-i.next>span{color:var(--ink);font-weight:700}
 .tv{position:relative;margin:12px 0 0;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
 .tv img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0}
 .tv-z img{object-position:0 0;transform:scale(1.2) translate(-.4%,-.8%);transform-origin:0 0}
@@ -769,7 +771,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .tv-m .stn i.me::before{width:22px;height:22px;margin-top:-4px;box-shadow:inset 0 0 0 5px var(--wine)}
 .tv-m .stn em{font-style:normal;font-size:13px;color:var(--ink3);white-space:nowrap}
 .tv-m .stn i.me em{font-size:17px;font-weight:800;color:var(--ink)}
-.tv-x{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;padding:20px 22px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);outline:1.5px dashed #C9BCA8;outline-offset:-1.5px}
+.tv-x{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;aspect-ratio:auto!important;padding:22px 22px 24px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line)}
 .tv-x p{margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.4;letter-spacing:-.02em}
 /* 사진 없는 칸은 글만, 폭도 좁게. 앞으로의 일정은 빈 점과 옅은 글자 */
 .tx-i.txt>b{margin-top:10px}
@@ -799,13 +801,13 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .tm b{font-size:17px}
 .tm em{font-style:normal;font-size:13px;font-weight:700;color:var(--ink3)}
 .tm span{font-size:14px;line-height:1.55;color:var(--ink2)}
-.tm.ceo{grid-column:span 2;grid-template-columns:76px 1fr;column-gap:20px;padding:28px;background:#1E1811;box-shadow:none}
+.tm.ceo{grid-column:1/-1;grid-template-columns:76px 1fr;column-gap:20px;padding:28px;background:#1E1811;box-shadow:none}
 .tm.ceo .av{grid-row:span 4;width:76px;height:76px;font-size:22px;background:var(--wine);color:#fff}
 .tm.ceo b{font-size:20px;color:#F7F1E8}
-.tm.ceo em{font-size:14px;color:#E0566A}
+.tm.ceo em{font-size:14px;color:#CFC6BA}
 .tm.ceo em.also{color:#F7F1E8}
 .tm.ceo span{font-size:15px;color:#CFC6BA;margin-top:4px}
-@media (max-width:1020px){.tm-grid{grid-template-columns:repeat(2,1fr)}.tm.hs{grid-column:span 2}}
+@media (max-width:1020px){.tm-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.tm-grid{grid-template-columns:1fr}.tm.ceo,.tm.hs{grid-column:auto}.tm.ceo{grid-template-columns:60px 1fr;column-gap:14px;padding:24px}.tm.ceo .av{width:60px;height:60px;font-size:18px}}
 .st-end{background:linear-gradient(135deg,#8A1C2B,#5E1220);color:#fff;min-height:56vh;display:grid;place-items:center;text-align:center;padding:96px var(--gut)}
 .st-end p{margin:0;font-size:clamp(24px,3.2vw,40px);line-height:1.5;font-weight:700;letter-spacing:-.03em}
@@ -1073,7 +1075,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .og-empty span,.tv-empty span{font-size:12px;letter-spacing:.02em;color:var(--ink3)}
 .tv-empty{display:grid;place-items:center;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(201,188,168,.12) 10px 11px);box-shadow:inset 0 0 0 1.5px #D8CCB9}
 /* 손풀이 vs 암기형 */
-.sj-sec{position:relative;padding-block:clamp(88px,10vw,140px) clamp(72px,8vw,112px);background:var(--ivory)}
+.sj-sec{position:relative;padding-block:clamp(32px,4vw,56px) clamp(72px,8vw,112px);background:var(--ivory)}
 .sj-head{margin-bottom:clamp(36px,4.5vw,56px)}
 .sj-head h2{margin:0;font-size:clamp(28px,3.4vw,42px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
 .sj-head h2 em{font-style:normal;color:var(--ink)}
@@ -1176,11 +1178,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 /* 시안 b: 한 화면에서 판이 뒤집히며 암기형에서 손풀이로 넘어간다 */
 .sj-sec.sj-vb{padding-bottom:clamp(72px,8vw,112px)}
 /* 왜: 비교 다음에 결론 한 줄과 근거, 그리고 기능으로 넘어가는 다리 한 줄 */
-.sj-why{display:grid;gap:14px;margin-top:clamp(56px,7vw,96px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line)}
+.sj-why{display:grid;gap:14px;margin-top:clamp(56px,7vw,96px)}
+.sj-why::before{content:"";display:block;height:1px;margin-bottom:clamp(18px,3vw,34px);background:var(--line)}
 .sj-w1{margin:0;font-size:clamp(26px,3vw,38px);line-height:1.4;font-weight:800;letter-spacing:-.03em}
-.sj-cite{margin:0;max-width:46em;font-size:14px;line-height:1.7;color:var(--ink3)}
-.sj-cite a{color:var(--ink2);text-decoration:underline;text-underline-offset:3px}
-.sj-w3{margin:6px 0 0;font-size:clamp(18px,1.7vw,21px);line-height:1.55;font-weight:700;letter-spacing:-.02em;color:var(--ink2)}
+.sj-cite{margin:0;max-width:44em;font-size:16px;line-height:1.7;color:var(--ink2)}
+.sj-cite a{font-size:13px;color:var(--ink3);text-decoration:underline;text-underline-offset:3px}
+.sj-w3{margin:0;font-size:17px;line-height:1.7;font-weight:400;color:var(--ink2)}
 .sj-w2{margin:10px 0 0;font-size:clamp(19px,1.8vw,22px);font-weight:700;letter-spacing:-.02em}
 .sj-vb .sj-run{position:relative;height:180vh}
 .sj-vb .sj-pin{position:sticky;top:var(--hdr);height:calc(100vh - var(--hdr));height:calc(100svh - var(--hdr));display:flex;flex-direction:column;justify-content:center;overflow:hidden}
@@ -1295,8 +1298,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   </div></div></div>
   <div class="wrap sj-why">
     <p class="sj-w1">AI가 답을 빨리 줄수록,<br>학생이 생각할 틈은 줄었습니다.</p>
-    <p class="sj-cite">고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani 외, PNAS, 2025</a></p>
     <p class="sj-w3">사진 한 장이면 답이 나오면서,<br>공부는 받아 적는 일이 되어 갔습니다.</p>
+    <p class="sj-cite">고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani 외, PNAS, 2025</a></p>
     <p class="sj-w2">Provee는 이 흐름을 거꾸로 갑니다.</p>
   </div>
 
@@ -1310,7 +1313,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <a href="#f-ask" data-f="ask"><small>04</small>되묻는 튜터</a>
     <a href="#f-note" data-f="note"><small>05</small>Provee Note</a>
     <a href="#f-ground" data-f="ground"><small>06</small>Provee Ground</a>
-  </div></nav>
+  <a class="btn btn-w ftabs-cta" href="#join">사전신청</a></div></nav>
   <div class="wrap">
     <div class="frow" id="f-input" data-f="input">
       <div class="f-copy">
@@ -2091,7 +2094,8 @@ addEventListener('resize',tLayout);tMQ.addEventListener?.('change',tLayout);docu
 
 /* ---------- header, mega menu, drawer, gnb current ---------- */
 const hdr=$('#hdr');new IntersectionObserver(([e])=>{if(e.isIntersecting)$$('[data-nav]').forEach(a=>a.removeAttribute('aria-current'))},{rootMargin:'-80px 0px 0px 0px'}).observe($('.hero'));
-new IntersectionObserver(([e])=>document.body.classList.toggle('at-join',e.isIntersecting),{threshold:.25}).observe($('#join'));
+{const jn=$('#join'),jt=()=>document.body.classList.toggle('at-join',jn.getBoundingClientRect().top<innerHeight*.85);addEventListener('scroll',jt,{passive:true});jt()}
+{const nw=$('.tv-x');if(nw)new IntersectionObserver(([e])=>document.body.classList.toggle('at-now',e.isIntersecting),{threshold:.4}).observe(nw)}
 {const ah=()=>document.body.classList.toggle('at-hero',scrollY<innerHeight*.45);addEventListener('scroll',ah,{passive:true});ah()}
 {const fs=$('#features'),ft=()=>{const r=fs.getBoundingClientRect();document.body.classList.toggle('ft-on',r.top<=0&&r.bottom>140)};addEventListener('scroll',ft,{passive:true});ft()}
 const hdrSolid=()=>hdr.classList.toggle('solid',scrollY>8);addEventListener('scroll',hdrSolid,{passive:true});hdrSolid();
@@ -2111,7 +2115,7 @@ const nav=$$('[data-nav]');const sio=new IntersectionObserver(es=>es.forEach(e=>
 /* ---------- 사전신청 ---------- */
 (()=>{const $=s=>document.querySelector(s),f=$('#preForm');if(!f)return;const em=$('#preEmail'),ag=$('#preAgree'),msg=$('#preMsg'),bt=f.querySelector('button'),ok=f.querySelector('.pre-ok');
 /* 체크 전에는 버튼을 옅게(누르면 이유를 알려 줌), 이메일을 쓰기 시작했는데 체크가 없으면 동의 줄을 밝힌다 */
-const sync=()=>{bt.setAttribute('aria-disabled',String(!ag.checked));ok.classList.toggle('need',!ag.checked&&em.value.trim().length>0)};
+const sync=()=>{ok.classList.toggle('need',!ag.checked&&em.value.trim().length>0)};
 em.addEventListener('input',sync);ag.addEventListener('change',()=>{sync();if(ag.checked&&!bt.disabled)msg.textContent=''});sync();
 const API=location.hostname==='localhost'?'http://localhost:8799/api/prereg':'https://prereg.provee.kr/api/prereg';
 f.addEventListener('submit',async e=>{e.preventDefault();const v=em.value.trim();
