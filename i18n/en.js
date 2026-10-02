@@ -61,6 +61,7 @@ const T={
 '묻지 않은 것':'What I didn\'t ask',
 '사진으로 읽은 식 <b>24 + 1</b>':'Read from photo: <b>24 + 1</b>',
 'AI 채팅':'AI Chat',
+'문제를 다시 읽어볼까?':'Shall we read the problem again?',
 '사진 한 장으로 추정':'guessing from one photo',
 '사진으로 보면: 겹친 이미지 한 장':'As a photo: one flat, overlapping image',
 'Provee로 보면: 쓴 순서대로 획 6개':'As Provee sees it: 6 strokes, in the order written',

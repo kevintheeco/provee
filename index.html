@@ -1638,10 +1638,9 @@ function sceneAsk(){
     <span class="qtab">14번 문제 보기</span>
     <span class="wt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 9v4.4l2.6 1.6M9.5 2.8h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>펜 멈춤 <b>0초</b></span>
     <div class="exam"><div class="lab">문제 다시 읽기</div><div class="im"><img src="img/q14.png" alt="2024학년도 수능 수학 14번 문제: 두 자연수 a, b에 대하여 함수 f(x)는 ..."><span class="hl"></span></div></div>
-    <div class="pop"><div class="who"><b>P</b>Provee</div><p>x &gt; 2 쪽을 위로 볼록하게 그렸네. 첫 줄에서 a가 어떤 수라고 했지?</p><div class="btns"><span class="b1">다시 읽을게</span><span>힌트 더 줘</span></div></div>
-    <span class="tapdot"></span>
+    <div class="pop"><div class="who"><b>P</b>Provee</div><p>문제를 다시 읽어볼까?</p></div>
   </div></div><p class="scap">대표가 2024학년도 수능 14번을 푼 실제 필기(획 594개, 18분) 가운데 그래프 대목을 빠르게 재생한 화면. 실제로는 혼자 고쳤고, 펜 멈춤 표시와 말풍선, 형광펜은 기능을 보여 주기 위한 연출</p>`;
-  const cv=el.querySelector('canvas'),nb=el.querySelector('.nb'),ex=el.querySelector('.exam'),hl=el.querySelector('.hl'),pop=el.querySelector('.pop'),b1=el.querySelector('.b1'),tab=el.querySelector('.qtab'),dot=el.querySelector('.tapdot'),wt=el.querySelector('.wt'),wtb=wt.querySelector('b');
+  const cv=el.querySelector('canvas'),nb=el.querySelector('.nb'),ex=el.querySelector('.exam'),hl=el.querySelector('.hl'),pop=el.querySelector('.pop'),tab=el.querySelector('.qtab'),wt=el.querySelector('.wt'),wtb=wt.querySelector('b');
   // strokes 397-402 mark the point (2,9); 403-418 are the wrong upward-convex curve and its x=b guide, erased before 421 redraws it as ∪ (434)
   const BX0=120,BY0=140,BX1=2140,BY1=1790,START=397,WRONG_A=403,WRONG_B=418,REDO=434,AHA=451,GX=1210,GY=800,GZ=2.05;
   let W,H,dpr,k,ctx,tl=null,raf=0,live=false,last=0,anim=null;
@@ -1686,17 +1685,17 @@ function sceneAsk(){
     if(RM){S.vt=END;S.gone=16;cam.z=cam.tz=1;draw();return}
     live=true;last=0;raf=requestAnimationFrame(frame);
     while(ok()){
-      ex.classList.remove('on');hl.classList.remove('on');pop.classList.remove('on');b1.classList.remove('tap');tab.style.opacity=1;wt.classList.remove('on');wtb.textContent='0초';
+      ex.classList.remove('on');hl.classList.remove('on');pop.classList.remove('on');tab.style.opacity=1;wt.classList.remove('on');wtb.textContent='0초';
       // open on the graph with everything written before stroke 397 already on the page
       S.vt=S0;S.gone=0;cam.x=cam.tx=GX;cam.y=cam.ty=GY;cam.z=cam.tz=GZ;aim(GX,GY,GZ);
       await wait(150);if(!ok())return;
       await play(S0,W0,420);if(!ok())return;await play(W0,W1,760);if(!ok())return;await play(W1,P1,700);if(!ok())return;
       // the pen stops after the wrong curve (the real record has a 49 s gap here); the tutor speaks up at 40 s
       wt.classList.add('on');for(let s2=0;s2<=40&&ok();s2+=4){wtb.textContent=s2+'초';await wait(60)}if(!ok())return;
-      pop.classList.add('on');await wait(380);wt.classList.remove('on');await wait(1300);if(!ok())return;
-      const br=b1.getBoundingClientRect(),sr=el.querySelector('.scr').getBoundingClientRect();dot.style.left=(br.left-sr.left+br.width/2-dot.offsetWidth/2)+'px';dot.style.top=(br.top-sr.top+br.height/2-dot.offsetHeight/2)+'px';
-      dot.classList.remove('on');void dot.offsetWidth;dot.classList.add('on');b1.classList.add('tap');await wait(260);
-      pop.classList.remove('on');tab.style.opacity=0;ex.classList.add('on');await wait(360);hl.classList.add('on');await wait(1500);if(!ok())return;
+      // 튜터가 "문제를 다시 읽어볼까?" 하자마자 문제가 열리고 첫 줄 조건에 형광펜(학생이 버튼을 누르는 단계 없음)
+      pop.classList.add('on');wt.classList.remove('on');await wait(300);if(!ok())return;
+      tab.style.opacity=0;ex.classList.add('on');await wait(260);hl.classList.add('on');await wait(1700);if(!ok())return;
+      pop.classList.remove('on');
       ex.classList.remove('on');tab.style.opacity=1;await wait(260);
       for(let g=1;g<=16&&ok();g++){S.gone=g;await wait(18)}
       await play(P1,R0,260);if(!ok())return;await play(R0,R1,820);if(!ok())return;await play(R1,A0,520);if(!ok())return;
@@ -1746,7 +1745,7 @@ function noteMount(el,frame,prep){let stopR=null,ro=null;
   return {el,stop(){stopR&&stopR();stopR=null},async play(ok){
     await inkP;if(!INK||!ok())return;noteData();const {FINAL,LOOP}=prep();stopR&&stopR();
     if(RM){frame(FINAL,true);if(!ro){ro=new ResizeObserver(()=>{const P=prep();frame(P.FINAL,true)});ro.observe(el)}return}
-    const t0=performance.now();stopR=loopRAF(now=>{if(ok())frame((now-t0)%LOOP)})}}}
+    const t0=performance.now();stopR=loopRAF(now=>{if(ok())frame(Math.max(0,now-t0)%LOOP)}) /* 첫 프레임 시각이 t0보다 살짝 앞설 수 있어 0 아래로 내려가지 않게 */}}}
 
 /* ---------- 02 read: the same real page, as a photo-reading AI receives it (one finished image) and as Provee receives it (every stroke with its time) ---------- */
 /* wide: photo and record side by side · narrow: the page is a photo first, then straightens and rewrites itself. The ledger fills in on Provee's side only */
@@ -1904,7 +1903,7 @@ function sceneNote(){
   return {el,stop(){stopR&&stopR();stopR=null},async play(ok){
     await Promise.all([inkP,ink2P]);if(!INK||!INK2||!ok())return;build();stopR&&stopR();
     if(RM){frame(FINAL,true);if(!ro){ro=new ResizeObserver(()=>frame(FINAL,true));ro.observe(fr)}return}
-    const t0=performance.now();stopR=loopRAF(now=>{if(ok())frame((now-t0)%LOOP)})}};
+    const t0=performance.now();stopR=loopRAF(now=>{if(ok())frame(Math.max(0,now-t0)%LOOP)}) /* 첫 프레임 시각이 t0보다 살짝 앞설 수 있어 0 아래로 내려가지 않게 */}};
 }
 
 /* ---------- 05 ground: two people write on one note at the same time ---------- */
