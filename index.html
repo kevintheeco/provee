@@ -184,6 +184,36 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .rec .ok svg{width:1.8cqw;height:1.8cqw}
 @container (max-width:460px){.rec small{display:none}.rec{padding:.8cqw 1.4cqw .8cqw 2cqw}.rec .ok{width:max(3cqw,13px);height:max(3cqw,13px)}.rec .ok svg{width:70%;height:70%}}
 
+/* 02: 장점 두 가지(1 잘못 읽지 않음, 2 놓치지 않음)를 번호 제목 아래 장면으로 */
+.f-pt{display:grid;gap:18px}
+.f-pth{margin:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:12px;row-gap:4px;font-size:clamp(20px,2vw,24px);font-weight:800;letter-spacing:-.02em}
+.f-pth b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font:700 14px/1 var(--brand)}
+.f-pth span{font-size:16px;font-weight:500;letter-spacing:0;color:var(--ink3)}
+/* 02-1: 같은 2x + 1을 사진을 읽는 AI는 24 + 1로, Provee는 획마다 갈라 2x + 1로 읽는다 */
+.rg-bd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:24px;overflow:hidden;background:linear-gradient(90deg,#F0EBE3 0 50%,var(--paper) 0);box-shadow:0 50px 90px -46px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
+.rg-s{display:grid;gap:14px;align-content:start;padding:16px 24px 22px;min-width:0}
+.rg-b{box-shadow:inset 1px 0 0 var(--line)}
+.rg-h{display:flex;align-items:center;gap:10px;min-height:30px;font-size:15px;color:var(--ink3);white-space:nowrap}
+.rg-h b{font-size:16px;font-weight:700;color:var(--ink2)}
+.rg-h .wm{font-size:20px;color:var(--ink)}
+.rg-ph,.rg-pg{position:relative;aspect-ratio:2.4;border-radius:12px}
+.rg-ph{background:#EEE8DE;transform:rotate(-1.6deg) scale(.96);box-shadow:0 18px 36px -14px rgba(30,20,10,.42),inset 0 0 0 1px rgba(0,0,0,.06)}
+.rg-ph::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 10px #fff;background:linear-gradient(118deg,rgba(255,255,255,.5),rgba(255,255,255,0) 38%);pointer-events:none}
+.rg-pg{background:#fff;box-shadow:inset 0 0 0 1px var(--rule)}
+.rg-ph canvas,.rg-pg canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit}
+.rg-tk{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:6px}
+.rg-tk span{min-width:30px;height:30px;padding-inline:8px;display:grid;place-items:center;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--c);font:italic 600 19px/1 "Times New Roman",Georgia,serif;color:var(--c);opacity:0;transform:scale(.85);transition:opacity .2s var(--ease),transform .3s cubic-bezier(.2,0,0,1.3)}
+.rg-tk span.on{opacity:1;transform:none}
+.rg-res{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 16px;border-radius:12px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px var(--line)}
+.rg-res span{font-size:14px;font-weight:600;color:var(--ink3)}
+.rg-res b{font:italic 600 28px/1 "Times New Roman",Georgia,serif;color:var(--ink3);white-space:nowrap}
+.rg-a .rg-res b{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(138,28,43,.6)}
+.rg-b .rg-res{background:var(--paper);opacity:0;transform:translateY(6px);transition:opacity .35s var(--ease),transform .45s var(--ease)}
+.rg-b .rg-res.on{opacity:1;transform:none;box-shadow:inset 0 0 0 2px var(--ink)}
+.rg-b .rg-res b{color:var(--ink)}
+.rg-res i{margin-left:auto;flex:none;width:24px;height:24px;border-radius:50%;background:#1F7A4D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}
+@media (max-width:640px){.rg-ph,.rg-pg{aspect-ratio:1.9}.rg-bd{grid-template-columns:minmax(0,1fr);background:none}.rg-a{background:#F0EBE3}.rg-b{background:var(--paper);box-shadow:inset 0 1px 0 var(--line)}.rg-s{padding:14px 16px 18px;gap:12px}.rg-res{min-height:46px}.rg-res b{font-size:24px}.f-pth span{font-size:15px}}
+
 /* 02 read: one real page, as a photo (left, what a photo-reading AI receives) and as Provee's stroke record (right) */
 .rv{container:rv/inline-size;position:relative;width:100%}
 .rv-bd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"ha hb" "pa pb" "l l";border-radius:24px;overflow:hidden;background:linear-gradient(90deg,#F0EBE3 0 50%,var(--paper) 0);box-shadow:0 50px 90px -46px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
@@ -1151,8 +1181,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="frow" id="f-input" data-f="input">
       <div class="f-copy">
         <span class="fk"><b>01</b>필기 입력</span>
-        <h3>펜을 내려놓지 않아도<br>튜터가 읽습니다</h3>
-        <p>노트와 튜터가 한 화면에 있어, 한 줄을 쓰면 읽은 식이 바로 옆에 뜹니다. 폰을 들어 찍고 올리던 시간이 그대로 푸는 시간이 됩니다.</p>
+        <h3>왔다 갔다 시간 낭비는 그만,<br>Provee로 한 번에</h3>
+        <p>노트도, AI도, 강의자료도 Provee 하나로.</p>
       </div>
       <div class="f-vis" data-scene="input"></div>
     </div>
@@ -1160,10 +1190,11 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="frow wide" id="f-read" data-f="read">
       <div class="f-copy">
         <span class="fk"><b>02</b>획 단위 인식</span>
-        <h3>사진은 다 쓴 결과만 보고,<br>Provee는 쓴 순서까지 읽습니다</h3>
-        <p>사진을 읽는 AI가 받는 건 다 쓴 페이지 한 장이라, 무엇을 먼저 썼는지 남지 않습니다. Provee는 획마다 쓴 자리와 시각을 함께 받아 여기저기 흩어 쓴 풀이를 쓴 순서대로 잇고, 지운 식과 펜을 멈춘 시간까지 압니다. 이 기록이 그대로 Provee Note가 됩니다.</p>
+        <h3>획 단위로 읽으니,<br>잘못 읽지 않고 놓치지 않습니다</h3>
+        <p>Provee는 사진 한 장이 아니라, 획마다 쓴 자리와 시각을 받습니다.</p>
       </div>
-      <div class="f-vis" data-scene="read"></div>
+      <div class="f-pt"><h4 class="f-pth"><b>1</b>잘못 읽지 않습니다<span>뭉쳐 쓴 2x + 1도 획마다 갈라 읽습니다</span></h4><div class="f-vis" data-scene="recog"></div></div>
+      <div class="f-pt"><h4 class="f-pth"><b>2</b>놓치지 않습니다<span>여기저기 흩어 쓴 풀이도 쓴 순서대로, 지운 식과 멈춘 시간까지</span></h4><div class="f-vis" data-scene="read"></div></div>
     </div>
 
     <div class="frow wide" id="f-graph" data-f="graph">
@@ -1767,7 +1798,29 @@ function sceneGround(){
       s.f.ctx.clearRect(0,0,s.f.W,s.f.H);await sleep(350)}
   }};
 }
-const MAKE={input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,note:sceneNote,ground:sceneGround};
+/* ---------- 02-1 recog: the same cramped 2x + 1, read from a photo (24 + 1, one real GPT-5.6 Sol run) and stroke by stroke by Provee ---------- */
+function sceneRecog(){
+  const el=document.createElement('div');
+  const G=[{s:[0],t:'2',c:'#8A1C2B'},{s:[1,2],t:'x',c:'#2F4C66'},{s:[3,4],t:'+',c:'#7A5A1E'},{s:[5],t:'1',c:'#1F7A4D'}];
+  el.innerHTML=`<div class="rg-bd">
+    <div class="rg-s rg-a"><div class="rg-h"><b>사진을 읽는 AI</b><span>찍어 올렸을 때</span></div><div class="rg-ph"><canvas></canvas></div><div class="rg-res"><span>읽은 식</span><b>24 + 1</b></div></div>
+    <div class="rg-s rg-b"><div class="rg-h"><span class="wm">Provee<i>.</i></span><span>쓰는 동안</span></div><div class="rg-pg"><canvas></canvas><div class="rg-tk">${G.map(g=>`<span style="--c:${g.c}">${g.t}</span>`).join('')}</div></div><div class="rg-res"><span>읽은 식</span><b>2x + 1</b><i></i></div></div>
+  </div><p class="scap">대표가 뭉쳐 쓴 실제 필기(2026년 9월 12일). 같은 필기를 찍어 GPT-5.6 Sol에 올렸을 때 24 + 1로 읽은 1회 실측이며, 일반화하지 않습니다.</p>`;
+  const [cA,cB]=el.querySelectorAll('canvas'),toks=[...el.querySelectorAll('.rg-tk span')],res=el.querySelector('.rg-b .rg-res');let stopR=null;
+  return {el,stop(){stopR&&stopR()},async play(ok){
+    await ink2P;if(!INK2||!ok())return;const S=INK2.blob,E=endT(S),SL=1.1;
+    const fa=fitCanvas(cA);if(!fa)return;drawInk(fa.ctx,S,1e9,fitBox(S,fa.W,fa.H,.18,.16,.64,.68),'#3A3634',Math.max(2.4,fa.W*.012));
+    const gEnd=G.map(g=>Math.max(...g.s.map(i=>{const p=S[i].p;return p[p.length-1][2]})));
+    // 글자 하나를 다 쓰면 그 획들이 글자 색으로 바뀌고, 오른쪽 위에 그 글자가 뜬다
+    const paint=(f,tr,t,lw)=>{f.ctx.clearRect(0,0,f.W,f.H);G.forEach((g,gi)=>drawInk(f.ctx,g.s.map(i=>S[i]),t,tr,t>=gEnd[gi]?g.c:'#221C39',lw))};
+    if(RM){const f=fitCanvas(cB);if(!f)return;paint(f,fitBox(S,f.W,f.H,.2,.07,.6,.6),1e9,Math.max(2.4,f.W*.012));toks.forEach(t=>t.classList.add('on'));res.classList.add('on');return}
+    while(ok()){toks.forEach(t=>t.classList.remove('on'));res.classList.remove('on');
+      const f=fitCanvas(cB);if(!f)return;const tr=fitBox(S,f.W,f.H,.2,.07,.6,.6),lw=Math.max(2.4,f.W*.012),t0=performance.now()+350;
+      stopR=loopRAF(now=>{const t=(now-t0)/SL;paint(f,tr,t,lw);gEnd.forEach((e,i)=>{if(t>=e)toks[i].classList.add('on')})});
+      await sleep(350+E*SL+350);stopR();if(!ok())return;res.classList.add('on');await sleep(3400)}
+  }};
+}
+const MAKE={recog:sceneRecog,input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,note:sceneNote,ground:sceneGround};
 
 /* ---------- mount scenes; play only while their row is on screen ---------- */
 const scenes={},run={};
@@ -1776,7 +1829,7 @@ const start=k=>{if(!scenes[k])return;const tok=(run[k]=(run[k]||0)+1);scenes[k].
 const stop=k=>{if(!scenes[k])return;run[k]=(run[k]||0)+1;scenes[k].stop()};
 const tabsA=$$('.ftabs a');
 const rio=new IntersectionObserver(es=>es.forEach(e=>{const row=e.target,f=row.dataset.f;
-  if(e.isIntersecting){row.classList.add('in');start(f)}else stop(f)}),{threshold:.3});
+  const ks=[...row.querySelectorAll('[data-scene]')].map(h=>h.dataset.scene);if(e.isIntersecting){row.classList.add('in');ks.forEach(start)}else ks.forEach(stop)}),{threshold:.2});
 $$('.frow').forEach(r=>rio.observe(r));
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const f=e.target.dataset.f;tabsA.forEach(a=>{const on=a.dataset.f===f;a.setAttribute('aria-current',on);if(on){const box=a.parentElement;box.scrollTo({left:a.offsetLeft-box.clientWidth/2+a.offsetWidth/2,behavior:'smooth'})}})}}),{rootMargin:'-45% 0px -50% 0px'});
 $$('.frow').forEach(r=>cio.observe(r));
