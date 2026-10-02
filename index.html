@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Poppins:wght@600;700&family=Caveat:wght@600;700&display=swap">
+<link rel="stylesheet" href="ground/ground.css">
+<script src="ground/scenes.js" defer></script>
 <style>
 :root{
   --ivory:#F7F3EC; --paper:#FFFDF8; --card:#F6EFE4; --ink:#1E1811; --ink2:#5A5046; --ink3:#8A7F73; --line:#E6DCCB; --rule:#EDE5D6;
@@ -483,43 +485,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .pn-yn{position:absolute;right:12px;bottom:12px;z-index:4;padding:3px 8px;border-radius:6px;background:rgba(30,24,17,.42);color:rgba(255,255,255,.92);font-size:11px;font-weight:600;line-height:1.4}
 @media (max-width:600px){.pn-fr{aspect-ratio:4/5;border-radius:18px}.pn-mo{left:12px;top:12px}.pn-mo span{padding:7px 12px;font-size:13.5px}.pn-mo span b{font-size:13.5px}.pn-yn{right:10px;bottom:10px}}
 
-/* 05 ground */
-.gd{container-type:inline-size;position:relative;width:100%}
-.gw{position:relative;aspect-ratio:2.25;border-radius:2.4cqw;overflow:hidden;background:#2A2420;box-shadow:0 60px 110px -50px rgba(40,20,10,.6);display:flex;flex-direction:column}
-.gbar{flex:none;display:flex;align-items:center;gap:1.4cqw;height:5cqw;padding-inline:2cqw;background:#211C19;color:#CFC6BA;font-size:1.3cqw}
-.gbar .wm{font-size:1.8cqw;color:#fff}.gbar .wm i{color:#E0566A}
-.gbar .gn{font-family:var(--hand);font-size:2.4cqw;font-weight:700;color:#E9C9A5;margin-left:-.6cqw}
-.gbar .gl{display:inline-flex;align-items:center;gap:.8cqw;margin-left:1.6cqw;padding:.5cqw 1.2cqw;border-radius:1cqw;background:rgba(255,255,255,.08);color:#E8E0D6;white-space:nowrap}
-.gbar .gon{position:static;aspect-ratio:auto;transform:none;margin-left:auto;display:inline-flex;align-items:center;gap:.8cqw;white-space:nowrap}
-.gbar .gon i{width:1cqw;height:1cqw;border-radius:50%;background:#4CC38A;box-shadow:0 0 0 .4cqw rgba(76,195,138,.2)}
-.gbody{flex:1;min-height:0;display:grid;grid-template-columns:19% 1fr;gap:1.2cqw;padding:1.2cqw}
-.grail{display:grid;grid-template-rows:repeat(3,1fr);gap:1.2cqw;min-height:0}
-.tile{position:relative;border-radius:1.4cqw;background:#3A322D;display:grid;place-items:center;overflow:hidden;transition:box-shadow .25s}
-.tile b{width:6.4cqw;height:6.4cqw;border-radius:50%;display:grid;place-items:center;font-size:2.6cqw;font-weight:700;color:#fff}
-.tile.a b{background:#4A4263}.tile.b b{background:#3F5A73}
-.tile span{position:absolute;left:1cqw;bottom:.9cqw;font-size:1.2cqw;color:#EDE6DC;background:rgba(0,0,0,.35);padding:.2cqw .8cqw;border-radius:.6cqw}
-.tile.talk{box-shadow:inset 0 0 0 .3cqw #4CC38A}
-.tile.empty{background:transparent;box-shadow:inset 0 0 0 .15cqw rgba(255,255,255,.18)}
-.tile.empty span{position:static;background:none;color:#A89E92;font-size:1.3cqw}
-.gboard{position:relative;border-radius:1.4cqw;background:#FFFDF8 radial-gradient(circle,#E3D9C8 1px,transparent 1.4px) 0 0/2.6cqw 2.6cqw;overflow:hidden}
-.gboard canvas{position:absolute;inset:0;width:100%;height:100%}
-.gtools{position:absolute;left:1.2cqw;top:1.2cqw;display:flex;gap:.8cqw;background:var(--paper);border-radius:1.2cqw;padding:.7cqw;box-shadow:0 .6cqw 1.8cqw -.6cqw rgba(60,30,20,.35),inset 0 0 0 1px var(--line)}
-.gtools i{width:2.2cqw;height:2.2cqw;border-radius:50%;display:block}
-.cur{position:absolute;left:0;top:0;display:flex;align-items:center;gap:.5cqw;pointer-events:none;opacity:0;transition:opacity .25s;will-change:transform}
-.cur::before{content:"";width:1.3cqw;height:1.3cqw;border-radius:50%;background:var(--c);box-shadow:0 0 0 .35cqw rgba(255,255,255,.9)}
-.cur b{font-size:1.25cqw;font-weight:700;color:#fff;background:var(--c);padding:.25cqw .8cqw;border-radius:.7cqw;white-space:nowrap}
-.cur.on{opacity:1}
-.cur.flip{flex-direction:row-reverse}
 /* narrow screens: scenes switch layout so the text inside stays readable */
-@container (max-width:640px){
-  .gw{aspect-ratio:.95;border-radius:4cqw}
-  .gbar{height:10cqw;font-size:2.8cqw;padding-inline:3.4cqw;gap:2cqw}.gbar .wm{font-size:3.8cqw}.gbar .gn{font-size:5cqw}.gbar .gl{display:none}
-  .gbody{grid-template-columns:1fr;grid-template-rows:20cqw 1fr;gap:2.4cqw;padding:2.4cqw}
-  .grail{grid-template-rows:none;grid-template-columns:repeat(3,1fr);gap:2.4cqw}
-  .tile{border-radius:3cqw}.tile b{width:10cqw;height:10cqw;font-size:4.2cqw}.tile span{font-size:2.6cqw;left:1.8cqw;bottom:1.4cqw}.tile.empty span{font-size:2.8cqw}
-  .gboard{border-radius:3cqw;background-size:5cqw 5cqw}
-  .gtools{padding:1.4cqw;gap:1.4cqw;border-radius:2.4cqw}.gtools i{width:4cqw;height:4cqw}
-  .cur b{font-size:2.8cqw;padding:.6cqw 1.6cqw;border-radius:1.4cqw}.cur::before{width:2.6cqw;height:2.6cqw}
 }
 /* 03 on tablets and phones: the waiting chat sits above, the finished graph below at full width */
 @media (max-width:900px){.duo{aspect-ratio:auto;display:grid;gap:14px}}
@@ -1907,28 +1873,53 @@ function sceneNote(){
 }
 
 /* ---------- 05 ground: two people write on one note at the same time ---------- */
-function sceneGround(){
+function sceneGround(){ // Provee Ground 시작 화면(proveeground.kr) 장면 네 개를 그대로 옮겨, 한 무대에서 탭으로 돌린다(ground/scenes.js)
   const el=document.createElement('div');
-  el.innerHTML=`<div class="gd"><div class="gw">
-    <div class="gbar"><span class="wm">Provee<i>.</i></span><span class="gn">Ground</span><span class="gl"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 005.66 0l3-3a4 4 0 00-5.66-5.66l-1 1M14 10a4 4 0 00-5.66 0l-3 3a4 4 0 005.66 5.66l1-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>proveeground.kr 초대 링크</span><span class="gon"><i></i>2명 참여 중</span></div>
-    <div class="gbody">
-      <div class="grail"><div class="tile a"><b>민</b><span>민서</span></div><div class="tile b"><b>도</b><span>도윤</span></div><div class="tile empty"><span>링크로 초대</span></div></div>
-      <div class="gboard"><canvas></canvas><div class="gtools"><i style="background:#221C39"></i><i style="background:#2F4C66"></i><i style="background:#C0392B"></i></div><span class="cur" data-w="a" style="--c:#221C39"><b>민서</b></span><span class="cur" data-w="b" style="--c:#2F4C66"><b>도윤</b></span></div>
-    </div></div></div><p class="scap">대표가 직접 쓴 실제 획 기록 두 개를 동시에 재생해 만든 장면(이름은 예시)</p>`;
-  const cv=el.querySelector('canvas'),ta=el.querySelector('.tile.a'),tb=el.querySelector('.tile.b'),ca=el.querySelector('.cur[data-w=a]'),cb=el.querySelector('.cur[data-w=b]');let stopR=null;
-  return {el,stop(){stopR&&stopR()},async play(ok){
-    await ink2P;if(!INK2||!ok())return;const A=INK2.cover,B=INK2.fact,EA=endT(A),B0=B[0].p[0][2],EB=endT(B)-B0,DB=1100,SB=1.45;
-    const setup=()=>{const f=fitCanvas(cv);if(!f)return null;return {f,trA:fitBox(A,f.W,f.H,.06,.16,.54,.26),trB:fitBox(B,f.W,f.H,.4,.5,.54,.42),lw:Math.max(2,f.W*.0058)}};
-    const frame=(s,tA,tB)=>{const {f,trA,trB,lw}=s;f.ctx.clearRect(0,0,f.W,f.H);
-      const pa=drawInk(f.ctx,A,tA,trA,'#221C39',lw),pb=drawInk(f.ctx,B,tB,trB,'#2F4C66',lw);
-      const act=(p,t,E,cur,tile)=>{const on=p&&t>=0&&t<=E+250;cur.classList.toggle('on',!!on);tile.classList.toggle('talk',!!on);if(p){const fl=p[0]>f.W*.76;cur.classList.toggle('flip',fl);const cw=cur.offsetWidth;cur.style.transform=`translate(${fl?p[0]-cw+4:p[0]-4}px,${p[1]-4}px)`}};
-      act(pa,tA,EA,ca,ta);act(pb,tB-B0,EB,cb,tb)};
-    if(RM){const s=setup();s&&frame(s,1e9,1e12);return}
-    while(ok()){const s=setup();if(!s)return;const t0=performance.now()+250;
-      stopR=loopRAF(now=>{const e=now-t0;frame(s,e,B0+(e-DB)*SB)});
-      await sleep(250+Math.max(EA,DB+EB/SB)+1800);stopR();if(!ok())return;[ca,cb].forEach(c=>c.classList.remove('on'));[ta,tb].forEach(t=>t.classList.remove('talk'));
-      s.f.ctx.clearRect(0,0,s.f.W,s.f.H);await sleep(350)}
-  }};
+  el.innerHTML=`<div class="sp pg">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sp-cur" viewBox="0 0 20 22"><path d="M2 1.6v16.6l4.5-4.1 3 6.7 3-1.3-3-6.6 6.3-.3z" fill="currentColor" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></symbol><symbol id="sp-ptr" viewBox="0 0 22 25"><path d="M2.5 1.8v19l5-4.5 3.4 7.6 3.3-1.45-3.35-7.4 6.9-.3z" fill="#1F1B1A" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></symbol></svg>
+  <div class="pg-tabs" role="tablist" aria-label="Provee Ground 장면"><button class="pg-tab" role="tab" type="button"><i>✍️</i>한 노트에 같이</button><button class="pg-tab" role="tab" type="button"><i>📄</i>PDF·사진 위에</button><button class="pg-tab" role="tab" type="button"><i>📝</i>문서 정리</button><button class="pg-tab" role="tab" type="button"><i>🎥</i>얼굴 보며</button></div>
+  <div class="pg-sc sp-f1"><div class="sp-stage"><div class="sp-fit">
+    <div class="sp-paper sp-dots sp-f1-paper" aria-hidden="true">
+      <div class="sp-who"><span class="sp-av sp-av-me">🦊</span><span class="sp-av sp-av-se">🐰</span><span class="sp-av sp-av-eu">🐻</span></div>
+      <div class="sp-f1-board"><div class="sp-sv sp-formula"><svg viewBox="0 0 590 240"></svg><div class="sp-cur sp-c-sebin"><svg><use href="#sp-cur"/></svg><span class="sp-tag">🐰 세빈</span></div></div><div class="sp-sv sp-graph"><svg viewBox="0 0 360 320"><path class="sp-area"/></svg><div class="sp-cur sp-c-eunwoo"><svg><use href="#sp-cur"/></svg><span class="sp-tag">🐻 은우</span></div></div></div>
+    </div></div></div></div>
+  <div class="pg-sc sp-fpdf"><div class="sp-stage"><div class="sp-fit">
+    <div class="sp-paper sp-dots sp-fp-paper" aria-hidden="true"><div class="sp-fp-in">
+      <div class="sp-fp-panel"><div class="sp-fp-ph"><b>자료 스테이지</b><span>모두 같은 장을 봐요</span></div><div class="sp-fp-empty">PDF를 올리면 여기에 떠요</div>
+        <div class="sp-fp-list"><div class="sp-fp-th"><img src="img/ground/pdf-page0.jpg" alt="" loading="lazy" decoding="async"><i>1</i></div><div class="sp-fp-th"><img src="img/ground/pdf-page1.jpg" alt="" loading="lazy" decoding="async"><i>2</i></div><div class="sp-fp-th"><img src="img/ground/pdf-page2.jpg" alt="" loading="lazy" decoding="async"><i>3</i></div></div>
+        <div class="sp-fp-bar"><div class="sp-fp-nav"><span>◀</span><b class="sp-fp-pg">1/3</b><span>▶</span></div><div class="sp-fp-paste">📌 노트에 붙이기</div><div class="sp-fp-all">📖 전체 깔기</div></div></div>
+      <div class="sp-fp-file"><b>PDF</b>2024 수능 수학.pdf<em>3쪽</em></div>
+      <div class="sp-fp-page"><img src="img/ground/pdf-page1.jpg" alt="" loading="lazy" decoding="async"><svg class="sp-fp-ink" viewBox="0 0 640 832"><rect class="sp-fp-hl" x="186" y="374" width="0" height="14" rx="3"/></svg></div>
+      <div class="sp-fp-photo"><img src="img/ground/note-photo.jpg" alt="" loading="lazy" decoding="async" width="480" height="360"></div>
+      <div class="sp-cur sp-c-sebin"><svg><use href="#sp-cur"/></svg><span class="sp-tag">🐰 세빈</span></div><div class="sp-cur sp-c-eunwoo"><svg><use href="#sp-cur"/></svg><span class="sp-tag">🐻 은우</span></div>
+    </div></div></div></div></div>
+  <div class="pg-sc sp-f2"><div class="sp-stage"><div class="sp-fit">
+    <div class="sp-paper sp-f2-paper" aria-hidden="true"><div class="sp-sc">
+      <div class="sp-doc">
+        <h3 class="sp-blk"><span class="sp-tx" data-t="미적분 스터디 · 3장 극한"></span></h3>
+        <p class="sp-blk"><span class="sp-hl"><i class="sp-hl-bar"></i><span class="sp-tx" data-t="엡실론-델타 정의부터 다시 본다."></span></span></p>
+        <div class="sp-blk sp-callout sp-plain"><span class="sp-emo">💡</span><span class="sp-cbody"><span class="sp-tx" data-t="시험 범위 "></span><span class="sp-circ"><span class="sp-tx" data-t="1~3장"></span><svg><path class="sp-st sp-st-wine"/></svg></span><span class="sp-tx" data-t=", 다음 주 화요일"></span></span></div>
+        <div class="sp-blk sp-todo"><span class="sp-box"></span><span class="sp-tx" data-t="연속함수 성질 정리"></span></div>
+        <div class="sp-blk sp-todo"><span class="sp-box"></span><span class="sp-tx" data-t="극한 공식 외우기"></span></div>
+        <div class="sp-slash" role="presentation"><div class="sp-slash-i"><i>H1</i>제목</div><div class="sp-slash-i"><i>☑</i>할 일 목록</div><div class="sp-slash-i"><i>💡</i>콜아웃</div><div class="sp-slash-i"><i>Σ</i>수식</div></div>
+      </div><div class="sp-cur sp-c-sebin"><svg><use href="#sp-cur"/></svg><span class="sp-tag">🐰 세빈</span></div>
+    </div></div></div></div></div>
+  <div class="pg-sc sp-f3 pg-f3"><div class="sp-stage"><div class="sp-fit">
+    <div class="sp-win" aria-hidden="true">
+      <div class="sp-win-top"><span class="sp-chip"><i>🦊</i>나</span><span class="sp-chip"><i>🐰</i>세빈</span><span class="sp-chip sp-chip-eu"><i>🐻</i>은우<span class="sp-ripple"></span></span></div>
+      <div class="sp-win-body">
+        <div class="sp-board sp-dots"><div class="sp-world"><div class="sp-sv sp-formula"><svg viewBox="0 0 590 240"></svg></div><div class="sp-sv sp-graph"><svg viewBox="0 0 360 320"><path class="sp-area"/></svg></div></div>
+          <div class="sp-frame"></div><div class="sp-follow"><i>🐻</i>은우님 화면을 따라가는 중<b>그만</b></div><div class="sp-cur sp-c-eunwoo"><svg><use href="#sp-cur"/></svg><span class="sp-tag">🐻 은우</span></div></div>
+        <div class="sp-cams"><figure class="sp-cam sp-cam-se"><video muted playsinline loop preload="none" poster="img/ground/cam-sebin.jpg" data-src="img/ground/cam-sebin.mp4"></video><span class="sp-ring"></span><figcaption>세빈<span class="sp-bars"><span></span><span></span><span></span></span></figcaption></figure><figure class="sp-cam sp-cam-eu"><video muted playsinline loop preload="none" poster="img/ground/cam-eunwoo.jpg" data-src="img/ground/cam-eunwoo.mp4"></video><span class="sp-ring"></span><figcaption>은우<span class="sp-bars"><span></span><span></span><span></span></span></figcaption></figure><figure class="sp-cam sp-cam-me"><video muted playsinline loop preload="none" poster="img/ground/cam-me.jpg" data-src="img/ground/cam-me.mp4"></video><span class="sp-ring"></span><figcaption>나<span class="sp-bars"><span></span><span></span><span></span></span></figcaption></figure></div>
+      </div>
+      <div class="sp-pointer"><svg><use href="#sp-ptr"/></svg></div>
+    </div></div></div></div>
+</div><p class="scap">proveeground.kr 시작 화면의 장면을 그대로 옮긴 화면. 캠 속 인물은 AI로 만든 연출 영상입니다</p>`;
+  let started=false;
+  return {el,stop(){},async play(ok){
+    if(started)return;
+    for(let i=0;i<60&&!window.PGShow;i++)await sleep(50); // ground/scenes.js(defer)가 늦게 오면 잠깐 기다림
+    if(!window.PGShow||!ok())return;started=true;window.PGShow(el.querySelector('.pg'))}};
 }
 /* ---------- 02-1 recog: the real chat where a photo of 2x + 1 was read as 24 + 1, then the same ink lifts into its six strokes in the order they were written ---------- */
 function sceneRecog(){
