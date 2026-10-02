@@ -172,9 +172,69 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .tapdot.on{animation:tap .4s var(--ease)}
 @keyframes tap{0%{opacity:1;transform:scale(.3)}100%{opacity:0;transform:scale(1.2)}}
 
+/* 01 input: 강의자료·노트·카메라·AI 채팅 창 사이를 오가다(왔다 갔다), Provee 한 화면으로 합쳐진다. 좌표는 무대 너비 기준(cqw, 무대 100×75) */
+.hop{container-type:inline-size;position:relative;width:100%;aspect-ratio:4/3}
+.hop.rs *{transition:none!important}
+.hop-sc{position:absolute;inset:0;transition:opacity .45s var(--ease) .3s}
+.hop.mg .hop-sc{opacity:0}
+.hop-tr{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:3}
+.hop-tr path{fill:none;stroke:var(--wine);stroke-width:.32;stroke-linecap:round;opacity:.5;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .3s var(--ease)}
+.hop-tr path.on{stroke-dashoffset:0}
+.hop-tr circle{fill:var(--wine)}
+.hw{position:absolute;display:flex;flex-direction:column;background:#fff;border-radius:2.2cqw;overflow:hidden;box-shadow:0 2cqw 5cqw -2cqw rgba(60,30,20,.35),inset 0 0 0 1px var(--line);transform-origin:0 0;transition:transform .7s cubic-bezier(.6,0,.2,1),opacity .45s var(--ease) .25s,box-shadow .18s}
+.hw.act{box-shadow:0 2.4cqw 6cqw -2cqw rgba(60,30,20,.45),0 0 0 .45cqw var(--wine)}
+.hw-t{flex:none;display:flex;align-items:center;gap:1cqw;height:5cqw;padding-inline:1.8cqw;border-bottom:1px solid var(--rule);font-size:max(1.7cqw,10px);font-weight:700;color:var(--ink2);white-space:nowrap}
+.hw-t i{flex:none;width:1.4cqw;height:1.4cqw;border-radius:50%;background:var(--c)}
+.hw-b{position:relative;flex:1;min-height:0}
+.hw-pdf{left:4cqw;top:4cqw;width:38cqw;height:29cqw;--c:#C0392B}
+.hw-nt{left:56cqw;top:6cqw;width:40cqw;height:31cqw;--c:#E0A526}
+.hw-nt .hw-b{background:#fff repeating-linear-gradient(to bottom,transparent 0 5cqw,var(--rule) 5cqw calc(5cqw + 1px))}
+.hw-b canvas{position:absolute;inset:0;width:100%;height:100%}
+.hw-cam{left:12cqw;top:38cqw;width:17cqw;height:33cqw;border-radius:3cqw;background:#1C1A18;padding:1.2cqw;transform-origin:50% 50%}
+.cam-v{position:absolute;inset:1.2cqw 1.2cqw 7cqw;border-radius:1.6cqw;background:#D9D2C6 repeating-linear-gradient(to bottom,transparent 0 2.4cqw,rgba(30,24,17,.12) 2.4cqw calc(2.4cqw + 1px))}
+.cam-s{position:absolute;left:50%;bottom:1.6cqw;width:4.4cqw;height:4.4cqw;margin-left:-2.2cqw;border-radius:50%;background:#fff;box-shadow:0 0 0 .5cqw #1C1A18,0 0 0 .8cqw #fff}
+.cam-f{position:absolute;inset:0;background:#fff;opacity:0}
+.hw-cam.snap .cam-f{animation:hopfl .4s ease-out}
+@keyframes hopfl{0%{opacity:.95}100%{opacity:0}}
+.hw-ai{left:50cqw;top:41cqw;width:45cqw;height:29cqw;--c:#4E66A6}
+.ch-u{position:absolute;right:2cqw;top:2cqw;width:13cqw;height:9cqw;border-radius:1.4cqw;background:#D9D2C6 repeating-linear-gradient(to bottom,transparent 0 1.8cqw,rgba(30,24,17,.12) 1.8cqw calc(1.8cqw + 1px));box-shadow:0 0 0 .5cqw #E6ECF8}
+.ch-a{position:absolute;left:2cqw;right:2cqw;top:13.5cqw;display:grid;gap:1cqw}
+.ch-d{display:inline-flex;gap:.6cqw;opacity:0}
+.ch-d i{width:1.2cqw;height:1.2cqw;border-radius:50%;background:#9AAAD0;animation:sjdt 1s ease-in-out infinite}
+.ch-d i:nth-child(2){animation-delay:.15s}.ch-d i:nth-child(3){animation-delay:.3s}
+.hw-ai.typing .ch-d{opacity:1}
+.ch-l{height:1.2cqw;border-radius:.6cqw;background:rgba(30,24,17,.12);width:var(--w);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.hw-ai.ans .ch-l{transform:none}.hw-ai.ans .ch-d{display:none}
+.sl{display:grid;align-content:start;gap:1.3cqw;margin:1.6cqw;padding:2cqw;border-radius:1.2cqw;background:#F7F4EE;box-shadow:inset 0 0 0 1px var(--rule)}
+.sl b{font-size:max(1.9cqw,10px);font-weight:800}
+.sl .fx{justify-self:start;font:italic 600 max(2.5cqw,11px)/1.25 "Times New Roman",Georgia,serif;color:var(--ink);padding:.1cqw .7cqw;border-radius:.6cqw;background:linear-gradient(rgba(138,28,43,.2),rgba(138,28,43,.2)) 0 0/0% 100% no-repeat;transition:background-size .5s var(--ease)}
+.sl .fx.hl{background-size:100% 100%}
+.sl>i{height:1cqw;border-radius:.5cqw;background:rgba(30,24,17,.1);width:var(--w)}
+.hop-n{position:absolute;left:31cqw;top:63cqw;z-index:4;display:inline-flex;align-items:center;gap:.6cqw;height:5cqw;padding-inline:2cqw;border-radius:99px;background:var(--ink);color:#fff;font-size:max(1.8cqw,10px);font-weight:600;white-space:nowrap}
+.hop-n b{font:700 max(2.2cqw,11px)/1 var(--brand)}
+/* 합쳐질 때: 각 창이 Provee 화면 속 제자리로 날아가며 사라지고, 카메라는 필요 없어져 작아지며 사라진다 */
+.hop.mg .hw{opacity:0}
+.hop.mg .hw-pdf{transform:translate(.2cqw,9cqw) scale(.6,.69)}
+.hop.mg .hw-nt{transform:translate(-27cqw,2.8cqw) scale(1.72,2.06)}
+.hop.mg .hw-ai{transform:translate(11cqw,18cqw) scale(.75,.38)}
+.hop.mg .hw-cam{transform:scale(.2);transition-duration:.45s,.3s}
+.hop-pv{position:absolute;inset:0;aspect-ratio:auto;opacity:0;transform:scale(.95);transition:opacity .45s var(--ease) .4s,transform .6s var(--ease) .4s}
+.hop.mg .hop-pv{opacity:1;transform:none}
+.p3{position:absolute;left:0;right:0;bottom:0;top:6.6cqw;display:grid;grid-template-columns:28% 1fr}
+.p3-pdf{position:relative;background:#F4F0E8;box-shadow:inset -1px 0 0 var(--rule);padding-top:4.6cqw}
+.p3-nt{position:relative;background:#fff repeating-linear-gradient(to bottom,transparent 0 6.4cqw,var(--rule) 6.4cqw calc(6.4cqw + 1px))}
+.p3-nt>canvas{position:absolute;inset:0;width:100%;height:100%}
+.p3-tg{position:absolute;left:1.6cqw;top:1.4cqw;z-index:2;font-size:max(1.5cqw,9px);font-weight:700;color:var(--wine);background:#fff;border-radius:99px;padding:.4cqw 1.2cqw;box-shadow:inset 0 0 0 1px rgba(138,28,43,.4);white-space:nowrap;opacity:0;transform:translateY(-.8cqw);transition:opacity .25s var(--ease) var(--d),transform .3s var(--ease) var(--d)}
+.hop.tags .p3-tg{opacity:1;transform:none}
+.p3 .sl{margin:1.2cqw;padding:1.6cqw}.p3 .sl .fx{white-space:nowrap;font-size:max(2.2cqw,9px)}
+.p3-ai{position:absolute;right:2cqw;bottom:2.4cqw;width:min(36cqw,62%);padding:3.4cqw 2cqw 1.8cqw;border-radius:1.8cqw;background:#fff;box-shadow:0 1.6cqw 4cqw -1.4cqw rgba(60,30,20,.35),inset 0 0 0 1px var(--line);opacity:0;transform:translateY(1cqw);transition:opacity .3s var(--ease),transform .35s var(--ease)}
+.hop.tags .p3-ai{opacity:1;transform:none}
+.p3-ai .p3-tg{left:2cqw;top:-1.2cqw}
+.p3-ai p{margin:0;font-size:max(1.8cqw,10px);line-height:1.5;color:var(--ink)}
+.p3-ai .ch-d{opacity:1}.p3-ai .ch-d i{background:var(--ink3)}
+.p3-ai .p3-q{display:none}.p3-ai.q .p3-q{display:inline}.p3-ai.q .ch-d{display:none}
+@container (max-width:460px){.hw-t{padding-inline:1.4cqw}.p3-ai{width:70%}}
 /* 01 input: each line the student writes gets its own read chip */
-.qcard{position:absolute;left:2.4cqw;top:8.6cqw;max-width:60%;background:var(--card);border-radius:2cqw;padding:1.4cqw 2cqw;font-size:2cqw;line-height:1.5;color:var(--ink2)}
-.qcard b{color:var(--ink);font-weight:700;margin-right:1cqw}
 .rec{position:absolute;left:0;top:0;display:flex;align-items:center;gap:1.4cqw;background:var(--paper);border-radius:2cqw;padding:1cqw 1.6cqw 1cqw 2cqw;box-shadow:0 1.6cqw 4cqw -1.4cqw rgba(60,30,20,.35),inset 0 0 0 1px var(--line);opacity:0;translate:0 -50%;transform:translateX(-1.6cqw);transition:opacity .2s var(--ease),transform .28s var(--ease)}
 .rec.on{opacity:1;transform:none}
 .rec small{font-size:max(1.6cqw,10px);font-weight:700;color:var(--ink3);white-space:nowrap}
@@ -1091,7 +1151,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <ul class="gnb" aria-label="주 메뉴">
       <li><button class="gnb-b" id="megaBtn" aria-expanded="false" aria-controls="mega">기능<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="mega" id="mega" role="menu">
-          <a href="#f-input" role="menuitem"><span class="n">01</span><b>필기 입력</b><span>찍지 않고, 쓰는 대로 읽습니다</span></a>
+          <a href="#f-input" role="menuitem"><span class="n">01</span><b>필기 입력</b><span>노트도 AI도 강의자료도 한 화면에</span></a>
           <a href="#f-read" role="menuitem"><span class="n">02</span><b>획 단위 인식</b><span>사진이 놓치는 쓴 순서까지 읽습니다</span></a>
           <a href="#f-graph" role="menuitem"><span class="n">03</span><b>바로 그리는 그래프</b><span>기다리지 않고 식에서 바로 그립니다</span></a>
           <a href="#f-ask" role="menuitem"><span class="n">04</span><b>되묻는 튜터</b><span>막히면 정답 대신 놓친 조건을 짚습니다</span></a>
@@ -1436,27 +1496,59 @@ function sceneInput(){
   const el=document.createElement('div');
   const OK='<span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
   const MATH=['x<sup>2</sup> − 5x + 6 = 0','(x − 2)(x − 3) = 0','∴ x = 2, 3'];
-  el.innerHTML=`<div class="dev"><div class="scr">
-    <div class="bar"><span class="wm">Provee<i>.</i></span><span>공통수학1 · 이차방정식</span><span class="dots"><i style="background:#221C39;box-shadow:0 0 0 .3cqw #fff,0 0 0 .55cqw #221C39"></i><i style="background:#C0392B"></i><i style="background:#FFD400"></i></span><span class="end">학습 종료</span></div>
-    <div class="nb lined"><canvas></canvas>${MATH.map(m=>`<div class="rec"><small>읽은 식</small><span class="m">${m}</span>${OK}</div>`).join('')}</div>
-    <div class="qcard"><b>문제</b>방정식 x² − 5x + 6 = 0 을 푸시오.</div>
-  </div></div><p class="scap">대표가 태블릿에 직접 쓴 실제 필기 두 묶음(획 14개, 25개)을 빠르게 재생한 화면</p>`;
-  const cv=el.querySelector('canvas'),recs=[...el.querySelectorAll('.rec')];let stopR=null,L=null;
-  const lines=()=>{if(L)return L;const F=INK2.fact,yc=s=>s.p.reduce((a,p)=>a+p[1],0)/s.p.length; // the factored line and the answer line were written one under the other
-    return L=[INK2.cover,F.filter(s=>yc(s)<500),F.filter(s=>yc(s)>=500)].map(S=>retime(S,2,350))};
-  const lay=f=>{const B=L.map(bb),k=Math.min(.45*f.W/(B[0][2]-B[0][0]),.16*f.H/(B[0][3]-B[0][1])),TOP=[.19,.45,.69];
-    return L.map((S,i)=>({S,tr:{k,x0:B[i][0],y0:B[i][1],ox:.05*f.W,oy:TOP[i]*f.H},x:.05*f.W+(B[i][2]-B[i][0])*k,y:TOP[i]*f.H+(B[i][3]-B[i][1])*k/2,E:endT(S)}))};
-  const place=Q=>Q.forEach((q,i)=>{recs[i].style.left=(q.x+Math.max(12,q.tr.k*60))+'px';recs[i].style.top=q.y+'px'});
+  const SL='<div class="sl"><b>3강 이차방정식</b><span class="fx">x² − 5x + 6 = 0</span><i style="--w:86%"></i><i style="--w:62%"></i><i style="--w:74%"></i></div>';
+  el.innerHTML=`<div class="hop">
+    <div class="hop-sc" aria-hidden="true"><svg class="hop-tr" viewBox="0 0 100 75"></svg>
+      <div class="hw hw-pdf" data-k="pdf"><div class="hw-t"><i></i>강의자료.pdf</div><div class="hw-b">${SL}</div></div>
+      <div class="hw hw-nt" data-k="nt"><div class="hw-t"><i></i>노트</div><div class="hw-b"><canvas></canvas></div></div>
+      <div class="hw hw-cam" data-k="cam"><div class="cam-v"></div><i class="cam-s"></i><i class="cam-f"></i></div>
+      <div class="hw hw-ai" data-k="ai"><div class="hw-t"><i></i>AI 채팅</div><div class="hw-b"><i class="ch-u"></i><div class="ch-a"><span class="ch-d"><i></i><i></i><i></i></span><i class="ch-l" style="--w:92%"></i><i class="ch-l" style="--w:76%"></i><i class="ch-l" style="--w:84%"></i></div></div></div>
+      <span class="hop-n">앱 전환 <b>0</b>번</span></div>
+    <div class="dev hop-pv"><div class="scr">
+      <div class="bar"><span class="wm">Provee<i>.</i></span><span>공통수학1 · 이차방정식</span><span class="dots"><i style="background:#221C39;box-shadow:0 0 0 .3cqw #fff,0 0 0 .55cqw #221C39"></i><i style="background:#C0392B"></i><i style="background:#FFD400"></i></span><span class="end">학습 종료</span></div>
+      <div class="p3"><div class="p3-pdf"><span class="p3-tg" style="--d:0s">강의자료</span>${SL}</div>
+        <div class="p3-nt"><span class="p3-tg" style="--d:.12s">노트</span><canvas></canvas>${MATH.map(m=>`<div class="rec"><small>읽은 식</small><span class="m">${m}</span>${OK}</div>`).join('')}
+          <div class="p3-ai"><span class="p3-tg" style="--d:.24s">AI 튜터</span><p><span class="ch-d"><i></i><i></i><i></i></span><span class="p3-q">인수분해 좋아요. 두 근을 원래 식에 넣어 확인해 볼까요?</span></p></div></div></div>
+    </div></div>
+  </div><p class="scap">앞의 창들은 설명을 위한 예시입니다. Provee 화면 속 필기는 대표가 태블릿에 직접 쓴 실제 필기(획 14개, 25개)를 빠르게 재생한 것입니다.</p>`;
+  const hop=el.querySelector('.hop'),tr=el.querySelector('.hop-tr'),W={},cnt=el.querySelector('.hop-n b'),ai=el.querySelector('.p3-ai'),fx=el.querySelector('.p3-pdf .fx');
+  el.querySelectorAll('.hw').forEach(w=>W[w.dataset.k]=w);
+  const cvS=W.nt.querySelector('canvas'),cv=el.querySelector('.p3-nt>canvas'),recs=[...el.querySelectorAll('.p3-nt .rec')];let stopR=null,L=null;
+  // 창 가운데(무대 100×75 기준)와 오가는 순서: 강의자료를 보고 → 노트에 쓰고 → 찍고 → AI에 올리고, 두 바퀴
+  const C={pdf:[23,18.5],nt:[76,21.5],cam:[20.5,54.5],ai:[72.5,55.5]},HOPS=['pdf','nt','cam','ai','pdf','nt','cam','ai'];
+  const lines=()=>{if(L)return L;const F=INK2.fact,yc=s=>s.p.reduce((a,p)=>a+p[1],0)/s.p.length;
+    return L=[INK2.cover,F.filter(s=>yc(s)<500),F.filter(s=>yc(s)>=500)].map(S=>retime(S,2.4,300))};
+  const lay=f=>{const B=L.map(bb),k=Math.min(.38*f.W/(B[0][2]-B[0][0]),.14*f.H/(B[0][3]-B[0][1])),TOP=[.17,.38,.59];
+    return L.map((S,i)=>({S,tr:{k,x0:B[i][0],y0:B[i][1],ox:.06*f.W,oy:TOP[i]*f.H},x:.06*f.W+(B[i][2]-B[i][0])*k,y:TOP[i]*f.H+(B[i][3]-B[i][1])*k/2,E:endT(S)}))};
+  const place=Q=>Q.forEach((q,i)=>{recs[i].style.left=(q.x+Math.max(10,q.tr.k*50))+'px';recs[i].style.top=q.y+'px'});
+  const reset=()=>{hop.classList.add('rs');hop.classList.remove('mg','tags');ai.classList.remove('q');fx.classList.remove('hl');recs.forEach(r=>r.classList.remove('on'));
+    Object.values(W).forEach(w=>w.classList.remove('act','snap','typing','ans'));tr.innerHTML='';cnt.textContent='0';
+    const g=fitCanvas(cv);g&&g.ctx.clearRect(0,0,g.W,g.H);void hop.offsetWidth;hop.classList.remove('rs')};
+  const hopTo=(a,b,n)=>{const [x0,y0]=C[a]||C[b],[x1,y1]=C[b],mx=(x0+x1)/2,my=(y0+y1)/2,dx=x1-x0,dy=y1-y0,sg=n%2?1:-1,cx=mx-dy*.22*sg,cy=my+dx*.22*sg;
+    if(a){const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',`M${x0} ${y0}Q${cx} ${cy} ${x1} ${y1}`);p.setAttribute('pathLength','1');tr.appendChild(p);void p.getBoundingClientRect();p.classList.add('on')}
+    Object.entries(W).forEach(([k,w])=>w.classList.toggle('act',k===b));
+    const w=W[b];if(b==='cam'){w.classList.remove('snap');void w.offsetWidth;w.classList.add('snap')}
+    if(b==='ai'){if(w.classList.contains('typing'))w.classList.add('ans');else w.classList.add('typing')}
+    cnt.textContent=n};
+  const finalState=()=>{hop.classList.add('rs','mg','tags');ai.classList.add('q');fx.classList.add('hl');const f=fitCanvas(cv);if(!f)return;const Q=lay(f),lw=Math.max(2,f.W*.0068);
+    Q.forEach(q=>drawInk(f.ctx,q.S,1e9,q.tr,'#221C39',lw));place(Q);recs.forEach(r=>r.classList.add('on'))};
   return {el,stop(){stopR&&stopR()},async play(ok){
     await ink2P;if(!INK2||!ok())return;lines();
-    if(RM){const f=fitCanvas(cv);if(!f)return;const Q=lay(f),lw=Math.max(2.2,f.W*.0062);Q.forEach(q=>drawInk(f.ctx,q.S,1e9,q.tr,'#221C39',lw));place(Q);recs.forEach(r=>r.classList.add('on'));return}
-    while(ok()){recs.forEach(r=>r.classList.remove('on'));
-      const f=fitCanvas(cv);if(!f)return;const Q=lay(f),lw=Math.max(2.2,f.W*.0062);place(Q);
-      let T=250;Q.forEach(q=>{q.t0=T;T+=q.E+520}); // each line starts after the previous one has been read
+    {const g=fitCanvas(cvS);if(g){const S=INK2.cover;drawInk(g.ctx,S,1e9,fitBox(S,g.W,g.H,.08,.12,.6,.3),'#221C39',Math.max(1.6,g.W*.008))}}
+    if(RM){finalState();return}
+    while(ok()){reset();await sleep(300);if(!ok())return;
+      // 1) 왔다 갔다: 창 사이를 여덟 번 오가며 자국이 엉킨다
+      let prev=null;for(let i=0;i<HOPS.length;i++){hopTo(prev,HOPS[i],i+1);prev=HOPS[i];await sleep(400);if(!ok())return}
+      await sleep(350);if(!ok())return;
+      // 2) 한 번에: 창들이 Provee 화면 속 제자리로 들어가고, 카메라는 사라진다
+      Object.values(W).forEach(w=>w.classList.remove('act'));hop.classList.add('mg');await sleep(1150);if(!ok())return;
+      hop.classList.add('tags');await sleep(450);if(!ok())return;
+      // 3) 한 화면에서 쓰는 대로 읽고, 강의자료의 같은 식에 표시, 다 쓰면 튜터가 되묻는다
+      const f=fitCanvas(cv);if(!f)return;const Q=lay(f),lw=Math.max(2,f.W*.0068);place(Q);
+      let T=0;Q.forEach(q=>{q.t0=T;T+=q.E+420});
       const t0=performance.now();stopR=loopRAF(now=>{const e=now-t0;f.ctx.clearRect(0,0,f.W,f.H);
-        Q.forEach((q,i)=>{if(e>=q.t0)drawInk(f.ctx,q.S,e-q.t0,q.tr,'#221C39',lw);if(e>=q.t0+q.E+140)recs[i].classList.add('on')})});
-      await sleep(T+1900);stopR();if(!ok())return;recs.forEach(r=>r.classList.remove('on'));await sleep(220);if(!ok())return;
-      const g=fitCanvas(cv);g&&g.ctx.clearRect(0,0,g.W,g.H)}
+        Q.forEach((q,i)=>{if(e>=q.t0)drawInk(f.ctx,q.S,e-q.t0,q.tr,'#221C39',lw);if(e>=q.t0+q.E+120){recs[i].classList.add('on');if(!i)fx.classList.add('hl')}})});
+      await sleep(T+200);if(!ok()){stopR();return}ai.classList.add('q');await sleep(2600);stopR();if(!ok())return}
   }};
 }
 
