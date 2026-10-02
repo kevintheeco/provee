@@ -176,7 +176,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 /* 01 input: 강의자료·노트·카메라·AI 채팅 창 사이를 오가다(왔다 갔다), Provee 한 화면으로 합쳐진다. 좌표는 무대 너비 기준(cqw, 무대 100×75) */
 .hop{container-type:inline-size;position:relative;width:100%;aspect-ratio:4/3}
-.hop.rs *{transition:none!important}
+.hop.rs *,.cin.rs *{transition:none!important}
 .hop-sc{position:absolute;inset:0;transition:opacity .45s var(--ease) .3s}
 .hop.mg .hop-sc{opacity:0}
 .hop-tr{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:3}
@@ -264,32 +264,49 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .f-pth{margin:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:12px;row-gap:4px;font-size:clamp(20px,2vw,24px);font-weight:800;letter-spacing:-.02em}
 .f-pth b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font:700 14px/1 var(--brand)}
 .f-pth span{font-size:16px;font-weight:500;letter-spacing:0;color:var(--ink3)}
-/* 02-1: 같은 2x + 1을 사진을 읽는 AI는 24 + 1로, Provee는 획마다 갈라 2x + 1로 읽는다 */
-.rg-bd{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);border-radius:24px;overflow:hidden;background:linear-gradient(90deg,#F0EBE3 0 40%,var(--paper) 0);box-shadow:0 50px 90px -46px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
-.rg-s{display:grid;gap:14px;align-content:start;padding:16px 24px 22px;min-width:0}
-.rg-b{box-shadow:inset 1px 0 0 var(--line)}
-.rg-h{display:flex;align-items:center;gap:10px;min-height:30px;font-size:15px;color:var(--ink3);white-space:nowrap}
-.rg-h b{font-size:16px;font-weight:700;color:var(--ink2)}
-.rg-h .wm{font-size:20px;color:var(--ink)}
-/* 왼쪽: 대표의 실제 GPT 대화 캡처(1179×1010). 답 '24 + 1' 아래에 밑줄 */
-.rg-ch{position:relative;aspect-ratio:1179/1010;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 18px 36px -14px rgba(30,20,10,.42)}
-.rg-ch img{display:block;width:100%;height:100%}
-.rg-ul{position:absolute;left:25.3%;top:93.4%;width:15.1%;height:3px;border-radius:2px;background:#E0485C;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease) .15s}
-.rg.on .rg-ul{transform:none}
-.rg-pg{position:relative;aspect-ratio:1.83;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--rule)}
-.rg-pg canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit}
-.rg-tk{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:6px}
-.rg-tk span{min-width:30px;height:30px;padding-inline:8px;display:grid;place-items:center;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--c);font:italic 600 19px/1 "Times New Roman",Georgia,serif;color:var(--c);opacity:0;transform:scale(.85);transition:opacity .2s var(--ease),transform .3s cubic-bezier(.2,0,0,1.3)}
-.rg-tk span.on{opacity:1;transform:none}
-.rg-res{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 16px;border-radius:12px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px var(--line)}
-.rg-res span{font-size:14px;font-weight:600;color:var(--ink3)}
-.rg-res b{font:italic 600 28px/1 "Times New Roman",Georgia,serif;color:var(--ink3);white-space:nowrap}
-.rg-a .rg-res b{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(138,28,43,.6)}
-.rg-b .rg-res{background:var(--paper);opacity:0;transform:translateY(6px);transition:opacity .35s var(--ease),transform .45s var(--ease)}
-.rg-b .rg-res.on{opacity:1;transform:none;box-shadow:inset 0 0 0 2px var(--ink)}
-.rg-b .rg-res b{color:var(--ink)}
-.rg-res i{margin-left:auto;flex:none;width:24px;height:24px;border-radius:50%;background:#1F7A4D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}
-@media (max-width:640px){.rg-pg{aspect-ratio:1.9}.rg-bd{grid-template-columns:minmax(0,1fr);background:none}.rg-a{background:#F0EBE3}.rg-b{background:var(--paper);box-shadow:inset 0 1px 0 var(--line)}.rg-s{padding:14px 16px 18px;gap:12px}.rg-res{min-height:46px}.rg-res b{font-size:24px}.f-pth span{font-size:15px}}
+/* 02-1: 사진 한 장으로 추정한 24 + 1(대표의 실제 대화) 옆에서, 같은 글씨가 획 여섯 개로 쓴 순서대로 떠올라 2x + 1로 읽힌다 */
+.cin{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);border-radius:24px;overflow:hidden;background:#15120F;color:#F4EEE4;box-shadow:0 50px 90px -46px rgba(30,15,10,.6)}
+.cin-ch{display:grid;align-content:center;gap:14px;padding:22px 20px 22px 24px;background:#000}
+.cin-lb{display:flex;align-items:baseline;gap:10px;font-size:14px;color:#9C9286;white-space:nowrap}
+.cin-lb b{font-size:15px;font-weight:700;color:#F4EEE4}
+.cin-im{position:relative;border-radius:12px;overflow:hidden}
+.cin-im img{display:block;width:100%;height:auto}
+.cin-ul{position:absolute;left:25.3%;top:93.4%;width:15.1%;height:3px;border-radius:2px;background:#E0485C;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.cin.ul .cin-ul{transform:none}
+.cin-gs{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:#9C9286}
+.cin-gs b{font:italic 600 26px/1 "Times New Roman",Georgia,serif;color:#8C8378;text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:#E0485C}
+.cin-st{position:relative;container-type:inline-size;display:grid;grid-template-rows:auto minmax(260px,1fr) auto;gap:10px;padding:20px 24px 22px;background:radial-gradient(110% 85% at 50% 48%,#2C251E,#15120F 72%)}
+.cin-tg{display:grid;font-size:15px;font-weight:700}
+.cin-tg b{grid-area:1/1;transition:opacity .35s var(--ease)}
+.cin-tg .t1{color:#9C9286}.cin-tg .t2{opacity:0;color:#F4EEE4}
+.cin.ex .cin-tg .t1{opacity:0}.cin.ex .cin-tg .t2{opacity:1}
+.cin-cam{position:relative;display:grid;place-items:center;perspective:1500px}
+.cin-sk{position:relative;width:min(60cqw,420px);aspect-ratio:226/158;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.6,0,.2,1)}
+.cin.ex .cin-sk{transform:rotateX(56deg) rotateZ(-30deg) scale(.82)}
+.cin.fin .cin-sk{transform:none}
+.cin-ph{position:absolute;inset:-6%;border-radius:10px;background:#D7D0C5 repeating-linear-gradient(to bottom,transparent 0 13%,rgba(30,24,17,.1) 13% calc(13% + 1px));box-shadow:0 18px 40px -16px rgba(0,0,0,.6);transition:opacity .7s var(--ease)}
+.cin.ex .cin-ph{opacity:0}
+.cin-ly{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.6,0,.2,1) calc(var(--i)*45ms)}
+.cin-ly::before{content:"";position:absolute;inset:-5%;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(244,238,228,0);transition:box-shadow .5s,background-color .5s,opacity .4s}
+.cin.ex .cin-ly{transform:translateZ(calc((var(--i) - 2.5) * 6.5cqw))}
+.cin.ex .cin-ly::before{box-shadow:inset 0 0 0 1px rgba(244,238,228,.14);background-color:rgba(244,238,228,.025)}
+.cin.fin .cin-ly{transform:none}.cin.fin .cin-ly::before{opacity:0}
+.cin-ly svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cin-ly path{fill:none;stroke:#2A2622;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;transition:stroke .35s,filter .35s}
+.cin.ex .cin-ly path{stroke:rgba(244,238,228,.26)}
+.cin .cin-ly.lit path{stroke:var(--c);filter:drop-shadow(0 0 5px var(--c))}
+.cin-bd{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-150%);transform-origin:50% 100%;padding:5px 9px;border-radius:99px;background:var(--c);color:#15120F;font:700 13px/1 var(--brand);white-space:nowrap;opacity:0;transition:opacity .25s}
+.cin-ly.lit .cin-bd{opacity:1}.cin.fin .cin-bd{opacity:0}
+.cin.ex .cin-bd{transform:translate(-50%,-150%) rotateZ(30deg) rotateX(-56deg) scale(1.2)} /* 기울어진 판 위에서도 번호표는 정면을 본다 */
+.cin-rs{display:flex;align-items:center;gap:12px;min-height:54px;padding:0 16px;border-radius:12px;background:rgba(244,238,228,.06);box-shadow:inset 0 0 0 1px rgba(244,238,228,.14);opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .45s var(--ease)}
+.cin.fin .cin-rs{opacity:1;transform:none}
+.cin-rs>span{font-size:14px;font-weight:600;color:#9C9286}
+.cin-tk{display:flex;gap:6px}
+.cin-tk i{min-width:28px;height:28px;padding-inline:7px;display:grid;place-items:center;border-radius:8px;box-shadow:inset 0 0 0 1.5px var(--c);font:italic 600 18px/1 "Times New Roman",Georgia,serif;color:var(--c);opacity:0;transform:scale(.85);transition:opacity .2s var(--ease) var(--d),transform .3s cubic-bezier(.2,0,0,1.3) var(--d)}
+.cin.fin .cin-tk i{opacity:1;transform:none}
+.cin-rs b{margin-left:auto;font:italic 600 30px/1 "Times New Roman",Georgia,serif;color:#fff}
+.cin-rs em{flex:none;width:24px;height:24px;border-radius:50%;background:#2E9E6A url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}
+@media (max-width:760px){.cin.ex .cin-bd{transform:translate(-50%,-150%) rotateZ(30deg) rotateX(-56deg) scale(.82)}.cin{grid-template-columns:minmax(0,1fr)}.cin-ch{padding:16px}.cin-st{padding:16px;grid-template-rows:auto minmax(220px,1fr) auto}.cin-sk{width:min(72cqw,360px)}.cin-tk i{min-width:24px;height:24px;font-size:16px}.cin-rs{padding:0 12px;gap:8px}.cin-rs b{font-size:26px}}
 
 /* 02 read: one real page, as a photo (left, what a photo-reading AI receives) and as Provee's stroke record (right) */
 .rv{container:rv/inline-size;position:relative;width:100%}
@@ -1908,27 +1925,36 @@ function sceneGround(){
       s.f.ctx.clearRect(0,0,s.f.W,s.f.H);await sleep(350)}
   }};
 }
-/* ---------- 02-1 recog: the same cramped 2x + 1, read from a photo (24 + 1, one real GPT-5.6 Sol run) and stroke by stroke by Provee ---------- */
+/* ---------- 02-1 recog: the real chat where a photo of 2x + 1 was read as 24 + 1, then the same ink lifts into its six strokes in the order they were written ---------- */
 function sceneRecog(){
-  const el=document.createElement('div');
-  const G=[{s:[0],t:'2',c:'#8A1C2B'},{s:[1,2],t:'x',c:'#2F4C66'},{s:[3,4],t:'+',c:'#7A5A1E'},{s:[5],t:'1',c:'#1F7A4D'}];
-  el.className='rg';
-  el.innerHTML=`<div class="rg-bd">
-    <div class="rg-s rg-a"><div class="rg-h"><b>사진을 읽는 AI</b><span>찍어 올렸을 때</span></div><div class="rg-ch"><img src="img/gpt-24p1-chat.jpg" alt="필기 사진을 올리고 이거 뭐라 쓴거게 라고 묻자 AI가 이번 건은 24 + 1로 보여 라고 답한 실제 대화" loading="lazy" decoding="async"><i class="rg-ul"></i></div><div class="rg-res"><span>읽은 식</span><b>24 + 1</b></div></div>
-    <div class="rg-s rg-b"><div class="rg-h"><span class="wm">Provee<i>.</i></span><span>쓰는 동안</span></div><div class="rg-pg"><canvas></canvas><div class="rg-tk">${G.map(g=>`<span style="--c:${g.c}">${g.t}</span>`).join('')}</div></div><div class="rg-res"><span>읽은 식</span><b>2x + 1</b><i></i></div></div>
-  </div><p class="scap">왼쪽은 대표가 뭉쳐 쓴 2x + 1을 찍어 GPT-5.6 Sol에 올린 실제 대화 캡처(2026년 9월 12일, 1회 실측이라 일반화하지 않음). 오른쪽은 같은 필기의 획 기록을 재생한 화면</p>`;
-  const cB=el.querySelector('.rg-pg canvas'),toks=[...el.querySelectorAll('.rg-tk span')],res=el.querySelector('.rg-b .rg-res');let stopR=null;
-  return {el,stop(){stopR&&stopR()},async play(ok){
-    await ink2P;if(!INK2||!ok())return;const S=INK2.blob,E=endT(S),SL=1.1;
-    const gEnd=G.map(g=>Math.max(...g.s.map(i=>{const p=S[i].p;return p[p.length-1][2]})));
-    // 글자 하나를 다 쓰면 그 획들이 글자 색으로 바뀌고, 오른쪽 위에 그 글자가 뜬다
-    const paint=(f,tr,t,lw)=>{f.ctx.clearRect(0,0,f.W,f.H);G.forEach((g,gi)=>drawInk(f.ctx,g.s.map(i=>S[i]),t,tr,t>=gEnd[gi]?g.c:'#221C39',lw))};
-    el.classList.add('on');
-    if(RM){const f=fitCanvas(cB);if(!f)return;paint(f,fitBox(S,f.W,f.H,.2,.07,.6,.6),1e9,Math.max(2.4,f.W*.012));toks.forEach(t=>t.classList.add('on'));res.classList.add('on');return}
-    while(ok()){toks.forEach(t=>t.classList.remove('on'));res.classList.remove('on');
-      const f=fitCanvas(cB);if(!f)return;const tr=fitBox(S,f.W,f.H,.2,.07,.6,.6),lw=Math.max(2.4,f.W*.012),t0=performance.now()+350;
-      stopR=loopRAF(now=>{const t=(now-t0)/SL;paint(f,tr,t,lw);gEnd.forEach((e,i)=>{if(t>=e)toks[i].classList.add('on')})});
-      await sleep(350+E*SL+350);stopR();if(!ok())return;res.classList.add('on');await sleep(3400)}
+  const el=document.createElement('div');el.className='cin';
+  // 획 번호 → 글자 묶음과 색(어두운 무대용 밝은 색), 획마다 쓴 시각
+  const G=[{s:[0],t:'2',c:'#E0485C'},{s:[1,2],t:'x',c:'#6FA0D8'},{s:[3,4],t:'+',c:'#D9A441'},{s:[5],t:'1',c:'#3FB27F'}],SC=[];G.forEach(g=>g.s.forEach(i=>SC[i]=g.c));
+  const BD=['1 · 0.0초','2 · 0.7초','3 · 1.1초','4 · 2.8초','5 · 3.0초','6 · 3.3초'];
+  el.innerHTML=`<div class="cin-ch"><div class="cin-lb"><b>사진을 읽는 AI</b>사진 한 장으로 추정</div>
+      <div class="cin-im"><img src="img/gpt-24p1-chat.jpg" alt="필기 사진을 올리고 이거 뭐라 쓴거게 라고 묻자 AI가 이번 건은 24 + 1로 보여 라고 답한 실제 대화" loading="lazy" decoding="async"><i class="cin-ul"></i></div>
+      <div class="cin-gs">읽은 식<b>24 + 1</b></div></div>
+    <div class="cin-st"><div class="cin-tg"><b class="t1">사진으로 보면: 겹친 이미지 한 장</b><b class="t2">Provee로 보면: 쓴 순서대로 획 6개</b></div>
+      <div class="cin-cam"><div class="cin-sk"><i class="cin-ph"></i></div></div>
+      <div class="cin-rs"><span>읽은 식</span><span class="cin-tk">${G.map((g,j)=>`<i style="--c:${g.c};--d:${(j*.09).toFixed(2)}s">${g.t}</i>`).join('')}</span><b>2x + 1</b><em></em></div></div>`;
+  const sk=el.querySelector('.cin-sk');let L=[],built=false;
+  const build=()=>{if(built)return;built=true;const S=INK2.blob,[a,b,c,d]=bb(S),pad=10,x0=a-pad,y0=b-pad,W=c-a+2*pad,H=d-b+2*pad;
+    S.forEach((q,i)=>{const p=q.p;let dd=`M${p[0][0]-x0} ${p[0][1]-y0}`;for(let j=1;j<p.length-1;j++)dd+=`Q${p[j][0]-x0} ${p[j][1]-y0} ${((p[j][0]+p[j+1][0])/2-x0).toFixed(1)} ${((p[j][1]+p[j+1][1])/2-y0).toFixed(1)}`;
+      if(p.length>1)dd+=`L${p[p.length-1][0]-x0} ${p[p.length-1][1]-y0}`;
+      const ly=document.createElement('div');ly.className='cin-ly';ly.style.cssText=`--i:${i};--c:${SC[i]}`;
+      ly.innerHTML=`<svg viewBox="0 0 ${W} ${H}" aria-hidden="true"><path d="${dd}"/></svg><span class="cin-bd" style="--x:${((p[0][0]-x0)/W*100).toFixed(1)}%;--y:${((p[0][1]-y0)/H*100).toFixed(1)}%">${BD[i]}</span>`;
+      sk.appendChild(ly);L.push(ly)})};
+  const set=(k,on)=>el.classList.toggle(k,on);
+  return {el,stop(){},async play(ok){
+    await ink2P;if(!INK2||!ok())return;build();
+    if(RM){['ul','ex','fin'].forEach(k=>set(k,true));L.forEach(l=>l.classList.add('lit'));return}
+    while(ok()){el.classList.add('rs');['ul','ex','fin'].forEach(k=>set(k,false));L.forEach(l=>l.classList.remove('lit'));void el.offsetWidth;el.classList.remove('rs');
+      await sleep(350);if(!ok())return;set('ul',true);           // 사진 한 장: AI는 24 + 1로 추정
+      await sleep(1100);if(!ok())return;set('ex',true);          // 같은 글씨가 기울며 획 여섯 개로 떠오른다
+      await sleep(1250);if(!ok())return;
+      for(const l of L){l.classList.add('lit');await sleep(340);if(!ok())return} // 쓴 순서대로 하나씩 켜진다
+      await sleep(450);if(!ok())return;set('fin',true);         // 다시 내려앉아 글자별 색으로 묶이고 2x + 1
+      await sleep(3200)}
   }};
 }
 const MAKE={recog:sceneRecog,input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,note:sceneNote,ground:sceneGround};
