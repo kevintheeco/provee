@@ -1704,7 +1704,7 @@ function sceneNote(){
   const card=(c,unit,title,sub)=>`<h5 class="pn-uh"><span>${unit}</span></h5><div class="pn-cd" data-c="${c}"><div class="pn-th"><canvas></canvas></div><div class="pn-cr"><span><b>${title}</b><small class="pn-sub"><span>${sub}</span><span class="pn-rv">복습 1회${OK}</span></small></span><em>${RE}다시 보기</em></div></div>`;
   const player=(c,title,prompt,unit,foot)=>`<div class="pn-pane pn-pl" data-c="${c}"><div class="pn-hd"><i class="pn-bk">‹</i><b class="pn-br">Provee Note</b><span class="pn-bd">복습 1회${OK}</span></div><h4 class="pn-tt">${title}</h4><p class="pn-pr">${prompt}</p><div class="pn-pa"><canvas></canvas></div><div class="pn-sc"><i></i></div><div class="pn-ct"><span class="pn-st"><span>다시 보는 중</span><span>다 봤어요</span></span><span class="pn-pb">${PAUSE}${RE}</span><span class="pn-un">${unit}</span></div><p class="pn-ft">${foot}</p></div>`;
   el.innerHTML=`<div class="pn"><div class="pn-fr" role="img" aria-label="등굣길, 시험 10분 전, 버스 안에서 같은 학생이 폰으로 Provee Note를 열어 자기 풀이를 다시 보는 연출 장면">
-    ${PN_MO.map(m=>`<img class="pn-ph" src="img/note-${m[0]}.webp" alt="" decoding="async" fetchpriority="low">`).join('')}
+    ${PN_MO.map(m=>`<img class="pn-ph" src="img/note-${m[0]}.webp" alt="" decoding="async">`).join('')}
     <div class="pn-scr" aria-hidden="true"><div class="pn-sb"><span class="pn-tm">${PN_MO.map(m=>`<span>${m[2]}</span>`).join('')}</span><i class="pn-di"></i><span class="pn-ic">${ICONS}</span></div>
       <div class="pn-app"><div class="pn-pane pn-ls"><div class="pn-hd"><i class="pn-bk">‹</i><b class="pn-br">Provee Note</b><small>나의 풀이</small></div><div class="pn-tabs"><span>수학</span></div>
         ${card('b','수능 기출','2024 수능 14번','풀이 18분 · 지움 20획')}${card('a','이차방정식','x² − 5x + 6 = 0','풀이 36초')}</div>
@@ -1715,8 +1715,8 @@ function sceneNote(){
   const $e=s=>el.querySelector(s),$a=s=>[...el.querySelectorAll(s)],fr=$e('.pn-fr'),scr=$e('.pn-scr'),imgs=$a('.pn-ph'),chips=$a('.pn-mo>span'),clocks=$a('.pn-tm>span'),ls=$e('.pn-ls'),tap=$e('.pn-tap');
   const PL={a:$e('.pn-pl[data-c=a]'),b:$e('.pn-pl[data-c=b]')},CD={a:$e('.pn-cd[data-c=a]'),b:$e('.pn-cd[data-c=b]')};
   const SW=300,SH=650,PW=268,PH=217,R=2,D=3000,XF=240,LOOP=3*D,SL=280,KB=.035;
-  // beats (ms): tap the quadratic, it slides in and replays; back to the list, tap the 14번 page, it replays across the next moment
-  const BT={a:{tap:480,in:700,p0:1000,p1:2600,out:3060},b:{tap:3500,in:3720,p0:4020,p1:8020,out:LOOP-XF}},FINAL=8300;
+  // beats (ms): tap the quadratic, it slides in and replays; back to the list, tap the 14번 page, it replays within the exam moment (a slow replay left that moment nearly blank)
+  const BT={a:{tap:480,in:700,p0:1000,p1:2600,out:3060},b:{tap:3500,in:3720,p0:3900,p1:5800,out:LOOP-XF}},FINAL=8300;
   let built=false,F=null,fw=0,fh=0,stopR=null,ro=null,S={},INKS={},tapAt={};
   const set=(k,v,fn)=>{if(S[k]!==v){S[k]=v;fn(v)}};
   const ease=u=>u<=0?0:u>=1?1:1-Math.pow(1-u,3),seg=(T,a,b)=>Math.min(1,Math.max(0,(T-a)/(b-a)));
