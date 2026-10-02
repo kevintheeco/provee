@@ -129,6 +129,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .f-copy{display:flex;flex-direction:column;gap:16px;opacity:0;transform:translateY(16px);transition:opacity .45s var(--ease),transform .5s var(--ease)}
 .f-vis{min-width:0;opacity:0;transform:translateY(24px) scale(.98);transition:opacity .5s var(--ease) .06s,transform .55s var(--ease) .06s}
 .frow.in .f-copy,.frow.in .f-vis{opacity:1;transform:none}
+.f-hl{color:inherit;background:linear-gradient(rgba(255,210,0,.42),rgba(255,210,0,.42)) 0 58%/0% 72% no-repeat;padding-inline:.08em;margin-inline:-.08em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .7s cubic-bezier(.55,.1,.3,1) .45s}
+.frow.in .f-hl{background-size:100% 72%}
 .fk{display:flex;align-items:baseline;gap:10px;font-size:15px;font-weight:700;color:var(--ink2)}
 .fk b{font:700 15px var(--brand);color:var(--wine)}
 .f-copy h3{margin:0;font-size:clamp(26px,2.8vw,36px);line-height:1.38;font-weight:800;letter-spacing:-.03em}
@@ -212,6 +214,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .sl>i{height:1cqw;border-radius:.5cqw;background:rgba(30,24,17,.1);width:var(--w)}
 .hop-n{position:absolute;left:31cqw;top:63cqw;z-index:4;display:inline-flex;align-items:center;gap:.6cqw;height:5cqw;padding-inline:2cqw;border-radius:99px;background:var(--ink);color:#fff;font-size:max(1.8cqw,10px);font-weight:600;white-space:nowrap}
 .hop-n b{font:700 max(2.2cqw,11px)/1 var(--brand)}
+.hop-x{position:absolute;left:50%;top:47%;z-index:5;width:20cqw;height:20cqw;margin:-10cqw 0 0 -10cqw;opacity:0;transform:scale(1.8);pointer-events:none}
+.hop-x svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 1.4cqw 3cqw rgba(160,20,30,.45))}
+.hop-x circle{fill:#E0303F}
+.hop-x path{fill:none;stroke:#fff;stroke-width:9;stroke-linecap:round}
+.hop.no .hop-x{animation:hopx .62s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes hopx{0%{opacity:0;transform:scale(1.8)}30%{opacity:1;transform:scale(.92)}42%{opacity:.3}54%{opacity:1;transform:scale(1.05)}66%{opacity:.3}78%,100%{opacity:1;transform:none}}
+.hop-rd{position:absolute;inset:-2cqw;z-index:4;border-radius:3cqw;background:rgba(224,48,63,.16);opacity:0;pointer-events:none}
+.hop.no .hop-rd{animation:hoprd .62s linear forwards}
+@keyframes hoprd{0%,22%{opacity:0}30%{opacity:1}42%{opacity:0}54%{opacity:1}66%,100%{opacity:0}}
+.hop.no .hw{animation:hopsh .3s ease-in-out .16s 2}
+@keyframes hopsh{25%{translate:-.9cqw 0}75%{translate:.9cqw 0}}
+.hop.no .hop-n{background:#E0303F}
+.hop.no .hop-tr path{stroke:#E0303F;opacity:.75}
 /* 합쳐질 때: 각 창이 Provee 화면 속 제자리로 날아가며 사라지고, 카메라는 필요 없어져 작아지며 사라진다 */
 .hop.mg .hw{opacity:0}
 .hop.mg .hw-pdf{transform:translate(.2cqw,9cqw) scale(.6,.69)}
@@ -1243,7 +1258,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="frow" id="f-input" data-f="input">
       <div class="f-copy">
         <span class="fk"><b>01</b>필기 입력</span>
-        <h3>왔다 갔다 시간 낭비는 그만,<br>Provee로 한 번에</h3>
+        <h3>왔다 갔다 <mark class="f-hl">시간 낭비는 그만</mark>,<br>Provee로 한 번에</h3>
         <p>노트도, AI도, 강의자료도 Provee 하나로.</p>
       </div>
       <div class="f-vis" data-scene="input"></div>
@@ -1503,7 +1518,7 @@ function sceneInput(){
       <div class="hw hw-nt" data-k="nt"><div class="hw-t"><i></i>노트</div><div class="hw-b"><canvas></canvas></div></div>
       <div class="hw hw-cam" data-k="cam"><div class="cam-v"></div><i class="cam-s"></i><i class="cam-f"></i></div>
       <div class="hw hw-ai" data-k="ai"><div class="hw-t"><i></i>AI 채팅</div><div class="hw-b"><i class="ch-u"></i><div class="ch-a"><span class="ch-d"><i></i><i></i><i></i></span><i class="ch-l" style="--w:92%"></i><i class="ch-l" style="--w:76%"></i><i class="ch-l" style="--w:84%"></i></div></div></div>
-      <span class="hop-n">앱 전환 <b>0</b>번</span></div>
+      <span class="hop-n">앱 전환 <b>0</b>번</span><i class="hop-rd"></i><div class="hop-x"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><path d="M33 33L67 67M67 33L33 67"/></svg></div></div>
     <div class="dev hop-pv"><div class="scr">
       <div class="bar"><span class="wm">Provee<i>.</i></span><span>공통수학1 · 이차방정식</span><span class="dots"><i style="background:#221C39;box-shadow:0 0 0 .3cqw #fff,0 0 0 .55cqw #221C39"></i><i style="background:#C0392B"></i><i style="background:#FFD400"></i></span><span class="end">학습 종료</span></div>
       <div class="p3"><div class="p3-pdf"><span class="p3-tg" style="--d:0s">강의자료</span>${SL}</div>
@@ -1521,7 +1536,7 @@ function sceneInput(){
   const lay=f=>{const B=L.map(bb),k=Math.min(.38*f.W/(B[0][2]-B[0][0]),.14*f.H/(B[0][3]-B[0][1])),TOP=[.17,.38,.59];
     return L.map((S,i)=>({S,tr:{k,x0:B[i][0],y0:B[i][1],ox:.06*f.W,oy:TOP[i]*f.H},x:.06*f.W+(B[i][2]-B[i][0])*k,y:TOP[i]*f.H+(B[i][3]-B[i][1])*k/2,E:endT(S)}))};
   const place=Q=>Q.forEach((q,i)=>{recs[i].style.left=(q.x+Math.max(10,q.tr.k*50))+'px';recs[i].style.top=q.y+'px'});
-  const reset=()=>{hop.classList.add('rs');hop.classList.remove('mg','tags');ai.classList.remove('q');fx.classList.remove('hl');recs.forEach(r=>r.classList.remove('on'));
+  const reset=()=>{hop.classList.add('rs');hop.classList.remove('mg','tags','no');ai.classList.remove('q');fx.classList.remove('hl');recs.forEach(r=>r.classList.remove('on'));
     Object.values(W).forEach(w=>w.classList.remove('act','snap','typing','ans'));tr.innerHTML='';cnt.textContent='0';
     const g=fitCanvas(cv);g&&g.ctx.clearRect(0,0,g.W,g.H);void hop.offsetWidth;hop.classList.remove('rs')};
   const hopTo=(a,b,n)=>{const [x0,y0]=C[a]||C[b],[x1,y1]=C[b],mx=(x0+x1)/2,my=(y0+y1)/2,dx=x1-x0,dy=y1-y0,sg=n%2?1:-1,cx=mx-dy*.22*sg,cy=my+dx*.22*sg;
@@ -1539,7 +1554,8 @@ function sceneInput(){
     while(ok()){reset();await sleep(300);if(!ok())return;
       // 1) 왔다 갔다: 창 사이를 여덟 번 오가며 자국이 엉킨다
       let prev=null;for(let i=0;i<HOPS.length;i++){hopTo(prev,HOPS[i],i+1);prev=HOPS[i];await sleep(400);if(!ok())return}
-      await sleep(350);if(!ok())return;
+      // 그만: 빨간 X가 '삐빅' 두 번 깜빡이며 찍히고 창들이 흔들린다
+      await sleep(200);if(!ok())return;Object.values(W).forEach(w=>w.classList.remove('act'));hop.classList.add('no');await sleep(1000);if(!ok())return;
       // 2) 한 번에: 창들이 Provee 화면 속 제자리로 들어가고, 카메라는 사라진다
       Object.values(W).forEach(w=>w.classList.remove('act'));hop.classList.add('mg');await sleep(1150);if(!ok())return;
       hop.classList.add('tags');await sleep(450);if(!ok())return;

@@ -140,7 +140,7 @@ const T={
 '사진을 읽는 AI':'AI that reads photos',
 '찍어 올렸을 때':'given a photo',
 '쓰는 동안':'as you write',
-'왔다 갔다 시간 낭비는 그만,<br>Provee로 한 번에':'Stop wasting time switching apps.<br>Do it all at once in Provee',
+'왔다 갔다 <mark>시간 낭비는 그만</mark>,<br>Provee로 한 번에':'<mark>Stop wasting time</mark> switching apps.<br>Do it all at once in Provee',
 '노트도, AI도, 강의자료도 Provee 하나로.':'Notes, AI and lecture slides, all in one Provee.',
 '획 단위로 읽으니,<br>잘못 읽지 않고 놓치지 않습니다':'Reading stroke by stroke,<br>it doesn\'t misread and doesn\'t miss a thing',
 'Provee는 사진 한 장이 아니라, 획마다 쓴 자리와 시각을 받습니다.':'Provee doesn\'t get one photo. It gets where and when every stroke was written.',
