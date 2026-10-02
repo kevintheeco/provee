@@ -67,6 +67,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .btn-l{background:rgba(255,255,255,.42);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 1px 2px rgba(30,24,17,.06),0 6px 18px rgba(30,24,17,.07)}
 .btn-l:hover{background:rgba(255,255,255,.6)}
 .hdr .btn{height:42px;padding-inline:18px;font-size:14px}
+.hdr .btn-w{transition:opacity .2s}.at-join .hdr .btn-w{opacity:0;pointer-events:none}
 .burger{display:none;width:44px;height:44px;border-radius:12px;place-items:center}
 @media (max-width:1020px){.gnb,.hdr .btn-l{display:none}.burger{display:grid}.hdr .btn-w{height:38px;padding-inline:14px;font-size:13px;border-radius:12px}}
 /* 폰: 햄버거 옆에 작게. 자리가 빠듯하면 간격부터 줄인다 */
@@ -687,24 +688,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .plan:hover .i-hh{animation:prHand .5s var(--ease) both}
 .plan:hover .i-bl{animation:prRing .28s var(--ease) 2 .46s}}
 
-/* ---------- roadmap carousel ---------- */
-.rm-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
-.rm-nav{display:flex;gap:8px;flex:none}
-.rm-nav button{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);transition:opacity .2s,box-shadow .16s}
-.rm-nav button:hover{box-shadow:inset 0 0 0 1px #CFC2AD}
-.rm-nav button:disabled{opacity:.35;cursor:default}
-.rm-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,calc((100% - 48px)/4));gap:16px;margin-top:36px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
-.rm-track::-webkit-scrollbar{display:none}
-.rm{scroll-snap-align:start;display:flex;flex-direction:column;gap:10px;min-height:230px;background:var(--paper);border-radius:22px;padding:26px 24px;box-shadow:inset 0 0 0 1px var(--line)}
-.rm time{font:700 15px var(--brand);color:var(--ink3)}
-.rm.now{background:var(--ink);color:#F7F1E8;box-shadow:none}
-.rm.now time{color:#E0566A}
-.rm b{font-size:20px;line-height:1.4;letter-spacing:-.02em;text-wrap:balance}
-.rm span{font-size:15px;line-height:1.6;color:var(--ink2)}
-.rm.now span{color:#CFC6BA}
-.rm .st{margin-top:auto;font-size:13px;font-weight:700;font-style:normal;color:var(--ink3)}
-.rm.now .st{color:#E0566A}
-@media (max-width:760px){.rm-track{grid-auto-columns:78%}.rm-nav{display:none}}
 
 /* ---------- company story ---------- */
 .story{margin-top:0}
@@ -721,14 +704,13 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .st-line{text-wrap:balance}
 .st-cite{display:block;text-wrap:pretty;max-width:40em;margin:22px auto 0;font-size:12px;line-height:1.65;font-weight:400;letter-spacing:0;color:rgba(247,241,232,.5)}
 .st-cite a{color:rgba(247,241,232,.72);text-decoration:underline;text-underline-offset:2px}
-.st-mv{position:relative;overflow:hidden;color:#fff;padding-block:clamp(96px,12vw,160px);background:radial-gradient(1200px 500px at 20% 10%,rgba(224,86,106,.35),transparent 60%),radial-gradient(900px 600px at 90% 100%,rgba(40,8,14,.6),transparent 60%),linear-gradient(135deg,#8A1C2B,#4A0E18)}
-.st-mv::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(92deg,rgba(255,255,255,.035) 0 1px,transparent 1px 7px);pointer-events:none}
-.st-mv h3{position:relative;margin:0;font-size:clamp(24px,3vw,38px);line-height:1.5;font-weight:700;letter-spacing:-.03em;max-width:24em}
-.mv{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:clamp(64px,8vw,120px);max-width:760px}
-.mv div{display:grid;gap:8px;padding-top:16px;border-top:1px solid rgba(255,255,255,.4)}
-.mv b{font-size:17px}.mv span{color:rgba(255,255,255,.82);font-size:16px;line-height:1.6}
+.st-mv{padding-block:clamp(64px,8vw,104px);background:var(--card)}
+.st-mv h3{margin:0;font-size:clamp(24px,2.8vw,34px);line-height:1.5;font-weight:800;letter-spacing:-.03em;max-width:24em}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:clamp(36px,4vw,56px);max-width:760px}
+.mv div{display:grid;gap:8px;padding-top:16px;border-top:1px solid var(--line)}
+.mv b{font-size:17px}.mv span{color:var(--ink2);font-size:16px;line-height:1.6}
 .st-origin{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,96px);align-items:center;padding-block:clamp(96px,11vw,150px)}
-.og-copy h3{margin:0 0 20px;font-size:clamp(28px,3.2vw,40px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
+.og-copy h2{margin:0 0 20px;font-size:clamp(28px,3.2vw,40px);line-height:1.35;font-weight:800;letter-spacing:-.03em}
 .og-copy p{margin:0 0 14px;font-size:17px;line-height:1.8;color:var(--ink2);max-width:32em}
 .og-ph{margin:0;justify-self:end;width:min(100%,420px)}
 .og-ph img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:24px;background:#1A1512;box-shadow:0 40px 80px -40px rgba(30,24,17,.55);clip-path:inset(14% 0 0 0 round 24px);opacity:0;transform:translateY(24px);transition:clip-path .45s var(--ease),opacity .3s var(--ease),transform .45s var(--ease)}
@@ -753,7 +735,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .tx-i.on>b{transition-delay:.05s}.tx-i.on>span,.tx-i.on>.tx-note{transition-delay:.08s}
 .tx-i>b{margin-top:16px;font-size:18px;line-height:1.45;letter-spacing:-.02em}
 .tx-i>span{margin-top:6px;font-size:15px;line-height:1.6;color:var(--ink2)}
-.tx-note{margin-top:8px;font-style:normal;font-size:15px;line-height:1.55;font-weight:700;color:var(--wine)}
+.tx-note{margin-top:8px;font-style:normal;font-size:15px;line-height:1.55;font-weight:700;color:var(--ink)}
 .tx-i.next>span{color:var(--wine);font-weight:700}
 .tv{position:relative;margin:12px 0 0;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
 .tv img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0}
@@ -790,8 +772,10 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .tv-m .stn i.me em{font-size:17px;font-weight:800;color:var(--ink)}
 .tv-x{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;padding:20px 22px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);outline:1.5px dashed #C9BCA8;outline-offset:-1.5px}
 .tv-x p{margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.4;letter-spacing:-.02em}
-.tv-x a{display:inline-flex;align-items:center;height:40px;padding-inline:16px;border-radius:12px;background:var(--wine);color:#fff;font-size:14px;font-weight:600}
-.tv-x a:hover{background:var(--wine-d)}
+/* 사진 없는 칸은 글만, 폭도 좁게. 앞으로의 일정은 빈 점과 옅은 글자 */
+.tx-i.txt>b{margin-top:10px}
+.tx-i.tx-later time{color:var(--ink3)}.tx-i.tx-later.on .dot{background:var(--ivory);box-shadow:inset 0 0 0 2px #C9BCA8,0 0 0 5px var(--ivory);transform:none}
+.tx-i.tx-later>b{color:var(--ink2)}
 .tx-src{margin:36px auto 0;font-size:12px;line-height:1.6;color:var(--ink3)}
 @media (min-width:761px) and (min-height:600px) and (prefers-reduced-motion:no-preference){
   .st-time{height:calc(100vh + var(--run,0px));padding:0}
@@ -800,6 +784,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   .tx::before,.tx::after{left:var(--l0,0px);top:30px;width:var(--ll,0px);height:2px}
   .tx::after{transform-origin:0 50%;transform:scaleX(var(--fill))}
   .tx-i{width:var(--cw);flex:none}
+  .tx-i.txt{width:calc(var(--cw)*.62)}
   .tx-i .dot{position:relative;left:0;top:0;margin:0 0 6px}
   .tx-src{margin-top:clamp(20px,3vh,32px)}
   .tx-pin>.st-in{width:100%}
@@ -808,7 +793,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 @media (min-width:761px) and (min-height:860px) and (prefers-reduced-motion:no-preference){.tv{aspect-ratio:4/3}}
 @media (min-width:761px) and (prefers-reduced-motion:reduce){.tx{max-width:var(--max);grid-template-columns:repeat(auto-fill,minmax(250px,1fr));padding:0 var(--gut);gap:48px 28px}.tx::before,.tx::after{display:none}.tx-i .dot{position:relative;left:0;top:0;margin:0 0 6px}}
 .team{padding-block:clamp(96px,11vw,150px)}
-.team h3{margin:0 0 36px;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em;text-align:center}
+.team h3{margin:0 0 36px;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em}
 .tm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .tm{display:grid;grid-template-columns:52px 1fr;column-gap:14px;row-gap:4px;align-items:start;align-content:start;background:var(--paper);border-radius:20px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}
 .tm .av{grid-row:span 3;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--card);font:600 16px var(--brand);color:var(--ink2)}
@@ -841,14 +826,17 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .faq-list details[open] .ans{animation:up .25s var(--ease)}
 
 /* ---------- CTA + footer ---------- */
+.pr-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.pr-cta span{font-size:15px;color:var(--ink2)}
 .cta-band{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
-.cta-box{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(140deg,var(--wine),var(--wine-d));color:#fff;padding:clamp(40px,6vw,72px);text-align:center}
+.cta-box{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(140deg,var(--wine),var(--wine-d));color:#fff;padding:clamp(40px,6vw,72px)}
+.cta-lead{margin:0 0 14px;font-size:clamp(16px,1.5vw,18px);font-weight:600;color:rgba(255,255,255,.78)}
 .cta-box h2{margin:0;font-size:clamp(26px,3.2vw,40px);line-height:1.4;font-weight:800;letter-spacing:-.03em}
 .cta-box p{margin:14px 0 0;color:rgba(255,255,255,.82);font-size:17px}
 .cta-box .acts{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}
 .cta-box .btn-a{background:#fff;color:var(--wine)}
 .cta-box .btn-b{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
-.cta-box .pre{max-width:520px;margin:30px auto 0;text-align:left}
+.cta-box .pre{max-width:560px;margin:30px 0 0}
 .pre-row{display:flex;gap:8px}
 .pre-row input[type=email]{flex:1;min-width:0;height:52px;padding-inline:18px;border:0;border-radius:14px;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.3);color:#fff;font:500 16px var(--font);outline:none;transition:box-shadow .16s,background .16s}
 .pre-row input[type=email]::placeholder{color:rgba(255,255,255,.62)}
@@ -861,7 +849,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .pre-ok.need{background:rgba(255,255,255,.15);box-shadow:inset 0 0 0 2px #fff}
 .pre-ok:has(input:checked){box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
 .pre-ok input{flex:none;width:18px;height:18px;margin:2px 0 0;accent-color:#fff;cursor:pointer}
-.pre-row .btn[aria-disabled="true"]{opacity:.62}
+.pre-ok{margin-bottom:12px}
 .pre-ok a{text-decoration:underline;text-underline-offset:2px}
 .pre-msg{min-height:1.6em;margin:10px 0 0!important;font-size:14px!important;font-weight:600;color:#fff!important}
 .pre.done .pre-row,.pre.done .pre-ok{display:none}
@@ -1186,7 +1174,13 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   .sj-m{box-shadow:inset 0 -1px 0 var(--line)}
 }
 /* 시안 b: 한 화면에서 판이 뒤집히며 암기형에서 손풀이로 넘어간다 */
-.sj-sec.sj-vb{padding-bottom:0}
+.sj-sec.sj-vb{padding-bottom:clamp(72px,8vw,112px)}
+/* 왜: 비교 다음에 결론 한 줄과 근거, 그리고 기능으로 넘어가는 다리 한 줄 */
+.sj-why{display:grid;gap:14px;margin-top:clamp(56px,7vw,96px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line)}
+.sj-w1{margin:0;font-size:clamp(26px,3vw,38px);line-height:1.4;font-weight:800;letter-spacing:-.03em}
+.sj-cite{margin:0;max-width:46em;font-size:14px;line-height:1.7;color:var(--ink3)}
+.sj-cite a{color:var(--ink2);text-decoration:underline;text-underline-offset:3px}
+.sj-w2{margin:10px 0 0;font-size:clamp(19px,1.8vw,22px);font-weight:700;letter-spacing:-.02em}
 .sj-vb .sj-run{position:relative;height:180vh}
 .sj-vb .sj-pin{position:sticky;top:var(--hdr);height:calc(100vh - var(--hdr));height:calc(100svh - var(--hdr));display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .sj-vb .sj-pin>.wrap{width:100%}
@@ -1298,6 +1292,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     </div>
     <p class="sj-src">오른쪽은 대표가 2024학년도 수능 14번을 18분 동안 푼 실제 필기를 빠르게 재생한 것입니다. 점선은 지운 획, 왼쪽 카드는 예시입니다.</p>
   </div></div></div>
+  <div class="wrap sj-why">
+    <p class="sj-w1">AI가 답을 빨리 줄수록,<br>학생이 생각할 틈은 줄었습니다.</p>
+    <p class="sj-cite">고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani 외, PNAS, 2025</a></p>
+    <p class="sj-w2">Provee는 이 흐름을 거꾸로 갑니다.</p>
+  </div>
+
 </section>
 
 <section class="feats" id="features">
@@ -1412,33 +1412,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     </div>
     <div class="plans" id="plans"></div>
     <p class="pr-note" id="prNote"></p>
-  </div>
-</section>
-
-<section class="sec" id="roadmap" style="padding-top:0">
-  <div class="wrap">
-    <div class="rm-top">
-      <div class="sec-h"><h2>서강대에서 시작합니다</h2><p>한 학교에서 먼저 제대로 검증하고, 그다음에 넓힙니다.</p></div>
-      <div class="rm-nav"><button id="rmPrev" aria-label="이전"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button id="rmNext" aria-label="다음"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-    </div>
-    <div class="rm-track" id="rmTrack">
-      <article class="rm now"><time>2026.10</time><b>서강대 무료 베타</b><span>중간고사 전에 정량과목 수강생부터 엽니다.</span><em class="st">이번 달</em></article>
-      <article class="rm"><time>2026.11</time><b>유료 요금제 시작</b><span>기말고사 기간에 주 단위 결제를 엽니다.</span><em class="st">예정</em></article>
-      <article class="rm"><time>2027 봄</time><b>전국 대학으로</b><span>서강대에서 확인한 지표로 전국 대학에 엽니다. 중고등 무료 버전도 함께 시작합니다.</span><em class="st">계획</em></article>
-      <article class="rm"><time>2027 가을</time><b>대학과 중고등을 함께</b><span>같은 튜터가 대학생과 중고등학생을 함께 가르칩니다.</span><em class="st">계획</em></article>
-      <article class="rm"><time>2028</time><b>미국 수학 시장</b><span>SAT·AP 수학을 준비하는 학생에게 영어판을 엽니다.</span><em class="st">계획</em></article>
-    </div>
+    <div class="pr-cta"><a class="btn btn-w" href="#join">사전신청 혜택 받기</a><span>10월 15일까지 신청하면 Matcha 2주 무료</span></div>
   </div>
 </section>
 
 <section class="story" id="story">
-  <div class="st-hero"><div class="st-in"><p class="st-k">회사 이야기</p><h2>Prove your thinking<i>.</i></h2></div></div>
-  <div class="st-scroll" id="stScroll">
-    <div class="st-pin">
-      <p class="st-line">AI가 답을 빨리 줄수록,<br>학생이 생각할 틈은 줄었습니다.<small class="st-cite">고등학생 약 1,000명 현장 실험에서, 일반 ChatGPT처럼 쓰는 AI로 연습한 학생은 AI 없이 본 시험에서 AI를 쓰지 않은 학생보다 점수가 17% 낮았습니다. 답 대신 힌트를 주도록 만든 AI에서는 이 손해가 크게 줄었습니다. <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani 외, PNAS, 2025</a></small></p>
-      <p class="st-line">사진 한 장이면 답이 나오면서,<br>공부는 받아 적는 일이 되어&nbsp;갔습니다.</p>
-      <p class="st-line">Provee는 이 흐름을 거꾸로 갑니다.</p>
+  <div class="st-origin st-in">
+    <div class="og-copy">
+      <h2>첫 사용자는<br>만든 사람이었습니다</h2>
+      <p>2026년 1학기, 서강대 경제학과 3학년. 계량경제, 미적분, 수리통계, 선형대수를 한 학기에 들었습니다. 통학 3시간을 줄이려 고시원에 살며 새벽까지 공부해도, 매일 AI와 씨름하느라 순공부 시간이 모자랐습니다.</p>
+      <p>풀이를 찍어 올리고, 잘못 읽은 식을 다시 설명하고, 흩어진 채팅을 뒤지다 보면 하루가 갔습니다. 다음 날 진도는 또 밀렸습니다.</p>
+      <p>2026년 6월 13일, 의지는 있지만 혼자서는 어려운 학생을 위한 도구를 직접 만들기로 했습니다.</p>
     </div>
+    <figure class="og-ph" id="ogPh"><picture><source srcset="assets/story/founder-soomin.webp" type="image/webp"><img src="assets/story/founder-soomin.jpg" width="960" height="1200" alt="와인색 니트를 입고 나무 계단 서가에 앉은 김수민 대표" loading="lazy" decoding="async"></picture><figcaption>Provee를 만든 김수민 대표</figcaption></figure>
   </div>
   <div class="st-mv">
     <div class="st-in">
@@ -1446,28 +1432,16 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <div class="mv"><div><b>미션</b><span>답이 아니라 과정을 가르치는 참된 선생님을 곁에</span></div><div><b>비전</b><span>교육이 닿지 못한 곳까지 이어지는 세계의 교육 사다리</span></div></div>
     </div>
   </div>
-  <div class="st-origin st-in">
-    <div class="og-copy">
-      <h3>첫 사용자는<br>만든 사람이었습니다</h3>
-      <p>2026년 1학기, 서강대 경제학과 3학년. 계량경제, 미적분, 수리통계, 선형대수를 한 학기에 들었습니다. 통학 3시간을 줄이려 고시원에 살며 새벽까지 공부해도, 매일 AI와 씨름하느라 순공부 시간이 모자랐습니다.</p>
-      <p>풀이를 찍어 올리고, 잘못 읽은 식을 다시 설명하고, 흩어진 채팅을 뒤지다 보면 하루가 갔습니다. 다음 날 진도는 또 밀렸습니다.</p>
-      <p>2026년 6월 13일, 의지는 있지만 혼자서는 어려운 학생을 위한 도구를 직접 만들기로 했습니다.</p>
-    </div>
-    <figure class="og-ph" id="ogPh"><picture><source srcset="assets/story/founder-soomin.webp" type="image/webp"><img src="assets/story/founder-soomin.jpg" width="960" height="1200" alt="와인색 니트를 입고 나무 계단 서가에 앉은 김수민 대표" loading="lazy" decoding="async"></picture><figcaption>Provee를 만든 김수민 대표</figcaption></figure>
-  </div>
   <div class="st-time" id="stTime">
     <div class="tx-pin">
-      <div class="tx-head st-in"><h3>Provee가 지나온 길</h3><p>6월에 만들기 시작해, 10월 서강대 출시를 앞두고 있습니다.</p></div>
+      <div class="tx-head st-in"><h3>지나온 길과 갈 길</h3><p>6월에 만들기 시작해, 10월 서강대에서 먼저 엽니다.</p></div>
       <div class="tx-view">
         <ol class="tx" id="txTrack">
-          <li class="tx-i"><time>2026.06</time><i class="dot"></i>
-            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
+          <li class="tx-i txt"><time>2026.06</time><i class="dot"></i>
             <b>직접 쓰려고 개발 시작</b><span>6월 13일부터 매일 10시간 넘게 쓰고, 불편을 찾고, 고쳤습니다</span></li>
-          <li class="tx-i"><time>2026.06</time><i class="dot"></i>
-            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
+          <li class="tx-i txt"><time>2026.06</time><i class="dot"></i>
             <b>기말고사 직전, 학생 6명이 먼저 사용</b><span>경제학과·동아리 학생 10명에게 소개</span></li>
-          <li class="tx-i"><time>2026.07</time><i class="dot"></i>
-            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
+          <li class="tx-i txt"><time>2026.07</time><i class="dot"></i>
             <b>손풀이 과목 학습자 설문 105명</b><span>중고생 42명, 대학생·대학원생·졸업생 63명에게 AI 학습의 불편을 물음</span><em class="tx-note">지금 공부 중인 85명 중 74명이 쓰고 싶다고 답했습니다</em></li>
           <li class="tx-i"><time>2026.07</time><i class="dot"></i>
             <figure class="tv tv-hana"><picture><source srcset="assets/story/tl-hana-0730.webp" type="image/webp"><img src="assets/story/tl-hana-0730.jpg" width="1400" height="1050" alt="강의실 칠판 앞에서 Provee를 발표하는 김수민 대표" loading="lazy" decoding="async"></picture></figure>
@@ -1475,15 +1449,21 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
           <li class="tx-i"><time>2026.08</time><i class="dot"></i>
             <figure class="tv tv-pnp"><picture><source srcset="assets/story/tl-pnp-0806.webp" type="image/webp"><img src="assets/story/tl-pnp-0806.jpg" width="1400" height="1050" alt="Plug and Play 무대에서 발표하는 김수민 대표, 뒤 화면에 Provee. Answers got cheap. Thinking isn't." loading="lazy" decoding="async"></picture></figure>
             <b>실리콘밸리 Plug and Play IR 데모</b><span>8월 6일(현지). 무대 질의응답에서 받은 지적으로 사업 모델을 다시 짬</span></li>
-          <li class="tx-i"><time>2026.08</time><i class="dot"></i>
-            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
+          <li class="tx-i txt"><time>2026.08</time><i class="dot"></i>
             <b>수학·학습과학 총괄 합류</b><span>前 대치 종로학원 학습과학센터 고등수학 팀장</span></li>
-          <li class="tx-i"><time>2026.09</time><i class="dot"></i>
-            <figure class="tv tv-empty" aria-hidden="true"><span>사진 자리</span></figure>
+          <li class="tx-i txt"><time>2026.09</time><i class="dot"></i>
             <b>대방역 사무실 확보</b><span>서울기독교세계관연구소(SIEW) 지원</span></li>
           <li class="tx-i next"><time>2026.10</time><i class="dot"></i>
-            <figure class="tv tv-x"><p>이번 달,<br>서강대에서 먼저 엽니다</p><a href="#join">사전신청하기</a></figure>
+            <figure class="tv tv-x"><p>이번 달,<br>서강대에서 먼저 엽니다</p><a class="btn btn-w" href="#join">사전신청 혜택 받기</a></figure>
             <b>서강대 무료 베타</b><span>예정</span></li>
+          <li class="tx-i txt tx-later"><time>2026.11</time><i class="dot"></i>
+            <b>유료 요금제 시작</b><span>기말고사 기간에 주 단위 결제를 엽니다</span></li>
+          <li class="tx-i txt tx-later"><time>2027 봄</time><i class="dot"></i>
+            <b>전국 대학으로</b><span>중고등 무료 버전도 함께 시작합니다</span></li>
+          <li class="tx-i txt tx-later"><time>2027 가을</time><i class="dot"></i>
+            <b>대학과 중고등을 함께</b><span>같은 튜터가 대학생과 중고등학생을 함께 가르칩니다</span></li>
+          <li class="tx-i txt tx-later"><time>2028</time><i class="dot"></i>
+            <b>미국 수학 시장</b><span>SAT·AP 수학을 준비하는 학생에게 영어판을 엽니다</span></li>
         </ol>
       </div>
       <p class="tx-src st-in">설문: URP 자체 온라인 설문, 2026년 7월, 응답 105명(중고생 42·대학생 63). 사용 의향은 5점 중 4~5점, 현재 공부 중인 응답자 85명 기준.</p>
@@ -1493,7 +1473,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <h3>함께 만드는 사람들</h3>
     <div class="tm-grid">
       <div class="tm ceo"><span class="av">SM</span><b>김수민</b><em>CEO · 창립자</em><em class="also">프론트엔드 총괄 · UX 설계 총괄</em><span>서강대 경제학과. 첫 사용자이자 제품 총괄. 화면과 사용 흐름을 직접 설계하고 만듭니다</span></div>
-      <div class="tm"><span class="av">JB</span><b>손정범</b><em>CTO</em><span>개발팀 리드. 백엔드·데이터</span></div>
       <div class="tm hs"><span class="av">HS</span><b>하승주</b><em>수학·학습과학 총괄</em><span>한양대 수학과. 前 대치 종로학원 학습과학센터 고등수학 팀장. 개발팀 겸임</span></div>
       <div class="tm"><span class="av">JS</span><b>임준서</b><em>CFO</em><span>재무 모델, 가격, 시장 규모</span></div>
       <div class="tm"><span class="av">SB</span><b>윤세빈</b><em>브랜드 전략 총괄</em><span>브랜드, 사용자 인터뷰</span></div>
@@ -1502,7 +1481,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <div class="tm"><span class="av">JH</span><b>연주희</b><em>UI 디자이너</em><span>제품·브랜드 디자인</span></div>
     </div>
   </div>
-  <div class="st-end"><p>답은 AI가 알아도,<br>실력은 직접 풀어 본 사람에게 쌓입니다.</p></div>
 </section>
 
 <section class="sec" id="faq">
@@ -1515,7 +1493,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <details><summary>어떤 과목을 다루나요?<i aria-hidden="true"></i></summary><div class="ans">미적분, 통계, 선형대수, 계량경제, 물리처럼 손으로 풀며 배우는 과목입니다. 첫 학기는 서강대 정량과목에 맞춰 엽니다.</div></details>
       <details><summary>답은 바로 알려 주지 않나요?<i aria-hidden="true"></i></summary><div class="ans">막힌 곳에서 먼저 되묻습니다. 그래도 어려우면 힌트를 한 단계씩 더 주고, 해설을 본 뒤에는 스스로 설명해 보게 합니다.</div></details>
       <details><summary>내 필기 기록은 어디에 쓰이나요?<i aria-hidden="true"></i></summary><div class="ans">복습 재생과 막힌 곳을 찾는 데 씁니다. 자세한 처리 방식은 <a href="privacy.html">개인정보처리방침</a>에 적어 두었습니다.</div></details>
-      <details><summary>Provee Ground는 무료인가요?<i aria-hidden="true"></i></summary><div class="ans">네. 링크 하나로 누구나 들어올 수 있습니다. 모두 나가면 방은 10분 뒤 사라지고 기록은 남지 않습니다. <a href="https://proveeground.kr" target="_blank" rel="noopener">지금 열어 보기</a></div></details>
+      <details><summary>Provee Ground는 무료인가요?<i aria-hidden="true"></i></summary><div class="ans">네. 링크 하나로 누구나 들어올 수 있습니다. 모두 나가면 방은 10분 뒤 사라지고 기록은 남지 않습니다. <a href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기</a></div></details>
       <details><summary>가격은 얼마인가요?<i aria-hidden="true"></i></summary><div class="ans">대학생은 1과목을 무료로 쓰고, 유료 요금제는 주 4,700원부터입니다. <a href="#pricing">요금제 보기</a></div></details>
     </div>
   </div>
@@ -1523,19 +1501,20 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 <section class="cta-band" id="join">
   <div class="cta-box">
+    <p class="cta-lead">답은 AI가 알아도, 실력은 직접 풀어 본 사람에게 쌓입니다.</p>
     <h2>10월 15일까지 사전신청하면<br>Matcha 2주 무료</h2>
     <p>10월, 서강대에서 먼저 엽니다. 이메일을 남겨 주시면 저장해 두었다가, <br class="pc">여는 날 Matcha 요금제(주 6,500원) 2주 무료 혜택을 메일로 보내 드립니다.</p>
     <form class="pre" id="preForm" novalidate>
+      <label class="pre-ok"><input id="preAgree" type="checkbox"> <span>(필수) 사전신청 혜택 메일을 보내기 위해 이메일을 받고, 2026년 11월 30일에 지웁니다. <a href="privacy.html#prereg" target="_blank" rel="noopener">개인정보처리방침</a></span></label>
       <div class="pre-row">
         <label class="sr" for="preEmail">이메일</label>
         <input id="preEmail" type="email" inputmode="email" autocomplete="email" placeholder="이메일 주소를 입력하세요" required>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-a" type="submit">사전신청</button>
+        <button class="btn btn-a" type="submit">사전신청 혜택 받기</button>
       </div>
-      <label class="pre-ok"><input id="preAgree" type="checkbox"> <span>(필수) 사전신청 혜택 메일을 보내기 위해 이메일을 받고, 2026년 11월 30일에 지웁니다. <a href="privacy.html#prereg" target="_blank" rel="noopener">개인정보처리방침</a></span></label>
       <p class="pre-msg" id="preMsg" role="status" aria-live="polite"></p>
     </form>
-    <a class="pre-alt" href="https://proveeground.kr" target="_blank" rel="noopener">지금은 Provee Ground를 무료로 써 볼 수 있어요</a>
+    <a class="pre-alt" href="https://proveeground.kr" target="_blank" rel="noopener">지금 무료로 쓸 수 있는 Provee Ground 열기</a>
   </div>
 </section>
 </main>
@@ -2081,22 +2060,9 @@ $$('[data-cyc]').forEach(b=>b.onclick=()=>{cyc=b.dataset.cyc;$$('[data-cyc]').fo
 renderPlans();
 {let seen=0;new IntersectionObserver(es=>es.forEach(e=>{const box=e.target;box.classList.toggle('live',e.isIntersecting);if(e.isIntersecting&&!seen){seen=1;prPlay()}}),{threshold:.3}).observe($('#plans'))}
 
-/* ---------- roadmap carousel ---------- */
-const trk=$('#rmTrack'),pv=$('#rmPrev'),nx=$('#rmNext');
-const rmUpd=()=>{pv.disabled=trk.scrollLeft<4;nx.disabled=trk.scrollLeft+trk.clientWidth>=trk.scrollWidth-4};
-const step=()=>trk.querySelector('.rm').offsetWidth+16;
-pv.onclick=()=>trk.scrollBy({left:-step(),behavior:'smooth'});nx.onclick=()=>trk.scrollBy({left:step(),behavior:'smooth'});
-trk.addEventListener('scroll',rmUpd,{passive:true});addEventListener('resize',rmUpd);rmUpd();
-
 /* ---------- tooltips on touch ---------- */
 document.addEventListener('click',e=>{const t=e.target.closest('.tip');$$('.tip.on').forEach(x=>{if(x!==t)x.classList.remove('on')});if(t)t.classList.toggle('on')});
 
-/* ---------- story: statements swap with scroll ---------- */
-const stS=$('#stScroll'),lines=[...stS.querySelectorAll('.st-line')];let stRaf=0,stOn=false;
-function stTick(){if(!stOn||RM)return; /* 움직임 줄이기면 세 문장을 모두 켜 둔 채 둔다 */const r=stS.getBoundingClientRect(),prog=Math.min(.999,Math.max(0,-r.top/(r.height-innerHeight)));const i=Math.floor(prog*lines.length);
-  lines.forEach((l,j)=>l.classList.toggle('on',j===i));stRaf=requestAnimationFrame(stTick)}
-new IntersectionObserver(([e])=>{stOn=e.isIntersecting;if(stOn){cancelAnimationFrame(stRaf);stTick()}}).observe(stS);
-if(RM)lines.forEach(l=>l.classList.add('on'));
 /* ---------- story: first-user photo reveals once ---------- */
 const ogPh=$('#ogPh');if(RM)ogPh.classList.add('on');else new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){ogPh.classList.add('on');o.disconnect()}}),{rootMargin:'0px 0px -18% 0px'}).observe(ogPh);
 
@@ -2114,7 +2080,8 @@ function tDraw(){let head;
   else if(tWide){const r=tS.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight))),x=p*tRun;
     tTr.style.transform=`translate3d(${-x}px,0,0)`;head=x+tS.clientWidth*(.3+.64*p)}
   else head=innerHeight*.66-tTr.getBoundingClientRect().top;
-  const a=tDot[0],b=tDot[tDot.length-1];tTr.style.setProperty('--fill',Math.min(1,Math.max(0,(head-a)/Math.max(1,b-a))).toFixed(4));
+  const a=tDot[0],b=tDot[tDot.length-1],nI=tIt.findIndex(li=>li.classList.contains('next')),cap=nI<0?b:tDot[nI]; // 와인 선은 '이번 달'까지만, 앞으로의 일정은 빈 선
+  tTr.style.setProperty('--fill',Math.min(1,Math.max(0,(Math.min(head,cap)-a)/Math.max(1,b-a))).toFixed(4));
   tIt.forEach((li,i)=>li.classList.toggle('on',tDot[i]<=head+1))}
 function tTick(){if(!tLive)return;if(scrollY!==tY){tY=scrollY;tDraw()}tRaf=requestAnimationFrame(tTick)}
 new IntersectionObserver(([e])=>{tLive=e.isIntersecting&&!RM;cancelAnimationFrame(tRaf);if(tLive)tTick()}).observe(tS);
@@ -2122,6 +2089,7 @@ addEventListener('resize',tLayout);tMQ.addEventListener?.('change',tLayout);docu
 
 /* ---------- header, mega menu, drawer, gnb current ---------- */
 const hdr=$('#hdr');new IntersectionObserver(([e])=>{if(e.isIntersecting)$$('[data-nav]').forEach(a=>a.removeAttribute('aria-current'))},{rootMargin:'-80px 0px 0px 0px'}).observe($('.hero'));
+new IntersectionObserver(([e])=>document.body.classList.toggle('at-join',e.isIntersecting),{threshold:.25}).observe($('#join'));
 const hdrSolid=()=>hdr.classList.toggle('solid',scrollY>8);addEventListener('scroll',hdrSolid,{passive:true});hdrSolid();
 const mb=$('#megaBtn'),mg=$('#mega');let mT=0;
 const mset=o=>{mg.classList.toggle('on',o);mb.setAttribute('aria-expanded',o)};
