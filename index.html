@@ -226,6 +226,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .hop.no .hw{animation:hopsh .3s ease-in-out .16s 2}
 @keyframes hopsh{25%{translate:-.9cqw 0}75%{translate:.9cqw 0}}
 .hop.no .hop-n{background:#E0303F}
+.hop-z{position:absolute;left:1.6cqw;bottom:2.4cqw;z-index:3;display:inline-flex;align-items:center;gap:.6cqw;height:5cqw;padding-inline:2cqw;border-radius:99px;background:#1F7A4D;color:#fff;font-size:max(1.8cqw,10px);font-weight:600;white-space:nowrap;opacity:0;transform:scale(.8);transition:opacity .25s var(--ease) .36s,transform .35s cubic-bezier(.2,1.4,.4,1) .36s}
+.hop-z b{font:700 max(2.2cqw,11px)/1 var(--brand)}
+.hop.tags .hop-z{opacity:1;transform:none}
 .hop.no .hop-tr path{stroke:#E0303F;opacity:.75}
 /* 합쳐질 때: 각 창이 Provee 화면 속 제자리로 날아가며 사라지고, 카메라는 필요 없어져 작아지며 사라진다 */
 .hop.mg .hw{opacity:0}
@@ -1275,8 +1278,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="frow" id="f-input" data-f="input">
       <div class="f-copy">
         <span class="fk"><b>01</b>필기 입력</span>
-        <h3>왔다 갔다 <mark class="f-hl">시간 낭비는 그만</mark>,<br>Provee로 한 번에</h3>
-        <p>노트도, AI도, 강의자료도 Provee 하나로.</p>
+        <h3>앱 네 개를 오가던 공부,<br>Provee에선 <mark class="f-hl">앱 전환 0번</mark></h3>
+        <p>노트도, AI도, 강의자료도 한 화면에서.</p>
       </div>
       <div class="f-vis" data-scene="input"></div>
     </div>
@@ -1284,11 +1287,11 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
     <div class="frow wide" id="f-read" data-f="read">
       <div class="f-copy">
         <span class="fk"><b>02</b>획 단위 인식</span>
-        <h3>획 단위로 읽으니,<br>잘못 읽지 않고 놓치지 않습니다</h3>
-        <p>Provee는 사진 한 장이 아니라, 획마다 쓴 자리와 시각을 받습니다.</p>
+        <h3>편하게 쓰세요,<br>읽는 건 Provee가 할게요</h3>
+        <p>사진 한 장 대신, 획마다 쓴 자리와 시각을 받으니까요.</p>
       </div>
-      <div class="f-pt"><h4 class="f-pth"><b>1</b>잘못 읽지 않습니다<span>뭉쳐 쓴 2x + 1도 획마다 갈라 읽습니다</span></h4><div class="f-vis" data-scene="recog"></div></div>
-      <div class="f-pt"><h4 class="f-pth"><b>2</b>놓치지 않습니다<span>여기저기 흩어 쓴 풀이도 쓴 순서대로, 지운 식과 멈춘 시간까지</span></h4><div class="f-vis" data-scene="read"></div></div>
+      <div class="f-pt"><h4 class="f-pth"><b>1</b>뭉쳐 써도 괜찮아요. Provee는 알아요.<span>2를 다 쓰고 x를 쓰기까지 0.2초, 그 틈까지 봤으니까요</span></h4><div class="f-vis" data-scene="recog"></div></div>
+      <div class="f-pt"><h4 class="f-pth"><b>2</b>어디서부터 풀었는지 설명은 그만, Provee는 이미 순서까지 알아요<span>일곱 군데를 오간 순서, 지운 그래프, 펜을 놓은 3분 19초까지</span></h4><div class="f-vis" data-scene="read"></div></div>
     </div>
 
     <div class="frow wide" id="f-graph" data-f="graph">
@@ -1538,7 +1541,7 @@ function sceneInput(){
       <span class="hop-n">앱 전환 <b>0</b>번</span><i class="hop-rd"></i><div class="hop-x"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><path d="M33 33L67 67M67 33L33 67"/></svg></div></div>
     <div class="dev hop-pv"><div class="scr">
       <div class="bar"><span class="wm">Provee<i>.</i></span><span>공통수학1 · 이차방정식</span><span class="dots"><i style="background:#221C39;box-shadow:0 0 0 .3cqw #fff,0 0 0 .55cqw #221C39"></i><i style="background:#C0392B"></i><i style="background:#FFD400"></i></span><span class="end">학습 종료</span></div>
-      <div class="p3"><div class="p3-pdf"><span class="p3-tg" style="--d:0s">강의자료</span>${SL}</div>
+      <div class="p3"><div class="p3-pdf"><span class="p3-tg" style="--d:0s">강의자료</span>${SL}<span class="hop-z">앱 전환 <b>0</b>번</span></div>
         <div class="p3-nt"><span class="p3-tg" style="--d:.12s">노트</span><canvas></canvas>${MATH.map(m=>`<div class="rec"><small>읽은 식</small><span class="m">${m}</span>${OK}</div>`).join('')}
           <div class="p3-ai"><span class="p3-tg" style="--d:.24s">AI 튜터</span><p><span class="ch-d"><i></i><i></i><i></i></span><span class="p3-q">인수분해 좋아요. 두 근을 원래 식에 넣어 확인해 볼까요?</span></p></div></div></div>
     </div></div>
