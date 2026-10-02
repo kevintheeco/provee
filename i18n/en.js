@@ -138,7 +138,7 @@ const T={
 'Provee는 사진 한 장이 아니라, 획마다 쓴 자리와 시각을 받습니다.':'Provee doesn\'t get one photo. It gets where and when every stroke was written.',
 '<b>1</b>잘못 읽지 않습니다<span>뭉쳐 쓴 2x + 1도 획마다 갈라 읽습니다</span>':'<b>1</b>It doesn\'t misread<span>Even a cramped 2x + 1 is split stroke by stroke</span>',
 '<b>2</b>놓치지 않습니다<span>여기저기 흩어 쓴 풀이도 쓴 순서대로, 지운 식과 멈춘 시간까지</span>':'<b>2</b>It doesn\'t miss a thing<span>Work scattered across the page, in the order it was written, down to erased lines and pauses</span>',
-'대표가 뭉쳐 쓴 실제 필기(2026년 9월 12일). 같은 필기를 찍어 GPT-5.6 Sol에 올렸을 때 24 + 1로 읽은 1회 실측이며, 일반화하지 않습니다.':'Real cramped handwriting by our CEO (September 12, 2026). A photo of the same handwriting sent to GPT-5.6 Sol was read as 24 + 1 in one measured run; we do not generalize from it.',
+'왼쪽은 대표가 뭉쳐 쓴 2x + 1을 찍어 GPT-5.6 Sol에 올린 실제 대화 캡처(2026년 9월 12일, 1회 실측이라 일반화하지 않음). 오른쪽은 같은 필기의 획 기록을 재생한 화면':'Left: a real chat in which our CEO sent GPT-5.6 Sol a photo of a cramped 2x + 1 (September 12, 2026; one measured run, not generalized). Right: the stroke record of the same handwriting, replayed.',
 '다 쓴 페이지를 찍어 올렸을 때':'given a photo of the finished page',
 '같은 페이지를 쓰는 동안':'the same page, as it was written',
 '쓴 시각':'Time',

@@ -190,17 +190,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .f-pth b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font:700 14px/1 var(--brand)}
 .f-pth span{font-size:16px;font-weight:500;letter-spacing:0;color:var(--ink3)}
 /* 02-1: 같은 2x + 1을 사진을 읽는 AI는 24 + 1로, Provee는 획마다 갈라 2x + 1로 읽는다 */
-.rg-bd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:24px;overflow:hidden;background:linear-gradient(90deg,#F0EBE3 0 50%,var(--paper) 0);box-shadow:0 50px 90px -46px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
+.rg-bd{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);border-radius:24px;overflow:hidden;background:linear-gradient(90deg,#F0EBE3 0 40%,var(--paper) 0);box-shadow:0 50px 90px -46px rgba(60,30,20,.45),inset 0 0 0 1px var(--line)}
 .rg-s{display:grid;gap:14px;align-content:start;padding:16px 24px 22px;min-width:0}
 .rg-b{box-shadow:inset 1px 0 0 var(--line)}
 .rg-h{display:flex;align-items:center;gap:10px;min-height:30px;font-size:15px;color:var(--ink3);white-space:nowrap}
 .rg-h b{font-size:16px;font-weight:700;color:var(--ink2)}
 .rg-h .wm{font-size:20px;color:var(--ink)}
-.rg-ph,.rg-pg{position:relative;aspect-ratio:2.4;border-radius:12px}
-.rg-ph{background:#EEE8DE;transform:rotate(-1.6deg) scale(.96);box-shadow:0 18px 36px -14px rgba(30,20,10,.42),inset 0 0 0 1px rgba(0,0,0,.06)}
-.rg-ph::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 10px #fff;background:linear-gradient(118deg,rgba(255,255,255,.5),rgba(255,255,255,0) 38%);pointer-events:none}
-.rg-pg{background:#fff;box-shadow:inset 0 0 0 1px var(--rule)}
-.rg-ph canvas,.rg-pg canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit}
+/* 왼쪽: 대표의 실제 GPT 대화 캡처(1179×1010). 답 '24 + 1' 아래에 밑줄 */
+.rg-ch{position:relative;aspect-ratio:1179/1010;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 18px 36px -14px rgba(30,20,10,.42)}
+.rg-ch img{display:block;width:100%;height:100%}
+.rg-ul{position:absolute;left:25.3%;top:93.4%;width:15.1%;height:3px;border-radius:2px;background:#E0485C;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease) .15s}
+.rg.on .rg-ul{transform:none}
+.rg-pg{position:relative;aspect-ratio:1.83;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--rule)}
+.rg-pg canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit}
 .rg-tk{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:6px}
 .rg-tk span{min-width:30px;height:30px;padding-inline:8px;display:grid;place-items:center;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--c);font:italic 600 19px/1 "Times New Roman",Georgia,serif;color:var(--c);opacity:0;transform:scale(.85);transition:opacity .2s var(--ease),transform .3s cubic-bezier(.2,0,0,1.3)}
 .rg-tk span.on{opacity:1;transform:none}
@@ -212,7 +214,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .rg-b .rg-res.on{opacity:1;transform:none;box-shadow:inset 0 0 0 2px var(--ink)}
 .rg-b .rg-res b{color:var(--ink)}
 .rg-res i{margin-left:auto;flex:none;width:24px;height:24px;border-radius:50%;background:#1F7A4D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}
-@media (max-width:640px){.rg-ph,.rg-pg{aspect-ratio:1.9}.rg-bd{grid-template-columns:minmax(0,1fr);background:none}.rg-a{background:#F0EBE3}.rg-b{background:var(--paper);box-shadow:inset 0 1px 0 var(--line)}.rg-s{padding:14px 16px 18px;gap:12px}.rg-res{min-height:46px}.rg-res b{font-size:24px}.f-pth span{font-size:15px}}
+@media (max-width:640px){.rg-pg{aspect-ratio:1.9}.rg-bd{grid-template-columns:minmax(0,1fr);background:none}.rg-a{background:#F0EBE3}.rg-b{background:var(--paper);box-shadow:inset 0 1px 0 var(--line)}.rg-s{padding:14px 16px 18px;gap:12px}.rg-res{min-height:46px}.rg-res b{font-size:24px}.f-pth span{font-size:15px}}
 
 /* 02 read: one real page, as a photo (left, what a photo-reading AI receives) and as Provee's stroke record (right) */
 .rv{container:rv/inline-size;position:relative;width:100%}
@@ -1802,17 +1804,18 @@ function sceneGround(){
 function sceneRecog(){
   const el=document.createElement('div');
   const G=[{s:[0],t:'2',c:'#8A1C2B'},{s:[1,2],t:'x',c:'#2F4C66'},{s:[3,4],t:'+',c:'#7A5A1E'},{s:[5],t:'1',c:'#1F7A4D'}];
+  el.className='rg';
   el.innerHTML=`<div class="rg-bd">
-    <div class="rg-s rg-a"><div class="rg-h"><b>사진을 읽는 AI</b><span>찍어 올렸을 때</span></div><div class="rg-ph"><canvas></canvas></div><div class="rg-res"><span>읽은 식</span><b>24 + 1</b></div></div>
+    <div class="rg-s rg-a"><div class="rg-h"><b>사진을 읽는 AI</b><span>찍어 올렸을 때</span></div><div class="rg-ch"><img src="img/gpt-24p1-chat.jpg" alt="필기 사진을 올리고 이거 뭐라 쓴거게 라고 묻자 AI가 이번 건은 24 + 1로 보여 라고 답한 실제 대화" loading="lazy" decoding="async"><i class="rg-ul"></i></div><div class="rg-res"><span>읽은 식</span><b>24 + 1</b></div></div>
     <div class="rg-s rg-b"><div class="rg-h"><span class="wm">Provee<i>.</i></span><span>쓰는 동안</span></div><div class="rg-pg"><canvas></canvas><div class="rg-tk">${G.map(g=>`<span style="--c:${g.c}">${g.t}</span>`).join('')}</div></div><div class="rg-res"><span>읽은 식</span><b>2x + 1</b><i></i></div></div>
-  </div><p class="scap">대표가 뭉쳐 쓴 실제 필기(2026년 9월 12일). 같은 필기를 찍어 GPT-5.6 Sol에 올렸을 때 24 + 1로 읽은 1회 실측이며, 일반화하지 않습니다.</p>`;
-  const [cA,cB]=el.querySelectorAll('canvas'),toks=[...el.querySelectorAll('.rg-tk span')],res=el.querySelector('.rg-b .rg-res');let stopR=null;
+  </div><p class="scap">왼쪽은 대표가 뭉쳐 쓴 2x + 1을 찍어 GPT-5.6 Sol에 올린 실제 대화 캡처(2026년 9월 12일, 1회 실측이라 일반화하지 않음). 오른쪽은 같은 필기의 획 기록을 재생한 화면</p>`;
+  const cB=el.querySelector('.rg-pg canvas'),toks=[...el.querySelectorAll('.rg-tk span')],res=el.querySelector('.rg-b .rg-res');let stopR=null;
   return {el,stop(){stopR&&stopR()},async play(ok){
     await ink2P;if(!INK2||!ok())return;const S=INK2.blob,E=endT(S),SL=1.1;
-    const fa=fitCanvas(cA);if(!fa)return;drawInk(fa.ctx,S,1e9,fitBox(S,fa.W,fa.H,.18,.16,.64,.68),'#3A3634',Math.max(2.4,fa.W*.012));
     const gEnd=G.map(g=>Math.max(...g.s.map(i=>{const p=S[i].p;return p[p.length-1][2]})));
     // 글자 하나를 다 쓰면 그 획들이 글자 색으로 바뀌고, 오른쪽 위에 그 글자가 뜬다
     const paint=(f,tr,t,lw)=>{f.ctx.clearRect(0,0,f.W,f.H);G.forEach((g,gi)=>drawInk(f.ctx,g.s.map(i=>S[i]),t,tr,t>=gEnd[gi]?g.c:'#221C39',lw))};
+    el.classList.add('on');
     if(RM){const f=fitCanvas(cB);if(!f)return;paint(f,fitBox(S,f.W,f.H,.2,.07,.6,.6),1e9,Math.max(2.4,f.W*.012));toks.forEach(t=>t.classList.add('on'));res.classList.add('on');return}
     while(ok()){toks.forEach(t=>t.classList.remove('on'));res.classList.remove('on');
       const f=fitCanvas(cB);if(!f)return;const tr=fitBox(S,f.W,f.H,.2,.07,.6,.6),lw=Math.max(2.4,f.W*.012),t0=performance.now()+350;
