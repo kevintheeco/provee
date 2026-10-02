@@ -122,15 +122,14 @@ const T={
 
 /* ---------- 기능 6개 ---------- */
 '기능 목록':'Feature list',
-'AI가 그려 주기를 기다리던 1~2분,<br>이제 Provee에서는 바로.':'The minute or two you waited for AI to draw a graph?<br>On Provee, it\'s instant.',
-'Provee는 그래프를 그림 파일로 만들지 않고, 식에서 바로 선으로 그립니다. 교점과 넓이처럼 풀이에 필요한 표시도 단계마다 함께 올라옵니다.':'Provee doesn\'t render an image file. It draws the graph straight from the equation, and the marks your solution needs, like intersections and areas, appear step by step.',
-'막히면 정답 대신<br>놓친 조건을 짚어 줍니다':'Stuck? It points to<br>what you missed,<br>not the answer',
-'화면 속 실제 풀이에서는 거꾸로 그린 그래프를 혼자 고치기까지 1분 반이 걸렸습니다. Provee는 펜이 멈춘 그 자리에서 학생이 그린 그림을 보고 먼저 묻고, 힌트는 더 필요할 때만 한 단계씩 엽니다.':'In the real solution shown here, it took a minute and a half to catch a graph drawn upside down and fix it alone. Provee asks first, right where the pen stops, based on what the student drew, and opens hints one step at a time only when more help is needed.',
-'학교 가는 길에도,<br>시험 직전에도<br>내가 쓴 풀이를 꺼내 봅니다':'On the way to school,<br>right before an exam,<br>pull up your own work',
-'손으로 푼 풀이가 과목과 단원별로 차곡차곡 모입니다. 버스 안에서도, 시험장 앞에서도 폰에서 하나를 누르면 내 글씨가 쓴 순서 그대로 다시 써집니다.':'Everything you solve by hand is filed by subject and unit. On the bus or outside the exam room, tap one on your phone and your own handwriting writes itself out again, in the order you wrote it.',
-'링크 하나로 모여,<br>같은 노트에 함께 풉니다':'Join with one link,<br>solve on the same notes',
-'가입 없이 들어와 얼굴을 보며 같은 노트와 PDF 위에 씁니다. 필기와 목소리는 기기끼리 직접 오가고 서버에 남지 않습니다.':'Join without signing up, see each other, and write on the same notes and PDFs. Ink and voice travel directly between devices and are never stored on a server.',
-'지금 무료로 쓸 수 있습니다':'Free to use right now',
+'AI가 1분 13초 걸린 그래프,<br>Provee는 바로 그려요':'The graph that took AI 1 min 13 s,<br>Provee draws right away',
+'식에서 바로 긋는 선, 교점과 넓이까지 단계마다.':'Lines straight from the equation, with intersections and area, step by step.',
+'문제를 다시<br>읽어 보자는 Provee,<br>내 옆의 과외 선생님':'Provee says, let\'s read the problem again.<br>A tutor right beside you',
+'펜이 멈추면 먼저 묻고, 정답 대신 놓친 조건을 짚어요.':'When your pen stops, it asks first and points to the condition you missed, not the answer.',
+'버스 안에서 복습,<br>내가 헷갈렸던 내 풀이로':'Review on the bus,<br>with the solutions you got stuck on',
+'과목과 단원별로 모인 풀이, 누르면 쓴 순서 그대로.':'Sorted by subject and unit. Tap one to replay it in the order you wrote it.',
+'혼자 막힌 문제,<br>같이 풀래요?':'Stuck on a problem?<br>Want to solve it together?',
+'링크 하나로, 가입 없이, 지금 무료로.':'One link, no sign-up, free right now.',
 
 /* 기능 장면 안 글자 (01 필기 입력) */
 '공통수학1 · 이차방정식':'Common Math 1 · Quadratic equations',
