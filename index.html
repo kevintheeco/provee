@@ -2211,16 +2211,20 @@ let lastW=innerWidth; // 휴대폰 주소창이 접혔다 펴지는 높이 변�
 addEventListener('resize',()=>{M=null;clipOff=false;if(innerWidth!==lastW&&cur>=0){const c=cur;cur=-9;go(c)}lastW=innerWidth;kick()});
 measure();render(pD);
 // 한 번 굴리면 한 장면: 휠 한 칸·트랙패드 한 번 쓸기·휴대폰 한 번 밀기·아래 화살표 한 번이
-// 첫 화면에서는 태블릿 화면 속으로 들어가기, 무대에서는 다음 장면 하나가 된다. 마지막 장면에서 한 번 더 내리면 평소처럼 스크롤된다
+// 첫 화면에서는 태블릿 화면 속으로 들어가기, 무대에서는 다음 장면 하나가 된다. 마지막 장면에서 한 번 더 내리면 다음 섹션으로 미끄러져 간다
 const at=()=>{const t=Z.getBoundingClientRect().top+scrollY,span=Z.offsetHeight-innerHeight;return {y:scrollY,t,s:t+ZP*span,e:t+span}};
 let anim=0,lock=0,up=false; // up: 아래 섹션에서 올라와 무대에 들어온 중. 이때 위로 가는 입력은 장면을 되감지 않고 그대로 지나간다
 {let lastY=scrollY;addEventListener('scroll',()=>{const P=at(),y=scrollY;if(lastY>P.e+2&&y<=P.e+2)up=true;if(y<P.s-4)up=false;lastY=y},{passive:true})}
 const glide=(to,ms=760)=>{cancelAnimationFrame(anim);const from=scrollY,t0=performance.now();
   const f=now=>{const k=cl((now-t0)/ms);scrollTo({top:from+(to-from)*ease(k),behavior:'instant'});anim=k<1?requestAnimationFrame(f):0};anim=requestAnimationFrame(f)};
 // dir 1=아래, -1=위. 지금 자리에서 이 입력을 히어로가 받으면 할 일을, 아니면 null(평소 스크롤)을 돌려준다
-const plan=dir=>{const P=at();if(P.y<P.t-2||P.y>P.e+2)return null;
+// 마지막 장면과 다음 섹션(외우는 공부가 아닌…) 사이는 한 번에 슥 건너간다. 위로 올리면 마지막 장면으로 돌아온다
+const SJ=document.getElementById('subjects'),sjTop=()=>SJ?Math.round(SJ.getBoundingClientRect().top+scrollY):0;
+const plan=dir=>{const P=at(),S=sjTop();
+  if(S>P.e&&P.y>P.e+2&&P.y<S+(dir>0?-8:8))return dir>0?()=>glide(S,900):()=>{glide(P.s,900);setTimeout(()=>{up=false},950)}; // 슥 돌아온 뒤에는 위로 한 칸마다 장면을 하나씩 되감는다
+  if(P.y<P.t-2||P.y>P.e+2)return null;
   if(P.y<P.s-4)return dir>0?()=>glide(P.s):null;
-  if(dir>0)return cur<LAST?()=>{up=false;go(Math.max(cur,-1)+1)}:null;
+  if(dir>0)return cur<LAST?()=>{up=false;go(Math.max(cur,-1)+1)}:S>P.e?()=>glide(S,900):null;
   return up?null:cur>0?()=>go(cur-1):()=>glide(P.t)};
 const fire=(f,gap)=>{const now=performance.now();if(now-lock<gap)return;lock=now;f()};
 // 휠: 손을 멈췄다 다시 굴린 것만 새 입력으로 친다. 트랙패드 관성으로 이어지는 작은 신호는 장면을 더 넘기지 않고 먹는다
