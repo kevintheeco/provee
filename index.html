@@ -135,22 +135,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .frow.wide{grid-template-columns:1fr;gap:clamp(28px,4vw,48px)}
 .frow.wide .f-copy{display:grid;grid-template-columns:1fr auto;column-gap:48px;align-items:end}
 .frow.wide .f-copy>*{grid-column:1}
-/* 기능 소개로 들어가기 전 전환: 와인색 상자가 다가오며 화면을 꽉 채우고, 큰 제목이 뜬 뒤 01 필기 입력으로 넘어간다(새 페이지로 가는 전환). 스크롤 위치만 따른다 */
-.f-bk{position:relative;z-index:25;height:calc(100vh + 70vh)}
-@media (hover:hover) and (pointer:fine){.f-bk{height:calc(100vh + 45vh)}}
-.f-bk-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
-.f-bk-p{position:absolute;inset:0;clip-path:inset(var(--by,18vh) var(--bx,8vw) round var(--br,28px));will-change:clip-path;
+/* 기능 소개로 들어가기 전 전환: 본문 폭 와인 상자가 화면 가운데로 올라오며 양옆 끝까지 펼쳐지는 가로 띠가 되고, 큰 제목이 뜬다.
+   화면에 붙잡아 두지 않고 그대로 지나간다(세로는 화면의 약 54%). 스크롤 위치만 따른다 */
+.f-bk{position:relative;height:clamp(360px,54vh,560px)}
+.f-bk-pin{position:relative;height:100%;overflow:hidden;display:grid;place-items:center}
+.f-bk-p{position:absolute;inset:0;clip-path:inset(var(--by,6%) var(--bx,8vw) round var(--br,28px));will-change:clip-path;
   background:radial-gradient(1200px 600px at 20% 10%,rgba(224,86,106,.35),transparent 60%),radial-gradient(900px 600px at 90% 100%,rgba(40,8,14,.6),transparent 60%),linear-gradient(135deg,#8A1C2B,#4A0E18)}
 .f-bk-p::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(92deg,rgba(255,255,255,.035) 0 1px,transparent 1px 7px)}
-.f-bk-c{position:relative;width:100%;max-width:var(--max);padding:var(--hdr) var(--gut) 0;display:grid;gap:22px;justify-items:center;text-align:center;color:#F7F1E8;opacity:var(--bt,0);transform:translateY(calc((1 - var(--bt,0))*28px))}
-.f-bk .f-bn{display:inline} /* 쉼표 뒤에서 줄을 바꾼다 */
-.f-bk h2{margin:0;font-size:clamp(36px,5.4vw,80px);line-height:1.18;font-weight:800;letter-spacing:-.045em;text-wrap:balance}
+.f-bk-c{position:relative;width:100%;max-width:var(--max);padding:0 var(--gut);display:grid;gap:22px;justify-items:center;text-align:center;color:#F7F1E8;opacity:var(--bt,0);transform:translateY(calc((1 - var(--bt,0))*28px))}
+.f-bk h2{margin:0;font-size:clamp(32px,4.6vw,66px);line-height:1.22;font-weight:800;letter-spacing:-.045em;text-wrap:balance}
 .f-bk .f-hl{color:inherit;background:linear-gradient(#FFD84D,#FFD84D) 0 60%/0% 82% no-repeat;transition:background-size .7s var(--ease),color .3s var(--ease) .15s}
 .f-bk .f-hl.on{background-size:100% 82%;color:var(--ink)}
-@media (prefers-reduced-motion:reduce){.f-bk{height:auto}.f-bk-pin{position:relative;min-height:100vh;padding-block:96px}.f-bk-p{clip-path:none}.f-bk-c{opacity:1;transform:none}}
-.f-bn{display:none}
+@media (prefers-reduced-motion:reduce){.f-bk-p{clip-path:none}.f-bk-c{opacity:1;transform:none}}
 .f-nw{white-space:nowrap}
-@media (max-width:900px){.f-bn{display:inline}}
 .frow.wide .f-copy .f-side{grid-column:2;grid-row:1/span 4;align-self:end;display:grid;gap:12px;justify-items:end}
 .f-copy{display:flex;flex-direction:column;gap:16px;opacity:0;transform:translateY(16px);transition:opacity .45s var(--ease),transform .5s var(--ease)}
 .f-vis{min-width:0;opacity:0;transform:translateY(24px) scale(.98);transition:opacity .5s var(--ease) .06s,transform .55s var(--ease) .06s}
@@ -678,7 +675,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .st-hero h2{margin:0;font-family:var(--brand);font-weight:700;font-size:clamp(44px,7vw,96px);line-height:1;letter-spacing:-.04em}
 .st-hero h2 i{font-style:normal;color:#E0566A}
 .st-scroll{position:relative;height:calc(100vh + 225vh);background:#1A1512} /* 폰: 세 문장 × 75vh, 한 번 튕기기에 한 문장쯤 */
-@media (hover:hover) and (pointer:fine){.st-scroll{height:calc(100vh + 135vh)}} /* 마우스·트랙패드: 문장마다 45vh */
+@media (hover:hover) and (pointer:fine){.st-scroll{height:calc(100vh + 90vh)}} /* 마우스·트랙패드: 문장마다 30vh(휠 약 8칸) */
 .st-pin{position:sticky;top:0;height:100vh;display:grid;place-items:center;overflow:hidden}
 .st-line{grid-area:1/1;margin:0;padding-inline:var(--gut);text-align:center;color:#F7F1E8;font-size:clamp(24px,3.4vw,44px);line-height:1.45;font-weight:700;letter-spacing:-.03em;opacity:0;transform:translateY(20px);transition:opacity .4s var(--ease),transform .45s var(--ease)}
 .st-line.on{opacity:1;transform:none}
@@ -997,7 +994,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 /* 시안 D */
 .hero.zoom.dz{height:calc(100vh + 370vh)} /* 폰·태블릿: 화면 속으로 들어가기 60vh + 장면 70·80·80·80vh(첫 장면은 들어가는 도중부터 보여 실제로는 약 115vh). 한 번 튕기기에 장면 하나쯤, 멈춘 자리의 장면이 그대로 머문다(스크립트의 ZV·SV 합과 맞출 것) */
-@media (hover:hover) and (pointer:fine){.hero.zoom.dz{height:calc(100vh + 175vh)}} /* 마우스·트랙패드: 50vh + 장면 25·33·33·34vh. 조금씩 내리므로 짧게 */
+@media (hover:hover) and (pointer:fine){.hero.zoom.dz{height:calc(100vh + 132vh)}} /* 마우스·트랙패드: 40vh + 장면 20·24·24·24vh. 조금씩 내리므로 짧게(휠 약 12칸) */
 /* 장면 점: 지금 장면은 다음으로 넘어갈 때까지 남은 시간만큼 차오르고, 누르면 그 장면으로 간다 */
 .dz .s3-dots i{position:relative;cursor:pointer}
 .dz .s3-dots i::before{content:"";position:absolute;inset:-12px -3px} /* 4px 막대도 손가락으로 누를 수 있게 */
@@ -1263,7 +1260,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 </section>
 
 <div class="f-bk"><div class="f-bk-pin"><div class="f-bk-p" aria-hidden="true"></div><div class="f-bk-c">
-  <h2>편하게 쓰세요, <br class="f-bn">나머지는 <mark class="f-hl">Provee가 <span class="f-nw">다 할게요</span></mark></h2>
+  <h2>시간 낭비는 그만!<br>편하게 공부하세요.<br>나머지는 <mark class="f-hl">Provee가 <span class="f-nw">다 할게요</span></mark>.</h2>
 </div></div></div>
 
 <section class="feats" id="features">
@@ -1988,16 +1985,16 @@ $$('.frow').forEach(r=>rio.observe(r));
 const hio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');hio.unobserve(e.target)}}),{rootMargin:'0px 0px -18% 0px'});$$('.f-hl').forEach(m=>hio.observe(m));
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const f=e.target.dataset.f;tabsA.forEach(a=>{const on=a.dataset.f===f;a.setAttribute('aria-current',on);if(on){const box=a.parentElement;box.scrollTo({left:a.offsetLeft-box.clientWidth/2+a.offsetWidth/2,behavior:'smooth'})}})}}),{rootMargin:'-45% 0px -50% 0px'});
 $$('.frow').forEach(r=>cio.observe(r));
-/* 기능 앞 와인 상자: 위로 다가오는 동안(상자 머리가 화면 아래 끝 -> 맨 위) 테두리가 줄며 화면을 꽉 채우고, 다 채우면 제목이 뜬다.
-   그 뒤 잠시 머물다 평소처럼 위로 밀려 올라가며 01 필기 입력이 이어진다. 스크롤 위치만 따른다 */
+/* 기능 앞 와인 띠: 상자 가운데가 화면 아래 끝에서 화면 가운데로 올라오는 동안 양옆·위아래 테두리가 줄어 끝에서 끝까지 펼쳐지고,
+   거의 가운데에 오면 제목이 뜬다. 붙잡아 두지 않고 평소처럼 지나가며 01 필기 입력이 이어진다. 스크롤 위치만 따른다 */
 {const bk=$('.f-bk');if(bk){const pp=bk.querySelector('.f-bk-p'),mk=bk.querySelector('.f-hl'),RMb=matchMedia('(prefers-reduced-motion: reduce)').matches;
  if(RMb){mk&&mk.classList.add('on')}else{
  mk&&hio.unobserve(mk);
  const sg=(x,a,b)=>Math.min(1,Math.max(0,(x-a)/(b-a))),ez=t=>1-Math.pow(1-t,3);let raf=0,live=false;
- const draw=()=>{raf=0;const H=innerHeight,W=innerWidth,top=bk.getBoundingClientRect().top,e=ez(sg(H-top,H*.15,H)),
+ const draw=()=>{raf=0;const H=innerHeight,W=innerWidth,r=bk.getBoundingClientRect(),c=H-(r.top+r.height/2),e=ez(sg(c,0,H*.5)),
    gx=Math.max(16,(W-Math.min(W,1200))/2+20); // 처음 상자는 본문 폭에 맞춘다
-  pp.style.setProperty('--bx',(gx*(1-e)).toFixed(1)+'px');pp.style.setProperty('--by',(H*.2*(1-e)).toFixed(1)+'px');pp.style.setProperty('--br',(28*(1-e)).toFixed(1)+'px');
-  const t=sg(H-top,H*.7,H);bk.style.setProperty('--bt',ez(t).toFixed(3));mk&&mk.classList.toggle('on',t>=.97)};
+  pp.style.setProperty('--bx',(gx*(1-e)).toFixed(1)+'px');pp.style.setProperty('--by',(r.height*.08*(1-e)).toFixed(1)+'px');pp.style.setProperty('--br',(28*(1-e)).toFixed(1)+'px');
+  const t=sg(c,H*.22,H*.44);bk.style.setProperty('--bt',ez(t).toFixed(3));mk&&mk.classList.toggle('on',t>=.97)};
  const kick=()=>{if(live&&!raf)raf=requestAnimationFrame(draw)};
  new IntersectionObserver(([e])=>{live=e.isIntersecting;if(live)kick()},{rootMargin:'20% 0px'}).observe(bk);
  addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);draw()}}}
@@ -2096,7 +2093,7 @@ let tWide=false,tRun=0,tDot=[],tRaf=0,tLive=false,tY=-1;
 function tLayout(){tWide=tMQ.matches;tTr.style.transform='';
   tDot=tIt.map(li=>{const d=li.querySelector('.dot');return tWide?li.offsetLeft+d.offsetLeft+7:li.offsetTop+d.offsetTop+7});
   const a=tDot[0],b=tDot[tDot.length-1];tTr.style.setProperty('--l0',a+'px');tTr.style.setProperty('--ll',(b-a)+'px');
-  tRun=tWide?Math.max(0,tTr.scrollWidth-tS.clientWidth):0;tS.style.setProperty('--run',Math.round(tRun*(matchMedia('(hover:hover) and (pointer:fine)').matches?1:1.3))+'px'); /* 손가락은 세로로 1.3배 내려야 옆으로 1만큼: 카드가 휙 지나가지 않게 */tY=-1;tDraw()}
+  tRun=tWide?Math.max(0,tTr.scrollWidth-tS.clientWidth):0;tS.style.setProperty('--run',Math.round(tRun*(matchMedia('(hover:hover) and (pointer:fine)').matches?.45:1.3))+'px'); /* 마우스·트랙패드는 0.45만 내려도 옆으로 1만큼(휠 약 11칸), 손가락은 1.3배: 카드가 휙 지나가지 않게 */tY=-1;tDraw()}
 function tDraw(){let head;
   if(RM){head=1e9}
   else if(tWide){const r=tS.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight))),x=p*tRun;
@@ -2227,7 +2224,7 @@ Z.dataset.sc=-1;Z.querySelector('.s3-dots').removeAttribute('aria-hidden');
 D.forEach((d,j)=>{d.setAttribute('role','button');d.tabIndex=0;d.setAttribute('aria-label',`${j+1}번째 장면`);
   const pick=()=>{const t=Z.getBoundingClientRect().top+scrollY,span=Z.offsetHeight-innerHeight;scrollTo({top:Math.round(t+span*(AT[j]+SV[j]/TOT*.4)),behavior:'smooth'})};d.addEventListener('click',pick);d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}})});
 const FINE=matchMedia('(hover:hover) and (pointer:fine)').matches, // 마우스·트랙패드는 조금씩 내리므로 짧게, 손가락은 한 번에 멀리 가므로 길게
-  ZV=FINE?50:60,SV=FINE?[25,33,33,34]:[70,80,80,80],TOT=ZV+SV.reduce((a,b)=>a+b),ZP=ZV/TOT, // 화면 속으로 들어가기·장면별 스크롤 길이(vh, 합은 CSS 높이와 같게)
+  ZV=FINE?40:60,SV=FINE?[20,24,24,24]:[70,80,80,80],TOT=ZV+SV.reduce((a,b)=>a+b),ZP=ZV/TOT, // 화면 속으로 들어가기·장면별 스크롤 길이(vh, 합은 CSS 높이와 같게)
   AT=SV.map((_,i)=>(ZV+SV.slice(0,i).reduce((a,b)=>a+b,0))/TOT); // 장면 i가 시작되는 진행률
 // 영상: 스크롤을 시작하면 끝 장면으로 건너뛰지 않고 빠르게 감아 끝낸다(건너뛰기는 다시 읽느라 멈칫함)
 const ffwd=()=>{if(vid.ended||!vid.duration||vid.currentTime>=vid.duration-.08)return;if(vid.playbackRate<6)vid.playbackRate=6;
