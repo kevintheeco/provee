@@ -174,7 +174,7 @@ const T={
 '쓰는 동안':'as you write',
 '앱 네 개를 오가던 공부,<br>Provee에선 <mark>앱 전환 0번</mark>':'Studying across four apps?<br>In Provee, <mark>zero app switches</mark>',
 '노트도, AI도, 강의자료도 한 화면에서.':'Notes, AI and lecture slides, all on one screen.',
-'편하게 쓰세요,<br>읽는 건 <mark>Provee가 할게요</mark>':'Write however you like.<br><mark>Provee will do the reading</mark>',
+'메커니즘부터 다른<br>Provee의 <mark>획 단위 인식 엔진</mark>':'Different from the mechanism up:<br>Provee\'s <mark>stroke-level recognition engine</mark>',
 '편하게 쓰세요, <br>나머지는 <mark>Provee가 <span>다 할게요</span></mark>':'Just write. <br><mark>Provee <span>handles the rest</span></mark>',
 '자연수 조건을 읽지 않고, 이차함수의 개형을 음수로 가정하여 푸는 상황':'Solving without reading the natural-number condition, assuming the quadratic opens downward',
 '사진 한 장 대신, 획마다 쓴 자리와 시각을 받으니까요.':'Instead of one photo, it gets where and when every stroke was written.',
