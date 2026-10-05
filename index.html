@@ -994,7 +994,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 
 /* 시안 D */
 .hero.zoom.dz{height:calc(100vh + 370vh)} /* 폰·태블릿: 화면 속으로 들어가기 60vh + 장면 70·80·80·80vh(첫 장면은 들어가는 도중부터 보여 실제로는 약 115vh). 한 번 튕기기에 장면 하나쯤, 멈춘 자리의 장면이 그대로 머문다(스크립트의 ZV·SV 합과 맞출 것) */
-@media (hover:hover) and (pointer:fine){.hero.zoom.dz{height:calc(100vh + 132vh)}} /* 마우스·트랙패드: 40vh + 장면 20·24·24·24vh. 조금씩 내리므로 짧게(휠 약 12칸) */
+@media (hover:hover) and (pointer:fine){.hero.zoom.dz{height:calc(100vh + 110vh)}} /* 마우스·트랙패드: 32vh + 장면 6·24·24·24vh(첫 장면은 들어가는 도중부터 보여 실제로는 약 30vh). 조금씩 내리므로 짧게(휠 약 10칸) */
 /* 장면 점: 지금 장면은 다음으로 넘어갈 때까지 남은 시간만큼 차오르고, 누르면 그 장면으로 간다 */
 .dz .s3-dots i{position:relative;cursor:pointer}
 .dz .s3-dots i::before{content:"";position:absolute;inset:-12px -3px} /* 4px 막대도 손가락으로 누를 수 있게 */
@@ -2222,10 +2222,12 @@ const go=i=>{if(i===cur)return;cur=i;const my=++tok;const ok=()=>my===tok;
   Z.classList.toggle('fin',i===LAST);Z.dataset.sc=i;if(i>=0)play[i](ok)};
 Z.dataset.sc=-1;Z.querySelector('.s3-dots').removeAttribute('aria-hidden');
 D.forEach((d,j)=>{d.setAttribute('role','button');d.tabIndex=0;d.setAttribute('aria-label',`${j+1}번째 장면`);
-  const pick=()=>{const t=Z.getBoundingClientRect().top+scrollY,span=Z.offsetHeight-innerHeight;scrollTo({top:Math.round(t+span*(AT[j]+SV[j]/TOT*.4)),behavior:'smooth'})};d.addEventListener('click',pick);d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}})});
+  const pick=()=>{man={j,at:posIdx(pD)};go(j)};d.addEventListener('click',pick);d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}})});
 const FINE=matchMedia('(hover:hover) and (pointer:fine)').matches, // 마우스·트랙패드는 조금씩 내리므로 짧게, 손가락은 한 번에 멀리 가므로 길게
-  ZV=FINE?40:60,SV=FINE?[20,24,24,24]:[70,80,80,80],TOT=ZV+SV.reduce((a,b)=>a+b),ZP=ZV/TOT, // 화면 속으로 들어가기·장면별 스크롤 길이(vh, 합은 CSS 높이와 같게)
+  ZV=FINE?32:60,SV=FINE?[6,24,24,24]:[70,80,80,80],TOT=ZV+SV.reduce((a,b)=>a+b),ZP=ZV/TOT, // 화면 속으로 들어가기·장면별 스크롤 길이(vh, 합은 CSS 높이와 같게)
   AT=SV.map((_,i)=>(ZV+SV.slice(0,i).reduce((a,b)=>a+b,0))/TOT); // 장면 i가 시작되는 진행률
+const posIdx=p=>p<ZP?(p/ZP<.26?-1:0):AT.reduce((i,a,j)=>p>=a?j:i,0); // 스크롤 위치의 장면
+let man=null; // 장면 점을 눌러 고른 장면: 화면은 그 자리에 둔 채 모션으로만 바꾸고, 스크롤로 다른 장면 자리에 들어가면 다시 위치를 따른다
 // 영상: 스크롤을 시작하면 끝 장면으로 건너뛰지 않고 빠르게 감아 끝낸다(건너뛰기는 다시 읽느라 멈칫함)
 const ffwd=()=>{if(vid.ended||!vid.duration||vid.currentTime>=vid.duration-.08)return;if(vid.playbackRate<6)vid.playbackRate=6;
   if(vid.paused)vid.play().catch(()=>{vid.currentTime=vid.duration-.04})};
@@ -2243,7 +2245,7 @@ const render=p=>{if(!M)measure();const m=M;HDR&&HDR.classList.toggle('noblur',p<
     scr.style.clipPath=`polygon(${pts.map(([x,y])=>`${x.toFixed(1)}px ${y.toFixed(1)}px`).join(',')})`;clipOff=false}
   else if(fill>=1&&!clipOff){scr.style.clipPath='none';clipOff=true}
   inn.style.opacity=Math.max(tx,warm?.004:0);inn.style.transform=`translate3d(0,${(24*(1-tx)).toFixed(2)}px,0)`;
-  go(p<ZP?(q<.26?-1:0):AT.reduce((i,a,j)=>p>=a?j:i,0))};
+  const pi=posIdx(p);if(man&&man.at!==pi)man=null;go(man?man.j:pi)};
 if(DR.RM){scr.style.opacity=1;scr.style.clipPath='none';inn.style.opacity=1;go(LAST);return}
 // 스크롤 위치를 그대로 따라가지 않고 부드럽게 쫓아간다. 휠 한 칸의 계단이 매끈한 움직임이 된다
 const target=()=>{const r=Z.getBoundingClientRect(),span=r.height-innerHeight;return span>0?cl(-r.top/span):1};
