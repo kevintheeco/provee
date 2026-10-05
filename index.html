@@ -135,17 +135,16 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .frow.wide{grid-template-columns:1fr;gap:clamp(28px,4vw,48px)}
 .frow.wide .f-copy{display:grid;grid-template-columns:1fr auto;column-gap:48px;align-items:end}
 .frow.wide .f-copy>*{grid-column:1}
-/* 02 획 단위 인식: 와인색 상자가 다가오며 화면을 꽉 채우고, 큰 제목이 뜬 뒤 다음 내용으로 넘어간다(새 페이지로 가는 전환). 스크롤 위치만 따른다 */
-.f-bk{position:relative;z-index:25;height:calc(100vh + 70vh);scroll-margin-top:-136px} /* 02 링크를 누르면 와인 화면이 꽉 찬 자리에 선다(html scroll-padding 136px 상쇄) */
+/* 기능 소개로 들어가기 전 전환: 와인색 상자가 다가오며 화면을 꽉 채우고, 큰 제목이 뜬 뒤 01 필기 입력으로 넘어간다(새 페이지로 가는 전환). 스크롤 위치만 따른다 */
+.f-bk{position:relative;z-index:25;height:calc(100vh + 70vh)}
 @media (hover:hover) and (pointer:fine){.f-bk{height:calc(100vh + 45vh)}}
 .f-bk-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
 .f-bk-p{position:absolute;inset:0;clip-path:inset(var(--by,18vh) var(--bx,8vw) round var(--br,28px));will-change:clip-path;
   background:radial-gradient(1200px 600px at 20% 10%,rgba(224,86,106,.35),transparent 60%),radial-gradient(900px 600px at 90% 100%,rgba(40,8,14,.6),transparent 60%),linear-gradient(135deg,#8A1C2B,#4A0E18)}
 .f-bk-p::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(92deg,rgba(255,255,255,.035) 0 1px,transparent 1px 7px)}
 .f-bk-c{position:relative;width:100%;max-width:var(--max);padding:var(--hdr) var(--gut) 0;display:grid;gap:22px;justify-items:center;text-align:center;color:#F7F1E8;opacity:var(--bt,0);transform:translateY(calc((1 - var(--bt,0))*28px))}
-.f-bk .fk{color:rgba(247,241,232,.72)}.f-bk .fk b{color:#FFB3BE}
-.f-bk h3{margin:0;font-size:clamp(36px,5.4vw,80px);line-height:1.18;font-weight:800;letter-spacing:-.045em;text-wrap:balance}
-.f-bk p{margin:0;font-size:clamp(16px,1.5vw,21px);line-height:1.6;color:rgba(247,241,232,.78)}
+.f-bk .f-bn{display:inline} /* 쉼표 뒤에서 줄을 바꾼다 */
+.f-bk h2{margin:0;font-size:clamp(36px,5.4vw,80px);line-height:1.18;font-weight:800;letter-spacing:-.045em;text-wrap:balance}
 .f-bk .f-hl{color:inherit;background:linear-gradient(#FFD84D,#FFD84D) 0 60%/0% 82% no-repeat;transition:background-size .7s var(--ease),color .3s var(--ease) .15s}
 .f-bk .f-hl.on{background-size:100% 82%;color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.f-bk{height:auto}.f-bk-pin{position:relative;min-height:100vh;padding-block:96px}.f-bk-p{clip-path:none}.f-bk-c{opacity:1;transform:none}}
@@ -1263,6 +1262,10 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
   </div></div></div>
 </section>
 
+<div class="f-bk"><div class="f-bk-pin"><div class="f-bk-p" aria-hidden="true"></div><div class="f-bk-c">
+  <h2>편하게 쓰세요, <br class="f-bn">나머지는 <mark class="f-hl">Provee가 <span class="f-nw">다 할게요</span></mark></h2>
+</div></div></div>
+
 <section class="feats" id="features">
     <nav class="ftabs" aria-label="기능 목록"><div class="ftabs-in">
     <a href="#f-input" data-f="input"><small>01</small>필기 입력</a>
@@ -1282,14 +1285,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
       <div class="f-vis" data-scene="input"></div>
     </div>
 
-  </div>
-  <div class="f-bk" id="f-read" data-f="read"><div class="f-bk-pin"><div class="f-bk-p" aria-hidden="true"></div><div class="f-bk-c">
-    <span class="fk"><b>02</b>획 단위 인식</span>
-    <h3>편하게 쓰세요, <br class="f-bn">다른 건 <mark class="f-hl">Provee가 <span class="f-nw">다 할게요</span></mark></h3>
-    <p>사진 한 장 대신, 획마다 쓴 자리와 시각을 받으니까요.</p>
-  </div></div></div>
-  <div class="wrap">
-    <div class="frow wide f-read-row" data-f="read">
+    <div class="frow wide" id="f-read" data-f="read">
+      <div class="f-copy">
+        <span class="fk"><b>02</b>획 단위 인식</span>
+        <h3>편하게 쓰세요,<br>읽는 건 <mark class="f-hl">Provee가 할게요</mark></h3>
+        <p>사진 한 장 대신, 획마다 쓴 자리와 시각을 받으니까요.</p>
+      </div>
       <div class="f-pt"><h4 class="f-pth"><b>1</b><span><mark class="f-hl">뭉쳐 써도 괜찮아요.</mark> Provee는 알아요.</span><small>2를 다 쓰고 x를 쓰기까지 <strong>0.2초</strong>, 그 틈까지 봤으니까요</small></h4><div class="f-vis" data-scene="recog"></div></div>
       <div class="f-pt"><h4 class="f-pth"><b>2</b><span>어디서부터 풀었는지 설명은 그만,<br>Provee는 이미 <mark class="f-hl">순서까지 알아요</mark></span><small><strong>일곱 군데</strong>를 오간 순서, 지운 그래프, 펜을 놓은 <strong>3분 19초</strong>까지</small></h4><div class="f-vis" data-scene="read"></div></div>
     </div>
@@ -1986,9 +1987,9 @@ const rio=new IntersectionObserver(es=>es.forEach(e=>{const row=e.target,f=row.d
 $$('.frow').forEach(r=>rio.observe(r));
 const hio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');hio.unobserve(e.target)}}),{rootMargin:'0px 0px -18% 0px'});$$('.f-hl').forEach(m=>hio.observe(m));
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const f=e.target.dataset.f;tabsA.forEach(a=>{const on=a.dataset.f===f;a.setAttribute('aria-current',on);if(on){const box=a.parentElement;box.scrollTo({left:a.offsetLeft-box.clientWidth/2+a.offsetWidth/2,behavior:'smooth'})}})}}),{rootMargin:'-45% 0px -50% 0px'});
-$$('.frow,.f-bk').forEach(r=>cio.observe(r));
-/* 02 와인 상자: 위로 다가오는 동안(상자 머리가 화면 아래 끝 -> 맨 위) 테두리가 줄며 화면을 꽉 채우고, 다 채우면 제목이 뜬다.
-   그 뒤 잠시 머물다 평소처럼 위로 밀려 올라가며 02 내용이 이어진다. 스크롤 위치만 따른다 */
+$$('.frow').forEach(r=>cio.observe(r));
+/* 기능 앞 와인 상자: 위로 다가오는 동안(상자 머리가 화면 아래 끝 -> 맨 위) 테두리가 줄며 화면을 꽉 채우고, 다 채우면 제목이 뜬다.
+   그 뒤 잠시 머물다 평소처럼 위로 밀려 올라가며 01 필기 입력이 이어진다. 스크롤 위치만 따른다 */
 {const bk=$('.f-bk');if(bk){const pp=bk.querySelector('.f-bk-p'),mk=bk.querySelector('.f-hl'),RMb=matchMedia('(prefers-reduced-motion: reduce)').matches;
  if(RMb){mk&&mk.classList.add('on')}else{
  mk&&hio.unobserve(mk);
