@@ -154,12 +154,10 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .frow.in .f-copy,.frow.in .f-vis{opacity:1;transform:none}
 .f-hl{color:inherit;background:linear-gradient(rgba(255,210,0,.42),rgba(255,210,0,.42)) 0 58%/0% 72% no-repeat;padding-inline:.08em;margin-inline:-.08em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .7s cubic-bezier(.55,.1,.3,1) .45s}
 .f-hl.on{background-size:100% 72%}
-/* 02 제목의 엔진 이름: 형광펜(아래 장점 문장들) 대신 펜으로 긋는 와인색 밑줄. 화면에 들어오면 왼쪽부터 그어진다 */
-.f-ul{position:relative;white-space:nowrap}
-html[lang="en"] .f-ul{white-space:normal;text-decoration:underline var(--wine) .08em;text-underline-offset:.2em} /* 영어는 여러 줄로 꺾이므로 펜 밑줄 대신 줄마다 이어지는 밑줄 */
-html[lang="en"] .f-ul::after{display:none}
-.f-ul::after{content:"";position:absolute;left:-.04em;right:-.04em;bottom:-.2em;height:.36em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9C45 4 95 12 140 7S188 5 198 9' fill='none' stroke='%238A1C2B' stroke-width='4.2' stroke-linecap='round'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;clip-path:inset(0 100% 0 0);transition:clip-path .8s cubic-bezier(.6,.05,.3,1) .15s}
-.f-ul.on::after{clip-path:inset(0 0 0 0)}
+/* 02 제목의 엔진 이름: 아래 장점 문장들의 노란 형광펜과 구분되게 분홍 띠. 글자 폭만큼 가로로 꽉 차고 세로는 아래쪽 낮은 띠, 화면에 들어오면 왼쪽부터 칠해진다 */
+.f-ul{white-space:nowrap;padding-inline:.06em;margin-inline:-.06em;background:linear-gradient(rgba(232,112,138,.4),rgba(232,112,138,.4)) 0 88%/0% 46% no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .7s var(--ease) .1s}
+.f-ul.on{background-size:100% 46%}
+html[lang="en"] .f-ul{white-space:normal}
 .fk{display:flex;align-items:baseline;gap:10px;font-size:15px;font-weight:700;color:var(--ink2)}
 .fk b{font:700 15px var(--brand);color:var(--wine)}
 .f-copy h3{margin:0;font-size:clamp(26px,2.8vw,36px);line-height:1.38;font-weight:800;letter-spacing:-.03em}
