@@ -154,12 +154,10 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .frow.in .f-copy,.frow.in .f-vis{opacity:1;transform:none}
 .f-hl{color:inherit;background:linear-gradient(rgba(255,210,0,.42),rgba(255,210,0,.42)) 0 58%/0% 72% no-repeat;padding-inline:.08em;margin-inline:-.08em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .7s cubic-bezier(.55,.1,.3,1) .45s}
 .f-hl.on{background-size:100% 72%}
-/* 02 제목의 엔진 이름: 형광펜(아래 장점 문장들) 대신 펜으로 긋는 와인색 밑줄. 화면에 들어오면 왼쪽부터 그어진다 */
-.f-ul{position:relative;white-space:nowrap}
-html[lang="en"] .f-ul{white-space:normal;text-decoration:underline var(--wine) .08em;text-underline-offset:.2em} /* 영어는 여러 줄로 꺾이므로 펜 밑줄 대신 줄마다 이어지는 밑줄 */
-html[lang="en"] .f-ul::after{display:none}
-.f-ul::after{content:"";position:absolute;left:-.04em;right:-.04em;bottom:-.2em;height:.36em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9C45 4 95 12 140 7S188 5 198 9' fill='none' stroke='%238A1C2B' stroke-width='4.2' stroke-linecap='round'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;clip-path:inset(0 100% 0 0);transition:clip-path .8s cubic-bezier(.6,.05,.3,1) .15s}
-.f-ul.on::after{clip-path:inset(0 0 0 0)}
+/* 02 제목의 엔진 이름: 아래 장점 문장들의 노란 형광펜과 구분되게 분홍 띠. 글자 폭만큼 가로로 꽉 차고 세로는 아래쪽 낮은 띠, 화면에 들어오면 왼쪽부터 칠해진다 */
+.f-ul{white-space:nowrap;padding-inline:.06em;margin-inline:-.06em;background:linear-gradient(rgba(232,112,138,.4),rgba(232,112,138,.4)) 0 88%/0% 46% no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .7s var(--ease) .1s}
+.f-ul.on{background-size:100% 46%}
+html[lang="en"] .f-ul{white-space:normal}
 .fk{display:flex;align-items:baseline;gap:10px;font-size:15px;font-weight:700;color:var(--ink2)}
 .fk b{font:700 15px var(--brand);color:var(--wine)}
 .f-copy h3{margin:0;font-size:clamp(26px,2.8vw,36px);line-height:1.38;font-weight:800;letter-spacing:-.03em}
@@ -187,8 +185,9 @@ html[lang="en"] .f-ul::after{display:none}
 .bar .wm{font-size:2.5cqw;color:var(--ink)}
 .bar .end{margin-left:auto;border:1px solid var(--line);border-radius:99px;padding:.4cqw 1.6cqw;color:var(--ink2)}
 .dots{display:flex;gap:.9cqw}.dots i{width:1.8cqw;height:1.8cqw;border-radius:50%;display:block}
-.sit{display:flex;align-items:center;gap:10px;width:fit-content;max-width:100%;margin:0 auto 16px;padding:9px 16px;border-radius:14px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);font-size:15px;line-height:1.5;font-weight:600;color:var(--ink);text-wrap:balance}
-.sit::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ink2)}
+/* 04 상황 설명: 위로 볼록한 곡선을 그린 순간 필기 위쪽 가운데에 떴다가, 튜터가 말을 걸면 사라진다 */
+.sit{position:absolute;left:50%;top:8.2cqw;z-index:3;max-width:88%;margin:0;padding:1.2cqw 2.4cqw;border-radius:99px;background:var(--ink);color:#fff;font-size:2.1cqw;font-weight:600;line-height:1.4;text-align:center;white-space:nowrap;box-shadow:0 1.2cqw 3.6cqw -1cqw rgba(30,24,17,.45);opacity:0;transform:translate(-50%,-1.4cqw);transition:opacity .25s var(--ease),transform .35s var(--ease);pointer-events:none}
+.sit.on{opacity:1;transform:translate(-50%,0)}
 .scap{margin:12px 0 0;font-size:11px;line-height:1.5;color:var(--ink3);text-align:center}
 .nb{position:absolute;left:0;right:0;bottom:0;top:6.6cqw;background:#fff}
 .nb.lined{background:#fff repeating-linear-gradient(to bottom,transparent 0 6.4cqw,var(--rule) 6.4cqw calc(6.4cqw + 1px))}
@@ -429,7 +428,7 @@ html[lang="en"] .f-ul::after{display:none}
 .wt b{font-weight:700;min-width:3.4em}
 .wt.on{opacity:1;transform:none}
 /* phones: the tutor's words and the problem card get bigger so they can be read */
-@container (max-width:480px){.wt{font-size:max(1.9cqw,10.5px);height:auto;padding:.5em .9em}.wt svg{width:1.1em;height:1.1em}
+@container (max-width:480px){.sit{font-size:max(2.1cqw,11px);white-space:normal;width:max-content;padding:.55em 1em;border-radius:1.2em;text-wrap:balance}.wt{font-size:max(1.9cqw,10.5px);height:auto;padding:.5em .9em}.wt svg{width:1.1em;height:1.1em}
   .pop{width:66%;padding:3cqw;gap:2cqw}.pop .who{font-size:max(1.9cqw,10.5px)}.pop .who b{width:max(3.6cqw,17px);height:max(3.6cqw,17px);font-size:max(1.8cqw,9px)}.pop p{font-size:max(2.3cqw,12px)}.pop .btns span{font-size:max(1.9cqw,10.5px);padding:.35em .9em}
   .qtab{font-size:max(1.9cqw,10.5px);height:auto;padding:.45em .9em}.exam{width:90%}.exam .lab{font-size:max(1.8cqw,10.5px)}}
 .qtab{position:absolute;left:2.4cqw;bottom:2.4cqw;height:5cqw;display:inline-flex;align-items:center;gap:1cqw;padding-inline:1.8cqw;border-radius:99px;background:var(--paper);box-shadow:0 .4cqw 1.6cqw rgba(30,24,17,.14),inset 0 0 0 1px var(--line);font-size:1.9cqw;font-weight:600;color:var(--ink2);transition:opacity .3s var(--ease)}
@@ -1626,15 +1625,16 @@ function sceneGraph(){
 /* ---------- 04 ask: real 2024 수능 14번 ink; the tutor's pause clock, bubble and highlight are staged on top of it ---------- */
 function sceneAsk(){
   const el=document.createElement('div');
-  el.innerHTML=`<p class="sit">자연수 조건을 읽지 않고, 이차함수의 개형을 음수로 가정하여 푸는 상황</p><div class="dev"><div class="scr">
+  el.innerHTML=`<div class="dev"><div class="scr">
     <div class="bar"><span class="wm">Provee<i>.</i></span><span>2024 수능 14번</span><span class="dots"><i style="background:#221C39;box-shadow:0 0 0 .3cqw #fff,0 0 0 .55cqw #221C39"></i><i style="background:#C0392B"></i><i style="background:#FFD400"></i></span><span class="end">학습 종료</span></div>
     <div class="nb"><canvas></canvas></div>
     <span class="qtab">14번 문제 보기</span>
     <span class="wt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 9v4.4l2.6 1.6M9.5 2.8h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>펜 멈춤 <b>0초</b></span>
     <div class="exam"><div class="lab">문제 다시 읽기</div><div class="im"><img src="img/q14.png" alt="2024학년도 수능 수학 14번 문제: 두 자연수 a, b에 대하여 함수 f(x)는 ..."><span class="hl"></span></div></div>
     <div class="pop"><div class="who"><b>P</b>Provee</div><p>문제를 다시 읽어볼까?</p></div>
+    <p class="sit">자연수 조건을 읽지 않고 이차함수를 위로 볼록하게 그린 상황</p>
   </div></div><p class="scap">대표가 2024학년도 수능 14번을 푼 실제 필기(획 594개, 18분) 가운데 그래프 대목을 빠르게 재생한 화면. 실제로는 혼자 고쳤고, 펜 멈춤 표시와 말풍선, 형광펜은 기능을 보여 주기 위한 연출</p>`;
-  const cv=el.querySelector('canvas'),nb=el.querySelector('.nb'),ex=el.querySelector('.exam'),hl=el.querySelector('.hl'),pop=el.querySelector('.pop'),tab=el.querySelector('.qtab'),wt=el.querySelector('.wt'),wtb=wt.querySelector('b');
+  const sit=el.querySelector('.sit'),cv=el.querySelector('canvas'),nb=el.querySelector('.nb'),ex=el.querySelector('.exam'),hl=el.querySelector('.hl'),pop=el.querySelector('.pop'),tab=el.querySelector('.qtab'),wt=el.querySelector('.wt'),wtb=wt.querySelector('b');
   // strokes 397-402 mark the point (2,9); 403-418 are the wrong upward-convex curve and its x=b guide, erased before 421 redraws it as ∪ (434)
   const BX0=120,BY0=140,BX1=2140,BY1=1790,START=397,WRONG_A=403,WRONG_B=418,REDO=434,AHA=451,GX=1210,GY=800,GZ=2.05;
   let W,H,dpr,k,ctx,tl=null,raf=0,live=false,last=0,anim=null;
@@ -1679,15 +1679,17 @@ function sceneAsk(){
     if(RM){S.vt=P1;S.gone=0;cam.x=cam.tx=GX;cam.y=cam.ty=GY;cam.z=cam.tz=GZ;pop.classList.add('on');tab.style.opacity=0;ex.classList.add('on');hl.classList.add('on');draw();return}
     live=true;last=0;raf=requestAnimationFrame(frame);
     while(ok()){
-      ex.classList.remove('on');hl.classList.remove('on');pop.classList.remove('on');tab.style.opacity=1;wt.classList.remove('on');wtb.textContent='0초';
+      ex.classList.remove('on');hl.classList.remove('on');pop.classList.remove('on');sit.classList.remove('on');tab.style.opacity=1;wt.classList.remove('on');wtb.textContent='0초';
       // open on the graph with everything written before stroke 397 already on the page
       S.vt=S0;S.gone=0;cam.x=cam.tx=GX;cam.y=cam.ty=GY;cam.z=cam.tz=GZ;aim(GX,GY,GZ);
       await wait(150);if(!ok())return;
-      await play(S0,W0,420);if(!ok())return;await play(W0,W1,760);if(!ok())return;await play(W1,P1,700);if(!ok())return;
+      await play(S0,W0,420);if(!ok())return;await play(W0,W1,760);if(!ok())return;
+      // 위로 볼록한 곡선을 다 그린 순간 무슨 상황인지 띄우고, 읽을 틈을 준다
+      sit.classList.add('on');await play(W1,P1,700);if(!ok())return;await wait(1500);if(!ok())return;
       // the pen stops after the wrong curve (the real record has a 49 s gap here); the tutor speaks up at 40 s
       wt.classList.add('on');for(let s2=0;s2<=40&&ok();s2+=4){wtb.textContent=s2+'초';await wait(60)}if(!ok())return;
       // 튜터가 "문제를 다시 읽어볼까?" 하자마자 문제가 열리고 첫 줄 조건에 형광펜(학생이 버튼을 누르는 단계 없음)
-      pop.classList.add('on');wt.classList.remove('on');await wait(300);if(!ok())return;
+      pop.classList.add('on');wt.classList.remove('on');sit.classList.remove('on');await wait(300);if(!ok())return;
       tab.style.opacity=0;ex.classList.add('on');await wait(260);hl.classList.add('on');
       // 형광펜에서 끝낸다. 고쳐 그리는 대목은 보여 주지 않고, 잠시 머문 뒤 처음부터 다시
       await wait(3600)}
