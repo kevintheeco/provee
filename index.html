@@ -1342,11 +1342,6 @@ html[lang="en"] .f-ul{white-space:normal}
 .md-card p{margin:0}
 .md-card small{font-size:12px;font-weight:700;color:#8A7E6A}
 .md-card.eu{border:2px solid #8A1C2B}.md-card.eu small{color:#8A1C2B}.md-card.eu b{font-size:17px;font-weight:900;line-height:1.45}
-.md-cnt{display:flex;justify-content:space-between;align-items:baseline}.md-cnt b{font-size:22px;font-weight:900}
-.md-lg{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13px}
-.md-lg li{display:flex;align-items:center;gap:10px}
-.md-lg i{width:14px;height:14px;border-radius:4px;background:#FFFDF8;border:1.5px solid #CFC4AE}
-.md-lg i.explained{background:#F7EAE8;border:2px solid #8A1C2B}.md-lg i.solved{background:#EDF3F6;border-color:#3C6E8F}.md-lg i.prereq{border-style:dashed;border-color:#B8AC94}
 .md-next{padding:12px;border-radius:999px;background:#8A1C2B;color:#fff;font-weight:800;font-size:14px;text-align:center}
 /* 누르는 손끝 */
 .md-tap{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(30,24,17,.18);border:2px solid rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(30,24,17,.25);opacity:0;transform:scale(1.4);pointer-events:none;z-index:9}
@@ -1503,8 +1498,8 @@ html[lang="en"] .f-ul{white-space:normal}
     <div class="frow" id="f-modes" data-f="modes">
       <div class="f-copy">
         <span class="fk"><b>05</b>과제 모드</span>
-        <h3>급하면 답부터,<br>여유 있으면 <mark class="f-hl">과탑까지</mark></h3>
-        <p>마감 1시간 전엔 받아 적어 내고,<br>끝에서 한 칸씩 이해와 과탑으로.</p>
+        <h3>발등에 불 떨어진 날도,<br><mark class="f-hl">과탑을 노리는 날도</mark></h3>
+        <p>급하면 발등튀김, 이해하고 싶으면 이해,<br>과탑을 노리면 과탑.</p>
       </div>
       <div class="f-vis" data-scene="modes"></div>
     </div>
@@ -2173,8 +2168,9 @@ function sceneRecog(){
       await sleep(3200)}
   }};
 }
-/* ---------- 05 assignment modes: the app's own screens (provee-web Home STAGES · ModeIntro · Crunch · TopBlueprint), one assignment climbed rung by rung ----------
-   발등튀김(받아 적기) → 끝에서 [이해 모드로] → 이해(개념 → 먼저 풀기 → [프루비]) → 끝에서 [과탑 모드로] → 과탑(설명하기 → 청사진). 아래 단추로 그 모드부터.
+/* ---------- 05 assignment modes: the app's own screens (provee-web Home STAGES · ModeIntro · Crunch · TopBlueprint) ----------
+   같은 과제, 학생이 원하는 모드로(대표 10/14 "발등에 불 떨어진 학생엔 발등튀김, 이해를 원하면 이해, 과탑을 노리면 과탑"). 세 학생이 차례로 고르기 시트에서 고른다:
+   발등튀김(받아 적기 → 제출/이해 갈래) · 이해(개념 → 먼저 풀기 → [프루비] → 채점) · 과탑(깊게 배우기 → 변형문제 → 청사진). 아래 단추로 그 모드부터.
    필기는 대표 실측(ink0912full.json, 2026.09.12 x²−5x+6=0: 56획, 지운 획 15개), 받아 적기는 지운 획을 뺀 깨끗한 획만 */
 let INK3=null;let ink3P=null;const ink3=()=>ink3P||(ink3P=fetch('ink0912full.json').then(r=>r.json()).then(d=>INK3=d).catch(()=>null));
 const MD_C={urgent:['#C2502F','#8F3519','#FDEDE4','#F5C9B4'],normal:['#2F6DB5','#1F4C82','#E2ECF8','#C4D6EE'],relaxed:['#2F7A3A','#215C2A','#E3F0DA','#CFE6C4']};
@@ -2234,13 +2230,13 @@ const MD_B={
   concepts:(learned)=>`${MD_HEAD('1','개념 배우기')}<p class="md-q2">이 문항을 풀기 전에 배울 개념</p><ol class="md-cs"><li class="done"><span>✅</span><span class="nm">행렬식<small>행렬 &gt; 행렬식</small></span><span class="md-ln">다시 보기</span></li><li class="${learned?'done':''}" data-t="c2"><span>${learned?'✅':'🎓'}</span><span class="nm">특성방정식과 고유값<small>고유값 &gt; 특성방정식</small></span><span class="md-ln">${learned?'다시 보기':'이미 알아요'}</span></li></ol><div class="md-nav"><span class="md-btn pri" data-t="go">${learned?'이제 풀어 보기 ▶':'배우기: 특성방정식과 고유값'}</span></div>`,
   solve:(x)=>`${MD_HEAD('1','풀기')}${x.talk?`<div class="md-me">여기서 어떻게 해?</div><div class="md-pv"><small>🙋 프루비</small><p>곱해서 6, 더해서 −5가 되는 두 수부터 찾아볼까?</p></div>`:'<p class="md-hint">먼저 직접 풀어 봐요. 막히면 [프루비]를 눌러요.</p>'}${x.menu?'<div class="md-pm"><span data-t="how">여기서 어떻게 해?</span><span>이 개념 모르겠어</span><span>틀린 거 있어?</span></div>':''}${x.busy?'<div class="md-wt"><i></i>손글씨를 읽고 채점하는 중…</div>':''}<div class="md-nav"><span class="md-btn gho" data-t="pv">🙋 프루비</span><span class="md-btn pri" data-t="done">다 풀었어요</span></div>`,
   verdict:()=>`${MD_HEAD('1','채점')}<p class="md-vd">맞았어요! 🎉</p><div class="md-nav"><span class="md-btn pri" data-t="next">다음 문항 ▶</span></div>`,
-  uend:()=>`<div class="md-bh"><span class="gr"></span><b>다 봤어요!</b></div><p class="md-hint">이제 진짜 제출해요 💪</p><div class="md-ch"><span class="md-btn pri">다운로드하고 제출하기</span><span class="md-btn gho" data-t="toT">과탑 모드로 — 공식·원리 설명하기</span></div><span class="md-ln">처음부터 다시 이해하기</span>`,
-  explain:(busy)=>`<div class="md-bh"><span class="gr"></span><b>설명하기</b><span class="md-us top">설명하기 1 / 2</span></div><span class="md-sub">이해 모드에서 배운 개념 · 1</span><p class="md-q2">특성방정식이 왜 성립하는지, 네 말로 설명해 볼래?</p>${busy?'<div class="md-wt"><i></i>설명을 읽고 있어요…</div>':'<p class="md-hint">식과 그림 다 좋아요. 아래 새 쪽에 손으로 써 주세요.</p>'}<div class="md-nav"><span class="md-btn pri" data-t="wrote">다 썼어요</span></div><span class="md-ln">이 개념은 건너뛰기</span>`,
+  deep:(learned)=>`${MD_HEAD('1','깊게 배우기',1)}<p class="md-q2">원리·유도까지 깊게 배울 개념</p><ol class="md-cs"><li class="${learned?'done':''}"><span>${learned?'✅':'🎓'}</span><span class="nm">특성방정식과 고유값<small>고유값 &gt; 특성방정식</small></span><span class="md-ln">${learned?'다시 보기':'이미 알아요'}</span></li><li class="${learned?'done':''}"><span>${learned?'✅':'🎓'}</span><span class="nm">행렬식과 역행렬<small>행렬 &gt; 역행렬</small></span><span class="md-ln">${learned?'다시 보기':'이미 알아요'}</span></li></ol><div class="md-nav"><span class="md-btn pri" data-t="go">${learned?'이제 풀어 보기 ▶':'배우기: 특성방정식과 고유값'}</span></div>`,
+  variant:(x)=>`<div class="md-bh"><span class="gr"></span><b>1</b><span class="md-us top">변형문제</span></div><span class="md-sub">변형문제</span><p class="md-hint">행렬 ${mv('B')} = <span class="md-mx"><span>2</span><span>1</span><span>1</span><span>2</span></span> 의 고유값을 모두 구하시오.</p>${x.done?'<p class="md-vd">맞았어요! 🎉</p><div class="md-nav"><span class="md-btn gho">하나 더</span><span class="md-btn pri" data-t="bp">청사진 보기 ▶</span></div>':`${x.busy?'<div class="md-wt"><i></i>손글씨를 읽고 채점하는 중…</div>':'<p class="md-hint">아래 새 쪽에 손으로 풀어요.</p>'}<div class="md-nav"><span class="md-btn gho">쪽으로 가기</span><span class="md-btn pri" data-t="done">다 풀었어요</span></div>`}`,
 };
 // 청사진: 층(과제 → 문항 → 쓰인 개념 → 한 단계 아래 → 모든 것의 바닥), x·y는 지도 안 좌표
 const MD_LAY=[['과제',40],['문항',150],['쓰인 개념',270],['한 단계 아래',400],['모든 것의 바닥',530]];
 const MD_N=[['a','root',380,40,'선형대수 과제 3',''],['q1','item',220,150,'1 · 고유값',''],['q2','item',380,150,'2 · 고유벡터',''],['q3','item',540,150,'3 · 대각화',''],
-  ['c1','explained',220,270,'특성방정식','설명함'],['c2','solved',380,270,'고유벡터','풀었음'],['c3','learned',540,270,'대각화','배움'],
+  ['c1','solved',220,270,'특성방정식','풀었음'],['c2','learned',380,270,'고유벡터','배움'],['c3','learned',540,270,'대각화','배움'],
   ['p1','prereq',220,400,'행렬식',''],['p2','prereq',380,400,'역행렬',''],['p3','prereq',540,400,'동차 연립방정식',''],['f','foundation',380,530,'연립일차방정식','']];
 const MD_E=[['a','q1'],['a','q2'],['a','q3'],['q1','c1'],['q2','c2'],['q3','c3'],['q3','c2'],['c1','p1'],['c2','p3'],['c3','p2'],['p1','f'],['p2','f'],['p3','f']];
 function sceneModes(){
@@ -2263,8 +2259,8 @@ function sceneModes(){
     <div class="md-ly md-tb"><div class="md-tbh"><span class="bk">←</span><div><span class="md-chip" style="background:#5E1220;color:#fff">과탑 · 청사진</span><h6>선형대수 과제 3을 정상에서 보면</h6></div></div>
       <div class="md-map">${MD_LAY.map(([t,y])=>`<span class="lb" style="top:${y}px">${t}</span>`).join('')}<svg width="640" height="610" fill="none" stroke-linecap="round" aria-hidden="true"><g class="md-ed" stroke="#CFC4AE" stroke-width="2">${edges}</g><path class="md-dl" d="M${P.c1[0]+75} ${P.c1[1]+8}C330 330 300 360 ${P.p2[0]-40} ${P.p2[1]-27}" stroke="#8A1C2B" stroke-width="3" stroke-dasharray="7 6" opacity="0"/></svg>${map}<span class="md-lk" style="left:318px;top:338px">det = 0 ⇔ 역행렬 없음</span></div>
       <div class="md-side"><div class="md-card eu"><small>유레카</small><b>det(${mv('A')} − λ${mv('I')}) = 0, 이래서 나왔다</b><p>(${mv('A')} − λ${mv('I')})${mv('v')} = 0에 0이 아닌 ${mv('v')}가 있으려면 ${mv('A')} − λ${mv('I')}의 역행렬이 없어야 하고, 그 조건이 곧 행렬식 0</p></div>
-        <div class="md-card"><div class="md-cnt"><small>설명할 수 있는 개념</small><b>1 / 3</b></div><ul class="md-lg"><li><i class="explained"></i>설명함</li><li><i class="solved"></i>풀었음</li><li><i></i>배움</li><li><i class="prereq"></i>한 단계 아래(선행)</li></ul></div>
-        <span class="md-next">변형문제 풀러 가기</span></div></div>
+        <div class="md-card"><small>이래서 나왔다</small><p>고유값은 행렬식이 0이 되는 자리에서, 고유벡터는 동차 연립방정식의 해에서. 둘 다 연립일차방정식 위에 서 있다</p></div>
+        <span class="md-next">다 했어요</span></div></div>
     <i class="md-tap"></i>
   </div></div></div>
   <div class="md-tabs" role="tablist" aria-label="과제 세 모드">${['urgent','normal','relaxed'].map(k=>`<button type="button" role="tab" aria-selected="false" data-k="${k}">${mdSticker(k,30,false)}<span>${MD_NAME[k]}</span></button>`).join('')}</div>
@@ -2295,38 +2291,41 @@ function sceneModes(){
   async function press(sel,live){const t=q(sel);if(!t)return live();const r=t.getBoundingClientRect(),o=st.getBoundingClientRect();
     tap.style.left=(r.left+r.width*.62-o.left)/k+'px';tap.style.top=(r.top+r.height/2-o.top)/k+'px';tap.classList.remove('go');void tap.offsetWidth;tap.classList.add('go');
     if(!await wait(260,live))return false;t.classList.add('press');if(!await wait(220,live))return false;t.classList.remove('press');return wait(160,live)}
-  async function intro(m,live){cd.innerHTML=mdIntro(m);show('ov',m==='urgent'?'sh':'cr');return wait(MD_INTRO_MS[m]+150,live)}
+  async function intro(m,live){cd.innerHTML=mdIntro(m);show('ov','sh');return wait(MD_INTRO_MS[m]+150,live)}
   async function blueprint(live){qa('.md-nd,.md-ed path,.md-lk,.md-side').forEach(x=>x.classList.remove('on'));q('.md-dl').style.opacity=0;show('tb');
     if(!await wait(350,live))return false;
     for(const [,y] of MD_LAY){qa('.md-nd').filter(n=>parseFloat(n.style.top)===y).forEach(n=>n.classList.add('on'));qa('.md-ed path').forEach(p=>{const m=/L[\d.]+ ([\d.]+)/.exec(p.getAttribute('d'));if(m&&+m[1]+27===y)p.classList.add('on')});if(!await wait(330,live))return false}
     q('.md-dl').style.opacity=1;q('.md-lk').classList.add('on');if(!await wait(500,live))return false;q('.md-side').classList.add('on');return wait(3600,live)}
+  async function pick(m,live){ // 고르기 시트에서 이 학생이 고른다
+    setMode(m);cur.t=-1;paint(-1,'solve');L.home.classList.add('cut');show('home');qa('.md-row').forEach(r=>r.classList.remove('press'));if(!await wait(450,live))return false;L.home.classList.remove('cut');
+    L.sh.classList.add('on');if(!await wait(900,live))return false;if(!await press(`[data-t=row-${m}]`,live))return false;
+    if(!await intro(m,live))return false;show('cr');return wait(300,live)}
   async function urgent(live){
-    setMode('urgent');cur.t=-1;paint(-1,'copy');show('home');if(!await wait(500,live))return false;
-    L.sh.classList.add('on');qa('.md-row').forEach(r=>r.classList.remove('press'));if(!await wait(800,live))return false;if(!await press('[data-t=row-urgent]',live))return false;
-    B('fill');if(!await intro('urgent',live))return false;show('cr');if(!await wait(300,live))return false;
+    B('fill');if(!await pick('urgent',live))return false;
     await inkTo('copy',0,TL.copyEnd,TL.copyEnd/4.5,live);if(!live())return false;if(!await wait(400,live))return false;
-    if(!await press('[data-t=next]',live))return false;B('choose');if(!await wait(1400,live))return false;return press('[data-t=toU]',live)}
+    if(!await press('[data-t=next]',live))return false;B('choose');return wait(2200,live)}
   async function normal(live){
-    B('concepts',false);if(!await intro('normal',live))return false;setMode('normal');cur.t=-1;paint(-1,'solve');show('cr');if(!await wait(1000,live))return false;
+    B('concepts',false);if(!await pick('normal',live))return false;if(!await wait(700,live))return false;
     if(!await press('[data-t=go]',live))return false;B('concepts',true);if(!await wait(600,live))return false;if(!await press('[data-t=go]',live))return false;
     B('solve',{});if(!await wait(300,live))return false;
-    const E=TL.solve,er=Math.max(...E.filter(s=>s.e).map(s=>s.e)); // 지운 시각(18.4초)까지: 식 → (x−1)(x−6) → 지움
+    const er=Math.max(...TL.solve.filter(s=>s.e).map(s=>s.e)); // 지운 시각(18.4초)까지: 식 → (x−1)(x−6) → 지움
     await inkTo('solve',0,er+200,(er+200)/4.5,live);if(!live())return false;if(!await wait(500,live))return false; // 실제 기록은 지운 뒤 5.7초 멈춤 — 그 사이 [프루비]
     if(!await press('[data-t=pv]',live))return false;B('solve',{menu:1});if(!await wait(600,live))return false;if(!await press('[data-t=how]',live))return false;
     B('solve',{talk:1});if(!await wait(1700,live))return false;
     await inkTo('solve',24000,TL.solveEnd,(TL.solveEnd-24000)/4.5,live);if(!live())return false;if(!await wait(300,live))return false;
-    if(!await press('[data-t=done]',live))return false;B('solve',{talk:1,busy:1});if(!await wait(800,live))return false;B('verdict');if(!await wait(1000,live))return false;
-    if(!await press('[data-t=next]',live))return false;B('uend');if(!await wait(1000,live))return false;return press('[data-t=toT]',live)}
+    if(!await press('[data-t=done]',live))return false;B('solve',{talk:1,busy:1});if(!await wait(800,live))return false;B('verdict');return wait(2000,live)}
   async function relaxed(live){
-    B('explain',false);if(!await intro('relaxed',live))return false;setMode('relaxed');cur.t=-1;paint(-1,'solve');show('cr');if(!await wait(1500,live))return false;
-    if(!await press('[data-t=wrote]',live))return false;B('explain',true);if(!await wait(900,live))return false;return blueprint(live)}
+    B('deep',false);if(!await pick('relaxed',live))return false;if(!await wait(900,live))return false;
+    if(!await press('[data-t=go]',live))return false;B('deep',true);if(!await wait(700,live))return false;if(!await press('[data-t=go]',live))return false;
+    B('variant',{});if(!await wait(1500,live))return false;if(!await press('[data-t=done]',live))return false;B('variant',{busy:1});if(!await wait(800,live))return false;
+    B('variant',{done:1});if(!await wait(900,live))return false;if(!await press('[data-t=bp]',live))return false;return blueprint(live)}
   const SEG={urgent,normal,relaxed},ORDER=['urgent','normal','relaxed'];
   function finalFrame(){setMode('urgent');B('choose');show('cr');cur.t=TL?TL.copyEnd:-1;cur.mode='copy';paint(cur.t,'copy')}
   async function run(g){const live=()=>okF()&&g===gen;await ink3();if(!INK3||!live())return;TL=TL||build();
     if(!ro){ro=new ResizeObserver(()=>size());ro.observe(scr)}if(!size())return;
     if(RM){finalFrame();return}
     let i=ORDER.indexOf(from);
-    while(live()){const m=ORDER[i];if(m==='urgent')L.home.classList.add('cut');if(!await SEG[m](live))return;L.home.classList.remove('cut');i=(i+1)%3}}
+    while(live()){if(!await SEG[ORDER[i]](live))return;i=(i+1)%3}}
   tabs.forEach(b=>b.addEventListener('click',()=>{from=b.dataset.k;if(okF()){cancelAnimationFrame(raf);const g=++gen;run(g)}}));
   return {el,stop(){gen++;cancelAnimationFrame(raf)},play(ok){okF=ok;const g=++gen;run(g)}};
 }
