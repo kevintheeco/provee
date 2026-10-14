@@ -1180,6 +1180,180 @@ html[lang="en"] .f-ul{white-space:normal}
 
 /* provee. 워드마크 (2026-10-05 확정 로고). 글자는 currentColor, 마침표는 --pv-dot(기본 와인). 높이 .86em = 글자 x-height가 Poppins x-height와 같아지는 값, 기준선 정렬. 좌우 여백은 예전 글자의 옆 여백만큼 */
 .pv-wm{display:inline-block;height:.86em;width:auto;aspect-ratio:872.45/215.04;vertical-align:-.281em;overflow:visible;margin:0 .06em 0 .12em}
+/* 05 과제 세 모드 — 앱(provee-web) 화면을 옮긴 장면: 고르기 시트(Home STAGES) · 전환 장면(ModeIntro, 시안 E+) · 발등튀김/이해/과탑 말풍선(Crunch) · 청사진(TopBlueprint).
+   1000×738 무대를 태블릿 화면 폭에 맞춰 통째로 줄인다. 색·문구는 앱 modeMeta.js · styles.css 값 그대로, 클래스는 사이트와 겹치지 않게 md- 로 바꿨다 */
+.md{--u:#C2502F;--u-d:#8F3519;--u-s:#FDEDE4;--u-l:#F5C9B4;--n:#2F6DB5;--n-d:#1F4C82;--n-s:#E2ECF8;--n-l:#C4D6EE;--r:#2F7A3A;--r-d:#215C2A;--r-s:#E3F0DA;--r-l:#CFE6C4;
+  --a-bg:#FAF6EC;--a-card:#FFFDF8;--a-ink:#1E1811;--a-sub:#8A7E6A;--a-line:#E4DAC7;--a-pri:#8A1C2B;--a-pri-d:#5E1220;--a-pri-s:#F3E3E0;--a-pri-bd:#D9B3B8}
+.md .scr{background:var(--a-bg)}
+.md-st{position:absolute;left:0;top:0;width:1000px;height:738px;transform-origin:0 0;overflow:hidden;color:var(--a-ink);font-size:14px;line-height:1.5}
+.md-ly{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility 0s linear .35s}
+.md-ly.on{opacity:1;visibility:visible;transition:opacity .35s var(--ease)}
+.md-ly.cut{transition:none}
+/* 스티커(ModeSticker) */
+.mds{position:relative;display:inline-block;flex:none;vertical-align:middle}
+.mds-disc{position:absolute;inset:0;border-radius:50%;border-style:solid;border-color:#fff;box-sizing:border-box}
+.mds-center{display:flex;align-items:center;justify-content:center}
+.mds-over{position:absolute;left:0;overflow:visible;pointer-events:none}
+.mds-glow{position:absolute;border-radius:50%;background:#FF9A4D;animation:mds-glow 1.1s ease-in-out infinite}
+@keyframes mds-glow{0%,100%{opacity:.35;transform:scale(.92)}50%{opacity:.7;transform:scale(1.08)}}
+@keyframes mds-flick{0%,100%{transform:scale(1,1)}25%{transform:scale(.93,1.12)}50%{transform:scale(1.06,.94)}75%{transform:scale(.97,1.07)}}
+.mds-fl,.mds-fl2,.mds-fl3{transform-box:fill-box;transform-origin:50% 100%}
+.mds-fl{animation:mds-flick .8s ease-in-out infinite}.mds-fl2{animation:mds-flick .62s ease-in-out .15s infinite}.mds-fl3{animation:mds-flick .7s ease-in-out .3s infinite}
+/* 홈 + 고르기 시트 */
+.md-home{background:var(--a-bg)}
+.md-hb{height:56px;display:flex;align-items:center;padding:0 28px;border-bottom:1px solid var(--a-line);background:var(--a-card)}
+.md-hb .pv-wm{height:20px;width:auto;color:var(--a-ink)}
+.md-decks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:30px 28px}
+.md-dk{position:relative;height:150px;border-radius:20px;background:var(--a-card);border:1px solid var(--a-line);padding:18px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;box-shadow:0 1px 2px rgba(30,24,17,.05),0 6px 14px -8px rgba(30,24,17,.14)}
+.md-dk b{font-size:16px}.md-dk small{font-size:12.5px;color:var(--a-sub)}
+.md-dk i{position:absolute;left:18px;top:18px;font-style:normal;font-size:11px;font-weight:800;color:var(--a-pri);background:var(--a-pri-s);border-radius:6px;padding:2px 7px}
+.md-sh{background:rgba(30,24,17,.42);display:flex;align-items:center;justify-content:center}
+.md-shp{width:470px;display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:26px;background:var(--a-card);box-shadow:0 30px 70px -20px rgba(30,24,17,.5);transform:translateY(16px);transition:transform .45s var(--ease)}
+.md-sh.on .md-shp{transform:none}
+.md-sht{margin:0 0 2px;font-size:19px;font-weight:800}
+.md-row{display:flex;align-items:center;gap:14px;padding:14px;border-radius:18px;border:1.5px solid var(--a-line);background:#fff;transition:transform .15s,box-shadow .2s}
+.md-row b{font-size:16px}.md-row small{display:block;font-size:12.5px;line-height:1.45;margin-top:4px;color:var(--a-sub)}
+.md-row .chip{font-weight:800}
+.md-row.urgent{padding-top:18px;background:var(--u-s);border-color:var(--u-l)}.md-row.urgent b{color:var(--u-d)}.md-row.urgent small{color:#7A4A36}.md-row.urgent .chip{color:#A33F22}
+.md-row.normal .chip{color:var(--n-d)}.md-row.relaxed .chip{color:var(--r-d)}
+.md-row.press{transform:scale(.97);box-shadow:0 0 0 3px rgba(30,24,17,.08)}
+/* 과제 화면(Crunch) */
+.md-cb{position:absolute;left:0;right:0;top:0;height:52px;display:flex;align-items:center;gap:10px;padding:0 12px;background:var(--a-card);border-bottom:1px solid var(--a-line)}
+.md-cb .bk{width:34px;text-align:center;font-size:19px}
+.md-cb .mode{display:flex;align-items:center;gap:8px}
+.md-chip{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.md-cb b{font-size:14.5px;flex:1}
+.md-cb .save{border-radius:999px;padding:8px 16px;background:var(--a-ink);color:var(--a-card);font-weight:700;font-size:13px}
+.md-pg{position:absolute;left:142px;top:70px;width:440px;height:622px;background:#fff;box-shadow:0 1px 3px rgba(30,24,17,.12),0 12px 30px -16px rgba(30,24,17,.3);padding:34px 30px;font-family:"Noto Serif KR","Apple SD Gothic Neo",serif}
+.md-pg h5{margin:0 0 20px;text-align:center;font-size:15px;font-weight:700;font-family:var(--font)}
+.md-q{margin:0;font-size:12.5px;line-height:1.75;font-family:var(--font)}
+.md-q b{margin-right:4px}
+.md-wa{position:relative;height:118px;margin:6px 0 16px}
+.md-wa canvas{position:absolute;inset:0;width:100%;height:100%}
+.md-mx{display:inline-grid;grid-template-columns:auto auto;column-gap:9px;padding:0 5px;margin:0 3px;vertical-align:middle;line-height:1.25;font-size:12px;text-align:center;border-left:1.3px solid currentColor;border-right:1.3px solid currentColor;border-radius:4px}
+.md var,.md-v{font-family:"Times New Roman",serif;font-style:italic;font-size:1.08em}
+.md-rail{position:absolute;left:14px;top:50%;transform:translateY(-38%);display:flex;flex-direction:column;gap:3px;padding:6px 7px 7px;background:#fff;border-radius:18px;box-shadow:0 10px 32px rgba(34,28,57,.16),0 1px 3px rgba(34,28,57,.08)}
+.md-rail span{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#3A3450}
+.md-rail span.on{background:var(--a-pri-s);color:var(--a-pri)}
+.md-rail hr{height:1px;border:0;background:var(--a-line);margin:3px 6px}
+.md-bub{position:absolute;right:18px;bottom:18px;width:360px;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:20px;background:rgba(255,255,255,.97);border:1px solid rgba(138,28,43,.1);box-shadow:0 18px 44px -18px rgba(30,24,17,.45);transition:height .3s var(--ease)}
+.md-bub>*{animation:md-in .3s var(--ease) both}
+@keyframes md-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.md-bh{display:flex;align-items:center;gap:8px}
+.md-bh .gr{width:20px;height:8px;background:radial-gradient(circle,#B8B2C2 1.3px,transparent 1.6px) 0 0/6.7px 4px}
+.md-bh b{font-size:17px}.md-bh .pg{font-size:12px;color:var(--a-sub)}
+.md-us{margin-left:auto;font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;color:var(--a-pri-d);background:var(--a-pri-s)}
+.md-us.top{color:#5E1220;background:#F7EAE8}
+.md-sub{font-size:11.5px;font-weight:700;color:var(--a-sub)}
+.md-ans{display:flex;flex-direction:column;gap:3px;font-size:15px}
+.md-ans p{margin:0}
+.md-fin{display:flex;align-items:baseline;gap:6px;padding:8px 10px;border-radius:10px;background:var(--a-pri-s);color:var(--a-pri-d);font-weight:700;font-size:17px;border:1.5px solid var(--a-pri-bd)}
+.md-nav{display:flex;gap:8px}
+.md-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:999px;font-weight:700;font-size:13px;padding:9px 15px;white-space:nowrap;transition:transform .12s}
+.md-btn.pri{flex:1;background:var(--a-pri);color:#fff;box-shadow:0 1px 2px rgba(30,24,17,.06),0 4px 10px -6px rgba(30,24,17,.2)}
+.md-btn.gho{background:#fff;border:1.5px solid var(--a-line);font-weight:500}
+.md-btn.dim{opacity:.5}
+.md-btn.press,.md-pm span.press{transform:scale(.95);filter:brightness(.92)}
+.md-q2{margin:0;font-size:15px;font-weight:700}
+.md-motto{margin:0;font-size:12.5px;line-height:1.55;color:var(--a-sub)}
+.md-ch{display:flex;flex-direction:column;gap:8px}
+.md-ln{font-size:12.5px;color:var(--a-sub)}
+.md-cs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.md-cs li{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;border:1px solid var(--a-line);background:var(--a-card);font-size:13.5px;transition:background .3s,color .3s}
+.md-cs li.done{background:var(--a-bg);color:var(--a-sub)}
+.md-cs .nm{flex:1;display:flex;flex-direction:column;gap:1px;font-weight:600}
+.md-cs .nm small{font-size:11.5px;font-weight:500;color:var(--a-sub)}
+.md-hint{margin:0;font-size:13.5px;line-height:1.6}
+.md-pm{display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:14px;background:var(--a-bg)}
+.md-pm span{border:1px solid var(--a-line);background:var(--a-card);border-radius:10px;padding:9px 12px;font-size:14px;font-weight:600;transition:transform .12s}
+.md-me{align-self:flex-end;padding:7px 11px;border-radius:14px 4px 14px 14px;background:var(--a-pri-s);color:var(--a-pri-d);font-size:13px;font-weight:600}
+.md-pv{align-self:flex-start;display:flex;flex-direction:column;gap:4px;padding:9px 11px;border-radius:4px 14px 14px 14px;background:var(--a-card);border:1px solid var(--a-line);font-size:13.5px;line-height:1.6}
+.md-pv small{font-size:11px;font-weight:700;color:var(--a-pri)}
+.md-wt{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--a-sub)}
+.md-wt i{width:16px;height:16px;border-radius:50%;border:2px solid rgba(30,24,17,.15);border-top-color:var(--a-pri);animation:md-spin .7s linear infinite}
+@keyframes md-spin{to{transform:rotate(360deg)}}
+.md-vd{margin:0;font-size:16px;font-weight:800;color:#2E7D4F}
+/* 전환 장면(ModeIntro) — 넓은 화면에서는 세로 카드로 가운데(앱 fitScene card) */
+.md-ov{background:rgba(30,24,17,.62)}
+.md-cd{position:absolute;left:346px;top:36.5px;width:390px;height:844px;transform:scale(.7867);transform-origin:0 0;border-radius:36px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.55)}
+.mdi{position:absolute;inset:0;overflow:hidden;color:#1E1811}
+@keyframes mdi-fade{0%{opacity:0}100%{opacity:1}}
+@keyframes mdi-up{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes mdi-wipe{0%{transform:scale(0)}100%{transform:scale(1)}}
+@keyframes mdi-drop{0%{transform:translateY(-600px) scale(.55) rotate(-14deg)}58%{transform:translateY(0) scale(1.08,.86) rotate(0)}74%{transform:translateY(-16px) scale(.95,1.07)}88%,100%{transform:translateY(0) scale(1,1)}}
+.mdi-drop{transform-origin:50% 100%;animation:mdi-drop .8s ease-in both}
+@keyframes mdi-shake{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-10px) rotate(-2deg)}40%{transform:translateX(9px) rotate(2deg)}60%{transform:translateX(-6px) rotate(-1deg)}80%{transform:translateX(4px)}}
+.mdi-shake{animation:mdi-shake .5s ease-in-out .46s both}
+@keyframes mdi-popin{0%{opacity:0;transform:scale(.3) rotate(-10deg)}60%{opacity:1;transform:scale(1.18) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(-3deg)}}
+.mdi-pop1{animation:mdi-popin .45s ease-out .8s both}.mdi-pop2{animation:mdi-popin .45s ease-out 1.25s both}
+@keyframes mdi-sp1{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-110px,-80px) scale(.3)}}
+@keyframes mdi-sp2{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(95px,-100px) scale(.3)}}
+@keyframes mdi-sp3{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-50px,-140px) scale(.3)}}
+@keyframes mdi-sp4{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(130px,-40px) scale(.3)}}
+@keyframes mdi-sp5{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-140px,-20px) scale(.3)}}
+@keyframes mdi-sp6{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(35px,-150px) scale(.3)}}
+.mdi-sp{position:absolute;width:12px;height:12px;border-radius:6px;background:#FFC94A;opacity:0}
+.mdi-s1{animation:mdi-sp1 .65s ease-out .47s both}.mdi-s2{animation:mdi-sp2 .65s ease-out .47s both}.mdi-s3{animation:mdi-sp3 .7s ease-out .47s both}
+.mdi-s4{animation:mdi-sp4 .6s ease-out .47s both}.mdi-s5{animation:mdi-sp5 .7s ease-out .47s both}.mdi-s6{animation:mdi-sp6 .75s ease-out .47s both}
+.mdi-fwipe{animation:mdi-wipe .55s cubic-bezier(.7,0,.3,1) 2.2s both}
+@keyframes mdi-lpop{0%{opacity:0;transform:scale(.3) rotate(-30deg)}60%{opacity:1;transform:scale(1.08) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+.mdi-lpop{animation:mdi-lpop .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes mdi-ldive{0%{transform:scale(1)}100%{transform:scale(12)}}
+.mdi-ldive{animation:mdi-ldive .45s cubic-bezier(.7,0,.3,1) .42s both}
+.mdi-lt{animation:mdi-up .35s ease-out .75s both}
+@keyframes mdi-cam{0%{transform:scale(2.4)}100%{transform:scale(1)}}
+.mdi-cam{transform-origin:100px 428px;animation:mdi-cam 1.7s cubic-bezier(.3,.7,.2,1) both}
+@keyframes mdi-cloudL{0%{transform:translateX(0);opacity:1}100%{transform:translateX(-300px);opacity:0}}
+@keyframes mdi-cloudR{0%{transform:translateX(0);opacity:1}100%{transform:translateX(300px);opacity:0}}
+.mdi-cl{animation:mdi-cloudL 1s ease-in .7s both}.mdi-cr{animation:mdi-cloudR 1s ease-in .7s both}
+@keyframes mdi-rise{0%{opacity:0;transform:translateY(6px) scale(.3)}70%{opacity:1;transform:translateY(-3px) scale(1.08)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.mdi-rise{transform-origin:50% 100%;animation:mdi-rise .45s ease-out both}
+@keyframes mdi-draw{0%{stroke-dashoffset:120}100%{stroke-dashoffset:0}}
+.mdi-road{stroke-dasharray:120;animation:mdi-draw .8s ease-in-out 1.7s both}
+.mdi-sight{animation:mdi-fade .5s ease-out 1.1s both}
+@keyframes mdi-hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.mdi-hop{animation:mdi-hop .42s ease-in-out .2s 4}
+.mdi-pc1{animation:mdi-fade .5s ease-out .2s both}.mdi-pc2{animation:mdi-up .5s ease-out 1.5s both}.mdi-pc3{animation:mdi-up .5s ease-out 2.2s both}
+.mdi-pwipe{animation:mdi-wipe .55s cubic-bezier(.7,0,.3,1) 2.9s both}
+/* 청사진(TopBlueprint) */
+.md-tb{background:#FAF6EC;padding:18px 22px}
+.md-tbh{display:flex;align-items:flex-start;gap:10px}
+.md-tbh .bk{width:34px;font-size:19px;padding-top:4px}
+.md-tbh h6{margin:8px 0 0;font-size:24px;font-weight:900;letter-spacing:-.02em;line-height:1.3}
+.md-map{position:absolute;left:22px;top:110px;width:640px;height:610px}
+.md-map svg{position:absolute;left:0;top:0}
+.md-map .lb{position:absolute;left:0;font-size:11px;font-weight:700;color:#A3977F;transform:translateY(-50%)}
+.md-nd{position:absolute;box-sizing:border-box;width:150px;height:54px;margin:-27px 0 0 -75px;border-radius:14px;background:#FFFDF8;border:1.5px solid #1E1811;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;text-align:center;padding:4px 8px;opacity:0;transform:translateY(8px) scale(.94);transition:opacity .4s var(--ease),transform .45s var(--ease)}
+.md-nd.on{opacity:1;transform:none}
+.md-nd b{font-size:14px;line-height:1.25}.md-nd small{font-size:11.5px;color:#6E6455}
+.md-nd.root{background:#5E1220;border:none;color:#fff;border-radius:16px}
+.md-nd.explained{background:#F7EAE8;border:2px solid #8A1C2B}.md-nd.explained small{color:#5E1220}
+.md-nd.solved{background:#EDF3F6;border-color:#3C6E8F}.md-nd.solved small{color:#2A5064}
+.md-nd.learned{border-color:#CFC4AE}
+.md-nd.prereq{border:1.5px dashed #B8AC94}
+.md-nd.foundation{background:#F4EFE2;border:1.5px dashed #B8AC94}
+.md-ed path{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);transition:stroke-dashoffset .6s var(--ease)}
+.md-ed path.on{stroke-dashoffset:0}
+.md-lk{position:absolute;transform:translate(-50%,-50%) scale(.8);padding:3px 10px;border-radius:999px;background:#8A1C2B;color:#fff;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .4s,transform .4s var(--ease)}
+.md-lk.on{opacity:1;transform:translate(-50%,-50%)}
+.md-side{position:absolute;right:22px;top:110px;width:300px;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateX(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.md-side.on{opacity:1;transform:none}
+.md-card{padding:16px 18px;border-radius:20px;background:#FFFDF8;border:1px solid #E4DAC7;display:flex;flex-direction:column;gap:7px;font-size:13.5px;line-height:1.65}
+.md-card p{margin:0}
+.md-card small{font-size:12px;font-weight:700;color:#8A7E6A}
+.md-card.eu{border:2px solid #8A1C2B}.md-card.eu small{color:#8A1C2B}.md-card.eu b{font-size:17px;font-weight:900;line-height:1.45}
+.md-next{padding:12px;border-radius:999px;background:#8A1C2B;color:#fff;font-weight:800;font-size:14px;text-align:center}
+/* 누르는 손끝 */
+.md-tap{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(30,24,17,.18);border:2px solid rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(30,24,17,.25);opacity:0;transform:scale(1.4);pointer-events:none;z-index:9}
+.md-tap.go{animation:md-tap .7s var(--ease) both}
+@keyframes md-tap{0%{opacity:0;transform:scale(1.5)}30%{opacity:1;transform:scale(1)}55%{transform:scale(.82)}100%{opacity:0;transform:scale(1.05)}}
+/* 장면 아래 세 모드 단추 — 누르면 그 모드부터 */
+.md-tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:18px}
+.md-tabs button{display:inline-flex;align-items:center;gap:8px;padding:7px 15px 7px 9px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink2);transition:background .3s,color .3s}
+.md-tabs button[aria-selected=true][data-k=urgent]{background:var(--u-s);color:var(--u-d)}
+.md-tabs button[aria-selected=true][data-k=normal]{background:var(--n-s);color:var(--n-d)}
+.md-tabs button[aria-selected=true][data-k=relaxed]{background:var(--r-s);color:var(--r-d)}
+@media (prefers-reduced-motion:reduce){.mds-glow,.mds-fl,.mds-fl2,.mds-fl3{animation:none}}
 </style>
 </head>
 <body>
@@ -1279,8 +1453,9 @@ html[lang="en"] .f-ul{white-space:normal}
     <a href="#f-read" data-f="read"><small>02</small>획 단위 인식</a>
     <a href="#f-graph" data-f="graph"><small>03</small>바로 그리는 그래프</a>
     <a href="#f-ask" data-f="ask"><small>04</small>되묻는 튜터</a>
-    <a href="#f-note" data-f="note"><small>05</small>Provee Note</a>
-    <a href="#f-ground" data-f="ground"><small>06</small>Provee Ground</a>
+    <a href="#f-modes" data-f="modes"><small>05</small>과제 모드</a>
+    <a href="#f-note" data-f="note"><small>06</small>Provee Note</a>
+    <a href="#f-ground" data-f="ground"><small>07</small>Provee Ground</a>
   </div></nav>
   <div class="wrap">
     <div class="frow" id="f-input" data-f="input">
@@ -1320,9 +1495,18 @@ html[lang="en"] .f-ul{white-space:normal}
       <div class="f-vis" data-scene="ask"></div>
     </div>
 
+    <div class="frow" id="f-modes" data-f="modes">
+      <div class="f-copy">
+        <span class="fk"><b>05</b>과제 모드</span>
+        <h3>발등에 불 떨어진 날도,<br><mark class="f-hl">과탑을 노리는 날도</mark></h3>
+        <p>급하면 발등튀김, 이해하고 싶으면 이해,<br>과탑을 노리면 과탑.</p>
+      </div>
+      <div class="f-vis" data-scene="modes"></div>
+    </div>
+
     <div class="frow" id="f-note" data-f="note">
       <div class="f-copy">
-        <span class="fk"><b>05</b>Provee Note</span>
+        <span class="fk"><b>06</b>Provee Note</span>
         <h3>버스 안에서 복습,<br><mark class="f-hl">내가 헷갈렸던 내 풀이로</mark></h3>
         <p>과목과 단원별로 모인 풀이, 누르면 쓴 순서 그대로.</p>
       </div>
@@ -1331,7 +1515,7 @@ html[lang="en"] .f-ul{white-space:normal}
 
     <div class="frow wide" id="f-ground" data-f="ground">
       <div class="f-copy">
-        <span class="fk"><b>06</b>Provee Ground</span>
+        <span class="fk"><b>07</b>Provee Ground</span>
         <h3>혼자 막힌 문제,<br><mark class="f-hl">같이 풀래요?</mark></h3>
         <p>링크 하나로, 가입 없이, 지금 무료로.</p>
         <div class="f-side"><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
@@ -1495,7 +1679,7 @@ html[lang="en"] .f-ul{white-space:normal}
 <footer class="ftr">
   <div class="ftr-in">
     <div class="f0"><span class="wm"><svg class="pv-wm" viewBox="20.48 20.48 872.45 215.04" role="img" aria-label="provee."><use href="#pv-wm"/></svg></span><p style="margin:10px 0 0">손으로 풀어야 이해되는 과목을 위한 AI 튜터</p></div>
-    <nav aria-label="기능"><h4>기능</h4><a href="#f-input">필기 입력</a><a href="#f-read">획 단위 인식</a><a href="#f-graph">바로 그리는 그래프</a><a href="#f-ask">되묻는 튜터</a><a href="#f-note">Provee Note</a><a href="#f-ground">Provee Ground</a></nav>
+    <nav aria-label="기능"><h4>기능</h4><a href="#f-input">필기 입력</a><a href="#f-read">획 단위 인식</a><a href="#f-graph">바로 그리는 그래프</a><a href="#f-ask">되묻는 튜터</a><a href="#f-modes">과제 모드</a><a href="#f-note">Provee Note</a><a href="#f-ground">Provee Ground</a></nav>
     <nav aria-label="회사"><h4>회사</h4><a href="#story">회사 이야기</a><a href="#pricing">요금제</a><a href="#faq">자주 묻는 질문</a><a href="story.html">투자자 소개</a></nav>
     <nav aria-label="안내"><h4>안내</h4><a href="terms.html">이용약관</a><a href="privacy.html"><b>개인정보처리방침</b></a><a href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a></nav>
     <small class="f0">URP (법인 설립 준비 중) · 대표 김수민 · © 2026 URP</small>
@@ -1984,7 +2168,169 @@ function sceneRecog(){
       await sleep(3200)}
   }};
 }
-const MAKE={recog:sceneRecog,input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,note:sceneNote,ground:sceneGround};
+/* ---------- 05 assignment modes: the app's own screens (provee-web Home STAGES · ModeIntro · Crunch · TopBlueprint) ----------
+   같은 과제, 학생이 원하는 모드로(대표 10/14 "발등에 불 떨어진 학생엔 발등튀김, 이해를 원하면 이해, 과탑을 노리면 과탑"). 세 학생이 차례로 고르기 시트에서 고른다:
+   발등튀김(받아 적기 → 제출/이해 갈래) · 이해(개념 → 먼저 풀기 → [프루비] → 채점) · 과탑(깊게 배우기 → 변형문제 → 청사진). 아래 단추로 그 모드부터.
+   필기는 대표 실측(ink0912full.json, 2026.09.12 x²−5x+6=0: 56획, 지운 획 15개), 받아 적기는 지운 획을 뺀 깨끗한 획만 */
+let INK3=null;let ink3P=null;const ink3=()=>ink3P||(ink3P=fetch('ink0912full.json').then(r=>r.json()).then(d=>INK3=d).catch(()=>null));
+const MD_C={urgent:['#C2502F','#8F3519','#FDEDE4','#F5C9B4'],normal:['#2F6DB5','#1F4C82','#E2ECF8','#C4D6EE'],relaxed:['#2F7A3A','#215C2A','#E3F0DA','#CFE6C4']};
+const MD_NAME={urgent:'발등튀김',normal:'이해',relaxed:'과탑'};
+const MD_SHOE='<path d="M3.5 40h41.5v2.6c0 1.3-1 2.4-2.4 2.4H5.9c-1.3 0-2.4-1.1-2.4-2.4z" fill="#3A2A20"/><path d="M5 40V26.5C5 23.5 6.5 22 9 22h6l2.5 3.5L18 17h4.5l1.5 7.5 12 5.5c4.5 2 8 3.6 8 7.5V40z" fill="#FFF6EE"/><path d="M23.5 27l4.5-2.6M27.5 29l4.5-2.6M31.5 31l4.5-2.6M37 33c3 .8 5.5 2.6 6.2 5.6M5 33h8" fill="none"/>';
+const MD_FLAMES='<g transform="translate(-4 -6)"><path class="mds-fl" d="M31 4C36 12 40.5 19 39.5 27.5c-.9 7.4-4.6 12-8.5 12s-8.2-3.6-8.6-9.6c-.4-6 2.6-9.8 2.6-9.8s1 4.6 3.4 5.6C27.6 18 29 11 31 4z" fill="#FFC94A"/><path class="mds-fl2" d="M31.4 19c2.2 3.6 4.4 6.4 4 10.2-.4 3-2.2 4.8-4.4 4.8s-3.8-1.6-4-3.8c-.2-2.4 1-3.8 1-3.8s.6 1.8 1.6 2.2c0-3.6.8-6.2 1.8-9.6z" fill="#FFF1B8"/><path class="mds-fl3" d="M40.5 26c2 3 3.4 5.6 3 8.4-.3 2.2-1.8 3.6-3.6 3.6s-3-1.2-3.2-3c-.2-2.8 1.8-4.8 3.8-9z" fill="#FFC94A"/><path class="mds-fl2" d="M23.5 31c1.4 2 2.4 3.6 2.2 5.4-.2 1.4-1.2 2.2-2.4 2.2s-2-.8-2.2-2c-.1-1.8 1.2-3 2.4-5.6z" fill="#FFC94A"/></g>';
+const MD_CHEER='<path d="M8.5 29l1.2-7M11.5 29l-1.2-7" stroke="#1E1811" stroke-width="2.4" stroke-linecap="round"/><path d="M7.6 14L3.5 6.5M12.4 14l4.1-7.5" stroke="#F2A93B" stroke-width="2.4" stroke-linecap="round"/><rect x="7" y="12.5" width="6" height="10" rx="2.4" fill="#F2A93B"/><circle cx="3.3" cy="6" r="1.3" fill="#F5CBA7"/><circle cx="16.7" cy="6" r="1.3" fill="#F5CBA7"/><circle cx="10" cy="8.6" r="3.4" fill="#F5CBA7"/><path d="M6.6 8.4a3.4 3.4 0 0 1 6.8 0c-1-1-2.2-1.5-3.4-1.5S7.6 7.4 6.6 8.4z" fill="#1E1811"/>';
+function mdSticker(k,s,tilt){ // ModeSticker.jsx 그대로
+  const [col,,,line]=MD_C[k],b=Math.max(2,Math.round(s*.07)),sh=`0 ${Math.max(1,Math.round(s*.04))}px ${Math.max(3,Math.round(s*.14))}px rgba(30,24,17,.28)`;
+  const wrap=`width:${s}px;height:${s}px${tilt?`;transform:rotate(${{urgent:-8,normal:5,relaxed:-3}[k]}deg)`:''}`,disc=`border-width:${b}px;box-shadow:${sh}`;
+  if(k==='urgent')return `<span class="mds" style="${wrap}" aria-hidden="true">${s>=48?`<span class="mds-glow" style="left:${s*.083}px;top:${-s*.14}px;width:${s*.83}px;height:${s*.83}px;filter:blur(${Math.round(s*.19)}px)"></span>`:''}<span class="mds-disc" style="${disc};background:${col}"></span><svg class="mds-over" style="top:${-s/6}px" width="${s}" height="${s*7/6}" viewBox="0 0 48 56" stroke="none"><g transform="translate(5.8 12.25) scale(.75)" stroke="#1E1811" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round">${MD_SHOE}</g>${MD_FLAMES}</svg></span>`;
+  if(k==='normal')return `<span class="mds" style="${wrap}" aria-hidden="true"><span class="mds-disc mds-center" style="${disc};background:${col};color:#fff"><svg width="${s*.47}" height="${s*.47}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M7.6 10.6l2.1 2.1 3.8-4.2"/></svg></span></span>`;
+  const inner=s-2*b;
+  return `<span class="mds" style="${wrap}" aria-hidden="true"><span class="mds-disc" style="${disc};background:#fff;box-shadow:${sh},inset 0 0 0 2px ${line};overflow:hidden"><svg width="${inner}" height="${inner}" viewBox="0 0 48 48" style="display:block"><path d="M-4 52L24 17.5 52 52z" fill="#3E8B47"/><path d="M24 17.5L52 52H31z" fill="#2F7A3A"/><path d="M-6 52L8 35l12 17z" fill="#74B866"/><path d="M13 5l1.6 1.6M35 5l-1.6 1.6M11.5 10h2.2M34.3 10h2.2" stroke="#F2A93B" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(18 0.1) scale(.6)">${MD_CHEER}</g></svg></span></span>`;
+}
+const mdA=(l,t,w,h,x='')=>`position:absolute;left:${l}px;top:${t}px;width:${w}px;height:${h}px;${x}`;
+function mdIntro(k){ // ModeIntro.jsx의 세 장면(390×844) 그대로
+  if(k==='urgent')return `<div class="mdi" style="background:#2A0F0A"><span class="mds-glow" style="${mdA(60,470,280,280,'background:#C2502F;filter:blur(70px)')}"></span>
+    <div class="mdi-pop1" style="position:absolute;left:0;right:0;top:150px;text-align:center;font-size:50px;font-weight:900;letter-spacing:-1px;color:#FFC94A">제출 먼저!</div>
+    <div class="mdi-pop2" style="position:absolute;left:0;right:0;top:222px;text-align:center;font-size:26px;font-weight:800;color:#FFF1E6">이해는 나중에!</div>
+    <div class="mdi-shake" style="${mdA(35,490,320,235)}"><svg width="320" height="235" viewBox="2 14 45 33" stroke="#1E1811" stroke-width=".9" stroke-linejoin="round" stroke-linecap="round">${MD_SHOE}</svg></div>
+    <div class="mdi-drop" style="${mdA(160,434,140,182)}"><svg width="140" height="182" viewBox="0 0 40 52" stroke="none"><path class="mds-fl" d="M20 2C27 11 34 19 33 30c-.8 9-6.6 14-13 14S7.6 39.6 7 31.4C6.4 23.6 11 18.4 11 18.4s1.4 6.4 5.2 7.6C15.6 15 17.6 8.4 20 2z" fill="#FF8A3D"/><path class="mds-fl2" d="M20.5 16c3.4 5.2 6.8 9 6.2 14.6-.5 4.4-3.4 7.2-6.8 7.2S13.8 35.4 13.4 32c-.4-3.4 1.6-5.8 1.6-5.8s.8 2.6 2.4 3.4c0-5.2 1.4-9 3.1-13.6z" fill="#FFC94A"/><path class="mds-fl3" d="M20.6 26c1.8 2.8 3.4 4.6 3 7.2-.3 2-1.6 3.2-3.2 3.2s-2.8-1-3-2.6c-.2-1.6.7-2.7.7-2.7s.4 1.2 1.1 1.6c0-2.6.6-4.4 1.4-6.7z" fill="#FFF1B8"/></svg></div>
+    <div style="position:absolute;left:224px;top:578px">${[1,2,3,4,5,6].map(n=>`<span class="mdi-sp mdi-s${n}"></span>`).join('')}</div>
+    <div class="mdi-fwipe" style="${mdA(-705,-478,1800,1800,'border-radius:900px;background:#C2502F')}"></div></div>`;
+  if(k==='normal')return `<div class="mdi" style="background:#FAF6EC"><div class="mdi-ldive" style="${mdA(115,302,160,160,'transform-origin:80px 80px')}"><div class="mdi-lpop" style="position:absolute;inset:0">
+    <div style="${mdA(125,137,24,82,'border-radius:12px;background:#1F4C82;transform:rotate(-45deg);transform-origin:12px 0')}"></div>
+    <div style="position:absolute;inset:0;box-sizing:border-box;border-radius:80px;background:#E2ECF8;border:12px solid #2F6DB5;box-shadow:0 0 0 5px #FFFFFF,0 10px 24px rgba(30,24,17,.25)"></div></div></div>
+    <div class="mdi-lt" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="font-size:44px;font-weight:900;letter-spacing:-1px;color:#1F4C82">이해 모드</div><div style="font-size:26px;font-weight:800;color:#1E1811">개념부터 하나씩</div></div></div>`;
+  const W='#8A1C2B',O='#C2502F',B='#2F6DB5',G='#2F7A3A';
+  const V=[[288,640,W,1.2],[301,644,O,1.25],[314,639,B,1.3],[326,647,null,1.33],[294,654,B,1.36],[282,656,null,1.4],[308,656,W,1.44],[322,662,null,1.48],[340,670,W,1.55],[353,674,O,1.6],[366,669,B,1.65],[335,684,null,1.68],[347,686,W,1.72],[374,683,null,1.76],[361,691,null,1.8],[305,704,O,1.86],[318,708,W,1.9],[299,716,null,1.94],[331,712,null,1.98]];
+  const vil=V.map(([x,y,r,d])=>r?`<div class="mdi-rise" style="${mdA(x,y,10,12,`animation-delay:${d}s`)}"><div style="width:10px;height:5px;background:${r};clip-path:polygon(50% 0,100% 100%,0 100%)"></div><div style="width:8px;height:7px;margin-left:1px;box-sizing:border-box;background:#FFFDF8;border:1px solid #1E1811"></div></div>`
+    :`<div class="mdi-rise" style="${mdA(x,y,6,9,`animation-delay:${d}s`)}"><div style="width:6px;height:6px;border-radius:3px;background:${G}"></div><div style="width:2px;height:3px;margin-left:2px;background:#6F4A3A"></div></div>`).join('');
+  const trees=[[150,462,12],[182,490,10],[40,470,12]].map(([x,y,r])=>`<div style="${mdA(x,y,r,r*1.5)}"><div style="width:${r}px;height:${r}px;border-radius:${r/2}px;background:${G}"></div><div style="width:${r/4}px;height:${r/2}px;margin-left:${r*3/8}px;background:#6F4A3A"></div></div>`).join('');
+  return `<div class="mdi" style="background:#E9F3F8"><div class="mdi-cam" style="position:absolute;inset:0">
+    <div style="${mdA(290,300,56,56,'border-radius:28px;background:#F4D58D')}"></div>
+    <svg style="position:absolute;left:0;top:0" width="390" height="844" viewBox="0 0 390 844"><path d="M110 640C165 588 215 574 258 588C298 602 330 568 368 558C382 555 392 556 400 558V660H110Z" fill="#C8E0B4"/><path d="M-10 630H400V844H-10Z" fill="#DCEDC8"/></svg>
+    <svg style="position:absolute;left:0;top:0" width="390" height="844" viewBox="0 0 390 844" fill="none" stroke="#8A1C2B" stroke-width="1.6" stroke-linecap="round"><path class="mdi-road" d="M308 666C320 672 330 676 344 682"/><path class="mdi-road" d="M300 668C300 682 306 694 312 704"/><path class="mdi-road" d="M350 696C344 704 334 708 324 710"/></svg>
+    ${vil}
+    <div class="mdi-cr" style="${mdA(170,560,280,80,'border-radius:40px;background:#FFFFFF')}"></div><div class="mdi-cl" style="${mdA(230,630,240,70,'border-radius:35px;background:#FFFFFF')}"></div><div class="mdi-cr" style="${mdA(250,690,200,60,'border-radius:30px;background:#FFFFFF')}"></div>
+    <svg style="position:absolute;left:0;top:0" width="390" height="844" viewBox="0 0 390 844"><path d="M-10 844V500C20 455 60 430 100 428C145 426 190 455 225 505C255 550 268 610 272 660C275 720 272 790 268 844Z" fill="#4E9A4F"/><path d="M100 428C145 426 190 455 225 505C255 550 268 610 272 660C275 720 272 790 268 844H205C210 760 205 650 180 560C165 505 138 460 100 428Z" fill="#74B866"/><path d="M-10 640C40 610 90 615 130 650C160 676 175 720 180 844H-10Z" fill="#43894A"/></svg>
+    ${trees}
+    <svg class="mdi-sight" style="position:absolute;left:0;top:0" width="390" height="844" viewBox="0 0 390 844" fill="none"><path d="M110 406L304 648" stroke="#8A1C2B" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/></svg>
+    <div style="${mdA(68,393,2,38,'background:#1E1811')}"></div><div style="${mdA(70,393,14,10,'background:#F4D58D;clip-path:polygon(0 0,100% 50%,0 100%)')}"></div>
+    <svg class="mdi-hop" style="position:absolute;left:87px;top:390px" width="26" height="39" viewBox="0 0 20 30" fill="none">${MD_CHEER}</svg></div>
+    <div class="mdi-pc1" style="position:absolute;left:0;right:0;top:96px;text-align:center;font-size:20px;font-weight:800;color:${G}">언덕 꼭대기에 서면</div>
+    <div class="mdi-pc2" style="position:absolute;left:0;right:0;top:132px;text-align:center;font-size:32px;font-weight:900;color:#1E1811">마을이 한눈에 보여요</div>
+    <div class="mdi-pc3" style="position:absolute;left:0;right:0;top:188px;text-align:center;font-size:23px;line-height:1.4;font-weight:800;color:${G}">개념이 어디서 와서<br>어디로 이어지는지</div>
+    <div class="mdi-pwipe" style="${mdA(-705,-478,1800,1800,`border-radius:900px;background:${G}`)}"></div></div>`;
+}
+const MD_INTRO_MS={urgent:2800,normal:1400,relaxed:3500};
+const mv=s=>`<var>${s}</var>`; // italic math letter
+// 말풍선 내용(Crunch.jsx 문구 그대로). 문항·풀이·프루비 말·청사진은 예시
+const MD_HEAD=(lab,us,top)=>`<div class="md-bh"><span class="gr"></span><b>${lab}</b><span class="pg">1 / 3</span>${us?`<span class="md-us${top?' top':''}">${us}</span>`:''}</div>`;
+const MD_B={
+  fill:()=>`${MD_HEAD('1')}<div class="md-ans"><span class="md-sub">풀이</span><p>det(${mv('A')} − ${mv('x')}${mv('I')}) = (1 − ${mv('x')})(4 − ${mv('x')}) + 2</p><p>= ${mv('x')}² − 5${mv('x')} + 6 = (${mv('x')} − 2)(${mv('x')} − 3)</p></div><span class="md-sub">답</span><div class="md-fin"><span>★</span><span>${mv('x')} = 2, 3</span></div><div class="md-nav"><span class="md-btn gho dim">이전 문항</span><span class="md-btn pri" data-t="next">다 적었어요, 다음 문항</span></div>`,
+  choose:()=>`<div class="md-bh"><span class="gr"></span><b>다 적었어요!</b></div><p class="md-q2">이제 어떻게 할까요?</p><p class="md-motto">일단 제출은 해야죠.. 이해는 나중에! (꼭..제발)</p><div class="md-ch"><span class="md-btn pri">다운로드하고 제출하기</span><span class="md-btn gho" data-t="toU">이해 모드로 — 내 답이 왜 이렇게 되는지</span></div><span class="md-ln">← 답 다시 보기</span>`,
+  concepts:(learned)=>`${MD_HEAD('1','개념 배우기')}<p class="md-q2">이 문항을 풀기 전에 배울 개념</p><ol class="md-cs"><li class="done"><span>✅</span><span class="nm">행렬식<small>행렬 &gt; 행렬식</small></span><span class="md-ln">다시 보기</span></li><li class="${learned?'done':''}" data-t="c2"><span>${learned?'✅':'🎓'}</span><span class="nm">특성방정식과 고유값<small>고유값 &gt; 특성방정식</small></span><span class="md-ln">${learned?'다시 보기':'이미 알아요'}</span></li></ol><div class="md-nav"><span class="md-btn pri" data-t="go">${learned?'이제 풀어 보기 ▶':'배우기: 특성방정식과 고유값'}</span></div>`,
+  solve:(x)=>`${MD_HEAD('1','풀기')}${x.talk?`<div class="md-me">여기서 어떻게 해?</div><div class="md-pv"><small>🙋 프루비</small><p>곱해서 6, 더해서 −5가 되는 두 수부터 찾아볼까?</p></div>`:'<p class="md-hint">먼저 직접 풀어 봐요. 막히면 [프루비]를 눌러요.</p>'}${x.menu?'<div class="md-pm"><span data-t="how">여기서 어떻게 해?</span><span>이 개념 모르겠어</span><span>틀린 거 있어?</span></div>':''}${x.busy?'<div class="md-wt"><i></i>손글씨를 읽고 채점하는 중…</div>':''}<div class="md-nav"><span class="md-btn gho" data-t="pv">🙋 프루비</span><span class="md-btn pri" data-t="done">다 풀었어요</span></div>`,
+  verdict:()=>`${MD_HEAD('1','채점')}<p class="md-vd">맞았어요! 🎉</p><div class="md-nav"><span class="md-btn pri" data-t="next">다음 문항 ▶</span></div>`,
+  deep:(learned)=>`${MD_HEAD('1','깊게 배우기',1)}<p class="md-q2">원리·유도까지 깊게 배울 개념</p><ol class="md-cs"><li class="${learned?'done':''}"><span>${learned?'✅':'🎓'}</span><span class="nm">특성방정식과 고유값<small>고유값 &gt; 특성방정식</small></span><span class="md-ln">${learned?'다시 보기':'이미 알아요'}</span></li><li class="${learned?'done':''}"><span>${learned?'✅':'🎓'}</span><span class="nm">행렬식과 역행렬<small>행렬 &gt; 역행렬</small></span><span class="md-ln">${learned?'다시 보기':'이미 알아요'}</span></li></ol><div class="md-nav"><span class="md-btn pri" data-t="go">${learned?'이제 풀어 보기 ▶':'배우기: 특성방정식과 고유값'}</span></div>`,
+  variant:(x)=>`<div class="md-bh"><span class="gr"></span><b>1</b><span class="md-us top">변형문제</span></div><span class="md-sub">변형문제</span><p class="md-hint">행렬 ${mv('B')} = <span class="md-mx"><span>2</span><span>1</span><span>1</span><span>2</span></span> 의 고유값을 모두 구하시오.</p>${x.done?'<p class="md-vd">맞았어요! 🎉</p><div class="md-nav"><span class="md-btn gho">하나 더</span><span class="md-btn pri" data-t="bp">청사진 보기 ▶</span></div>':`${x.busy?'<div class="md-wt"><i></i>손글씨를 읽고 채점하는 중…</div>':'<p class="md-hint">아래 새 쪽에 손으로 풀어요.</p>'}<div class="md-nav"><span class="md-btn gho">쪽으로 가기</span><span class="md-btn pri" data-t="done">다 풀었어요</span></div>`}`,
+};
+// 청사진: 층(과제 → 문항 → 쓰인 개념 → 한 단계 아래 → 모든 것의 바닥), x·y는 지도 안 좌표
+const MD_LAY=[['과제',40],['문항',150],['쓰인 개념',270],['한 단계 아래',400],['모든 것의 바닥',530]];
+const MD_N=[['a','root',380,40,'선형대수 과제 3',''],['q1','item',220,150,'1 · 고유값',''],['q2','item',380,150,'2 · 고유벡터',''],['q3','item',540,150,'3 · 대각화',''],
+  ['c1','solved',220,270,'특성방정식','풀었음'],['c2','learned',380,270,'고유벡터','배움'],['c3','learned',540,270,'대각화','배움'],
+  ['p1','prereq',220,400,'행렬식',''],['p2','prereq',380,400,'역행렬',''],['p3','prereq',540,400,'동차 연립방정식',''],['f','foundation',380,530,'연립일차방정식','']];
+const MD_E=[['a','q1'],['a','q2'],['a','q3'],['q1','c1'],['q2','c2'],['q3','c3'],['q3','c2'],['c1','p1'],['c2','p3'],['c3','p2'],['p1','f'],['p2','f'],['p3','f']];
+function sceneModes(){
+  const el=document.createElement('div');el.className='md';
+  const ic=d=>`<span><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg></span>`;
+  const rail=`<div class="md-rail" aria-hidden="true">${ic('M4 20l1.2-4.2L16.4 4.6a2.1 2.1 0 0 1 3 3L8.2 18.8 4 20zM14.5 6.5l3 3').replace('<span>','<span class="on">')}${ic('M10 16l-3.6 4.4M15 4.5l4.5 4.5L10.5 18H6v-4.5L15 4.5zM3 21.5h18')}${ic('M15.8 4.2l4 4a1.8 1.8 0 0 1 0 2.6L11 19.5H6.3l-2.1-2.1a1.8 1.8 0 0 1 0-2.6l9-9a1.8 1.8 0 0 1 2.6 0zM8.5 9.5l6 6M6.3 19.5H21')}<hr>${ic('M9 15L4 10l5-5M4 10h10.5a5.5 5.5 0 0 1 0 11H11')}${ic('M15 15l5-5-5-5M20 10H9.5a5.5 5.5 0 0 0 0 11H13')}</div>`;
+  const mx=`<span class="md-mx"><span>1</span><span>2</span><span>−1</span><span>4</span></span>`;
+  const map=MD_N.map(([id,cls,x,y,b,s])=>`<div class="md-nd ${cls==='item'?'':cls}" data-n="${id}" style="left:${x}px;top:${y}px"><b>${b}</b>${s?`<small>${s}</small>`:''}</div>`).join('');
+  const P=Object.fromEntries(MD_N.map(n=>[n[0],[n[2],n[3]]]));
+  const edges=MD_E.map(([a,b])=>{const [x1,y1]=P[a],[x2,y2]=P[b],L=Math.ceil(Math.hypot(x2-x1,y2-y1));return `<path d="M${x1} ${y1+27}L${x2} ${y2-27}" style="--l:${L}"/>`}).join('');
+  el.innerHTML=`<div class="dev"><div class="scr"><div class="md-st">
+    <div class="md-ly md-home"><div class="md-hb"><svg class="pv-wm" viewBox="20.48 20.48 872.45 215.04" role="img" aria-label="provee."><use href="#pv-wm"/></svg></div>
+      <div class="md-decks"><div class="md-dk"><i>PDF</i><b>선형대수 과제 3</b><small>과제 · 3문항</small></div><div class="md-dk"><i>PDF</i><b>선형대수 6강 고유값</b><small>강의자료</small></div><div class="md-dk"><i>PDF</i><b>미적분 3강 치환적분</b><small>강의자료</small></div></div></div>
+    <div class="md-ly md-sh"><div class="md-shp"><p class="md-sht">이 과제, 얼마나 급해?</p>
+      ${[['urgent','마감 1시간 전','발등튀김 모드','답을 받아 적어 일단 낸다'],['normal','2~3시간 여유','이해 모드','어느 정도 이해하고 풀어서 낸다'],['relaxed','시간 넉넉','과탑 모드','증명·원리까지 이해하고 탐구한다']].map(([k,c,t,d])=>`<div class="md-row ${k}" data-t="row-${k}">${mdSticker(k,60,true)}<div><b>${t}</b><small><span class="chip">${c}</span> · ${d}</small></div></div>`).join('')}</div></div>
+    <div class="md-ly md-cr"><div class="md-cb"><span class="bk">←</span><span class="mode"><span class="md-cbs"></span><span class="md-chip"></span></span><b>선형대수 과제 3</b><span class="save">PDF 다운로드</span></div>
+      <div class="md-pg"><h5>선형대수 과제 3</h5><p class="md-q"><b>1.</b> 행렬 ${mv('A')} = ${mx} 의 고유값을 모두 구하시오.</p><div class="md-wa"><canvas></canvas></div><p class="md-q"><b>2.</b> 각 고유값에 대응하는 고유벡터를 구하시오.</p><div class="md-wa"></div><p class="md-q"><b>3.</b> ${mv('A')}를 대각화하시오.</p></div>
+      ${rail}<div class="md-bub"></div></div>
+    <div class="md-ly md-ov"><div class="md-cd"></div></div>
+    <div class="md-ly md-tb"><div class="md-tbh"><span class="bk">←</span><div><span class="md-chip" style="background:#5E1220;color:#fff">과탑 · 청사진</span><h6>선형대수 과제 3을 정상에서 보면</h6></div></div>
+      <div class="md-map">${MD_LAY.map(([t,y])=>`<span class="lb" style="top:${y}px">${t}</span>`).join('')}<svg width="640" height="610" fill="none" stroke-linecap="round" aria-hidden="true"><g class="md-ed" stroke="#CFC4AE" stroke-width="2">${edges}</g><path class="md-dl" d="M${P.c1[0]+75} ${P.c1[1]+8}C330 330 300 360 ${P.p2[0]-40} ${P.p2[1]-27}" stroke="#8A1C2B" stroke-width="3" stroke-dasharray="7 6" opacity="0"/></svg>${map}<span class="md-lk" style="left:318px;top:338px">det = 0 ⇔ 역행렬 없음</span></div>
+      <div class="md-side"><div class="md-card eu"><small>유레카</small><b>det(${mv('A')} − λ${mv('I')}) = 0, 이래서 나왔다</b><p>(${mv('A')} − λ${mv('I')})${mv('v')} = 0에 0이 아닌 ${mv('v')}가 있으려면 ${mv('A')} − λ${mv('I')}의 역행렬이 없어야 하고, 그 조건이 곧 행렬식 0</p></div>
+        <div class="md-card"><small>이래서 나왔다</small><p>고유값은 행렬식이 0이 되는 자리에서, 고유벡터는 동차 연립방정식의 해에서. 둘 다 연립일차방정식 위에 서 있다</p></div>
+        <span class="md-next">다 했어요</span></div></div>
+    <i class="md-tap"></i>
+  </div></div></div>
+  <div class="md-tabs" role="tablist" aria-label="과제 세 모드">${['urgent','normal','relaxed'].map(k=>`<button type="button" role="tab" aria-selected="false" data-k="${k}">${mdSticker(k,30,false)}<span>${MD_NAME[k]}</span></button>`).join('')}</div>
+  <p class="scap">앱 화면(모드 고르기 · 전환 장면 · 말풍선 · 청사진)을 옮겨 빠르게 재생한 연출. 필기는 대표 실측(2026.09.12, x² − 5x + 6 = 0, 지운 획 포함), 문항 · 프루비 말 · 청사진 내용은 예시</p>`;
+  const q=s=>el.querySelector(s),qa=s=>[...el.querySelectorAll(s)];
+  const scr=q('.scr'),st=q('.md-st'),L={home:q('.md-home'),sh:q('.md-sh'),cr:q('.md-cr'),ov:q('.md-ov'),tb:q('.md-tb')},bub=q('.md-bub'),cd=q('.md-cd'),tap=q('.md-tap'),cv=q('.md-wa canvas'),tabs=qa('.md-tabs button');
+  let k=1,okF=()=>false,gen=0,from='urgent',raf=0,ro=null;
+  function size(){const w=scr.clientWidth;if(!w)return false;k=w/1000;st.style.transform=`scale(${k})`;paint(cur.t,cur.mode);return true}
+  // ---- ink: 대표 실측 필기. copy = 지운 획을 뺀 깨끗한 획을 이어 붙여 받아 적기, solve = 실제 그대로(지움 포함)
+  let TL=null;const cur={t:-1,mode:'solve'};
+  function build(){const S=INK3.s;let a=1e9,b=1e9,c=-1e9,d=-1e9;for(const s of S)for(const p of s.p){a=Math.min(a,p[0]);b=Math.min(b,p[1]);c=Math.max(c,p[0]);d=Math.max(d,p[1])}
+    let off=0,prev=null;const copy=S.filter(s=>!s.e).map(s=>{const t0=s.p[0][2];if(prev!=null&&t0-prev>220)off+=t0-prev-220;prev=s.p[s.p.length-1][2];return {p:s.p.map(p=>[p[0],p[1],p[2]-off])}});
+    const end=s=>s[s.length-1].p.slice(-1)[0][2];return {bb:[a,b,c,d],copy,solve:S,copyEnd:end(copy),solveEnd:end(S)}}
+  function paint(t,mode){if(!TL||!cv.isConnected)return;const r=cv.getBoundingClientRect();const W=380,H=118;const dpr=Math.min(2,devicePixelRatio||1),sc=k*dpr;
+    if(cv.width!==Math.round(W*sc)){cv.width=Math.round(W*sc);cv.height=Math.round(H*sc)}const ctx=cv.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);if(t<0)return;
+    const [a,b,c,d]=TL.bb,f=Math.min((W-8)/(c-a),(H-8)/(d-b)),ox=4+((W-8)-(c-a)*f)/2,oy=4;ctx.setTransform(sc*f,0,0,sc*f,sc*(ox-a*f),sc*(oy-b*f));
+    ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#1E1811';ctx.fillStyle='#1E1811';ctx.lineWidth=2.1/f;let tip=null;
+    for(const s of TL[mode]){const p=s.p;if(p[0][2]>t)break;if(s.e&&t>=s.e)continue;let n=0;while(n<p.length&&p[n][2]<=t)n++;
+      ctx.beginPath();ctx.moveTo(p[0][0],p[0][1]);if(n<2)ctx.lineTo(p[0][0]+.6,p[0][1]);for(let j=1;j<n-1;j++)ctx.quadraticCurveTo(p[j][0],p[j][1],(p[j][0]+p[j+1][0])/2,(p[j][1]+p[j+1][1])/2);if(n>1)ctx.lineTo(p[n-1][0],p[n-1][1]);ctx.stroke();if(n<p.length)tip=p[n-1]}
+    if(tip){ctx.fillStyle='#8A1C2B';ctx.beginPath();ctx.arc(tip[0],tip[1],2.8/f,0,7);ctx.fill()}}
+  const inkTo=(mode,t0,t1,ms,live)=>new Promise(res=>{cancelAnimationFrame(raf);const s=performance.now();cur.mode=mode;
+    const tick=()=>{if(!live()){res();return}const u=Math.min(1,(performance.now()-s)/ms);cur.t=t0+(t1-t0)*u;paint(cur.t,mode);if(u<1)raf=requestAnimationFrame(tick);else res()};raf=requestAnimationFrame(tick)});
+  // ---- 화면 전환·누르기
+  const show=(...on)=>{for(const [n,l] of Object.entries(L))l.classList.toggle('on',on.includes(n))};
+  const setMode=m=>{const [c,dk,ts]=MD_C[m];q('.md-cbs').innerHTML=mdSticker(m,30,false);const ch=q('.md-cb .md-chip');ch.textContent=MD_NAME[m];ch.style.background=ts;ch.style.color=dk;tabs.forEach(b=>b.setAttribute('aria-selected',b.dataset.k===m))};
+  const B=(name,...a)=>{bub.innerHTML=MD_B[name](...a)};
+  const wait=(ms,live)=>new Promise(r=>setTimeout(r,RM?0:ms)).then(()=>live());
+  async function press(sel,live){const t=q(sel);if(!t)return live();const r=t.getBoundingClientRect(),o=st.getBoundingClientRect();
+    tap.style.left=(r.left+r.width*.62-o.left)/k+'px';tap.style.top=(r.top+r.height/2-o.top)/k+'px';tap.classList.remove('go');void tap.offsetWidth;tap.classList.add('go');
+    if(!await wait(260,live))return false;t.classList.add('press');if(!await wait(220,live))return false;t.classList.remove('press');return wait(160,live)}
+  async function intro(m,live){cd.innerHTML=mdIntro(m);show('ov','sh');return wait(MD_INTRO_MS[m]+150,live)}
+  async function blueprint(live){qa('.md-nd,.md-ed path,.md-lk,.md-side').forEach(x=>x.classList.remove('on'));q('.md-dl').style.opacity=0;show('tb');
+    if(!await wait(350,live))return false;
+    for(const [,y] of MD_LAY){qa('.md-nd').filter(n=>parseFloat(n.style.top)===y).forEach(n=>n.classList.add('on'));qa('.md-ed path').forEach(p=>{const m=/L[\d.]+ ([\d.]+)/.exec(p.getAttribute('d'));if(m&&+m[1]+27===y)p.classList.add('on')});if(!await wait(330,live))return false}
+    q('.md-dl').style.opacity=1;q('.md-lk').classList.add('on');if(!await wait(500,live))return false;q('.md-side').classList.add('on');return wait(3600,live)}
+  async function pick(m,live){ // 고르기 시트에서 이 학생이 고른다
+    setMode(m);cur.t=-1;paint(-1,'solve');L.home.classList.add('cut');show('home');qa('.md-row').forEach(r=>r.classList.remove('press'));if(!await wait(450,live))return false;L.home.classList.remove('cut');
+    L.sh.classList.add('on');if(!await wait(900,live))return false;if(!await press(`[data-t=row-${m}]`,live))return false;
+    if(!await intro(m,live))return false;show('cr');return wait(300,live)}
+  async function urgent(live){
+    B('fill');if(!await pick('urgent',live))return false;
+    await inkTo('copy',0,TL.copyEnd,TL.copyEnd/4.5,live);if(!live())return false;if(!await wait(400,live))return false;
+    if(!await press('[data-t=next]',live))return false;B('choose');return wait(2200,live)}
+  async function normal(live){
+    B('concepts',false);if(!await pick('normal',live))return false;if(!await wait(700,live))return false;
+    if(!await press('[data-t=go]',live))return false;B('concepts',true);if(!await wait(600,live))return false;if(!await press('[data-t=go]',live))return false;
+    B('solve',{});if(!await wait(300,live))return false;
+    const er=Math.max(...TL.solve.filter(s=>s.e).map(s=>s.e)); // 지운 시각(18.4초)까지: 식 → (x−1)(x−6) → 지움
+    await inkTo('solve',0,er+200,(er+200)/4.5,live);if(!live())return false;if(!await wait(500,live))return false; // 실제 기록은 지운 뒤 5.7초 멈춤 — 그 사이 [프루비]
+    if(!await press('[data-t=pv]',live))return false;B('solve',{menu:1});if(!await wait(600,live))return false;if(!await press('[data-t=how]',live))return false;
+    B('solve',{talk:1});if(!await wait(1700,live))return false;
+    await inkTo('solve',24000,TL.solveEnd,(TL.solveEnd-24000)/4.5,live);if(!live())return false;if(!await wait(300,live))return false;
+    if(!await press('[data-t=done]',live))return false;B('solve',{talk:1,busy:1});if(!await wait(800,live))return false;B('verdict');return wait(2000,live)}
+  async function relaxed(live){
+    B('deep',false);if(!await pick('relaxed',live))return false;if(!await wait(900,live))return false;
+    if(!await press('[data-t=go]',live))return false;B('deep',true);if(!await wait(700,live))return false;if(!await press('[data-t=go]',live))return false;
+    B('variant',{});if(!await wait(1500,live))return false;if(!await press('[data-t=done]',live))return false;B('variant',{busy:1});if(!await wait(800,live))return false;
+    B('variant',{done:1});if(!await wait(900,live))return false;if(!await press('[data-t=bp]',live))return false;return blueprint(live)}
+  const SEG={urgent,normal,relaxed},ORDER=['urgent','normal','relaxed'];
+  function finalFrame(){setMode('urgent');B('choose');show('cr');cur.t=TL?TL.copyEnd:-1;cur.mode='copy';paint(cur.t,'copy')}
+  async function run(g){const live=()=>okF()&&g===gen;await ink3();if(!INK3||!live())return;TL=TL||build();
+    if(!ro){ro=new ResizeObserver(()=>size());ro.observe(scr)}if(!size())return;
+    if(RM){finalFrame();return}
+    let i=ORDER.indexOf(from);
+    while(live()){if(!await SEG[ORDER[i]](live))return;i=(i+1)%3}}
+  tabs.forEach(b=>b.addEventListener('click',()=>{from=b.dataset.k;if(okF()){cancelAnimationFrame(raf);const g=++gen;run(g)}}));
+  return {el,stop(){gen++;cancelAnimationFrame(raf)},play(ok){okF=ok;const g=++gen;run(g)}};
+}
+
+const MAKE={recog:sceneRecog,input:sceneInput,read:sceneRead,graph:sceneGraph,ask:sceneAsk,modes:sceneModes,note:sceneNote,ground:sceneGround};
 
 /* ---------- mount scenes; play only while their row is on screen ---------- */
 const scenes={},run={};
