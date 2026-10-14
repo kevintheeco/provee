@@ -480,6 +480,8 @@ const T={
 '해외 마케팅, 콘텐츠':'International marketing and content',
 '최지민':'Jimin Choi',
 '그로스 마케터':'Growth Marketer',
+'마케터':'Marketer',
+'콘텐츠 제작':'Content creation',
 '홍보, 모션그래픽, 마케팅 자동화':'PR, motion graphics, marketing automation',
 '연주희':'Juhee Yeon',
 'UI 디자이너':'UI Designer',
