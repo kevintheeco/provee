@@ -43,6 +43,7 @@ const T={
 '사진이 놓치는 쓴 순서까지 읽습니다':'Reads the order you wrote in, which a photo misses',
 '기다리지 않고 식에서 바로 그립니다':'Graphs straight from the equation, no waiting',
 '막히면 정답 대신 놓친 조건을 짚습니다':'Points to what you missed, not the answer',
+'급하면 발등튀김, 과탑을 노리면 과탑':'Crunch when it\'s due, Top when you\'re aiming high',
 '언제 어디서든 내 풀이를 다시 봅니다':'Your own work, anytime, anywhere',
 '링크 하나로 같은 노트에 함께 풉니다':'One link, the same notes, solved together',
 
