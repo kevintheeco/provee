@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Provee | 손으로 푸는 과정을 읽고, 답 대신 되물어 스스로 풀게 돕는 수학 AI 튜터">
+<link rel="canonical" href="https://provee.kr/">
+<!-- 검색엔진·AI 답변용 정보. FAQ는 아래 #faq 화면 글과 똑같아야 한다(바꾸면 같이 바꾸기, 2026-10-19 SEO) -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://provee.kr/#org", "name": "Provee", "alternateName": "프루비", "url": "https://provee.kr/", "logo": "https://provee.kr/assets/brand/apple-touch-icon.png", "sameAs": ["https://www.instagram.com/provee.kr/"]}, {"@type": "WebSite", "@id": "https://provee.kr/#site", "name": "Provee", "alternateName": "프루비", "url": "https://provee.kr/", "inLanguage": "ko-KR", "publisher": {"@id": "https://provee.kr/#org"}}, {"@type": "FAQPage", "@id": "https://provee.kr/#faq", "mainEntity": [{"@type": "Question", "name": "ChatGPT와 무엇이 다른가요?", "acceptedAnswer": {"@type": "Answer", "text": "ChatGPT도 사진 속 풀이를 읽고, 학습 모드에서는 답 대신 되묻기도 합니다. 차이는 무엇을 받느냐에 있습니다. Provee는 다 쓴 사진 한 장이 아니라 노트에 쓰는 획을 순서와 시각까지 받습니다. 그래서 풀이가 멈춘 자리에서 내가 쓴 식을 보고 막힌 곳에서만 먼저 묻고, 다 푼 뒤에는 Provee Note에서 쓴 순서 그대로 다시 볼 수 있습니다."}}, {"@type": "Question", "name": "언제부터 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "2026년 10월, 서강대에서 무료 베타를 먼저 엽니다. 정량과목 수강생부터 시작해 2027년 봄에 전국 대학으로 넓힙니다."}}, {"@type": "Question", "name": "어떤 기기가 필요한가요?", "acceptedAnswer": {"@type": "Answer", "text": "펜으로 쓸 수 있는 태블릿이 가장 잘 맞습니다. 웹 브라우저에서 열리고, 앱도 함께 준비하고 있습니다."}}, {"@type": "Question", "name": "어떤 과목을 다루나요?", "acceptedAnswer": {"@type": "Answer", "text": "미적분, 통계, 선형대수, 계량경제, 물리처럼 손으로 풀며 배우는 과목입니다. 첫 학기는 서강대 정량과목에 맞춰 엽니다."}}, {"@type": "Question", "name": "답은 바로 알려 주지 않나요?", "acceptedAnswer": {"@type": "Answer", "text": "막힌 곳에서 먼저 되묻습니다. 그래도 어려우면 힌트를 한 단계씩 더 주고, 해설을 본 뒤에는 스스로 설명해 보게 합니다."}}, {"@type": "Question", "name": "내 필기 기록은 어디에 쓰이나요?", "acceptedAnswer": {"@type": "Answer", "text": "복습 재생과 막힌 곳을 찾는 데 씁니다. 자세한 처리 방식은 개인정보처리방침에 적어 두었습니다."}}, {"@type": "Question", "name": "Provee Ground는 무료인가요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 링크 하나로 누구나 들어올 수 있습니다. 모두 나가면 방은 10분 뒤 사라지고 기록은 남지 않습니다."}}, {"@type": "Question", "name": "가격은 얼마인가요?", "acceptedAnswer": {"@type": "Answer", "text": "대학생은 1과목을 무료로 쓰고, 유료 요금제는 주 4,700원부터입니다."}}]}]}</script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://provee.kr/">
 <meta property="og:site_name" content="Provee">
@@ -1380,7 +1383,7 @@ html[lang="en"] .f-ul{white-space:normal}
     </ul>
     <div class="hdr-r">
       <button class="lang-b" type="button" data-lang translate="no" lang="en" aria-label="View in English">EN</button>
-      <a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a>
+      <a class="btn btn-l" href="https://ground.provee.kr" target="_blank" rel="noopener">Provee Ground</a>
       <a class="btn btn-w" href="#join">사전신청</a>
       <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="drawer"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
@@ -1392,7 +1395,7 @@ html[lang="en"] .f-ul{white-space:normal}
     <div class="sub"><a href="#f-input"><small>01</small>필기 입력</a><a href="#f-read"><small>02</small>획 단위 인식</a><a href="#f-graph"><small>03</small>바로 그리는 그래프</a><a href="#f-ask"><small>04</small>되묻는 튜터</a><a href="#f-modes"><small>05</small>과제 모드</a><a href="#f-note"><small>06</small>Provee Note</a><a href="#f-ground"><small>07</small>Provee Ground</a></div>
   </details>
   <a class="l" href="#compare">비교</a><a class="l" href="#pricing">요금제</a><a class="l" href="#story">회사 이야기</a><a class="l" href="#faq">자주 묻는 질문</a>
-  <div class="d-cta"><a class="btn btn-w" href="#join">사전신청 혜택 받기</a><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기</a></div>
+  <div class="d-cta"><a class="btn btn-w" href="#join">사전신청 혜택 받기</a><a class="btn btn-l" href="https://ground.provee.kr" target="_blank" rel="noopener">Provee Ground 열기</a></div>
 </nav>
 
 <main id="top">
@@ -1519,7 +1522,7 @@ html[lang="en"] .f-ul{white-space:normal}
         <span class="fk"><b>07</b>Provee Ground</span>
         <h3>혼자 막힌 문제,<br><mark class="f-hl">같이 풀래요?</mark></h3>
         <p>링크 하나로, 가입 없이, 지금 무료로.</p>
-        <div class="f-side"><a class="btn btn-l" href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground 열기<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="f-side"><a class="btn btn-l" href="https://ground.provee.kr" target="_blank" rel="noopener">Provee Ground 열기<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
       <div class="f-vis" data-scene="ground"></div>
     </div>
@@ -1652,7 +1655,7 @@ html[lang="en"] .f-ul{white-space:normal}
       <details><summary>어떤 과목을 다루나요?<i aria-hidden="true"></i></summary><div class="ans">미적분, 통계, 선형대수, 계량경제, 물리처럼 손으로 풀며 배우는 과목입니다. 첫 학기는 서강대 정량과목에 맞춰 엽니다.</div></details>
       <details><summary>답은 바로 알려 주지 않나요?<i aria-hidden="true"></i></summary><div class="ans">막힌 곳에서 먼저 되묻습니다. 그래도 어려우면 힌트를 한 단계씩 더 주고, 해설을 본 뒤에는 스스로 설명해 보게 합니다.</div></details>
       <details><summary>내 필기 기록은 어디에 쓰이나요?<i aria-hidden="true"></i></summary><div class="ans">복습 재생과 막힌 곳을 찾는 데 씁니다. 자세한 처리 방식은 <a href="privacy.html">개인정보처리방침</a>에 적어 두었습니다.</div></details>
-      <details><summary>Provee Ground는 무료인가요?<i aria-hidden="true"></i></summary><div class="ans">네. 링크 하나로 누구나 들어올 수 있습니다. 모두 나가면 방은 10분 뒤 사라지고 기록은 남지 않습니다. <a href="https://proveeground.kr" target="_blank" rel="noopener">지금 열어 보기</a></div></details>
+      <details><summary>Provee Ground는 무료인가요?<i aria-hidden="true"></i></summary><div class="ans">네. 링크 하나로 누구나 들어올 수 있습니다. 모두 나가면 방은 10분 뒤 사라지고 기록은 남지 않습니다. <a href="https://ground.provee.kr" target="_blank" rel="noopener">지금 열어 보기</a></div></details>
       <details><summary>가격은 얼마인가요?<i aria-hidden="true"></i></summary><div class="ans">대학생은 1과목을 무료로 쓰고, 유료 요금제는 주 4,700원부터입니다. <a href="#pricing">요금제 보기</a></div></details>
     </div>
   </div>
@@ -1672,7 +1675,7 @@ html[lang="en"] .f-ul{white-space:normal}
       <label class="pre-ok"><input id="preAgree" type="checkbox"> <span>(필수) 사전신청 혜택 메일을 보내기 위해 이메일을 받고, 2026년 11월 30일에 지웁니다. <a href="privacy.html#prereg" target="_blank" rel="noopener">개인정보처리방침</a></span></label>
       <p class="pre-msg" id="preMsg" role="status" aria-live="polite"></p>
     </form>
-    <a class="pre-alt" href="https://proveeground.kr" target="_blank" rel="noopener">지금은 Provee Ground를 무료로 써 볼 수 있어요</a>
+    <a class="pre-alt" href="https://ground.provee.kr" target="_blank" rel="noopener">지금은 Provee Ground를 무료로 써 볼 수 있어요</a>
   </div>
 </section>
 </main>
@@ -1682,7 +1685,7 @@ html[lang="en"] .f-ul{white-space:normal}
     <div class="f0"><span class="wm"><svg class="pv-wm" viewBox="20.48 20.48 872.45 215.04" role="img" aria-label="provee."><use href="#pv-wm"/></svg></span><p style="margin:10px 0 0">손으로 풀어야 이해되는 과목을 위한 AI 튜터</p></div>
     <nav aria-label="기능"><h4>기능</h4><a href="#f-input">필기 입력</a><a href="#f-read">획 단위 인식</a><a href="#f-graph">바로 그리는 그래프</a><a href="#f-ask">되묻는 튜터</a><a href="#f-modes">과제 모드</a><a href="#f-note">Provee Note</a><a href="#f-ground">Provee Ground</a></nav>
     <nav aria-label="회사"><h4>회사</h4><a href="#story">회사 이야기</a><a href="#pricing">요금제</a><a href="#faq">자주 묻는 질문</a><a href="story.html">투자자 소개</a></nav>
-    <nav aria-label="안내"><h4>안내</h4><a href="terms.html">이용약관</a><a href="privacy.html"><b>개인정보처리방침</b></a><a href="https://proveeground.kr" target="_blank" rel="noopener">Provee Ground</a></nav>
+    <nav aria-label="안내"><h4>안내</h4><a href="terms.html">이용약관</a><a href="privacy.html"><b>개인정보처리방침</b></a><a href="https://ground.provee.kr" target="_blank" rel="noopener">Provee Ground</a></nav>
     <small class="f0">URP (법인 설립 준비 중) · 대표 김수민 · © 2026 URP</small>
   </div>
 </footer>
@@ -2130,7 +2133,7 @@ function sceneGround(){ // Provee Ground 시작 화면(proveeground.kr) 장면 �
       </div>
       <div class="sp-pointer"><svg><use href="#sp-ptr"/></svg></div>
     </div></div></div></div>
-</div><p class="scap">proveeground.kr 시작 화면의 장면을 그대로 옮긴 화면. 캠 속 인물은 AI로 만든 연출 영상입니다</p>`;
+</div><p class="scap">ground.provee.kr 시작 화면의 장면을 그대로 옮긴 화면. 캠 속 인물은 AI로 만든 연출 영상입니다</p>`;
   let started=false;
   return {el,stop(){},async play(ok){
     if(started)return;
