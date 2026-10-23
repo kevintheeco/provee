@@ -13,5 +13,10 @@
 
 - [Provee 소개](https://provee.kr/): 제품, 요금제, 자주 묻는 질문
 - [Provee Ground](https://ground.provee.kr/): 대학생 화상 공부방
+- [수학 AI 추천 가이드](https://provee.kr/guide/math-ai): 문제 사진형·AI 채팅형·과정을 읽는 튜터형 비교
+- [대학 수학 AI 가이드](https://provee.kr/guide/university-math-ai): 미적분·선형대수·통계·계량경제를 AI와 공부하는 법
+- [콴다와 Provee 비교](https://provee.kr/guide/qanda-vs-provee)
+- [미적분 AI 튜터](https://provee.kr/guide/calculus-ai-tutor): 푸는 동안 막힌 곳을 짚는 튜터, 과외·풀이 앱과 비교
+- [대학생 AI 추천 2026](https://provee.kr/guide/student-ai): 무료 혜택과 공부·과제·시험에 쓰는 법
 - [개인정보처리방침](https://provee.kr/privacy.html)
 - [이용약관](https://provee.kr/terms.html)
