@@ -469,7 +469,6 @@ const T={
 '하승주':'Seungju Ha',
 '수학·학습과학 총괄':'Head of Math & Learning Science',
 '한양대 수학과. 前 대치 종로학원 학습과학센터 고등수학 팀장':'Mathematics, Hanyang University. Former high school math lead, Jongro Academy Learning Science Center (Daechi)',
-'임준서':'Junseo Lim',
 '재무 모델, 가격, 시장 규모':'Financial model, pricing, market sizing',
 '브랜드 전략':'Brand Strategy',
 '브랜드, 사용자 인터뷰':'Brand and user interviews',
