@@ -792,9 +792,9 @@ html[lang="en"] .f-ul{white-space:normal}
 .tm.ceo em{font-size:14px;color:#E0566A}
 .tm.ceo em.also{color:#F7F1E8}
 .tm.ceo span{font-size:15px;color:#CFC6BA;margin-top:4px}
-.tm.hs{grid-column:1/-1} /* CEO 한 줄 + 하승주 한 줄 + 은우·지민·주희 한 줄로 빈칸 없이 */
+.tm.hs,.tm.adv{grid-column:1/-1} /* CEO 한 줄 + 하승주 한 줄 + 은우·지민·주희 한 줄 + 자문 한 줄로 빈칸 없이 */
 @media (max-width:1020px){.tm-grid{grid-template-columns:repeat(2,1fr)}.tm.hs{grid-column:auto}}
-@media (max-width:520px){.tm-grid{grid-template-columns:1fr}.tm.ceo,.tm.hs{grid-column:auto}.tm.ceo{grid-template-columns:60px 1fr;column-gap:14px;padding:24px}.tm.ceo .av{width:60px;height:60px;font-size:18px}}
+@media (max-width:520px){.tm-grid{grid-template-columns:1fr}.tm.ceo,.tm.hs,.tm.adv{grid-column:auto}.tm.ceo{grid-template-columns:60px 1fr;column-gap:14px;padding:24px}.tm.ceo .av{width:60px;height:60px;font-size:18px}}
 .st-end{background:linear-gradient(135deg,#8A1C2B,#5E1220);color:#fff;min-height:56vh;display:grid;place-items:center;text-align:center;padding:96px var(--gut)}
 .st-end p{margin:0;font-size:clamp(24px,3.2vw,40px);line-height:1.5;font-weight:700;letter-spacing:-.03em}
 @media (max-width:760px){.mv{grid-template-columns:1fr}.st-origin{grid-template-columns:1fr}.og-ph{justify-self:start;width:min(100%,360px)}.st-mv h3{font-size:22px}}
@@ -1640,6 +1640,7 @@ html[lang="en"] .f-ul{white-space:normal}
       <div class="tm"><span class="av">EW</span><b>김은우</b><em>글로벌 마케팅</em><span>해외 마케팅, 콘텐츠</span></div>
       <div class="tm"><span class="av">JM</span><b>최지민</b><em>마케터</em><span>콘텐츠 제작</span></div>
       <div class="tm"><span class="av">JH</span><b>연주희</b><em>UI 디자이너</em><span>제품·브랜드 디자인</span></div>
+      <div class="tm adv"><span class="av">KT</span><b>김근태</b><em>AI 기술 자문</em><span>한양대 컴퓨터공학 박사과정. LLM 추론과 환각 탐지를 연구하며 NeurIPS·CVPR·ICML·EMNLP에 제1저자 논문 5편</span></div>
     </div>
   </div>
   <div class="st-end"><p>답은 AI가 알아도,<br>실력은 직접 풀어 본 사람에게 쌓입니다.</p></div>
