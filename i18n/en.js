@@ -483,6 +483,9 @@ const T={
 '연주희':'Juhee Yeon',
 'UI 디자이너':'UI Designer',
 '제품·브랜드 디자인':'Product and brand design',
+'김근태':'Keuntae Kim',
+'AI 기술 자문':'AI Technical Advisor',
+'한양대 컴퓨터공학 박사과정. LLM 추론과 환각 탐지를 연구하며 NeurIPS·CVPR·ICML·EMNLP에 제1저자 논문 5편':'PhD candidate in Computer Science, Hanyang University. Researches LLM reasoning and hallucination detection; 5 first-author papers at NeurIPS, CVPR, ICML and EMNLP',
 '시대가 바뀌어도,<br>사람이 자라고 배우는 교육의 가치는 사라지지 않습니다.':'However times change,<br>the value of an education where people grow and learn never fades.',
 
 /* ---------- 자주 묻는 질문 ---------- */
