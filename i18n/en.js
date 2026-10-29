@@ -108,10 +108,10 @@ const T={
 'AI가 손글씨나 수식을 잘못 읽을 때가 많았다':'often had AI misread their handwriting or math',
 '새 채팅을 열면<br><em>내 수준부터 다시</em> 설명합니다':'Open a new chat<br>and <em>explain your level again</em>',
 '대화가 길어지거나 새 채팅을 열면 내 수준을 다시 설명해야 할 때가 많았다':'often had to re-explain their level when a chat ran long or they opened a new one',
-'63%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 27명, \'자주\' 이상(URP 온라인 설문 응답 105명 중 대학 응답, 2026년 7월, 지인·커뮤니티 모집). 영상은 연출':'63%: 27 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (university respondents among 105 in URP\'s online survey, July 2026, recruited via friends and communities). The video is staged',
-'60%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 26명, \'자주\' 이상(URP, 2026년 7월). 24 + 1: 2026년 9월 12일 GPT-5.6 Sol, 1회 실측, 실제 대화 캡처 일부':'60%: 26 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (URP survey, July 2026). 24 + 1: GPT-5.6 Sol, September 12, 2026, a single test, cropped from the actual chat',
-'63%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 27명, \'자주\' 이상(URP, 2026년 7월). 화면은 재구성':'63%: 27 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (URP survey, July 2026). Screen is a reconstruction',
-'77%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 33명, \'자주\' 이상(URP, 2026년 7월). 화면은 재구성':'77%: 33 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (URP survey, July 2026). Screen is a reconstruction',
+'63%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 27명, \'자주\' 이상(타이니닷츠 온라인 설문 응답 105명 중 대학 응답, 2026년 7월, 지인·커뮤니티 모집). 영상은 연출':'63%: 27 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (university respondents among 105 in tinydots\' online survey, July 2026, recruited via friends and communities). The video is staged',
+'60%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 26명, \'자주\' 이상(타이니닷츠, 2026년 7월). 24 + 1: 2026년 9월 12일 GPT-5.6 Sol, 1회 실측, 실제 대화 캡처 일부':'60%: 26 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (tinydots survey, July 2026). 24 + 1: GPT-5.6 Sol, September 12, 2026, a single test, cropped from the actual chat',
+'63%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 27명, \'자주\' 이상(타이니닷츠, 2026년 7월). 화면은 재구성':'63%: 27 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (tinydots survey, July 2026). Screen is a reconstruction',
+'77%: 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 33명, \'자주\' 이상(타이니닷츠, 2026년 7월). 화면은 재구성':'77%: 33 of 43 undergrads, recent grads and others who have used generative AI for quantitative courses, "often" or more (tinydots survey, July 2026). Screen is a reconstruction',
 // /hero-fix
 
 // subjects: 외우는 공부가 아닌, 진짜 풀어야 하는 공부 (index.html #subjects). 이 섹션 줄은 여기 한곳에만 둔다
@@ -369,7 +369,7 @@ const T={
 '바로 그려요':'Draws it right away',
 '물어본 만큼만':'Only what you asked',
 '지난 풀이가 이어져요':'Picks up from your past work',
-'63%·60%·77%는 URP 설문(2026년 7월, 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 \'자주\' 이상 겪었다는 비율), 1분 13초는 GPT-5.6 Sol이 그래프를 내놓기까지 걸린 1회 실측(2026년 9월 12일). 서비스와 설정에 따라 다를 수 있습니다.':'63%, 60% and 77% come from a URP survey (July 2026): the share of 43 university students and graduates who used generative AI for quantitative courses and ran into each issue \"often\" or more. 1 min 13 s is a single measurement of how long GPT-5.6 Sol took to return a graph (September 12, 2026). Results may vary by service and settings.',
+'63%·60%·77%는 타이니닷츠 설문(2026년 7월, 정량 과목 공부에 생성형 AI를 써 본 대학생·졸업생 등 43명 중 \'자주\' 이상 겪었다는 비율), 1분 13초는 GPT-5.6 Sol이 그래프를 내놓기까지 걸린 1회 실측(2026년 9월 12일). 서비스와 설정에 따라 다를 수 있습니다.':'63%, 60% and 77% come from a tinydots survey (July 2026): the share of 43 university students and graduates who used generative AI for quantitative courses and ran into each issue \"often\" or more. 1 min 13 s is a single measurement of how long GPT-5.6 Sol took to return a graph (September 12, 2026). Results may vary by service and settings.',
 '그래프':'Graphs',
 '복습':'Review',
 
@@ -566,7 +566,7 @@ const T={
 /* ================= 2차: 통합본(808e8c4)에서 새로 생기거나 바뀐 문장 ================= */
 /* 첫 화면 */
 '뭉쳐 쓴 2x + 1을 사진으로 올렸을 때 GPT가 읽은 식':'what GPT read from a photo of a cramped 2x + 1',
-'%: 생성형 AI를 써 본 대학생 43명 설문(URP, 2026년 7월)':'%: Survey of 43 university students who have used generative AI (URP, July 2026)',
+'%: 생성형 AI를 써 본 대학생 43명 설문(타이니닷츠, 2026년 7월)':'%: Survey of 43 university students who have used generative AI (tinydots, July 2026)',
 '24+1: 대표의 필기 사진을 GPT-5.6 Sol에 올린 1회 실측, 화면은 실제 대화 캡처':'24+1: A single test with a photo of our CEO\'s handwriting uploaded to GPT-5.6 Sol. The screen is a real chat capture.',
 
 /* 기능 03·04 */
@@ -605,7 +605,7 @@ const T={
 '대방역 사무실 확보':'Secured an office at Daebang Station',
 '이번 달,<br>서강대에서 먼저 엽니다':'This month,<br>we open first at Sogang',
 '사전신청하기':'Pre-register',
-'설문: URP 자체 온라인 설문, 2026년 7월, 응답 105명(중고생 42·대학생 63). 사용 의향은 5점 중 4~5점, 현재 공부 중인 응답자 85명 기준.':'Survey: URP\'s own online survey, July 2026, 105 respondents (42 middle and high school, 63 university). Intent to use means 4 or 5 on a 5-point scale, among the 85 respondents currently studying.',
+'설문: 타이니닷츠 자체 온라인 설문, 2026년 7월, 응답 105명(중고생 42·대학생 63). 사용 의향은 5점 중 4~5점, 현재 공부 중인 응답자 85명 기준.':'Survey: tinydots\' own online survey, July 2026, 105 respondents (42 middle and high school, 63 university). Intent to use means 4 or 5 on a 5-point scale, among the 85 respondents currently studying.',
 '개발 총괄':'Head of Development',
 '서강대 경제학과. 첫 사용자이자 제품 총괄. 화면과 사용 흐름을 직접 설계하고 만듭니다':'Economics, Sogang University. First user and head of product, designing and building the screens and user flows',
 '한양대 수학과. 前 대치 종로학원 학습과학센터 고등수학 팀장. 개발팀 겸임':'Mathematics, Hanyang University. Former high school math lead, Jongro Academy Learning Science Center (Daechi). Also on the engineering team',
