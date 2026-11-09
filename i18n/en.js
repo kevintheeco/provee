@@ -560,7 +560,7 @@ const T={
 '안내':'Info',
 '투자자 소개':'For investors',
 '이용약관':'Terms of Service',
-'타이니닷츠 주식회사 · 대표 김수민 · 사업자등록번호 863-86-04060':'tinydots Inc. · CEO Soomin Kim · Business Registration No. 863-86-04060',
+'타이니닷츠 주식회사 · 대표 김수민 · 사업자등록번호 863-86-04060 · 통신판매업신고 2026-와부조안-0335':'tinydots Inc. · CEO Soomin Kim · Business Registration No. 863-86-04060 · E-commerce Registration No. 2026-와부조안-0335',
 '경기도 남양주시 와부읍 수레로116번길 16, 4층 402-340A호 · © 2026 타이니닷츠':'16, Suraero 116beon-gil, Wabu-eup, Namyangju-si, Gyeonggi-do (4F, Unit 402-340A) · © 2026 tinydots Inc.',
 
 /* ================= 2차: 통합본(808e8c4)에서 새로 생기거나 바뀐 문장 ================= */
