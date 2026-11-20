@@ -12,9 +12,9 @@
 (()=>{
 const T={
 /* ---------- 문서 제목·설명 ---------- */
-'Provee | 손으로 푸는 과목을 위한 AI 튜터':'Provee | An AI tutor for subjects you solve by hand',
-'Provee | 손으로 푸는 과정을 읽고, 답 대신 되물어 스스로 풀게 돕는 수학 AI 튜터':'Provee | A math AI tutor that reads your handwritten work and asks questions instead of handing over answers, so you solve it yourself',
-'Provee | 손으로 풀어야 이해되는 과목을 위한 AI 튜터':'Provee | An AI tutor for subjects you learn with pen in hand',
+'Provee(프루비) | 손으로 푸는 과목을 위한 AI 튜터':'Provee | An AI tutor for subjects you solve by hand',
+'Provee(프루비) | 손으로 푸는 과정을 읽고, 답 대신 되물어 스스로 풀게 돕는 수학 AI 튜터':'Provee | A math AI tutor that reads your handwritten work and asks questions instead of handing over answers, so you solve it yourself',
+'Provee(프루비) | 손으로 풀어야 이해되는 과목을 위한 AI 튜터':'Provee | An AI tutor for subjects you learn with pen in hand',
 '쓰는 순간 읽고, 막히면 되묻고, 푼 순서 그대로 다시 봅니다. 2026년 10월 서강대에서 먼저 엽니다.':'It reads as you write, asks back when you get stuck, and replays your work in the order you wrote it. Opening first at Sogang University in October 2026.',
 
 /* ---------- 머리글·메뉴 ---------- */
